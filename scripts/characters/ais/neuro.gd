@@ -43,7 +43,7 @@ var upgrades_db = [
 	)
 ]
 
-func setup() -> void:
+func specific_setup() -> void:
 	Globals.add_specific_upgrades.emit(upgrades_db) 
 	Globals.lvl_up.emit(upgrades_db[STARTING_UPGRADE])
 

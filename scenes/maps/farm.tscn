@@ -1,11 +1,11 @@
 [gd_scene load_steps=14 format=3 uid="uid://drg7spn8yqktv"]
 
-[ext_resource type="PackedScene" uid="uid://b0lf8yisvdg2y" path="res://scenes/characters/collab_partners/vedal.tscn" id="1_wnmde"]
+[ext_resource type="PackedScene" uid="uid://b8oia7t2aewka" path="res://scenes/characters/collab_partners/vedal.tscn" id="1_wnmde"]
 [ext_resource type="Script" path="res://scripts/maps/farm.gd" id="1_wx0jl"]
 [ext_resource type="Texture2D" uid="uid://b4b121yddfloj" path="res://assets/maps/map_size_scale.png" id="2_vxep5"]
 [ext_resource type="PackedScene" uid="uid://dqy8eus7xktlq" path="res://scenes/ui/hud.tscn" id="2_xyoik"]
 [ext_resource type="Texture2D" uid="uid://cp8wdtr8nfxm" path="res://assets/maps/farm_tile_map.png" id="3_4qhu1"]
-[ext_resource type="PackedScene" uid="uid://vbinq87d2eio" path="res://scenes/characters/ais/neuro.tscn" id="3_rcj0f"]
+[ext_resource type="PackedScene" uid="uid://huy32vwhqidx" path="res://scenes/characters/ais/neuro.tscn" id="3_rcj0f"]
 [ext_resource type="PackedScene" uid="uid://3ojvl7d7u1pe" path="res://scenes/enemies/enemy_spawner.tscn" id="5_ep230"]
 [ext_resource type="PackedScene" uid="uid://8uhv6g1gj5yk" path="res://scenes/upgrades/upgrade_manager.tscn" id="7_wfvop"]
 
@@ -61,12 +61,11 @@ layer_0/tile_data = PackedInt32Array(-1, 1, 0, 65535, 1, 0, 131071, 1, 0, 196607
 
 [node name="HUD" parent="." instance=ExtResource("2_xyoik")]
 
-[node name="Vedal" parent="." instance=ExtResource("1_wnmde")]
-position = Vector2(1236, 305)
+[node name="Neuro" parent="." instance=ExtResource("3_rcj0f")]
+position = Vector2(1217, 326)
 
-[node name="Neuro" parent="." node_paths=PackedStringArray("collab_partner") instance=ExtResource("3_rcj0f")]
-position = Vector2(1170, 307)
-collab_partner = NodePath("../Vedal")
+[node name="Vedal" parent="." instance=ExtResource("1_wnmde")]
+position = Vector2(1280, 320)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("5_ep230")]
 

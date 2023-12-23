@@ -35,8 +35,12 @@ func connect_signals() -> void:
 	collectionbox.area_entered.connect(_on_collectionbox_area_entered)
 
 ## Called once map is ready 
-## Override and add character-specific upgrades from here 
 func setup() -> void:
+	specific_setup() 
+
+## Called once map is ready 
+## Override and add character-specific upgrades from here 	
+func specific_setup() -> void:
 	pass 
 
 func _physics_process(delta: float) -> void:

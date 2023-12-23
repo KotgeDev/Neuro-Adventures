@@ -1,55 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://vbinq87d2eio"]
+[gd_scene load_steps=2 format=3 uid="uid://huy32vwhqidx"]
 
-[ext_resource type="PackedScene" uid="uid://cgic4q8egbmxp" path="res://scenes/characters/character_animation.tscn" id="1_7d02h"]
-[ext_resource type="Script" path="res://scripts/characters/ais/neuro.gd" id="1_x6pgc"]
-[ext_resource type="Texture2D" uid="uid://c1ussrvj1xucu" path="res://assets/characters/ais/neuro_idle_sheet.png" id="2_0p03k"]
-[ext_resource type="Texture2D" uid="uid://bgwxn487mkwhh" path="res://assets/characters/ais/neuro_run_sheet.png" id="3_riiw1"]
-[ext_resource type="PackedScene" uid="uid://cpp0tc7uqrv4" path="res://scenes/shared/hurtbox.tscn" id="5_y4y44"]
+[ext_resource type="PackedScene" uid="uid://y36yytk34v0i" path="res://scenes/characters/ais/ai.tscn" id="1_jb3ag"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2ih7m"]
-radius = 6.0
-height = 26.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ng05f"]
-radius = 59.0085
-
-[node name="Neuro" type="CharacterBody2D"]
-collision_layer = 64
-collision_mask = 8
-script = ExtResource("1_x6pgc")
-MAX_SPEED = 75
-MAX_HEALTH = 50.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -3)
-shape = SubResource("CapsuleShape2D_2ih7m")
-
-[node name="CharacterAnimation" parent="." node_paths=PackedStringArray("character") instance=ExtResource("1_7d02h")]
-character = NodePath("..")
-
-[node name="IdleSprite" parent="CharacterAnimation" index="0"]
-texture = ExtResource("2_0p03k")
-
-[node name="RunSprite" parent="CharacterAnimation" index="1"]
-texture = ExtResource("3_riiw1")
-
-[node name="SearchField" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 16
-metadata/_edit_lock_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SearchField"]
-shape = SubResource("CircleShape2D_ng05f")
-
-[node name="Hurtbox" parent="." instance=ExtResource("5_y4y44")]
-collision_layer = 1
-
-[node name="CollisionPolygon2D" parent="Hurtbox" index="0"]
-polygon = PackedVector2Array(-1, -18, -5, -16, -7, -11, -5, -8, -2, -5, -5, 1, -4, 10, -4, 12, -4, 13, -2, 13, -2, 10, 0, 5, 2, 10, 2, 13, 4, 13, 4, 10, 3, 2, 5, 4, 4, -1, 1, -4, 5, -10, 5, -13, 4, -16)
-
-[node name="Marker2D" type="Marker2D" parent="."]
-
-[connection signal="take_damage" from="Hurtbox" to="." method="_on_hurtbox_take_damage"]
+[node name="Neuro" instance=ExtResource("1_jb3ag")]
 
 [editable path="CharacterAnimation"]
 [editable path="Hurtbox"]

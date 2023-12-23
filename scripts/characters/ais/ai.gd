@@ -2,8 +2,6 @@
 extends CharacterBody2D
 class_name AI 
 
-@export var collab_partner: CollabPartner
-
 #region CONSTANTS
 @export var MAX_SPEED := 65 
 @export var ACCELERATION := 500
@@ -15,6 +13,7 @@ class_name AI
 @onready var search_field = $SearchField
 @onready var marker_2d = $Marker2D
 @onready var character_animation = $CharacterAnimation
+var collab_partner: CollabPartner
 #endregion
 
 #region STATUS 
@@ -29,10 +28,15 @@ func connect_signals() -> void:
 	Globals.map_ready.connect(setup)
 	Globals.damage_ai.connect(_on_hurtbox_take_damage)
 	Globals.add_upgrade_to_ai.connect(_on_add_upgrade)
+	
+## Called once map is ready 
+func setup() -> void:
+	collab_partner = get_tree().get_first_node_in_group("collab_partner")
+	specific_setup() 
 
 ## Called once map is ready 
 ## Override and add character-specific upgrades from here 
-func setup() -> void:
+func specific_setup() -> void:
 	pass 
 
 func _process(delta: float) -> void:
