@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3m4h0xb4h80u"]
+
+[ext_resource type="Script" path="res://scripts/upgrades/rum_scene.gd" id="1_2vgel"]
+
+[node name="RumScene" type="Node2D"]
+script = ExtResource("1_2vgel")
+LV1_SPLASH_DAMAGE_INTERVAL = 1.0
+LV4_SPLASH_DAMAGE_INTERVAL = 0.5
+
+[node name="FireTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="FireLocation" type="Marker2D" parent="."]
+position = Vector2(8, 5)
+
+[connection signal="timeout" from="FireTimer" to="." method="_on_fire_timer_timeout"]

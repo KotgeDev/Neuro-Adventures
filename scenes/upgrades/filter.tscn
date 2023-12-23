@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbucoho8ekfnf"]
+
+[ext_resource type="Script" path="res://scripts/upgrades/upgrade_scene.gd" id="1_42dq2"]
+
+[node name="Filter" type="Node2D"]
+script = ExtResource("1_42dq2")

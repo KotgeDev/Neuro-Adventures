@@ -1,0 +1,17 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://cbqv70ya041cw"]
+
+[ext_resource type="StyleBox" uid="uid://djknm8nqgvom3" path="res://assets/themes/button_pressed_texture.tres" id="1_euuse"]
+[ext_resource type="StyleBox" uid="uid://bmpqcggye3u0q" path="res://assets/themes/button_texture.tres" id="2_hn68u"]
+
+[resource]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_focus_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/font_sizes/font_size = 32
+Button/styles/focus = ExtResource("1_euuse")
+Button/styles/hover = ExtResource("1_euuse")
+Button/styles/normal = ExtResource("2_hn68u")
+Button/styles/pressed = ExtResource("1_euuse")
+Label/font_sizes/font_size = 32

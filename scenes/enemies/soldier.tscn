@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=3 uid="uid://jt51ntggwgnw"]
+
+[ext_resource type="PackedScene" uid="uid://cx1nd5x2s6vyt" path="res://scenes/enemies/simple_enemy.tscn" id="1_lkb70"]
+[ext_resource type="Texture2D" uid="uid://bytkmw7atwqj3" path="res://assets/enemies/soldier_sheet.png" id="2_u6mqw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_drhbt"]
+size = Vector2(8, 29)
+
+[sub_resource type="Animation" id="Animation_dkgki"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_hbndf"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jm0gq"]
+_data = {
+"RESET": SubResource("Animation_dkgki"),
+"idle": SubResource("Animation_hbndf")
+}
+
+[node name="Soldier" instance=ExtResource("1_lkb70")]
+SPEED = 15.0
+MAX_HEALTH = 8
+DAMAGE = 8.0
+ATTACK_INTERVAL = 1.5
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_u6mqw")
+hframes = 2
+
+[node name="Hurtbox" parent="." index="1"]
+visible = true
+
+[node name="CollisionPolygon2D" parent="Hurtbox" index="0"]
+polygon = PackedVector2Array(-5, -22, -5, 8, 2, 8, 2, -5, 7, -5, 4, -11, 2, -11.3034, 2, -22)
+
+[node name="CollisionPolygon2D" parent="ContinuousHitbox" index="0"]
+polygon = PackedVector2Array(-5, -21, -5, 8, 2, 8, 2, -6, 7, -6, 7, -7, 8, -7, 8, -15, 6, -19, 6, -18, 5, -17, 5, -8, 4, -8, 4, -13, 3, -13, 3, -21)
+
+[node name="CollisionShape2D" parent="." index="3"]
+position = Vector2(-1, -6.5)
+shape = SubResource("RectangleShape2D_drhbt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
+libraries = {
+"": SubResource("AnimationLibrary_jm0gq")
+}
+
+[editable path="Hurtbox"]
+[editable path="ContinuousHitbox"]

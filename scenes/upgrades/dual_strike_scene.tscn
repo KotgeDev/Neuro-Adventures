@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://8k6ldupam638"]
+
+[ext_resource type="Script" path="res://scripts/upgrades/dual_strike_scene.gd" id="1_2wljc"]
+
+[node name="DualStrikeScene" type="Node2D"]
+script = ExtResource("1_2wljc")
+
+[node name="Strikes" type="Marker2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Strike1" type="Marker2D" parent="Strikes"]
+unique_name_in_owner = true
+position = Vector2(30, -21)
+rotation = -0.872665
+
+[node name="Strike2" type="Marker2D" parent="Strikes"]
+unique_name_in_owner = true
+position = Vector2(30, 20)
+rotation = 0.872665
+
+[node name="FireTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="FireTimer" to="." method="_on_fire_timer_timeout"]

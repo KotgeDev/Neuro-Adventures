@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://b0lf8yisvdg2y"]
+
+[ext_resource type="Script" path="res://scripts/characters/collab_partners/vedal.gd" id="1_oalrq"]
+[ext_resource type="PackedScene" uid="uid://cgic4q8egbmxp" path="res://scenes/characters/character_animation.tscn" id="2_p2o20"]
+[ext_resource type="PackedScene" uid="uid://cpp0tc7uqrv4" path="res://scenes/shared/hurtbox.tscn" id="3_sgk7t"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yxx13"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3ivom"]
+radius = 49.2544
+
+[node name="Vedal" type="CharacterBody2D"]
+collision_layer = 16
+collision_mask = 8
+script = ExtResource("1_oalrq")
+MAX_HEALTH = 45.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("CapsuleShape2D_yxx13")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CharacterAnimation" parent="." node_paths=PackedStringArray("character") instance=ExtResource("2_p2o20")]
+character = NodePath("..")
+
+[node name="Collectionbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectionbox"]
+shape = SubResource("CircleShape2D_3ivom")
+
+[node name="Hurtbox" parent="." instance=ExtResource("3_sgk7t")]
+visible = false
+collision_layer = 2
+owned_by = 1
+
+[node name="CollisionPolygon2D" parent="Hurtbox" index="0"]
+polygon = PackedVector2Array(-5, -12, -5, -6, -3, -2, -6, 5, -4, 10, -4, 13, -2, 13, -2, 10, 0, 5, 2, 10, 2, 13, 4, 13, 4, 10, 6, 5, 2, -2, 5, -5, 5, -11, 2, -15, -3, -15)
+
+[connection signal="take_damage" from="Hurtbox" to="." method="_on_hurtbox_take_damage"]
+
+[editable path="Hurtbox"]

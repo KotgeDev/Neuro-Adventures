@@ -1,0 +1,84 @@
+[gd_scene load_steps=8 format=3 uid="uid://cnulrfw158ihj"]
+
+[ext_resource type="Script" path="res://scripts/projectiles/rum_splash.gd" id="1_v12p4"]
+[ext_resource type="PackedScene" uid="uid://mjwkfxpnwct6" path="res://scenes/shared/continuous_hitbox.tscn" id="2_m0nw2"]
+[ext_resource type="Texture2D" uid="uid://bosclt0ixb4eg" path="res://assets/projectiles/rum_splash_sheet.png" id="3_g20vf"]
+
+[sub_resource type="Animation" id="Animation_qomwi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_gq5ef"]
+resource_name = "intro"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_nr47y"]
+resource_name = "sizzle"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [2, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bnu6f"]
+_data = {
+"RESET": SubResource("Animation_qomwi"),
+"intro": SubResource("Animation_gq5ef"),
+"sizzle": SubResource("Animation_nr47y")
+}
+
+[node name="RumSplash" type="Node2D"]
+z_index = -1
+script = ExtResource("1_v12p4")
+
+[node name="ContinuousHitbox" parent="." instance=ExtResource("2_m0nw2")]
+collision_mask = 4
+owned_by = 1
+
+[node name="CollisionPolygon2D" parent="ContinuousHitbox" index="0"]
+polygon = PackedVector2Array(0, -14, -3, -14, -6, -13, -9, -11, -11, -9, -13, -6, -14, -3, -14, 4, -13, 7, -11, 10, -9, 12, -6, 14, -3, 15, 4, 15, 7, 14, 10, 12, 12, 10, 14, 7, 15, 4, 15, -3, 14, -6, 12, -9, 10, -11, 7, -13, 4, -14)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_g20vf")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bnu6f")
+}
+
+[connection signal="self_destruct" from="ContinuousHitbox" to="." method="_on_continuous_hitbox_self_destruct"]
+
+[editable path="ContinuousHitbox"]

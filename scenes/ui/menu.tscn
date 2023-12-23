@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbfigu64qfdvf"]
+
+[ext_resource type="Script" path="res://scripts/ui/menu.gd" id="1_833i5"]
+[ext_resource type="Texture2D" uid="uid://ck3vocomisktb" path="res://assets/ui/main_menu.png" id="2_yw33v"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_833i5")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_yw33v")
+
+[node name="Title" type="Label" parent="."]
+texture_filter = 2
+layout_mode = 0
+offset_left = 39.0
+offset_top = 30.0
+offset_right = 524.0
+offset_bottom = 94.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.882353)
+theme_override_colors/font_outline_color = Color(0.635294, 0.439216, 0.282353, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 80
+text = "Neuro Adventures!"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 509.019
+offset_top = 237.734
+offset_right = 609.019
+offset_bottom = 329.734
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Start"
+
+[node name="OptionButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Option"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

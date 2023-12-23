@@ -1,0 +1,250 @@
+[gd_scene load_steps=10 format=3 uid="uid://dqy8eus7xktlq"]
+
+[ext_resource type="Script" path="res://scripts/ui/hud.gd" id="1_jg8iq"]
+[ext_resource type="Texture2D" uid="uid://clpdynieekcha" path="res://assets/ui/ai_health_bar_under.png" id="2_lnaml"]
+[ext_resource type="Texture2D" uid="uid://cdfsvbsr2p0cs" path="res://assets/ui/ai_health_bar.png" id="3_h2em7"]
+[ext_resource type="Texture2D" uid="uid://tnubhijqfq02" path="res://assets/ui/collab_partner_health_bar_under.png" id="4_i77dk"]
+[ext_resource type="Texture2D" uid="uid://cjb1btwxi635u" path="res://assets/ui/collab_partner_health_bar.png" id="5_xxcgw"]
+[ext_resource type="Texture2D" uid="uid://chm3hdjvrvpig" path="res://assets/ui/exp_bar_under.png" id="6_v5tns"]
+[ext_resource type="Texture2D" uid="uid://bbm64wjax8o6h" path="res://assets/ui/exp_bar.png" id="7_0d2lw"]
+[ext_resource type="StyleBox" uid="uid://xuptsyutqrn5" path="res://assets/themes/green_button_texture.tres" id="8_xxprq"]
+[ext_resource type="StyleBox" uid="uid://csyqurimj00h7" path="res://assets/themes/green_button_pressed_texture.tres" id="9_j4yyk"]
+
+[node name="HUD" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_jg8iq")
+
+[node name="AIHealthBar" type="TextureProgressBar" parent="."]
+offset_left = 17.0
+offset_top = 27.0
+offset_right = 81.0
+offset_bottom = 91.0
+value = 100.0
+fill_mode = 3
+texture_under = ExtResource("2_lnaml")
+texture_progress = ExtResource("3_h2em7")
+
+[node name="CollabPartnerHealthBar" type="TextureProgressBar" parent="."]
+offset_left = 32.0
+offset_top = 27.0
+offset_right = 96.0
+offset_bottom = 91.0
+value = 100.0
+fill_mode = 3
+texture_under = ExtResource("4_i77dk")
+texture_progress = ExtResource("5_xxcgw")
+
+[node name="EXPBar" type="TextureProgressBar" parent="."]
+offset_left = 8.0
+offset_top = 5.0
+offset_right = 648.0
+offset_bottom = 69.0
+texture_under = ExtResource("6_v5tns")
+texture_progress = ExtResource("7_0d2lw")
+
+[node name="EndGame" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="EndGame"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.490196)
+
+[node name="MenuContainer" type="VBoxContainer" parent="EndGame"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -82.0
+offset_top = -30.0
+offset_right = 82.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EndGameLabel" type="Label" parent="EndGame/MenuContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "YOU WON!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="FlavorText" type="Label" parent="EndGame/MenuContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Sometimes when I sit here and stream, I envision myself as a goddess, overlooking my followers. "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="RetryButton" type="Button" parent="EndGame/MenuContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Retry"
+
+[node name="MenuButton" type="Button" parent="EndGame/MenuContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Menu"
+
+[node name="UpgradeMenu" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="UpgradeMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.490196)
+
+[node name="ColorRect2" type="ColorRect" parent="UpgradeMenu"]
+custom_minimum_size = Vector2(275, 160)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.5
+offset_top = -80.0
+offset_right = 137.5
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+color = Color(0.968627, 0.772549, 0.788235, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UpgradeMenu"]
+custom_minimum_size = Vector2(250, 145)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ChoicePanelContainer" type="VBoxContainer" parent="UpgradeMenu/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="UpgradeChoicePanelAI" type="Control" parent="."]
+visible = false
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 195.0
+offset_top = 107.0
+offset_right = 445.0
+offset_bottom = 152.0
+
+[node name="Button" type="Button" parent="UpgradeChoicePanelAI"]
+custom_minimum_size = Vector2(250, 45)
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UpgradeChoicePanelAI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Padding" type="Label" parent="UpgradeChoicePanelAI/HBoxContainer"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="UpgradeChoicePanelAI/HBoxContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 16
+text = "Gymbag Drone"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Description" type="Label" parent="UpgradeChoicePanelAI/HBoxContainer"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Really really really really really really long Descrmuch detail I want to go cry "
+autowrap_mode = 2
+
+[node name="UpgradeChoicePanelCollab" type="Control" parent="."]
+visible = false
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 195.0
+offset_top = 107.0
+offset_right = 445.0
+offset_bottom = 152.0
+
+[node name="Button" type="Button" parent="UpgradeChoicePanelCollab"]
+custom_minimum_size = Vector2(250, 45)
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_styles/normal = ExtResource("8_xxprq")
+theme_override_styles/hover = ExtResource("9_j4yyk")
+theme_override_styles/pressed = ExtResource("9_j4yyk")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UpgradeChoicePanelCollab"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Padding" type="Label" parent="UpgradeChoicePanelCollab/HBoxContainer"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="UpgradeChoicePanelCollab/HBoxContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 16
+text = "Gymbag Drone"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Description" type="Label" parent="UpgradeChoicePanelCollab/HBoxContainer"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Really really really really really really long Descrmuch detail I want to go cry "
+autowrap_mode = 2
+
+[connection signal="pressed" from="EndGame/MenuContainer/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="EndGame/MenuContainer/MenuButton" to="." method="_on_menu_button_pressed"]

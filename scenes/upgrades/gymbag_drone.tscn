@@ -1,0 +1,97 @@
+[gd_scene load_steps=10 format=3 uid="uid://b00yq764vy1k1"]
+
+[ext_resource type="Script" path="res://scripts/upgrades/gymbag_drone.gd" id="1_6eegn"]
+[ext_resource type="Texture2D" uid="uid://hbyscyq4eerk" path="res://assets/upgrades/gymbag_sheet.png" id="2_i35at"]
+[ext_resource type="PackedScene" uid="uid://3miicp8y7p5b" path="res://scenes/shared/multi_hitbox.tscn" id="3_ooft7"]
+
+[sub_resource type="Animation" id="Animation_bbvi5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_0prcg"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [3, 2, 1, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6jac1"]
+_data = {
+"RESET": SubResource("Animation_bbvi5"),
+"idle": SubResource("Animation_0prcg")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_22sv2"]
+radius = 45.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_63wrh"]
+radius = 110.005
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mglr8"]
+radius = 7.0
+
+[node name="GymbagDrone" type="Node2D"]
+z_index = 1
+script = ExtResource("1_6eegn")
+MAX_SPEED = 50
+
+[node name="Compass" type="Marker2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_i35at")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6jac1")
+}
+
+[node name="AISearchField" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AISearchField"]
+shape = SubResource("CircleShape2D_22sv2")
+
+[node name="EnemySearchField" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemySearchField"]
+shape = SubResource("CircleShape2D_63wrh")
+
+[node name="GymbagDronePersonalZone" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GymbagDronePersonalZone"]
+shape = SubResource("CircleShape2D_mglr8")
+
+[node name="MultiHitbox" parent="." instance=ExtResource("3_ooft7")]
+collision_mask = 6
+damage = 1.0
+
+[node name="CollisionPolygon2D" parent="MultiHitbox" index="0"]
+polygon = PackedVector2Array(0, -4, -2, -4, -2, -3, -4, -3, -4, -2, -5, -2, -5, 0, -4, 0, -4, 4, 4, 4, 4, 0, 5, 0, 5, -2, 4, -2, 4, -3, 2, -3, 2, -4)
+
+[editable path="MultiHitbox"]
