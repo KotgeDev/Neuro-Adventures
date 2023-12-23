@@ -8,7 +8,7 @@
 radius = 5.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3ivom"]
-radius = 49.2544
+radius = 2.0
 
 [node name="CollabPartner" type="CharacterBody2D"]
 collision_layer = 16

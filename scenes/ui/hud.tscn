@@ -1,12 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://dqy8eus7xktlq"]
+[gd_scene load_steps=12 format=3 uid="uid://dqy8eus7xktlq"]
 
 [ext_resource type="Script" path="res://scripts/ui/hud.gd" id="1_jg8iq"]
 [ext_resource type="Texture2D" uid="uid://clpdynieekcha" path="res://assets/ui/ai_health_bar_under.png" id="2_lnaml"]
 [ext_resource type="Texture2D" uid="uid://cdfsvbsr2p0cs" path="res://assets/ui/ai_health_bar.png" id="3_h2em7"]
 [ext_resource type="Texture2D" uid="uid://tnubhijqfq02" path="res://assets/ui/collab_partner_health_bar_under.png" id="4_i77dk"]
+[ext_resource type="Texture2D" uid="uid://dnl8tal30m0jt" path="res://assets/ui/ui_icons.png" id="4_nokq6"]
 [ext_resource type="Texture2D" uid="uid://cjb1btwxi635u" path="res://assets/ui/collab_partner_health_bar.png" id="5_xxcgw"]
 [ext_resource type="Texture2D" uid="uid://chm3hdjvrvpig" path="res://assets/ui/exp_bar_under.png" id="6_v5tns"]
 [ext_resource type="Texture2D" uid="uid://bbm64wjax8o6h" path="res://assets/ui/exp_bar.png" id="7_0d2lw"]
+[ext_resource type="Texture2D" uid="uid://crvnx5i06xcb6" path="res://assets/ui/ui_icons1.png" id="7_ofbrc"]
 [ext_resource type="StyleBox" uid="uid://xuptsyutqrn5" path="res://assets/themes/green_button_texture.tres" id="8_xxprq"]
 [ext_resource type="StyleBox" uid="uid://csyqurimj00h7" path="res://assets/themes/green_button_pressed_texture.tres" id="9_j4yyk"]
 
@@ -15,24 +17,40 @@ process_mode = 3
 script = ExtResource("1_jg8iq")
 
 [node name="AIHealthBar" type="TextureProgressBar" parent="."]
-offset_left = 17.0
-offset_top = 27.0
-offset_right = 81.0
-offset_bottom = 91.0
+offset_left = 15.0
+offset_top = 44.0
+offset_right = 79.0
+offset_bottom = 108.0
 value = 100.0
 fill_mode = 3
 texture_under = ExtResource("2_lnaml")
 texture_progress = ExtResource("3_h2em7")
 
+[node name="AIIcon" type="TextureRect" parent="."]
+offset_left = 4.0
+offset_top = 17.0
+offset_right = 36.0
+offset_bottom = 49.0
+texture = ExtResource("4_nokq6")
+stretch_mode = 2
+
 [node name="CollabPartnerHealthBar" type="TextureProgressBar" parent="."]
-offset_left = 32.0
-offset_top = 27.0
-offset_right = 96.0
-offset_bottom = 91.0
+offset_left = 36.0
+offset_top = 44.0
+offset_right = 100.0
+offset_bottom = 108.0
 value = 100.0
 fill_mode = 3
 texture_under = ExtResource("4_i77dk")
 texture_progress = ExtResource("5_xxcgw")
+
+[node name="CollabPartnerIcon" type="TextureRect" parent="."]
+offset_left = 24.0
+offset_top = 17.0
+offset_right = 56.0
+offset_bottom = 49.0
+texture = ExtResource("7_ofbrc")
+stretch_mode = 2
 
 [node name="EXPBar" type="TextureProgressBar" parent="."]
 offset_left = 8.0

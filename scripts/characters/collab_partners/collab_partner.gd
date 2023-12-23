@@ -72,7 +72,7 @@ func _on_collectionbox_area_entered(area):
 		lv += 1
 		Globals.get_random_upgrades.emit()
 	Globals.update_exp_bar.emit(exp_requirement, expp) 
-	area.queue_free() 
+	#area.queue_free() 
 
 func process_damage_recieved(BASE_DAMAGE: float) -> float:
 	var modified_damage := BASE_DAMAGE
