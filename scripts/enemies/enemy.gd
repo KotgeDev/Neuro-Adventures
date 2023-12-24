@@ -33,7 +33,6 @@ var last_enemy := false
 @onready var health: int = MAX_HEALTH  
 var dead := false 
 var ai_instance
-var collab_instance
 var target_pos
 
 func _ready() -> void: 
@@ -41,7 +40,6 @@ func _ready() -> void:
 	$ContinuousHitbox/HitTimer.wait_time = ATTACK_INTERVAL
 	$AnimationPlayer.play("idle")
 	ai_instance = get_tree().get_first_node_in_group("ai")
-	collab_instance = get_tree().get_first_node_in_group("collab_partner")
 	call_deferred("_get_ai_pos")
 	
 func _get_ai_pos() -> void: 
