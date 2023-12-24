@@ -25,6 +25,9 @@ collision_mask = 3
 
 [node name="Compass" type="Marker2D" parent="."]
 
+[node name="Navigation" type="NavigationAgent2D" parent="."]
+path_max_distance = 10000.0
+
 [connection signal="take_damage" from="Hurtbox" to="." method="_on_hurtbox_take_damage"]
 
 [editable path="Hurtbox"]

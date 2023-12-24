@@ -26,6 +26,10 @@ var last_enemy := false
 @onready var sprite_2d = $Sprite2D
 #endregion 
 
+#region NAVIGATION
+@onready var navigation = $Navigation
+#endregion 
+
 @onready var health: int = MAX_HEALTH  
 var dead := false 
 var ai_instance
@@ -38,12 +42,16 @@ func _ready() -> void:
 	$AnimationPlayer.play("idle")
 	ai_instance = get_tree().get_first_node_in_group("ai")
 	collab_instance = get_tree().get_first_node_in_group("collab_partner")
-
+	call_deferred("_get_ai_pos")
+	
+func _get_ai_pos() -> void: 
+	navigation.target_position = ai_instance.global_position
+	
 func _physics_process(_delta):
-	if global_position.distance_to(ai_instance.global_position) < global_position.distance_to(collab_instance.global_position):
-		target_pos = ai_instance.global_position
-	elif global_position.distance_to(collab_instance.global_position) < global_position.distance_to(ai_instance.global_position):
-		target_pos = collab_instance.global_position
+	
+	call_deferred("_get_ai_pos")
+	target_pos = navigation.get_next_path_position()
+	
 	var difference = abs((global_position - target_pos).length())
 	if difference > 3: 
 		compass.look_at(target_pos)
