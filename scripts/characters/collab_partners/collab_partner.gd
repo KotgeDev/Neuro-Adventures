@@ -29,19 +29,9 @@ func _ready() -> void:
 	connect_signals() 
 
 func connect_signals() -> void: 
-	Globals.map_ready.connect(setup)
 	Globals.damage_collab_partner.connect(_on_hurtbox_take_damage)
 	Globals.add_upgrade_to_collab_partner.connect(_on_add_upgrade)
 	collectionbox.area_entered.connect(_on_collectionbox_area_entered)
-
-## Called once map is ready 
-func setup() -> void:
-	specific_setup() 
-
-## Called once map is ready 
-## Override and add character-specific upgrades from here 	
-func specific_setup() -> void:
-	pass 
 
 func _physics_process(delta: float) -> void:
 	var input_vector: Vector2 = Input.get_vector("left", "right", "up", "down").normalized()
@@ -54,7 +44,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _on_hurtbox_take_damage(damage: float):
-	damage = process_damage_recieved(damage)
+	damage = process_collab_partner_damage_received(damage)
 	if damage == 0.0:
 		return 
 	
@@ -74,30 +64,12 @@ func _on_collectionbox_area_entered(area):
 	Globals.update_exp_bar.emit(exp_requirement, expp) 
 	#area.queue_free() 
 
-func process_damage_recieved(BASE_DAMAGE: float) -> float:
+func process_collab_partner_damage_received(BASE_DAMAGE: float) -> float:
 	var modified_damage := BASE_DAMAGE
 	
-	modified_damage = process_damage_recieved_specific(BASE_DAMAGE, modified_damage)
-	return modified_damage
+	for upgrade in get_tree().get_nodes_in_group("process_collab_partner_damage_received"):
+		modified_damage = upgrade.process_collab_partner_damage_received(BASE_DAMAGE, modified_damage) 
 
-## Override to add character specific damage processing 
-func process_damage_recieved_specific(BASE_DAMAGE: float, modified_damage: float) -> float:
-	return modified_damage
-
-func apply_global_damage_modifiers(BASE_DAMAGE: float, modified_damage: float) -> float:	
-	modified_damage = apply_global_damage_modifiers_specific(BASE_DAMAGE, modified_damage)
-	return modified_damage 
-
-## Override to add character specific damage processing 
-func apply_global_damage_modifiers_specific(BASE_DAMAGE: float, modified_damage: float) -> float:
-	return modified_damage 
-
-func apply_collab_damage_modifiers(BASE_DAMAGE: float, modified_damage: float) -> float:
-	modified_damage = apply_collab_damage_modifiers_specific(BASE_DAMAGE, modified_damage)
-	return modified_damage
-	
-## Override to add character specific damage processing 
-func apply_collab_damage_modifiers_specific(BASE_DAMAGE: float, modified_damage: float) -> float:
 	return modified_damage
 
 func _on_add_upgrade(upgrade: Node) -> void:

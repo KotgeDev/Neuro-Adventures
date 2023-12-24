@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://y36yytk34v0i"]
 
-[ext_resource type="Script" path="res://scripts/characters/ais/neuro.gd" id="1_58f5q"]
+[ext_resource type="Script" path="res://scripts/characters/ais/ai.gd" id="1_6e7cc"]
 [ext_resource type="PackedScene" uid="uid://cgic4q8egbmxp" path="res://scenes/characters/character_animation.tscn" id="2_vuvkh"]
 [ext_resource type="Texture2D" uid="uid://c1ussrvj1xucu" path="res://assets/characters/ais/neuro_idle_sheet.png" id="3_a3wgx"]
 [ext_resource type="Texture2D" uid="uid://bgwxn487mkwhh" path="res://assets/characters/ais/neuro_run_sheet.png" id="4_1chnv"]
@@ -16,9 +16,7 @@ radius = 59.0085
 [node name="AI" type="CharacterBody2D"]
 collision_layer = 64
 collision_mask = 8
-script = ExtResource("1_58f5q")
-MAX_SPEED = 75
-MAX_HEALTH = 50.0
+script = ExtResource("1_6e7cc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3)

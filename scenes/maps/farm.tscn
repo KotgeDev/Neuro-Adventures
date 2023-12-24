@@ -32,6 +32,40 @@ texture = ExtResource("3_4qhu1")
 [sub_resource type="TileSet" id="TileSet_3lnb1"]
 sources/1 = SubResource("TileSetAtlasSource_alm1d")
 
+[sub_resource type="GDScript" id="GDScript_xtiiw"]
+script/source = "extends AI
+
+"
+
+[sub_resource type="GDScript" id="GDScript_co0yn"]
+script/source = "extends CollabPartner  
+
+func apply_global_damage_modifiers_specific(BASE_DAMAGE: float, modified_damage: float) -> float:
+	var copy_and_paste = get_node_or_null(\"CopyAndPaste\")
+	if copy_and_paste: 
+		match copy_and_paste.upgrade.lvl: 
+			1:
+				modified_damage = get_copy_paste_damage(BASE_DAMAGE, modified_damage, 10)
+			2:
+				modified_damage = get_copy_paste_damage(BASE_DAMAGE, modified_damage, 15)
+			3:
+				modified_damage = get_copy_paste_damage(BASE_DAMAGE, modified_damage, 20)
+			4:
+				modified_damage = get_copy_paste_damage(BASE_DAMAGE, modified_damage, 25)
+			5:
+				modified_damage = get_copy_paste_damage(BASE_DAMAGE, modified_damage, 40)
+	
+	return modified_damage 
+
+func get_copy_paste_damage(BASE_DAMAGE: float, modified_damage: float, percent_chance) -> float:
+	var random_int = randi_range(1, 100)
+	
+	if random_int <= percent_chance: 
+		modified_damage = modified_damage + BASE_DAMAGE 
+	
+	return modified_damage 
+"
+
 [sub_resource type="Curve2D" id="Curve2D_r3tnl"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 32, 50, 0, 0, 0, 0, 32, 600, 0, 0, 0, 0, 2519, 593, 0, 0, 0, 0, 2526, 52, 0, 0, 0, 0, 32, 50)
@@ -69,9 +103,14 @@ layer_0/tile_data = PackedInt32Array(-1, 1, 0, 65535, 1, 0, 131071, 1, 0, 196607
 
 [node name="Neuro" parent="." instance=ExtResource("3_rcj0f")]
 position = Vector2(1217, 326)
+script = SubResource("GDScript_xtiiw")
+MAX_SPEED = 75
+MAX_HEALTH = 50.0
 
 [node name="Vedal" parent="." instance=ExtResource("1_wnmde")]
 position = Vector2(1280, 320)
+script = SubResource("GDScript_co0yn")
+MAX_HEALTH = 45.0
 
 [node name="EnemySpawner" parent="." instance=ExtResource("5_ep230")]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bd1nmiu3hk45s"]
 
-[ext_resource type="Script" path="res://scripts/upgrades/upgrade_scene.gd" id="1_eao5r"]
+[ext_resource type="Script" path="res://scripts/upgrades/copy_and_paste.gd" id="1_tsccr"]
 
 [node name="CopyAndPaste" type="Node2D"]
-script = ExtResource("1_eao5r")
+script = ExtResource("1_tsccr")
