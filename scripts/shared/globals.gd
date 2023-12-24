@@ -1,5 +1,8 @@
 extends Node
 
+var current_collab_partner = WhichCollabPartner.VEDAL	
+var current_ai = WhichAI.NEURO
+
 #region Enums 
 enum UpgradeType {
 	AI_UPGRADE,
@@ -12,6 +15,13 @@ enum Owners {
 	OWNED_BY_ENEMY
 }
 
+enum WhichCollabPartner {
+	VEDAL
+}
+
+enum WhichAI {
+	NEURO 
+}
 #endregion 
 
 #region OTHER
@@ -32,7 +42,6 @@ signal send_random_upgrades(upgrades: Array)
 #endregion 
 
 #region TO UPGRADE MANAGER
-signal add_specific_upgrades(upgrades: Array) 
 signal get_random_upgrades
 signal lvl_up(upgrade: Upgrade)
 #endregion 

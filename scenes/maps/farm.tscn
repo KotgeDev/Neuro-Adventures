@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://drg7spn8yqktv"]
+[gd_scene load_steps=16 format=3 uid="uid://drg7spn8yqktv"]
 
 [ext_resource type="PackedScene" uid="uid://b8oia7t2aewka" path="res://scenes/characters/collab_partners/vedal.tscn" id="1_wnmde"]
 [ext_resource type="Script" path="res://scripts/maps/farm.gd" id="1_wx0jl"]
