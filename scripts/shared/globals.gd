@@ -11,6 +11,7 @@ enum Owners {
 	OWNED_BY_COLLAB_PARTNER,
 	OWNED_BY_ENEMY
 }
+
 #endregion 
 
 #region OTHER
