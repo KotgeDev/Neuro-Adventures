@@ -24,7 +24,7 @@ Group and Function Name | Required Parameters | Return Value
 ---|---|---
 process_ai_damage_received | BASE_DAMAGE: float, modified_damage: float | modified_damage
 process_collab_partner_damage_received | BASE_DAMAGE: float, modified_damage: float | modified_damage 
-global_damage_modifiers | BASE_DAMAGE: float, modified_damage: float | modified_damage 
+global_damage_modifiers | BASE_DAMAGE: float, modified_damage: float, area: Area2D | modified_damage 
 ai_damage_modifiers | BASE_DAMAGE: float, modified_damage: float, area: Area2D | modified_damage
 collab_partner_damage_modifiers | BASE_DAMAGE: float, modified_damage: float, area: Area2D | modified_damage
 
