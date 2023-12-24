@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://du60tw8uyoqwb"]
 
-[ext_resource type="Script" path="res://scripts/characters/collab_partners/vedal.gd" id="1_r6aqb"]
+[ext_resource type="Script" path="res://scripts/characters/collab_partners/collab_partner.gd" id="1_e3rtq"]
 [ext_resource type="PackedScene" uid="uid://cgic4q8egbmxp" path="res://scenes/characters/character_animation.tscn" id="2_gnahg"]
 [ext_resource type="PackedScene" uid="uid://cpp0tc7uqrv4" path="res://scenes/shared/hurtbox.tscn" id="3_gqdkd"]
 
@@ -13,8 +13,7 @@ radius = 49.2544
 [node name="CollabPartner" type="CharacterBody2D"]
 collision_layer = 16
 collision_mask = 8
-script = ExtResource("1_r6aqb")
-MAX_HEALTH = 45.0
+script = ExtResource("1_e3rtq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
