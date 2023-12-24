@@ -32,8 +32,8 @@ func _process(delta: float) -> void:
 	shake_handler(delta)
 	exp_bar.value = lerpf(exp_bar.value, exp_value, delta*7)
 	if Input.is_action_just_pressed("menu") and menu_allowed:
-		%EndGameLabel.text = ""
-		%FlavorText.text = ""
+		%EndGameLabel.text = "PAUSED"
+		%FlavorText.text = "Press ESC to Unpause"
 		
 		if end_game.visible:
 			get_tree().paused = false 

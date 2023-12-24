@@ -32,7 +32,7 @@ func apply_damage_multipliers(BASE_DAMAGE: float, area: Area2D) -> float:
 
 func global_damage_modifiers(BASE_DAMAGE: float, modified_damage: float, area: Area2D) -> float:	
 	for upgrade in get_tree().get_nodes_in_group("global_damage_modifiers"):
-		modified_damage = upgrade.apply_global_damage_modifiers(BASE_DAMAGE, modified_damage, area) 
+		modified_damage = upgrade.global_damage_modifiers(BASE_DAMAGE, modified_damage, area) 
 
 	return modified_damage
 
