@@ -78,6 +78,12 @@ size = Vector2(35, 800)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rckqv"]
 size = Vector2(3000, 20)
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_2pt0m"]
+vertices = PackedVector2Array(2533, 603, 26, 603, 27, 19, 2533, 19)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(17, 9, 2543, 9, 2543, 613, 16, 613)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
 [node name="Farm" type="Node2D" groups=["map"]]
 y_sort_enabled = true
 script = ExtResource("1_wx0jl")
@@ -136,5 +142,8 @@ shape = SubResource("RectangleShape2D_rckqv")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Boundaries"]
 position = Vector2(1224, 623)
 shape = SubResource("RectangleShape2D_rckqv")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_2pt0m")
 
 [editable path="EnemySpawner"]

@@ -4,10 +4,23 @@ extends CanvasLayer
 @onready var collab_partner_health_bar = $CollabPartnerHealthBar
 @onready var exp_bar = $EXPBar
 @onready var end_game = $EndGame
-
 var menu_allowed := true 
 
+#UI Shake Handler (Scuffed Code Ahead)
+var max_offset = Vector2(2, 2) 
+var rng = RandomNumberGenerator.new()
+var ashakepos;
+var cshakepos;
+var ashake = false
+var ashaketime = 0.25
+var cshake = false
+var cshaketime = 0.25
+var exp_value = 0.0
+#UI Shake Handler End
+
 func _ready() -> void:
+	ashakepos = ai_health_bar.position
+	cshakepos = collab_partner_health_bar.position
 	Globals.game_over.connect(_on_game_over)
 	Globals.game_won.connect(_on_game_won)
 	Globals.update_ai_health.connect(_on_update_ai_health)
@@ -16,6 +29,8 @@ func _ready() -> void:
 	Globals.send_random_upgrades.connect(_on_send_random_upgrades)
 
 func _process(delta: float) -> void:
+	shake_handler(delta)
+	exp_bar.value = lerpf(exp_bar.value, exp_value, delta*7)
 	if Input.is_action_just_pressed("menu") and menu_allowed:
 		%EndGameLabel.text = ""
 		%FlavorText.text = ""
@@ -41,17 +56,37 @@ func _on_game_won() -> void:
 	%FlavorText.text = "Sometimes when I sit here and stream, I envision myself as a goddess, overlooking my followers. "
 	end_game.visible = true 
 	
-
+func shake(obj_to_shake, source) -> void:
+	obj_to_shake.position.x = source.x + max_offset.x * rng.randf_range(-1, 1)
+	obj_to_shake.position.y = source.y + max_offset.y * rng.randf_range(-1, 1)
+func shake_handler(delta) -> void:
+	if(ashake):
+		ashaketime -= delta
+		shake(ai_health_bar, ashakepos)
+		if(ashaketime < 0):
+			ashake = false
+			ai_health_bar.position = ashakepos
+	if(cshake):
+		cshaketime -= delta
+		shake(collab_partner_health_bar, cshakepos)
+		if(cshaketime < 0):
+			cshake = false
+			collab_partner_health_bar.position = cshakepos
 func _on_update_ai_health(max: float, health: float) -> void:
 	if health >= 0.0: 
 		ai_health_bar.value = health / max * 100 
+		ashake = true
+		ashaketime = 0.25
+		
 
 func _on_update_collab_partner_health(max: float, health: float) -> void:
 	if health >= 0.0: 
 		collab_partner_health_bar.value = health / max * 100 
+		cshake = true
+		cshaketime = 0.25
 
 func _on_update_exp_bar(max, exp) -> void:
-	exp_bar.value = float(exp) / float(max) * 100
+	exp_value = float(exp) / float(max) * 100
 
 func _on_send_random_upgrades(upgrades: Array) -> void:
 	if upgrades.size() == 0:
