@@ -1,9 +1,13 @@
 extends UpgradeScene
 
 func _ready():
-	add_to_group("process_collab_partner_damage_received")
+	add_to_group("global_damage_modifiers")
 
-func process_collab_partner_damage_received(BASE_DAMAGE: float, modified_damage: float) -> float:
+func global_damage_modifiers(
+	BASE_DAMAGE: float, 
+	modified_damage: float,
+	area: Area2D
+) -> float:
 	match upgrade.lvl: 
 		1:
 			modified_damage = get_copy_paste_damage(BASE_DAMAGE, modified_damage, 10)

@@ -20,7 +20,7 @@ func apply_damage_multipliers(BASE_DAMAGE: float, area: Area2D) -> float:
 	var modified_damage := BASE_DAMAGE 
 	
 	if owned_by == Globals.Owners.OWNED_BY_AI or owned_by == Globals.Owners.OWNED_BY_COLLAB_PARTNER:
-		modified_damage = global_damage_modifiers(BASE_DAMAGE, modified_damage)
+		modified_damage = global_damage_modifiers(BASE_DAMAGE, modified_damage, area)
 	
 	if owned_by == Globals.Owners.OWNED_BY_AI:
 		modified_damage = ai_damage_modifiers(BASE_DAMAGE, modified_damage, area)
@@ -30,9 +30,9 @@ func apply_damage_multipliers(BASE_DAMAGE: float, area: Area2D) -> float:
 
 	return modified_damage
 
-func global_damage_modifiers(BASE_DAMAGE: float, modified_damage: float) -> float:	
+func global_damage_modifiers(BASE_DAMAGE: float, modified_damage: float, area: Area2D) -> float:	
 	for upgrade in get_tree().get_nodes_in_group("global_damage_modifiers"):
-		modified_damage = upgrade.apply_global_damage_modifiers(BASE_DAMAGE, modified_damage) 
+		modified_damage = upgrade.apply_global_damage_modifiers(BASE_DAMAGE, modified_damage, area) 
 
 	return modified_damage
 
