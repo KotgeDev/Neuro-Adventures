@@ -15,3 +15,6 @@ func spawn_enemies() -> void:
 	await get_tree().create_timer(100, false).timeout # After 200 Goblims have spawned
 	Globals.spawn.emit(slime_template, 500, 1.0) 
 	Globals.spawn.emit(soldier_template, 100, 1.0, true) # 350s sec when over 	
+
+func _on_audio_stream_player_2d_finished():
+	$AudioStreamPlayer2D.play()

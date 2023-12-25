@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://drg7spn8yqktv"]
+[gd_scene load_steps=18 format=3 uid="uid://drg7spn8yqktv"]
 
 [ext_resource type="PackedScene" uid="uid://b8oia7t2aewka" path="res://scenes/characters/collab_partners/vedal.tscn" id="1_wnmde"]
 [ext_resource type="Script" path="res://scripts/maps/farm.gd" id="1_wx0jl"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://huy32vwhqidx" path="res://scenes/characters/ais/neuro.tscn" id="3_rcj0f"]
 [ext_resource type="PackedScene" uid="uid://3ojvl7d7u1pe" path="res://scenes/enemies/enemy_spawner.tscn" id="5_ep230"]
 [ext_resource type="PackedScene" uid="uid://8uhv6g1gj5yk" path="res://scenes/upgrades/upgrade_manager.tscn" id="7_wfvop"]
+[ext_resource type="AudioStream" uid="uid://5mn3lugw1i7y" path="res://assets/songs/thefarm.wav" id="9_0s7ht"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_alm1d"]
 texture = ExtResource("3_4qhu1")
@@ -145,5 +146,12 @@ shape = SubResource("RectangleShape2D_rckqv")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_2pt0m")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("9_0s7ht")
+autoplay = true
+
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]
 
 [editable path="EnemySpawner"]
