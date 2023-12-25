@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://du60tw8uyoqwb"]
+[gd_scene load_steps=7 format=3 uid="uid://du60tw8uyoqwb"]
 
 [ext_resource type="Script" path="res://scripts/characters/collab_partners/collab_partner.gd" id="1_e3rtq"]
 [ext_resource type="PackedScene" uid="uid://cgic4q8egbmxp" path="res://scenes/characters/character_animation.tscn" id="2_gnahg"]
+[ext_resource type="AudioStream" uid="uid://c5mjipu0fjg6t" path="res://assets/sfx/exp_collect.ogg" id="2_knris"]
 [ext_resource type="PackedScene" uid="uid://cpp0tc7uqrv4" path="res://scenes/shared/hurtbox.tscn" id="3_gqdkd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yxx13"]
@@ -14,6 +15,7 @@ radius = 2.0
 collision_layer = 16
 collision_mask = 8
 script = ExtResource("1_e3rtq")
+exp_sfx = ExtResource("2_knris")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)

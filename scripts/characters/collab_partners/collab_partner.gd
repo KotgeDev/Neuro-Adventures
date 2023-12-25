@@ -24,6 +24,11 @@ var exp_requirement := EXP_REQ_INIT
 var lv := 1  
 #endregion
 
+#region SOUNDFX
+@onready var audioSystem = $"/root/Audiosystem"
+@export var exp_sfx: AudioStream
+#endregion
+
 func _ready() -> void:
 	add_to_group("collab_partner")
 	connect_signals() 
@@ -56,6 +61,8 @@ func _on_hurtbox_take_damage(damage: float):
 
 func _on_collectionbox_area_entered(area):
 	expp += 1 
+	#print(exp_sfx)
+	audioSystem.play_sfx(exp_sfx, global_position, 0.5)
 	if expp >= exp_requirement: 
 		expp = 0 
 		exp_requirement += EXP_REQ_INCREMENT

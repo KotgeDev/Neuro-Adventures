@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Globals="*res://scripts/shared/globals.gd"
+Audiosystem="*res://scripts/audio/audiosystem.gd"
 
 [display]
 
@@ -26,6 +27,10 @@ window/size/viewport_height=360
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
+
+[dotnet]
+
+project/assembly_name="Neuro Adventures!"
 
 [gui]
 
