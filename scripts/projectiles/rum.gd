@@ -15,6 +15,9 @@ var hit_wait_time: float
 var splash_damage: float 
 #endregion 
 
+#region SOUNDFX
+var hit_sfx: AudioStream = preload("res://assets/sfx/RumHit.wav")
+#endregion 
 
 func _ready() -> void:
 	$AnimationPlayer.play("spin")
@@ -42,6 +45,7 @@ func _on_multi_hitbox_self_destruct():
 	speed = 0
 	if create_splash: add_splash()
 	$AnimationPlayer.play("hit")
+	Audiosystem.play_sfx(hit_sfx, global_position)
 	await $AnimationPlayer.animation_finished
 	queue_free()
 

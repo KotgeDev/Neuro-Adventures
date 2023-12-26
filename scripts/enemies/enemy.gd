@@ -31,23 +31,30 @@ var last_enemy := false
 
 #region OTHER
 var velocity: Vector2
+var next_pos: Vector2
 #endregion 
 
 @onready var health: int = MAX_HEALTH  
 @onready var ai: AI = get_tree().get_first_node_in_group("ai")
+#uses the collab partner to balance enemy smartness and performance
+@onready var collab_partner: CollabPartner = get_tree().get_first_node_in_group("collab_partner")
 var dead := false 
 
 func _ready() -> void: 
 	$ContinuousHitbox.damage = DAMAGE 
 	$ContinuousHitbox/HitTimer.wait_time = ATTACK_INTERVAL
 	$AnimationPlayer.play("idle")
-	make_path()
+	if(global_position.distance_to(collab_partner.global_position) < 350.0):
+		make_path()
+	else:
+		next_pos = ai.global_position
 
 func make_path() -> void:
 	navigation_agent.target_position = ai.global_position
+	next_pos = navigation_agent.get_next_path_position()
 
 func _physics_process(delta):
-	var dir = to_local(navigation_agent.get_next_path_position()).normalized()
+	var dir = to_local(next_pos).normalized()
 	velocity = dir * SPEED    
 	
 	if velocity.x < 0: 
@@ -75,4 +82,7 @@ func _on_hurtbox_take_damage(damage):
 		queue_free() 
 
 func _on_pathfind_timer_timeout():
-	make_path()
+	if(global_position.distance_to(collab_partner.global_position) < 350.0):
+		make_path()
+	else:
+		next_pos = ai.global_position
