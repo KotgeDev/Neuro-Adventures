@@ -4,5 +4,11 @@
 
 [node name="Neuro" instance=ExtResource("1_jb3ag")]
 
+[node name="SearchField" parent="." index="2"]
+visible = false
+
+[node name="Hurtbox" parent="." index="3"]
+visible = false
+
 [editable path="CharacterAnimation"]
 [editable path="Hurtbox"]
