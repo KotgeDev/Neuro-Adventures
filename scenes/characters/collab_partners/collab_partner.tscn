@@ -6,7 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://cpp0tc7uqrv4" path="res://scenes/shared/hurtbox.tscn" id="3_gqdkd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yxx13"]
-radius = 5.0
+radius = 4.0
+height = 14.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3ivom"]
 radius = 2.0
@@ -30,14 +31,15 @@ motion_mode = 1
 script = ExtResource("1_e3rtq")
 exp_sfx = ExtResource("2_knris")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -2)
-shape = SubResource("CapsuleShape2D_yxx13")
-
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="CharacterAnimation" parent="." node_paths=PackedStringArray("character") instance=ExtResource("2_gnahg")]
+position = Vector2(0, -9)
 character = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_yxx13")
 
 [node name="Collectionbox" type="Area2D" parent="."]
 collision_layer = 0

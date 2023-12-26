@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://btv6nlskxksif"]
 
-[ext_resource type="Script" path="res://scripts/collectibles/expCollect.gd" id="1_w53pb"]
-[ext_resource type="Texture2D" uid="uid://l4lmw0wc3b0g" path="res://assets/upgrades/exp.png" id="1_yhmn4"]
+[ext_resource type="Script" path="res://scripts/collectibles/expCollect.gd" id="1_dwwdg"]
+[ext_resource type="Texture2D" uid="uid://l4lmw0wc3b0g" path="res://assets/upgrades/exp.png" id="2_h1jig"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_trc6b"]
 size = Vector2(11, 11)
@@ -10,10 +10,10 @@ size = Vector2(11, 11)
 z_index = -1
 collision_layer = 32
 collision_mask = 0
-script = ExtResource("1_w53pb")
+script = ExtResource("1_dwwdg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_yhmn4")
+texture = ExtResource("2_h1jig")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0.5)

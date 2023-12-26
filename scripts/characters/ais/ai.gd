@@ -1,5 +1,5 @@
 ## Parent class for all ai
-extends CharacterBody2D
+extends Node2D
 class_name AI 
 
 #region CONSTANTS
@@ -16,8 +16,9 @@ var collab_partner: CollabPartner
 @onready var navigation_agent = $NavigationAgent2D
 #endregion
 
-#region STATUS 
+#region OTHER 
 @onready var health: float = MAX_HEALTH 
+var velocity: Vector2 
 #endregion 
 
 func _ready() -> void:
@@ -45,7 +46,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)	
 	
-	move_and_slide()
+	position += velocity * delta 
 
 func _on_hurtbox_take_damage(damage: float):
 	damage = process_ai_damage_received(damage)

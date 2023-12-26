@@ -8,7 +8,7 @@
 ## Set Hurtbox CollsionPolygon, 
 ## Set ContinuousHitbox settings and CollisionPolygon 
 ## Set CollisionShape2D
-extends CharacterBody2D
+extends Node2D
 class_name SimpleEnemy 
 
 var expp_template = preload("res://scenes/collectibles/exp.tscn")
@@ -29,6 +29,10 @@ var last_enemy := false
 @onready var navigation_agent = $NavigationAgent2D
 #endregion 
 
+#region OTHER
+var velocity: Vector2
+#endregion 
+
 @onready var health: int = MAX_HEALTH  
 @onready var ai: AI = get_tree().get_first_node_in_group("ai")
 var dead := false 
@@ -42,7 +46,7 @@ func _ready() -> void:
 func make_path() -> void:
 	navigation_agent.target_position = ai.global_position
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	var dir = to_local(navigation_agent.get_next_path_position()).normalized()
 	velocity = dir * SPEED    
 	
@@ -51,7 +55,7 @@ func _physics_process(_delta):
 	elif velocity.x > 0:
 		sprite_2d.flip_h = false 
 	
-	move_and_slide()
+	position += velocity * delta 
 
 func _on_hurtbox_take_damage(damage):
 	health -= damage

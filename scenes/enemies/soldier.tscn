@@ -1,10 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://jt51ntggwgnw"]
+[gd_scene load_steps=6 format=3 uid="uid://jt51ntggwgnw"]
 
 [ext_resource type="PackedScene" uid="uid://cx1nd5x2s6vyt" path="res://scenes/enemies/simple_enemy.tscn" id="1_lkb70"]
 [ext_resource type="Texture2D" uid="uid://bytkmw7atwqj3" path="res://assets/enemies/soldier_sheet.png" id="2_u6mqw"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_drhbt"]
-size = Vector2(8, 29)
 
 [sub_resource type="Animation" id="Animation_dkgki"]
 length = 0.001
@@ -65,7 +62,6 @@ polygon = PackedVector2Array(-5, -21, -5, 8, 2, 8, 2, -6, 7, -6, 7, -7, 8, -7, 8
 
 [node name="CollisionShape2D" parent="." index="3"]
 position = Vector2(-1, -6.5)
-shape = SubResource("RectangleShape2D_drhbt")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
 libraries = {

@@ -60,7 +60,7 @@ _data = {
 }
 
 [node name="RumSplash" type="Node2D"]
-z_index = -1
+z_index = -2
 script = ExtResource("1_v12p4")
 
 [node name="ContinuousHitbox" parent="." instance=ExtResource("2_m0nw2")]
