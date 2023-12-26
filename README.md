@@ -32,3 +32,11 @@ collab_partner_damage_modifiers | BASE_DAMAGE: float, modified_damage: float, ar
 Code is licensed under a [MIT license](LICENSE.md) 
 
 Art and Music is licensed under a [CC BY 4.0 Deed Attribution 4.0 International license](https://creativecommons.org/licenses/by/4.0/deed.en)
+
+## Credits
+--- | --- 
+Programmers | Kotge, CreepyCat 
+Artists | Kotge 
+Sound Effects | Aetherleaf, CreepyCat 
+### Music 
+Song: The Farm | CreepyCat 
