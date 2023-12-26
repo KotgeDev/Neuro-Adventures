@@ -22,38 +22,29 @@ var last_enemy := false
 #endregion 
 
 #region NODES
-@onready var compass = $Compass
 @onready var sprite_2d = $Sprite2D
 #endregion 
 
 #region NAVIGATION
-@onready var navigation = $Navigation
+@onready var navigation_agent = $NavigationAgent2D
 #endregion 
 
 @onready var health: int = MAX_HEALTH  
+@onready var ai: AI = get_tree().get_first_node_in_group("ai")
 var dead := false 
-var ai_instance
-var target_pos
 
 func _ready() -> void: 
 	$ContinuousHitbox.damage = DAMAGE 
 	$ContinuousHitbox/HitTimer.wait_time = ATTACK_INTERVAL
 	$AnimationPlayer.play("idle")
-	ai_instance = get_tree().get_first_node_in_group("ai")
-	call_deferred("_get_ai_pos")
-	
-func _get_ai_pos() -> void: 
-	navigation.target_position = ai_instance.global_position
-	
+	make_path()
+
+func make_path() -> void:
+	navigation_agent.target_position = ai.global_position
+
 func _physics_process(_delta):
-	
-	call_deferred("_get_ai_pos")
-	target_pos = navigation.get_next_path_position()
-	
-	var difference = abs((global_position - target_pos).length())
-	if difference > 3: 
-		compass.look_at(target_pos)
-		velocity = compass.transform.x * SPEED    
+	var dir = to_local(navigation_agent.get_next_path_position()).normalized()
+	velocity = dir * SPEED    
 	
 	if velocity.x < 0: 
 		sprite_2d.flip_h = true 
@@ -78,3 +69,6 @@ func _on_hurtbox_take_damage(damage):
 			Globals.game_won.emit() 
 		
 		queue_free() 
+
+func _on_pathfind_timer_timeout():
+	make_path()

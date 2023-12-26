@@ -42,6 +42,9 @@ func play_music(sound):
 	music_player.volume_db = linear_to_db(1)
 	music_player.pitch_scale = 1
 
+func end_music():
+	music_player.stop()
+
 func set_music_volume(vol, dur = 0.5):
 	fade_volume(music_player, music_player.volume_db, linear_to_db(vol), dur)
 func set_music_pitch(pitch, dur = 0.5):

@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://y36yytk34v0i" path="res://scenes/characters/ais/ai.tscn" id="1_jb3ag"]
 
 [node name="Neuro" instance=ExtResource("1_jb3ag")]
+wall_min_slide_angle = 0.0
 
 [node name="SearchField" parent="." index="2"]
 visible = false

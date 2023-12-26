@@ -127,9 +127,9 @@ func _on_upgrade_selected(upgrade: Upgrade) -> void:
 
 func _on_retry_button_pressed():
 	get_tree().paused = false
-	
 	get_tree().change_scene_to_file("res://scenes/maps/farm.tscn")
 	
 func _on_menu_button_pressed():
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/ui/menu.tscn")
+	Audiosystem.end_music()

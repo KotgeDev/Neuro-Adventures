@@ -16,6 +16,8 @@ radius = 59.0085
 [node name="AI" type="CharacterBody2D"]
 collision_layer = 64
 collision_mask = 8
+motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_6e7cc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -45,7 +47,8 @@ collision_layer = 1
 [node name="CollisionPolygon2D" parent="Hurtbox" index="0"]
 polygon = PackedVector2Array(-1, -18, -5, -16, -7, -11, -5, -8, -2, -5, -5, 1, -4, 10, -4, 12, -4, 13, -2, 13, -2, 10, 0, 5, 2, 10, 2, 13, 4, 13, 4, 10, 3, 2, 5, 4, 4, -1, 1, -4, 5, -10, 5, -13, 4, -16)
 
-[node name="Marker2D" type="Marker2D" parent="."]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
 
 [connection signal="take_damage" from="Hurtbox" to="." method="_on_hurtbox_take_damage"]
 

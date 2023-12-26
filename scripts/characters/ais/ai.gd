@@ -11,9 +11,9 @@ class_name AI
 
 #region NODES
 @onready var search_field = $SearchField
-@onready var marker_2d = $Marker2D
 @onready var character_animation = $CharacterAnimation
 var collab_partner: CollabPartner
+@onready var navigation_agent = $NavigationAgent2D
 #endregion
 
 #region STATUS 
@@ -32,11 +32,16 @@ func connect_signals() -> void:
 func _on_map_ready() -> void:
 	collab_partner = get_tree().get_first_node_in_group("collab_partner")
 
-func _process(delta: float) -> void:
+func _collab_partner_get_pos() -> void: 
+	navigation_agent.target_position = collab_partner.global_position
+
+func _physics_process(delta: float) -> void:
+	call_deferred("_collab_partner_get_pos")
+	
 	if collab_partner not in search_field.get_overlapping_bodies():
-		var target_pos = collab_partner.global_position 
-		marker_2d.look_at(target_pos)
-		velocity = velocity.move_toward(marker_2d.transform.x * MAX_SPEED, ACCELERATION * delta)
+		var dir = to_local(navigation_agent.get_next_path_position()).normalized()
+		velocity = velocity.move_toward(dir * MAX_SPEED, ACCELERATION * delta)
+
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)	
 	
@@ -63,3 +68,4 @@ func process_ai_damage_received(BASE_DAMAGE: float) -> float:
 
 func _on_add_upgrade(upgrade: Node) -> void:
 	add_child(upgrade)
+
