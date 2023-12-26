@@ -97,7 +97,8 @@ func _on_send_random_upgrades(upgrades: Array) -> void:
 	get_tree().paused = true 
 	
 	$UpgradeMenu.visible = true 
-	
+	$UpgradeMenu._set_scale_zero()
+	$UpgradeMenu.ui_Active = true 
 	audioSystem.set_music_volume(0.5)
 	
 	var container = %ChoicePanelContainer
@@ -108,7 +109,7 @@ func _on_send_random_upgrades(upgrades: Array) -> void:
 			choice_panel = $UpgradeChoicePanelAI.duplicate()
 		else:
 			choice_panel = $UpgradeChoicePanelCollab.duplicate()
-		choice_panel.visible = true 
+		choice_panel.visible = true
 		choice_panel.get_node("Button").pressed.connect(_on_upgrade_selected.bind(upgrade))
 		choice_panel.get_node("HBoxContainer").get_node("Name").text = "%s lv%d" % [upgrade.upgrade_name, upgrade.lvl + 1]
 		choice_panel.get_node("HBoxContainer").get_node("Description").text = upgrade.descriptions[upgrade.lvl]

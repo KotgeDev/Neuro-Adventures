@@ -92,7 +92,6 @@ func _on_fade_completed(player: AudioStreamPlayer, tween: Tween, from: float, to
 func _process(delta):
 	# Play a queued sound if any players are available.
 	if not queue.is_empty() and not available_sounds.is_empty():
-		print(queue[0])
 		available_sounds[0].stream = queue.pop_front()
 		available_sounds[0].global_position = queue_pos.pop_front()
 		available_sounds[0].volume_db = linear_to_db(queue_vol.pop_front())
