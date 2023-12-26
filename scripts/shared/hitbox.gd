@@ -27,7 +27,7 @@ func apply_damage_multipliers(BASE_DAMAGE: float, area: Area2D) -> float:
 		
 	if owned_by == Globals.Owners.OWNED_BY_COLLAB_PARTNER:
 		modified_damage = collab_partner_damage_modifiers(BASE_DAMAGE, modified_damage, area)
-
+	
 	return modified_damage
 
 func global_damage_modifiers(BASE_DAMAGE: float, modified_damage: float, area: Area2D) -> float:	

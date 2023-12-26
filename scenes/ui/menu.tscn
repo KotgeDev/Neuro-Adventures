@@ -34,10 +34,10 @@ text = "Neuro Adventures!"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 509.019
-offset_top = 237.734
-offset_right = 609.019
-offset_bottom = 329.734
+offset_left = 515.0
+offset_top = 218.0
+offset_right = 615.0
+offset_bottom = 342.0
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
@@ -48,6 +48,10 @@ text = "Start"
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "Option"
+
+[node name="CreditsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Credits"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(100, 0)

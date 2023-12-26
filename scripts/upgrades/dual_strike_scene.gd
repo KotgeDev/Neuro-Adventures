@@ -13,12 +13,17 @@ var dual_strike_large_template = preload("res://scenes/projectiles/dual_strike_l
 #endregion 
 
 #region NODES
-@onready var map = get_parent().get_parent()
+@onready var map = get_tree().get_first_node_in_group("map")
+@onready var ai = get_tree().get_first_node_in_group("ai")
 @onready var strikes = $Strikes
 @onready var strike_1 = %Strike1
 @onready var strike_2 = %Strike2
 @onready var fire_timer = $FireTimer
 #endregion
+
+#region SOUNDFX
+var hit_sfx: AudioStream = preload("res://assets/sfx/neuro_slice.wav")
+#endregion 
 
 var large := false 
 @onready var damage = LV1_DAMAGE 
@@ -41,6 +46,7 @@ func strike(pos: int, flip: bool) -> void:
 	dual_strike.rotation = strike_pos.global_rotation
 	dual_strike.setup(damage, flip)
 	map.add_child(dual_strike)
+	Audiosystem.play_sfx(hit_sfx, ai.global_position)
 
 func sync_level() -> void:
 	if upgrade.lvl >= 2: 

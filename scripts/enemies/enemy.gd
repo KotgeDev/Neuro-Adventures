@@ -11,7 +11,7 @@
 extends CharacterBody2D
 class_name SimpleEnemy 
 
-var expp_template = preload("res://scenes/upgrades/exp.tscn")
+var expp_template = preload("res://scenes/collectibles/exp.tscn")
 var last_enemy := false 
 
 #region CONSTANTS
