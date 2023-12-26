@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://du60tw8uyoqwb"]
+[gd_scene load_steps=9 format=3 uid="uid://du60tw8uyoqwb"]
 
 [ext_resource type="Script" path="res://scripts/characters/collab_partners/collab_partner.gd" id="1_e3rtq"]
 [ext_resource type="PackedScene" uid="uid://cgic4q8egbmxp" path="res://scenes/characters/character_animation.tscn" id="2_gnahg"]
+[ext_resource type="AudioStream" uid="uid://c5mjipu0fjg6t" path="res://assets/sfx/exp_collect.ogg" id="2_knris"]
 [ext_resource type="PackedScene" uid="uid://cpp0tc7uqrv4" path="res://scenes/shared/hurtbox.tscn" id="3_gqdkd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yxx13"]
@@ -10,10 +11,23 @@ radius = 5.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_3ivom"]
 radius = 2.0
 
+[sub_resource type="Gradient" id="Gradient_i3v06"]
+offsets = PackedFloat32Array(0, 0.988636, 0.991477)
+colors = PackedColorArray(1, 0, 0, 0.580392, 1, 0, 0, 0.0941176, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_iexf5"]
+gradient = SubResource("Gradient_i3v06")
+width = 50
+height = 50
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
 [node name="CollabPartner" type="CharacterBody2D"]
 collision_layer = 16
 collision_mask = 8
 script = ExtResource("1_e3rtq")
+exp_sfx = ExtResource("2_knris")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
@@ -38,6 +52,10 @@ owned_by = 1
 
 [node name="CollisionPolygon2D" parent="Hurtbox" index="0"]
 polygon = PackedVector2Array(-5, -12, -5, -6, -3, -2, -6, 5, -4, 10, -4, 13, -2, 13, -2, 10, 0, 5, 2, 10, 2, 13, 4, 13, 4, 10, 6, 5, 2, -2, 5, -5, 5, -11, 2, -15, -3, -15)
+
+[node name="CollectCircle" type="Sprite2D" parent="."]
+z_index = -1
+texture = SubResource("GradientTexture2D_iexf5")
 
 [connection signal="take_damage" from="Hurtbox" to="." method="_on_hurtbox_take_damage"]
 

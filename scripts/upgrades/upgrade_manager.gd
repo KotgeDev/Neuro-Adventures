@@ -23,7 +23,19 @@ var upgrades_db = [
 		0,
 		preload("res://scenes/upgrades/programming_socks.tscn")
 	),
-	
+	Upgrade.new(
+		"Shock Magnet",
+		[
+			"33% larger item collection range for collab partners",
+			"66% larger item collection range for collab partners",
+			"2x larger item collection range for collab partners",
+			"4x larger item collection range for collab partners"
+		],
+		Globals.UpgradeType.COLLAB_PARTNER_UPGRADE, 
+		4,
+		0,
+		preload("res://scenes/upgrades/shock_magnet.tscn")
+	),
 	Upgrade.new(
 		"Filter",
 		[
