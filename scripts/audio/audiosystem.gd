@@ -19,7 +19,7 @@ func _ready():
 		var p = AudioStreamPlayer2D.new()
 		add_child(p)
 		available_sounds.append(p)
-		#p.max_distance = 50
+		p.attenuation = 7.0
 		p.connect("finished",_on_stream_finished.bind(p))
 		p.bus = sound_bus
 	var mu = AudioStreamPlayer.new()
