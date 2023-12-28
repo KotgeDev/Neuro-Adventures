@@ -28,7 +28,7 @@ func _ready() -> void:
 	sync_level()
 	fire_timer.wait_time = LV1_FIRE_INTERVAL
 
-func _on_fire_timer_timeout():	
+func _on_fire_timer_timeout():		
 	if collab_partner.velocity > Vector2.ZERO: 
 		fire_location.position = Vector2(8, 5)
 	elif collab_partner.velocity < Vector2.ZERO:

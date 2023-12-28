@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://d1uvcqapee41r"
-path="res://.godot/imported/neuro_slice.wav-4318097c3674d7c22ebf80c56ab20d25.sample"
+uid="uid://k02ynkw5post"
+path="res://.godot/imported/sword_swish.wav-f1154780871e04df58601a66e2dcf9c5.sample"
 
 [deps]
 
-source_file="res://assets/sfx/neuro_slice.wav"
-dest_files=["res://.godot/imported/neuro_slice.wav-4318097c3674d7c22ebf80c56ab20d25.sample"]
+source_file="res://assets/sfx/sword_swish.wav"
+dest_files=["res://.godot/imported/sword_swish.wav-f1154780871e04df58601a66e2dcf9c5.sample"]
 
 [params]
 

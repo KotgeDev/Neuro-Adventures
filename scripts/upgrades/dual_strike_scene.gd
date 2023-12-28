@@ -22,7 +22,7 @@ var dual_strike_large_template = preload("res://scenes/projectiles/dual_strike_l
 #endregion
 
 #region SOUNDFX
-var hit_sfx: AudioStream = preload("res://assets/sfx/neuro_slice.wav")
+var hit_sfx: AudioStream = preload("res://assets/sfx/sword_swish.wav")
 #endregion 
 
 var large := false 
@@ -46,7 +46,7 @@ func strike(pos: int, flip: bool) -> void:
 	dual_strike.rotation = strike_pos.global_rotation
 	dual_strike.setup(damage, flip)
 	map.add_child(dual_strike)
-	Audiosystem.play_sfx(hit_sfx, ai.global_position)
+	Audiosystem.play_sfx(hit_sfx, ai.global_position, 0.4)
 
 func sync_level() -> void:
 	if upgrade.lvl >= 2: 

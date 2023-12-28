@@ -13,6 +13,11 @@ var queue_pos = []
 var tweens: Dictionary = {}
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	AudioServer.add_bus()
+	AudioServer.add_bus()
+	AudioServer.set_bus_name(1,music_bus)
+	AudioServer.set_bus_name(2,sound_bus)
+	
 	#create a pool
 	self.process_mode = Node.PROCESS_MODE_ALWAYS
 	for i in num_of_sound_effects:
