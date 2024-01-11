@@ -5,15 +5,15 @@ var rum_template = preload("res://scenes/projectiles/rum.tscn")
 #region CONSTANTS
 @export_category("Rum Scene")
 @export var SPEED := 100 
-@export var DAMAGE := 2 
+@export var DAMAGE := 1
 @export var LV1_SPLASH := false 
 @export var LV2_SPLASH := true 
 @export var LV1_FIRE_INTERVAL := 1.0 
 @export var LV3_FIRE_INTERVAL := 0.5
 @export var LV1_SPLASH_DAMAGE_DURATION := 4.2
 @export var LV4_SPLASH_DAMAGE_DURATION := 6.2
-@export var LV1_SPLASH_DAMAGE_INTERVAL := 0.5
-@export var LV4_SPLASH_DAMAGE_INTERVAL := 0.25
+@export var LV1_SPLASH_DAMAGE_INTERVAL := 1.0
+@export var LV4_SPLASH_DAMAGE_INTERVAL := 0.5
 @export var SPLASH_DAMAGE := 1.0 
 #endregion 
 

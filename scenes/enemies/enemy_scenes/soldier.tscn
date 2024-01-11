@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://jt51ntggwgnw"]
 
-[ext_resource type="PackedScene" uid="uid://cx1nd5x2s6vyt" path="res://scenes/enemies/simple_enemy.tscn" id="1_lkb70"]
-[ext_resource type="Texture2D" uid="uid://bytkmw7atwqj3" path="res://assets/enemies/soldier_sheet.png" id="2_u6mqw"]
+[ext_resource type="PackedScene" uid="uid://cx1nd5x2s6vyt" path="res://scenes/enemies/simple_enemy.tscn" id="1_pihnb"]
+[ext_resource type="Texture2D" uid="uid://bytkmw7atwqj3" path="res://assets/enemies/soldier_sheet.png" id="2_c7i3u"]
 
 [sub_resource type="Animation" id="Animation_dkgki"]
 length = 0.001
@@ -29,10 +29,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0, 1]
+"values": [0, 1, 2, 3]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jm0gq"]
@@ -41,27 +41,23 @@ _data = {
 "idle": SubResource("Animation_hbndf")
 }
 
-[node name="Soldier" instance=ExtResource("1_lkb70")]
-SPEED = 15.0
-MAX_HEALTH = 8
-DAMAGE = 8.0
-ATTACK_INTERVAL = 1.5
+[node name="Soldier" instance=ExtResource("1_pihnb")]
+MAX_HEALTH = 4.0
+DAMAGE = 4.0
+ATTACK_INTERVAL = 0.7
 
 [node name="Sprite2D" parent="." index="0"]
-texture = ExtResource("2_u6mqw")
-hframes = 2
+texture = ExtResource("2_c7i3u")
+hframes = 4
 
 [node name="Hurtbox" parent="." index="1"]
 visible = true
 
 [node name="CollisionPolygon2D" parent="Hurtbox" index="0"]
-polygon = PackedVector2Array(-5, -22, -5, 8, 2, 8, 2, -5, 7, -5, 4, -11, 2, -11.3034, 2, -22)
+polygon = PackedVector2Array(-5, -26, -5, -16, -6, -16, -7, -15, -7, -8, -5, -4, -4, -4, -4, 2, -5, 2, -5, 6, -1, 6, 0, 0, 2, 6, 5, 6, 5, -1, 5, -7, 7, -8, 7, 3, 8, 3, 8, -19, 9, -19, 9, -21, 8, -21, 8, -23, 7, -23, 7, -21, 6, -21, 6, -19, 3, -16, 3, -26, 1, -28, -3, -28)
 
 [node name="CollisionPolygon2D" parent="ContinuousHitbox" index="0"]
-polygon = PackedVector2Array(-5, -21, -5, 8, 2, 8, 2, -6, 7, -6, 7, -7, 8, -7, 8, -15, 6, -19, 6, -18, 5, -17, 5, -8, 4, -8, 4, -13, 3, -13, 3, -21)
-
-[node name="CollisionShape2D" parent="." index="3"]
-position = Vector2(-1, -6.5)
+polygon = PackedVector2Array(-3, -27, -5, -25, -4, -18, -4, -17, -7, -13, -7, -9, -4, -6, -4, 6, 0, -2, 4, 6, 4, -11, 7, -8, 7, 3, 8, 3, 8, -19, 8, -23, 7, -23, 7, -12, 6, -12, 3, -16, 2, -26, 1, -27)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
 libraries = {

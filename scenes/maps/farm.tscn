@@ -643,9 +643,11 @@ metadata/_edit_lock_ = true
 position = Vector2(1217, 326)
 
 [node name="Vedal" parent="." instance=ExtResource("1_wnmde")]
-position = Vector2(1280, 320)
+position = Vector2(1276, 331)
+rotation = -0.0265023
 
 [node name="EnemySpawner" parent="." instance=ExtResource("5_ep230")]
+y_sort_enabled = true
 metadata/_edit_lock_ = true
 
 [node name="Path2D" parent="EnemySpawner" index="0"]

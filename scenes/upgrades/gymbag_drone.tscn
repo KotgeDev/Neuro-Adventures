@@ -54,8 +54,6 @@ radius = 7.0
 [node name="GymbagDrone" type="Node2D"]
 z_index = 1
 script = ExtResource("1_6eegn")
-MAX_SPEED = 50
-DAMAGE = 2
 
 [node name="Compass" type="Marker2D" parent="."]
 

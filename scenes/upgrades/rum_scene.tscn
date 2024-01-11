@@ -4,8 +4,6 @@
 
 [node name="RumScene" type="Node2D"]
 script = ExtResource("1_2vgel")
-LV1_SPLASH_DAMAGE_INTERVAL = 1.0
-LV4_SPLASH_DAMAGE_INTERVAL = 0.5
 
 [node name="FireTimer" type="Timer" parent="."]
 autostart = true

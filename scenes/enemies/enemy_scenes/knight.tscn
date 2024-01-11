@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=3 uid="uid://dm83qecyj7rl6"]
+
+[ext_resource type="PackedScene" uid="uid://cx1nd5x2s6vyt" path="res://scenes/enemies/simple_enemy.tscn" id="1_j3dd8"]
+[ext_resource type="Texture2D" uid="uid://dyjv33cs7year" path="res://assets/enemies/knight_sheet.png" id="2_gstcd"]
+
+[sub_resource type="Animation" id="Animation_dkgki"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_hbndf"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jm0gq"]
+_data = {
+"RESET": SubResource("Animation_dkgki"),
+"idle": SubResource("Animation_hbndf")
+}
+
+[node name="Knight" instance=ExtResource("1_j3dd8")]
+SPEED = 10.0
+MAX_HEALTH = 8.0
+DAMAGE = 8.0
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_gstcd")
+hframes = 4
+
+[node name="Hurtbox" parent="." index="1"]
+visible = true
+
+[node name="CollisionPolygon2D" parent="Hurtbox" index="0"]
+polygon = PackedVector2Array(-5, -23, -5, -16, -6, -16, -7, -15, -8, -8, -8, -5, -7, -3, -5, -3, -5, -1, -5, 2, -5, 6, -1, 6, 0, 0, 1, 4, 2, 6, 5, 6, 5, -1, 5, -7, 7, -8, 7, 4, 8, 4, 8, -15, 10, -15, 10, -17, 9, -21, 8, -24, 7, -24, 6, -21, 5, -17, 3, -16, 3, -24, 1, -26, -3, -26)
+
+[node name="CollisionPolygon2D" parent="ContinuousHitbox" index="0"]
+polygon = PackedVector2Array(-3, -24, -5, -20, -5, -18, -4, -17, -4, -16, -7, -13, -7, -4, -4, -4, -4, 6, 0, -2, 4, 6, 4, -11, 7, -8, 7, 3, 8, 3, 8, -19, 8, -23, 7, -23, 7, -11, 2, -16, 3, -17, 3, -20, 1, -24)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
+libraries = {
+"": SubResource("AnimationLibrary_jm0gq")
+}
+
+[editable path="Hurtbox"]
+[editable path="ContinuousHitbox"]
