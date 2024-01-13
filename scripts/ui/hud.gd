@@ -4,7 +4,6 @@ extends CanvasLayer
 @onready var collab_partner_health_bar = $CollabPartnerHealthBar
 @onready var exp_bar = $EXPBar
 @onready var end_game = $EndGame
-@onready var audioSystem = $"/root/Audiosystem"
 var menu_allowed := true 
 
 #UI Shake Handler (Scuffed Code Ahead)
@@ -48,7 +47,7 @@ func _on_game_over() -> void:
 	get_tree().paused = true 
 	%EndGameLabel.text = "GAME OVER"
 	%FlavorText.text = "Someone tell Vedal there is a problem with my AI"
-	audioSystem.set_music_pitch(0.05, 2.5)
+	AudioSystem.set_music_pitch(0.05, 2.5)
 	end_game.visible = true 
 	
 func _on_game_won() -> void:
@@ -99,7 +98,7 @@ func _on_send_random_upgrades(upgrades: Array) -> void:
 	$UpgradeMenu.visible = true 
 	$UpgradeMenu._set_scale_zero()
 	$UpgradeMenu.ui_Active = true 
-	audioSystem.set_music_volume(0.5)
+	AudioSystem.set_music_volume(0.5)
 	
 	var container = %ChoicePanelContainer
 	
@@ -122,7 +121,7 @@ func _on_upgrade_selected(upgrade: Upgrade) -> void:
 	var container = %ChoicePanelContainer
 	for child in container.get_children():
 		child.queue_free() 
-	audioSystem.set_music_volume(1)
+	AudioSystem.set_music_volume(1)
 	get_tree().paused = false 
 
 func _on_retry_button_pressed():
@@ -132,4 +131,4 @@ func _on_retry_button_pressed():
 func _on_menu_button_pressed():
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/ui/menu.tscn")
-	Audiosystem.end_music()
+	AudioSystem.end_music()

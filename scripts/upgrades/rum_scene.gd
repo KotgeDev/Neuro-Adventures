@@ -8,8 +8,8 @@ var rum_template = preload("res://scenes/projectiles/rum.tscn")
 @export var DAMAGE := 1
 @export var LV1_SPLASH := false 
 @export var LV2_SPLASH := true 
-@export var LV1_FIRE_INTERVAL := 1.0 
-@export var LV3_FIRE_INTERVAL := 0.5
+@export var LV1_FIRE_INTERVAL := 1.5
+@export var LV3_FIRE_INTERVAL := 1.0
 @export var LV1_SPLASH_DAMAGE_DURATION := 4.2
 @export var LV4_SPLASH_DAMAGE_DURATION := 6.2
 @export var LV1_SPLASH_DAMAGE_INTERVAL := 1.0
@@ -22,6 +22,10 @@ var rum_template = preload("res://scenes/projectiles/rum.tscn")
 @onready var collab_partner = get_parent()
 @onready var map = get_parent().get_parent()
 @onready var fire_timer = $FireTimer
+#endregion 
+
+#region SOUNDFX
+var hit_sfx: AudioStream = preload("res://assets/sfx/vedal_throw.wav")
 #endregion 
 
 func _ready() -> void:
@@ -48,6 +52,8 @@ func _on_fire_timer_timeout():
 			rum.setup(SPEED, DAMAGE, LV2_SPLASH, LV4_SPLASH_DAMAGE_DURATION, LV4_SPLASH_DAMAGE_INTERVAL, SPLASH_DAMAGE)
 		
 	map.add_child(rum)
+	
+	AudioSystem.play_sfx(hit_sfx, collab_partner.global_position, 0.7)
 
 func sync_level() -> void:	
 	if upgrade.lvl >= 3: 

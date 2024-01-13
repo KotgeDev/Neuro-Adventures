@@ -3,15 +3,17 @@ class_name March
 
 var enemy_template: PackedScene 
 var march_duration: float
+var count: int
 var interval: float 
 var continuous := false 
 
 @onready var markers = $Markers
 
-func setup(p_enemy_template: PackedScene, p_march_duration: float, p_interval: float) -> void:
+func setup(p_enemy_template: PackedScene, p_march_duration: float, p_interval: float, p_count: int) -> void:
 	enemy_template = p_enemy_template
 	march_duration = p_march_duration
 	interval = p_interval
+	count = p_count
 
 func _ready() -> void: 
 	$IntervalTimer.wait_time = interval 
@@ -42,7 +44,8 @@ func add_wave() -> void:
 		add_child(enemy)
 
 func _on_timer_timeout() -> void:
-	if continuous:
+	if continuous and count > 0:
+		count -= 1 
 		add_wave()
 	else:
 		return 

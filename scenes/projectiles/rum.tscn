@@ -126,6 +126,10 @@ libraries = {
 "": SubResource("AnimationLibrary_gwiue")
 }
 
+[node name="SelfDestructTimer" type="Timer" parent="."]
+wait_time = 30.0
+
 [connection signal="self_destruct" from="MultiHitbox" to="." method="_on_multi_hitbox_self_destruct"]
+[connection signal="timeout" from="SelfDestructTimer" to="." method="_on_self_destruct_timer_timeout"]
 
 [editable path="MultiHitbox"]

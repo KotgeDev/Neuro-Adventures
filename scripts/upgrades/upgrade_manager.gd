@@ -15,8 +15,8 @@ var upgrades_db = [
 	Upgrade.new(
 		"Programming Socks",
 		[
-			"+ 20% faster speed for collab partners",
-			"+ 40% faster speed for collab partners"
+			"+ 10% faster speed (for both characters)",
+			"+ 20% faster speed (for both characters)"
 		],
 		Globals.UpgradeType.COLLAB_PARTNER_UPGRADE, 
 		2,
@@ -48,6 +48,45 @@ var upgrades_db = [
 		4,
 		0,
 		preload("res://scenes/upgrades/filter.tscn")
+	),
+	Upgrade.new(
+		"Creggs",
+		[
+			"1% chance for enemies to drop a chicken bake (Gives 7 HP to the Collab Partner)",
+			"2% chance for enemies to drop chicken bake ",
+			"5% chance for enemies to drop chicken bake ",
+			"10% chance for enemies to drop chicken bake"
+		],
+		Globals.UpgradeType.COLLAB_PARTNER_UPGRADE, 
+		4,
+		0,
+		preload("res://scenes/upgrades/creggs_upgrade.tscn")
+	),
+	Upgrade.new(
+		"Cookies",
+		[
+			"1% chance for enemies to drop cookies (Gives 5 HP to the AI)",
+			"2% chance for enemies to drop cookies ",
+			"5% chance for enemies to drop cookies ",
+			"10% chance for enemies to drop cookies"
+		],
+		Globals.UpgradeType.AI_UPGRADE, 
+		4,
+		0,
+		preload("res://scenes/upgrades/cookies_upgrade.tscn")
+	),
+	Upgrade.new(
+		"Swarm Upgrades",
+		[
+			"Increase damage of all gymbag drones by 100% of base",
+			"Increase speed of all gymbag drones by 50% of base",
+			"Increase damage of all gymbag drones by 200% of base",
+			"Increase speed of all gymbag drones by 100% of base"
+		],
+		Globals.UpgradeType.AI_UPGRADE, 
+		4,
+		0,
+		preload("res://scenes/upgrades/swarm_upgrades.tscn")
 	)
 ]
 
