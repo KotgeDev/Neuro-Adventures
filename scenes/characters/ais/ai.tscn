@@ -17,8 +17,10 @@ character = NodePath("..")
 
 [node name="IdleSprite" parent="CharacterAnimation" index="0"]
 texture = ExtResource("3_a3wgx")
+frame = 0
 
 [node name="RunSprite" parent="CharacterAnimation" index="1"]
+visible = true
 texture = ExtResource("4_1chnv")
 
 [node name="SearchField" type="Area2D" parent="."]
@@ -38,7 +40,12 @@ polygon = PackedVector2Array(-1, -18, -5, -16, -7, -11, -5, -8, -2, -5, -5, 1, -
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
+[node name="PathFindTimer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
 [connection signal="take_damage" from="Hurtbox" to="." method="_on_hurtbox_take_damage"]
+[connection signal="timeout" from="PathFindTimer" to="." method="_on_path_find_timer_timeout"]
 
 [editable path="CharacterAnimation"]
 [editable path="Hurtbox"]

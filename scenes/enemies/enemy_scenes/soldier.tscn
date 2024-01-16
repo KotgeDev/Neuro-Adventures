@@ -45,6 +45,7 @@ _data = {
 MAX_HEALTH = 4.0
 DAMAGE = 4.0
 ATTACK_INTERVAL = 0.7
+PATH_FIND_INTERVAL = 0.7
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_c7i3u")

@@ -91,7 +91,12 @@ func _on_collect_exp(value: int) -> void:
 	Globals.update_exp_bar.emit(exp_requirement, expp) 
 
 func _on_collect_creggs() -> void:
-	health += CREGGS_HEALTH  
+	health += CREGGS_HEALTH
+	
+	if health >= MAX_HEALTH:
+		health = MAX_HEALTH
+	
+	Globals.update_ai_health.emit(MAX_HEALTH, health)
 
 func process_collab_partner_damage_received(BASE_DAMAGE: float) -> float:
 	var modified_damage := BASE_DAMAGE

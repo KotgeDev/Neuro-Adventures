@@ -135,7 +135,7 @@ var vedal_upgrades_db = [
 		"Rum",
 		[
 			"Rum", 
-			"Rum now does splash damage upon impact",
+			"Increased splash damage duration",
 			"Decreased interval between fire",
 			"Splash damage lasts longer and deals more frequent damage"
 		],

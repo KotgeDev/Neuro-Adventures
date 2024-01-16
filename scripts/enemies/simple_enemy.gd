@@ -16,6 +16,7 @@ class_name SimpleEnemy
 @export var MAX_HEALTH := 1.0
 @export var DAMAGE := 1.0
 @export var ATTACK_INTERVAL := 1.0
+@export var PATH_FIND_INTERVAL := 0.5 
 #endregion 
 
 #region NODES
@@ -46,6 +47,8 @@ var march_duration: float
 var dead := false 
 
 func ready() -> void: 
+	$PathfindTimer.wait_time = PATH_FIND_INTERVAL
+	$PathfindTimer.start()
 	$ContinuousHitbox.damage = DAMAGE 
 	$ContinuousHitbox/HitTimer.wait_time = ATTACK_INTERVAL
 	$AnimationPlayer.play("idle")

@@ -41,12 +41,10 @@ func connect_signals() -> void:
 func _on_map_ready() -> void:
 	collab_partner = get_tree().get_first_node_in_group("collab_partner")
 
-func _collab_partner_get_pos() -> void: 
+func make_path() -> void: 
 	navigation_agent.target_position = collab_partner.global_position
 
 func _physics_process(delta: float) -> void:
-	call_deferred("_collab_partner_get_pos")
-	
 	if collab_partner not in search_field.get_overlapping_bodies():
 		var dir = to_local(navigation_agent.get_next_path_position()).normalized()
 		velocity = velocity.move_toward(dir * max_speed, ACCELERATION * delta)
@@ -82,4 +80,11 @@ func _on_add_upgrade(upgrade: Node) -> void:
 
 func _on_collect_cookie() -> void:
 	health += COOKIE_HEALTH
+	
+	if health >= MAX_HEALTH:
+		health = MAX_HEALTH
+	
+	Globals.update_ai_health.emit(MAX_HEALTH, health)
 
+func _on_path_find_timer_timeout():
+	make_path()

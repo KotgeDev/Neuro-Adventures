@@ -45,6 +45,7 @@ _data = {
 SPEED = 10.0
 MAX_HEALTH = 8.0
 DAMAGE = 8.0
+PATH_FIND_INTERVAL = 1.0
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_gstcd")

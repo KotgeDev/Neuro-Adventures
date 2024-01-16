@@ -7,6 +7,7 @@ func _ready():
 
 func _set_scale_zero():
 	scale = Vector2.ZERO
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	#print(scale)

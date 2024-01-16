@@ -18,12 +18,12 @@ owned_by = 2
 
 [node name="ContinuousHitbox" parent="." instance=ExtResource("4_jxd8c")]
 collision_mask = 3
+owned_by = 2
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [node name="PathfindTimer" type="Timer" parent="."]
 wait_time = 0.5
-autostart = true
 
 [node name="MarchDuration" type="Timer" parent="."]
 

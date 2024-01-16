@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://ctglrxknis3ar"]
+
+[ext_resource type="Script" path="res://scripts/projectiles/arrow.gd" id="1_7m11e"]
+[ext_resource type="PackedScene" uid="uid://3miicp8y7p5b" path="res://scenes/shared/multi_hitbox.tscn" id="2_a182l"]
+[ext_resource type="Material" uid="uid://cimhmqlj16qqv" path="res://assets/shaders/smooth_pixel.tres" id="2_qdv44"]
+[ext_resource type="Texture2D" uid="uid://bo1nmp3hahu3s" path="res://assets/projectiles/arrow.png" id="2_sdax5"]
+
+[node name="Arrow" type="Node2D"]
+z_index = 1
+script = ExtResource("1_7m11e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 2
+material = ExtResource("2_qdv44")
+texture = ExtResource("2_sdax5")
+
+[node name="MultiHitbox" parent="." instance=ExtResource("2_a182l")]
+position = Vector2(1.5718, -23.2764)
+collision_mask = 3
+owned_by = 2
+
+[node name="CollisionPolygon2D" parent="MultiHitbox" index="0"]
+polygon = PackedVector2Array(-11.5718, 23.2764, 10.4282, 23.2764, 10.4282, 22.2764, -11.5718, 22.2764)
+
+[node name="SelfDestructTimer" type="Timer" parent="."]
+
+[connection signal="self_destruct" from="MultiHitbox" to="." method="_on_multi_hitbox_self_destruct"]
+[connection signal="timeout" from="SelfDestructTimer" to="." method="_on_self_destruct_timer_timeout"]
+
+[editable path="MultiHitbox"]
