@@ -5,8 +5,8 @@ var dual_strike_large_template = preload("res://scenes/projectiles/dual_strike_l
 
 #region CONSTANTS
 @export_category("Dual Strike")
-@export var LV1_DAMAGE := 2 
-@export var LV3_DAMAGE := 4
+@export var LV1_DAMAGE := 1
+@export var LV3_DAMAGE := 2
 @export var LV1_WAIT_TIME := 1.5
 @export var LV2_WAIT_TIME := 1
 @export var LV5_WAIT_TIME := 0.5
@@ -22,7 +22,7 @@ var dual_strike_large_template = preload("res://scenes/projectiles/dual_strike_l
 #endregion
 
 #region SOUNDFX
-var hit_sfx: AudioStream = preload("res://assets/sfx/neuro_slice.wav")
+var hit_sfx: AudioStream = preload("res://assets/sfx/sword_swish.wav")
 #endregion 
 
 var large := false 
@@ -46,7 +46,7 @@ func strike(pos: int, flip: bool) -> void:
 	dual_strike.rotation = strike_pos.global_rotation
 	dual_strike.setup(damage, flip)
 	map.add_child(dual_strike)
-	Audiosystem.play_sfx(hit_sfx, ai.global_position)
+	AudioSystem.play_sfx(hit_sfx, ai.global_position, 0.3)
 
 func sync_level() -> void:
 	if upgrade.lvl >= 2: 

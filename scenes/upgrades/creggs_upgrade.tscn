@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbxo3vnlxwd86"]
+
+[ext_resource type="Script" path="res://scripts/upgrades/creggs_upgrade.gd" id="1_f3kis"]
+
+[node name="CreggsUpgrade" type="Node2D"]
+script = ExtResource("1_f3kis")

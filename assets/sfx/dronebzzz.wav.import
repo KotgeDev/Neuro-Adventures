@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://d1uvcqapee41r"
-path="res://.godot/imported/neuro_slice.wav-4318097c3674d7c22ebf80c56ab20d25.sample"
+uid="uid://dfu38qkbvkte"
+path="res://.godot/imported/dronebzzz.wav-524b849e5c5ba7995f0285ef971171c3.sample"
 
 [deps]
 
-source_file="res://assets/sfx/neuro_slice.wav"
-dest_files=["res://.godot/imported/neuro_slice.wav-4318097c3674d7c22ebf80c56ab20d25.sample"]
+source_file="res://assets/sfx/dronebzzz.wav"
+dest_files=["res://.godot/imported/dronebzzz.wav-524b849e5c5ba7995f0285ef971171c3.sample"]
 
 [params]
 

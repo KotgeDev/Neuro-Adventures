@@ -271,5 +271,8 @@ theme_override_font_sizes/font_size = 14
 text = "Really really really really really really long Descrmuch detail I want to go cry "
 autowrap_mode = 2
 
+[node name="CenterMarker" type="Marker2D" parent="."]
+position = Vector2(320, 180)
+
 [connection signal="pressed" from="EndGame/MenuContainer/RetryButton" to="." method="_on_retry_button_pressed"]
 [connection signal="pressed" from="EndGame/MenuContainer/MenuButton" to="." method="_on_menu_button_pressed"]

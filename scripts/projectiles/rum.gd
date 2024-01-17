@@ -50,3 +50,6 @@ func add_splash() -> void:
 	rum_splash.global_position = global_position
 	rum_splash.setup(duration, hit_wait_time, splash_damage)
 	map.call_deferred("add_child", rum_splash)
+
+func _on_self_destruct_timer_timeout():
+	queue_free()

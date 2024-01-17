@@ -51,11 +51,9 @@ radius = 110.005
 [sub_resource type="CircleShape2D" id="CircleShape2D_mglr8"]
 radius = 7.0
 
-[node name="GymbagDrone" type="Node2D"]
+[node name="GymbagDrone" type="Node2D" groups=["drone"]]
 z_index = 1
 script = ExtResource("1_6eegn")
-MAX_SPEED = 50
-DAMAGE = 2
 
 [node name="Compass" type="Marker2D" parent="."]
 
@@ -70,6 +68,7 @@ libraries = {
 
 [node name="AISearchField" type="Area2D" parent="."]
 collision_layer = 0
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AISearchField"]
 shape = SubResource("CircleShape2D_22sv2")
@@ -94,5 +93,7 @@ damage = 1.0
 
 [node name="CollisionPolygon2D" parent="MultiHitbox" index="0"]
 polygon = PackedVector2Array(0, -4, -2, -4, -2, -3, -4, -3, -4, -2, -5, -2, -5, 0, -4, 0, -4, 4, 4, 4, 4, 0, 5, 0, 5, -2, 4, -2, 4, -3, 2, -3, 2, -4)
+
+[connection signal="area_entered" from="AISearchField" to="." method="_on_ai_search_field_area_entered"]
 
 [editable path="MultiHitbox"]

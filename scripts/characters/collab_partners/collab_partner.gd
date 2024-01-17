@@ -3,18 +3,18 @@ extends CharacterBody2D
 class_name CollabPartner  
 
 #region CONSTANTS 
-@export var BASE_MAX_SPEED := 80.0 
+@export var BASE_MAX_SPEED := 65.0 
 @export var ACCELERATION := 500.0
 @export var FRICTION := 500.0 
 @export var MAX_HEALTH := 50.0 
-@export var EXP_REQ_INCREMENT := 5
+@export var EXP_REQ_INCREMENT := 4
 @export var EXP_REQ_INIT := 2
 @export var BASE_PICKUP_RANGE := 50.0
+@export var CREGGS_HEALTH := 7.0
 #endregion 
 
 #region NODES 
 @onready var character_animation = $CharacterAnimation
-@onready var collectionbox = $Collectionbox
 @onready var collectcircle = $CollectCircle
 #endregion 
 
@@ -28,11 +28,12 @@ var circle_work = false
 var expp := 0
 var exp_requirement := EXP_REQ_INIT
 var lv := 1  
+var creggs_drop_chance := 0 
 #endregion
 
 #region SOUNDFX
-@onready var audioSystem = $"/root/Audiosystem"
-@export var exp_sfx: AudioStream
+var exp_sfx: AudioStream = preload("res://assets/sfx/exp_collect.ogg")
+var hit_sfx: AudioStream = preload("res://assets/sfx/playerhurt.wav")
 #endregion
 
 func _ready() -> void:
@@ -45,7 +46,8 @@ func _ready() -> void:
 func connect_signals() -> void: 
 	Globals.damage_collab_partner.connect(_on_hurtbox_take_damage)
 	Globals.add_upgrade_to_collab_partner.connect(_on_add_upgrade)
-	collectionbox.area_entered.connect(_on_collectionbox_area_entered)
+	Globals.collect_exp.connect(_on_collect_exp)
+	Globals.collect_creggs.connect(_on_collect_creggs)
 
 func circle_handle(delta):
 	pick_range_lerp = lerp(pick_range_lerp, pickup_range*2.0, delta*5)
@@ -75,18 +77,26 @@ func _on_hurtbox_take_damage(damage: float):
 	Globals.update_collab_partner_health.emit(MAX_HEALTH, health)
 	if health <= 0: 
 		Globals.game_over.emit() 
+	
+	AudioSystem.play_sfx(hit_sfx, global_position)
 
-func _on_collectionbox_area_entered(area):
-	expp += 1 
-	#print(exp_sfx)
-	audioSystem.play_sfx(exp_sfx, global_position, 0.5)
+func _on_collect_exp(value: int) -> void:
+	expp += value
+	AudioSystem.play_sfx(exp_sfx, global_position, 0.5)
 	if expp >= exp_requirement: 
-		expp = 0 
+		expp = expp - exp_requirement
 		exp_requirement += EXP_REQ_INCREMENT
 		lv += 1
 		Globals.get_random_upgrades.emit()
 	Globals.update_exp_bar.emit(exp_requirement, expp) 
-	#area.queue_free() 
+
+func _on_collect_creggs() -> void:
+	health += CREGGS_HEALTH
+	
+	if health >= MAX_HEALTH:
+		health = MAX_HEALTH
+	
+	Globals.update_ai_health.emit(MAX_HEALTH, health)
 
 func process_collab_partner_damage_received(BASE_DAMAGE: float) -> float:
 	var modified_damage := BASE_DAMAGE

@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bkt5lb2mqdpas"]
+[gd_scene load_steps=6 format=3 uid="uid://3rhy5g2brkg6"]
 
-[ext_resource type="PackedScene" uid="uid://cx1nd5x2s6vyt" path="res://scenes/enemies/simple_enemy.tscn" id="1_ugo6b"]
-[ext_resource type="Texture2D" uid="uid://dj4uhpf43bgln" path="res://assets/enemies/goblin_sheet.png" id="2_6slxd"]
+[ext_resource type="PackedScene" uid="uid://cx1nd5x2s6vyt" path="res://scenes/enemies/simple_enemy.tscn" id="1_frcrl"]
+[ext_resource type="Texture2D" uid="uid://cjcv4341fqwvo" path="res://assets/enemies/kobold_sheet.png" id="2_il7mv"]
 
 [sub_resource type="Animation" id="Animation_pgyfm"]
 length = 0.001
@@ -20,7 +20,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_jqqp3"]
 resource_name = "idle"
-length = 0.2
+length = 0.3
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -29,10 +29,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [0, 1]
+"values": [0, 1, 2]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u2hhj"]
@@ -41,27 +41,23 @@ _data = {
 "idle": SubResource("Animation_jqqp3")
 }
 
-[node name="Goblin" instance=ExtResource("1_ugo6b")]
-SPEED = 35.0
-MAX_HEALTH = 4
-DAMAGE = 4.0
+[node name="Kobold" instance=ExtResource("1_frcrl")]
+SPEED = 40.0
+MAX_HEALTH = 3.0
+DAMAGE = 2.0
 ATTACK_INTERVAL = 0.5
 
 [node name="Sprite2D" parent="." index="0"]
-texture = ExtResource("2_6slxd")
-hframes = 2
+texture = ExtResource("2_il7mv")
 
 [node name="Hurtbox" parent="." index="1"]
 visible = true
 
 [node name="CollisionPolygon2D" parent="Hurtbox" index="0"]
-polygon = PackedVector2Array(-4, -10, -3, -15, -5, -23, 3, -20, 4, -24, 6, -24, 5, -18, 8, -16, 7, -14, 4, -12, 8, -8, 8, -1, 4, -6, 6, 8, -3, 8, -3, -5, -5, 0, -7, 0, -7, -6)
+polygon = PackedVector2Array(-2, -34, -4, -32, -4, -24, -7, -17, -7, -5, -5, 2, 6, 2, 6, -6, 6, -19, 3, -23, 5, -25, 6, -28, 6, -31, 3, -34)
 
 [node name="CollisionPolygon2D" parent="ContinuousHitbox" index="0"]
-polygon = PackedVector2Array(-3, -20, 4, -18, 4, -13, 4, -12, 5, -11, 7, -8, 8, -6, 8, 0, 5, -1, 5, 8, -3, 8, -3, -5, -4, -2, -7, 0, -6, -6, -4, -10, -2, -12)
-
-[node name="CollisionShape2D" parent="." index="3"]
-position = Vector2(1, -7)
+polygon = PackedVector2Array(0, -32, -4, -29, -3, -23, -3, -20, -7, -14, -7, -4, -5, -7, -5, -12, -4, -12, -4, 2, 1, -5, 4, 2, 4, -13, 5, -13, 5, -6, 6, -6, 6, -17, 2, -21, 2, -22, 5, -25, 4, -29, 2, -32)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
 libraries = {

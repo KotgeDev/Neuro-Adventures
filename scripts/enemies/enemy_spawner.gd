@@ -11,7 +11,7 @@ func _on_spawn(scene_template, count: int, time_interval: float, last_batch := f
 		await get_tree().create_timer(time_interval, false).timeout 
 		var enemy = scene_template.instantiate()
 		enemy.global_position = path_follow_2d.position 
-		get_parent().add_child(enemy)
+		add_child(enemy)
 		
 		if last_batch and i == count - 1:
 			enemy.last_enemy = true 

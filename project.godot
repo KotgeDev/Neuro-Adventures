@@ -18,7 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Globals="*res://scripts/shared/globals.gd"
-Audiosystem="*res://scripts/audio/audiosystem.gd"
+AudioSystem="*res://scripts/audio/audiosystem.gd"
 
 [display]
 
@@ -75,6 +75,7 @@ menu={
 2d_physics/layer_5="Collab Partner Collisionbox"
 2d_physics/layer_6="Collectible"
 2d_physics/layer_7="Gymbag Drone Personal Zone"
+2d_physics/layer_8="Other"
 
 [rendering]
 

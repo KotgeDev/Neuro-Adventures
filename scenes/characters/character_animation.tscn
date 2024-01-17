@@ -176,8 +176,10 @@ script = ExtResource("1_de5x6")
 position = Vector2(1, -16)
 texture = ExtResource("3_y5qvk")
 hframes = 4
+frame = 1
 
 [node name="RunSprite" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(1, -16)
 texture = ExtResource("4_w5xph")
 hframes = 6

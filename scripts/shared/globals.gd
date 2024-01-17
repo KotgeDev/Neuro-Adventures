@@ -24,9 +24,9 @@ enum WhichAI {
 }
 #endregion 
 
-#region OTHER
+## connect function to this signal if an action 
+## needs to be done only after the map is ready 
 signal map_ready 
-#endregion 
 
 #region TO ENEMY SPAWNER 
 signal spawn(scene_template, count: int, time_interval: float, last_batch: bool)
@@ -46,7 +46,14 @@ signal get_random_upgrades
 signal lvl_up(upgrade: Upgrade)
 #endregion 
 
+#region TO SPECIFIC UPGRADES
+signal update_drones
+#endregion 
+
 #region TO COLLAB PARTNER OR AI 
+signal collect_exp(value: int)
+signal collect_cookie
+signal collect_creggs
 signal damage_collab_partner(damage: float)
 signal damage_ai(damage: float)
 signal add_upgrade_to_collab_partner(upgrade: Node)

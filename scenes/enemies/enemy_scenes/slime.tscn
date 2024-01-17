@@ -42,7 +42,7 @@ _data = {
 }
 
 [node name="Slime" instance=ExtResource("1_0t50s")]
-ATTACK_INTERVAL = 1.0
+PATH_FIND_INTERVAL = 1.0
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_sgjgm")

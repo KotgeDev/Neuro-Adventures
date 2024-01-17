@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkijgt4pjfcen"]
+
+[ext_resource type="Script" path="res://scripts/enemies/march.gd" id="1_wlfyf"]
+
+[node name="March" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_wlfyf")
+
+[node name="MarchDuration" type="Timer" parent="."]
+
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="Markers"]
+
+[connection signal="timeout" from="MarchDuration" to="." method="_on_march_duration_timeout"]
