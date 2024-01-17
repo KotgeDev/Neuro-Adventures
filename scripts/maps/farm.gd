@@ -50,7 +50,6 @@ func spawn_enemies() -> void:
 	
 	# Second Wave 
 	print("THIRD WAVE STARTING")
-	add_march(left_right_flank, knight_template, 130.0)
 	add_march(top_down_flank, knight_template, 60.0)
 	Globals.spawn.emit(soldier_template, 20, 0.2)
 	Globals.spawn.emit(slime_template, 50, 2.0)

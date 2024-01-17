@@ -6,14 +6,10 @@
 y_sort_enabled = true
 script = ExtResource("1_wlfyf")
 
-[node name="IntervalTimer" type="Timer" parent="."]
-wait_time = 1.5
-
 [node name="MarchDuration" type="Timer" parent="."]
 
 [node name="Markers" type="Node2D" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="Markers"]
 
-[connection signal="timeout" from="IntervalTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="MarchDuration" to="." method="_on_march_duration_timeout"]

@@ -5,7 +5,6 @@ var enemy_template: PackedScene
 var march_duration: float
 var count: int
 var interval: float 
-var continuous := false 
 
 @onready var markers = $Markers
 
@@ -16,17 +15,12 @@ func setup(p_enemy_template: PackedScene, p_march_duration: float, p_interval: f
 	count = p_count
 
 func _ready() -> void: 
-	$IntervalTimer.wait_time = interval 
-	$IntervalTimer.start()
 	$MarchDuration.wait_time = march_duration
 	$MarchDuration.start()
 	
 	setup_markers()
 	
-	if continuous:
-		return
-	else:
-		add_wave()
+	add_wave()
 
 ## Override to use 
 func setup_markers() -> void:
@@ -42,13 +36,6 @@ func add_wave() -> void:
 		enemy.march_duration = march_duration 
 		
 		add_child(enemy)
-
-func _on_timer_timeout() -> void:
-	if continuous and count > 0:
-		count -= 1 
-		add_wave()
-	else:
-		return 
 
 func _on_march_duration_timeout():
 	queue_free()
