@@ -8,6 +8,7 @@ class_name AI
 @export var FRICTION := 500 
 @export var MAX_HEALTH := 45.0
 @export var COOKIE_HEALTH := 5.0 
+@export var BASE_AI_DISTANCE := 60.0 
 #endregion 
 
 #region NODES
@@ -20,6 +21,7 @@ var collab_partner: CollabPartner
 #region OTHER 
 @onready var health: float = MAX_HEALTH 
 @onready var max_speed: float = BASE_MAX_SPEED
+@onready var ai_distance: float = BASE_AI_DISTANCE
 var velocity: Vector2 
 var cookie_drop_chance := 0 
 #endregion 
@@ -31,6 +33,7 @@ var hit_sfx: AudioStream = preload("res://assets/sfx/playerhurt.wav")
 func _ready() -> void:
 	add_to_group("ai")
 	connect_signals()
+	set_physics_process(false)
 
 func connect_signals() -> void:
 	Globals.map_ready.connect(_on_map_ready)
@@ -40,12 +43,14 @@ func connect_signals() -> void:
 	
 func _on_map_ready() -> void:
 	collab_partner = get_tree().get_first_node_in_group("collab_partner")
+	set_physics_process(true)
 
 func make_path() -> void: 
 	navigation_agent.target_position = collab_partner.global_position
 
 func _physics_process(delta: float) -> void:
-	if collab_partner not in search_field.get_overlapping_bodies():
+	var distance = abs((collab_partner.global_position - self.global_position).length())
+	if distance >= ai_distance:
 		var dir = to_local(navigation_agent.get_next_path_position()).normalized()
 		velocity = velocity.move_toward(dir * max_speed, ACCELERATION * delta)
 

@@ -1,7 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://bk17fcuir3cec"]
-
-[ext_resource type="PackedScene" uid="uid://dkijgt4pjfcen" path="res://scenes/enemies/march.tscn" id="1_h1yed"]
-[ext_resource type="Script" path="res://scripts/enemies/march_scenes/right_continuous_march.gd" id="2_7fdbs"]
-
-[node name="RightContinuousMarch" instance=ExtResource("1_h1yed")]
-script = ExtResource("2_7fdbs")

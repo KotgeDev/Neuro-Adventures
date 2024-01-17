@@ -25,6 +25,7 @@ var buzz_sfx: AudioStream = preload("res://assets/sfx/dronebzzz.wav")
 var velocity: Vector2
 var target: Node = null 
 var id: int 
+var collab_partner_in_range = false 
 @onready var max_speed: float = BASE_MAX_SPEED
 #endregion 
 
@@ -54,7 +55,7 @@ func _process(delta: float) -> void:
 				velocity = velocity.move_toward(compass.transform.y * max_speed, ACCELERATION * delta)
 			else: 
 				velocity = velocity.move_toward( -1 * compass.transform.y * max_speed, ACCELERATION * delta)
-			
+	
 	position += velocity * delta 
 
 ## Searches and targets an enemy. 
@@ -85,3 +86,7 @@ func ai_within_range(delta: float) -> bool:
 		if area.owned_by == Globals.Owners.OWNED_BY_AI:
 			return true 
 	return false 
+
+func _on_ai_search_field_area_entered(area):
+	if area.owned_by == Globals.Owners.OWNED_BY_COLLAB_PARTNER:
+		AudioSystem.play_sfx(buzz_sfx, global_position, 3.0)

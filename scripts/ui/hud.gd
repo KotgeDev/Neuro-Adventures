@@ -1,10 +1,13 @@
 extends CanvasLayer
 
+#region NODES
 @onready var ai_health_bar = $AIHealthBar
 @onready var collab_partner_health_bar = $CollabPartnerHealthBar
 @onready var exp_bar = $EXPBar
 @onready var end_game = $EndGame
-var menu_allowed := true 
+@onready var center_marker = $CenterMarker
+var collab_partner
+#endregion
 
 #UI Shake Handler (Scuffed Code Ahead)
 var max_offset = Vector2(2, 2) 
@@ -18,6 +21,10 @@ var cshaketime = 0.25
 var exp_value = 0.0
 #UI Shake Handler End
 
+var menu_allowed := true 
+var menu_blip1: AudioStream = preload("res://assets/sfx/menublip.wav")
+var menu_blip2: AudioStream = preload("res://assets/sfx/menublip2.wav")
+
 func _ready() -> void:
 	ashakepos = ai_health_bar.position
 	cshakepos = collab_partner_health_bar.position
@@ -27,6 +34,10 @@ func _ready() -> void:
 	Globals.update_collab_partner_health.connect(_on_update_collab_partner_health)
 	Globals.update_exp_bar.connect(_on_update_exp_bar)
 	Globals.send_random_upgrades.connect(_on_send_random_upgrades)
+	Globals.map_ready.connect(_on_map_ready)
+	
+func _on_map_ready() -> void:
+	collab_partner = get_tree().get_first_node_in_group("collab_partner")
 
 func _process(delta: float) -> void:
 	shake_handler(delta)
@@ -60,6 +71,7 @@ func _on_game_won() -> void:
 func shake(obj_to_shake, source) -> void:
 	obj_to_shake.position.x = source.x + max_offset.x * rng.randf_range(-1, 1)
 	obj_to_shake.position.y = source.y + max_offset.y * rng.randf_range(-1, 1)
+
 func shake_handler(delta) -> void:
 	if(ashake):
 		ashaketime -= delta
@@ -73,6 +85,7 @@ func shake_handler(delta) -> void:
 		if(cshaketime < 0):
 			cshake = false
 			collab_partner_health_bar.position = cshakepos
+			
 func _on_update_ai_health(max: float, health: float) -> void:
 	if health >= 0.0: 
 		ai_health_bar.value = health / max * 100 
@@ -110,11 +123,16 @@ func _on_send_random_upgrades(upgrades: Array) -> void:
 			choice_panel = $UpgradeChoicePanelCollab.duplicate()
 		choice_panel.visible = true
 		choice_panel.get_node("Button").pressed.connect(_on_upgrade_selected.bind(upgrade))
+		choice_panel.get_node("Button").mouse_entered.connect(_on_mouse_over_upgrade)
 		choice_panel.get_node("HBoxContainer").get_node("Name").text = "%s lv%d" % [upgrade.upgrade_name, upgrade.lvl + 1]
 		choice_panel.get_node("HBoxContainer").get_node("Description").text = upgrade.descriptions[upgrade.lvl]
 		container.add_child(choice_panel)
-		
+
+func _on_mouse_over_upgrade() -> void:
+	AudioSystem.play_sfx(menu_blip1, collab_partner.global_position, 1.5)
+
 func _on_upgrade_selected(upgrade: Upgrade) -> void:
+	AudioSystem.play_sfx(menu_blip2, collab_partner.global_position, 2.0)
 	Globals.lvl_up.emit(upgrade)
 	
 	$UpgradeMenu.visible = false 

@@ -10,6 +10,7 @@ var knight_template = preload("res://scenes/enemies/enemy_scenes/knight.tscn")
 
 #region MARCHES
 var left_right_flank = preload("res://scenes/enemies/march_scenes/left_right_flank.tscn")
+var top_down_flank = preload("res://scenes/enemies/march_scenes/top_down_flank.tscn")
 #endregion 
 
 var archer_boss = preload("res://scenes/enemies/boss_scenes/archer_boss.tscn")
@@ -50,16 +51,26 @@ func spawn_enemies() -> void:
 	# Second Wave 
 	print("THIRD WAVE STARTING")
 	add_march(left_right_flank, knight_template, 130.0)
+	add_march(top_down_flank, knight_template, 60.0)
 	Globals.spawn.emit(soldier_template, 20, 0.2)
 	Globals.spawn.emit(slime_template, 50, 2.0)
 	Globals.spawn.emit(goblin_template, 50, 2.0)
 	Globals.spawn.emit(kobold_template, 50, 2.0)
 	Globals.spawn.emit(soldier_template, 100, 1.0)
-	await get_tree().create_timer(50).timeout
-	add_child(archer_boss.instantiate())
-	await get_tree().create_timer(50).timeout
+	await get_tree().create_timer(100).timeout
 	# All first wave enemise spawned at this point.
 	await get_tree().create_timer(30).timeout 
+	
+	# Second Wave 
+	print("FINAL WAVE STARTING")
+	add_march(left_right_flank, knight_template, 130.0)
+	add_march(top_down_flank, knight_template, 60.0)
+	Globals.spawn.emit(slime_template, 25, 2.0)
+	Globals.spawn.emit(goblin_template, 25, 2.0)
+	Globals.spawn.emit(kobold_template, 25, 2.0)
+	Globals.spawn.emit(soldier_template, 50, 1.0)
+	Globals.spawn.emit(knight_template, 100, 1.0)
+	add_child(archer_boss.instantiate())
 
 func add_march(march_template: PackedScene, enemy_template: PackedScene, march_duration: float, interval := 1000.0, count := 1) -> void:
 	var march1 = march_template.instantiate() 

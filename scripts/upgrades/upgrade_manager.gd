@@ -145,18 +145,16 @@ var vedal_upgrades_db = [
 		preload("res://scenes/upgrades/rum_scene.tscn")
 	),
 	Upgrade.new(
-		"Copy and Paste",
+		"Say it Back!",
 		[
-			"10 % chance for AI and collab partner to deal double damage",
-			"15 % chance for AI and collab partner to deal double damage",
-			"20 % chance for AI and collab partner to deal double damage",
-			"25 % chance for AI and collab partner to deal double damage",
-			"40 % chance for AI and collab partner to deal double damage",
+			"Both characters have 50% increased damage. The AI will chase after you closer",
+			"Both characters have 100% increased damage. The AI will chase after you even closer",
+			"Both characters have 150% increased damage. The AI will chase after you like never before."
 		],
-		Globals.UpgradeType.COLLAB_PARTNER_UPGRADE, 
-		5,
+		Globals.UpgradeType.AI_UPGRADE, 
+		3,
 		0,
-		preload("res://scenes/upgrades/copy_and_paste.tscn")
+		preload("res://scenes/upgrades/say_it_back.tscn")
 	)
 ]
 

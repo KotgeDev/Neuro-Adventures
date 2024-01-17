@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5gx14hnyyudp"]
+
+[ext_resource type="PackedScene" uid="uid://dkijgt4pjfcen" path="res://scenes/enemies/march.tscn" id="1_gi323"]
+[ext_resource type="Script" path="res://scripts/enemies/march_scenes/top_down_flank.gd" id="2_b1fa5"]
+
+[node name="LeftRightFlank" instance=ExtResource("1_gi323")]
+script = ExtResource("2_b1fa5")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://drg7spn8yqktv"]
+[gd_scene load_steps=54 format=3 uid="uid://drg7spn8yqktv"]
 
 [ext_resource type="PackedScene" uid="uid://b8oia7t2aewka" path="res://scenes/characters/collab_partners/vedal.tscn" id="1_wnmde"]
 [ext_resource type="Script" path="res://scripts/maps/farm.gd" id="1_wx0jl"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://8uhv6g1gj5yk" path="res://scenes/upgrades/upgrade_manager.tscn" id="7_wfvop"]
 [ext_resource type="Script" path="res://scripts/audio/MusicPlayer.gd" id="9_4x2ga"]
 [ext_resource type="AudioStream" uid="uid://0llv3ovrmips" path="res://assets/songs/the_farm.wav" id="10_hue21"]
+[ext_resource type="PackedScene" uid="uid://q4do4wgq6uk8" path="res://scenes/enemies/boss_scenes/archer_boss.tscn" id="11_r8pp1"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_122t5"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -662,5 +663,8 @@ rotation = 1.5708
 [node name="Music Player" type="Node" parent="."]
 script = ExtResource("9_4x2ga")
 musicFile = ExtResource("10_hue21")
+
+[node name="ElfArcherBoss" parent="." instance=ExtResource("11_r8pp1")]
+position = Vector2(1019, 420)
 
 [editable path="EnemySpawner"]

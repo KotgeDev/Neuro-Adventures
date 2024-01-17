@@ -43,7 +43,7 @@ _data = {
 
 [node name="Knight" instance=ExtResource("1_j3dd8")]
 SPEED = 10.0
-MAX_HEALTH = 8.0
+MAX_HEALTH = 12.0
 DAMAGE = 8.0
 PATH_FIND_INTERVAL = 1.0
 
