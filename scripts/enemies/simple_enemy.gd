@@ -29,6 +29,7 @@ class_name SimpleEnemy
 
 #region OTHER
 var velocity: Vector2
+var next_pos: Vector2
 var cookie_template = preload("res://scenes/collectibles/cookie.tscn")
 var creggs_template = preload("res://scenes/collectibles/creggs.tscn")
 var expp_template = preload("res://scenes/collectibles/exp.tscn")
@@ -57,16 +58,20 @@ func ready() -> void:
 		$MarchDuration.wait_time = march_duration 
 		$MarchDuration.start()
 	else:
-		make_path()
+		if(global_position.distance_to(collab_partner.global_position) < 350.0):
+			make_path()
+		else:
+			next_pos = ai.global_position
 
 func make_path() -> void:
 	navigation_agent.target_position = ai.global_position
+	next_pos = navigation_agent.get_next_path_position()
 
 func _physics_process(delta):
 	if march: 
 		velocity = march_direction * SPEED 
 	else:
-		var dir = to_local(navigation_agent.get_next_path_position()).normalized()
+		var dir = to_local(next_pos).normalized()
 		velocity = dir * SPEED    
 
 	if velocity.x < 0: 
@@ -115,7 +120,10 @@ func _on_pathfind_timer_timeout():
 	if march:
 		return
 	else: 
-		make_path()
+		if(global_position.distance_to(collab_partner.global_position) < 350.0):
+			make_path()
+		else:
+			next_pos = ai.global_position
 
 func _on_march_duration_timeout():
 	queue_free()
