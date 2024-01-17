@@ -60,6 +60,9 @@ polygon = PackedVector2Array(-5, -22, -5, 8, 2, 8, 2, -5, 7, -5, 4, -11, 2, -11.
 [node name="CollisionPolygon2D" parent="ContinuousHitbox" index="0"]
 polygon = PackedVector2Array(-5, -21, -5, 8, 2, 8, 2, -6, 7, -6, 7, -7, 8, -7, 8, -15, 6, -19, 6, -18, 5, -17, 5, -8, 4, -8, 4, -13, 3, -13, 3, -21)
 
+[node name="CollisionShape2D" parent="." index="3"]
+position = Vector2(-1, -6.5)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
 libraries = {
 "": SubResource("AnimationLibrary_jm0gq")
