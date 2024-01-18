@@ -96,7 +96,7 @@ func _on_collect_creggs() -> void:
 	if health >= MAX_HEALTH:
 		health = MAX_HEALTH
 	
-	Globals.update_ai_health.emit(MAX_HEALTH, health)
+	Globals.update_collab_partner_health.emit(MAX_HEALTH, health)
 
 func process_collab_partner_damage_received(BASE_DAMAGE: float) -> float:
 	var modified_damage := BASE_DAMAGE

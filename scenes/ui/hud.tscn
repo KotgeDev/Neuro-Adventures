@@ -17,6 +17,15 @@
 process_mode = 3
 script = ExtResource("1_jg8iq")
 
+[node name="FPSCounter" type="Label" parent="."]
+offset_left = 547.0
+offset_top = 324.0
+offset_right = 629.0
+offset_bottom = 350.0
+
+[node name="FPSCounterUpdateTimer" type="Timer" parent="."]
+autostart = true
+
 [node name="AIHealthBar" type="TextureProgressBar" parent="."]
 offset_left = 15.0
 offset_top = 44.0
@@ -274,5 +283,6 @@ autowrap_mode = 2
 [node name="CenterMarker" type="Marker2D" parent="."]
 position = Vector2(320, 180)
 
+[connection signal="timeout" from="FPSCounterUpdateTimer" to="." method="_on_fps_counter_update_timer_timeout"]
 [connection signal="pressed" from="EndGame/MenuContainer/RetryButton" to="." method="_on_retry_button_pressed"]
 [connection signal="pressed" from="EndGame/MenuContainer/MenuButton" to="." method="_on_menu_button_pressed"]

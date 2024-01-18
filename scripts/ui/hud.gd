@@ -6,6 +6,7 @@ extends CanvasLayer
 @onready var exp_bar = $EXPBar
 @onready var end_game = $EndGame
 @onready var center_marker = $CenterMarker
+@onready var fps_counter = $FPSCounter
 var collab_partner
 #endregion
 
@@ -150,3 +151,6 @@ func _on_menu_button_pressed():
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/ui/menu.tscn")
 	AudioSystem.end_music()
+
+func _on_fps_counter_update_timer_timeout():
+	fps_counter.text = "%d fps" % round(Engine.get_frames_per_second())
