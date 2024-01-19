@@ -39,7 +39,11 @@ func global_damage_modifiers(BASE_DAMAGE: float, modified_damage: float, area: A
 func ai_damage_modifiers(BASE_DAMAGE: float, modified_damage: float, area: Area2D) -> float:
 	for upgrade in get_tree().get_nodes_in_group("ai_damage_modifiers"):
 		modified_damage = upgrade.ai_damage_modifiers(BASE_DAMAGE, modified_damage, area) 
-
+	
+	var filter = get_tree().get_first_node_in_group("filter")
+	if filter:
+		modified_damage = filter.ai_damage_modifiers(BASE_DAMAGE, modified_damage, area) 
+	
 	return modified_damage
 
 func collab_partner_damage_modifiers(BASE_DAMAGE: float, modified_damage: float, area: Area2D) -> float:

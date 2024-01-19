@@ -7,9 +7,9 @@ var dual_strike_large_template = preload("res://scenes/projectiles/dual_strike_l
 @export_category("Dual Strike")
 @export var LV1_DAMAGE := 1
 @export var LV3_DAMAGE := 2
-@export var LV1_WAIT_TIME := 1.5
-@export var LV2_WAIT_TIME := 1
-@export var LV5_WAIT_TIME := 0.5
+@export var LV1_WAIT_TIME := 1.6
+@export var LV2_WAIT_TIME := 1.1
+@export var LV5_WAIT_TIME := 0.7
 #endregion 
 
 #region NODES

@@ -40,9 +40,9 @@ var upgrades_db = [
 		"Filter",
 		[
 			"AIs now do 30% less damage to collab partners",
-			"AIs now do 40% less damage to collab partners",
 			"AIs now do 50% less damage to collab partners",
-			"AIs now do 70% less damage to collab partners"
+			"AIs now do 75% less damage to collab partners",
+			"AIs now do 90% less damage to collab partners"
 		],
 		Globals.UpgradeType.AI_UPGRADE, 
 		4,
@@ -95,8 +95,8 @@ var neuro_upgrades_db = [
 		"Dual Strike", 
 		[
 			"Dual Strike",
-			"Less interval between strikes",
-			"Higher damage per strike",
+			"Less interval between strikes ",
+			"Double damage per strike",
 			"Greater strike range",
 			"Even Less interval between strikes"
 		], 

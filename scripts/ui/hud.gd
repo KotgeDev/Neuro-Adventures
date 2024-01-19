@@ -7,6 +7,7 @@ extends CanvasLayer
 @onready var end_game = $EndGame
 @onready var center_marker = $CenterMarker
 @onready var fps_counter = $FPSCounter
+@onready var upgrade_menu = %UpgradeMenu
 var collab_partner
 #endregion
 
@@ -22,9 +23,13 @@ var cshaketime = 0.25
 var exp_value = 0.0
 #UI Shake Handler End
 
-var menu_allowed := true 
 var menu_blip1: AudioStream = preload("res://assets/sfx/menublip.wav")
 var menu_blip2: AudioStream = preload("res://assets/sfx/menublip2.wav")
+var start_time_msec = 0.0
+var pause_start_time_msec = 0.0
+var total_paused_time_msec = 0.0 
+var menu_allowed := true 
+var upgrade_screen_on := false 
 
 func _ready() -> void:
 	ashakepos = ai_health_bar.position
@@ -39,36 +44,71 @@ func _ready() -> void:
 	
 func _on_map_ready() -> void:
 	collab_partner = get_tree().get_first_node_in_group("collab_partner")
+	start_time_msec = Time.get_ticks_msec()
 
 func _process(delta: float) -> void:
 	shake_handler(delta)
 	exp_bar.value = lerpf(exp_bar.value, exp_value, delta*7)
 	if Input.is_action_just_pressed("menu") and menu_allowed:
-		%EndGameLabel.text = "PAUSED"
-		%FlavorText.text = "Press ESC to Unpause"
-		
 		if end_game.visible:
-			get_tree().paused = false 
-			end_game.visible = false
-		else:
-			get_tree().paused = true
-			end_game.visible = true 
+			hide_endgame()
+		else: 
+			show_endgame()
+		
+		%EndGameLabel.text = "PAUSED"
+		%FlavorText.text = "\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"
+		$EndGame/TimeLabel.text = "Survival time: " + calculated_survived_time()
+
+func hide_endgame(): 
+	end_game.visible = false 
+	if upgrade_menu.visible:
+		return
+	else:
+		unpause_game()
+
+func show_endgame():
+	end_game.visible = true 
+	if upgrade_menu.visible:
+		total_paused_time_msec += Time.get_ticks_msec() - pause_start_time_msec
+		pause_start_time_msec = Time.get_ticks_msec()
+	else:
+		pause_game()
+
+func pause_game() -> void:
+	get_tree().paused = true
+	pause_start_time_msec = Time.get_ticks_msec()
+
+func unpause_game() -> void:
+	get_tree().paused = false 
+	total_paused_time_msec += Time.get_ticks_msec() - pause_start_time_msec
 
 func _on_game_over() -> void:
 	menu_allowed = false 
-	get_tree().paused = true 
+	pause_game()
 	%EndGameLabel.text = "GAME OVER"
 	%FlavorText.text = "Someone tell Vedal there is a problem with my AI"
 	AudioSystem.set_music_pitch(0.05, 2.5)
 	end_game.visible = true 
 	
+	var survival_sec: int = roundi((Time.get_ticks_msec() - start_time_msec - total_paused_time_msec) / 1000.0) 
+	var min: int = int(survival_sec / 60)
+	var sec: int = roundi(survival_sec % 60)
+	$EndGame/TimeLabel.text = "Survived time: " + calculated_survived_time()
+	
 func _on_game_won() -> void:
 	menu_allowed = false 
-	get_tree().paused = true 
+	pause_game()
 	%EndGameLabel.text = "VICTORY"
 	%FlavorText.text = "Sometimes when I sit here and stream, I envision myself as a goddess, overlooking my followers. "
+	$EndGame/TimeLabel.text = "Elapsed time: " + calculated_survived_time()
 	end_game.visible = true 
-	
+
+func calculated_survived_time() -> String: 
+	var survival_sec: int = roundi((Time.get_ticks_msec() - start_time_msec - total_paused_time_msec) / 1000.0) 
+	var min: int = int(survival_sec / 60)
+	var sec: int = roundi(survival_sec % 60)
+	return "%02d:%02d" % [min, sec] 
+
 func shake(obj_to_shake, source) -> void:
 	obj_to_shake.position.x = source.x + max_offset.x * rng.randf_range(-1, 1)
 	obj_to_shake.position.y = source.y + max_offset.y * rng.randf_range(-1, 1)
@@ -93,7 +133,6 @@ func _on_update_ai_health(max: float, health: float) -> void:
 		ashake = true
 		ashaketime = 0.25
 		
-
 func _on_update_collab_partner_health(max: float, health: float) -> void:
 	if health >= 0.0: 
 		collab_partner_health_bar.value = health / max * 100 
@@ -107,7 +146,7 @@ func _on_send_random_upgrades(upgrades: Array) -> void:
 	if upgrades.size() == 0:
 		return
 	
-	get_tree().paused = true 
+	pause_game()
 	
 	$UpgradeMenu.visible = true 
 	$UpgradeMenu._set_scale_zero()
@@ -141,14 +180,10 @@ func _on_upgrade_selected(upgrade: Upgrade) -> void:
 	for child in container.get_children():
 		child.queue_free() 
 	AudioSystem.set_music_volume(1)
-	get_tree().paused = false 
+	unpause_game()
 
-func _on_retry_button_pressed():
-	get_tree().paused = false
-	get_tree().change_scene_to_file("res://scenes/maps/farm.tscn")
-	
 func _on_menu_button_pressed():
-	get_tree().paused = false
+	unpause_game()
 	get_tree().change_scene_to_file("res://scenes/ui/menu.tscn")
 	AudioSystem.end_music()
 
