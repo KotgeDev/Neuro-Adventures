@@ -19,7 +19,9 @@ To create an upgrade you need: upgrade name, description (an array of descriptio
 
 All UpgradeScenes should inherit from UpgradeScene 
 
-To have upgrades impact a character's damage (both receiving and giving), add the UpgradeScene to the appropriate group and create a function with the same name as the group. Refer to the chart below for more information: 
+To have upgrades impact a character's damage, add the UpgradeScene to the appropriate group and create a function with the same name as the group. Refer to the chart below for more information. 
+Note, you cannot set the order in which modifiers are applied with these functions so if the order is important you will need to create your own function. The first two functions deal with damage
+received by the characters and the rest deal with damage given by the characters: 
 Group and Function Name | Required Parameters | Return Value  
 ---|---|---
 process_ai_damage_received | BASE_DAMAGE: float, modified_damage: float | modified_damage
