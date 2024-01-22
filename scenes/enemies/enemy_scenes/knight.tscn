@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dm83qecyj7rl6"]
+[gd_scene load_steps=7 format=3 uid="uid://dm83qecyj7rl6"]
 
 [ext_resource type="PackedScene" uid="uid://cx1nd5x2s6vyt" path="res://scenes/enemies/simple_enemy.tscn" id="1_j3dd8"]
 [ext_resource type="Texture2D" uid="uid://dyjv33cs7year" path="res://assets/enemies/knight_sheet.png" id="2_gstcd"]
+[ext_resource type="Texture2D" uid="uid://bpxvb4opdk1xy" path="res://assets/shared/shadow_m.png" id="3_05qd1"]
 
 [sub_resource type="Animation" id="Animation_dkgki"]
 length = 0.001
@@ -42,7 +43,7 @@ _data = {
 }
 
 [node name="Knight" instance=ExtResource("1_j3dd8")]
-SPEED = 10.0
+SPEED = 20.0
 MAX_HEALTH = 12.0
 DAMAGE = 8.0
 PATH_FIND_INTERVAL = 1.0
@@ -64,6 +65,10 @@ polygon = PackedVector2Array(-3, -24, -5, -20, -5, -18, -4, -17, -4, -16, -7, -1
 libraries = {
 "": SubResource("AnimationLibrary_jm0gq")
 }
+
+[node name="Shadow" parent="." index="7"]
+position = Vector2(-1, -20)
+texture = ExtResource("3_05qd1")
 
 [editable path="Hurtbox"]
 [editable path="ContinuousHitbox"]

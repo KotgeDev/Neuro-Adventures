@@ -92,14 +92,14 @@ func _on_hurtbox_take_damage(damage):
 		
 		var already_dropped_item := false 
 		
-		var cookie_num = randi_range(1, 100)
+		var cookie_num = randf()
 		if cookie_num <= ai.cookie_drop_chance:
 			var cookie = cookie_template.instantiate()
 			cookie.global_position = global_position
 			get_parent().call_deferred("add_child", cookie)
 			already_dropped_item = true 
 			
-		var creggs_num = randi_range(1, 100)
+		var creggs_num = randf()
 		if creggs_num <= collab_partner.creggs_drop_chance:
 			var creggs = creggs_template.instantiate()
 			creggs.global_position = global_position

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bkt5lb2mqdpas"]
+[gd_scene load_steps=7 format=3 uid="uid://bkt5lb2mqdpas"]
 
 [ext_resource type="PackedScene" uid="uid://cx1nd5x2s6vyt" path="res://scenes/enemies/simple_enemy.tscn" id="1_ugo6b"]
 [ext_resource type="Texture2D" uid="uid://dj4uhpf43bgln" path="res://assets/enemies/goblin_sheet.png" id="2_6slxd"]
+[ext_resource type="Texture2D" uid="uid://bpxvb4opdk1xy" path="res://assets/shared/shadow_m.png" id="3_l8byq"]
 
 [sub_resource type="Animation" id="Animation_pgyfm"]
 length = 0.001
@@ -63,6 +64,10 @@ polygon = PackedVector2Array(-3, -25, -6, -25, -3, -17, -3, -15, -7, -12, -7, -8
 libraries = {
 "": SubResource("AnimationLibrary_u2hhj")
 }
+
+[node name="Shadow" parent="." index="7"]
+position = Vector2(0, -24)
+texture = ExtResource("3_l8byq")
 
 [editable path="Hurtbox"]
 [editable path="ContinuousHitbox"]

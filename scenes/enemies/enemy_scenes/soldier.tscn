@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://jt51ntggwgnw"]
+[gd_scene load_steps=7 format=3 uid="uid://jt51ntggwgnw"]
 
 [ext_resource type="PackedScene" uid="uid://cx1nd5x2s6vyt" path="res://scenes/enemies/simple_enemy.tscn" id="1_pihnb"]
 [ext_resource type="Texture2D" uid="uid://bytkmw7atwqj3" path="res://assets/enemies/soldier_sheet.png" id="2_c7i3u"]
+[ext_resource type="Texture2D" uid="uid://bpxvb4opdk1xy" path="res://assets/shared/shadow_m.png" id="3_xm2k1"]
 
 [sub_resource type="Animation" id="Animation_dkgki"]
 length = 0.001
@@ -42,6 +43,7 @@ _data = {
 }
 
 [node name="Soldier" instance=ExtResource("1_pihnb")]
+SPEED = 30.0
 MAX_HEALTH = 4.0
 DAMAGE = 4.0
 ATTACK_INTERVAL = 0.7
@@ -64,6 +66,10 @@ polygon = PackedVector2Array(-3, -27, -5, -25, -4, -18, -4, -17, -7, -13, -7, -9
 libraries = {
 "": SubResource("AnimationLibrary_jm0gq")
 }
+
+[node name="Shadow" parent="." index="7"]
+position = Vector2(-1, -20)
+texture = ExtResource("3_xm2k1")
 
 [editable path="Hurtbox"]
 [editable path="ContinuousHitbox"]

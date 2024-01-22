@@ -28,7 +28,7 @@ var circle_work = false
 var expp := 0
 var exp_requirement := EXP_REQ_INIT
 var lv := 1  
-var creggs_drop_chance := 0 
+var creggs_drop_chance := 0.005
 #endregion
 
 #region SOUNDFX

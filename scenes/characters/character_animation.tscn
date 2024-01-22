@@ -176,10 +176,8 @@ script = ExtResource("1_de5x6")
 position = Vector2(1, -16)
 texture = ExtResource("3_y5qvk")
 hframes = 4
-frame = 1
 
 [node name="RunSprite" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(1, -16)
 texture = ExtResource("4_w5xph")
 hframes = 6
@@ -199,10 +197,3 @@ tree_root = SubResource("AnimationNodeStateMachine_e8tdr")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/idle = false
 parameters/conditions/is_running = false
-
-[node name="_AnimationPlayer_22136" type="AnimationPlayer" parent="."]
-active = false
-root_node = NodePath("../..")
-libraries = {
-"": SubResource("AnimationLibrary_4vs80")
-}

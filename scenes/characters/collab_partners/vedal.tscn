@@ -1,7 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://b8oia7t2aewka"]
+[gd_scene load_steps=4 format=3 uid="uid://b8oia7t2aewka"]
 
 [ext_resource type="PackedScene" uid="uid://du60tw8uyoqwb" path="res://scenes/characters/collab_partners/collab_partner.tscn" id="1_isy60"]
+[ext_resource type="Texture2D" uid="uid://bt7f65bo75tpd" path="res://assets/shared/shadow_s.png" id="2_a2hfa"]
+[ext_resource type="Script" path="res://scripts/shared/shadow.gd" id="3_2qssh"]
 
 [node name="Vedal" instance=ExtResource("1_isy60")]
+
+[node name="Shadow" type="Sprite2D" parent="." index="5"]
+position = Vector2(1, -24)
+texture = ExtResource("2_a2hfa")
+script = ExtResource("3_2qssh")
 
 [editable path="Hurtbox"]

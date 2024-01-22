@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tnubhijqfq02"
-path="res://.godot/imported/collab_partner_health_bar_under.png-eb29fa4ceaf8bacbeffdec5c89464a8d.ctex"
+uid="uid://bpxvb4opdk1xy"
+path="res://.godot/imported/shadow_m.png-e5ee0033410cb26ab613d72c6ddef85f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/collab_partner_health_bar_under.png"
-dest_files=["res://.godot/imported/collab_partner_health_bar_under.png-eb29fa4ceaf8bacbeffdec5c89464a8d.ctex"]
+source_file="res://assets/shared/shadow_m.png"
+dest_files=["res://.godot/imported/shadow_m.png-e5ee0033410cb26ab613d72c6ddef85f.ctex"]
 
 [params]
 

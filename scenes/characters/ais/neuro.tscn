@@ -1,8 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://huy32vwhqidx"]
+[gd_scene load_steps=4 format=3 uid="uid://huy32vwhqidx"]
 
 [ext_resource type="PackedScene" uid="uid://y36yytk34v0i" path="res://scenes/characters/ais/ai.tscn" id="1_jb3ag"]
+[ext_resource type="Texture2D" uid="uid://bt7f65bo75tpd" path="res://assets/shared/shadow_s.png" id="2_7mhap"]
+[ext_resource type="Script" path="res://scripts/shared/shadow.gd" id="3_cimke"]
 
 [node name="Neuro" instance=ExtResource("1_jb3ag")]
+
+[node name="Shadow" type="Sprite2D" parent="." index="5"]
+position = Vector2(1, -16)
+texture = ExtResource("2_7mhap")
+script = ExtResource("3_cimke")
 
 [editable path="CharacterAnimation"]
 [editable path="Hurtbox"]

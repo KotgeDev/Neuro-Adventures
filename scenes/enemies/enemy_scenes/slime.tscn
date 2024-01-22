@@ -61,5 +61,8 @@ libraries = {
 "": SubResource("AnimationLibrary_2f5do")
 }
 
+[node name="Shadow" parent="." index="7"]
+position = Vector2(1, -25)
+
 [editable path="Hurtbox"]
 [editable path="ContinuousHitbox"]

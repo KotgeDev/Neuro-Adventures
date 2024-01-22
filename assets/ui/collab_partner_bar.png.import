@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clpdynieekcha"
-path="res://.godot/imported/ai_health_bar_under.png-eececf18bf884711d46b239098e08b6f.ctex"
+uid="uid://cjb1btwxi635u"
+path="res://.godot/imported/collab_partner_bar.png-8d789f7865ddd8baca17235124e70da6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/ai_health_bar_under.png"
-dest_files=["res://.godot/imported/ai_health_bar_under.png-eececf18bf884711d46b239098e08b6f.ctex"]
+source_file="res://assets/ui/collab_partner_bar.png"
+dest_files=["res://.godot/imported/collab_partner_bar.png-8d789f7865ddd8baca17235124e70da6.ctex"]
 
 [params]
 

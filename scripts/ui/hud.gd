@@ -1,13 +1,14 @@
 extends CanvasLayer
 
 #region NODES
-@onready var ai_health_bar = $AIHealthBar
-@onready var collab_partner_health_bar = $CollabPartnerHealthBar
+@onready var ai_health_bar = %AIHealthBar
+@onready var collab_partner_health_bar = %CollabPartnerHealthBar
 @onready var exp_bar = $EXPBar
 @onready var end_game = $EndGame
 @onready var center_marker = $CenterMarker
 @onready var fps_counter = $FPSCounter
 @onready var upgrade_menu = %UpgradeMenu
+@onready var level_counter = $LevelCounter
 var collab_partner
 #endregion
 
@@ -30,6 +31,7 @@ var pause_start_time_msec = 0.0
 var total_paused_time_msec = 0.0 
 var menu_allowed := true 
 var upgrade_screen_on := false 
+var display_level = 0
 
 func _ready() -> void:
 	ashakepos = ai_health_bar.position
@@ -143,6 +145,9 @@ func _on_update_exp_bar(max, exp) -> void:
 	exp_value = float(exp) / float(max) * 100
 
 func _on_send_random_upgrades(upgrades: Array) -> void:
+	display_level += 1 
+	level_counter.text = str(display_level)
+	
 	if upgrades.size() == 0:
 		return
 	
@@ -189,3 +194,4 @@ func _on_menu_button_pressed():
 
 func _on_fps_counter_update_timer_timeout():
 	fps_counter.text = "%d fps" % round(Engine.get_frames_per_second())
+
