@@ -39,6 +39,7 @@ signal update_ai_health(max_health: int, health: int)
 signal update_collab_partner_health(max_health: int, health: int)
 signal update_exp_bar(max_exp: int, exp: int)
 signal send_random_upgrades(upgrades: Array) 
+signal change_fps_counter_state(toggled_on: bool)
 #endregion 
 
 #region TO UPGRADE MANAGER

@@ -33,7 +33,7 @@ func _ready():
 	mu.bus = music_bus
 	music_player = mu
 	
-func play_sfx(sound, position, vol = 1):
+func play_sfx(sound, position, vol = 1.0):
 	queue.append(sound)
 	queue_pos.append(position)
 	queue_vol.append(vol)

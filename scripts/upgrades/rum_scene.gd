@@ -53,7 +53,7 @@ func _on_fire_timer_timeout():
 		
 	map.add_child(rum)
 	
-	AudioSystem.play_sfx(hit_sfx, collab_partner.global_position, 0.7)
+	AudioSystem.play_sfx(hit_sfx, collab_partner.global_position, 1.0)
 
 func sync_level() -> void:	
 	if upgrade.lvl >= 3: 

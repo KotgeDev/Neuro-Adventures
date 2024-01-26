@@ -1,6 +1,6 @@
 extends Control
 
-@onready var options_menu = $Options
+@onready var options_menu = $OptionsMenu
 @onready var v_box_container = $VBoxContainer
 
 func _on_start_button_pressed():
@@ -11,8 +11,9 @@ func _on_option_button_pressed():
 	v_box_container.visible = false 
 
 func _on_options_close_options():
-	options_menu.visible = false
 	v_box_container.visible = true 
 
 func _on_quit_button_pressed():
 	get_tree().quit() 
+
+

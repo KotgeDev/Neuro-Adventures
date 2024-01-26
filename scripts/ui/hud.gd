@@ -5,7 +5,6 @@ extends CanvasLayer
 @onready var collab_partner_health_bar = %CollabPartnerHealthBar
 @onready var exp_bar = $EXPBar
 @onready var end_game = $EndGame
-@onready var center_marker = $CenterMarker
 @onready var fps_counter = $FPSCounter
 @onready var upgrade_menu = %UpgradeMenu
 @onready var level_counter = $LevelCounter
@@ -13,10 +12,13 @@ extends CanvasLayer
 @onready var choice_panel_template = $UpgradeChoicePanel
 @onready var continue_button = $EndGame/MenuContainer/ContinueButton
 @onready var retry_button = $EndGame/MenuContainer/RetryButton
+@onready var options_menu = $OptionsMenu
+@onready var ai_bar_full = %AiBarFull
+@onready var collab_partner_bar_full = %CollabPartnerBarFull
 var collab_partner
 #endregion
 
-#UI Shake Handler (Scuffed Code Ahead)
+#region UI Shake Handler (Scuffed Code Ahead)
 var max_offset = Vector2(2, 2) 
 var rng = RandomNumberGenerator.new()
 var ashakepos;
@@ -26,8 +28,9 @@ var ashaketime = 0.25
 var cshake = false
 var cshaketime = 0.25
 var exp_value = 0.0
-#UI Shake Handler End
+#endregion UI Shake Handler End
 
+#region OTHER
 var menu_blip1: AudioStream = preload("res://assets/sfx/menublip.wav")
 var menu_blip2: AudioStream = preload("res://assets/sfx/menublip2.wav")
 var start_time_msec = 0.0
@@ -36,10 +39,19 @@ var total_paused_time_msec = 0.0
 var menu_allowed := true 
 var upgrade_screen_on := false 
 var display_level = 0
+#endregion
 
 func _ready() -> void:
 	ashakepos = ai_health_bar.position
 	cshakepos = collab_partner_health_bar.position
+	set_fps_counter_state(SavedOptions.settings.fps_counter)
+	if SavedOptions.settings.full_health_effect:
+		ai_bar_full.visible = true
+		collab_partner_bar_full.visible = true
+		
+	connect_signals()
+	
+func connect_signals() -> void:
 	Globals.game_over.connect(_on_game_over)
 	Globals.game_won.connect(_on_game_won)
 	Globals.update_ai_health.connect(_on_update_ai_health)
@@ -47,6 +59,7 @@ func _ready() -> void:
 	Globals.update_exp_bar.connect(_on_update_exp_bar)
 	Globals.send_random_upgrades.connect(_on_send_random_upgrades)
 	Globals.map_ready.connect(_on_map_ready)
+	Globals.change_fps_counter_state.connect(set_fps_counter_state)
 	
 func _on_map_ready() -> void:
 	collab_partner = get_tree().get_first_node_in_group("collab_partner")
@@ -56,6 +69,10 @@ func _process(delta: float) -> void:
 	shake_handler(delta)
 	exp_bar.value = lerpf(exp_bar.value, exp_value, delta*7)
 	if Input.is_action_just_pressed("menu") and menu_allowed:
+		if options_menu.visible:
+			options_menu.close_options.emit()
+			return
+		
 		if end_game.visible:
 			hide_endgame()
 		else: 
@@ -138,12 +155,24 @@ func shake_handler(delta) -> void:
 			collab_partner_health_bar.position = cshakepos
 			
 func _on_update_ai_health(max: float, health: float) -> void:
+	if SavedOptions.settings.full_health_effect:
+		if health == max: 
+			ai_bar_full.visible = true 
+		else:
+			ai_bar_full.visible = false
+	
 	if health >= 0.0: 
 		ai_health_bar.value = health / max * 100 
 		ashake = true
 		ashaketime = 0.25
 		
 func _on_update_collab_partner_health(max: float, health: float) -> void:
+	if SavedOptions.settings.full_health_effect:
+		if health == max: 
+			collab_partner_bar_full.visible = true 
+		else:
+			collab_partner_bar_full.visible = false 
+	
 	if health >= 0.0: 
 		collab_partner_health_bar.value = health / max * 100 
 		cshake = true
@@ -188,10 +217,10 @@ func _on_send_random_upgrades(upgrades: Array) -> void:
 		choice_panel_container.add_child(choice_panel)
 
 func _on_mouse_over_upgrade() -> void:
-	AudioSystem.play_sfx(menu_blip1, collab_partner.global_position, 1.5)
+	AudioSystem.play_sfx(menu_blip1, collab_partner.global_position)
 
 func _on_upgrade_selected(upgrade: Upgrade) -> void:
-	AudioSystem.play_sfx(menu_blip2, collab_partner.global_position, 2.0)
+	AudioSystem.play_sfx(menu_blip2, collab_partner.global_position)
 	Globals.lvl_up.emit(upgrade)
 	
 	$UpgradeMenu.visible = false 
@@ -213,3 +242,13 @@ func _on_retry_button_pressed():
 
 func _on_fps_counter_update_timer_timeout():
 	fps_counter.text = "%d fps" % round(Engine.get_frames_per_second())
+
+func _on_options_button_pressed():
+	options_menu.visible = true 
+	end_game.visible = false 
+
+func close_options_menu():
+	end_game.visible = true
+
+func set_fps_counter_state(toggled_on: bool) -> void:
+	fps_counter.visible = toggled_on

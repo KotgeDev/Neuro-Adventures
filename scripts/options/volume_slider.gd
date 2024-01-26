@@ -1,24 +1,25 @@
 extends HSlider
 
-@export var bus_name := "Music"
+@export var bus_name := "music"
 
 @onready var bus_index = AudioServer.get_bus_index(bus_name)
 
 func _ready() -> void:
-	value_changed.connect(_on_music_slider_value_changed)
-	if bus_name == "Music": 
-		value = SetOptions.music_volume 
-	elif bus_name == "Sfx": 
-		value = SetOptions.music_volume
-
-func _on_music_slider_value_changed(value: float):
-	if bus_name == "Music": 
-		SetOptions.music_volume = value 
-	elif bus_name == "Sfx": 
-		SetOptions.music_volume = value 
+	value_changed.connect(_on_value_changed)
 	
+	if bus_name == "music":
+		value = SavedOptions.settings.music_volume 
+	elif bus_name == "soundfx":
+		value = SavedOptions.settings.sfx_volume 
+
+func _on_value_changed(value: float):
 	AudioServer.set_bus_volume_db(
 		bus_index, 
 		linear_to_db(value)
 	)
+	
+	if bus_name == "music":
+		SavedOptions.settings.music_volume = value
+	elif bus_name == "soundfx":
+		SavedOptions.settings.sfx_volume = value
 

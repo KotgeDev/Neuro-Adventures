@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/ui/menu.gd" id="1_833i5"]
 [ext_resource type="Texture2D" uid="uid://ck3vocomisktb" path="res://assets/ui/cover_image.png" id="2_yw33v"]
-[ext_resource type="PackedScene" uid="uid://b6j6utnkndtjo" path="res://scenes/options/options.tscn" id="3_nre05"]
+[ext_resource type="PackedScene" uid="uid://b6j6utnkndtjo" path="res://scenes/options/options_menu.tscn" id="3_nre05"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -49,10 +49,11 @@ custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "Quit"
 
-[node name="Options" parent="." instance=ExtResource("3_nre05")]
+[node name="OptionsMenu" parent="." instance=ExtResource("3_nre05")]
+visible = false
 layout_mode = 1
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/OptionButton" to="." method="_on_option_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
-[connection signal="close_options" from="Options" to="." method="_on_options_close_options"]
+[connection signal="close_options" from="OptionsMenu" to="." method="_on_options_close_options"]

@@ -46,7 +46,7 @@ func strike(pos: int, flip: bool) -> void:
 	dual_strike.rotation = strike_pos.global_rotation
 	dual_strike.setup(damage, flip)
 	map.add_child(dual_strike)
-	AudioSystem.play_sfx(hit_sfx, ai.global_position, 0.3)
+	AudioSystem.play_sfx(hit_sfx, ai.global_position, 0.4)
 
 func sync_level() -> void:
 	if upgrade.lvl >= 2: 

@@ -1,18 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6j6utnkndtjo"]
+[gd_scene load_steps=8 format=3 uid="uid://b6j6utnkndtjo"]
 
-[ext_resource type="Script" path="res://scripts/options/options.gd" id="1_xpfnq"]
+[ext_resource type="Script" path="res://scripts/options/options_menu.gd" id="1_ap703"]
 [ext_resource type="Theme" uid="uid://cbqv70ya041cw" path="res://assets/themes/default_theme.tres" id="3_fx5r4"]
 [ext_resource type="Script" path="res://scripts/options/window_mode_options.gd" id="4_s65oh"]
+[ext_resource type="Script" path="res://scripts/options/vsync_options.gd" id="4_y0ndy"]
 [ext_resource type="PackedScene" uid="uid://b3ylcqvevfyfh" path="res://scenes/options/volume_slider.tscn" id="5_05trf"]
+[ext_resource type="Script" path="res://scripts/options/full_health_toggle.gd" id="5_ogmc3"]
+[ext_resource type="Script" path="res://scripts/options/fps_counter_toggle.gd" id="6_s04cr"]
 
-[node name="Options" type="Control"]
+[node name="OptionsMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_xpfnq")
+script = ExtResource("1_ap703")
 
 [node name="OptionsPanel" type="Panel" parent="."]
 layout_mode = 1
@@ -49,7 +52,7 @@ anchor_bottom = 0.5
 offset_left = -292.0
 offset_top = -131.5
 offset_right = 292.0
-offset_bottom = 124.5
+offset_bottom = 119.5
 grow_horizontal = 2
 grow_vertical = 2
 horizontal_scroll_mode = 0
@@ -74,7 +77,7 @@ size_flags_horizontal = 3
 text = "Window Mode"
 
 [node name="WindowModeOptions" type="OptionButton" parent="OptionsPanel/ScrollContainer/VBoxContainer/WindowModeContainer"]
-custom_minimum_size = Vector2(275, 0)
+custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
 alignment = 1
 item_count = 4
@@ -88,6 +91,42 @@ popup/item_2/id = 2
 popup/item_3/text = "Borderless Full Screen"
 popup/item_3/id = 3
 script = ExtResource("4_s65oh")
+
+[node name="VsyncContainer" type="HBoxContainer" parent="OptionsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="OptionsPanel/ScrollContainer/VBoxContainer/VsyncContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "V-Sync"
+
+[node name="VsyncOptions" type="OptionButton" parent="OptionsPanel/ScrollContainer/VBoxContainer/VsyncContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+alignment = 1
+item_count = 3
+selected = 1
+popup/item_0/text = "Disabled"
+popup/item_0/id = 0
+popup/item_1/text = "Enabled"
+popup/item_1/id = 1
+popup/item_2/text = "Adaptive"
+popup/item_2/id = 2
+script = ExtResource("4_y0ndy")
+
+[node name="FullHealthContainer" type="HBoxContainer" parent="OptionsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="OptionsPanel/ScrollContainer/VBoxContainer/FullHealthContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Full Health Visual Effect"
+
+[node name="FullHealthToggle" type="CheckButton" parent="OptionsPanel/ScrollContainer/VBoxContainer/FullHealthContainer"]
+layout_mode = 2
+button_pressed = true
+script = ExtResource("5_ogmc3")
 
 [node name="Padding" type="Control" parent="OptionsPanel/ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 10)
@@ -119,9 +158,34 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Sfx Volume"
 
-[node name="VolumeSlider" parent="OptionsPanel/ScrollContainer/VBoxContainer/SfxContainer" instance=ExtResource("5_05trf")]
+[node name="SfxSlider" parent="OptionsPanel/ScrollContainer/VBoxContainer/SfxContainer" instance=ExtResource("5_05trf")]
 layout_mode = 2
-bus_name = "Sfx"
+bus_name = "soundfx"
+
+[node name="Padding2" type="Control" parent="OptionsPanel/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="MiscLabel" type="Label" parent="OptionsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Misc."
+
+[node name="HSeparator3" type="HSeparator" parent="OptionsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="FPSCounterContainer" type="HBoxContainer" parent="OptionsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="OptionsPanel/ScrollContainer/VBoxContainer/FPSCounterContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "FPS Counter"
+
+[node name="FPSCounterToggle" type="CheckButton" parent="OptionsPanel/ScrollContainer/VBoxContainer/FPSCounterContainer"]
+layout_mode = 2
+button_pressed = true
+script = ExtResource("6_s04cr")
 
 [node name="ReturnButton" type="Button" parent="."]
 custom_minimum_size = Vector2(100, 0)
