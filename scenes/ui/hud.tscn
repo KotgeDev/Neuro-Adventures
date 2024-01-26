@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dqy8eus7xktlq"]
+[gd_scene load_steps=13 format=3 uid="uid://dqy8eus7xktlq"]
 
 [ext_resource type="Script" path="res://scripts/ui/hud.gd" id="1_jg8iq"]
 [ext_resource type="Texture2D" uid="uid://cdfsvbsr2p0cs" path="res://assets/ui/ai_health_bar.png" id="3_h2em7"]
@@ -8,13 +8,23 @@
 [ext_resource type="Texture2D" uid="uid://chm3hdjvrvpig" path="res://assets/ui/exp_bar_under.png" id="6_v5tns"]
 [ext_resource type="Texture2D" uid="uid://bbm64wjax8o6h" path="res://assets/ui/exp_bar.png" id="7_0d2lw"]
 [ext_resource type="Texture2D" uid="uid://crvnx5i06xcb6" path="res://assets/ui/ui_icons1.png" id="7_ofbrc"]
-[ext_resource type="StyleBox" uid="uid://xuptsyutqrn5" path="res://assets/themes/green_button_texture.tres" id="8_xxprq"]
-[ext_resource type="StyleBox" uid="uid://csyqurimj00h7" path="res://assets/themes/green_button_pressed_texture.tres" id="9_j4yyk"]
+[ext_resource type="StyleBox" uid="uid://bspcvalmxg40p" path="res://assets/themes/upgrade.tres" id="10_3egha"]
+[ext_resource type="Texture2D" uid="uid://d2g70s3s7rt7t" path="res://assets/upgrades/upgrade_icon_placeholder.png" id="10_bqirj"]
 [ext_resource type="Script" path="res://scripts/ui/choice_ui_animation.gd" id="10_ki084"]
+[ext_resource type="StyleBox" uid="uid://dwibpkoqk5pkl" path="res://assets/themes/upgrade_hover.tres" id="11_5r30f"]
 
 [node name="HUD" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_jg8iq")
+
+[node name="Filter" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.419608, 0.203922, 0.0313726, 0.0392157)
 
 [node name="FPSCounterUpdateTimer" type="Timer" parent="."]
 autostart = true
@@ -28,6 +38,7 @@ offset_right = 43.0
 offset_bottom = 4.0
 
 [node name="AIIcon" type="TextureRect" parent="HealthBars"]
+layout_mode = 0
 offset_left = 2.0
 offset_top = 141.0
 offset_right = 34.0
@@ -36,6 +47,7 @@ texture = ExtResource("4_nokq6")
 stretch_mode = 2
 
 [node name="CollabPartnerIcon" type="TextureRect" parent="HealthBars"]
+layout_mode = 0
 offset_left = 20.0
 offset_top = 140.0
 offset_right = 52.0
@@ -45,6 +57,7 @@ stretch_mode = 2
 
 [node name="AIHealthBar" type="TextureProgressBar" parent="HealthBars"]
 unique_name_in_owner = true
+layout_mode = 0
 offset_left = 14.0
 offset_top = 81.0
 offset_right = 78.0
@@ -56,6 +69,7 @@ texture_progress = ExtResource("3_h2em7")
 
 [node name="CollabPartnerHealthBar" type="TextureProgressBar" parent="HealthBars"]
 unique_name_in_owner = true
+layout_mode = 0
 offset_left = 29.0
 offset_top = 81.0
 offset_right = 93.0
@@ -83,7 +97,6 @@ vertical_alignment = 1
 
 [node name="UpgradeMenu" type="Control" parent="."]
 unique_name_in_owner = true
-visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -107,31 +120,18 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.490196)
 
-[node name="ColorRect2" type="ColorRect" parent="UpgradeMenu"]
-custom_minimum_size = Vector2(275, 160)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -137.5
-offset_top = -80.0
-offset_right = 137.5
-offset_bottom = 80.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 4
-color = Color(0.968627, 0.772549, 0.788235, 1)
-
 [node name="ScrollContainer" type="ScrollContainer" parent="UpgradeMenu"]
-custom_minimum_size = Vector2(250, 145)
+custom_minimum_size = Vector2(345, 219)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -172.5
+offset_top = -109.5
+offset_right = 172.5
+offset_bottom = 109.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -140,6 +140,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_constants/separation = 1
 
 [node name="EndGame" type="Control" parent="."]
 visible = false
@@ -197,6 +198,11 @@ custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "Continue"
 
+[node name="RetryButton" type="Button" parent="EndGame/MenuContainer"]
+visible = false
+layout_mode = 2
+text = "Retry"
+
 [node name="MenuButton" type="Button" parent="EndGame/MenuContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
@@ -213,23 +219,31 @@ text = "Elapsed Time: 10.54 minutes"
 horizontal_alignment = 2
 autowrap_mode = 3
 
-[node name="UpgradeChoicePanelAI" type="Control" parent="."]
+[node name="UpgradeChoicePanel" type="Control" parent="."]
 visible = false
-custom_minimum_size = Vector2(0, 45)
+custom_minimum_size = Vector2(345, 72)
 layout_mode = 3
 anchors_preset = 0
-offset_left = 195.0
-offset_top = 107.0
-offset_right = 445.0
-offset_bottom = 152.0
+offset_left = 147.0
+offset_top = 68.0
+offset_right = 492.0
+offset_bottom = 140.0
 
-[node name="Button" type="Button" parent="UpgradeChoicePanelAI"]
-custom_minimum_size = Vector2(250, 45)
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="Button" type="Button" parent="UpgradeChoicePanel"]
+custom_minimum_size = Vector2(345, 72)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = ExtResource("10_3egha")
+theme_override_styles/hover = ExtResource("11_5r30f")
+theme_override_styles/pressed = ExtResource("11_5r30f")
+theme_override_styles/focus = ExtResource("11_5r30f")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UpgradeChoicePanelAI"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradeChoicePanel"]
+custom_minimum_size = Vector2(0, 65)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -237,72 +251,37 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+alignment = 1
 
-[node name="Padding" type="Label" parent="UpgradeChoicePanelAI/HBoxContainer"]
+[node name="UpgradeName" type="Label" parent="UpgradeChoicePanel/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = " Gaslight Lv 1"
 
-[node name="Name" type="Label" parent="UpgradeChoicePanelAI/HBoxContainer"]
-custom_minimum_size = Vector2(60, 0)
+[node name="HBoxContainer" type="HBoxContainer" parent="UpgradeChoicePanel/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 16
-text = "Gymbag Drone"
-horizontal_alignment = 1
-autowrap_mode = 2
-
-[node name="Description" type="Label" parent="UpgradeChoicePanelAI/HBoxContainer"]
-custom_minimum_size = Vector2(180, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 14
-text = "Really really really really really really long Descrmuch detail I want to go cry "
-autowrap_mode = 2
-
-[node name="UpgradeChoicePanelCollab" type="Control" parent="."]
-visible = false
-custom_minimum_size = Vector2(0, 45)
-layout_mode = 3
-anchors_preset = 0
-offset_left = 195.0
-offset_top = 107.0
-offset_right = 445.0
-offset_bottom = 152.0
-
-[node name="Button" type="Button" parent="UpgradeChoicePanelCollab"]
-custom_minimum_size = Vector2(250, 45)
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-theme_override_styles/normal = ExtResource("8_xxprq")
-theme_override_styles/hover = ExtResource("9_j4yyk")
-theme_override_styles/pressed = ExtResource("9_j4yyk")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UpgradeChoicePanelCollab"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 mouse_filter = 2
+theme_override_constants/separation = 0
 
-[node name="Padding" type="Label" parent="UpgradeChoicePanelCollab/HBoxContainer"]
+[node name="Icon" type="TextureRect" parent="UpgradeChoicePanel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
+texture = ExtResource("10_bqirj")
+stretch_mode = 3
 
-[node name="Name" type="Label" parent="UpgradeChoicePanelCollab/HBoxContainer"]
-custom_minimum_size = Vector2(60, 0)
+[node name="Description" type="Label" parent="UpgradeChoicePanel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(290, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 16
-text = "Gymbag Drone"
-horizontal_alignment = 1
+text = "Vedal ignores all damage. However, every time he gets damaged, there is a 0.1% chance that all of the damage he ignored will be inflicted at once."
 autowrap_mode = 2
 
-[node name="Description" type="Label" parent="UpgradeChoicePanelCollab/HBoxContainer"]
-custom_minimum_size = Vector2(180, 0)
+[node name="Padding" type="Control" parent="UpgradeChoicePanel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(5, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 14
-text = "Really really really really really really long Descrmuch detail I want to go cry "
-autowrap_mode = 2
+
+[node name="Padding" type="Control" parent="UpgradeChoicePanel/VBoxContainer"]
+layout_mode = 2
 
 [node name="CenterMarker" type="Marker2D" parent="."]
 position = Vector2(320, 180)
@@ -316,18 +295,7 @@ theme_override_font_sizes/font_size = 16
 text = "fps: 24"
 horizontal_alignment = 2
 
-[node name="Filter" type="ColorRect" parent="."]
-visible = false
-z_index = 100
-z_as_relative = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0.419608, 0.203922, 0.0313726, 0.0392157)
-
 [connection signal="timeout" from="FPSCounterUpdateTimer" to="." method="_on_fps_counter_update_timer_timeout"]
 [connection signal="pressed" from="EndGame/MenuContainer/ContinueButton" to="." method="hide_endgame"]
+[connection signal="pressed" from="EndGame/MenuContainer/RetryButton" to="." method="_on_retry_button_pressed"]
 [connection signal="pressed" from="EndGame/MenuContainer/MenuButton" to="." method="_on_menu_button_pressed"]

@@ -9,6 +9,10 @@ extends CanvasLayer
 @onready var fps_counter = $FPSCounter
 @onready var upgrade_menu = %UpgradeMenu
 @onready var level_counter = $LevelCounter
+@onready var choice_panel_container = %ChoicePanelContainer
+@onready var choice_panel_template = $UpgradeChoicePanel
+@onready var continue_button = $EndGame/MenuContainer/ContinueButton
+@onready var retry_button = $EndGame/MenuContainer/RetryButton
 var collab_partner
 #endregion
 
@@ -85,6 +89,8 @@ func unpause_game() -> void:
 	total_paused_time_msec += Time.get_ticks_msec() - pause_start_time_msec
 
 func _on_game_over() -> void:
+	continue_button.visible = false
+	retry_button.visible = true
 	menu_allowed = false 
 	pause_game()
 	%EndGameLabel.text = "GAME OVER"
@@ -98,6 +104,8 @@ func _on_game_over() -> void:
 	$EndGame/TimeLabel.text = "Survived time: " + calculated_survived_time()
 	
 func _on_game_won() -> void:
+	continue_button.visible = false
+	retry_button.visible = true
 	menu_allowed = false 
 	pause_game()
 	%EndGameLabel.text = "VICTORY"
@@ -153,25 +161,31 @@ func _on_send_random_upgrades(upgrades: Array) -> void:
 	
 	pause_game()
 	
-	$UpgradeMenu.visible = true 
-	$UpgradeMenu._set_scale_zero()
-	$UpgradeMenu.ui_Active = true 
+	upgrade_menu.visible = true 
+	upgrade_menu._set_scale_zero()
+	upgrade_menu.ui_Active = true 
 	AudioSystem.set_music_volume(0.5)
-	
-	var container = %ChoicePanelContainer
 	
 	for upgrade in upgrades:
 		var choice_panel
-		if upgrade.upgrade_type == Globals.UpgradeType.AI_UPGRADE:
-			choice_panel = $UpgradeChoicePanelAI.duplicate()
+		choice_panel = choice_panel_template.duplicate()
+		var button = choice_panel.get_node("Button")
+		var v_container = choice_panel.get_node("VBoxContainer")
+		var upgrade_name = v_container.get_node("UpgradeName")
+		var h_container = v_container.get_node("HBoxContainer")
+		var icon = h_container.get_node("Icon")
+		var description = h_container.get_node("Description")
+	
+		button.pressed.connect(_on_upgrade_selected.bind(upgrade))
+		button.mouse_entered.connect(_on_mouse_over_upgrade)
+		if upgrade.tags.has("unlimited"):
+			upgrade_name.text = " %s [Unlimited]" % [upgrade.upgrade_name]
 		else:
-			choice_panel = $UpgradeChoicePanelCollab.duplicate()
+			upgrade_name.text = " %s [Lv%d]" % [upgrade.upgrade_name, upgrade.lvl + 1]
+		icon.texture = upgrade.icon
+		description.text = upgrade.descriptions[upgrade.lvl]
 		choice_panel.visible = true
-		choice_panel.get_node("Button").pressed.connect(_on_upgrade_selected.bind(upgrade))
-		choice_panel.get_node("Button").mouse_entered.connect(_on_mouse_over_upgrade)
-		choice_panel.get_node("HBoxContainer").get_node("Name").text = "%s lv%d" % [upgrade.upgrade_name, upgrade.lvl + 1]
-		choice_panel.get_node("HBoxContainer").get_node("Description").text = upgrade.descriptions[upgrade.lvl]
-		container.add_child(choice_panel)
+		choice_panel_container.add_child(choice_panel)
 
 func _on_mouse_over_upgrade() -> void:
 	AudioSystem.play_sfx(menu_blip1, collab_partner.global_position, 1.5)
@@ -189,9 +203,13 @@ func _on_upgrade_selected(upgrade: Upgrade) -> void:
 
 func _on_menu_button_pressed():
 	unpause_game()
-	get_tree().change_scene_to_file("res://scenes/ui/menu.tscn")
 	AudioSystem.end_music()
+	get_tree().change_scene_to_file("res://scenes/ui/menu.tscn")
+
+func _on_retry_button_pressed():
+	unpause_game()
+	AudioSystem.end_music()
+	get_tree().change_scene_to_file("res://scenes/maps/farm.tscn") 
 
 func _on_fps_counter_update_timer_timeout():
 	fps_counter.text = "%d fps" % round(Engine.get_frames_per_second())
-

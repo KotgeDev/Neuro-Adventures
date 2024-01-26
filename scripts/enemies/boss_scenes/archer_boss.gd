@@ -4,16 +4,14 @@ extends Enemy
 @export var BASE_MAX_SPEED := 80.0
 @export var ACCELERATION := 500
 @export var FRICTION := 500 
-@export var MAX_HEALTH := 200.0
+@export var MAX_HEALTH := 500.0
 @export var DAMAGE := 1.0
 @export var ATTACK_INTERVAL := 1.5
 @export var PATH_FIND_INTERVAL := 2.0
 
 @export var PHASE_1_ARROW_INTERVAL := 2.0
 @export var PHASE_2_ARROW_INTERVAL := 1.5
-@export var PHASE_3_ARROW_INTERVAL := 1.0 
 @export var PHASE_2_PATTERN_INTERVAL := 4.0 
-@export var PHASE_3_PATTERN_INTERVAL := 2.0 
 #endregion 
 
 #region NODES
@@ -33,7 +31,7 @@ var velocity: Vector2
 var current_phase := 1 
 var just_started_running := false 
 var just_started_shooting := false 
-@onready var phase_thresholds := [MAX_HEALTH, MAX_HEALTH * 0.5, MAX_HEALTH * 0.25]
+@onready var phase_thresholds := [MAX_HEALTH, MAX_HEALTH * 0.45]
 @onready var health: float = MAX_HEALTH  
 @onready var max_speed: float = BASE_MAX_SPEED
 #endregion 
@@ -98,12 +96,7 @@ func _on_hurtbox_take_damage(damage):
 	if health <= 0:
 		Globals.game_won.emit() 
 		queue_free() 
-		
-	if health <= phase_thresholds[2]:
-		if current_phase != 3:
-			current_phase = 3
-			fire_timer.wait_time = PHASE_3_ARROW_INTERVAL
-			pattern_fire_timer.wait_time = PHASE_3_PATTERN_INTERVAL
+
 	elif health <= phase_thresholds[1]:
 		if current_phase != 2:
 			current_phase = 2 
@@ -115,6 +108,7 @@ func _on_pathfind_timer_timeout():
 	make_path()
 
 func _on_fire_timer_timeout():
+	return
 	var arrow_path = arrow_path_template.instantiate() 
 	arrow_path.global_position = fire_point.global_position
 	arrow_path.look_at(ai.global_position) 
@@ -122,34 +116,16 @@ func _on_fire_timer_timeout():
 	get_parent().add_child(arrow_path)
 
 func _on_pattern_fire_timer_timeout():
-	if health <= phase_thresholds[2]:
-		for i in range(6):
-			var arrow_path = arrow_path_template.instantiate()
-			if i == 0: 
-				arrow_path.sfx = true  
-			var step = i * 50
-			arrow_path.global_position = Vector2(0, ai.global_position.y + 25 + step)
-			get_parent().add_child(arrow_path) 
-		
-		for i in range(6):
-			var arrow_path = arrow_path_template.instantiate() 
-			var step = i * 50
-			arrow_path.global_position = Vector2(0, ai.global_position.y - 25 - step)
-			get_parent().add_child(arrow_path)   
-
 	if health <= phase_thresholds[1]:
-		for i in range(6):
-			var arrow_path = arrow_path_template.instantiate()
-			if i == 0: 
-				arrow_path.sfx = true   
-			var step = i * 80
-			arrow_path.global_position = Vector2(ai.global_position.x + 40 + step, 0)
-			arrow_path.set_rotation(deg_to_rad(90.0))
-			get_parent().add_child(arrow_path)  
-
-		for i in range(6):
+		for i in range(2):
+			var fsign: float 
+			if i % 2 == 0:
+				fsign = -1.0
+			else: 
+				fsign = 1.0 
 			var arrow_path = arrow_path_template.instantiate() 
-			var step = i * 80
-			arrow_path.global_position = Vector2(ai.global_position.x - 40 - step, 0)
-			arrow_path.set_rotation(deg_to_rad(90.0))
-			get_parent().add_child(arrow_path)  
+			var arrow_x: float = ai.global_position.x + ai.global_position.y * fsign
+			arrow_path.global_position = Vector2(arrow_x, 0.0)
+			arrow_path.look_at(ai.global_position) 
+			arrow_path.sfx = true 
+			get_parent().add_child(arrow_path)

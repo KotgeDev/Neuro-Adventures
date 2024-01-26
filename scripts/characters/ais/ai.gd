@@ -77,6 +77,10 @@ func process_ai_damage_received(BASE_DAMAGE: float) -> float:
 	
 	for upgrade in get_tree().get_nodes_in_group("process_ai_damage_received"):
 		modified_damage = upgrade.process_ai_damage_received(BASE_DAMAGE, modified_damage) 
+	
+	var gaslight = get_tree().get_first_node_in_group("gaslight")
+	if gaslight:
+		modified_damage = gaslight.process_ai_damage_received(BASE_DAMAGE, modified_damage) 
 
 	return modified_damage
 

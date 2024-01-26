@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cbfigu64qfdvf"]
+[gd_scene load_steps=4 format=3 uid="uid://cbfigu64qfdvf"]
 
 [ext_resource type="Script" path="res://scripts/ui/menu.gd" id="1_833i5"]
-[ext_resource type="Texture2D" uid="uid://ck3vocomisktb" path="res://assets/ui/main_menu.png" id="2_yw33v"]
-[ext_resource type="Theme" uid="uid://cbqv70ya041cw" path="res://assets/themes/default_theme.tres" id="3_3fel6"]
-[ext_resource type="Script" path="res://scenes/ui/masterslider.gd" id="4_uy301"]
+[ext_resource type="Texture2D" uid="uid://ck3vocomisktb" path="res://assets/ui/cover_image.png" id="2_yw33v"]
+[ext_resource type="PackedScene" uid="uid://b6j6utnkndtjo" path="res://scenes/options/options.tscn" id="3_nre05"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -23,25 +22,13 @@ offset_right = -346.56
 offset_bottom = -35.6
 texture = ExtResource("2_yw33v")
 
-[node name="Title" type="Label" parent="."]
-texture_filter = 2
-layout_mode = 0
-offset_left = 39.0
-offset_top = 30.0
-offset_right = 524.0
-offset_bottom = 94.0
-theme_override_colors/font_color = Color(1, 1, 1, 0.882353)
-theme_override_colors/font_outline_color = Color(0.635294, 0.439216, 0.282353, 1)
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 80
-text = "Neuro Adventures!"
-
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 515.0
-offset_top = 218.0
-offset_right = 615.0
-offset_bottom = 342.0
+offset_left = 509.0
+offset_top = 186.0
+offset_right = 609.0
+offset_bottom = 326.0
+theme_override_constants/separation = 0
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
@@ -62,71 +49,10 @@ custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "Quit"
 
-[node name="PauseMenu" type="Panel" parent="."]
-visible = false
-layout_mode = 0
-offset_left = 16.0
-offset_top = 17.0
-offset_right = 632.0
-offset_bottom = 353.0
-
-[node name="Label" type="Label" parent="PauseMenu"]
+[node name="Options" parent="." instance=ExtResource("3_nre05")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -2.0
-offset_right = 3.0
-offset_bottom = -288.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("3_3fel6")
-text = "Options!"
-horizontal_alignment = 1
-
-[node name="ExitPauseMenuButton" type="Button" parent="PauseMenu"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 231.0
-offset_top = 299.0
-offset_right = -224.0
-offset_bottom = -6.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Exit"
-
-[node name="MasterSlider" type="HSlider" parent="PauseMenu"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.503
-anchor_top = 0.226
-anchor_right = 0.669
-anchor_bottom = 0.295
-offset_left = 0.151978
-offset_top = 0.0639954
-offset_right = -0.104004
-offset_bottom = 1.88
-min_value = -30.0
-max_value = 0.0
-script = ExtResource("4_uy301")
-
-[node name="VolumeText" type="Label" parent="PauseMenu"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.377
-anchor_top = 0.217
-anchor_right = 0.49
-anchor_bottom = 0.289
-offset_left = -0.23201
-offset_top = 0.0879974
-offset_right = 0.160004
-offset_bottom = 1.896
-text = "Volume"
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/OptionButton" to="." method="_on_option_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
-[connection signal="pressed" from="PauseMenu/ExitPauseMenuButton" to="." method="_on_exit_pause_menu_button_pressed"]
-[connection signal="value_changed" from="PauseMenu/MasterSlider" to="PauseMenu/MasterSlider" method="_on_value_changed"]
+[connection signal="close_options" from="Options" to="." method="_on_options_close_options"]

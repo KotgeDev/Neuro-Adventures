@@ -14,17 +14,21 @@ func _ready() -> void:
 var upgrades_db = [
 	Upgrade.new(
 		"Programming Socks",
+		preload("res://assets/upgrades/programming_socks_icon.png"),
 		[
+			"+ 5% faster speed (for both characters)",
 			"+ 10% faster speed (for both characters)",
+			"+ 15% faster speed (for both characters)",
 			"+ 20% faster speed (for both characters)"
 		],
 		Globals.UpgradeType.COLLAB_PARTNER_UPGRADE, 
-		2,
+		4,
 		0,
 		preload("res://scenes/upgrades/programming_socks.tscn")
 	),
 	Upgrade.new(
 		"Shock Magnet",
+		preload("res://assets/upgrades/shock_magnet_icon.png"),
 		[
 			"33% larger item collection range for collab partners",
 			"66% larger item collection range for collab partners",
@@ -38,6 +42,7 @@ var upgrades_db = [
 	),
 	Upgrade.new(
 		"Filter",
+		preload("res://assets/upgrades/filtered_icon.png"),
 		[
 			"AIs now do 30% less damage to collab partners",
 			"AIs now do 50% less damage to collab partners",
@@ -51,6 +56,7 @@ var upgrades_db = [
 	),
 	Upgrade.new(
 		"Creggs",
+		preload("res://assets/upgrades/creggs_icon.png"),
 		[
 			"1% chance for enemies to drop a chicken bake (Gives 7 HP to the Collab Partner)",
 			"2% chance for enemies to drop chicken bake ",
@@ -64,6 +70,7 @@ var upgrades_db = [
 	),
 	Upgrade.new(
 		"Cookies",
+		preload("res://assets/upgrades/cookies_icon.png"),
 		[
 			"1% chance for enemies to drop cookies (Gives 5 HP to the AI)",
 			"2% chance for enemies to drop cookies ",
@@ -74,25 +81,13 @@ var upgrades_db = [
 		4,
 		0,
 		preload("res://scenes/upgrades/cookies_upgrade.tscn")
-	),
-	Upgrade.new(
-		"Swarm Upgrades",
-		[
-			"Increase damage of all gymbag drones by 100% of base",
-			"Increase speed of all gymbag drones by 50% of base",
-			"Increase damage of all gymbag drones by 200% of base",
-			"Increase speed of all gymbag drones by 100% of base"
-		],
-		Globals.UpgradeType.AI_UPGRADE, 
-		4,
-		0,
-		preload("res://scenes/upgrades/swarm_upgrades.tscn")
 	)
 ]
 
 var neuro_upgrades_db = [
 	Upgrade.new(
 		"Dual Strike", 
+		preload("res://assets/upgrades/swords_icon.png"),
 		[
 			"Dual Strike",
 			"Less interval between strikes ",
@@ -107,16 +102,33 @@ var neuro_upgrades_db = [
 	), 
 	Upgrade.new(
 		"Gymbag Drone",
+		preload("res://assets/upgrades/gymbag_drone_icon.png"),
 		[
 			"A gymbag drone that will strike enemies at random. You can have many as you want."
 		],
 		Globals.UpgradeType.AI_UPGRADE, 
 		1,
 		0,
-		preload("res://scenes/upgrades/gymbag_drone.tscn")
+		preload("res://scenes/upgrades/gymbag_drone.tscn"),
+		["unlimited"]
+	),
+	Upgrade.new(
+		"Swarm Upgrades",
+		preload("res://assets/upgrades/swarm_upgrades_icon.png"),
+		[
+			"Increase damage of all gymbag drones by 100% of base",
+			"Increase speed of all gymbag drones by 50% of base",
+			"Increase damage of all gymbag drones by 200% of base",
+			"Increase speed of all gymbag drones by 100% of base"
+		],
+		Globals.UpgradeType.AI_UPGRADE, 
+		4,
+		0,
+		preload("res://scenes/upgrades/swarm_upgrades.tscn")
 	),
 	Upgrade.new(
 		"Gaslight",
+		preload("res://assets/upgrades/gaslight_icon.png"),
 		[
 			"Gives the AI 5% chance to ignore damage and 10% chance to divert the damage to the Collab Partner",
 			"Gives the AI 7% chance to ignore damage and 15% chance to divert the damage to the Collab Partner",
@@ -127,12 +139,26 @@ var neuro_upgrades_db = [
 		4,
 		0,
 		preload("res://scenes/upgrades/gaslight.tscn")
+	),
+	Upgrade.new(
+		"Say it Back!",
+		preload("res://assets/upgrades/say_it_back_icon.png"),
+		[
+			"Both characters have 50% increased damage. The AI will chase after you closer",
+			"Both characters have 100% increased damage. The AI will chase after you even closer",
+			"Both characters have 150% increased damage. The AI will chase after you like never before."
+		],
+		Globals.UpgradeType.AI_UPGRADE, 
+		3,
+		0,
+		preload("res://scenes/upgrades/say_it_back.tscn")
 	)
 ]
 
 var vedal_upgrades_db = [
 	Upgrade.new(
 		"Rum",
+		preload("res://assets/upgrades/rum_icon.png"),
 		[
 			"Rum", 
 			"Increased splash damage duration",
@@ -145,16 +171,15 @@ var vedal_upgrades_db = [
 		preload("res://scenes/upgrades/rum_scene.tscn")
 	),
 	Upgrade.new(
-		"Say it Back!",
+		"DM Allegations",
+		preload("res://assets/upgrades/dm_allegations_icon.png"),
 		[
-			"Both characters have 50% increased damage. The AI will chase after you closer",
-			"Both characters have 100% increased damage. The AI will chase after you even closer",
-			"Both characters have 150% increased damage. The AI will chase after you like never before."
+			"Vedal ignores all damage. However, every time he gets damaged, there is a 0.1% chance that all of the damage he ignored will be inflicted at once."
 		],
-		Globals.UpgradeType.AI_UPGRADE, 
-		3,
+		Globals.UpgradeType.COLLAB_PARTNER_UPGRADE, 
+		1,
 		0,
-		preload("res://scenes/upgrades/say_it_back.tscn")
+		preload("res://scenes/upgrades/dm_allegations.tscn")
 	)
 ]
 

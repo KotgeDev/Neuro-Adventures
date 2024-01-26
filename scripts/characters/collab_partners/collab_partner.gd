@@ -103,7 +103,12 @@ func process_collab_partner_damage_received(BASE_DAMAGE: float) -> float:
 	
 	for upgrade in get_tree().get_nodes_in_group("process_collab_partner_damage_received"):
 		modified_damage = upgrade.process_collab_partner_damage_received(BASE_DAMAGE, modified_damage) 
+	
+	var dm_allegations = get_tree().get_first_node_in_group("dm_allegations")
+	if dm_allegations:
+		modified_damage = dm_allegations.process_collab_partner_damage_received(BASE_DAMAGE, modified_damage) 
 
+	
 	return modified_damage
 
 func _on_add_upgrade(upgrade: Node) -> void:

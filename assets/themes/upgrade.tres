@@ -1,0 +1,10 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://bspcvalmxg40p"]
+
+[ext_resource type="Texture2D" uid="uid://c0onfliyfm7bs" path="res://assets/themes/upgrade_9slice.png" id="1_urua6"]
+
+[resource]
+texture = ExtResource("1_urua6")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
