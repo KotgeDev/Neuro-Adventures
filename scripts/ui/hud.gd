@@ -31,7 +31,6 @@ var exp_value = 0.0
 #endregion UI Shake Handler End
 
 #region OTHER
-var menu_blip1: AudioStream = preload("res://assets/sfx/menublip.wav")
 var menu_blip2: AudioStream = preload("res://assets/sfx/menublip2.wav")
 var start_time_msec = 0.0
 var pause_start_time_msec = 0.0
@@ -217,7 +216,7 @@ func _on_send_random_upgrades(upgrades: Array) -> void:
 		choice_panel_container.add_child(choice_panel)
 
 func _on_mouse_over_upgrade() -> void:
-	AudioSystem.play_sfx(menu_blip1, collab_partner.global_position)
+	AudioSystem.play_sfx(menu_blip2, collab_partner.global_position)
 
 func _on_upgrade_selected(upgrade: Upgrade) -> void:
 	AudioSystem.play_sfx(menu_blip2, collab_partner.global_position)

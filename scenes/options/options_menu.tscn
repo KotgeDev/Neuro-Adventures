@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b6j6utnkndtjo"]
+[gd_scene load_steps=9 format=3 uid="uid://b6j6utnkndtjo"]
 
 [ext_resource type="Script" path="res://scripts/options/options_menu.gd" id="1_ap703"]
 [ext_resource type="Theme" uid="uid://cbqv70ya041cw" path="res://assets/themes/default_theme.tres" id="3_fx5r4"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b3ylcqvevfyfh" path="res://scenes/options/volume_slider.tscn" id="5_05trf"]
 [ext_resource type="Script" path="res://scripts/options/full_health_toggle.gd" id="5_ogmc3"]
 [ext_resource type="Script" path="res://scripts/options/fps_counter_toggle.gd" id="6_s04cr"]
+[ext_resource type="Script" path="res://scripts/ui/button_with_sfx.gd" id="8_2myty"]
 
 [node name="OptionsMenu" type="Control"]
 layout_mode = 3
@@ -195,5 +196,6 @@ offset_top = 309.0
 offset_right = 121.0
 offset_bottom = 341.0
 text = "Return"
+script = ExtResource("8_2myty")
 
 [connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]

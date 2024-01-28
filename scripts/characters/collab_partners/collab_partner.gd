@@ -78,11 +78,11 @@ func _on_hurtbox_take_damage(damage: float):
 	if health <= 0: 
 		Globals.game_over.emit() 
 	
-	AudioSystem.play_sfx(hit_sfx, global_position)
+	AudioSystem.play_sfx(hit_sfx, global_position, 0.8)
 
 func _on_collect_exp(value: int) -> void:
 	expp += value
-	AudioSystem.play_sfx(exp_sfx, global_position, 0.5)
+	AudioSystem.play_sfx(exp_sfx, global_position, 0.4)
 	if expp >= exp_requirement: 
 		expp = expp - exp_requirement
 		exp_requirement += EXP_REQ_INCREMENT

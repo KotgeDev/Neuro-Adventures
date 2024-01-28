@@ -15,5 +15,3 @@ func _on_options_close_options():
 
 func _on_quit_button_pressed():
 	get_tree().quit() 
-
-

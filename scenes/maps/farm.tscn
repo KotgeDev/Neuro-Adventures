@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://drg7spn8yqktv"]
+[gd_scene load_steps=52 format=3 uid="uid://drg7spn8yqktv"]
 
 [ext_resource type="PackedScene" uid="uid://b8oia7t2aewka" path="res://scenes/characters/collab_partners/vedal.tscn" id="1_wnmde"]
 [ext_resource type="Script" path="res://scripts/maps/farm.gd" id="1_wx0jl"]
@@ -8,8 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://huy32vwhqidx" path="res://scenes/characters/ais/neuro.tscn" id="3_rcj0f"]
 [ext_resource type="PackedScene" uid="uid://3ojvl7d7u1pe" path="res://scenes/enemies/enemy_spawner.tscn" id="5_ep230"]
 [ext_resource type="PackedScene" uid="uid://8uhv6g1gj5yk" path="res://scenes/upgrades/upgrade_manager.tscn" id="7_wfvop"]
-[ext_resource type="Script" path="res://scripts/audio/MusicPlayer.gd" id="9_4x2ga"]
-[ext_resource type="AudioStream" uid="uid://0llv3ovrmips" path="res://assets/songs/the_farm.wav" id="10_hue21"]
+[ext_resource type="PackedScene" uid="uid://dh53uv4y0tqn3" path="res://scenes/shared/music_player.tscn" id="9_wwhy6"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_122t5"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -659,8 +658,6 @@ rotation = 1.5708
 
 [node name="UpgradeManager" parent="." instance=ExtResource("7_wfvop")]
 
-[node name="Music Player" type="Node" parent="."]
-script = ExtResource("9_4x2ga")
-musicFile = ExtResource("10_hue21")
+[node name="MusicPlayer" parent="." instance=ExtResource("9_wwhy6")]
 
 [editable path="EnemySpawner"]
