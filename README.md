@@ -24,10 +24,10 @@ To implement damage modifier upgrades, use the table below. The UpgradeScene mus
 Group and Function Name | Required Parameters | Return Value | Description   
 ---|---|---|---
 damage_received_modifiers_ai | BASE_DAMAGE: float, modified_damage: float | modified_damage | Enemy -> AI
-damage_received_modifiers_collab | BASE_DAMAGE: float, modified_damage: float | modified_damage | Enemy -> CollabPartner
-damage_given_modifiers_global | BASE_DAMAGE: float, modified_damage: float, area: Area2D | modified_damage | AI/CollabPartner -> Enemy
+damage_received_modifiers_collab | BASE_DAMAGE: float, modified_damage: float | modified_damage | Enemy -> Colla
+damage_given_modifiers_global | BASE_DAMAGE: float, modified_damage: float, area: Area2D | modified_damage | AI / Collab -> Enemy
 damage_given_modifiers_ai | BASE_DAMAGE: float, modified_damage: float, area: Area2D | modified_damage | AI -> Enemy
-damage_given_modifiers_collab | BASE_DAMAGE: float, modified_damage: float, area: Area2D | modified_damage | CollabPartner -> Enemy 
+damage_given_modifiers_collab | BASE_DAMAGE: float, modified_damage: float, area: Area2D | modified_damage | Collab -> Enemy 
 
 ## License
 Code is licensed under a [MIT license](LICENSE.md) 
