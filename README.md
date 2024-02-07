@@ -15,20 +15,19 @@ This repository contains all of the code and assets for the game.
 ### Adding a new upgrade 
 Upgrades available regardless of characters chosen should be placed within upgrades_db. If you want to create upgrades only available for specific characters, add them to upgrades_db_<character_name>. Create upgrades_db_<character_name> if it does not exist. When creating upgrades_db_<character_name> also update _on_map_ready() to be able to use the array. 
 
-To create an upgrade you need: upgrade name, description (an array of descriptions for each lvl), upgrade type (Globals.UpgradeType), max_lvl, lvl, scene_template. 
+To create an upgrade you need: upgrade name, description (an array of descriptions for each lvl), upgrade type (Globals.UpgradeType), max_lvl, lvl, scene_template. You can add tags (An array of strings) as the last parameter for specific functionality.
 
 All UpgradeScenes should inherit from UpgradeScene 
 
-To have upgrades impact a character's damage, add the UpgradeScene to the appropriate group and create a function with the same name as the group. Refer to the chart below for more information. 
-Note, you cannot set the order in which modifiers are applied with these functions so if the order is important you will need to create your own function. The first two functions deal with damage
-received by the characters and the rest deal with damage given by the characters: 
-Group and Function Name | Required Parameters | Return Value  
----|---|---
-process_ai_damage_received | BASE_DAMAGE: float, modified_damage: float | modified_damage
-process_collab_partner_damage_received | BASE_DAMAGE: float, modified_damage: float | modified_damage 
-global_damage_modifiers | BASE_DAMAGE: float, modified_damage: float, area: Area2D | modified_damage 
-ai_damage_modifiers | BASE_DAMAGE: float, modified_damage: float, area: Area2D | modified_damage
-collab_partner_damage_modifiers | BASE_DAMAGE: float, modified_damage: float, area: Area2D | modified_damage
+To implement damage modifier upgrades, use the table below. The UpgradeScene must be added to the desired group and have a function with the same name as the group. See ai.gd / collab_partner.gd to see the specifics on how damage received modifiers (Enemy -> AI or CollabPartner) work, and hitbox.gd to see the specifics on how damage given modifiers work (AI, CollabPartner, or both -> Enemy). 
+
+Group and Function Name | Required Parameters | Return Value | Description   
+---|---|---|---
+damage_received_modifiers_ai | BASE_DAMAGE: float, modified_damage: float | modified_damage | Enemy -> AI
+damage_received_modifiers_collab | BASE_DAMAGE: float, modified_damage: float | modified_damage | Enemy -> CollabPartner
+damage_given_modifiers_global | BASE_DAMAGE: float, modified_damage: float, area: Area2D | modified_damage | AI/CollabPartner -> Enemy
+damage_given_modifiers_ai | BASE_DAMAGE: float, modified_damage: float, area: Area2D | modified_damage | AI -> Enemy
+damage_given_modifiers_collab | BASE_DAMAGE: float, modified_damage: float, area: Area2D | modified_damage | CollabPartner -> Enemy 
 
 ## License
 Code is licensed under a [MIT license](LICENSE.md) 
