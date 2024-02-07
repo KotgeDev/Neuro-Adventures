@@ -68,7 +68,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _on_hurtbox_take_damage(damage: float):
-	damage = process_collab_partner_damage_received(damage)
+	damage = damage_received_modifiers_collab(damage)
 	if damage == 0.0:
 		return 
 	
@@ -98,15 +98,15 @@ func _on_collect_creggs() -> void:
 	
 	Globals.update_collab_partner_health.emit(MAX_HEALTH, health)
 
-func process_collab_partner_damage_received(BASE_DAMAGE: float) -> float:
+func damage_received_modifiers_collab(BASE_DAMAGE: float) -> float:
 	var modified_damage := BASE_DAMAGE
 	
-	for upgrade in get_tree().get_nodes_in_group("process_collab_partner_damage_received"):
-		modified_damage = upgrade.process_collab_partner_damage_received(BASE_DAMAGE, modified_damage) 
+	for upgrade in get_tree().get_nodes_in_group("damage_received_modifiers_collab"):
+		modified_damage = upgrade.damage_received_modifiers_collab(BASE_DAMAGE, modified_damage) 
 	
 	var dm_allegations = get_tree().get_first_node_in_group("dm_allegations")
 	if dm_allegations:
-		modified_damage = dm_allegations.process_collab_partner_damage_received(BASE_DAMAGE, modified_damage) 
+		modified_damage = dm_allegations.damage_received_modifiers_collab(BASE_DAMAGE, modified_damage) 
 
 	
 	return modified_damage

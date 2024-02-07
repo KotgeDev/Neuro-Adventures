@@ -3,7 +3,7 @@ extends UpgradeScene
 func _ready() -> void: 
 	add_to_group("filter")
 
-func ai_damage_modifiers(
+func damage_given_modifiers_ai(
 	BASE_DAMAGE: float, 
 	modified_damage: float, 
 	area: Area2D

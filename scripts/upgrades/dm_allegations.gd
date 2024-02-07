@@ -7,8 +7,7 @@ var accumulated_damage := 0.0
 func _ready() -> void: 
 	add_to_group("dm_allegations")
 
-## Must be the final damage received modifier 
-func process_collab_partner_damage_received(BASE_DAMAGE: float, modified_damage: float) -> float:
+func damage_received_modifiers_collab(BASE_DAMAGE: float, modified_damage: float) -> float:
 	var random_f = randf()
 	if random_f <= 0.001:
 		modified_damage = accumulated_damage

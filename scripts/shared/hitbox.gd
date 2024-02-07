@@ -20,35 +20,35 @@ func apply_damage_multipliers(BASE_DAMAGE: float, area: Area2D) -> float:
 	var modified_damage := BASE_DAMAGE 
 	
 	if owned_by == Globals.Owners.OWNED_BY_AI or owned_by == Globals.Owners.OWNED_BY_COLLAB_PARTNER:
-		modified_damage = global_damage_modifiers(BASE_DAMAGE, modified_damage, area)
+		modified_damage = damage_given_modifiers_global(BASE_DAMAGE, modified_damage, area)
 	
 	if owned_by == Globals.Owners.OWNED_BY_AI:
-		modified_damage = ai_damage_modifiers(BASE_DAMAGE, modified_damage, area)
+		modified_damage = damage_given_modifiers_ai(BASE_DAMAGE, modified_damage, area)
 		
 	if owned_by == Globals.Owners.OWNED_BY_COLLAB_PARTNER:
-		modified_damage = collab_partner_damage_modifiers(BASE_DAMAGE, modified_damage, area)
+		modified_damage = damage_given_modifiers_collab(BASE_DAMAGE, modified_damage, area)
 	
 	return modified_damage
 
-func global_damage_modifiers(BASE_DAMAGE: float, modified_damage: float, area: Area2D) -> float:	
-	for upgrade in get_tree().get_nodes_in_group("global_damage_modifiers"):
-		modified_damage = upgrade.global_damage_modifiers(BASE_DAMAGE, modified_damage, area) 
+func damage_given_modifiers_global(BASE_DAMAGE: float, modified_damage: float, area: Area2D) -> float:	
+	for upgrade in get_tree().get_nodes_in_group("damage_given_modifiers_global"):
+		modified_damage = upgrade.damage_given_modifiers_global(BASE_DAMAGE, modified_damage, area) 
 
 	return modified_damage
 
-func ai_damage_modifiers(BASE_DAMAGE: float, modified_damage: float, area: Area2D) -> float:
-	for upgrade in get_tree().get_nodes_in_group("ai_damage_modifiers"):
-		modified_damage = upgrade.ai_damage_modifiers(BASE_DAMAGE, modified_damage, area) 
+func damage_given_modifiers_ai(BASE_DAMAGE: float, modified_damage: float, area: Area2D) -> float:
+	for upgrade in get_tree().get_nodes_in_group("damage_given_modifiers_ai"):
+		modified_damage = upgrade.damage_given_modifiers_ai(BASE_DAMAGE, modified_damage, area) 
 	
 	var filter = get_tree().get_first_node_in_group("filter")
 	if filter:
-		modified_damage = filter.ai_damage_modifiers(BASE_DAMAGE, modified_damage, area) 
+		modified_damage = filter.damage_given_modifiers_ai(BASE_DAMAGE, modified_damage, area) 
 	
 	return modified_damage
 
-func collab_partner_damage_modifiers(BASE_DAMAGE: float, modified_damage: float, area: Area2D) -> float:
-	for upgrade in get_tree().get_nodes_in_group("collab_partner_damage_modifiers"):
-		modified_damage = upgrade.collab_partner_damage_modifiers(BASE_DAMAGE, modified_damage, area) 
+func damage_given_modifiers_collab(BASE_DAMAGE: float, modified_damage: float, area: Area2D) -> float:
+	for upgrade in get_tree().get_nodes_in_group("damage_given_modifiers_collab"):
+		modified_damage = upgrade.damage_given_modifiers_collab(BASE_DAMAGE, modified_damage, area) 
 
 	return modified_damage
 
