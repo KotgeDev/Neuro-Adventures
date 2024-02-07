@@ -21,6 +21,7 @@ class_name SimpleEnemy
 
 #region NODES
 @onready var sprite_2d = $Sprite2D
+@onready var map = get_tree().get_first_node_in_group("map") as MAP
 #endregion 
 
 #region NAVIGATION
@@ -33,7 +34,9 @@ var next_pos: Vector2
 var cookie_template = preload("res://scenes/collectibles/cookie.tscn")
 var creggs_template = preload("res://scenes/collectibles/creggs.tscn")
 var expp_template = preload("res://scenes/collectibles/exp.tscn")
+var ntx_template = preload("res://scenes/interactive_objects/ntx_4090.tscn")
 var last_enemy := false 
+var last_flip_time: float
 #endregion 
 
 #region MARCH
@@ -73,11 +76,12 @@ func _physics_process(delta):
 	else:
 		var dir = to_local(next_pos).normalized()
 		velocity = dir * SPEED    
-
-	if velocity.x < 0: 
-		sprite_2d.flip_h = true 
-	elif velocity.x > 0:
-		sprite_2d.flip_h = false 
+	
+	if last_flip_time > 0:
+		last_flip_time -= delta 
+	else:
+		sprite_2d.flip_h = velocity.x < 0 
+		last_flip_time = 0.5
 	
 	position += velocity * delta 
 
@@ -96,23 +100,29 @@ func _on_hurtbox_take_damage(damage):
 		if cookie_num <= ai.cookie_drop_chance:
 			var cookie = cookie_template.instantiate()
 			cookie.global_position = global_position
-			get_parent().call_deferred("add_child", cookie)
+			map.call_deferred("add_child", cookie)
 			already_dropped_item = true 
 			
 		var creggs_num = randf()
 		if creggs_num <= collab_partner.creggs_drop_chance:
 			var creggs = creggs_template.instantiate()
 			creggs.global_position = global_position
-			get_parent().call_deferred("add_child", creggs)
+			map.call_deferred("add_child", creggs)
 			already_dropped_item = true 
 			
 		if not already_dropped_item:
 			var expp = expp_template.instantiate() 
 			expp.global_position = global_position
-			get_parent().call_deferred("add_child", expp)
+			map.call_deferred("add_child", expp)
 		
-		if last_enemy:
-			Globals.game_won.emit() 
+		var ntx_num = randf_range(0, 100) 
+		if ntx_num <= map.ntx_chance:
+			map.ntx_chance = map.NTX_BASE_CHANCE
+			var ntx = ntx_template.instantiate()
+			ntx.global_position = global_position
+			map.call_deferred("add_child", ntx)
+		else:
+			map.ntx_chance += map.NTX_STEP 
 		
 		queue_free() 
 

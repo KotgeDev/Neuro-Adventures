@@ -57,6 +57,7 @@ func connect_signals() -> void:
 	Globals.update_collab_partner_health.connect(_on_update_collab_partner_health)
 	Globals.update_exp_bar.connect(_on_update_exp_bar)
 	Globals.send_random_upgrades.connect(_on_send_random_upgrades)
+	Globals.send_all_existing_upgrades.connect(_on_send_all_existing_upgrades)
 	Globals.map_ready.connect(_on_map_ready)
 	Globals.change_fps_counter_state.connect(set_fps_counter_state)
 	
@@ -125,6 +126,7 @@ func _on_game_won() -> void:
 	menu_allowed = false 
 	pause_game()
 	%EndGameLabel.text = "VICTORY"
+	%EndGameLabel.material = load("res://assets/shaders/rainbow.tres")
 	%FlavorText.text = "Sometimes when I sit here and stream, I envision myself as a goddess, overlooking my followers. "
 	$EndGame/TimeLabel.text = "Elapsed time: " + calculated_survived_time()
 	end_game.visible = true 
@@ -184,11 +186,16 @@ func _on_send_random_upgrades(upgrades: Array) -> void:
 	display_level += 1 
 	level_counter.text = str(display_level)
 	
-	if upgrades.size() == 0:
-		return
-	
+	%UpgradeLabel.visible = false
 	pause_game()
+	display_upgrades(upgrades)
+
+func _on_send_all_existing_upgrades(upgrades: Array) -> void:
+	%UpgradeLabel.visible = true 
+	pause_game()
+	display_upgrades(upgrades) 
 	
+func display_upgrades(upgrades: Array) -> void:
 	upgrade_menu.visible = true 
 	upgrade_menu._set_scale_zero()
 	upgrade_menu.ui_Active = true 
@@ -213,21 +220,20 @@ func _on_send_random_upgrades(upgrades: Array) -> void:
 		icon.texture = upgrade.icon
 		description.text = upgrade.descriptions[upgrade.lvl]
 		choice_panel.visible = true
-		choice_panel_container.add_child(choice_panel)
+		choice_panel_container.add_child(choice_panel) 
 
 func _on_mouse_over_upgrade() -> void:
 	AudioSystem.play_sfx(menu_blip2, collab_partner.global_position)
 
 func _on_upgrade_selected(upgrade: Upgrade) -> void:
+	unpause_game()
 	AudioSystem.play_sfx(menu_blip2, collab_partner.global_position)
 	Globals.lvl_up.emit(upgrade)
-	
-	$UpgradeMenu.visible = false 
-	var container = %ChoicePanelContainer
+	upgrade_menu.visible = false 
+	var container = choice_panel_container
 	for child in container.get_children():
 		child.queue_free() 
 	AudioSystem.set_music_volume(1)
-	unpause_game()
 
 func _on_menu_button_pressed():
 	unpause_game()

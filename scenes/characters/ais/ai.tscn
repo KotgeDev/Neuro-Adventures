@@ -13,26 +13,25 @@ radius = 59.0085
 script = ExtResource("1_6e7cc")
 
 [node name="CharacterAnimation" parent="." node_paths=PackedStringArray("character") instance=ExtResource("2_vuvkh")]
+position = Vector2(0, -13)
 character = NodePath("..")
 
 [node name="IdleSprite" parent="CharacterAnimation" index="0"]
 texture = ExtResource("3_a3wgx")
-frame = 0
 
 [node name="RunSprite" parent="CharacterAnimation" index="1"]
-visible = true
 texture = ExtResource("4_1chnv")
 
 [node name="SearchField" type="Area2D" parent="."]
+position = Vector2(0, -13)
 collision_layer = 0
 collision_mask = 16
-metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SearchField"]
 shape = SubResource("CircleShape2D_ng05f")
 
 [node name="Hurtbox" parent="." instance=ExtResource("5_bi4ec")]
-visible = false
+position = Vector2(0, -13)
 collision_layer = 1
 
 [node name="CollisionPolygon2D" parent="Hurtbox" index="0"]

@@ -6,10 +6,12 @@ extends Node2D
 @onready var idle_sprite = $IdleSprite
 @onready var run_sprite = $RunSprite
 
-func _process(delta: float) -> void:
-	update_animation() 
+var last_flip_time
 
-func update_animation() -> void: 
+func _process(delta: float) -> void:
+	update_animation(delta) 
+
+func update_animation(delta: float) -> void: 
 	if character.velocity == Vector2.ZERO: 
 		animation_tree["parameters/conditions/idle"] = true
 		animation_tree["parameters/conditions/is_running"] = false

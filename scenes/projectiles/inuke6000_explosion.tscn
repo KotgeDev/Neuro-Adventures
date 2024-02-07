@@ -1,0 +1,95 @@
+[gd_scene load_steps=9 format=3 uid="uid://ba3lxduf1jjx7"]
+
+[ext_resource type="Script" path="res://scripts/projectiles/inuke6000_explosion.gd" id="1_t3kpk"]
+[ext_resource type="PackedScene" uid="uid://3miicp8y7p5b" path="res://scenes/shared/multi_hitbox.tscn" id="2_1drgx"]
+[ext_resource type="Texture2D" uid="uid://cdwo2xuhjritb" path="res://assets/projectiles/nuke_area.png" id="3_7ygn3"]
+[ext_resource type="Texture2D" uid="uid://bvgsp00tjh1me" path="res://assets/projectiles/nuke_sheet.png" id="4_vavns"]
+
+[sub_resource type="Animation" id="Animation_d1shh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NukeExplosion:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_slwy2"]
+resource_name = "nuke_exploding"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NukeExplosion:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+}
+
+[sub_resource type="Animation" id="Animation_seb46"]
+resource_name = "nuke_falling"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NukeExplosion:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nuh8f"]
+_data = {
+"RESET": SubResource("Animation_d1shh"),
+"nuke_exploding": SubResource("Animation_slwy2"),
+"nuke_falling": SubResource("Animation_seb46")
+}
+
+[node name="iNuke6000Explosion" type="Node2D"]
+script = ExtResource("1_t3kpk")
+
+[node name="MultiHitbox" parent="." instance=ExtResource("2_1drgx")]
+visible = false
+collision_mask = 6
+
+[node name="CollisionPolygon2D" parent="MultiHitbox" index="0"]
+polygon = PackedVector2Array(0, -48, -11, -46, -17, -44, -20, -43, -25, -40, -29, -37, -34, -33, -37, -29, -40, -25, -43, -20, -45, -15, -48, 0, -46, 11, -43, 20, -40, 25, -37, 29, -33, 34, -29, 37, -25, 40, -17, 44, -11, 46, 0, 48, 11, 46, 17, 44, 24, 41, 29, 37, 33, 34, 37, 29, 42, 22, 44, 17, 46, 11, 47, 6, 48, 0, 47, -6, 46, -11, 44, -17, 42, -22, 37, -29, 34, -33, 29, -37, 25, -40, 17, -44, 11, -46)
+disabled = true
+
+[node name="WarningSprite" type="Sprite2D" parent="."]
+z_index = -3
+z_as_relative = false
+texture = ExtResource("3_7ygn3")
+
+[node name="NukeExplosion" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+texture = ExtResource("4_vavns")
+hframes = 13
+
+[node name="GracePeriodTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nuh8f")
+}
+
+[connection signal="timeout" from="GracePeriodTimer" to="." method="_on_grace_period_timer_timeout"]
+
+[editable path="MultiHitbox"]

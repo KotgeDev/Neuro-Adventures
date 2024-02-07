@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3cpr42ek57qj"]
+
+[ext_resource type="Script" path="res://scripts/upgrades/angel_wings.gd" id="1_3u84a"]
+[ext_resource type="PackedScene" uid="uid://b5326ppiejrxm" path="res://scenes/shared/enemy_search_area.tscn" id="2_1fdgp"]
+
+[node name="AngelWings" type="Node2D"]
+script = ExtResource("1_3u84a")
+
+[node name="EnemySearchArea" parent="." instance=ExtResource("2_1fdgp")]
+
+[node name="FireTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="RightMarker" type="Marker2D" parent="."]
+position = Vector2(9, -17)
+
+[node name="LeftMarker" type="Marker2D" parent="."]
+position = Vector2(-9, -17)
+
+[connection signal="timeout" from="FireTimer" to="." method="_on_fire_timer_timeout"]

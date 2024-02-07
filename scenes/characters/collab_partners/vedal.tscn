@@ -6,8 +6,8 @@
 
 [node name="Vedal" instance=ExtResource("1_isy60")]
 
-[node name="Shadow" type="Sprite2D" parent="." index="5"]
-position = Vector2(1, -24)
+[node name="Shadow" type="Sprite2D" parent="." index="6"]
+position = Vector2(1, -28)
 texture = ExtResource("2_a2hfa")
 script = ExtResource("3_2qssh")
 

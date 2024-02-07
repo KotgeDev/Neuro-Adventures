@@ -108,7 +108,6 @@ func _on_pathfind_timer_timeout():
 	make_path()
 
 func _on_fire_timer_timeout():
-	return
 	var arrow_path = arrow_path_template.instantiate() 
 	arrow_path.global_position = fire_point.global_position
 	arrow_path.look_at(ai.global_position) 

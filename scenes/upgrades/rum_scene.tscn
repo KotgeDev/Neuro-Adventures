@@ -9,6 +9,6 @@ script = ExtResource("1_2vgel")
 autostart = true
 
 [node name="FireLocation" type="Marker2D" parent="."]
-position = Vector2(8, 5)
+position = Vector2(10, -7)
 
 [connection signal="timeout" from="FireTimer" to="." method="_on_fire_timer_timeout"]

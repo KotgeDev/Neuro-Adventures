@@ -14,6 +14,6 @@ WARNING_TIME = 0.5
 offset_top = -4.0
 offset_right = 3000.0
 offset_bottom = 4.0
-color = Color(1, 0.12549, 0.0862745, 0.392157)
+color = Color(1, 0.12549, 0.0862745, 0.47451)
 
 [connection signal="timeout" from="SelfDestructTimer" to="." method="self_destruct"]

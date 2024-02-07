@@ -23,6 +23,7 @@ owned_by = 2
 polygon = PackedVector2Array(-11.5718, 23.2764, 10.4282, 23.2764, 10.4282, 22.2764, -11.5718, 22.2764)
 
 [node name="SelfDestructTimer" type="Timer" parent="."]
+autostart = true
 
 [connection signal="self_destruct" from="MultiHitbox" to="." method="_on_multi_hitbox_self_destruct"]
 [connection signal="timeout" from="SelfDestructTimer" to="." method="_on_self_destruct_timer_timeout"]

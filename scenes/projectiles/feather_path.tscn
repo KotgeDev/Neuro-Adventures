@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://bn8j3hpp0nfk4"]
+
+[ext_resource type="Script" path="res://scripts/projectiles/feather_path.gd" id="1_o581m"]
+
+[node name="FeatherPath" type="Node2D"]
+z_index = 1
+script = ExtResource("1_o581m")
+
+[node name="SelfDestructTimer" type="Timer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(0, 6)
+offset_top = -4.0
+offset_right = 3000.0
+offset_bottom = 4.0
+color = Color(1, 0.580392, 0.560784, 0.47451)
+
+[connection signal="timeout" from="SelfDestructTimer" to="." method="self_destruct"]

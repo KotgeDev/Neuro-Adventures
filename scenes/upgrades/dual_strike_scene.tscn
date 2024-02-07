@@ -3,6 +3,8 @@
 [ext_resource type="Script" path="res://scripts/upgrades/dual_strike_scene.gd" id="1_2wljc"]
 
 [node name="DualStrikeScene" type="Node2D"]
+y_sort_enabled = true
+position = Vector2(0, -13)
 script = ExtResource("1_2wljc")
 
 [node name="Strikes" type="Marker2D" parent="."]

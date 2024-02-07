@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://du1dnr2yk2uf8"]
+
+[ext_resource type="Script" path="res://scripts/projectiles/feather.gd" id="1_aaij0"]
+[ext_resource type="Material" uid="uid://cimhmqlj16qqv" path="res://assets/shaders/smooth_pixel.tres" id="2_dr5x1"]
+[ext_resource type="Texture2D" uid="uid://cg0e4ind13evw" path="res://assets/projectiles/feather.png" id="3_23hki"]
+[ext_resource type="PackedScene" uid="uid://3miicp8y7p5b" path="res://scenes/shared/multi_hitbox.tscn" id="4_kveah"]
+
+[node name="Feather" type="Node2D"]
+z_index = 1
+script = ExtResource("1_aaij0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 2
+material = ExtResource("2_dr5x1")
+position = Vector2(14, 0)
+texture = ExtResource("3_23hki")
+
+[node name="MultiHitbox" parent="." instance=ExtResource("4_kveah")]
+position = Vector2(1.5718, -23.2764)
+collision_mask = 6
+
+[node name="CollisionPolygon2D" parent="MultiHitbox" index="0"]
+position = Vector2(14, 0)
+polygon = PackedVector2Array(-14.5718, 20.2764, -14.5718, 21.2764, -15.5718, 21.2764, -15.5718, 24.2764, -14.5718, 24.2764, -14.5718, 25.2764, 3.4282, 25.2764, 3.4282, 24.2764, 9.4282, 24.2764, 9.4282, 23.2764, 12.4282, 23.2764, 12.4282, 22.2764, 9.4282, 22.2764, 9.4282, 21.2764, 3.4282, 21.2764, 3.4282, 20.2764)
+
+[node name="SelfDestructTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="self_destruct" from="MultiHitbox" to="." method="_on_multi_hitbox_self_destruct"]
+[connection signal="timeout" from="SelfDestructTimer" to="." method="_on_self_destruct_timer_timeout"]
+
+[editable path="MultiHitbox"]

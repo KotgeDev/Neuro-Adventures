@@ -2,6 +2,7 @@ extends Node2D
 
 func _ready() -> void: 
 	Globals.get_random_upgrades.connect(get_random_upgrades)
+	Globals.get_all_existing_upgrades.connect(get_all_existing_upgrades)
 	Globals.lvl_up.connect(lvl_up)
 	Globals.map_ready.connect(_on_map_ready)
 
@@ -32,8 +33,8 @@ var upgrades_db = [
 		[
 			"33% larger item collection range for collab partners",
 			"66% larger item collection range for collab partners",
-			"2x larger item collection range for collab partners",
-			"4x larger item collection range for collab partners"
+			"200% larger item collection range for collab partners",
+			"400% larger item collection range for collab partners"
 		],
 		Globals.UpgradeType.COLLAB_PARTNER_UPGRADE, 
 		4,
@@ -81,7 +82,22 @@ var upgrades_db = [
 		4,
 		0,
 		preload("res://scenes/upgrades/cookies_upgrade.tscn")
-	)
+	),
+	Upgrade.new(
+		"iNuke6000",
+		preload("res://assets/upgrades/inuke6000_icon.png"),
+		[
+			"iNuke6000s are dropped at a random enemy in range every 6 s dealing splash damage of 12",
+			"Nuke launch time is reduced",
+			"Two nukes are launched at a time",
+			"Nuke launch time is further reduced  ",
+			"Three nukes are launched at a time"
+		],
+		Globals.UpgradeType.AI_UPGRADE, 
+		5,
+		0,
+		preload("res://scenes/upgrades/inuke6000.tscn")
+	),	
 ]
 
 var neuro_upgrades_db = [
@@ -152,6 +168,21 @@ var neuro_upgrades_db = [
 		3,
 		0,
 		preload("res://scenes/upgrades/say_it_back.tscn")
+	),
+	Upgrade.new(
+		"Angel Wings",
+		preload("res://assets/upgrades/angel_wings_icon.png"),
+		[
+			"Feathers shoot out from Neuro that target enemies",
+			"Feathers can pierce through up to three enemies",
+			"Increased fire rate of feathers",
+			"Increased damage of feathers",
+			"Two feathers are shot at once"
+		],
+		Globals.UpgradeType.AI_UPGRADE, 
+		5,
+		0,
+		preload("res://scenes/upgrades/angel_wings.tscn")
 	)
 ]
 
@@ -161,9 +192,9 @@ var vedal_upgrades_db = [
 		preload("res://assets/upgrades/rum_icon.png"),
 		[
 			"Rum", 
-			"Increased splash damage duration",
+			"Rum splash lasts longer",
 			"Decreased interval between fire",
-			"Splash damage lasts longer and deals more frequent damage"
+			"Rum splash lasts longer and deals more frequent damage"
 		],
 		Globals.UpgradeType.COLLAB_PARTNER_UPGRADE, 
 		4,
@@ -174,14 +205,18 @@ var vedal_upgrades_db = [
 		"DM Allegations",
 		preload("res://assets/upgrades/dm_allegations_icon.png"),
 		[
-			"Vedal ignores all damage. However, every time he gets damaged, there is a 0.1% chance that all of the damage he ignored will be inflicted at once."
+			"Vedal ignores 50% of damage, but ignored damage is accumulated with a 0.1% chance of being inflicted at once",
+			"Vedal ignores 75% of damage, but ignored damage is accumulated with a 0.1% chance of being inflicted at once", 
+			"Vedal ignores 100% of damage, but ignored damage is accumulated with a 0.1% chance of being inflicted at once"
 		],
 		Globals.UpgradeType.COLLAB_PARTNER_UPGRADE, 
-		1,
+		3,
 		0,
 		preload("res://scenes/upgrades/dm_allegations.tscn")
 	)
 ]
+
+var existing_upgrades = []
 
 func _on_map_ready() -> void:
 	var collab_partner_db: Array
@@ -219,19 +254,27 @@ func get_random_upgrades() -> void:
 		temp_upgrades_db.remove_at(random_index)
 	
 	Globals.send_random_upgrades.emit(random_upgrades)
-	
+
+func get_all_existing_upgrades() -> void:
+	remove_maxed_upgrades()
+	Globals.send_all_existing_upgrades.emit(existing_upgrades)
+
 func remove_maxed_upgrades() -> void: 
 	var to_remove = [] 
 	
-	for i in range(upgrades_db.size()): 
-		if upgrades_db[i].max_lvl == upgrades_db[i].lvl:
-			to_remove.append(i)
+	for upgrade in upgrades_db:
+		if upgrade.max_lvl == upgrade.lvl: 
+			to_remove.append(upgrade) 
 	
-	for i in to_remove: 
-		upgrades_db.remove_at(i)   
+	for upgrade in to_remove:
+		existing_upgrades.erase(upgrade)
+		upgrades_db.erase(upgrade)
 
 func lvl_up(upgrade: Upgrade) -> void: 
 	if upgrade.lvl == 0:
+		if not existing_upgrades.has(upgrade):
+			existing_upgrades.append(upgrade)
+		
 		upgrade.lvl = 1
 		var scene = upgrade.scene_template.instantiate() 
 		#WARNING: Cyclic reference. Should be allowed in godot 4.2 though 

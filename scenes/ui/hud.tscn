@@ -1,19 +1,18 @@
-[gd_scene load_steps=16 format=3 uid="uid://dqy8eus7xktlq"]
+[gd_scene load_steps=15 format=3 uid="uid://dqy8eus7xktlq"]
 
 [ext_resource type="Script" path="res://scripts/ui/hud.gd" id="1_jg8iq"]
 [ext_resource type="Texture2D" uid="uid://cdfsvbsr2p0cs" path="res://assets/ui/ai_health_bar.png" id="3_h2em7"]
 [ext_resource type="Texture2D" uid="uid://dnl8tal30m0jt" path="res://assets/ui/ui_icons.png" id="4_nokq6"]
-[ext_resource type="Texture2D" uid="uid://jyca4qttm3uu" path="res://assets/ui/ai_bar_full.png" id="6_1tlqq"]
 [ext_resource type="Texture2D" uid="uid://tnubhijqfq02" path="res://assets/ui/health_bar_under.png" id="6_jflyq"]
 [ext_resource type="Texture2D" uid="uid://cjb1btwxi635u" path="res://assets/ui/collab_partner_bar.png" id="6_uyxdy"]
 [ext_resource type="Texture2D" uid="uid://chm3hdjvrvpig" path="res://assets/ui/exp_bar_under.png" id="6_v5tns"]
 [ext_resource type="Texture2D" uid="uid://bbm64wjax8o6h" path="res://assets/ui/exp_bar.png" id="7_0d2lw"]
 [ext_resource type="Texture2D" uid="uid://crvnx5i06xcb6" path="res://assets/ui/ui_icons1.png" id="7_ofbrc"]
-[ext_resource type="Texture2D" uid="uid://c8l20o24edsua" path="res://assets/ui/collab_partner_bar_full.png" id="8_n1482"]
 [ext_resource type="StyleBox" uid="uid://bspcvalmxg40p" path="res://assets/themes/upgrade.tres" id="10_3egha"]
 [ext_resource type="Texture2D" uid="uid://d2g70s3s7rt7t" path="res://assets/upgrades/upgrade_icon_placeholder.png" id="10_bqirj"]
 [ext_resource type="Script" path="res://scripts/ui/choice_ui_animation.gd" id="10_ki084"]
 [ext_resource type="StyleBox" uid="uid://dwibpkoqk5pkl" path="res://assets/themes/upgrade_hover.tres" id="11_5r30f"]
+[ext_resource type="Material" uid="uid://csxlxcwxw3h3v" path="res://assets/shaders/rainbow.tres" id="12_x3twt"]
 [ext_resource type="PackedScene" uid="uid://b6j6utnkndtjo" path="res://scenes/options/options_menu.tscn" id="13_dfp21"]
 
 [node name="HUD" type="CanvasLayer"]
@@ -72,9 +71,9 @@ texture_progress = ExtResource("3_h2em7")
 
 [node name="AiBarFull" type="Sprite2D" parent="HealthBars"]
 unique_name_in_owner = true
-visible = false
+material = ExtResource("12_x3twt")
 position = Vector2(46, 113)
-texture = ExtResource("6_1tlqq")
+texture = ExtResource("3_h2em7")
 
 [node name="CollabPartnerHealthBar" type="TextureProgressBar" parent="HealthBars"]
 unique_name_in_owner = true
@@ -90,9 +89,9 @@ texture_progress = ExtResource("6_uyxdy")
 
 [node name="CollabPartnerBarFull" type="Sprite2D" parent="HealthBars"]
 unique_name_in_owner = true
-visible = false
+material = ExtResource("12_x3twt")
 position = Vector2(61, 113)
-texture = ExtResource("8_n1482")
+texture = ExtResource("6_uyxdy")
 
 [node name="EXPBar" type="TextureProgressBar" parent="."]
 offset_top = 3.0
@@ -137,8 +136,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.490196)
 
-[node name="ScrollContainer" type="ScrollContainer" parent="UpgradeMenu"]
-custom_minimum_size = Vector2(345, 219)
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradeMenu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -152,7 +150,19 @@ offset_bottom = 109.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ChoicePanelContainer" type="VBoxContainer" parent="UpgradeMenu/ScrollContainer"]
+[node name="UpgradeLabel" type="Label" parent="UpgradeMenu/VBoxContainer"]
+unique_name_in_owner = true
+material = ExtResource("12_x3twt")
+layout_mode = 2
+text = "NTX 4090!!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UpgradeMenu/VBoxContainer"]
+custom_minimum_size = Vector2(345, 219)
+layout_mode = 2
+
+[node name="ChoicePanelContainer" type="VBoxContainer" parent="UpgradeMenu/VBoxContainer/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3

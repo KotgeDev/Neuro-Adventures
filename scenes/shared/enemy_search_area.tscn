@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5326ppiejrxm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2ittt"]
+radius = 180.0
+
+[node name="EnemySearchArea" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2ittt")

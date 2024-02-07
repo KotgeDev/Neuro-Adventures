@@ -89,4 +89,4 @@ func ai_within_range(delta: float) -> bool:
 
 func _on_ai_search_field_area_entered(area):
 	if area.owned_by == Globals.Owners.OWNED_BY_COLLAB_PARTNER:
-		AudioSystem.play_sfx(buzz_sfx, global_position, 1.0)
+		AudioSystem.play_sfx(buzz_sfx, global_position, 5.0)

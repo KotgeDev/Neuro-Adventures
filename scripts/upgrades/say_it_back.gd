@@ -24,8 +24,8 @@ func global_damage_modifiers(
 func sync_level() -> void:
 	match upgrade.lvl:
 		1:
-			ai.ai_distance = 45.0 
+			ai.ai_distance = 60.0 
 		2:
-			ai.ai_distance = 35.0 
+			ai.ai_distance = 55.0 
 		3:
-			ai.ai_distance = 20.0
+			ai.ai_distance = 50.0

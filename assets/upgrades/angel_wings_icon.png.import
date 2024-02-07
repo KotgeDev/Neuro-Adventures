@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8l20o24edsua"
-path="res://.godot/imported/collab_partner_bar_full.png-fe11909fe9af972b98b294aa19852d6b.ctex"
+uid="uid://devpp1ou6mkkr"
+path="res://.godot/imported/angel_wings_icon.png-6edb3c5a0bb347a40764cc72bcb4a102.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/collab_partner_bar_full.png"
-dest_files=["res://.godot/imported/collab_partner_bar_full.png-fe11909fe9af972b98b294aa19852d6b.ctex"]
+source_file="res://assets/upgrades/angel_wings_icon.png"
+dest_files=["res://.godot/imported/angel_wings_icon.png-6edb3c5a0bb347a40764cc72bcb4a102.ctex"]
 
 [params]
 

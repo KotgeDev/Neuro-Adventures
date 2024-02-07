@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://du60tw8uyoqwb"]
+[gd_scene load_steps=8 format=3 uid="uid://du60tw8uyoqwb"]
 
 [ext_resource type="Script" path="res://scripts/characters/collab_partners/collab_partner.gd" id="1_e3rtq"]
 [ext_resource type="PackedScene" uid="uid://cgic4q8egbmxp" path="res://scenes/characters/character_animation.tscn" id="2_gnahg"]
@@ -20,24 +20,30 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7uggt"]
+radius = 24.0
+height = 48.0
+
 [node name="CollabPartner" type="CharacterBody2D"]
-collision_layer = 16
+collision_layer = 8
 collision_mask = 8
 motion_mode = 1
 script = ExtResource("1_e3rtq")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -13)
 
 [node name="CharacterAnimation" parent="." node_paths=PackedStringArray("character") instance=ExtResource("2_gnahg")]
-position = Vector2(0, -9)
+position = Vector2(0, -13)
 character = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_yxx13")
 
 [node name="Hurtbox" parent="." instance=ExtResource("3_gqdkd")]
-visible = false
+position = Vector2(0, -13)
 collision_layer = 2
 owned_by = 1
 
@@ -46,7 +52,17 @@ polygon = PackedVector2Array(-5, -12, -5, -6, -3, -2, -6, 5, -4, 10, -4, 13, -2,
 
 [node name="CollectCircle" type="Sprite2D" parent="."]
 z_index = -1
+position = Vector2(0, -13)
 texture = SubResource("GradientTexture2D_iexf5")
+
+[node name="InteractiveObjectZone" type="Area2D" parent="."]
+position = Vector2(0, -2)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveObjectZone"]
+position = Vector2(0, -12)
+shape = SubResource("CapsuleShape2D_7uggt")
 
 [connection signal="take_damage" from="Hurtbox" to="." method="_on_hurtbox_take_damage"]
 

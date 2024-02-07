@@ -1,0 +1,143 @@
+[gd_scene load_steps=12 format=3 uid="uid://dt5l84t36skke"]
+
+[ext_resource type="Texture2D" uid="uid://dvrqjmmrk8fin" path="res://assets/interactive_objects/4090_sheet.png" id="1_g4bkg"]
+[ext_resource type="Script" path="res://scripts/interactive_objects/ntx_4090.gd" id="1_sp7f2"]
+[ext_resource type="Material" uid="uid://csxlxcwxw3h3v" path="res://assets/shaders/rainbow.tres" id="3_8h8fn"]
+[ext_resource type="Texture2D" uid="uid://c2cg4c2ybyfqm" path="res://assets/interactive_objects/4090_highlight_sheet.png" id="3_lna8a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gepcd"]
+size = Vector2(37, 17)
+
+[sub_resource type="Animation" id="Animation_dg2bc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("4090Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_loqgx"]
+resource_name = "fan_spin"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("4090Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qpsi1"]
+_data = {
+"RESET": SubResource("Animation_dg2bc"),
+"fan_spin": SubResource("Animation_loqgx")
+}
+
+[sub_resource type="Animation" id="Animation_7fn3p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Effects:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_tsuxx"]
+resource_name = "effect"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Effects:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uwjmf"]
+_data = {
+"RESET": SubResource("Animation_7fn3p"),
+"effect": SubResource("Animation_tsuxx")
+}
+
+[node name="NTX4090" type="Node2D"]
+script = ExtResource("1_sp7f2")
+
+[node name="4090Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -25)
+texture = ExtResource("1_g4bkg")
+hframes = 8
+
+[node name="Effects" type="Sprite2D" parent="."]
+material = ExtResource("3_8h8fn")
+position = Vector2(0, -25)
+texture = ExtResource("3_lna8a")
+hframes = 8
+
+[node name="InteractibleObject" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractibleObject"]
+position = Vector2(-0.5, -9.5)
+shape = SubResource("RectangleShape2D_gepcd")
+
+[node name="PressFNotice" type="CenterContainer" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+offset_left = 20.0
+offset_top = -29.0
+offset_right = 32.0
+offset_bottom = -16.0
+
+[node name="ColorRect" type="ColorRect" parent="PressFNotice"]
+custom_minimum_size = Vector2(11, 13)
+layout_mode = 2
+color = Color(0, 0, 0, 0.490196)
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="PressFNotice"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "F"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="FanSpinPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qpsi1")
+}
+
+[node name="EffectPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_uwjmf")
+}
+
+[connection signal="area_entered" from="InteractibleObject" to="." method="_on_interactible_object_area_entered"]
+[connection signal="area_exited" from="InteractibleObject" to="." method="_on_interactible_object_area_exited"]

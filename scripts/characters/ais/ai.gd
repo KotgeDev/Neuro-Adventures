@@ -8,7 +8,7 @@ class_name AI
 @export var FRICTION := 500 
 @export var MAX_HEALTH := 45.0
 @export var COOKIE_HEALTH := 5.0 
-@export var BASE_AI_DISTANCE := 60.0 
+@export var BASE_AI_DISTANCE := 65.0 
 #endregion 
 
 #region NODES
