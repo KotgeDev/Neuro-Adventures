@@ -10,7 +10,7 @@ class_name CollabPartner
 @export var EXP_REQ_INCREMENT := 4
 @export var EXP_REQ_INIT := 2
 @export var BASE_PICKUP_RANGE := 50.0
-@export var CREGGS_HEALTH := 7.0
+@export var CREGGS_HEALTH := 6.0
 #endregion 
 
 #region NODES 
@@ -37,11 +37,11 @@ var hit_sfx: AudioStream = preload("res://assets/sfx/playerhurt.wav")
 #endregion
 
 func _ready() -> void:
+	connect_signals() 
 	add_to_group("collab_partner")
 	collectcircle.texture.gradient.set_color(1, Color(collectcircle.texture.gradient.get_color(1), 0))
 	collectcircle.texture.gradient.set_color(0, Color(collectcircle.texture.gradient.get_color(0), circle_occ))
 	_on_powerup_get()
-	connect_signals() 
 
 func connect_signals() -> void: 
 	Globals.damage_collab_partner.connect(_on_hurtbox_take_damage)
@@ -96,7 +96,7 @@ func _on_collect_creggs() -> void:
 	if health >= MAX_HEALTH:
 		health = MAX_HEALTH
 	
-	Globals.update_collab_partner_health.emit(MAX_HEALTH, health)
+	Globals.update_collab_partner_health.emit(MAX_HEALTH, health, false)
 
 func damage_received_modifiers_collab(BASE_DAMAGE: float) -> float:
 	var modified_damage := BASE_DAMAGE

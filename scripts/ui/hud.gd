@@ -15,7 +15,6 @@ extends CanvasLayer
 @onready var options_menu = $OptionsMenu
 @onready var ai_bar_full = %AiBarFull
 @onready var collab_partner_bar_full = %CollabPartnerBarFull
-var collab_partner
 #endregion
 
 #region UI Shake Handler (Scuffed Code Ahead)
@@ -41,15 +40,18 @@ var display_level = 0
 #endregion
 
 func _ready() -> void:
+	connect_signals()
+	
 	ashakepos = ai_health_bar.position
 	cshakepos = collab_partner_health_bar.position
 	set_fps_counter_state(SavedOptions.settings.fps_counter)
 	if SavedOptions.settings.full_health_effect:
 		ai_bar_full.visible = true
 		collab_partner_bar_full.visible = true
-		
-	connect_signals()
-	
+	else: 
+		ai_bar_full.visible = false
+		collab_partner_bar_full.visible = false
+
 func connect_signals() -> void:
 	Globals.game_over.connect(_on_game_over)
 	Globals.game_won.connect(_on_game_won)
@@ -58,11 +60,10 @@ func connect_signals() -> void:
 	Globals.update_exp_bar.connect(_on_update_exp_bar)
 	Globals.send_random_upgrades.connect(_on_send_random_upgrades)
 	Globals.send_all_existing_upgrades.connect(_on_send_all_existing_upgrades)
-	Globals.map_ready.connect(_on_map_ready)
 	Globals.change_fps_counter_state.connect(set_fps_counter_state)
+	Globals.map_ready.connect(_on_map_ready)
 	
 func _on_map_ready() -> void:
-	collab_partner = get_tree().get_first_node_in_group("collab_partner")
 	start_time_msec = Time.get_ticks_msec()
 
 func _process(delta: float) -> void:
@@ -155,7 +156,7 @@ func shake_handler(delta) -> void:
 			cshake = false
 			collab_partner_health_bar.position = cshakepos
 			
-func _on_update_ai_health(max: float, health: float) -> void:
+func _on_update_ai_health(max: float, health: float, loss := true) -> void:
 	if SavedOptions.settings.full_health_effect:
 		if health == max: 
 			ai_bar_full.visible = true 
@@ -164,10 +165,11 @@ func _on_update_ai_health(max: float, health: float) -> void:
 	
 	if health >= 0.0: 
 		ai_health_bar.value = health / max * 100 
+	if loss: 
 		ashake = true
 		ashaketime = 0.25
 		
-func _on_update_collab_partner_health(max: float, health: float) -> void:
+func _on_update_collab_partner_health(max: float, health: float, loss := true) -> void:
 	if SavedOptions.settings.full_health_effect:
 		if health == max: 
 			collab_partner_bar_full.visible = true 
@@ -176,6 +178,7 @@ func _on_update_collab_partner_health(max: float, health: float) -> void:
 	
 	if health >= 0.0: 
 		collab_partner_health_bar.value = health / max * 100 
+	if loss: 
 		cshake = true
 		cshaketime = 0.25
 
@@ -223,11 +226,11 @@ func display_upgrades(upgrades: Array) -> void:
 		choice_panel_container.add_child(choice_panel) 
 
 func _on_mouse_over_upgrade() -> void:
-	AudioSystem.play_sfx(menu_blip2, collab_partner.global_position)
+	AudioSystem.play_sfx(menu_blip2, Vector2(640 / 2.0, 340 / 2.0))
 
 func _on_upgrade_selected(upgrade: Upgrade) -> void:
 	unpause_game()
-	AudioSystem.play_sfx(menu_blip2, collab_partner.global_position)
+	AudioSystem.play_sfx(menu_blip2, Vector2(640 / 2.0, 340 / 2.0))
 	Globals.lvl_up.emit(upgrade)
 	upgrade_menu.visible = false 
 	var container = choice_panel_container

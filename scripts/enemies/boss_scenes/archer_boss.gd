@@ -5,7 +5,7 @@ extends Enemy
 @export var ACCELERATION := 500
 @export var FRICTION := 500 
 @export var MAX_HEALTH := 500.0
-@export var DAMAGE := 1.0
+@export var DAMAGE := 12.0
 @export var ATTACK_INTERVAL := 1.5
 @export var PATH_FIND_INTERVAL := 2.0
 

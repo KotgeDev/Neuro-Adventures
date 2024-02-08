@@ -610,7 +610,7 @@ _data = {
 }
 point_count = 5
 
-[node name="Farm" type="Node2D" groups=["map"]]
+[node name="Farm" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_wx0jl")
 

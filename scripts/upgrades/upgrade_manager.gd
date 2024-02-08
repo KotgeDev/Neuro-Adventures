@@ -59,10 +59,10 @@ var upgrades_db = [
 		"Creggs",
 		preload("res://assets/upgrades/creggs_icon.png"),
 		[
-			"1% chance for enemies to drop a chicken bake (Gives 7 HP to the Collab Partner)",
+			"1% chance for enemies to drop a chicken bake (Gives 6 HP to the Collab Partner)",
 			"2% chance for enemies to drop chicken bake ",
-			"5% chance for enemies to drop chicken bake ",
-			"10% chance for enemies to drop chicken bake"
+			"3% chance for enemies to drop chicken bake ",
+			"5% chance for enemies to drop chicken bake"
 		],
 		Globals.UpgradeType.COLLAB_PARTNER_UPGRADE, 
 		4,
@@ -75,8 +75,8 @@ var upgrades_db = [
 		[
 			"1% chance for enemies to drop cookies (Gives 5 HP to the AI)",
 			"2% chance for enemies to drop cookies ",
-			"5% chance for enemies to drop cookies ",
-			"10% chance for enemies to drop cookies"
+			"3% chance for enemies to drop cookies ",
+			"5% chance for enemies to drop cookies"
 		],
 		Globals.UpgradeType.AI_UPGRADE, 
 		4,
@@ -205,9 +205,9 @@ var vedal_upgrades_db = [
 		"DM Allegations",
 		preload("res://assets/upgrades/dm_allegations_icon.png"),
 		[
-			"Vedal ignores 50% of damage, but ignored damage is accumulated with a 0.1% chance of being inflicted at once",
-			"Vedal ignores 75% of damage, but ignored damage is accumulated with a 0.1% chance of being inflicted at once", 
-			"Vedal ignores 100% of damage, but ignored damage is accumulated with a 0.1% chance of being inflicted at once"
+			"Vedal ignores 50% of damage, but ignored damage is accumulated with a 0.2% chance of being inflicted at once",
+			"Vedal ignores 75% of damage, but ignored damage is accumulated with a 0.3% chance of being inflicted at once", 
+			"Vedal ignores 100% of damage, but ignored damage is accumulated with a 0.5% chance of being inflicted at once"
 		],
 		Globals.UpgradeType.COLLAB_PARTNER_UPGRADE, 
 		3,

@@ -2,8 +2,8 @@ extends UpgradeScene
 
 @export var lv1_chance = 0.01 
 @export var lv2_chance = 0.02
-@export var lv3_chance = 0.05
-@export var lv4_chance = 0.10
+@export var lv3_chance = 0.03
+@export var lv4_chance = 0.05
 
 @onready var collab_partner: CollabPartner = get_parent() 
 

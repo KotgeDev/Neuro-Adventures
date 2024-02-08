@@ -93,7 +93,7 @@ func _on_collect_cookie() -> void:
 	if health >= MAX_HEALTH:
 		health = MAX_HEALTH
 	
-	Globals.update_ai_health.emit(MAX_HEALTH, health)
+	Globals.update_ai_health.emit(MAX_HEALTH, health, false)
 
 func _on_path_find_timer_timeout():
 	make_path()

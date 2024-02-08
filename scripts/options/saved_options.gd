@@ -16,7 +16,6 @@ var settings := {
 	"window_mode": WindowMode.WINDOWED,
 	"sfx_volume": 1.0,
 	"music_volume": 1.0,
-	"vsync_mode": DisplayServer.VSYNC_ENABLED,
 	"fps_counter": true,
 	"full_health_effect": false
 }
@@ -40,7 +39,6 @@ func save_data() -> void:
 
 func set_default_settings() -> void:
 	set_window_mode(settings.window_mode)
-	DisplayServer.window_set_vsync_mode(settings.vsync_mode)
 	AudioServer.set_bus_volume_db(
 		AudioServer.get_bus_index("music"), 
 		linear_to_db(settings.music_volume)

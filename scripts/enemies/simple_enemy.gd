@@ -115,7 +115,7 @@ func _on_hurtbox_take_damage(damage):
 			expp.global_position = global_position
 			map.call_deferred("add_child", expp)
 		
-		var ntx_num = randf_range(0, 100) 
+		var ntx_num = randf_range(0, 100)
 		if ntx_num <= map.ntx_chance:
 			map.ntx_chance = map.NTX_BASE_CHANCE
 			var ntx = ntx_template.instantiate()

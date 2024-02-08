@@ -1,0 +1,117 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnaykxnl0tv10"]
+
+[ext_resource type="Script" path="res://scripts/ui/credits.gd" id="1_epnf3"]
+[ext_resource type="Script" path="res://scripts/ui/button_with_sfx.gd" id="1_y1d8a"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_epnf3")
+
+[node name="CreditsPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.5
+offset_right = 608.0
+offset_bottom = 328.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="CreditsPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.5
+offset_top = -138.5
+offset_right = 110.5
+offset_bottom = 138.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreditsPanel/CenterContainer"]
+layout_mode = 2
+
+[node name="Title1" type="Label" parent="CreditsPanel/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+text = "Programmers"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CreditsPanel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "KotgeDev"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="CreditsPanel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "CreepyCat"
+horizontal_alignment = 1
+
+[node name="Title2" type="Label" parent="CreditsPanel/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+text = "Illustrators"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="CreditsPanel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "KotgeDev"
+horizontal_alignment = 1
+
+[node name="Title3" type="Label" parent="CreditsPanel/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+text = "Sound Effects"
+horizontal_alignment = 1
+
+[node name="Label7" type="Label" parent="CreditsPanel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Aetherleaf
+"
+horizontal_alignment = 1
+
+[node name="Title4" type="Label" parent="CreditsPanel/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+text = "Music"
+horizontal_alignment = 1
+
+[node name="Label10" type="Label" parent="CreditsPanel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "The Farm - CreepyCat
+"
+horizontal_alignment = 1
+
+[node name="Label11" type="Label" parent="CreditsPanel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "The Meadow - CreepyCat
+"
+horizontal_alignment = 1
+
+[node name="ReturnButton" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 0
+offset_left = 21.0
+offset_top = 309.0
+offset_right = 121.0
+offset_bottom = 341.0
+text = "Return"
+script = ExtResource("1_y1d8a")
+
+[connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]

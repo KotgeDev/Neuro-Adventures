@@ -71,6 +71,7 @@ texture_progress = ExtResource("3_h2em7")
 
 [node name="AiBarFull" type="Sprite2D" parent="HealthBars"]
 unique_name_in_owner = true
+visible = false
 material = ExtResource("12_x3twt")
 position = Vector2(46, 113)
 texture = ExtResource("3_h2em7")
@@ -89,6 +90,7 @@ texture_progress = ExtResource("6_uyxdy")
 
 [node name="CollabPartnerBarFull" type="Sprite2D" parent="HealthBars"]
 unique_name_in_owner = true
+visible = false
 material = ExtResource("12_x3twt")
 position = Vector2(61, 113)
 texture = ExtResource("6_uyxdy")
