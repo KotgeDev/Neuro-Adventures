@@ -10,10 +10,8 @@ func _ready() -> void:
 func sync_level() -> void:
 	collab_partner._on_powerup_get()
 	if upgrade.lvl >= 1:
-		collab_partner.pickup_range = collab_partner.BASE_PICKUP_RANGE * 1.33
+		collab_partner.pickup_range = collab_partner.BASE_PICKUP_RANGE * 1.30
 	if upgrade.lvl >= 2: 
-		collab_partner.pickup_range = collab_partner.BASE_PICKUP_RANGE * 1.66
+		collab_partner.pickup_range = collab_partner.BASE_PICKUP_RANGE * 1.40
 	if upgrade.lvl >= 3: 
-		collab_partner.pickup_range = collab_partner.BASE_PICKUP_RANGE * 2
-	if upgrade.lvl >= 4: 
-		collab_partner.pickup_range = collab_partner.BASE_PICKUP_RANGE * 4
+		collab_partner.pickup_range = collab_partner.BASE_PICKUP_RANGE * 1.50

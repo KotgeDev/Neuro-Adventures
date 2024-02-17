@@ -1,7 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://b200dkpejyj2q"]
+[gd_scene load_steps=7 format=3 uid="uid://b200dkpejyj2q"]
 
 [ext_resource type="PackedScene" uid="uid://cx1nd5x2s6vyt" path="res://scenes/enemies/simple_enemy.tscn" id="1_0t50s"]
 [ext_resource type="Texture2D" uid="uid://8vqq5lkr4kb0" path="res://assets/enemies/blue_slime_sheet.png" id="2_sgjgm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xlo8w"]
+radius = 4.0
+height = 12.0
 
 [sub_resource type="Animation" id="Animation_xlqaf"]
 length = 0.001
@@ -45,23 +49,29 @@ _data = {
 PATH_FIND_INTERVAL = 1.0
 
 [node name="Sprite2D" parent="." index="0"]
+position = Vector2(0, -29)
 texture = ExtResource("2_sgjgm")
 
-[node name="Hurtbox" parent="." index="1"]
-visible = true
+[node name="StunEffect" parent="." index="1"]
+position = Vector2(0, -14)
+
+[node name="Hurtbox" parent="." index="2"]
+position = Vector2(0, -5)
 
 [node name="CollisionPolygon2D" parent="Hurtbox" index="0"]
 polygon = PackedVector2Array(0, -7, -5, -5, -8, 2, -10, 4, -4, 4, -4, 5, 5, 5, 5, 4, 9, 4, 8, 2, 5, -5)
 
-[node name="CollisionPolygon2D" parent="ContinuousHitbox" index="0"]
-polygon = PackedVector2Array(0, -5, -4, -3, -6, 0, -8, 4, 7, 4, 6, 1, 4, -3)
+[node name="CollisionShape2D" parent="ContinuousHitbox" index="3"]
+position = Vector2(0, -5)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_xlo8w")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
 libraries = {
 "": SubResource("AnimationLibrary_2f5do")
 }
 
-[node name="Shadow" parent="." index="7"]
+[node name="Shadow" parent="." index="8"]
 position = Vector2(1, -25)
 
 [editable path="Hurtbox"]

@@ -31,13 +31,12 @@ var upgrades_db = [
 		"Shock Magnet",
 		preload("res://assets/upgrades/shock_magnet_icon.png"),
 		[
-			"33% larger item collection range for collab partners",
-			"66% larger item collection range for collab partners",
-			"200% larger item collection range for collab partners",
-			"400% larger item collection range for collab partners"
+			"+30% larger item collection range",
+			"+40% larger item collection range",
+			"+50% larger item collection range",
 		],
 		Globals.UpgradeType.COLLAB_PARTNER_UPGRADE, 
-		4,
+		3,
 		0,
 		preload("res://scenes/upgrades/shock_magnet.tscn")
 	),
@@ -192,27 +191,28 @@ var vedal_upgrades_db = [
 		preload("res://assets/upgrades/rum_icon.png"),
 		[
 			"Rum", 
-			"Rum splash lasts longer",
-			"Decreased interval between fire",
-			"Rum splash lasts longer and deals more frequent damage"
+			"Rum splash will stun all enemies stepping in for 1s",
+			"Rum fire rate is increased",
+			"Rum splash lasts longer and deals more frequent damage",
+			"Rum splash will stun all enemies stepping in for 3s"
 		],
 		Globals.UpgradeType.COLLAB_PARTNER_UPGRADE, 
-		4,
+		5,
 		0,
 		preload("res://scenes/upgrades/rum_scene.tscn")
 	),
 	Upgrade.new(
-		"DM Allegations",
-		preload("res://assets/upgrades/dm_allegations_icon.png"),
+		"Raise the Timer!",
+		preload("res://assets/upgrades/raise_the_timer_icon.png"),
 		[
-			"Vedal ignores 50% of damage, but ignored damage is accumulated with a 0.2% chance of being inflicted at once",
-			"Vedal ignores 75% of damage, but ignored damage is accumulated with a 0.3% chance of being inflicted at once", 
-			"Vedal ignores 100% of damage, but ignored damage is accumulated with a 0.5% chance of being inflicted at once"
+			"The AI will start loosing HP every 1s, but exps will now give 0.6 HP to the AI",
+			"The AI will start loosing HP every 1s, but exps will now give 0.7 HP to the AI",
+			"The AI will start loosing HP every 1s, but exps will now give 0.8 HP to the AI" 
 		],
 		Globals.UpgradeType.COLLAB_PARTNER_UPGRADE, 
 		3,
 		0,
-		preload("res://scenes/upgrades/dm_allegations.tscn")
+		preload("res://scenes/upgrades/raise_the_timer.tscn")
 	)
 ]
 

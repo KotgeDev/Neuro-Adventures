@@ -1,0 +1,254 @@
+[gd_scene load_steps=8 format=3 uid="uid://c026lmxt4wojd"]
+
+[ext_resource type="Texture2D" uid="uid://cwiayaenixuu8" path="res://assets/ui/cover_image_no_title.png" id="1_7k7ia"]
+[ext_resource type="Script" path="res://scripts/ui/character_choice_menu.gd" id="1_cty1m"]
+[ext_resource type="Texture2D" uid="uid://c1ussrvj1xucu" path="res://assets/characters/ais/neuro_idle_sheet.png" id="3_2itik"]
+[ext_resource type="Texture2D" uid="uid://c5by2m716h6dc" path="res://assets/ui/next_button.png" id="4_lwjh5"]
+[ext_resource type="Script" path="res://scripts/ui/button_with_sfx.gd" id="4_q3rg1"]
+[ext_resource type="Texture2D" uid="uid://bcl8r38dmiu4i" path="res://assets/characters/collab_partners/vedal_idle_sheet.png" id="5_bw6oa"]
+[ext_resource type="Texture2D" uid="uid://b6ufng6tk6opd" path="res://assets/maps/farm_icon.png" id="6_3at8l"]
+
+[node name="CharacterChoiceMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cty1m")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_7k7ia")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(616, 337)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -308.0
+offset_top = -168.0
+offset_right = 308.0
+offset_bottom = 164.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(616, 0)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/HBoxContainer/Panel"]
+position = Vector2(99, 71.5)
+scale = Vector2(2, 2)
+texture = ExtResource("3_2itik")
+hframes = 4
+
+[node name="Sprite2D2" type="TextureRect" parent="VBoxContainer/HBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.86
+anchor_top = 0.58
+anchor_right = 1.0
+anchor_bottom = 0.64
+offset_left = -32.0
+offset_top = -16.0
+offset_bottom = 16.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("4_lwjh5")
+stretch_mode = 2
+
+[node name="Panel2" type="Panel" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/HBoxContainer/Panel2"]
+position = Vector2(101, 71.5)
+scale = Vector2(2, 2)
+texture = ExtResource("5_bw6oa")
+hframes = 4
+
+[node name="Sprite2D3" type="TextureRect" parent="VBoxContainer/HBoxContainer/Panel2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.86
+anchor_top = 0.58
+anchor_right = 1.0
+anchor_bottom = 0.58
+offset_left = -32.0
+offset_top = -16.0
+offset_bottom = 16.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("4_lwjh5")
+stretch_mode = 2
+
+[node name="Panel3" type="Panel" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/Panel3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -47.5
+offset_top = -39.5
+offset_right = 48.5
+offset_bottom = 56.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_3at8l")
+stretch_mode = 2
+
+[node name="Sprite2D4" type="TextureRect" parent="VBoxContainer/HBoxContainer/Panel3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.92
+anchor_top = 0.58
+anchor_right = 1.0
+anchor_bottom = 0.58
+offset_left = -32.0
+offset_top = -16.0
+offset_bottom = 16.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("4_lwjh5")
+stretch_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.42
+anchor_top = 0.39
+anchor_right = 0.5
+anchor_bottom = 0.585
+offset_left = -70.0
+offset_top = -31.5
+offset_right = 70.0
+offset_bottom = 31.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "Name: Neuro Sama
+HP: 45
+Speed: 75
+"
+
+[node name="Panel2" type="Panel" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer2/Panel2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.42
+anchor_top = 0.39
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.0
+offset_top = -31.5
+offset_right = 70.0
+offset_bottom = 31.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "Name: Vedal
+HP: 40
+Speed: 80
+"
+
+[node name="Panel3" type="Panel" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer2/Panel3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.42
+anchor_top = 0.39
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.0
+offset_top = -31.5
+offset_right = 70.0
+offset_bottom = 31.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "Name: The Farm
+Difficulty: Low
+Boss: Elf Archer 
+"
+
+[node name="Panel" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+
+[node name="TitlesContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 628.0
+offset_bottom = 38.0
+
+[node name="Label" type="Label" parent="TitlesContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "AI"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="TitlesContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Collab Partner"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="TitlesContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Map"
+horizontal_alignment = 1
+
+[node name="ReturnButton" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 0
+offset_left = 21.0
+offset_top = 309.0
+offset_right = 121.0
+offset_bottom = 341.0
+text = "Return "
+script = ExtResource("4_q3rg1")
+
+[node name="StartButton" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 0
+offset_left = 518.0
+offset_top = 308.0
+offset_right = 618.0
+offset_bottom = 340.0
+text = "Start"
+script = ExtResource("4_q3rg1")
+
+[connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

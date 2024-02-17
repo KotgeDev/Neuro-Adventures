@@ -38,6 +38,7 @@ func _ready() -> void:
 func connect_signals() -> void:
 	Globals.map_ready.connect(_on_map_ready)
 	Globals.damage_ai.connect(_on_hurtbox_take_damage)
+	Globals.heal_ai.connect(_on_increase_hp)
 	Globals.add_upgrade_to_ai.connect(_on_add_upgrade)
 	Globals.collect_cookie.connect(_on_collect_cookie)
 	
@@ -59,14 +60,14 @@ func _physics_process(delta: float) -> void:
 	
 	position += velocity * delta 
 
-func _on_hurtbox_take_damage(damage: float):
+func _on_hurtbox_take_damage(damage: float, shake := true):
 	damage = damage_received_modifiers_ai(damage)
 	if damage == 0.0:
 		return 
 	
 	health -= damage 
 	character_animation.show_damage()
-	Globals.update_ai_health.emit(MAX_HEALTH, health)
+	Globals.update_ai_health.emit(MAX_HEALTH, health, shake)
 	if health <= 0: 
 		Globals.game_over.emit() 
 		
@@ -93,6 +94,14 @@ func _on_collect_cookie() -> void:
 	if health >= MAX_HEALTH:
 		health = MAX_HEALTH
 	
+	Globals.update_ai_health.emit(MAX_HEALTH, health, false)
+
+func _on_increase_hp(increase_amount: float) -> void:
+	health += increase_amount
+	
+	if health >= MAX_HEALTH:
+		health = MAX_HEALTH
+
 	Globals.update_ai_health.emit(MAX_HEALTH, health, false)
 
 func _on_path_find_timer_timeout():

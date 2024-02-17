@@ -9,10 +9,10 @@ var splash_template = preload("res://scenes/projectiles/rum_splash.tscn")
 
 #region PROPERTIES
 var speed: int 
-var create_splash: bool
 var duration: float 
 var hit_wait_time: float 
 var splash_damage: float 
+var stun: float 
 #endregion 
 
 
@@ -23,24 +23,24 @@ func _ready() -> void:
 func setup(
 	p_speed: int,
 	p_damage: int, 
-	p_create_splash: bool, 
 	p_duration: float, 
 	p_hit_wait_time: float,
-	p_splash_damage: float
+	p_splash_damage: float,
+	p_stun: float 
 ) -> void: 
 	speed = p_speed
 	$MultiHitbox.damage = p_damage
-	create_splash = p_create_splash
 	duration = p_duration
 	hit_wait_time = p_hit_wait_time
 	splash_damage = p_splash_damage
+	stun = p_stun
 
 func _physics_process(delta: float) -> void:
 	position += transform.x * speed * delta    
 
 func _on_multi_hitbox_self_destruct():
 	speed = 0
-	if create_splash: add_splash()
+	add_splash()
 	$AnimationPlayer.play("hit")
 	await $AnimationPlayer.animation_finished
 	queue_free()
@@ -48,7 +48,7 @@ func _on_multi_hitbox_self_destruct():
 func add_splash() -> void: 
 	var rum_splash = splash_template.instantiate() 
 	rum_splash.global_position = global_position
-	rum_splash.setup(duration, hit_wait_time, splash_damage)
+	rum_splash.setup(duration, hit_wait_time, splash_damage, stun)
 	map.call_deferred("add_child", rum_splash)
 
 func _on_self_destruct_timer_timeout():

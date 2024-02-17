@@ -6,7 +6,7 @@ class_name CollabPartner
 @export var BASE_MAX_SPEED := 65.0 
 @export var ACCELERATION := 500.0
 @export var FRICTION := 500.0 
-@export var MAX_HEALTH := 50.0 
+@export var MAX_HEALTH := 40.0 
 @export var EXP_REQ_INCREMENT := 4
 @export var EXP_REQ_INIT := 2
 @export var BASE_PICKUP_RANGE := 50.0
@@ -16,6 +16,7 @@ class_name CollabPartner
 #region NODES 
 @onready var character_animation = $CharacterAnimation
 @onready var collectcircle = $CollectCircle
+@onready var aihp_loss_timer = $AIHPLossTimer
 #endregion 
 
 #region OTHER 
@@ -30,6 +31,11 @@ var exp_requirement := EXP_REQ_INIT
 var lv := 1  
 var creggs_drop_chance := 0.005
 #endregion
+
+#region RAISE THE TIMER
+var raise_the_timer_active := false 
+var per_exp_ai_hp_increase: float 
+#endregion 
 
 #region SOUNDFX
 var exp_sfx: AudioStream = preload("res://assets/sfx/exp_collect.ogg")
@@ -48,6 +54,7 @@ func connect_signals() -> void:
 	Globals.add_upgrade_to_collab_partner.connect(_on_add_upgrade)
 	Globals.collect_exp.connect(_on_collect_exp)
 	Globals.collect_creggs.connect(_on_collect_creggs)
+	Globals.raise_the_timer.connect(_on_raise_the_timer)
 
 func circle_handle(delta):
 	pick_range_lerp = lerp(pick_range_lerp, pickup_range*2.0, delta*5)
@@ -89,6 +96,9 @@ func _on_collect_exp(value: int) -> void:
 		lv += 1
 		Globals.get_random_upgrades.emit()
 	Globals.update_exp_bar.emit(exp_requirement, expp) 
+	
+	if raise_the_timer_active:
+		Globals.heal_ai.emit(per_exp_ai_hp_increase)
 
 func _on_collect_creggs() -> void:
 	health += CREGGS_HEALTH
@@ -127,3 +137,14 @@ func _on_powerup_get():
 func _on_timer_timeout(timer) -> void:
 	circle_work = true
 	timer.queue_free()
+
+func _on_raise_the_timer(frequency: float, increase: float) -> void:
+	aihp_loss_timer.wait_time = frequency 
+	per_exp_ai_hp_increase = increase
+	
+	if not raise_the_timer_active:
+		raise_the_timer_active = true 
+		aihp_loss_timer.start()
+
+func _on_aihp_loss_timer_timeout():
+	Globals.damage_ai.emit(1.0, false)

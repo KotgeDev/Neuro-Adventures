@@ -1,8 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://3rhy5g2brkg6"]
+[gd_scene load_steps=8 format=3 uid="uid://3rhy5g2brkg6"]
 
 [ext_resource type="PackedScene" uid="uid://cx1nd5x2s6vyt" path="res://scenes/enemies/simple_enemy.tscn" id="1_frcrl"]
 [ext_resource type="Texture2D" uid="uid://cjcv4341fqwvo" path="res://assets/enemies/kobold_sheet.png" id="2_il7mv"]
 [ext_resource type="Texture2D" uid="uid://bpxvb4opdk1xy" path="res://assets/shared/shadow_m.png" id="3_pblf5"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5l71l"]
+radius = 4.0
+height = 34.0
 
 [sub_resource type="Animation" id="Animation_pgyfm"]
 length = 0.001
@@ -44,29 +48,34 @@ _data = {
 
 [node name="Kobold" instance=ExtResource("1_frcrl")]
 SPEED = 40.0
-MAX_HEALTH = 3.0
+MAX_HEALTH = 4.0
 DAMAGE = 2.0
 ATTACK_INTERVAL = 0.5
 
 [node name="Sprite2D" parent="." index="0"]
+position = Vector2(0, -26)
 texture = ExtResource("2_il7mv")
 
-[node name="Hurtbox" parent="." index="1"]
-visible = true
+[node name="StunEffect" parent="." index="1"]
+position = Vector2(0, -38)
+
+[node name="Hurtbox" parent="." index="2"]
+position = Vector2(0, -2)
 
 [node name="CollisionPolygon2D" parent="Hurtbox" index="0"]
 polygon = PackedVector2Array(-2, -34, -4, -32, -4, -24, -7, -17, -7, -5, -5, 2, 6, 2, 6, -6, 6, -19, 3, -23, 5, -25, 6, -28, 6, -31, 3, -34)
 
-[node name="CollisionPolygon2D" parent="ContinuousHitbox" index="0"]
-polygon = PackedVector2Array(0, -32, -4, -29, -3, -23, -3, -20, -7, -14, -7, -4, -5, -7, -5, -12, -4, -12, -4, 2, 1, -5, 4, 2, 4, -13, 5, -13, 5, -6, 6, -6, 6, -17, 2, -21, 2, -22, 5, -25, 4, -29, 2, -32)
+[node name="CollisionShape2D" parent="ContinuousHitbox" index="3"]
+position = Vector2(0, -17)
+shape = SubResource("CapsuleShape2D_5l71l")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
 libraries = {
 "": SubResource("AnimationLibrary_u2hhj")
 }
 
-[node name="Shadow" parent="." index="7"]
-position = Vector2(-1, -24)
+[node name="Shadow" parent="." index="8"]
+position = Vector2(-1, -26)
 texture = ExtResource("3_pblf5")
 
 [editable path="Hurtbox"]

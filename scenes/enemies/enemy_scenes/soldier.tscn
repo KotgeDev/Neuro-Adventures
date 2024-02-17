@@ -44,17 +44,17 @@ _data = {
 
 [node name="Soldier" instance=ExtResource("1_pihnb")]
 SPEED = 30.0
-MAX_HEALTH = 6.0
-DAMAGE = 4.0
-ATTACK_INTERVAL = 0.7
+MAX_HEALTH = 8.0
+DAMAGE = 5.0
+ATTACK_INTERVAL = 0.8
 PATH_FIND_INTERVAL = 0.7
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_c7i3u")
 hframes = 4
 
-[node name="Hurtbox" parent="." index="1"]
-visible = true
+[node name="StunEffect" parent="." index="1"]
+position = Vector2(0, -32)
 
 [node name="CollisionPolygon2D" parent="Hurtbox" index="0"]
 polygon = PackedVector2Array(-5, -26, -5, -16, -6, -16, -7, -15, -7, -8, -5, -4, -4, -4, -4, 2, -5, 2, -5, 6, -1, 6, 0, 0, 2, 6, 5, 6, 5, -1, 5, -7, 7, -8, 7, 3, 8, 3, 8, -19, 9, -19, 9, -21, 8, -21, 8, -23, 7, -23, 7, -21, 6, -21, 6, -19, 3, -16, 3, -26, 1, -28, -3, -28)
@@ -67,7 +67,7 @@ libraries = {
 "": SubResource("AnimationLibrary_jm0gq")
 }
 
-[node name="Shadow" parent="." index="7"]
+[node name="Shadow" parent="." index="8"]
 position = Vector2(-1, -20)
 texture = ExtResource("3_xm2k1")
 

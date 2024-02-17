@@ -59,6 +59,8 @@ signal collect_cookie
 signal collect_creggs
 signal damage_collab_partner(damage: float)
 signal damage_ai(damage: float)
+signal heal_ai(hp: float)
 signal add_upgrade_to_collab_partner(upgrade: Node)
 signal add_upgrade_to_ai(upgrade: Node)
+signal raise_the_timer(frequency: float, increase: float)
 #endregion 

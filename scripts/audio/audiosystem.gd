@@ -1,5 +1,7 @@
 extends Node
 
+signal music_ended 
+
 var num_of_sound_effects = 8
 var music_bus = "music"
 var sound_bus = "soundfx"
@@ -45,7 +47,7 @@ func play_music(sound):
 	music_player.play()
 	music_player.volume_db = linear_to_db(1)
 	music_player.pitch_scale = 1
-
+	
 func end_music():
 	music_player.stop()
 

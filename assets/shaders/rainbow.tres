@@ -5,5 +5,5 @@
 [resource]
 shader = ExtResource("1_wtd6t")
 shader_parameter/strength = 0.3
-shader_parameter/speed = 0.5
+shader_parameter/speed = 0.3
 shader_parameter/angle = 0.0

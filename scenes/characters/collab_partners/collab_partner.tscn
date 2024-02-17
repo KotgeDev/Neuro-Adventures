@@ -64,6 +64,9 @@ collision_mask = 0
 position = Vector2(0, -12)
 shape = SubResource("CapsuleShape2D_7uggt")
 
+[node name="AIHPLossTimer" type="Timer" parent="."]
+
 [connection signal="take_damage" from="Hurtbox" to="." method="_on_hurtbox_take_damage"]
+[connection signal="timeout" from="AIHPLossTimer" to="." method="_on_aihp_loss_timer_timeout"]
 
 [editable path="Hurtbox"]

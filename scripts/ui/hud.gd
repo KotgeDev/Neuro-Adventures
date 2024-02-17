@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+var cursor = preload("res://assets/ui/cursor.png")
+
 #region NODES
 @onready var ai_health_bar = %AIHealthBar
 @onready var collab_partner_health_bar = %CollabPartnerHealthBar
@@ -51,6 +53,7 @@ func _ready() -> void:
 	else: 
 		ai_bar_full.visible = false
 		collab_partner_bar_full.visible = false
+	Input.set_custom_mouse_cursor(cursor, Input.CURSOR_ARROW, Vector2(32, 32))
 
 func connect_signals() -> void:
 	Globals.game_over.connect(_on_game_over)
@@ -99,10 +102,12 @@ func show_endgame():
 		pause_game()
 
 func pause_game() -> void:
+	Input.set_custom_mouse_cursor(null)
 	get_tree().paused = true
 	pause_start_time_msec = Time.get_ticks_msec()
 
 func unpause_game() -> void:
+	Input.set_custom_mouse_cursor(cursor, Input.CURSOR_ARROW, Vector2(32, 32))
 	get_tree().paused = false 
 	total_paused_time_msec += Time.get_ticks_msec() - pause_start_time_msec
 

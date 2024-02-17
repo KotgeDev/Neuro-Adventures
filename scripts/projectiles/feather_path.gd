@@ -16,7 +16,7 @@ func setup(p_damage: float, p_hit_count) -> void:
 	hit_count = p_hit_count
 
 func _ready() -> void:
-	await get_tree().create_timer(WARNING_TIME).timeout
+	await get_tree().create_timer(WARNING_TIME, false).timeout
 
 	AudioSystem.play_sfx(feather_sfx, ai.global_position)
 	

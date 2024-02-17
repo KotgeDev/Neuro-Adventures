@@ -21,11 +21,11 @@ class_name SimpleEnemy
 
 #region NODES
 @onready var sprite_2d = $Sprite2D
+@onready var stun_effect = $StunEffect
 @onready var map = get_tree().get_first_node_in_group("map") as MAP
-#endregion 
-
-#region NAVIGATION
 @onready var navigation_agent = $NavigationAgent2D
+@onready var pathfind_timer = $PathfindTimer
+@onready var effect_player = $EffectPlayer
 #endregion 
 
 #region OTHER
@@ -37,6 +37,7 @@ var expp_template = preload("res://scenes/collectibles/exp.tscn")
 var ntx_template = preload("res://scenes/interactive_objects/ntx_4090.tscn")
 var last_enemy := false 
 var last_flip_time: float
+var stunned := false 
 #endregion 
 
 #region MARCH
@@ -51,8 +52,8 @@ var march_duration: float
 var dead := false 
 
 func ready() -> void: 
-	$PathfindTimer.wait_time = PATH_FIND_INTERVAL
-	$PathfindTimer.start()
+	pathfind_timer.wait_time = PATH_FIND_INTERVAL
+	pathfind_timer.start()
 	$ContinuousHitbox.damage = DAMAGE 
 	$ContinuousHitbox/HitTimer.wait_time = ATTACK_INTERVAL
 	$AnimationPlayer.play("idle")
@@ -71,7 +72,10 @@ func make_path() -> void:
 	next_pos = navigation_agent.get_next_path_position()
 
 func _physics_process(delta):
-	if march: 
+	if stunned:
+		return
+		
+	if march:
 		velocity = march_direction * SPEED 
 	else:
 		var dir = to_local(next_pos).normalized()
@@ -81,6 +85,7 @@ func _physics_process(delta):
 		last_flip_time -= delta 
 	else:
 		sprite_2d.flip_h = velocity.x < 0 
+		stun_effect.flip_h = velocity.x < 0
 		last_flip_time = 0.5
 	
 	position += velocity * delta 
@@ -116,15 +121,30 @@ func _on_hurtbox_take_damage(damage):
 			map.call_deferred("add_child", expp)
 		
 		var ntx_num = randf_range(0, 100)
-		if ntx_num <= map.ntx_chance:
-			map.ntx_chance = map.NTX_BASE_CHANCE
-			var ntx = ntx_template.instantiate()
-			ntx.global_position = global_position
-			map.call_deferred("add_child", ntx)
-		else:
-			map.ntx_chance += map.NTX_STEP 
+		if map.enemies_killed_since_last_ntx < map.NTX_REQ: 
+			map.enemies_killed_since_last_ntx += 1
+		elif map.NTX_REQ <= map.enemies_killed_since_last_ntx && map.enemies_killed_since_last_ntx < map.PITY_REQ:
+			if ntx_num <= map.ntx_chance:
+				spawn_ntx_4090()
+			else: 
+				map.ntx_chance = map.BASE_NTX_CHANCE
+				map.enemies_killed_since_last_ntx += 1 
+		elif map.PITY_REQ <= map.enemies_killed_since_last_ntx:
+			if ntx_num <= map.ntx_chance:
+				spawn_ntx_4090()
+			else:
+				map.ntx_chance += map.PITY_STEP 
+				map.enemies_killed_since_last_ntx += 1 
 		
 		queue_free() 
+
+func spawn_ntx_4090() -> void:
+	map.ntx_chance = map.BASE_NTX_CHANCE
+	map.enemies_killed_since_last_ntx = 0 
+	
+	var ntx = ntx_template.instantiate()
+	ntx.global_position = global_position
+	map.call_deferred("add_child", ntx) 
 
 func _on_pathfind_timer_timeout():
 	if march:
@@ -137,3 +157,14 @@ func _on_pathfind_timer_timeout():
 
 func _on_march_duration_timeout():
 	queue_free()
+
+func stun(stun_time: float) -> void:
+	stun_effect.visible = true
+	$AnimationPlayer.stop()
+	effect_player.play("stunned")
+	stunned = true 
+	await get_tree().create_timer(stun_time, false).timeout
+	stunned = false 
+	stun_effect.visible = false
+	$AnimationPlayer.play("idle")
+	effect_player.stop()

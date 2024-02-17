@@ -20,9 +20,6 @@ var archer_boss = preload("res://scenes/enemies/boss_scenes/archer_boss.tscn")
 func spawn_enemies() -> void:
 	await get_tree().process_frame
 	
-	Globals.spawn.emit(kobold_template, 200, 0.1)
-	return
-	
 	# 30 sec prep time 
 	Globals.spawn.emit(slime_template, 50, 0.2)
 	await get_tree().create_timer(30, false).timeout
@@ -55,7 +52,9 @@ func spawn_enemies() -> void:
 	Globals.spawn.emit(goblin_template, 75, 1.0)
 	Globals.spawn.emit(kobold_template, 75, 1.0)
 	Globals.spawn.emit(soldier_template, 100, 1.0)
-	await get_tree().create_timer(100, false).timeout
+	await get_tree().create_timer(50, false).timeout
+	add_march(left_right_flank, knight_template, 42.0)
+	await get_tree().create_timer(50, false).timeout
 	# All first wave enemise spawned at this point.
 	await get_tree().create_timer(30, false).timeout 
 	
