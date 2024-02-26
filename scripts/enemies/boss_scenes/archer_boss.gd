@@ -1,4 +1,5 @@
 extends Enemy
+class_name ArcherBoss
 
 #region CONSTANTS
 @export var BASE_MAX_SPEED := 80.0

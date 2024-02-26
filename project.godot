@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Globals="*res://scripts/shared/globals.gd"
 AudioSystem="*res://scripts/audio/audiosystem.gd"
 SavedOptions="*res://scripts/options/saved_options.gd"
+AchievementManager="*res://scripts/achievements/achievement_manager.gd"
 
 [display]
 

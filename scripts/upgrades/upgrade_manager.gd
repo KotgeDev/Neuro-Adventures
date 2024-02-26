@@ -86,7 +86,7 @@ var upgrades_db = [
 		"iNuke6000",
 		preload("res://assets/upgrades/inuke6000_icon.png"),
 		[
-			"iNuke6000s are dropped at a random enemy in range every 6 s dealing splash damage of 12",
+			"iNuke6000s are dropped at a random enemy in range every 6 s dealing splash damage of 12. MAY TARGET COLLAB PARTNER",
 			"Nuke launch time is reduced",
 			"Two nukes are launched at a time",
 			"Nuke launch time is further reduced  ",
@@ -119,7 +119,7 @@ var neuro_upgrades_db = [
 		"Gymbag Drone",
 		preload("res://assets/upgrades/gymbag_drone_icon.png"),
 		[
-			"A gymbag drone that will strike enemies at random. You can have many as you want."
+			"A gymbag drone that will strike enemies at random. Will return to Neuro every 25 seconds."
 		],
 		Globals.UpgradeType.AI_UPGRADE, 
 		1,
@@ -172,7 +172,7 @@ var neuro_upgrades_db = [
 		"Angel Wings",
 		preload("res://assets/upgrades/angel_wings_icon.png"),
 		[
-			"Feathers shoot out from Neuro that target enemies",
+			"Feathers shoot out from Neuro that target enemies. MAY TARGET COLLAB PARTNER",
 			"Feathers can pierce through up to three enemies",
 			"Increased fire rate of feathers",
 			"Increased damage of feathers",

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cbfigu64qfdvf"]
+[gd_scene load_steps=9 format=3 uid="uid://cbfigu64qfdvf"]
 
 [ext_resource type="Script" path="res://scripts/ui/menu.gd" id="1_833i5"]
 [ext_resource type="Texture2D" uid="uid://ck3vocomisktb" path="res://assets/ui/cover_image.png" id="2_yw33v"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dh53uv4y0tqn3" path="res://scenes/shared/music_player.tscn" id="4_ddx3h"]
 [ext_resource type="AudioStream" uid="uid://br2sr5r7ybai2" path="res://assets/songs/themeadow.wav" id="5_5ndmk"]
 [ext_resource type="PackedScene" uid="uid://bnaykxnl0tv10" path="res://scenes/ui/credits.tscn" id="7_0vgrq"]
+[ext_resource type="PackedScene" uid="uid://dm3hkvfawh3kq" path="res://scenes/achievements/achievements_menu.tscn" id="8_w6eb3"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -31,31 +32,38 @@ texture = ExtResource("2_yw33v")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 509.0
-offset_top = 186.0
-offset_right = 609.0
-offset_bottom = 326.0
+offset_left = 469.0
+offset_top = 182.0
+offset_right = 629.0
+offset_bottom = 342.0
 theme_override_constants/separation = 0
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 text = "Start"
 script = ExtResource("3_q60to")
 
 [node name="OptionButton" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
-text = "Option"
+text = "Options"
+script = ExtResource("3_q60to")
+
+[node name="AcheivementsButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+text = "Achievements"
 script = ExtResource("3_q60to")
 
 [node name="CreditsButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 text = "Credits"
 script = ExtResource("3_q60to")
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 text = "Quit"
 script = ExtResource("3_q60to")
@@ -67,9 +75,15 @@ layout_mode = 1
 [node name="Credits" parent="." instance=ExtResource("7_0vgrq")]
 visible = false
 
+[node name="AchievementsMenu" parent="." instance=ExtResource("8_w6eb3")]
+visible = false
+layout_mode = 1
+
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/OptionButton" to="." method="_on_option_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/AcheivementsButton" to="." method="_on_acheivements_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
-[connection signal="close_options" from="OptionsMenu" to="." method="_on_options_close_options"]
-[connection signal="close_credits" from="Credits" to="." method="_on_credits_close_credits"]
+[connection signal="close_options" from="OptionsMenu" to="." method="show_buttons"]
+[connection signal="close_credits" from="Credits" to="." method="show_buttons"]
+[connection signal="close_achievements" from="AchievementsMenu" to="." method="show_buttons"]

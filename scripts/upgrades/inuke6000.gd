@@ -1,6 +1,6 @@
 extends UpgradeScene
 
-@export var DAMAGE := 6.0 
+@export var DAMAGE := 8.0 
 @export var GRACE_PERIOD := 1.5 
 @export var LV1_FREQUENCY := 6.0 
 @export var LV2_FREQUENCY := 4.5 

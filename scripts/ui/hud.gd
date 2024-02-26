@@ -210,8 +210,7 @@ func display_upgrades(upgrades: Array) -> void:
 	AudioSystem.set_music_volume(0.5)
 	
 	for upgrade in upgrades:
-		var choice_panel
-		choice_panel = choice_panel_template.duplicate()
+		var choice_panel = choice_panel_template.duplicate()
 		var button = choice_panel.get_node("Button")
 		var v_container = choice_panel.get_node("VBoxContainer")
 		var upgrade_name = v_container.get_node("UpgradeName")

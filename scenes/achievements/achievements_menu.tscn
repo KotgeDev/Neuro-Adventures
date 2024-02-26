@@ -1,0 +1,139 @@
+[gd_scene load_steps=4 format=3 uid="uid://dm3hkvfawh3kq"]
+
+[ext_resource type="Script" path="res://scripts/achievements/achievements_menu.gd" id="1_0iyta"]
+[ext_resource type="Texture2D" uid="uid://bxy2weuuiacwj" path="res://assets/achievements/base_mono.png" id="4_cbhgm"]
+[ext_resource type="Texture2D" uid="uid://thre1e3yyysq" path="res://assets/achievements/unknown.png" id="5_8nfpg"]
+
+[node name="AchievementsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0iyta")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -308.0
+offset_top = -168.5
+offset_right = 308.0
+offset_bottom = 168.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 31.0
+grow_horizontal = 2
+text = "Achievements!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
+custom_minimum_size = Vector2(350, 219)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="AchievementsContainer" type="VBoxContainer" parent="Panel/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="AchievementPanel" type="Control" parent="."]
+visible = false
+custom_minimum_size = Vector2(345, 70)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 142.404
+offset_top = 68.0
+offset_right = 487.404
+offset_bottom = 138.0
+
+[node name="Panel" type="Panel" parent="AchievementPanel"]
+layout_mode = 0
+offset_right = 345.0
+offset_bottom = 72.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AchievementPanel"]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Labels" type="HBoxContainer" parent="AchievementPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="AchievementPanel/VBoxContainer/Labels"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = " ???"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AchievementPanel/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="Sprites" type="CenterContainer" parent="AchievementPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Base" type="TextureRect" parent="AchievementPanel/VBoxContainer/HBoxContainer/Sprites"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+texture = ExtResource("4_cbhgm")
+stretch_mode = 3
+
+[node name="Icon" type="TextureRect" parent="AchievementPanel/VBoxContainer/HBoxContainer/Sprites"]
+layout_mode = 2
+texture = ExtResource("5_8nfpg")
+stretch_mode = 3
+
+[node name="Requirement" type="Label" parent="AchievementPanel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(290, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Win your first game "
+autowrap_mode = 2
+
+[node name="Padding" type="Control" parent="AchievementPanel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+
+[node name="Padding" type="Control" parent="AchievementPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="ReturnButton" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 0)
+offset_left = 21.0
+offset_top = 309.0
+offset_right = 121.0
+offset_bottom = 341.0
+text = "Return"
+
+[connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]

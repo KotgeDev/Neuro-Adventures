@@ -2,8 +2,8 @@ extends UpgradeScene
 
 @export var LV1_FIRE_RATE := 3.0
 @export var LV3_FIRE_RATE := 1.5 
-@export var LV1_DAMAGE := 1.0 
-@export var LV4_DAMAGE := 2.0 
+@export var LV1_DAMAGE := 2.0 
+@export var LV4_DAMAGE := 4.0 
 @export var LV1_HIT_COUNT := 1
 @export var LV2_HIT_COUNT := 3 
 

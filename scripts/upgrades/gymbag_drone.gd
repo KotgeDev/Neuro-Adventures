@@ -15,6 +15,7 @@ class_name GymbagDrone
 @onready var multi_hitbox = $MultiHitbox
 @onready var gymbag_drone_personal_zone = $GymbagDronePersonalZone
 @onready var map = get_tree().get_first_node_in_group("map")
+@onready var battery_timer = $BatteryTimer
 #endregion 
 
 #region SOUNDFX
@@ -25,7 +26,8 @@ var buzz_sfx: AudioStream = preload("res://assets/sfx/dronebzzz.wav")
 var velocity: Vector2
 var target: Node = null 
 var id: int 
-var collab_partner_in_range = false 
+var collab_partner_in_range := false 
+var need_recharge := false 
 @onready var max_speed: float = BASE_MAX_SPEED
 #endregion 
 
@@ -43,11 +45,20 @@ func set_damage(damage: float) -> void:
 	$MultiHitbox.damage = damage 
 
 func _process(delta: float) -> void:
-	if not search_and_target_enemy(delta) and not ai_within_range(delta):	
-		var target_pos = ai.global_position
-		compass.look_at(target_pos)
-		velocity = velocity.move_toward(compass.transform.x * max_speed, ACCELERATION * delta)
-	
+	if need_recharge:
+		if ai_within_range():
+			battery_timer.start()
+			need_recharge = false 
+		else: 
+			goto_ai(delta) 
+	else:
+		# Target enemy if one exists 
+		var targeting_enemy = search_and_target_enemy(delta)
+		# If not targeting and ai is not within range, go to ai 
+		if not targeting_enemy and not ai_within_range():	
+			goto_ai(delta) 
+			
+	# Ensure drones are not too close to each other 
 	for area in gymbag_drone_personal_zone.get_overlapping_areas():
 		var parent = area.get_parent() 
 		if parent is GymbagDrone:
@@ -57,6 +68,12 @@ func _process(delta: float) -> void:
 				velocity = velocity.move_toward( -1 * compass.transform.y * max_speed, ACCELERATION * delta)
 	
 	position += velocity * delta 
+
+func goto_ai(delta: float) -> void:
+	var target_pos = ai.global_position
+	compass.look_at(target_pos)
+	velocity = velocity.move_toward(compass.transform.x * max_speed, ACCELERATION * delta)
+	
 
 ## Searches and targets an enemy. 
 ## Returns false if no enemies are targeted and there are no 
@@ -81,7 +98,7 @@ func search_and_target_enemy(delta: float) -> bool:
 			
 	return false 
 
-func ai_within_range(delta: float) -> bool:
+func ai_within_range() -> bool:
 	for area in ai_search_field.get_overlapping_areas():
 		if area.owned_by == Globals.Owners.OWNED_BY_AI:
 			return true 
@@ -90,3 +107,7 @@ func ai_within_range(delta: float) -> bool:
 func _on_ai_search_field_area_entered(area):
 	if area.owned_by == Globals.Owners.OWNED_BY_COLLAB_PARTNER:
 		AudioSystem.play_sfx(buzz_sfx, global_position, 5.0)
+
+func _on_battery_timer_timeout():
+	battery_timer.stop()
+	need_recharge = true 
