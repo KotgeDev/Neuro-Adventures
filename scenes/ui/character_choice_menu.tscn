@@ -136,70 +136,93 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/Panel"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer2/Panel"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.42
-anchor_top = 0.39
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.585
-offset_left = -70.0
-offset_top = -31.5
-offset_right = 70.0
-offset_bottom = 31.5
+anchor_bottom = 0.5
+offset_left = -87.5
+offset_top = -50.0
+offset_right = 87.5
+offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 24
-text = "Name: Neuro Sama
+vertical_scroll_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/Panel/ScrollContainer"]
+custom_minimum_size = Vector2(170, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Neuro Sama
 HP: 45
 Speed: 75
-"
+Starting Weapon: Neuro wields dual swords she bought during the Snuffy D&D Collab. 
+\"Filtered.\" - Neuro Sama"
+autowrap_mode = 2
 
 [node name="Panel2" type="Panel" parent="VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer2/Panel2"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer2/Panel2"]
+custom_minimum_size = Vector2(175, 100)
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.42
-anchor_top = 0.39
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -70.0
-offset_top = -31.5
-offset_right = 70.0
-offset_bottom = 31.5
+offset_left = -87.5
+offset_top = -50.0
+offset_right = 87.5
+offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 24
-text = "Name: Vedal
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer2/Panel2/ScrollContainer"]
+custom_minimum_size = Vector2(170, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Vedal
 HP: 40
 Speed: 80
-"
+Starting Weapon: Vedal will throw his rum at the enemies, creating a splash. Enemies encountering the splash will be intoxicated (stunned) for a while.
+\"There is no such thing as love, only pain and suffering\" - Vedal"
+autowrap_mode = 2
 
 [node name="Panel3" type="Panel" parent="VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer2/Panel3"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer2/Panel3"]
+custom_minimum_size = Vector2(175, 100)
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.42
-anchor_top = 0.39
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -70.0
-offset_top = -31.5
-offset_right = 70.0
-offset_bottom = 31.5
+offset_left = -87.5
+offset_top = -50.0
+offset_right = 87.5
+offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 24
-text = "Name: The Farm
+vertical_scroll_mode = 2
+
+[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer2/Panel3/ScrollContainer"]
+custom_minimum_size = Vector2(170, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "The Farm
 Difficulty: Low
-Boss: Elf Archer 
+Win Condition: Defeat the Elf Archer 
+Modeled after the farm setting during the Snuffy D&D Collab.
+\"Did you hear what happened? Someone broke into your cabin and your guards were killed in the process! Who did this to you?\" - Neuro Sama, to the Elf Archer. 
 "
+autowrap_mode = 2
 
 [node name="Panel" type="Panel" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 45)

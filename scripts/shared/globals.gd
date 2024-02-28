@@ -2,6 +2,7 @@ extends Node
 
 var current_collab_partner = WhichCollabPartner.VEDAL	
 var current_ai = WhichAI.NEURO
+var current_map = WhichMap.THE_FARM
 
 #region Enums 
 enum UpgradeType {
@@ -21,6 +22,10 @@ enum WhichCollabPartner {
 
 enum WhichAI {
 	NEURO 
+}
+
+enum WhichMap {
+	THE_FARM
 }
 #endregion 
 
@@ -47,6 +52,7 @@ signal change_fps_counter_state(toggled_on: bool)
 signal get_random_upgrades
 signal get_all_existing_upgrades 
 signal lvl_up(upgrade: Upgrade)
+signal remove_maxed_upgrades 
 #endregion 
 
 #region TO SPECIFIC UPGRADES

@@ -17,6 +17,9 @@ var cursor = preload("res://assets/ui/cursor.png")
 @onready var options_menu = $OptionsMenu
 @onready var ai_bar_full = %AiBarFull
 @onready var collab_partner_bar_full = %CollabPartnerBarFull
+@onready var victory_achievements_display = $VictoryAchievementsDisplay
+var collab_partner: CollabPartner 
+var map: MAP 
 #endregion
 
 #region UI Shake Handler (Scuffed Code Ahead)
@@ -54,7 +57,7 @@ func _ready() -> void:
 		ai_bar_full.visible = false
 		collab_partner_bar_full.visible = false
 	Input.set_custom_mouse_cursor(cursor, Input.CURSOR_ARROW, Vector2(32, 32))
-
+	
 func connect_signals() -> void:
 	Globals.game_over.connect(_on_game_over)
 	Globals.game_won.connect(_on_game_won)
@@ -68,6 +71,8 @@ func connect_signals() -> void:
 	
 func _on_map_ready() -> void:
 	start_time_msec = Time.get_ticks_msec()
+	collab_partner = get_tree().get_first_node_in_group("collab_partner") 
+	map = get_tree().get_first_node_in_group("map")
 
 func _process(delta: float) -> void:
 	shake_handler(delta)
@@ -122,20 +127,46 @@ func _on_game_over() -> void:
 	end_game.visible = true 
 	
 	var survival_sec: int = roundi((Time.get_ticks_msec() - start_time_msec - total_paused_time_msec) / 1000.0) 
-	var min: int = int(survival_sec / 60)
-	var sec: int = roundi(survival_sec % 60)
 	$EndGame/TimeLabel.text = "Survived time: " + calculated_survived_time()
 	
 func _on_game_won() -> void:
-	continue_button.visible = false
-	retry_button.visible = true
 	menu_allowed = false 
 	pause_game()
+	check_for_completed_achievements()
+	
+	if not victory_achievements_display.achievements_completed_this_game.is_empty():
+		victory_achievements_display.show_achievements()
+	else:
+		display_game_won()
+
+func check_for_completed_achievements() -> void:
+	var status = AchievementManager.achievement_status
+	if not status[0]:
+		AchievementManager.add_achievement.emit(0)
+	if Globals.current_map == Globals.WhichMap.THE_FARM:
+		AchievementManager.add_achievement.emit(1)
+	if not collab_partner.damaged_atleast_once:
+		AchievementManager.add_achievement.emit(2)
+	if map.gymbag_drone_count >= 10 and map.swarm_max:
+		AchievementManager.add_achievement.emit(3)
+	if map.raise_the_timer:
+		AchievementManager.add_achievement.emit(4)
+	if map.say_it_back_max and map.dual_strike_max:
+		AchievementManager.add_achievement.emit(5)
+
+func display_game_won() -> void:
+	continue_button.visible = false
+	retry_button.visible = true
 	%EndGameLabel.text = "VICTORY"
 	%EndGameLabel.material = load("res://assets/shaders/rainbow.tres")
 	%FlavorText.text = "Sometimes when I sit here and stream, I envision myself as a goddess, overlooking my followers. "
 	$EndGame/TimeLabel.text = "Elapsed time: " + calculated_survived_time()
+	
+	end_game.modulate.a = 0.0 
 	end_game.visible = true 
+	var tween = get_tree().create_tween()
+	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	tween.tween_property(end_game, "modulate:a", 1.0, 1.0)
 
 func calculated_survived_time() -> String: 
 	var survival_sec: int = roundi((Time.get_ticks_msec() - start_time_msec - total_paused_time_msec) / 1000.0) 

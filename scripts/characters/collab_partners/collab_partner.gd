@@ -30,6 +30,7 @@ var expp := 0
 var exp_requirement := EXP_REQ_INIT
 var lv := 1  
 var creggs_drop_chance := 0.005
+var damaged_atleast_once := false 
 #endregion
 
 #region RAISE THE TIMER
@@ -80,6 +81,7 @@ func _on_hurtbox_take_damage(damage: float):
 		return 
 	
 	health -= damage 
+	damaged_atleast_once = true 
 	character_animation.show_damage()
 	Globals.update_collab_partner_health.emit(MAX_HEALTH, health)
 	if health <= 0: 

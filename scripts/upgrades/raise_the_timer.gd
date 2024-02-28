@@ -1,6 +1,9 @@
 extends UpgradeScene
 
+@onready var map = get_tree().get_first_node_in_group("map") as MAP
+
 func _ready() -> void:
+	map.raise_the_timer = true 
 	sync_level() 
 
 func sync_level() -> void:

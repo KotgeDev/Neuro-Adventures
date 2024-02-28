@@ -14,7 +14,7 @@ class_name GymbagDrone
 @onready var ai = get_tree().get_first_node_in_group("ai")
 @onready var multi_hitbox = $MultiHitbox
 @onready var gymbag_drone_personal_zone = $GymbagDronePersonalZone
-@onready var map = get_tree().get_first_node_in_group("map")
+@onready var map = get_tree().get_first_node_in_group("map") as MAP
 @onready var battery_timer = $BatteryTimer
 #endregion 
 
@@ -32,6 +32,7 @@ var need_recharge := false
 #endregion 
 
 func _ready():
+	map.gymbag_drone_count += 1 
 	reparent(map)
 	
 	set_damage(BASE_DAMAGE)

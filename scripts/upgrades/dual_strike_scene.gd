@@ -13,7 +13,7 @@ var dual_strike_large_template = preload("res://scenes/projectiles/dual_strike_l
 #endregion 
 
 #region NODES
-@onready var map = get_tree().get_first_node_in_group("map")
+@onready var map = get_tree().get_first_node_in_group("map") as MAP
 @onready var ai = get_tree().get_first_node_in_group("ai")
 @onready var strikes = $Strikes
 @onready var strike_1 = %Strike1
@@ -62,3 +62,4 @@ func sync_level() -> void:
 		strike_1.position += Vector2(5, -5)
 		strike_2.position += Vector2(5, 5)
 		fire_timer.wait_time = LV5_WAIT_TIME 
+		map.dual_strike_max = true 

@@ -1,10 +1,12 @@
 extends Node2D
+class_name UpgradeManager
 
 func _ready() -> void: 
 	Globals.get_random_upgrades.connect(get_random_upgrades)
 	Globals.get_all_existing_upgrades.connect(get_all_existing_upgrades)
 	Globals.lvl_up.connect(lvl_up)
 	Globals.map_ready.connect(_on_map_ready)
+	Globals.remove_maxed_upgrades.connect(remove_maxed_upgrades)
 
 ## character specific upgrades should be merged into this array
 ## Upgrades in this array will be included in the game
@@ -255,8 +257,9 @@ func get_random_upgrades() -> void:
 	
 	Globals.send_random_upgrades.emit(random_upgrades)
 
+## Ensure to emit remove maxed upgrades 
+## before using this function
 func get_all_existing_upgrades() -> void:
-	remove_maxed_upgrades()
 	Globals.send_all_existing_upgrades.emit(existing_upgrades)
 
 func remove_maxed_upgrades() -> void: 

@@ -40,5 +40,4 @@ func _ready() -> void:
 		achievements_container.add_child(achievement_panel)
 
 func _on_return_button_pressed():
-	visible = false
-	close_achievements.emit()
+	get_tree().change_scene_to_file("res://scenes/ui/menu.tscn")

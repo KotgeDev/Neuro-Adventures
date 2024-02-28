@@ -1,0 +1,89 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2avq1nqugasc"]
+
+[ext_resource type="Script" path="res://scripts/achievements/victory_achievements_display.gd" id="1_hgafy"]
+[ext_resource type="Texture2D" uid="uid://6iq3tx51kw02" path="res://assets/achievements/neverending_subathon.png" id="3_03bcw"]
+[ext_resource type="Texture2D" uid="uid://cmtjh5x62vbfm" path="res://assets/achievements/base.png" id="3_nacfy"]
+
+[node name="VictoryAchievementsDisplay" type="Control"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hgafy")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.490196)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+text = "Achievements Received"
+horizontal_alignment = 1
+
+[node name="BadgeContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 0
+
+[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Press [space] to Continue"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Badge" type="CenterContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(65, 60)
+layout_mode = 2
+offset_left = 275.0
+offset_top = 150.0
+offset_right = 365.0
+offset_bottom = 216.0
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Badge"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="Sprites" type="CenterContainer" parent="Badge/HBoxContainer"]
+layout_mode = 2
+
+[node name="Base" type="TextureRect" parent="Badge/HBoxContainer/Sprites"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+texture = ExtResource("3_nacfy")
+stretch_mode = 3
+
+[node name="Icon" type="TextureRect" parent="Badge/HBoxContainer/Sprites"]
+layout_mode = 2
+texture = ExtResource("3_03bcw")
+stretch_mode = 3
+
+[node name="Title" type="Label" parent="Badge/HBoxContainer"]
+custom_minimum_size = Vector2(90, 26)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Neverending Subathon"
+horizontal_alignment = 1
+autowrap_mode = 2
