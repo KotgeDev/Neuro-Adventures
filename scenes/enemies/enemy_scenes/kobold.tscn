@@ -49,7 +49,7 @@ _data = {
 [node name="Kobold" instance=ExtResource("1_frcrl")]
 SPEED = 40.0
 MAX_HEALTH = 4.0
-DAMAGE = 2.0
+DAMAGE = 3.0
 ATTACK_INTERVAL = 0.5
 
 [node name="Sprite2D" parent="." index="0"]

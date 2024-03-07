@@ -143,15 +143,15 @@ func check_for_completed_achievements() -> void:
 	var status = AchievementManager.achievement_status
 	if not status[0]:
 		AchievementManager.add_achievement.emit(0)
-	if Globals.current_map == Globals.WhichMap.THE_FARM:
+	if Globals.current_map == Globals.WhichMap.THE_FARM and not status[1]:
 		AchievementManager.add_achievement.emit(1)
-	if not collab_partner.damaged_atleast_once:
+	if not collab_partner.damaged_atleast_once and not status[2]:
 		AchievementManager.add_achievement.emit(2)
-	if map.gymbag_drone_count >= 10 and map.swarm_max:
+	if map.gymbag_drone_count >= 10 and map.swarm_max and not status[3]:
 		AchievementManager.add_achievement.emit(3)
-	if map.raise_the_timer:
+	if map.raise_the_timer and not status[4]:
 		AchievementManager.add_achievement.emit(4)
-	if map.say_it_back_max and map.dual_strike_max:
+	if map.say_it_back_max and map.dual_strike_max and not status[5]:
 		AchievementManager.add_achievement.emit(5)
 
 func display_game_won() -> void:

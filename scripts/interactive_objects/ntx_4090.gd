@@ -4,7 +4,7 @@ extends Node2D
 @onready var notice = %Notice
 @onready var fan_spin_player = $FanSpinPlayer
 @onready var effect_player = $EffectPlayer
-@onready var upgrade_manager = get_tree().get_first_node_in_group("map").get_node("UpgradeManager") as UpgradeManager
+@onready var upgrade_manager
 
 var tween: Tween
 var in_range := false 
@@ -12,6 +12,8 @@ var in_range := false
 func _ready() -> void:
 	fan_spin_player.play("fan_spin")
 	effect_player.play("effect")
+	
+	upgrade_manager = get_tree().get_first_node_in_group("map").get_node("UpgradeManager")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

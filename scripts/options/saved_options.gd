@@ -16,8 +16,8 @@ var settings := {
 	"window_mode": WindowMode.WINDOWED,
 	"sfx_volume": 1.0,
 	"music_volume": 1.0,
-	"fps_counter": true,
-	"full_health_effect": false
+	"fps_counter": false,
+	"full_health_effect": true
 }
 #endregion 
 

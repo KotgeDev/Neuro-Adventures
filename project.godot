@@ -13,7 +13,7 @@ config_version=5
 config/name="Neuro Adventures!"
 run/main_scene="res://scenes/ui/menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://windows_icon.png"
 
 [autoload]
 
