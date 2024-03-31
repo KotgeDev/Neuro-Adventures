@@ -224,11 +224,11 @@ func _on_map_ready() -> void:
 	var collab_partner_db: Array
 	var ai_db: Array
 	
-	match Globals.current_collab_partner:
-		Globals.WhichCollabPartner.VEDAL: collab_partner_db = vedal_upgrades_db
+	match SavedOptions.settings.collab_partner_selected:
+		SavedOptions.CollabPartnerSelection.VEDAL: collab_partner_db = vedal_upgrades_db
 
-	match Globals.current_ai: 
-		Globals.WhichAI.NEURO: ai_db = neuro_upgrades_db
+	match SavedOptions.settings.ai_selected: 
+		SavedOptions.AISelection.NEURO: ai_db = neuro_upgrades_db
 	
 	merge_character_upgrade_db(collab_partner_db) 
 	lvl_up(collab_partner_db[0])

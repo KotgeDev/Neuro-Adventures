@@ -1,12 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://c026lmxt4wojd"]
+[gd_scene load_steps=10 format=3 uid="uid://c026lmxt4wojd"]
 
 [ext_resource type="Texture2D" uid="uid://cwiayaenixuu8" path="res://assets/ui/cover_image_no_title.png" id="1_7k7ia"]
 [ext_resource type="Script" path="res://scripts/ui/character_choice_menu.gd" id="1_cty1m"]
 [ext_resource type="Texture2D" uid="uid://c1ussrvj1xucu" path="res://assets/characters/ais/neuro_idle_sheet.png" id="3_2itik"]
-[ext_resource type="Texture2D" uid="uid://c5by2m716h6dc" path="res://assets/ui/next_button.png" id="4_lwjh5"]
 [ext_resource type="Script" path="res://scripts/ui/button_with_sfx.gd" id="4_q3rg1"]
+[ext_resource type="Texture2D" uid="uid://c5d0obvai8g6t" path="res://assets/characters/ais/evil_idle_sheet.png" id="4_xdlj1"]
 [ext_resource type="Texture2D" uid="uid://bcl8r38dmiu4i" path="res://assets/characters/collab_partners/vedal_idle_sheet.png" id="5_bw6oa"]
+[ext_resource type="PackedScene" uid="uid://w84o3jud0826" path="res://scenes/ui/next_button.tscn" id="5_qnvlg"]
 [ext_resource type="Texture2D" uid="uid://b6ufng6tk6opd" path="res://assets/maps/farm_icon.png" id="6_3at8l"]
+[ext_resource type="Texture2D" uid="uid://cn3jw7mtepsf1" path="res://assets/ui/next_button_disabled.png" id="7_nnivg"]
 
 [node name="CharacterChoiceMenu" type="Control"]
 layout_mode = 3
@@ -47,26 +49,32 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/HBoxContainer/Panel"]
+[node name="Neuro" type="Sprite2D" parent="VBoxContainer/HBoxContainer/Panel"]
 position = Vector2(99, 71.5)
 scale = Vector2(2, 2)
 texture = ExtResource("3_2itik")
 hframes = 4
 
-[node name="Sprite2D2" type="TextureRect" parent="VBoxContainer/HBoxContainer/Panel"]
+[node name="Evil" type="Sprite2D" parent="VBoxContainer/HBoxContainer/Panel"]
+visible = false
+position = Vector2(99, 71.5)
+scale = Vector2(2, 2)
+texture = ExtResource("4_xdlj1")
+hframes = 4
+
+[node name="AISelectionButton" parent="VBoxContainer/HBoxContainer/Panel" instance=ExtResource("5_qnvlg")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.86
-anchor_top = 0.58
+anchor_top = 0.56
 anchor_right = 1.0
-anchor_bottom = 0.64
-offset_left = -32.0
-offset_top = -16.0
-offset_bottom = 16.0
+anchor_bottom = 0.58
+offset_left = -40.0
+offset_top = -20.0
+offset_right = 0.0
+offset_bottom = 20.0
 grow_horizontal = 0
 grow_vertical = 2
-texture = ExtResource("4_lwjh5")
-stretch_mode = 2
 
 [node name="Panel2" type="Panel" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -90,7 +98,7 @@ offset_top = -16.0
 offset_bottom = 16.0
 grow_horizontal = 0
 grow_vertical = 2
-texture = ExtResource("4_lwjh5")
+texture = ExtResource("7_nnivg")
 stretch_mode = 2
 
 [node name="Panel3" type="Panel" parent="VBoxContainer/HBoxContainer"]
@@ -125,7 +133,7 @@ offset_top = -16.0
 offset_bottom = 16.0
 grow_horizontal = 0
 grow_vertical = 2
-texture = ExtResource("4_lwjh5")
+texture = ExtResource("7_nnivg")
 stretch_mode = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
@@ -273,5 +281,6 @@ offset_bottom = 340.0
 text = "Start"
 script = ExtResource("4_q3rg1")
 
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Panel/AISelectionButton" to="." method="_on_ai_selection_button_pressed"]
 [connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

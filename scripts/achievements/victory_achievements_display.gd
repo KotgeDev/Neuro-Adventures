@@ -46,6 +46,7 @@ func show_achievements() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if active and Input.is_action_just_pressed("close_screen"):
+		active = false 
 		var tween = get_tree().create_tween()
 		tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 		close_victory_achievement_screen.emit()

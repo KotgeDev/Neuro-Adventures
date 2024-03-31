@@ -1,9 +1,5 @@
 extends Node
 
-var current_collab_partner = WhichCollabPartner.VEDAL	
-var current_ai = WhichAI.NEURO
-var current_map = WhichMap.THE_FARM
-
 #region Enums 
 enum UpgradeType {
 	AI_UPGRADE,
@@ -16,17 +12,6 @@ enum Owners {
 	OWNED_BY_ENEMY
 }
 
-enum WhichCollabPartner {
-	VEDAL
-}
-
-enum WhichAI {
-	NEURO 
-}
-
-enum WhichMap {
-	THE_FARM
-}
 #endregion 
 
 ## connect function to this signal if an action 

@@ -9,6 +9,19 @@ enum WindowMode {
 	BORDERLESS_FULL_SCREEN
 }
 
+enum CollabPartnerSelection {
+	VEDAL
+}
+
+enum AISelection {
+	NEURO,
+	EVIL 
+}
+
+enum MapSelection {
+	THE_FARM
+}
+
 var save_path = "user://saved_options.save"
 
 #region SETTINGS
@@ -17,7 +30,9 @@ var settings := {
 	"sfx_volume": 1.0,
 	"music_volume": 1.0,
 	"fps_counter": false,
-	"full_health_effect": true
+	"full_health_effect": true,
+	"ai_selected": 0,
+	"collab_partner_selected": 0 
 }
 #endregion 
 
@@ -30,6 +45,10 @@ func load_data() -> void:
 	if FileAccess.file_exists(save_path):
 		var file = FileAccess.open(save_path, FileAccess.READ)
 		settings = file.get_var()
+		if not settings.has("ai_selected"):
+			settings.ai_selected = 0 
+		if not settings.has("collab_partner_selected"):
+			settings.collab_partner_selected = 0
 	else:
 		save_data()
 

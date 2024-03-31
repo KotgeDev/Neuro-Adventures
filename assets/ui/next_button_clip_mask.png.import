@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://buf70d01tyetn"
+path="res://.godot/imported/next_button_clip_mask.png-977e7166e85a1a1f2e9f6b7ca6acae9c.res"
+
+[deps]
+
+source_file="res://assets/ui/next_button_clip_mask.png"
+dest_files=["res://.godot/imported/next_button_clip_mask.png-977e7166e85a1a1f2e9f6b7ca6acae9c.res"]
+
+[params]
+
+create_from=0
+threshold=0.5
