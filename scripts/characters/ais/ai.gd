@@ -12,7 +12,6 @@ class_name AI
 #endregion 
 
 #region NODES
-@onready var search_field = $SearchField
 @onready var character_animation = $CharacterAnimation
 var collab_partner: CollabPartner
 @onready var navigation_agent = $NavigationAgent2D

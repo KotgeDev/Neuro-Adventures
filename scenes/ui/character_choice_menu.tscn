@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://c026lmxt4wojd"]
+[gd_scene load_steps=9 format=3 uid="uid://c026lmxt4wojd"]
 
 [ext_resource type="Texture2D" uid="uid://cwiayaenixuu8" path="res://assets/ui/cover_image_no_title.png" id="1_7k7ia"]
 [ext_resource type="Script" path="res://scripts/ui/character_choice_menu.gd" id="1_cty1m"]
 [ext_resource type="Texture2D" uid="uid://c1ussrvj1xucu" path="res://assets/characters/ais/neuro_idle_sheet.png" id="3_2itik"]
 [ext_resource type="Script" path="res://scripts/ui/button_with_sfx.gd" id="4_q3rg1"]
-[ext_resource type="Texture2D" uid="uid://c5d0obvai8g6t" path="res://assets/characters/ais/evil_idle_sheet.png" id="4_xdlj1"]
 [ext_resource type="Texture2D" uid="uid://bcl8r38dmiu4i" path="res://assets/characters/collab_partners/vedal_idle_sheet.png" id="5_bw6oa"]
 [ext_resource type="PackedScene" uid="uid://w84o3jud0826" path="res://scenes/ui/next_button.tscn" id="5_qnvlg"]
 [ext_resource type="Texture2D" uid="uid://b6ufng6tk6opd" path="res://assets/maps/farm_icon.png" id="6_3at8l"]
@@ -49,18 +48,26 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Neuro" type="Sprite2D" parent="VBoxContainer/HBoxContainer/Panel"]
+[node name="AISprite" type="Sprite2D" parent="VBoxContainer/HBoxContainer/Panel"]
+unique_name_in_owner = true
 position = Vector2(99, 71.5)
 scale = Vector2(2, 2)
 texture = ExtResource("3_2itik")
 hframes = 4
 
-[node name="Evil" type="Sprite2D" parent="VBoxContainer/HBoxContainer/Panel"]
-visible = false
-position = Vector2(99, 71.5)
-scale = Vector2(2, 2)
-texture = ExtResource("4_xdlj1")
-hframes = 4
+[node name="AISelectionButtonBack" parent="VBoxContainer/HBoxContainer/Panel" instance=ExtResource("5_qnvlg")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.324
+anchor_top = 0.637
+anchor_right = 0.324
+anchor_bottom = 0.656
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 32.0
+offset_bottom = 32.0
+rotation = 3.14159
+flip_v = true
 
 [node name="AISelectionButton" parent="VBoxContainer/HBoxContainer/Panel" instance=ExtResource("5_qnvlg")]
 layout_mode = 1
@@ -93,13 +100,30 @@ anchor_left = 0.86
 anchor_top = 0.58
 anchor_right = 1.0
 anchor_bottom = 0.58
-offset_left = -32.0
-offset_top = -16.0
-offset_bottom = 16.0
+offset_left = -42.58
+offset_top = -23.12
+offset_bottom = 17.88
 grow_horizontal = 0
 grow_vertical = 2
 texture = ExtResource("7_nnivg")
 stretch_mode = 2
+
+[node name="Sprite2D4" type="TextureRect" parent="VBoxContainer/HBoxContainer/Panel2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.86
+anchor_top = 0.58
+anchor_right = 1.0
+anchor_bottom = 0.58
+offset_left = -142.58
+offset_top = -23.12
+offset_right = -130.0
+offset_bottom = 17.88
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("7_nnivg")
+stretch_mode = 2
+flip_h = true
 
 [node name="Panel3" type="Panel" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -128,13 +152,30 @@ anchor_left = 0.92
 anchor_top = 0.58
 anchor_right = 1.0
 anchor_bottom = 0.58
-offset_left = -32.0
-offset_top = -16.0
-offset_bottom = 16.0
+offset_left = -34.76
+offset_top = -23.12
+offset_bottom = 16.88
 grow_horizontal = 0
 grow_vertical = 2
 texture = ExtResource("7_nnivg")
 stretch_mode = 2
+
+[node name="Sprite2D5" type="TextureRect" parent="VBoxContainer/HBoxContainer/Panel3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.92
+anchor_top = 0.58
+anchor_right = 1.0
+anchor_bottom = 0.58
+offset_left = -169.76
+offset_top = -23.12
+offset_right = -148.0
+offset_bottom = 16.88
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("7_nnivg")
+stretch_mode = 2
+flip_h = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 120)
@@ -159,13 +200,14 @@ grow_horizontal = 2
 grow_vertical = 2
 vertical_scroll_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/Panel/ScrollContainer"]
+[node name="AIDescription" type="Label" parent="VBoxContainer/HBoxContainer2/Panel/ScrollContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(170, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Neuro Sama
 HP: 45
-Speed: 75
+Speed: 60
 Starting Weapon: Neuro wields dual swords she bought during the Snuffy D&D Collab. 
 \"Filtered.\" - Neuro Sama"
 autowrap_mode = 2
@@ -243,7 +285,7 @@ offset_top = 12.0
 offset_right = 628.0
 offset_bottom = 38.0
 
-[node name="Label" type="Label" parent="TitlesContainer"]
+[node name="Label1" type="Label" parent="TitlesContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "AI"
@@ -281,6 +323,7 @@ offset_bottom = 340.0
 text = "Start"
 script = ExtResource("4_q3rg1")
 
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Panel/AISelectionButtonBack" to="." method="_on_ai_selection_button_back_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Panel/AISelectionButton" to="." method="_on_ai_selection_button_pressed"]
 [connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

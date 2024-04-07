@@ -2,7 +2,6 @@ extends Enemy
 class_name ArcherBoss
 
 #region CONSTANTS
-@export var BASE_MAX_SPEED := 80.0
 @export var ACCELERATION := 500
 @export var FRICTION := 500 
 @export var MAX_HEALTH := 500.0
@@ -34,7 +33,6 @@ var just_started_running := false
 var just_started_shooting := false 
 @onready var phase_thresholds := [MAX_HEALTH, MAX_HEALTH * 0.45]
 @onready var health: float = MAX_HEALTH  
-@onready var max_speed: float = BASE_MAX_SPEED
 #endregion 
 
 var arrow_path_template = preload("res://scenes/projectiles/arrow_path.tscn")

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://baxpvlfwu7xeg"]
+
+[ext_resource type="Script" path="res://scripts/projectiles/knife.gd" id="1_sphdd"]
+[ext_resource type="Texture2D" uid="uid://bhi1jdvau58bb" path="res://assets/projectiles/knife_sheet.png" id="2_v6caf"]
+[ext_resource type="PackedScene" uid="uid://3miicp8y7p5b" path="res://scenes/shared/multi_hitbox.tscn" id="3_inc4x"]
+
+[node name="Knife" type="Node2D"]
+script = ExtResource("1_sphdd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_v6caf")
+hframes = 2
+
+[node name="MultiHitbox" parent="." instance=ExtResource("3_inc4x")]
+collision_mask = 6
+
+[node name="CollisionPolygon2D" parent="MultiHitbox" index="0"]
+polygon = PackedVector2Array(-4, -4, -4, -3, 1, 0, -2, 3, -2, 4, 0, 4, 12, 0, 12, -1, 0, -4)
+
+[editable path="MultiHitbox"]

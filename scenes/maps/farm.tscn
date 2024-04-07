@@ -1,11 +1,10 @@
-[gd_scene load_steps=52 format=3 uid="uid://drg7spn8yqktv"]
+[gd_scene load_steps=51 format=3 uid="uid://drg7spn8yqktv"]
 
 [ext_resource type="PackedScene" uid="uid://b8oia7t2aewka" path="res://scenes/characters/collab_partners/vedal.tscn" id="1_wnmde"]
 [ext_resource type="Script" path="res://scripts/maps/farm.gd" id="1_wx0jl"]
 [ext_resource type="Texture2D" uid="uid://b4b121yddfloj" path="res://assets/maps/map_size_scale.png" id="2_vxep5"]
 [ext_resource type="PackedScene" uid="uid://dqy8eus7xktlq" path="res://scenes/ui/hud.tscn" id="2_xyoik"]
 [ext_resource type="Texture2D" uid="uid://cp8wdtr8nfxm" path="res://assets/maps/farm_tile_map.png" id="3_4qhu1"]
-[ext_resource type="PackedScene" uid="uid://huy32vwhqidx" path="res://scenes/characters/ais/neuro.tscn" id="3_rcj0f"]
 [ext_resource type="PackedScene" uid="uid://3ojvl7d7u1pe" path="res://scenes/enemies/enemy_spawner.tscn" id="5_ep230"]
 [ext_resource type="PackedScene" uid="uid://8uhv6g1gj5yk" path="res://scenes/upgrades/upgrade_manager.tscn" id="7_wfvop"]
 [ext_resource type="PackedScene" uid="uid://dh53uv4y0tqn3" path="res://scenes/shared/music_player.tscn" id="9_wwhy6"]
@@ -637,9 +636,6 @@ layer_2/tile_data = PackedInt32Array(0, 196609, 3, 1, 262145, 3, 2, 262145, 3, 3
 metadata/_edit_lock_ = true
 
 [node name="HUD" parent="." instance=ExtResource("2_xyoik")]
-
-[node name="Neuro" parent="." instance=ExtResource("3_rcj0f")]
-position = Vector2(1217, 322)
 
 [node name="Vedal" parent="." instance=ExtResource("1_wnmde")]
 position = Vector2(1276, 331)

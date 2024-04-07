@@ -187,6 +187,41 @@ var neuro_upgrades_db = [
 	)
 ]
 
+var evil_upgrades_db = [
+	Upgrade.new(
+		"Knife", 
+		preload("res://assets/upgrades/knife_icon.png"),
+		[
+			"Knife",
+			"Less interval between strikes",
+			"More damage per strike",
+			"Increased range",
+			"Even less interval between strikes",
+			"Increased range. Warning, this range equals Evil's default distance from the collab partner."
+		], 
+		Globals.UpgradeType.AI_UPGRADE, 
+		6, 
+		0,
+		preload("res://scenes/upgrades/knife_scene.tscn")
+	),
+	Upgrade.new(
+		"Summon Circle", 
+		preload("res://assets/upgrades/summon_circle_icon.png"),
+		[
+			"Summon circle. Will slow all enemies within range by 20%",
+			"Will slow all enemies within range by 30% ",
+			"Will slow all enemies within range by 40%",
+			"Increase range of summon circle",
+			"Will slow all enemies within range by 50%",
+			"Will slow all enemies within range by 60%"
+		], 
+		Globals.UpgradeType.AI_UPGRADE, 
+		6, 
+		0,
+		preload("res://scenes/upgrades/summon_circle.tscn")
+	)
+]
+
 var vedal_upgrades_db = [
 	Upgrade.new(
 		"Rum",
@@ -229,6 +264,7 @@ func _on_map_ready() -> void:
 
 	match SavedOptions.settings.ai_selected: 
 		SavedOptions.AISelection.NEURO: ai_db = neuro_upgrades_db
+		SavedOptions.AISelection.EVIL: ai_db = evil_upgrades_db
 	
 	merge_character_upgrade_db(collab_partner_db) 
 	lvl_up(collab_partner_db[0])

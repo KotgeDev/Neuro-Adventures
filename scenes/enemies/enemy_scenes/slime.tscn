@@ -46,7 +46,7 @@ _data = {
 }
 
 [node name="Slime" instance=ExtResource("1_0t50s")]
-PATH_FIND_INTERVAL = 1.0
+BASE_MAX_SPEED = 25.0
 
 [node name="Sprite2D" parent="." index="0"]
 position = Vector2(0, -29)

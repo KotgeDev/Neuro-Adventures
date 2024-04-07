@@ -12,11 +12,9 @@ extends Enemy
 class_name SimpleEnemy 
 
 #region CONSTANTS
-@export var SPEED := 25.0
 @export var MAX_HEALTH := 1.0
 @export var DAMAGE := 1.0
 @export var ATTACK_INTERVAL := 1.0
-@export var PATH_FIND_INTERVAL := 0.5 
 #endregion 
 
 #region NODES
@@ -52,7 +50,7 @@ var march_duration: float
 var dead := false 
 
 func ready() -> void: 
-	pathfind_timer.wait_time = PATH_FIND_INTERVAL
+	pathfind_timer.wait_time = 0.5
 	pathfind_timer.start()
 	$ContinuousHitbox.damage = DAMAGE 
 	$ContinuousHitbox/HitTimer.wait_time = ATTACK_INTERVAL
@@ -76,10 +74,10 @@ func _physics_process(delta):
 		return
 		
 	if march:
-		velocity = march_direction * SPEED 
+		velocity = march_direction * max_speed 
 	else:
 		var dir = to_local(next_pos).normalized()
-		velocity = dir * SPEED    
+		velocity = dir * max_speed    
 	
 	if last_flip_time > 0:
 		last_flip_time -= delta 

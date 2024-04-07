@@ -80,4 +80,3 @@ func sync_level() -> void:
 			splash_damage_interval = LV4_SPLASH_DAMAGE_INTERVAL
 		5:
 			stun = LV5_STUN
-	
