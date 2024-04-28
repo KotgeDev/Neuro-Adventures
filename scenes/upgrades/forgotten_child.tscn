@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://3s3w2uwispaq"]
+
+[ext_resource type="Script" path="res://scripts/upgrades/forgotten_child.gd" id="1_73wvm"]
+
+[node name="ForgottenChild" type="Node2D"]
+script = ExtResource("1_73wvm")

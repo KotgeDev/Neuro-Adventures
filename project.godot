@@ -87,7 +87,7 @@ close_screen={
 2d_physics/layer_4="Collisionbodies "
 2d_physics/layer_5="Interactive Object Zone"
 2d_physics/layer_6="Collectible"
-2d_physics/layer_7="Drone Personal Zone"
+2d_physics/layer_7="Personal Zone"
 2d_physics/layer_8="Misc. "
 
 [physics]

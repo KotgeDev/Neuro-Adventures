@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqpino5r3q6am"]
+
+[ext_resource type="Script" path="res://scripts/upgrades/soul_stealer.gd" id="1_ucv5n"]
+
+[node name="SoulStealer" type="Node2D"]
+script = ExtResource("1_ucv5n")

@@ -42,6 +42,7 @@ signal remove_maxed_upgrades
 
 #region TO SPECIFIC UPGRADES
 signal update_drones
+signal update_pizza
 #endregion 
 
 #region TO COLLAB PARTNER OR AI 

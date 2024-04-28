@@ -37,69 +37,88 @@ offset_bottom = 138.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CreditsPanel/CenterContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="CreditsPanel/CenterContainer"]
+custom_minimum_size = Vector2(250, 275)
 layout_mode = 2
 
-[node name="Title1" type="Label" parent="CreditsPanel/CenterContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CreditsPanel/CenterContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title1" type="Label" parent="CreditsPanel/CenterContainer/ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 text = "Programmers"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="CreditsPanel/CenterContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="CreditsPanel/CenterContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "KotgeDev"
 horizontal_alignment = 1
 
-[node name="Label3" type="Label" parent="CreditsPanel/CenterContainer/VBoxContainer"]
+[node name="Label3" type="Label" parent="CreditsPanel/CenterContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "CreepyCat"
 horizontal_alignment = 1
 
-[node name="Title2" type="Label" parent="CreditsPanel/CenterContainer/VBoxContainer"]
+[node name="Title2" type="Label" parent="CreditsPanel/CenterContainer/ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 text = "Illustrators"
 horizontal_alignment = 1
 
-[node name="Label5" type="Label" parent="CreditsPanel/CenterContainer/VBoxContainer"]
+[node name="Label5" type="Label" parent="CreditsPanel/CenterContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "KotgeDev"
 horizontal_alignment = 1
 
-[node name="Title3" type="Label" parent="CreditsPanel/CenterContainer/VBoxContainer"]
+[node name="Title3" type="Label" parent="CreditsPanel/CenterContainer/ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 text = "Sound Effects"
 horizontal_alignment = 1
 
-[node name="Label7" type="Label" parent="CreditsPanel/CenterContainer/VBoxContainer"]
+[node name="Label7" type="Label" parent="CreditsPanel/CenterContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Aetherleaf
 "
 horizontal_alignment = 1
 
-[node name="Title4" type="Label" parent="CreditsPanel/CenterContainer/VBoxContainer"]
+[node name="Title4" type="Label" parent="CreditsPanel/CenterContainer/ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 text = "Music"
 horizontal_alignment = 1
 
-[node name="Label10" type="Label" parent="CreditsPanel/CenterContainer/VBoxContainer"]
+[node name="Label10" type="Label" parent="CreditsPanel/CenterContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "The Farm - CreepyCat
 "
 horizontal_alignment = 1
 
-[node name="Label11" type="Label" parent="CreditsPanel/CenterContainer/VBoxContainer"]
+[node name="Label11" type="Label" parent="CreditsPanel/CenterContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "The Meadow - CreepyCat
+"
+horizontal_alignment = 1
+
+[node name="Title5" type="Label" parent="CreditsPanel/CenterContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+text = "Playtesters"
+horizontal_alignment = 1
+
+[node name="Label12" type="Label" parent="CreditsPanel/CenterContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Superbox
 "
 horizontal_alignment = 1
 

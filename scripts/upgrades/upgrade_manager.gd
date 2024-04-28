@@ -83,22 +83,7 @@ var upgrades_db = [
 		4,
 		0,
 		preload("res://scenes/upgrades/cookies_upgrade.tscn")
-	),
-	Upgrade.new(
-		"iNuke6000",
-		preload("res://assets/upgrades/inuke6000_icon.png"),
-		[
-			"iNuke6000s are dropped at a random enemy in range every 6 s dealing splash damage of 12. MAY TARGET COLLAB PARTNER",
-			"Nuke launch time is reduced",
-			"Two nukes are launched at a time",
-			"Nuke launch time is further reduced  ",
-			"Three nukes are launched at a time"
-		],
-		Globals.UpgradeType.AI_UPGRADE, 
-		5,
-		0,
-		preload("res://scenes/upgrades/inuke6000.tscn")
-	),	
+	)
 ]
 
 var neuro_upgrades_db = [
@@ -184,7 +169,22 @@ var neuro_upgrades_db = [
 		5,
 		0,
 		preload("res://scenes/upgrades/angel_wings.tscn")
-	)
+	),
+	Upgrade.new(
+		"iNuke6000",
+		preload("res://assets/upgrades/inuke6000_icon.png"),
+		[
+			"iNuke6000s are dropped at a random enemy in range every 6 s dealing splash damage of 12. MAY TARGET COLLAB PARTNER",
+			"Nuke launch time is reduced",
+			"Two nukes are launched at a time",
+			"Nuke launch time is further reduced  ",
+			"Three nukes are launched at a time"
+		],
+		Globals.UpgradeType.AI_UPGRADE, 
+		5,
+		0,
+		preload("res://scenes/upgrades/inuke6000.tscn")
+	)	
 ]
 
 var evil_upgrades_db = [
@@ -219,6 +219,75 @@ var evil_upgrades_db = [
 		6, 
 		0,
 		preload("res://scenes/upgrades/summon_circle.tscn")
+	),
+	Upgrade.new(
+		"Soul Stealer",
+		preload("res://assets/upgrades/soul_stealer_circle_icon.png"),
+		[
+			"Everytime Evil deals damage, she will gain 1% of the damage dealt as HP",
+			"Everytime Evil deals damage, she will gain 2% of the damage dealt as HP",
+			"Everytime Evil deals damage, she will gain 3% of the damage dealt as HP",
+			"Everytime Evil deals damage, she will gain 5% of the damage dealt as HP"
+		],
+		Globals.UpgradeType.AI_UPGRADE,
+		4,
+		0,
+		preload("res://scenes/upgrades/soul_stealer.tscn")
+	),
+	Upgrade.new(
+		"Forgotten Child",
+		preload("res://assets/upgrades/forgotten_child_icon.png"),
+		[
+			"Both characters have + 50% of base damage. Evil will stay further away from you",
+			"Both characters have + 100% of base damage. Evil will stay even further away from you",
+			"Both characters have + 200% of base damage. ReallyGunPull turtle ReallyGunPull turtle"
+		],
+		Globals.UpgradeType.AI_UPGRADE,
+		3,
+		0,
+		preload("res://scenes/upgrades/forgotten_child.tscn")
+	),
+	Upgrade.new(
+		"Pizza",
+		preload("res://assets/upgrades/pizza_icon.png"),
+		[
+			"A pineapple pizza will target enemies closest to Evil."
+		],
+		Globals.UpgradeType.AI_UPGRADE, 
+		1,
+		0,
+		preload("res://scenes/upgrades/pizza.tscn"),
+		["unlimited"]
+	),
+	Upgrade.new(
+		"Viva La Pizza Revolution!",
+		preload("res://assets/upgrades/viva_la_pizza_revolution_icon.png"),
+		[
+			"Increase speed of all pizza by 30% of base",
+			"Increase damage of all pizza by 50% of base",
+			"Increase speed of all pizza by 50% of base",
+			"Increase damage of all pizza by 150% of base"
+		],
+		Globals.UpgradeType.AI_UPGRADE, 
+		4,
+		0,
+		preload("res://scenes/upgrades/viva_la_pizza_rev.tscn")
+	),
+	Upgrade.new(
+		"Fireball",
+		preload("res://assets/upgrades/fireball_icon.png"),
+		[
+			"Evil fires a fireball in 4 directions every 2s",
+			"Fireball fire cooldown is reduced to 1.5s",
+			"Evil fires a fireball in 6 directions",
+			"Fireball damage is increased by 100%",
+			"Evil fires a fireball in 8 directions",
+			"Evil becomes a 2hu character"
+		],
+		Globals.UpgradeType.AI_UPGRADE,
+		6,
+		0,
+		preload("res://scenes/upgrades/fireball_scene.tscn")
 	)
 ]
 
