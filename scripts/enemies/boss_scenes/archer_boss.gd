@@ -4,7 +4,7 @@ class_name ArcherBoss
 #region CONSTANTS
 @export var ACCELERATION := 500
 @export var FRICTION := 500 
-@export var MAX_HEALTH := 500.0
+@export var MAX_HEALTH := 400.0
 @export var DAMAGE := 12.0
 @export var ATTACK_INTERVAL := 1.5
 @export var PATH_FIND_INTERVAL := 2.0
@@ -24,6 +24,7 @@ class_name ArcherBoss
 @onready var fire_point = $FirePoint
 @onready var fire_timer = $FireTimer
 @onready var pattern_fire_timer = $PatternFireTimer
+@onready var healthbar = $Healthbar
 #endregion 
 
 #region OTHER
@@ -88,6 +89,8 @@ func update_animation() -> void:
 
 func _on_hurtbox_take_damage(damage):
 	health -= damage
+	healthbar.value = health / MAX_HEALTH * 100 
+	
 	sprite_2d.modulate = Color("b4244a")
 	await get_tree().create_timer(0.05).timeout 
 	sprite_2d.modulate = Color("ffffff") 

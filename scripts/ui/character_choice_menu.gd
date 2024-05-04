@@ -6,9 +6,9 @@ extends Control
 var ai_selection = SavedOptions.AISelection.NEURO 
 
 var neuro_texture: Texture2D = preload("res://assets/characters/ais/neuro_idle_sheet.png")
-var neuro_description = "Neuro Sama\nHP: 45\nSpeed: 60\nStarting Weapon: Neuro wields dual swords she bought during the Snuffy D&D Collab.\n\"Filtered.\" - Neuro Sama"
+var neuro_description = "Neuro Sama\nHP: 45\nSpeed: 60\nStarting Weapon: Dual Strike - Neuro wields dual swords she bought during the Snuffy D&D Collab."
 var evil_texture: Texture2D = preload("res://assets/characters/ais/evil_idle_sheet.png")
-var evil_description = "Evil Neuro\nHP: 60\nSpeed: 50\nStarting Weapon: Evil wields a knife that deals consecutive damage to any enemy in range.\n\"Viva la Pizza Revolution!\" - Evil Neuro"
+var evil_description = "Evil Neuro\nHP: 60\nSpeed: 50\nStarting Weapon: Knife - Evil wields a knife that deals consecutive damage to any enemy in range."
 
 func _ready() -> void:
 	Input.set_custom_mouse_cursor(null)

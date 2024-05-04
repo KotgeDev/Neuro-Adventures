@@ -73,6 +73,12 @@ func _on_map_ready() -> void:
 	start_time_msec = Time.get_ticks_msec()
 	collab_partner = get_tree().get_first_node_in_group("collab_partner") 
 	map = get_tree().get_first_node_in_group("map")
+	
+	match SavedOptions.settings.ai_selected:
+		SavedOptions.AISelection.NEURO:
+			$HealthBars/AIIcon.texture = load("res://assets/characters/ais/neuro_icon.png")
+		SavedOptions.AISelection.EVIL:
+			$HealthBars/AIIcon.texture = load("res://assets/characters/ais/evil_icon.png")
 
 func _process(delta: float) -> void:
 	shake_handler(delta)

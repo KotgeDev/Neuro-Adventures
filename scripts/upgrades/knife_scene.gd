@@ -17,7 +17,7 @@ var knife_template = preload("res://scenes/projectiles/knife.tscn")
 #endregion 
 
 #region SOUNDFX
-var hit_sfx: AudioStream = preload("res://assets/sfx/laser_fire.wav")
+var hit_sfx: AudioStream = preload("res://assets/sfx/knifestab.wav")
 #endregion 
 
 var damage 
@@ -55,7 +55,7 @@ func _on_fire_timer_timeout():
 			knife.global_position = enemy.global_position 
 			knife.setup(damage)
 			
-			AudioSystem.play_sfx(hit_sfx, ai.global_position)
+			AudioSystem.play_sfx(hit_sfx, ai.global_position, 0.5)
 
 			await get_tree().create_timer(0.2, false).timeout
 	

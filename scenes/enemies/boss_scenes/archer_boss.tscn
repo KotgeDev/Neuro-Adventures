@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://q4do4wgq6uk8"]
+[gd_scene load_steps=14 format=3 uid="uid://q4do4wgq6uk8"]
 
 [ext_resource type="Script" path="res://scripts/enemies/boss_scenes/archer_boss.gd" id="1_ap1r1"]
 [ext_resource type="Texture2D" uid="uid://bfvq0ycqm6028" path="res://assets/enemies/elf_archer_boss_sheet.png" id="2_hnqa3"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://mjwkfxpnwct6" path="res://scenes/shared/continuous_hitbox.tscn" id="3_dthlq"]
 [ext_resource type="Texture2D" uid="uid://bpxvb4opdk1xy" path="res://assets/shared/shadow_m.png" id="5_71wx5"]
 [ext_resource type="Script" path="res://scripts/shared/shadow.gd" id="6_fm7fl"]
+[ext_resource type="Texture2D" uid="uid://ddfk61tmlrep3" path="res://assets/enemies/elf_archer_boss_health_under.png" id="7_uctct"]
+[ext_resource type="Texture2D" uid="uid://dgc7bsnkobfcd" path="res://assets/enemies/elf_archer_boss_health_over.png" id="8_anbac"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yjxll"]
 radius = 233.002
@@ -122,6 +124,15 @@ autostart = true
 position = Vector2(-2, -18)
 texture = ExtResource("5_71wx5")
 script = ExtResource("6_fm7fl")
+
+[node name="Healthbar" type="TextureProgressBar" parent="."]
+offset_left = -13.0
+offset_top = -57.0
+offset_right = 51.0
+offset_bottom = 7.0
+value = 100.0
+texture_under = ExtResource("7_uctct")
+texture_progress = ExtResource("8_anbac")
 
 [connection signal="take_damage" from="Hurtbox" to="." method="_on_hurtbox_take_damage"]
 [connection signal="timeout" from="PathfindTimer" to="." method="_on_pathfind_timer_timeout"]

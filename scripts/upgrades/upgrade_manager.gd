@@ -184,7 +184,20 @@ var neuro_upgrades_db = [
 		5,
 		0,
 		preload("res://scenes/upgrades/inuke6000.tscn")
-	)	
+	),
+	Upgrade.new(
+		"Raise the Timer!",
+		preload("res://assets/upgrades/raise_the_timer_icon.png"),
+		[
+			"The AI will start loosing HP every 1s, but exps will now give 0.6 HP to the AI",
+			"The AI will start loosing HP every 1s, but exps will now give 0.7 HP to the AI",
+			"The AI will start loosing HP every 1s, but exps will now give 0.8 HP to the AI" 
+		],
+		Globals.UpgradeType.AI_UPGRADE, 
+		3,
+		0,
+		preload("res://scenes/upgrades/raise_the_timer.tscn")
+	)
 ]
 
 var evil_upgrades_db = [
@@ -308,17 +321,19 @@ var vedal_upgrades_db = [
 		preload("res://scenes/upgrades/rum_scene.tscn")
 	),
 	Upgrade.new(
-		"Raise the Timer!",
-		preload("res://assets/upgrades/raise_the_timer_icon.png"),
+		"DM Allegations",
+		preload("res://assets/upgrades/dm_allegations_icon.png"),
 		[
-			"The AI will start loosing HP every 1s, but exps will now give 0.6 HP to the AI",
-			"The AI will start loosing HP every 1s, but exps will now give 0.7 HP to the AI",
-			"The AI will start loosing HP every 1s, but exps will now give 0.8 HP to the AI" 
+			"Press [space] for Vedal to become immune for 0.4s. Pink notif means ability is ready",
+			"Cooldown is reduced to 4s",
+			"Immunity duration increased to 0.6s",
+			"Cooldown is reduced to 3s",
+			"Cooldown is reduced to 2s"
 		],
-		Globals.UpgradeType.COLLAB_PARTNER_UPGRADE, 
-		3,
+		Globals.UpgradeType.COLLAB_PARTNER_UPGRADE,
+		4,
 		0,
-		preload("res://scenes/upgrades/raise_the_timer.tscn")
+		preload("res://scenes/upgrades/dm_allegations.tscn")
 	)
 ]
 
@@ -337,6 +352,7 @@ func _on_map_ready() -> void:
 	
 	merge_character_upgrade_db(collab_partner_db) 
 	lvl_up(collab_partner_db[0])
+	lvl_up(collab_partner_db[1])
 	
 	merge_character_upgrade_db(ai_db) 
 	lvl_up(ai_db[0])

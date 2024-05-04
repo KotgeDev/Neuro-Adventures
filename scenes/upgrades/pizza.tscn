@@ -6,16 +6,16 @@
 [ext_resource type="PackedScene" uid="uid://3miicp8y7p5b" path="res://scenes/shared/multi_hitbox.tscn" id="3_pyt3j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_22sv2"]
-radius = 59.0
+radius = 59.0085
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_63wrh"]
-radius = 92.0054
+radius = 90.0056
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mglr8"]
-radius = 20.025
+radius = 16.0312
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1tmp0"]
-radius = 16.0
+radius = 13.0
 
 [node name="Pizza" type="Node2D" groups=["pizza"]]
 z_index = 1

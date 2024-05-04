@@ -2,12 +2,12 @@ extends UpgradeScene
 
 @onready var aoe = $AOE
 
-@export var LV1_SLOW := 0.7 
-@export var LV2_SLOW := 0.6
-@export var LV3_SLOW := 0.5
+@export var LV1_SLOW := 0.60
+@export var LV2_SLOW := 0.55
+@export var LV3_SLOW := 0.50
 @export var LV4_RANGE_MULTIPLIER := 1.25
 @export var LV5_SLOW := 0.45
-@export var LV6_SLOW := 0.40 
+@export var LV6_SLOW := 0.40
 
 var slow_multiplier: float 
 
