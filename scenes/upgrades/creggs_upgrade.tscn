@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://cbxo3vnlxwd86"]
+[gd_scene load_steps=3 format=3 uid="uid://cbxo3vnlxwd86"]
 
-[ext_resource type="Script" path="res://scripts/upgrades/creggs_upgrade.gd" id="1_f3kis"]
+[ext_resource type="Script" path="res://scripts/upgrades/collectible_upgrade.gd" id="1_da27j"]
+[ext_resource type="PackedScene" uid="uid://dfxgj7cm78rlj" path="res://scenes/collectibles/creggs.tscn" id="2_v4dy6"]
 
 [node name="CreggsUpgrade" type="Node2D"]
-script = ExtResource("1_f3kis")
+script = ExtResource("1_da27j")
+collectible_name = "Creggs"
+collectible_scene = ExtResource("2_v4dy6")

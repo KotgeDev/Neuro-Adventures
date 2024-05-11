@@ -10,7 +10,7 @@ class_name CollabPartner
 @export var EXP_REQ_INCREMENT := 4
 @export var EXP_REQ_INIT := 2
 @export var BASE_PICKUP_RANGE := 50.0
-@export var CREGGS_HEALTH := 6.0
+@export var CREGGS_HEALTH := 7.0
 #endregion 
 
 #region NODES 
@@ -29,7 +29,6 @@ var circle_work = false
 var expp := 0
 var exp_requirement := EXP_REQ_INIT
 var lv := 1  
-var creggs_drop_chance := 0.005
 var damaged_atleast_once := false 
 #endregion
 

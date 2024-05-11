@@ -24,9 +24,14 @@ var say_it_back_max := false
 var dual_strike_max := false 
 #endregion
 
+#region OTHER
+var collectible_generators = []
 var ai_scene 
+#endregion
 
 func _ready() -> void:
+	Globals.add_collectible_generator.connect(_on_add_collectible_generator)
+	
 	match SavedOptions.settings.ai_selected:
 		SavedOptions.AISelection.NEURO:
 			ai_scene = neuro_template.instantiate()
@@ -41,5 +46,11 @@ func _ready() -> void:
 	Globals.map_ready.emit() 
 	spawn_enemies()
 
+func _on_add_collectible_generator(generator: CollectibleGenerator) -> void:
+	collectible_generators.append(generator) 
+
+## Override function to use
 func spawn_enemies() -> void:
 	pass 
+
+

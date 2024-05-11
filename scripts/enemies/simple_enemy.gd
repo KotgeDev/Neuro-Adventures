@@ -24,15 +24,20 @@ class_name SimpleEnemy
 @onready var navigation_agent = $NavigationAgent2D
 @onready var pathfind_timer = $PathfindTimer
 @onready var effect_player = $EffectPlayer
+@onready var collab_partner: CollabPartner = get_tree().get_first_node_in_group("collab_partner")
+@onready var ai: AI = get_tree().get_first_node_in_group("ai")
 #endregion 
 
-#region OTHER
-var velocity: Vector2
-var next_pos: Vector2
-var cookie_template = preload("res://scenes/collectibles/cookie.tscn")
-var creggs_template = preload("res://scenes/collectibles/creggs.tscn")
+#region TEMPLATES
 var expp_template = preload("res://scenes/collectibles/exp.tscn")
 var ntx_template = preload("res://scenes/interactive_objects/ntx_4090.tscn")
+#endregion
+
+#region DETAILS
+var velocity: Vector2
+var next_pos: Vector2
+@onready var health: int = MAX_HEALTH  
+var dead := false 
 var last_enemy := false 
 var last_flip_time: float
 var stunned := false 
@@ -44,12 +49,7 @@ var march_direction: Vector2
 var march_duration: float 
 #endregion 
 
-@onready var health: int = MAX_HEALTH  
-@onready var collab_partner: CollabPartner = get_tree().get_first_node_in_group("collab_partner")
-@onready var ai: AI = get_tree().get_first_node_in_group("ai")
-var dead := false 
-
-func ready() -> void: 
+func ready() -> void:
 	pathfind_timer.wait_time = 0.5
 	pathfind_timer.start()
 	$ContinuousHitbox.damage = DAMAGE 
@@ -99,19 +99,13 @@ func _on_hurtbox_take_damage(damage):
 		
 		var already_dropped_item := false 
 		
-		var cookie_num = randf()
-		if cookie_num <= ai.cookie_drop_chance:
-			var cookie = cookie_template.instantiate()
-			cookie.global_position = global_position
-			map.call_deferred("add_child", cookie)
-			already_dropped_item = true 
-			
-		var creggs_num = randf()
-		if creggs_num <= collab_partner.creggs_drop_chance:
-			var creggs = creggs_template.instantiate()
-			creggs.global_position = global_position
-			map.call_deferred("add_child", creggs)
-			already_dropped_item = true 
+		for generator in map.collectible_generators: 
+			var random_number = randf()
+			if random_number <= generator.drop_chance:
+				var collectible = generator.collectible_scene.instantiate()
+				collectible.global_position = global_position
+				map.call_deferred("add_child", collectible) 
+				already_dropped_item = true 
 			
 		if not already_dropped_item:
 			var expp = expp_template.instantiate() 

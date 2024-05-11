@@ -22,6 +22,10 @@ signal map_ready
 signal spawn(scene_template, count: int, time_interval: float, last_batch: bool)
 #endregion 
 
+#region TO MAP
+signal add_collectible_generator(gen: CollectibleGenerator)
+#endregion
+
 #region TO HUD
 signal game_over
 signal game_won 

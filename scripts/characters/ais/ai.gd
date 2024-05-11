@@ -22,7 +22,6 @@ var collab_partner: CollabPartner
 @onready var max_speed: float = BASE_MAX_SPEED
 @onready var ai_distance: float = BASE_AI_DISTANCE
 var velocity: Vector2 
-var cookie_drop_chance := 0.005
 #endregion 
 
 #region SOUNDFX

@@ -55,34 +55,6 @@ var upgrades_db = [
 		4,
 		0,
 		preload("res://scenes/upgrades/filter.tscn")
-	),
-	Upgrade.new(
-		"Creggs",
-		preload("res://assets/upgrades/creggs_icon.png"),
-		[
-			"1% chance for enemies to drop a chicken bake (Gives 6 HP to the Collab Partner)",
-			"2% chance for enemies to drop chicken bake ",
-			"3% chance for enemies to drop chicken bake ",
-			"5% chance for enemies to drop chicken bake"
-		],
-		Globals.UpgradeType.COLLAB_PARTNER_UPGRADE, 
-		4,
-		0,
-		preload("res://scenes/upgrades/creggs_upgrade.tscn")
-	),
-	Upgrade.new(
-		"Cookies",
-		preload("res://assets/upgrades/cookies_icon.png"),
-		[
-			"1% chance for enemies to drop cookies (Gives 5 HP to the AI)",
-			"2% chance for enemies to drop cookies ",
-			"3% chance for enemies to drop cookies ",
-			"5% chance for enemies to drop cookies"
-		],
-		Globals.UpgradeType.AI_UPGRADE, 
-		4,
-		0,
-		preload("res://scenes/upgrades/cookies_upgrade.tscn")
 	)
 ]
 
@@ -197,6 +169,20 @@ var neuro_upgrades_db = [
 		3,
 		0,
 		preload("res://scenes/upgrades/raise_the_timer.tscn")
+	),
+	Upgrade.new(
+		"Cookies",
+		preload("res://assets/upgrades/cookies_icon.png"),
+		[
+			"1% chance for enemies to drop cookies (Gives 5 HP to the AI)",
+			"2% chance for enemies to drop cookies ",
+			"3% chance for enemies to drop cookies ",
+			"5% chance for enemies to drop cookies"
+		],
+		Globals.UpgradeType.AI_UPGRADE, 
+		4,
+		0,
+		preload("res://scenes/upgrades/cookies_upgrade.tscn")
 	)
 ]
 
@@ -290,12 +276,12 @@ var evil_upgrades_db = [
 		"Fireball",
 		preload("res://assets/upgrades/fireball_icon.png"),
 		[
-			"Evil fires a fireball in 4 directions every 2s",
+			"Evil fires a fireball in 4 directions every 2s that can pierce up to 2 enemies",
 			"Fireball fire cooldown is reduced to 1.5s",
-			"Evil fires a fireball in 6 directions",
+			"Evil fires a fireball in 6 directions that can pierce up to 3 enemies",
 			"Fireball damage is increased by 100%",
-			"Evil fires a fireball in 8 directions",
-			"Evil becomes a 2hu character"
+			"Evil fires a fireball in 8 directions that can pierce up to 4 enemies",
+			"Evil becomes a 2hu character. Warning, dangerous upgrade."
 		],
 		Globals.UpgradeType.AI_UPGRADE,
 		6,
@@ -334,28 +320,49 @@ var vedal_upgrades_db = [
 		4,
 		0,
 		preload("res://scenes/upgrades/dm_allegations.tscn")
+	),
+	Upgrade.new(
+		"Creggs",
+		preload("res://assets/upgrades/creggs_icon.png"),
+		[
+			"1% chance for enemies to drop a chicken bake (Gives 7 HP to the Collab Partner)",
+			"2% chance for enemies to drop chicken bake ",
+			"3% chance for enemies to drop chicken bake ",
+			"5% chance for enemies to drop chicken bake"
+		],
+		Globals.UpgradeType.COLLAB_PARTNER_UPGRADE, 
+		4,
+		0,
+		preload("res://scenes/upgrades/creggs_upgrade.tscn")
 	)
 ]
 
 var existing_upgrades = []
 
 func _on_map_ready() -> void:
-	var collab_partner_db: Array
-	var ai_db: Array
-	
 	match SavedOptions.settings.collab_partner_selected:
-		SavedOptions.CollabPartnerSelection.VEDAL: collab_partner_db = vedal_upgrades_db
+		SavedOptions.CollabPartnerSelection.VEDAL: 
+			merge_character_upgrade_db(vedal_upgrades_db) 
+			lvl_up(find_upgrade("Rum"))
+			lvl_up(find_upgrade("Creggs"))
 
 	match SavedOptions.settings.ai_selected: 
-		SavedOptions.AISelection.NEURO: ai_db = neuro_upgrades_db
-		SavedOptions.AISelection.EVIL: ai_db = evil_upgrades_db
-	
-	merge_character_upgrade_db(collab_partner_db) 
-	lvl_up(collab_partner_db[0])
-	lvl_up(collab_partner_db[1])
-	
-	merge_character_upgrade_db(ai_db) 
-	lvl_up(ai_db[0])
+		SavedOptions.AISelection.NEURO: 
+			merge_character_upgrade_db(neuro_upgrades_db) 
+			lvl_up(find_upgrade("Dual Strike"))
+			lvl_up(find_upgrade("Cookies"))
+			
+		SavedOptions.AISelection.EVIL: 
+			merge_character_upgrade_db(evil_upgrades_db) 
+			lvl_up(find_upgrade("Knife"))
+			lvl_up(find_upgrade("Soul Stealer"))
+			
+func find_upgrade(upgrade_name: String) -> Upgrade: 
+	for upgrade in upgrades_db: 
+		if upgrade.upgrade_name == upgrade_name:
+			return upgrade 
+	push_error("UPGRADE NOT FOUND!")
+	return null 
 
 func merge_character_upgrade_db(upgrades: Array) -> void:
 	for upgrade in upgrades:
