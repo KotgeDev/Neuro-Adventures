@@ -100,7 +100,7 @@ layout_mode = 2
 [node name="Padding" type="Label" parent="AchievementPanel/VBoxContainer/Labels"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
-text = "  "
+text = " "
 
 [node name="Title" type="Label" parent="AchievementPanel/VBoxContainer/Labels"]
 layout_mode = 2

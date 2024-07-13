@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://cbfigu64qfdvf"]
 
 [ext_resource type="Script" path="res://scripts/ui/menu.gd" id="1_833i5"]
-[ext_resource type="Texture2D" uid="uid://ck3vocomisktb" path="res://assets/ui/cover_image.png" id="2_yw33v"]
+[ext_resource type="Texture2D" uid="uid://ck3vocomisktb" path="res://assets/ui/main_bg.png" id="2_yw33v"]
 [ext_resource type="PackedScene" uid="uid://b6j6utnkndtjo" path="res://scenes/options/options_menu.tscn" id="3_nre05"]
 [ext_resource type="Script" path="res://scripts/ui/button_with_sfx.gd" id="3_q60to"]
 [ext_resource type="Texture2D" uid="uid://diqa2jtswmdat" path="res://assets/ui/announcements_icon.png" id="4_rkb2i"]

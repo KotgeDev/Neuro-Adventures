@@ -168,7 +168,6 @@ button_pressed = true
 script = ExtResource("6_s04cr")
 
 [node name="CloseButton" parent="OptionsPanel" instance=ExtResource("7_tqgol")]
-layout_mode = 0
-anchors_preset = 0
+layout_mode = 1
 
 [connection signal="pressed" from="OptionsPanel/CloseButton" to="." method="_on_close_button_pressed"]
