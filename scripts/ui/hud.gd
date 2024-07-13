@@ -91,9 +91,8 @@ func _process(delta: float) -> void:
 	exp_bar.value = lerpf(exp_bar.value, exp_value, delta*7)
 	if Input.is_action_just_pressed("menu") and menu_allowed:
 		if options_menu.visible:
-			options_menu.close_options.emit()
 			return
-		
+
 		if end_game.visible:
 			hide_endgame()
 		else: 

@@ -121,6 +121,7 @@ layout_mode = 1
 [node name="CreditsMenu" parent="Menus" instance=ExtResource("7_0vgrq")]
 unique_name_in_owner = true
 visible = false
+layout_mode = 1
 
 [node name="AchievementsMenu" parent="Menus" instance=ExtResource("15_svy2m")]
 unique_name_in_owner = true

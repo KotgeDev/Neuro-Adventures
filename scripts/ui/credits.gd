@@ -1,7 +1,6 @@
-extends Control
+extends CloseablePanel
 
 signal close_credits 
 
-func _on_return_button_pressed():
-	visible = false 
-	close_credits.emit() 
+func _on_close_button_pressed():
+	close()

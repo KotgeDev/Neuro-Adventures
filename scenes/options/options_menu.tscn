@@ -18,68 +18,71 @@ grow_vertical = 2
 script = ExtResource("1_ap703")
 
 [node name="OptionsPanel" type="Panel" parent="."]
+custom_minimum_size = Vector2(300, 300)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -308.0
-offset_top = -168.5
-offset_right = 308.0
-offset_bottom = 168.5
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TitleLabel" type="Label" parent="OptionsPanel"]
-custom_minimum_size = Vector2(0, 30)
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsPanel"]
 layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 26.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -142.0
+offset_right = 140.0
+offset_bottom = 142.0
 grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="OptionsPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
 theme = ExtResource("3_fx5r4")
+theme_override_font_sizes/font_size = 24
 text = "Settings!"
 horizontal_alignment = 1
-vertical_alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="OptionsPanel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -292.0
-offset_top = -131.5
-offset_right = 292.0
-offset_bottom = 119.5
-grow_horizontal = 2
-grow_vertical = 2
+[node name="ScrollContainer" type="ScrollContainer" parent="OptionsPanel/VBoxContainer"]
+custom_minimum_size = Vector2(280, 250)
+layout_mode = 2
 horizontal_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="OptionsPanel/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsPanel/VBoxContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="GraphicsLabel" type="Label" parent="OptionsPanel/ScrollContainer/VBoxContainer"]
+[node name="GraphicsLabel" type="Label" parent="OptionsPanel/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "Graphics"
 
-[node name="HSeparator" type="HSeparator" parent="OptionsPanel/ScrollContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="OptionsPanel/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="WindowModeContainer" type="HBoxContainer" parent="OptionsPanel/ScrollContainer/VBoxContainer"]
+[node name="WindowModeContainer" type="HBoxContainer" parent="OptionsPanel/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="OptionsPanel/ScrollContainer/VBoxContainer/WindowModeContainer"]
+[node name="Label" type="Label" parent="OptionsPanel/VBoxContainer/ScrollContainer/VBoxContainer/WindowModeContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
 text = "Window Mode"
 
-[node name="WindowModeOptions" type="OptionButton" parent="OptionsPanel/ScrollContainer/VBoxContainer/WindowModeContainer"]
-custom_minimum_size = Vector2(220, 0)
+[node name="WindowModeOptions" type="OptionButton" parent="OptionsPanel/VBoxContainer/ScrollContainer/VBoxContainer/WindowModeContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 alignment = 1
 item_count = 4
 selected = 1
@@ -93,76 +96,82 @@ popup/item_3/text = "Borderless Full Screen"
 popup/item_3/id = 3
 script = ExtResource("4_s65oh")
 
-[node name="FullHealthContainer" type="HBoxContainer" parent="OptionsPanel/ScrollContainer/VBoxContainer"]
+[node name="FullHealthContainer" type="HBoxContainer" parent="OptionsPanel/VBoxContainer/ScrollContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Label" type="Label" parent="OptionsPanel/ScrollContainer/VBoxContainer/FullHealthContainer"]
+[node name="Label" type="Label" parent="OptionsPanel/VBoxContainer/ScrollContainer/VBoxContainer/FullHealthContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
 text = "Full Health Visual Effect"
 
-[node name="FullHealthToggle" type="CheckButton" parent="OptionsPanel/ScrollContainer/VBoxContainer/FullHealthContainer"]
+[node name="FullHealthToggle" type="CheckButton" parent="OptionsPanel/VBoxContainer/ScrollContainer/VBoxContainer/FullHealthContainer"]
 layout_mode = 2
 button_pressed = true
 script = ExtResource("5_ogmc3")
 
-[node name="Padding" type="Control" parent="OptionsPanel/ScrollContainer/VBoxContainer"]
+[node name="Padding" type="Control" parent="OptionsPanel/VBoxContainer/ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
-[node name="SoundLabel" type="Label" parent="OptionsPanel/ScrollContainer/VBoxContainer"]
+[node name="SoundLabel" type="Label" parent="OptionsPanel/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "Sound"
 
-[node name="HSeparator2" type="HSeparator" parent="OptionsPanel/ScrollContainer/VBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="OptionsPanel/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="MusicContainer" type="HBoxContainer" parent="OptionsPanel/ScrollContainer/VBoxContainer"]
+[node name="MusicContainer" type="HBoxContainer" parent="OptionsPanel/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="OptionsPanel/ScrollContainer/VBoxContainer/MusicContainer"]
+[node name="Label" type="Label" parent="OptionsPanel/VBoxContainer/ScrollContainer/VBoxContainer/MusicContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
 text = "Music Volume"
 
-[node name="MusicSlider" parent="OptionsPanel/ScrollContainer/VBoxContainer/MusicContainer" instance=ExtResource("5_05trf")]
+[node name="MusicSlider" parent="OptionsPanel/VBoxContainer/ScrollContainer/VBoxContainer/MusicContainer" instance=ExtResource("5_05trf")]
 layout_mode = 2
 
-[node name="SfxContainer" type="HBoxContainer" parent="OptionsPanel/ScrollContainer/VBoxContainer"]
+[node name="SfxContainer" type="HBoxContainer" parent="OptionsPanel/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="OptionsPanel/ScrollContainer/VBoxContainer/SfxContainer"]
+[node name="Label" type="Label" parent="OptionsPanel/VBoxContainer/ScrollContainer/VBoxContainer/SfxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
 text = "Sfx Volume"
 
-[node name="SfxSlider" parent="OptionsPanel/ScrollContainer/VBoxContainer/SfxContainer" instance=ExtResource("5_05trf")]
+[node name="SfxSlider" parent="OptionsPanel/VBoxContainer/ScrollContainer/VBoxContainer/SfxContainer" instance=ExtResource("5_05trf")]
 layout_mode = 2
 bus_name = "soundfx"
 
-[node name="Padding2" type="Control" parent="OptionsPanel/ScrollContainer/VBoxContainer"]
+[node name="Padding2" type="Control" parent="OptionsPanel/VBoxContainer/ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
-[node name="MiscLabel" type="Label" parent="OptionsPanel/ScrollContainer/VBoxContainer"]
+[node name="MiscLabel" type="Label" parent="OptionsPanel/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "Misc."
 
-[node name="HSeparator3" type="HSeparator" parent="OptionsPanel/ScrollContainer/VBoxContainer"]
+[node name="HSeparator3" type="HSeparator" parent="OptionsPanel/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="FPSCounterContainer" type="HBoxContainer" parent="OptionsPanel/ScrollContainer/VBoxContainer"]
+[node name="FPSCounterContainer" type="HBoxContainer" parent="OptionsPanel/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="OptionsPanel/ScrollContainer/VBoxContainer/FPSCounterContainer"]
+[node name="Label" type="Label" parent="OptionsPanel/VBoxContainer/ScrollContainer/VBoxContainer/FPSCounterContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
 text = "FPS Counter"
 
-[node name="FPSCounterToggle" type="CheckButton" parent="OptionsPanel/ScrollContainer/VBoxContainer/FPSCounterContainer"]
+[node name="FPSCounterToggle" type="CheckButton" parent="OptionsPanel/VBoxContainer/ScrollContainer/VBoxContainer/FPSCounterContainer"]
 layout_mode = 2
 button_pressed = true
 script = ExtResource("6_s04cr")

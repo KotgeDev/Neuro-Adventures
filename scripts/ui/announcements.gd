@@ -1,6 +1,4 @@
-extends Control
-
-signal close_announcements
+extends CloseablePanel
 
 var devlogs := {
 "v1.2 Devlog": """\
@@ -37,5 +35,4 @@ func add_log(p_log_name: String, p_text: String) -> void:
 	container.add_child(dev_log)
 
 func _on_close_button_pressed():
-	visible = false 
-	close_announcements.emit() 
+	close()

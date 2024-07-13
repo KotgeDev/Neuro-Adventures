@@ -337,5 +337,4 @@ visible = false
 [connection signal="pressed" from="EndGame/MenuContainer/RetryButton" to="." method="_on_retry_button_pressed"]
 [connection signal="pressed" from="EndGame/MenuContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="EndGame/MenuContainer/MenuButton" to="." method="_on_menu_button_pressed"]
-[connection signal="close_options" from="OptionsMenu" to="." method="close_options_menu"]
 [connection signal="close_victory_achievement_screen" from="VictoryAchievementsDisplay" to="." method="display_game_won"]

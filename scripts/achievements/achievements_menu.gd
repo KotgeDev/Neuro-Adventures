@@ -1,6 +1,4 @@
-extends Control
-
-signal close_achievements 
+extends CloseablePanel
 
 @onready var base_sprite = preload("res://assets/achievements/base.png")
 @onready var base_mono_sprite = preload("res://assets/achievements/base_mono.png")
@@ -40,5 +38,6 @@ func _ready() -> void:
 		achievements_container.add_child(achievement_panel)
 
 func _on_close_button_pressed():
-	visible = false 
-	close_achievements.emit() 
+	close()
+
+

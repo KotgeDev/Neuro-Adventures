@@ -14,10 +14,10 @@ func _ready() -> void:
 	if AudioSystem.music_player.stream != menu_song:
 		AudioSystem.play_music(menu_song)
 		
-	options_menu.close_options.connect(_on_close)
-	credits_menu.close_credits.connect(_on_close)
-	achievements_menu.close_achievements.connect(_on_close)
-	announcements.close_announcements.connect(_on_close)
+	options_menu.close_panel.connect(_on_close)
+	credits_menu.close_panel.connect(_on_close)
+	achievements_menu.close_panel.connect(_on_close)
+	announcements.close_panel.connect(_on_close)
 
 #region BUTTONS 
 func _on_play_button_pressed():
