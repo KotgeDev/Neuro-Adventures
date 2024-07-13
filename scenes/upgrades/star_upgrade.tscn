@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3gh56jwdulhs"]
+
+[ext_resource type="Script" path="res://scripts/upgrades/star_upgrade.gd" id="1_gy50h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j38u5"]
+radius = 50.0
+
+[node name="StarUpgrade" type="Node2D"]
+position = Vector2(0, -11)
+script = ExtResource("1_gy50h")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_j38u5")
+
+[node name="Stars" type="Node2D" parent="."]
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

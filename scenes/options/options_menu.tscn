@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b3ylcqvevfyfh" path="res://scenes/options/volume_slider.tscn" id="5_05trf"]
 [ext_resource type="Script" path="res://scripts/options/full_health_toggle.gd" id="5_ogmc3"]
 [ext_resource type="Script" path="res://scripts/options/fps_counter_toggle.gd" id="6_s04cr"]
-[ext_resource type="Script" path="res://scripts/ui/button_with_sfx.gd" id="8_2myty"]
+[ext_resource type="PackedScene" uid="uid://e8y2spmxgfec" path="res://scenes/ui/close_button.tscn" id="7_tqgol"]
 
 [node name="OptionsMenu" type="Control"]
 layout_mode = 3
@@ -39,7 +39,7 @@ anchor_right = 1.0
 offset_bottom = 26.0
 grow_horizontal = 2
 theme = ExtResource("3_fx5r4")
-text = "Options!"
+text = "Settings!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -167,14 +167,8 @@ layout_mode = 2
 button_pressed = true
 script = ExtResource("6_s04cr")
 
-[node name="ReturnButton" type="Button" parent="."]
-custom_minimum_size = Vector2(100, 0)
+[node name="CloseButton" parent="OptionsPanel" instance=ExtResource("7_tqgol")]
 layout_mode = 0
-offset_left = 21.0
-offset_top = 309.0
-offset_right = 121.0
-offset_bottom = 341.0
-text = "Return"
-script = ExtResource("8_2myty")
+anchors_preset = 0
 
-[connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]
+[connection signal="pressed" from="OptionsPanel/CloseButton" to="." method="_on_close_button_pressed"]

@@ -2,23 +2,25 @@ extends Node2D
 
 @export var character: Node
 
-@onready var animation_tree = $AnimationTree
+@onready var animation_player = $AnimationPlayer
 @onready var idle_sprite = $IdleSprite
 @onready var run_sprite = $RunSprite
 
-var last_flip_time
+var running := true 
 
 func _process(delta: float) -> void:
 	update_animation(delta) 
 
-func update_animation(delta: float) -> void: 
+func update_animation(delta: float) -> void:
 	if character.velocity == Vector2.ZERO: 
-		animation_tree["parameters/conditions/idle"] = true
-		animation_tree["parameters/conditions/is_running"] = false
-	else: 
-		animation_tree["parameters/conditions/idle"] = false
-		animation_tree["parameters/conditions/is_running"] = true  
-	
+		if running:
+			running = false  
+			animation_player.play("idle")
+	else:
+		if not running:
+			running = true 
+			animation_player.play("run") 
+
 	if character.velocity.x < 0: 
 		idle_sprite.flip_h = true 
 		run_sprite.flip_h = true 

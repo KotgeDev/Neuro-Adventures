@@ -10,7 +10,6 @@ class_name CollabPartner
 @export var EXP_REQ_INCREMENT := 4
 @export var EXP_REQ_INIT := 2
 @export var BASE_PICKUP_RANGE := 50.0
-@export var CREGGS_HEALTH := 7.0
 #endregion 
 
 #region NODES 
@@ -53,8 +52,12 @@ func connect_signals() -> void:
 	Globals.damage_collab_partner.connect(_on_hurtbox_take_damage)
 	Globals.add_upgrade_to_collab_partner.connect(_on_add_upgrade)
 	Globals.collect_exp.connect(_on_collect_exp)
-	Globals.collect_creggs.connect(_on_collect_creggs)
 	Globals.raise_the_timer.connect(_on_raise_the_timer)
+	extended_signals() 
+
+## Override function for use in specific collab partners 
+func extended_signals() -> void:
+	pass 
 
 func circle_handle(delta):
 	pick_range_lerp = lerp(pick_range_lerp, pickup_range*2.0, delta*5)
@@ -100,14 +103,6 @@ func _on_collect_exp(value: int) -> void:
 	
 	if raise_the_timer_active:
 		Globals.heal_ai.emit(per_exp_ai_hp_increase)
-
-func _on_collect_creggs() -> void:
-	health += CREGGS_HEALTH
-	
-	if health >= MAX_HEALTH:
-		health = MAX_HEALTH
-	
-	Globals.update_collab_partner_health.emit(MAX_HEALTH, health, false)
 
 func damage_received_modifiers_collab(BASE_DAMAGE: float) -> float:
 	var modified_damage := BASE_DAMAGE

@@ -10,7 +10,8 @@ enum WindowMode {
 }
 
 enum CollabPartnerSelection {
-	VEDAL
+	VEDAL,
+	ANNY
 }
 
 enum AISelection {
@@ -41,7 +42,7 @@ func _ready() -> void:
 	load_data() 
 	set_default_settings()
 
-func load_data() -> void:
+func load_data() -> void:	
 	if FileAccess.file_exists(save_path):
 		var file = FileAccess.open(save_path, FileAccess.READ)
 		settings = file.get_var()

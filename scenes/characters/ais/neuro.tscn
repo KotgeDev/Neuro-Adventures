@@ -6,7 +6,7 @@
 
 [node name="Neuro" instance=ExtResource("1_jb3ag")]
 
-[node name="Shadow" type="Sprite2D" parent="." index="5"]
+[node name="Shadow" type="Sprite2D" parent="." index="4"]
 position = Vector2(1, -28)
 texture = ExtResource("2_7mhap")
 script = ExtResource("3_cimke")

@@ -337,6 +337,54 @@ var vedal_upgrades_db = [
 	)
 ]
 
+var anny_upgrades_db = [
+	Upgrade.new(
+		"Star",
+		preload("res://assets/upgrades/star_icon.png"),
+		[
+			"A spinning star spawns and orbits Anny every 2.5s that deals 2 damage. Stars do double damage after 10s",
+			"Interval decreases to 2.0s",
+			"Damage increases to 3", 
+			"Interval decreases to 1.5s",
+			"Stars deal double damage after 5s",
+			"Damage increases to 4" 
+		],
+		Globals.UpgradeType.COLLAB_PARTNER_UPGRADE, 
+		6,
+		0,
+		preload("res://scenes/upgrades/star_upgrade.tscn")
+	),
+	Upgrade.new(
+		"Portal",
+		preload("res://assets/upgrades/portal_icon.png"),
+		[
+			"Press [space] for Anny to teleport to the location of the mouse cursor. Cooldown proportional to distance teleported",
+			"Reduce base cooldown to 10s",
+			"Reduce base cooldown to 8s",
+			"Reduce base cooldown to 6s",
+			"Reduce base cooldown to 5s"
+		],
+		Globals.UpgradeType.COLLAB_PARTNER_UPGRADE, 
+		5,
+		0,
+		preload("res://scenes/upgrades/portal_upgrade.tscn")
+	),
+	Upgrade.new(
+		"Orange",
+		preload("res://assets/upgrades/orange_icon.png"),
+		[
+			"Anny has regen which is increased for 30s by collecting an orange with a 1% drop chance",
+			"2% chance for enemies to drop an orange ",
+			"3% chance for enemies to drop an orange ",
+			"5% chance for enemies to drop an orange "
+		],
+		Globals.UpgradeType.COLLAB_PARTNER_UPGRADE, 
+		4,
+		0,
+		preload("res://scenes/upgrades/orange_upgrade.tscn")
+	)
+]
+
 var existing_upgrades = []
 
 func _on_map_ready() -> void:
@@ -345,6 +393,10 @@ func _on_map_ready() -> void:
 			merge_character_upgrade_db(vedal_upgrades_db) 
 			lvl_up(find_upgrade("Rum"))
 			lvl_up(find_upgrade("Creggs"))
+		SavedOptions.CollabPartnerSelection.ANNY:
+			merge_character_upgrade_db(anny_upgrades_db)
+			lvl_up(find_upgrade("Star"))
+			lvl_up(find_upgrade("Portal"))
 
 	match SavedOptions.settings.ai_selected: 
 		SavedOptions.AISelection.NEURO: 

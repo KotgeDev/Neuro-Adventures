@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://xab0iu8bn1ps"]
+
+[ext_resource type="Script" path="res://scripts/collectibles/orange.gd" id="1_ym5bv"]
+[ext_resource type="Texture2D" uid="uid://d32g4y1xtwm5" path="res://assets/collectibles/orange.png" id="2_34m4f"]
+
+[node name="Orange" type="Node2D"]
+script = ExtResource("1_ym5bv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_34m4f")

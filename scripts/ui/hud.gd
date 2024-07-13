@@ -80,6 +80,12 @@ func _on_map_ready() -> void:
 		SavedOptions.AISelection.EVIL:
 			$HealthBars/AIIcon.texture = load("res://assets/characters/ais/evil_icon.png")
 
+	match SavedOptions.settings.collab_partner_selected:
+		SavedOptions.CollabPartnerSelection.VEDAL:
+			$HealthBars/CollabPartnerIcon.texture = load("res://assets/characters/collab_partners/vedal_icon.png")
+		SavedOptions.CollabPartnerSelection.ANNY:
+			$HealthBars/CollabPartnerIcon.texture = load("res://assets/characters/collab_partners/anny_icon.png")
+
 func _process(delta: float) -> void:
 	shake_handler(delta)
 	exp_bar.value = lerpf(exp_bar.value, exp_value, delta*7)
@@ -149,7 +155,7 @@ func check_for_completed_achievements() -> void:
 	var status = AchievementManager.achievement_status
 	if not status[0]:
 		AchievementManager.add_achievement.emit(0)
-	if Globals.current_map == Globals.WhichMap.THE_FARM and not status[1]:
+	if map.current_map == Globals.WhichMap.THE_FARM and not status[1]:
 		AchievementManager.add_achievement.emit(1)
 	if not collab_partner.damaged_atleast_once and not status[2]:
 		AchievementManager.add_achievement.emit(2)

@@ -1,0 +1,90 @@
+[gd_scene load_steps=4 format=3 uid="uid://drltyl0upuj5g"]
+
+[ext_resource type="Script" path="res://scripts/ui/announcements.gd" id="1_tl4nn"]
+[ext_resource type="PackedScene" uid="uid://e8y2spmxgfec" path="res://scenes/ui/close_button.tscn" id="2_0qq5e"]
+[ext_resource type="Theme" uid="uid://cbqv70ya041cw" path="res://assets/themes/default_theme.tres" id="4_burmi"]
+
+[node name="Announcements" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tl4nn")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = -142.0
+offset_right = 130.0
+offset_bottom = 142.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme = ExtResource("4_burmi")
+theme_override_font_sizes/font_size = 24
+text = "Announcements!"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CloseButton" parent="Panel" instance=ExtResource("2_0qq5e")]
+layout_mode = 1
+
+[node name="DevLog" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 2
+offset_left = 190.0
+offset_top = 72.0
+offset_right = 450.0
+offset_bottom = 200.0
+
+[node name="LogName" type="Label" parent="DevLog"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "v1.0 DevLog
+"
+
+[node name="Text" type="RichTextLabel" parent="DevLog"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 2
+theme = ExtResource("4_burmi")
+text = "Neuro Adventures! v1.0 has finally been released! All of the major features that I wish to add to the game have been added at this point, however, this is not the end! I plan on continuing the development of this game, and possibly adding more characters. The two characters I have planned for now are Evil-Neuro (New AI) and Annytf (New Collab Partner). I also plan on making some alternative outfits for the characters! So stay tuned!"
+fit_content = true
+selection_enabled = true
+
+[connection signal="pressed" from="Panel/CloseButton" to="." method="_on_close_button_pressed"]

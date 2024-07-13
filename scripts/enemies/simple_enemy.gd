@@ -72,7 +72,7 @@ func make_path() -> void:
 func _physics_process(delta):
 	if stunned:
 		return
-		
+	
 	if march:
 		velocity = march_direction * max_speed 
 	else:
@@ -106,7 +106,7 @@ func _on_hurtbox_take_damage(damage):
 				collectible.global_position = global_position
 				map.call_deferred("add_child", collectible) 
 				already_dropped_item = true 
-			
+
 		if not already_dropped_item:
 			var expp = expp_template.instantiate() 
 			expp.global_position = global_position

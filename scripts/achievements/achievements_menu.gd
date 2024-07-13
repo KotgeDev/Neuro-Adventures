@@ -25,13 +25,13 @@ func _ready() -> void:
 		var requirement = h_container.get_node("Requirement")
 		
 		if status[index]:  # If completed achievement 
-			title.text = " %s" % [achievement.title] 
+			title.text = "%s" % [achievement.title] 
 			base.texture = base_sprite
 			icon.texture = achievement.icon
 			requirement.text = achievement.requirement
 			
 		else:  # If achievmenet has not been completed 
-			title.text = " ???" 
+			title.text = "???" 
 			base.texture = base_mono_sprite
 			icon.texture = backslash_sprite
 			requirement.text = achievement.requirement
@@ -39,5 +39,6 @@ func _ready() -> void:
 		achievement_panel.visible = true 
 		achievements_container.add_child(achievement_panel)
 
-func _on_return_button_pressed():
-	get_tree().change_scene_to_file("res://scenes/ui/menu.tscn")
+func _on_close_button_pressed():
+	visible = false 
+	close_achievements.emit() 

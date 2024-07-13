@@ -12,6 +12,10 @@ enum Owners {
 	OWNED_BY_ENEMY
 }
 
+enum WhichMap {
+	THE_FARM
+}
+
 #endregion 
 
 ## connect function to this signal if an action 
@@ -47,12 +51,14 @@ signal remove_maxed_upgrades
 #region TO SPECIFIC UPGRADES
 signal update_drones
 signal update_pizza
+signal update_stars(enemy_in_range: bool)
 #endregion 
 
 #region TO COLLAB PARTNER OR AI 
 signal collect_exp(value: int)
 signal collect_cookie
 signal collect_creggs
+signal collect_orange
 signal damage_collab_partner(damage: float)
 signal damage_ai(damage: float)
 signal heal_ai(hp: float)

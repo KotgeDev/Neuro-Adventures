@@ -1,0 +1,79 @@
+[gd_scene load_steps=6 format=3 uid="uid://mxus6ne1gf0c"]
+
+[ext_resource type="Script" path="res://scripts/projectiles/portal.gd" id="1_7fr13"]
+[ext_resource type="Texture2D" uid="uid://rtfi64dlwloa" path="res://assets/projectiles/portal_sheet.png" id="1_is51s"]
+
+[sub_resource type="Animation" id="Animation_ae20i"]
+resource_name = "teleport"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PortalSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PortalSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_ehgf8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PortalSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PortalSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_euvmr"]
+_data = {
+"RESET": SubResource("Animation_ehgf8"),
+"teleport": SubResource("Animation_ae20i")
+}
+
+[node name="Portal" type="Node2D"]
+script = ExtResource("1_7fr13")
+
+[node name="PortalSprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-1, -28)
+texture = ExtResource("1_is51s")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_euvmr")
+}

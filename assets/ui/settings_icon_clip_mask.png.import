@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://b1jvhkx7k0dad"
+path="res://.godot/imported/settings_icon_clip_mask.png-e1d85467ac02ea864c245888d07bca4d.res"
+
+[deps]
+
+source_file="res://assets/ui/settings_icon_clip_mask.png"
+dest_files=["res://.godot/imported/settings_icon_clip_mask.png-e1d85467ac02ea864c245888d07bca4d.res"]
+
+[params]
+
+create_from=0
+threshold=0.5

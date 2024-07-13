@@ -8,7 +8,7 @@ signal close_options
 func _ready() -> void:
 	close_options.connect(_on_close_options)
 
-func _on_return_button_pressed():
+func _on_close_button_pressed():
 	close_options.emit()
 
 func _on_close_options():

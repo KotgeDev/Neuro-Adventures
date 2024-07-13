@@ -8,3 +8,7 @@ func _ready():
 
 func setup(damage: float) -> void: 
 	$MultiHitbox.damage = damage
+
+func _on_multi_hitbox_self_destruct():
+	# Ensures damage is delt to only one enemy
+	$MultiHitbox.damage = 0 

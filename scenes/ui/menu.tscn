@@ -1,10 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://cbfigu64qfdvf"]
+[gd_scene load_steps=17 format=3 uid="uid://cbfigu64qfdvf"]
 
 [ext_resource type="Script" path="res://scripts/ui/menu.gd" id="1_833i5"]
 [ext_resource type="Texture2D" uid="uid://ck3vocomisktb" path="res://assets/ui/cover_image.png" id="2_yw33v"]
 [ext_resource type="PackedScene" uid="uid://b6j6utnkndtjo" path="res://scenes/options/options_menu.tscn" id="3_nre05"]
 [ext_resource type="Script" path="res://scripts/ui/button_with_sfx.gd" id="3_q60to"]
+[ext_resource type="Texture2D" uid="uid://diqa2jtswmdat" path="res://assets/ui/announcements_icon.png" id="4_rkb2i"]
+[ext_resource type="Texture2D" uid="uid://dr2xibikjxlog" path="res://assets/ui/announcements_icon_pressed.png" id="5_flana"]
+[ext_resource type="BitMap" uid="uid://71hwevmo4mks" path="res://assets/ui/announcements_icon_mask.png" id="6_rt4kd"]
 [ext_resource type="PackedScene" uid="uid://bnaykxnl0tv10" path="res://scenes/ui/credits.tscn" id="7_0vgrq"]
+[ext_resource type="Texture2D" uid="uid://7t3yuevacn1l" path="res://assets/ui/achievements_icon.png" id="7_aypth"]
+[ext_resource type="Texture2D" uid="uid://cyt41cypkymvo" path="res://assets/ui/achievements_icon_pressed.png" id="8_c4tgp"]
+[ext_resource type="BitMap" uid="uid://cpg8cc3jkadaa" path="res://assets/ui/achievements_icon_clip_mask.png" id="9_a2jn1"]
+[ext_resource type="Texture2D" uid="uid://di08f38sbim1l" path="res://assets/ui/settings_icon.png" id="10_d3adc"]
+[ext_resource type="Texture2D" uid="uid://yik43suynten" path="res://assets/ui/settings_pressed_icon.png" id="11_6q4bl"]
+[ext_resource type="BitMap" uid="uid://b1jvhkx7k0dad" path="res://assets/ui/settings_icon_clip_mask.png" id="12_gophf"]
+[ext_resource type="PackedScene" uid="uid://dm3hkvfawh3kq" path="res://scenes/achievements/achievements_menu.tscn" id="15_svy2m"]
+[ext_resource type="PackedScene" uid="uid://drltyl0upuj5g" path="res://scenes/ui/announcements.tscn" id="16_ek7ex"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -26,53 +37,103 @@ texture = ExtResource("2_yw33v")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 469.0
-offset_top = 182.0
-offset_right = 629.0
-offset_bottom = 342.0
-theme_override_constants/separation = 0
+offset_left = 423.0
+offset_top = 86.0
+offset_right = 606.0
+offset_bottom = 337.0
+theme_override_constants/separation = 14
 
-[node name="StartButton" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(160, 0)
+[node name="PlayButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(183, 39)
 layout_mode = 2
-text = "Start"
+text = "Play"
 script = ExtResource("3_q60to")
 
-[node name="OptionButton" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(160, 0)
+[node name="TeamButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(183, 39)
 layout_mode = 2
-text = "Options"
+disabled = true
+text = "Team
+"
 script = ExtResource("3_q60to")
 
-[node name="AcheivementsButton" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(160, 0)
+[node name="CharactersButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(183, 39)
 layout_mode = 2
-text = "Achievements"
+text = "Characters"
+script = ExtResource("3_q60to")
+
+[node name="LeaderboardButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(183, 39)
+layout_mode = 2
+disabled = true
+text = "Leaderboard"
 script = ExtResource("3_q60to")
 
 [node name="CreditsButton" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(160, 0)
+custom_minimum_size = Vector2(183, 39)
 layout_mode = 2
 text = "Credits"
 script = ExtResource("3_q60to")
 
-[node name="QuitButton" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(160, 0)
-layout_mode = 2
-text = "Quit"
-script = ExtResource("3_q60to")
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 505.0
+offset_top = 16.0
+offset_right = 609.0
+offset_bottom = 56.0
 
-[node name="OptionsMenu" parent="." instance=ExtResource("3_nre05")]
+[node name="AnnouncementIcon" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_rkb2i")
+texture_pressed = ExtResource("5_flana")
+texture_hover = ExtResource("5_flana")
+texture_click_mask = ExtResource("6_rt4kd")
+
+[node name="AchievementsIcon" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("7_aypth")
+texture_pressed = ExtResource("8_c4tgp")
+texture_hover = ExtResource("8_c4tgp")
+texture_click_mask = ExtResource("9_a2jn1")
+
+[node name="SettingsIcon" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("10_d3adc")
+texture_pressed = ExtResource("11_6q4bl")
+texture_hover = ExtResource("11_6q4bl")
+texture_click_mask = ExtResource("12_gophf")
+
+[node name="Menus" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="OptionsMenu" parent="Menus" instance=ExtResource("3_nre05")]
+unique_name_in_owner = true
 visible = false
 layout_mode = 1
 
-[node name="Credits" parent="." instance=ExtResource("7_0vgrq")]
+[node name="CreditsMenu" parent="Menus" instance=ExtResource("7_0vgrq")]
+unique_name_in_owner = true
 visible = false
 
-[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/OptionButton" to="." method="_on_option_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/AcheivementsButton" to="." method="_on_acheivements_button_pressed"]
+[node name="AchievementsMenu" parent="Menus" instance=ExtResource("15_svy2m")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="Announcements" parent="Menus" instance=ExtResource("16_ek7ex")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
-[connection signal="close_options" from="OptionsMenu" to="." method="show_buttons"]
-[connection signal="close_credits" from="Credits" to="." method="show_buttons"]
+[connection signal="pressed" from="HBoxContainer/AnnouncementIcon" to="." method="_on_announcement_icon_pressed"]
+[connection signal="pressed" from="HBoxContainer/AchievementsIcon" to="." method="_on_acheivements_icon_pressed"]
+[connection signal="pressed" from="HBoxContainer/SettingsIcon" to="." method="_on_settings_icon_pressed"]

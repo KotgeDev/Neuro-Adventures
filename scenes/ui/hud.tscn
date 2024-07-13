@@ -3,11 +3,11 @@
 [ext_resource type="Script" path="res://scripts/ui/hud.gd" id="1_jg8iq"]
 [ext_resource type="Texture2D" uid="uid://dnl8tal30m0jt" path="res://assets/characters/ais/neuro_icon.png" id="2_3ldxe"]
 [ext_resource type="Texture2D" uid="uid://cdfsvbsr2p0cs" path="res://assets/ui/ai_health_bar.png" id="3_h2em7"]
+[ext_resource type="Texture2D" uid="uid://crvnx5i06xcb6" path="res://assets/characters/collab_partners/vedal_icon.png" id="3_s2mue"]
 [ext_resource type="Texture2D" uid="uid://tnubhijqfq02" path="res://assets/ui/health_bar_under.png" id="6_jflyq"]
 [ext_resource type="Texture2D" uid="uid://cjb1btwxi635u" path="res://assets/ui/collab_partner_bar.png" id="6_uyxdy"]
 [ext_resource type="Texture2D" uid="uid://chm3hdjvrvpig" path="res://assets/ui/exp_bar_under.png" id="6_v5tns"]
 [ext_resource type="Texture2D" uid="uid://bbm64wjax8o6h" path="res://assets/ui/exp_bar.png" id="7_0d2lw"]
-[ext_resource type="Texture2D" uid="uid://crvnx5i06xcb6" path="res://assets/ui/ui_icons1.png" id="7_ofbrc"]
 [ext_resource type="StyleBox" uid="uid://bspcvalmxg40p" path="res://assets/themes/upgrade.tres" id="10_3egha"]
 [ext_resource type="Texture2D" uid="uid://d2g70s3s7rt7t" path="res://assets/upgrades/upgrade_icon_placeholder.png" id="10_bqirj"]
 [ext_resource type="Script" path="res://scripts/ui/choice_ui_animation.gd" id="10_ki084"]
@@ -55,7 +55,7 @@ offset_left = 20.0
 offset_top = 140.0
 offset_right = 52.0
 offset_bottom = 172.0
-texture = ExtResource("7_ofbrc")
+texture = ExtResource("3_s2mue")
 stretch_mode = 2
 
 [node name="AIHealthBar" type="TextureProgressBar" parent="HealthBars"]

@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://e8y2spmxgfec"]
+
+[ext_resource type="Texture2D" uid="uid://c7lvco482v0ei" path="res://assets/ui/close_button.png" id="1_oosyc"]
+[ext_resource type="Texture2D" uid="uid://du24ii3orfn2m" path="res://assets/ui/close_button_pressed.png" id="2_kwvxq"]
+[ext_resource type="BitMap" uid="uid://cnbsad8ybro4q" path="res://assets/ui/close_button_clip_mask.png" id="3_gmmx8"]
+[ext_resource type="Script" path="res://scripts/ui/button_with_sfx.gd" id="4_j83qx"]
+
+[node name="CloseButton" type="TextureButton"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+texture_normal = ExtResource("1_oosyc")
+texture_pressed = ExtResource("2_kwvxq")
+texture_hover = ExtResource("2_kwvxq")
+texture_click_mask = ExtResource("3_gmmx8")
+script = ExtResource("4_j83qx")

@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://cnbsad8ybro4q"
+path="res://.godot/imported/close_button_clip_mask.png-145a25a861a91bad66f02ec55c3954af.res"
+
+[deps]
+
+source_file="res://assets/ui/close_button_clip_mask.png"
+dest_files=["res://.godot/imported/close_button_clip_mask.png-145a25a861a91bad66f02ec55c3954af.res"]
+
+[params]
+
+create_from=0
+threshold=0.5

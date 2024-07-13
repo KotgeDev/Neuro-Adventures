@@ -7,7 +7,7 @@ var knife_template = preload("res://scenes/projectiles/knife.tscn")
 @onready var damage_zone = $DamageZone
 
 #region CONSTANTS
-@export var LV1_DAMAGE = 3.0
+@export var LV1_DAMAGE = 2.0
 @export var LV1_FIRE_INTERVAL = 2.0 
 @export var LV2_FIRE_INTERVAL = 1.75 
 @export var LV3_DAMAGE = 4.0 

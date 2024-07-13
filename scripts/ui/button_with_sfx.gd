@@ -1,4 +1,4 @@
-extends Button
+extends BaseButton
 
 var menu_blip: AudioStream = preload("res://assets/sfx/menublip2.wav")
 

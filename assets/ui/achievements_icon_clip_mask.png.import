@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://cpg8cc3jkadaa"
+path="res://.godot/imported/achievements_icon_clip_mask.png-50d689db42ff808e537f10735d44c428.res"
+
+[deps]
+
+source_file="res://assets/ui/achievements_icon_clip_mask.png"
+dest_files=["res://.godot/imported/achievements_icon_clip_mask.png-50d689db42ff808e537f10735d44c428.res"]
+
+[params]
+
+create_from=0
+threshold=0.5
