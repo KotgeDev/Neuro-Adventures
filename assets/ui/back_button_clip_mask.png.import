@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://btyvq7r114nj3"
+path="res://.godot/imported/back_button_clip_mask.png-2b87b81c8afb11b8376579c10070846d.res"
+
+[deps]
+
+source_file="res://assets/ui/back_button_clip_mask.png"
+dest_files=["res://.godot/imported/back_button_clip_mask.png-2b87b81c8afb11b8376579c10070846d.res"]
+
+[params]
+
+create_from=0
+threshold=0.5

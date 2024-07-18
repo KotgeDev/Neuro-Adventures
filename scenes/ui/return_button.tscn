@@ -1,12 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://ct2jjb3mge4nm"]
+[gd_scene load_steps=4 format=3 uid="uid://bqppr7oknbtc6"]
 
-[ext_resource type="Script" path="res://scripts/ui/button_with_sfx.gd" id="1_kjnam"]
+[ext_resource type="Texture2D" uid="uid://bq87ofrcmgp28" path="res://assets/ui/back_button.png" id="1_kix4u"]
+[ext_resource type="Texture2D" uid="uid://bo3o243njjvs3" path="res://assets/ui/back_button_pressed.png" id="2_8clv6"]
+[ext_resource type="BitMap" uid="uid://btyvq7r114nj3" path="res://assets/ui/back_button_clip_mask.png" id="3_pkst1"]
 
-[node name="ReturnButton" type="Button"]
-custom_minimum_size = Vector2(100, 0)
-offset_left = 21.0
-offset_top = 309.0
-offset_right = 121.0
-offset_bottom = 341.0
-text = "Return"
-script = ExtResource("1_kjnam")
+[node name="ReturnButton" type="TextureButton"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("1_kix4u")
+texture_pressed = ExtResource("2_8clv6")
+texture_hover = ExtResource("2_8clv6")
+texture_click_mask = ExtResource("3_pkst1")

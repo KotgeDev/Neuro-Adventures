@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="UpgradeResource" load_steps=4 format=3 uid="uid://bp0ia8q1xifig"]
+
+[ext_resource type="Texture2D" uid="uid://c42wqnell3b8t" path="res://assets/upgrades/cookies_icon.png" id="1_urvct"]
+[ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="1_wnd2b"]
+[ext_resource type="PackedScene" uid="uid://btr8wrt5kkk56" path="res://scenes/upgrades/cookies_upgrade.tscn" id="2_o4if1"]
+
+[resource]
+script = ExtResource("1_wnd2b")
+upgrade_name = "Cookies"
+icon = ExtResource("1_urvct")
+descriptions = PackedStringArray("1% chance for enemies to drop cookies (Gives 5 HP to the AI)", "2% chance for enemies to drop cookies", "3% chance for enemies to drop cookies", "5% chance for enemies to drop cookies")
+upgrade_type = 0
+max_lvl = 4
+scene_template = ExtResource("2_o4if1")
+tags = PackedStringArray()

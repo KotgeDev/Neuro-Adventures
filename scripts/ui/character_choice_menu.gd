@@ -5,8 +5,8 @@ extends Control
 @onready var collab_sprite = %CollabSprite
 @onready var collab_description = %CollabDescription
 
-var ai_selection = SavedOptions.AISelection.NEURO 
-var collab_selection = SavedOptions.CollabPartnerSelection.VEDAL
+var ai_selection = Globals.CharacterChoice.NEURO 
+var collab_selection = Globals.CharacterChoice.VEDAL
 
 var neuro_texture: Texture2D = preload("res://assets/characters/ais/neuro_idle_sheet.png")
 var evil_texture: Texture2D = preload("res://assets/characters/ais/evil_idle_sheet.png")
@@ -43,7 +43,7 @@ func _ready() -> void:
 	set_selection()
 
 func _on_return_button_pressed():
-	get_tree().change_scene_to_file("res://scenes/ui/menu.tscn")
+	get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
 
 func _on_start_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/maps/farm.tscn")
@@ -82,21 +82,21 @@ func _on_collab_selection_button_back_pressed():
 
 func set_selection() -> void:
 	match ai_selection:
-		SavedOptions.AISelection.NEURO:
-			SavedOptions.settings.ai_selected = SavedOptions.AISelection.NEURO
+		Globals.CharacterChoice.NEURO:
+			SavedOptions.settings.ai_selected = Globals.CharacterChoice.NEURO
 			ai_sprite.texture = neuro_texture 
 			ai_description.text = neuro_description
-		SavedOptions.AISelection.EVIL:
-			SavedOptions.settings.ai_selected = SavedOptions.AISelection.EVIL
+		Globals.CharacterChoice.EVIL:
+			SavedOptions.settings.ai_selected = Globals.CharacterChoice.EVIL
 			ai_sprite.texture = evil_texture
 			ai_description.text = evil_description
 	match collab_selection:
-		SavedOptions.CollabPartnerSelection.VEDAL:
-			SavedOptions.settings.collab_partner_selected = SavedOptions.CollabPartnerSelection.VEDAL
+		Globals.CharacterChoice.VEDAL:
+			SavedOptions.settings.collab_partner_selected = Globals.CharacterChoice.VEDAL
 			collab_sprite.texture = vedal_texture 
 			collab_description.text = vedal_description
-		SavedOptions.CollabPartnerSelection.ANNY:
-			SavedOptions.settings.collab_partner_selected = SavedOptions.CollabPartnerSelection.ANNY
+		Globals.CharacterChoice.ANNY:
+			SavedOptions.settings.collab_partner_selected = Globals.CharacterChoice.ANNY
 			collab_sprite.texture = anny_texture
 			collab_description.text = anny_description
 

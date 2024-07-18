@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="UpgradeDB" load_steps=4 format=3 uid="uid://dcy346xxa6b3v"]
+
+[ext_resource type="Resource" uid="uid://cpvjph3wej08q" path="res://resources/upgrades/shared/programming_socks.tres" id="1_2minv"]
+[ext_resource type="Script" path="res://scripts/upgrades/upgrade_db.gd" id="2_jj24e"]
+[ext_resource type="Resource" uid="uid://djhuihyp53xqk" path="res://resources/upgrades/shared/shock_magnet.tres" id="2_r8rny"]
+
+[resource]
+script = ExtResource("2_jj24e")
+db = Array[Resource("res://scripts/upgrades/upgrade_resource.gd")]([ExtResource("1_2minv"), ExtResource("2_r8rny")])

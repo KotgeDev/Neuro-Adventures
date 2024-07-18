@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="UpgradeResource" load_steps=4 format=3 uid="uid://buvwlyhvs33qo"]
+
+[ext_resource type="Texture2D" uid="uid://cm06q8xh3p3yj" path="res://assets/upgrades/gaslight_icon.png" id="1_6emxm"]
+[ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="1_uv3vl"]
+[ext_resource type="PackedScene" uid="uid://byebkvw5ksjrv" path="res://scenes/upgrades/gaslight.tscn" id="2_hompn"]
+
+[resource]
+script = ExtResource("1_uv3vl")
+upgrade_name = "Gaslight"
+icon = ExtResource("1_6emxm")
+descriptions = PackedStringArray("Gives the AI 5% chance to ignore damage and 10% chance to divert the damage to the Collab Partner", "Gives the AI 7% chance to ignore damage and 15% chance to divert the damage to the Collab Partner", "Gives the AI 10% chance to ignore damage and 20% chance to divert the damage to the Collab Partner", "Gives the AI 30% chance to ignore damage and 50% chance to divert the damage to the Collab Partner")
+upgrade_type = 0
+max_lvl = 4
+scene_template = ExtResource("2_hompn")
+tags = PackedStringArray()

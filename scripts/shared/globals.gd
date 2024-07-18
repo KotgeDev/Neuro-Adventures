@@ -12,10 +12,16 @@ enum Owners {
 	OWNED_BY_ENEMY
 }
 
-enum WhichMap {
+enum MapChoice {
 	THE_FARM
 }
 
+enum CharacterChoice {
+	NEURO, 
+	EVIL,
+	VEDAL,
+	ANNY
+}
 #endregion 
 
 ## connect function to this signal if an action 

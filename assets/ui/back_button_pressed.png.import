@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgnntly2euxs0"
-path="res://.godot/imported/green_button_9slice.png-3b38e21a0458a480493a19c8bcb2f12d.ctex"
+uid="uid://bo3o243njjvs3"
+path="res://.godot/imported/back_button_pressed.png-dff0e75229ff83d1356069eaf51ba601.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/themes/green_button_9slice.png"
-dest_files=["res://.godot/imported/green_button_9slice.png-3b38e21a0458a480493a19c8bcb2f12d.ctex"]
+source_file="res://assets/ui/back_button_pressed.png"
+dest_files=["res://.godot/imported/back_button_pressed.png-dff0e75229ff83d1356069eaf51ba601.ctex"]
 
 [params]
 

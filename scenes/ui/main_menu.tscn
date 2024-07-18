@@ -1,0 +1,141 @@
+[gd_scene load_steps=17 format=3 uid="uid://cbfigu64qfdvf"]
+
+[ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_kkv3g"]
+[ext_resource type="Texture2D" uid="uid://ck3vocomisktb" path="res://assets/ui/main_bg.png" id="2_bmufw"]
+[ext_resource type="Script" path="res://scripts/ui/button_with_sfx.gd" id="3_6k7f3"]
+[ext_resource type="Texture2D" uid="uid://diqa2jtswmdat" path="res://assets/ui/announcements_icon.png" id="4_8gpqi"]
+[ext_resource type="Texture2D" uid="uid://dr2xibikjxlog" path="res://assets/ui/announcements_icon_pressed.png" id="5_8rpbn"]
+[ext_resource type="BitMap" uid="uid://71hwevmo4mks" path="res://assets/ui/announcements_icon_mask.png" id="6_a5jhn"]
+[ext_resource type="Texture2D" uid="uid://7t3yuevacn1l" path="res://assets/ui/achievements_icon.png" id="7_15c88"]
+[ext_resource type="Texture2D" uid="uid://cyt41cypkymvo" path="res://assets/ui/achievements_icon_pressed.png" id="8_p5l0o"]
+[ext_resource type="BitMap" uid="uid://cpg8cc3jkadaa" path="res://assets/ui/achievements_icon_clip_mask.png" id="9_hkxur"]
+[ext_resource type="Texture2D" uid="uid://di08f38sbim1l" path="res://assets/ui/settings_icon.png" id="10_tuq7r"]
+[ext_resource type="Texture2D" uid="uid://yik43suynten" path="res://assets/ui/settings_pressed_icon.png" id="11_po4xl"]
+[ext_resource type="BitMap" uid="uid://b1jvhkx7k0dad" path="res://assets/ui/settings_icon_clip_mask.png" id="12_pda2o"]
+[ext_resource type="PackedScene" uid="uid://b6j6utnkndtjo" path="res://scenes/options/options_menu.tscn" id="13_tpbcu"]
+[ext_resource type="PackedScene" uid="uid://bnaykxnl0tv10" path="res://scenes/ui/credits.tscn" id="14_0sj3f"]
+[ext_resource type="PackedScene" uid="uid://dm3hkvfawh3kq" path="res://scenes/achievements/achievements_menu.tscn" id="15_24ye3"]
+[ext_resource type="PackedScene" uid="uid://drltyl0upuj5g" path="res://scenes/ui/announcements.tscn" id="16_ngfms"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kkv3g")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.604
+anchor_bottom = 0.21
+offset_right = -346.56
+offset_bottom = -35.6
+texture = ExtResource("2_bmufw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 423.0
+offset_top = 86.0
+offset_right = 606.0
+offset_bottom = 337.0
+theme_override_constants/separation = 14
+
+[node name="PlayButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(183, 39)
+layout_mode = 2
+text = "Play"
+script = ExtResource("3_6k7f3")
+
+[node name="TeamButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(183, 39)
+layout_mode = 2
+disabled = true
+text = "Team
+"
+script = ExtResource("3_6k7f3")
+
+[node name="CharactersButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(183, 39)
+layout_mode = 2
+text = "Characters"
+script = ExtResource("3_6k7f3")
+
+[node name="LeaderboardButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(183, 39)
+layout_mode = 2
+disabled = true
+text = "Leaderboard"
+script = ExtResource("3_6k7f3")
+
+[node name="CreditsButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(183, 39)
+layout_mode = 2
+text = "Credits"
+script = ExtResource("3_6k7f3")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 505.0
+offset_top = 16.0
+offset_right = 609.0
+offset_bottom = 56.0
+
+[node name="AnnouncementIcon" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_8gpqi")
+texture_pressed = ExtResource("5_8rpbn")
+texture_hover = ExtResource("5_8rpbn")
+texture_click_mask = ExtResource("6_a5jhn")
+
+[node name="AchievementsIcon" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("7_15c88")
+texture_pressed = ExtResource("8_p5l0o")
+texture_hover = ExtResource("8_p5l0o")
+texture_click_mask = ExtResource("9_hkxur")
+
+[node name="SettingsIcon" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("10_tuq7r")
+texture_pressed = ExtResource("11_po4xl")
+texture_hover = ExtResource("11_po4xl")
+texture_click_mask = ExtResource("12_pda2o")
+
+[node name="Menus" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="OptionsMenu" parent="Menus" instance=ExtResource("13_tpbcu")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="CreditsMenu" parent="Menus" instance=ExtResource("14_0sj3f")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="AchievementsMenu" parent="Menus" instance=ExtResource("15_24ye3")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="Announcements" parent="Menus" instance=ExtResource("16_ngfms")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CharactersButton" to="." method="_on_characters_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/AnnouncementIcon" to="." method="_on_announcement_icon_pressed"]
+[connection signal="pressed" from="HBoxContainer/AchievementsIcon" to="." method="_on_acheivements_icon_pressed"]
+[connection signal="pressed" from="HBoxContainer/SettingsIcon" to="." method="_on_settings_icon_pressed"]

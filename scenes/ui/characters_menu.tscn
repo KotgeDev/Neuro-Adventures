@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=3 uid="uid://diudh6xuo7hbl"]
+
+[ext_resource type="Script" path="res://scripts/ui/characters_menu.gd" id="1_qlbn4"]
+[ext_resource type="Texture2D" uid="uid://cwiayaenixuu8" path="res://assets/ui/main_bg_no_title.png" id="1_rqpjk"]
+[ext_resource type="PackedScene" uid="uid://bqppr7oknbtc6" path="res://scenes/ui/return_button.tscn" id="3_hisro"]
+[ext_resource type="PackedScene" uid="uid://dfyl0awq8jom5" path="res://scenes/ui/character_card.tscn" id="6_dhauq"]
+
+[node name="CharactersMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qlbn4")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_rqpjk")
+
+[node name="ReturnButton" parent="." instance=ExtResource("3_hisro")]
+layout_mode = 1
+offset_right = 111.0
+offset_bottom = 48.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 57.0
+offset_right = 217.0
+offset_bottom = 337.0
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Card1" parent="ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource("6_dhauq")]
+layout_mode = 2
+character = null
+
+[node name="Card2" parent="ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource("6_dhauq")]
+layout_mode = 2
+character = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Card3" parent="ScrollContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("6_dhauq")]
+layout_mode = 2
+character = 2
+
+[node name="Card4" parent="ScrollContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("6_dhauq")]
+layout_mode = 2
+character = 3
+
+[connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]
+[connection signal="selected" from="ScrollContainer/VBoxContainer/HBoxContainer/Card1" to="." method="_on_character_display_selected"]
+[connection signal="selected" from="ScrollContainer/VBoxContainer/HBoxContainer/Card2" to="." method="_on_character_display_selected"]
+[connection signal="selected" from="ScrollContainer/VBoxContainer/HBoxContainer2/Card3" to="." method="_on_character_display_selected"]
+[connection signal="selected" from="ScrollContainer/VBoxContainer/HBoxContainer2/Card4" to="." method="_on_character_display_selected"]

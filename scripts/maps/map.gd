@@ -39,21 +39,21 @@ func _ready() -> void:
 	Globals.add_collectible_generator.connect(_on_add_collectible_generator)
 	
 	match SavedOptions.settings.ai_selected:
-		SavedOptions.AISelection.NEURO:
+		Globals.CharacterChoice.NEURO:
 			ai_scene = neuro_template.instantiate()
 			add_child(ai_scene)
 			ai_scene.global_position = AI_POS
-		SavedOptions.AISelection.EVIL:
+		Globals.CharacterChoice.EVIL:
 			ai_scene = evil_template.instantiate()
 			add_child(ai_scene)
 			ai_scene.global_position = AI_POS
 		
 	match SavedOptions.settings.collab_partner_selected:
-		SavedOptions.CollabPartnerSelection.VEDAL:
+		Globals.CharacterChoice.VEDAL:
 			collab_scene = vedal_template.instantiate()
 			add_child(collab_scene)
 			collab_scene.global_position = COLLAB_POS 
-		SavedOptions.CollabPartnerSelection.ANNY:
+		Globals.CharacterChoice.ANNY:
 			collab_scene = anny_template.instantiate()
 			add_child(collab_scene)
 			collab_scene.global_position = COLLAB_POS  

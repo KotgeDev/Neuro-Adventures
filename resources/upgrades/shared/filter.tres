@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="UpgradeResource" load_steps=4 format=3 uid="uid://c88q57y108qa0"]
+
+[ext_resource type="Texture2D" uid="uid://dqnhq54mwmpm6" path="res://assets/upgrades/filtered_icon.png" id="1_v6b4j"]
+[ext_resource type="PackedScene" uid="uid://dbucoho8ekfnf" path="res://scenes/upgrades/filter.tscn" id="2_12hqt"]
+[ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="3_sdhmr"]
+
+[resource]
+script = ExtResource("3_sdhmr")
+upgrade_name = "Filter"
+icon = ExtResource("1_v6b4j")
+descriptions = PackedStringArray("AIs now do 30% less damage to collab partners", "AIs now do 50% less damage to collab partners", "AIs now do 75% less damage to collab partners", "AIs now do 90% less damage to collab partners")
+upgrade_type = 0
+max_lvl = 4
+scene_template = ExtResource("2_12hqt")
+tags = PackedStringArray()

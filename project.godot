@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Neuro Adventures!"
-run/main_scene="res://scenes/ui/menu.tscn"
+run/main_scene="res://scenes/ui/main_menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://windows_icon.png"
 
@@ -21,6 +21,7 @@ Globals="*res://scripts/shared/globals.gd"
 AudioSystem="*res://scripts/audio/audiosystem.gd"
 SavedOptions="*res://scripts/options/saved_options.gd"
 AchievementManager="*res://scripts/achievements/achievement_manager.gd"
+CharacterInfo="*res://scripts/shared/character_info.gd"
 
 [display]
 

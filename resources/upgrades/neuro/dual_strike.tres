@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="UpgradeResource" load_steps=4 format=3 uid="uid://pbkhk4vad4vv"]
+
+[ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="1_bsmct"]
+[ext_resource type="Texture2D" uid="uid://oh85qiia2hn7" path="res://assets/upgrades/swords_icon.png" id="1_wet5n"]
+[ext_resource type="PackedScene" uid="uid://8k6ldupam638" path="res://scenes/upgrades/dual_strike_scene.tscn" id="2_bsg2v"]
+
+[resource]
+script = ExtResource("1_bsmct")
+upgrade_name = "Dual Strike"
+icon = ExtResource("1_wet5n")
+descriptions = PackedStringArray("Dual Strike", "Less interval between strikes ", "Double damage per strike", "Greater strike range", "Even Less interval between strikes")
+upgrade_type = 0
+max_lvl = 5
+scene_template = ExtResource("2_bsg2v")
+tags = PackedStringArray()

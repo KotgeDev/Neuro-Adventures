@@ -19,11 +19,7 @@ enum AISelection {
 	EVIL 
 }
 
-enum MapSelection {
-	THE_FARM
-}
-
-var save_path = "user://saved_options.save"
+var save_path = "user://saved_settings.save"
 
 #region SETTINGS
 var settings := {
@@ -32,8 +28,9 @@ var settings := {
 	"music_volume": 1.0,
 	"fps_counter": false,
 	"full_health_effect": true,
-	"ai_selected": 0,
-	"collab_partner_selected": 0 
+	"ai_selected": Globals.CharacterChoice.NEURO,
+	"collab_partner_selected": Globals.CharacterChoice.VEDAL,
+	"neuro_default": ["Dual Strike", "Cookies"] 
 }
 #endregion 
 
@@ -46,10 +43,9 @@ func load_data() -> void:
 	if FileAccess.file_exists(save_path):
 		var file = FileAccess.open(save_path, FileAccess.READ)
 		settings = file.get_var()
-		if not settings.has("ai_selected"):
-			settings.ai_selected = 0 
-		if not settings.has("collab_partner_selected"):
-			settings.collab_partner_selected = 0
+		if not settings.has("neuro_default"):
+			settings.neuro_default = ["Dual Strike", "Cookies"] 
+		
 	else:
 		save_data()
 

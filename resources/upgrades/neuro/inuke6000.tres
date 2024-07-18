@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="UpgradeResource" load_steps=4 format=3 uid="uid://4m5usheld4ap"]
+
+[ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="1_0j3wi"]
+[ext_resource type="Texture2D" uid="uid://5puukpokmdpd" path="res://assets/upgrades/inuke6000_icon.png" id="1_6tmaa"]
+[ext_resource type="PackedScene" uid="uid://jcx54cxn86yc" path="res://scenes/upgrades/inuke6000.tscn" id="2_jgmaf"]
+
+[resource]
+script = ExtResource("1_0j3wi")
+upgrade_name = "iNuke6000"
+icon = ExtResource("1_6tmaa")
+descriptions = PackedStringArray("iNuke6000s are dropped at a random enemy in range every 6 s dealing splash damage of 12. MAY TARGET COLLAB PARTNER", "Nuke launch time is reduced", "Two nukes are launched at a time", "Nuke launch time is further reduce", "Three nukes are launched at a time")
+upgrade_type = 0
+max_lvl = 5
+scene_template = ExtResource("2_jgmaf")
+tags = PackedStringArray()

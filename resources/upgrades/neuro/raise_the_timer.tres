@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="UpgradeResource" load_steps=4 format=3 uid="uid://dtr3cqndmotfv"]
+
+[ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="1_b4atu"]
+[ext_resource type="Texture2D" uid="uid://cpuuxj60tf8kf" path="res://assets/upgrades/raise_the_timer_icon.png" id="1_ylsif"]
+[ext_resource type="PackedScene" uid="uid://d37kwggd7swy2" path="res://scenes/upgrades/raise_the_timer.tscn" id="2_i3lwb"]
+
+[resource]
+script = ExtResource("1_b4atu")
+upgrade_name = "Raise the Timer!"
+icon = ExtResource("1_ylsif")
+descriptions = PackedStringArray("The AI will start loosing HP every 1s, but exps will now give 0.6 HP to the AI", "The AI will start loosing HP every 1s, but exps will now give 0.7 HP to the AI", "The AI will start loosing HP every 1s, but exps will now give 0.8 HP to the AI")
+upgrade_type = 0
+max_lvl = 3
+scene_template = ExtResource("2_i3lwb")
+tags = PackedStringArray()

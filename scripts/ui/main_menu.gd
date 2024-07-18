@@ -23,6 +23,9 @@ func _ready() -> void:
 func _on_play_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/ui/character_choice_menu.tscn")
 
+func _on_characters_button_pressed():
+	get_tree().change_scene_to_file("res://scenes/ui/characters_menu.tscn")
+
 func _on_credits_button_pressed():
 	credits_menu.visible = true 
 	v_box_container.visible = false 
@@ -44,6 +47,7 @@ func _on_announcement_icon_pressed():
 
 func _on_close() -> void:
 	v_box_container.visible = true 
+
 
 
 
