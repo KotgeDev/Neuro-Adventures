@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="UpgradeResource" load_steps=4 format=3 uid="uid://dymwab8n3iekm"]
+
+[ext_resource type="Texture2D" uid="uid://dcd41njvyekbo" path="res://assets/upgrades/summon_circle_icon.png" id="1_cbu34"]
+[ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="1_n2qrf"]
+[ext_resource type="PackedScene" uid="uid://db0lwk1g3cgm2" path="res://scenes/upgrades/summon_circle.tscn" id="2_yvmu0"]
+
+[resource]
+script = ExtResource("1_n2qrf")
+upgrade_name = "Summon Circle"
+icon = ExtResource("1_cbu34")
+descriptions = PackedStringArray("Summon circle. Will slow all enemies within range by 20%", "Will slow all enemies within range by 30% ", "Will slow all enemies within range by 40%", "Increase range of summon circle", "Will slow all enemies within range by 50%", "Will slow all enemies within range by 60%")
+upgrade_type = 0
+max_lvl = 6
+scene_template = ExtResource("2_yvmu0")
+unlimited = false
+tag = 1

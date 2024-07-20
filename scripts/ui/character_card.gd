@@ -4,21 +4,17 @@ signal selected(char: Globals.CharacterChoice)
 
 @export var character: Globals.CharacterChoice
 
-@onready var character_name = $CharacterName
-@onready var ai_texture = $AITexture
+@onready var character_name = %CharacterName
+@onready var ai_texture = %AITexture
+
+var data: CharacterData
 
 func _ready() -> void:
-	match character:
-		Globals.CharacterChoice.NEURO:
-			character_name.text = "Neuro"
-		Globals.CharacterChoice.EVIL:
-			character_name.text = "Evil"
-		Globals.CharacterChoice.ANNY:
-			ai_texture.hide() 
-			character_name.text = "Anny"
-		Globals.CharacterChoice.VEDAL:
-			ai_texture.hide() 
-			character_name.text = "Vedal"
-
+	data = CharacterDataManager.character_data[character]
+	
+	character_name.text = data.character_name 
+	if not data.is_ai: 
+		ai_texture.hide() 
+	
 func _on_selection_button_pressed():
 	selected.emit(character) 

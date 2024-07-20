@@ -9,24 +9,27 @@ var max_lvl: int
 var lvl: int 
 var scene_template: PackedScene
 var scene: Node 
-var tags: PackedStringArray
+var unlimited: bool  
+var tag: UpgradeResource.Tag
 
 func _init(
-	p_name: String,
-	p_icon: Texture2D, 
-	p_des: PackedStringArray, 
-	p_type: Globals.UpgradeType, 
-	p_max: int, 
-	p_lvl: int, 
-	p_scene_template: PackedScene,
-	p_tags := []
+	_name: String,
+	_icon: Texture2D, 
+	_des: PackedStringArray, 
+	_type: Globals.UpgradeType, 
+	_max: int, 
+	_lvl: int, 
+	_scene_template: PackedScene,
+	_unlimited: bool,
+	_tag: UpgradeResource.Tag
 ) -> void: 
-	upgrade_name = p_name
-	icon = p_icon 
-	descriptions = p_des 
-	upgrade_type = p_type 
-	max_lvl = p_max 
-	lvl = p_lvl
-	scene_template = p_scene_template
-	tags = p_tags
-	
+	upgrade_name = _name
+	icon = _icon 
+	descriptions = _des 
+	upgrade_type = _type 
+	max_lvl = _max 
+	lvl = _lvl
+	scene_template = _scene_template
+	unlimited = _unlimited 
+	tag = _tag
+

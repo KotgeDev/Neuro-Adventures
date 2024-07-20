@@ -12,4 +12,5 @@ descriptions = PackedStringArray("+ 5% faster speed (for both characters)", "+ 1
 upgrade_type = 1
 max_lvl = 4
 scene_template = ExtResource("2_gepv1")
-tags = PackedStringArray()
+unlimited = false
+tag = 1

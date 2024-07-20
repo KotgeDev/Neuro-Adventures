@@ -12,4 +12,5 @@ descriptions = PackedStringArray("AIs now do 30% less damage to collab partners"
 upgrade_type = 0
 max_lvl = 4
 scene_template = ExtResource("2_12hqt")
-tags = PackedStringArray()
+unlimited = false
+tag = 1

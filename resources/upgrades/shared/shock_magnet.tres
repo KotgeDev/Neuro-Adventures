@@ -12,4 +12,5 @@ descriptions = PackedStringArray("+30% larger item collection range", "+40% larg
 upgrade_type = 1
 max_lvl = 3
 scene_template = ExtResource("2_ricdq")
-tags = PackedStringArray()
+unlimited = false
+tag = 1

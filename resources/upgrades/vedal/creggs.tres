@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="UpgradeResource" load_steps=4 format=3 uid="uid://ct8qtbivewx2o"]
+
+[ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="1_j2wgi"]
+[ext_resource type="Texture2D" uid="uid://c2cb0820ccio" path="res://assets/upgrades/creggs_icon.png" id="1_vreuu"]
+[ext_resource type="PackedScene" uid="uid://cbxo3vnlxwd86" path="res://scenes/upgrades/creggs_upgrade.tscn" id="2_6v71m"]
+
+[resource]
+script = ExtResource("1_j2wgi")
+upgrade_name = "Creggs"
+icon = ExtResource("1_vreuu")
+descriptions = PackedStringArray("% chance for enemies to drop a chicken bake (Gives 7 HP to the Collab Partner)", "2% chance for enemies to drop chicken bake ", "3% chance for enemies to drop chicken bake ", "5% chance for enemies to drop chicken bake")
+upgrade_type = 1
+max_lvl = 4
+scene_template = ExtResource("2_6v71m")
+unlimited = false
+tag = 1

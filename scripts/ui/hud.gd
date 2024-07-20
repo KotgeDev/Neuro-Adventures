@@ -262,7 +262,7 @@ func display_upgrades(upgrades: Array) -> void:
 	
 		button.pressed.connect(_on_upgrade_selected.bind(upgrade))
 		button.mouse_entered.connect(_on_mouse_over_upgrade)
-		if upgrade.tags.has("unlimited"):
+		if upgrade.unlimited:
 			upgrade_name.text = " %s [Unlimited]" % [upgrade.upgrade_name]
 		else:
 			upgrade_name.text = " %s [Lv%d]" % [upgrade.upgrade_name, upgrade.lvl + 1]

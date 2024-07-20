@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="UpgradeResource" load_steps=4 format=3 uid="uid://bu3gd2arr56bj"]
+
+[ext_resource type="Texture2D" uid="uid://x5oyrgvqvosy" path="res://assets/upgrades/dm_allegations_icon.png" id="1_1rgvs"]
+[ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="1_om05u"]
+[ext_resource type="PackedScene" uid="uid://b7jfbfixl6usd" path="res://scenes/upgrades/dm_allegations.tscn" id="2_nlbua"]
+
+[resource]
+script = ExtResource("1_om05u")
+upgrade_name = "DM Allegations"
+icon = ExtResource("1_1rgvs")
+descriptions = PackedStringArray("Press [space] for Vedal to become immune for 0.4s. Pink notif means ability is ready", "Cooldown is reduced to 4s", "Immunity duration increased to 0.6s", "Cooldown is reduced to 3s", "Cooldown is reduced to 2s")
+upgrade_type = 1
+max_lvl = 5
+scene_template = ExtResource("2_nlbua")
+unlimited = false
+tag = 1

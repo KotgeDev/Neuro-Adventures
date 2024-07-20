@@ -3,11 +3,11 @@
 [ext_resource type="Texture2D" uid="uid://oh85qiia2hn7" path="res://assets/upgrades/swords_icon.png" id="1_lvrei"]
 [ext_resource type="Texture2D" uid="uid://cwiayaenixuu8" path="res://assets/ui/main_bg_no_title.png" id="1_nobid"]
 [ext_resource type="Script" path="res://scripts/ui/character_displayer.gd" id="1_soie0"]
-[ext_resource type="Texture2D" uid="uid://cmy5gqft564fw" path="res://assets/ui/placeholder_neuro.png" id="1_vb5sm"]
 [ext_resource type="StyleBox" uid="uid://doal46f0dfi43" path="res://assets/themes/selection_button_texture.tres" id="3_n2xjk"]
 [ext_resource type="StyleBox" uid="uid://d111g6y2kcd6h" path="res://assets/themes/selection_button_pressed_texture.tres" id="4_64i8h"]
 [ext_resource type="Texture2D" uid="uid://bvgqxxw711ehf" path="res://assets/themes/default_upgrade_9slice.png" id="4_gcinn"]
 [ext_resource type="PackedScene" uid="uid://bqppr7oknbtc6" path="res://scenes/ui/return_button.tscn" id="6_l7mo0"]
+[ext_resource type="PackedScene" uid="uid://e8y2spmxgfec" path="res://scenes/ui/close_button.tscn" id="8_8341x"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oba71"]
 texture = ExtResource("4_gcinn")
@@ -18,9 +18,11 @@ texture_margin_bottom = 4.0
 
 [node name="Displayer" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_soie0")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -30,11 +32,6 @@ offset_bottom = 360.0
 texture = ExtResource("1_nobid")
 metadata/_edit_lock_ = true
 
-[node name="PlaceholderNeuro" type="Sprite2D" parent="."]
-position = Vector2(244, 207)
-scale = Vector2(2.38793, 2.38793)
-texture = ExtResource("1_vb5sm")
-
 [node name="NameAndType" type="VBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 22.0
@@ -43,13 +40,15 @@ offset_right = 222.0
 offset_bottom = 113.0
 
 [node name="CharacterName" type="Label" parent="NameAndType"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 48
 text = "Neuro"
 
-[node name="Type" type="Label" parent="NameAndType"]
+[node name="TypeLabel" type="Label" parent="NameAndType"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -84,7 +83,8 @@ theme_override_constants/separation = 5
 [node name="Padding" type="Control" parent="Description/DescriptionContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Description/DescriptionContainer"]
+[node name="DescriptionLabel" type="Label" parent="Description/DescriptionContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -93,21 +93,16 @@ text = "HP: 45
 Speed: 75"
 
 [node name="Upgrades" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 395.0
-offset_top = 35.0
-offset_right = 589.0
-offset_bottom = 310.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 0
+offset_left = 391.0
+offset_top = 41.0
+offset_right = 627.0
+offset_bottom = 348.0
 
 [node name="Label" type="Label" parent="Upgrades"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "Upgrades"
+text = "Upgrades [select 2]"
 
 [node name="Control" type="Control" parent="Upgrades"]
 layout_mode = 2
@@ -140,6 +135,208 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
+
+[node name="Buffer1" type="Control" parent="Upgrades/Control/ScrollContainer/UpgradesContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="Upgrades/Control/ScrollContainer/UpgradesContainer/Buffer1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="DefaultOutline" type="Button" parent="Upgrades/Control/ScrollContainer/UpgradesContainer/Buffer1"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_oba71")
+
+[node name="Button" type="Button" parent="Upgrades/Control/ScrollContainer/UpgradesContainer/Buffer1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = ExtResource("3_n2xjk")
+theme_override_styles/hover = ExtResource("4_64i8h")
+theme_override_styles/pressed = ExtResource("4_64i8h")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Upgrades/Control/ScrollContainer/UpgradesContainer/Buffer1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Padding2" type="Control" parent="Upgrades/Control/ScrollContainer/UpgradesContainer/Buffer1/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Labels" type="HBoxContainer" parent="Upgrades/Control/ScrollContainer/UpgradesContainer/Buffer1/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Padding" type="Label" parent="Upgrades/Control/ScrollContainer/UpgradesContainer/Buffer1/VBoxContainer/Labels"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = " "
+
+[node name="Title" type="Label" parent="Upgrades/Control/ScrollContainer/UpgradesContainer/Buffer1/VBoxContainer/Labels"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "Dual Strike
+"
+
+[node name="ViewLink" type="RichTextLabel" parent="Upgrades/Control/ScrollContainer/UpgradesContainer/Buffer1/VBoxContainer/Labels"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[right][url=\"view\"][color=light blue]view lvls[/color][/url][/right] "
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Upgrades/Control/ScrollContainer/UpgradesContainer/Buffer1/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="IconContainer" type="CenterContainer" parent="Upgrades/Control/ScrollContainer/UpgradesContainer/Buffer1/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(45, 0)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Upgrades/Control/ScrollContainer/UpgradesContainer/Buffer1/VBoxContainer/HBoxContainer/IconContainer"]
+layout_mode = 2
+texture = ExtResource("1_lvrei")
+stretch_mode = 3
+
+[node name="Description" type="Label" parent="Upgrades/Control/ScrollContainer/UpgradesContainer/Buffer1/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Some description I guess. Dual Swords that deal damage.  "
+autowrap_mode = 2
+
+[node name="Padding" type="Control" parent="Upgrades/Control/ScrollContainer/UpgradesContainer/Buffer1/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Buffer2" type="Control" parent="Upgrades/Control/ScrollContainer/UpgradesContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="Upgrades/Control/ScrollContainer/UpgradesContainer/Buffer2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="DefaultOutline" type="Button" parent="Upgrades/Control/ScrollContainer/UpgradesContainer/Buffer2"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_oba71")
+
+[node name="Button" type="Button" parent="Upgrades/Control/ScrollContainer/UpgradesContainer/Buffer2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = ExtResource("3_n2xjk")
+theme_override_styles/hover = ExtResource("4_64i8h")
+theme_override_styles/pressed = ExtResource("4_64i8h")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Upgrades/Control/ScrollContainer/UpgradesContainer/Buffer2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Padding2" type="Control" parent="Upgrades/Control/ScrollContainer/UpgradesContainer/Buffer2/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Labels" type="HBoxContainer" parent="Upgrades/Control/ScrollContainer/UpgradesContainer/Buffer2/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Padding" type="Label" parent="Upgrades/Control/ScrollContainer/UpgradesContainer/Buffer2/VBoxContainer/Labels"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = " "
+
+[node name="Title" type="Label" parent="Upgrades/Control/ScrollContainer/UpgradesContainer/Buffer2/VBoxContainer/Labels"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "Dual Strike
+"
+
+[node name="ViewLink" type="RichTextLabel" parent="Upgrades/Control/ScrollContainer/UpgradesContainer/Buffer2/VBoxContainer/Labels"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[right][url=\"view\"][color=light blue]view lvls[/color][/url][/right] "
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Upgrades/Control/ScrollContainer/UpgradesContainer/Buffer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="IconContainer" type="CenterContainer" parent="Upgrades/Control/ScrollContainer/UpgradesContainer/Buffer2/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(45, 0)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Upgrades/Control/ScrollContainer/UpgradesContainer/Buffer2/VBoxContainer/HBoxContainer/IconContainer"]
+layout_mode = 2
+texture = ExtResource("1_lvrei")
+stretch_mode = 3
+
+[node name="Description" type="Label" parent="Upgrades/Control/ScrollContainer/UpgradesContainer/Buffer2/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Some description I guess. Dual Swords that deal damage.  "
+autowrap_mode = 2
+
+[node name="Padding" type="Control" parent="Upgrades/Control/ScrollContainer/UpgradesContainer/Buffer2/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
 
 [node name="DefaultUpgradesContainer" type="VBoxContainer" parent="Upgrades/Control"]
 unique_name_in_owner = true
@@ -262,4 +459,131 @@ layout_mode = 0
 offset_right = 111.0
 offset_bottom = 48.0
 
+[node name="LevelViewer" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.490196)
+
+[node name="Panel" type="Panel" parent="LevelViewer"]
+custom_minimum_size = Vector2(300, 320)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="LevelViewer/Panel"]
+custom_minimum_size = Vector2(237, 280)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -118.5
+offset_top = -140.0
+offset_right = 118.5
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LvlsContainer" type="VBoxContainer" parent="LevelViewer/Panel/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="CloseButton" parent="LevelViewer/Panel" instance=ExtResource("8_8341x")]
+layout_mode = 1
+
+[node name="LvlPanel" type="Control" parent="."]
+visible = false
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+anchors_preset = 0
+offset_left = 195.0
+offset_top = 55.0
+offset_right = 445.0
+offset_bottom = 125.0
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="LvlPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LvlPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Padding2" type="Control" parent="LvlPanel/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Labels" type="HBoxContainer" parent="LvlPanel/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Padding" type="Label" parent="LvlPanel/VBoxContainer/Labels"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = " "
+
+[node name="Title" type="Label" parent="LvlPanel/VBoxContainer/Labels"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "Dual Strike
+"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LvlPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="IconContainer" type="CenterContainer" parent="LvlPanel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(45, 0)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="LvlPanel/VBoxContainer/HBoxContainer/IconContainer"]
+layout_mode = 2
+texture = ExtResource("1_lvrei")
+stretch_mode = 3
+
+[node name="Description" type="Label" parent="LvlPanel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Some description I guess. Dual Swords that deal damage.  "
+autowrap_mode = 2
+
+[node name="Padding" type="Control" parent="LvlPanel/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
 [connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]
+[connection signal="pressed" from="LevelViewer/Panel/CloseButton" to="." method="_on_level_viewer_close"]

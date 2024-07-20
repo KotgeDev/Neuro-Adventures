@@ -12,4 +12,5 @@ descriptions = PackedStringArray("Dual Strike", "Less interval between strikes "
 upgrade_type = 0
 max_lvl = 5
 scene_template = ExtResource("2_bsg2v")
-tags = PackedStringArray()
+unlimited = false
+tag = 0

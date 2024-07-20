@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="UpgradeResource" load_steps=4 format=3 uid="uid://dhy31s7cgir43"]
+
+[ext_resource type="Texture2D" uid="uid://d3x81ib6ddv1k" path="res://assets/upgrades/star_icon.png" id="1_lr8ux"]
+[ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="1_pm7yx"]
+[ext_resource type="PackedScene" uid="uid://b3gh56jwdulhs" path="res://scenes/upgrades/star_upgrade.tscn" id="2_hxstn"]
+
+[resource]
+script = ExtResource("1_pm7yx")
+upgrade_name = "Star"
+icon = ExtResource("1_lr8ux")
+descriptions = PackedStringArray("A spinning star spawns and orbits Anny every 2.5s that deals 2 damage. Stars do double damage after 10s", "Interval decreases to 2.0s", "Damage increases to 3", "Interval decreases to 1.5s", "Stars deal double damage after 5s", "Damage increases to 4")
+upgrade_type = 1
+max_lvl = 6
+scene_template = ExtResource("2_hxstn")
+unlimited = false
+tag = 0

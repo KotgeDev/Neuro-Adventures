@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="UpgradeResource" load_steps=4 format=3 uid="uid://lvh4a8lxr15"]
+
+[ext_resource type="Texture2D" uid="uid://bfddxuyepmkes" path="res://assets/upgrades/knife_icon.png" id="1_7f27y"]
+[ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="1_a4f63"]
+[ext_resource type="PackedScene" uid="uid://crplra5uasdjy" path="res://scenes/upgrades/knife_scene.tscn" id="2_iyaj4"]
+
+[resource]
+script = ExtResource("1_a4f63")
+upgrade_name = "Knife"
+icon = ExtResource("1_7f27y")
+descriptions = PackedStringArray("Knife", "Less interval between strikes", "More damage per strike", "Increased range", "Even less interval between strikes", "Increased range. Warning, this range equals Evil\'s default distance from the collab partner")
+upgrade_type = 0
+max_lvl = 6
+scene_template = ExtResource("2_iyaj4")
+unlimited = false
+tag = 0

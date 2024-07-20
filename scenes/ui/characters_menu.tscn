@@ -43,7 +43,6 @@ theme_override_constants/separation = 10
 
 [node name="Card1" parent="ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource("6_dhauq")]
 layout_mode = 2
-character = null
 
 [node name="Card2" parent="ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource("6_dhauq")]
 layout_mode = 2

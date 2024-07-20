@@ -1,0 +1,100 @@
+[gd_scene load_steps=6 format=3 uid="uid://4sklglum0d7k"]
+
+[ext_resource type="Script" path="res://scripts/ui/team_menu.gd" id="1_plgsp"]
+[ext_resource type="Texture2D" uid="uid://cwiayaenixuu8" path="res://assets/ui/main_bg_no_title.png" id="1_wqvdl"]
+[ext_resource type="PackedScene" uid="uid://dfyl0awq8jom5" path="res://scenes/ui/character_card.tscn" id="2_xv8y2"]
+[ext_resource type="Script" path="res://scripts/ui/button_with_sfx.gd" id="4_x68nq"]
+[ext_resource type="PackedScene" uid="uid://bqppr7oknbtc6" path="res://scenes/ui/return_button.tscn" id="5_v1wuu"]
+
+[node name="TeamMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_plgsp")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_wqvdl")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(212, 198)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -106.0
+offset_top = -99.0
+offset_right = 106.0
+offset_bottom = 99.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="ScrollContainerAI" type="ScrollContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/ScrollContainerAI"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="Pad" type="Control" parent="HBoxContainer/ScrollContainerAI/VBoxContainer"]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+
+[node name="CharacterCard" parent="HBoxContainer/ScrollContainerAI/VBoxContainer" instance=ExtResource("2_xv8y2")]
+layout_mode = 2
+
+[node name="CharacterCard2" parent="HBoxContainer/ScrollContainerAI/VBoxContainer" instance=ExtResource("2_xv8y2")]
+layout_mode = 2
+
+[node name="Pad2" type="Control" parent="HBoxContainer/ScrollContainerAI/VBoxContainer"]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+
+[node name="ScrollContainerCollab" type="ScrollContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+vertical_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/ScrollContainerCollab"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+
+[node name="Pad" type="Control" parent="HBoxContainer/ScrollContainerCollab/VBoxContainer"]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+
+[node name="CharacterCard" parent="HBoxContainer/ScrollContainerCollab/VBoxContainer" instance=ExtResource("2_xv8y2")]
+layout_mode = 2
+
+[node name="CharacterCard2" parent="HBoxContainer/ScrollContainerCollab/VBoxContainer" instance=ExtResource("2_xv8y2")]
+layout_mode = 2
+
+[node name="Pad2" type="Control" parent="HBoxContainer/ScrollContainerCollab/VBoxContainer"]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 0
+offset_left = 522.0
+offset_top = 310.0
+offset_right = 622.0
+offset_bottom = 342.0
+text = "Start"
+script = ExtResource("4_x68nq")
+
+[node name="ReturnButton" parent="." instance=ExtResource("5_v1wuu")]
+layout_mode = 0

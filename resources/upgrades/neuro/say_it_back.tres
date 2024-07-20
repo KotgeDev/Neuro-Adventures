@@ -12,4 +12,5 @@ descriptions = PackedStringArray("Both characters have + 50% of base damage. The
 upgrade_type = 0
 max_lvl = 3
 scene_template = ExtResource("2_fyeig")
-tags = PackedStringArray()
+unlimited = false
+tag = 0

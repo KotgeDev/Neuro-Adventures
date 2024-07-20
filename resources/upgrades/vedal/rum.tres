@@ -12,4 +12,5 @@ descriptions = PackedStringArray("Rum", "Rum splash will stun all enemies steppi
 upgrade_type = 1
 max_lvl = 5
 scene_template = ExtResource("2_wx76o")
-tags = PackedStringArray()
+unlimited = false
+tag = 0

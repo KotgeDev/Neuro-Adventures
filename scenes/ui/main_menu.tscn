@@ -49,14 +49,6 @@ layout_mode = 2
 text = "Play"
 script = ExtResource("3_6k7f3")
 
-[node name="TeamButton" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(183, 39)
-layout_mode = 2
-disabled = true
-text = "Team
-"
-script = ExtResource("3_6k7f3")
-
 [node name="CharactersButton" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(183, 39)
 layout_mode = 2
@@ -74,6 +66,13 @@ script = ExtResource("3_6k7f3")
 custom_minimum_size = Vector2(183, 39)
 layout_mode = 2
 text = "Credits"
+script = ExtResource("3_6k7f3")
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(183, 39)
+layout_mode = 2
+text = "Quit
+"
 script = ExtResource("3_6k7f3")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -136,6 +135,7 @@ layout_mode = 1
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/CharactersButton" to="." method="_on_characters_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/AnnouncementIcon" to="." method="_on_announcement_icon_pressed"]
 [connection signal="pressed" from="HBoxContainer/AchievementsIcon" to="." method="_on_acheivements_icon_pressed"]
 [connection signal="pressed" from="HBoxContainer/SettingsIcon" to="." method="_on_settings_icon_pressed"]

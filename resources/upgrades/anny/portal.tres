@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="UpgradeResource" load_steps=4 format=3 uid="uid://b44uhxjbskyxb"]
+
+[ext_resource type="Texture2D" uid="uid://dv6qf2uvk53v2" path="res://assets/upgrades/portal_icon.png" id="1_87hmy"]
+[ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="1_kaxir"]
+[ext_resource type="PackedScene" uid="uid://c6if8vo6bhmd" path="res://scenes/upgrades/portal_upgrade.tscn" id="2_cyqbr"]
+
+[resource]
+script = ExtResource("1_kaxir")
+upgrade_name = "Portal"
+icon = ExtResource("1_87hmy")
+descriptions = PackedStringArray("Press [space] for Anny to teleport to the location of the mouse cursor. Cooldown proportional to distance teleported", "Reduce base cooldown to 10s", "Reduce base cooldown to 8s", "Reduce base cooldown to 6s", "Reduce base cooldown to 5s")
+upgrade_type = 1
+max_lvl = 5
+scene_template = ExtResource("2_cyqbr")
+unlimited = false
+tag = 1

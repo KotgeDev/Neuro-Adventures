@@ -12,4 +12,5 @@ descriptions = PackedStringArray("Gives the AI 5% chance to ignore damage and 10
 upgrade_type = 0
 max_lvl = 4
 scene_template = ExtResource("2_hompn")
-tags = PackedStringArray()
+unlimited = false
+tag = 1

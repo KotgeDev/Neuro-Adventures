@@ -10,32 +10,23 @@ func _ready() -> void:
 
 var upgrades_pool = []
 var existing_upgrades = []
+var ai_selected
+var collab_selected 
 
 func _on_map_ready() -> void:
-	add_upgrades_to_pool(CharacterInfo.all_ai_db)
-	add_upgrades_to_pool(CharacterInfo.all_collab_db)
+	add_upgrades_to_pool(CharacterDataManager.all_ai_db)
+	add_upgrades_to_pool(CharacterDataManager.all_collab_db)
 	
-	match SavedOptions.settings.collab_partner_selected:
-		Globals.CharacterChoice.VEDAL: 
-			add_upgrades_to_pool(CharacterInfo.vedal_upgrades_db) 
-			lvl_up(find_upgrade("Rum"))
-			lvl_up(find_upgrade("Creggs"))
-		Globals.CharacterChoice.ANNY:
-			add_upgrades_to_pool(CharacterInfo.anny_upgrades_db)
-			lvl_up(find_upgrade("Star"))
-			lvl_up(find_upgrade("Portal"))
-
-	match SavedOptions.settings.ai_selected: 
-		Globals.CharacterChoice.NEURO: 
-			add_upgrades_to_pool(CharacterInfo.neuro_upgrades_db) 
-			lvl_up(find_upgrade("Dual Strike"))
-			lvl_up(find_upgrade("Cookies"))
-			
-		Globals.CharacterChoice.EVIL: 
-			add_upgrades_to_pool(CharacterInfo.evil_upgrades_db) 
-			lvl_up(find_upgrade("Knife"))
-			lvl_up(find_upgrade("Soul Stealer"))
-		
+	ai_selected = SavedOptions.settings.ai_selected
+	collab_selected = SavedOptions.settings.collab_partner_selected
+	
+	add_upgrades_to_pool(CharacterDataManager.character_data[ai_selected])
+	lvl_up(find_upgrade(SavedOptions.default_upgrades[ai_selected][0]))
+	lvl_up(find_upgrade(SavedOptions.default_upgrades[ai_selected][1]))
+	
+	add_upgrades_to_pool(CharacterDataManager.character_data[collab_selected])
+	lvl_up(find_upgrade(SavedOptions.default_upgrades[collab_selected][0]))
+	lvl_up(find_upgrade(SavedOptions.default_upgrades[collab_selected][1]))	
 			
 func find_upgrade(upgrade_name: String) -> Upgrade: 
 	for upgrade in upgrades_pool: 
@@ -44,8 +35,8 @@ func find_upgrade(upgrade_name: String) -> Upgrade:
 	push_error("No upgrade node named ", upgrade_name)
 	return null 
 
-func add_upgrades_to_pool(upgrades: UpgradeDB) -> void:
-	for data in upgrades.db:
+func add_upgrades_to_pool(upgrades: Array) -> void:
+	for data in upgrades:
 		var upgrade_res: UpgradeResource = data 
 		var upgrade_obj = Upgrade.new(
 			upgrade_res.upgrade_name,
@@ -55,7 +46,8 @@ func add_upgrades_to_pool(upgrades: UpgradeDB) -> void:
 			upgrade_res.max_lvl,
 			0, 
 			upgrade_res.scene_template, 
-			upgrade_res.tags
+			upgrade_res.unlimited,
+			upgrade_res.tag
 		)
 		upgrades_pool.append(upgrade_obj)
 

@@ -21,7 +21,7 @@ Globals="*res://scripts/shared/globals.gd"
 AudioSystem="*res://scripts/audio/audiosystem.gd"
 SavedOptions="*res://scripts/options/saved_options.gd"
 AchievementManager="*res://scripts/achievements/achievement_manager.gd"
-CharacterInfo="*res://scripts/shared/character_info.gd"
+CharacterDataManager="*res://scripts/characters/character_data_manager.gd"
 
 [display]
 

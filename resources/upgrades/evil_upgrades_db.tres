@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="UpgradeDB" load_steps=9 format=3 uid="uid://dv1s22v2mkasp"]
+
+[ext_resource type="Resource" uid="uid://ccj5rucjiv0y7" path="res://resources/upgrades/evil/fireball.tres" id="1_bxbj6"]
+[ext_resource type="Script" path="res://scripts/upgrades/upgrade_db.gd" id="1_pdgcn"]
+[ext_resource type="Resource" uid="uid://by3suejqrj1uo" path="res://resources/upgrades/evil/forgotten_child.tres" id="2_pyt4y"]
+[ext_resource type="Resource" uid="uid://lvh4a8lxr15" path="res://resources/upgrades/evil/knife.tres" id="3_s4m8m"]
+[ext_resource type="Resource" uid="uid://dtyueo7mywyxj" path="res://resources/upgrades/evil/pizza.tres" id="4_d12ds"]
+[ext_resource type="Resource" uid="uid://5vhd5fn535sm" path="res://resources/upgrades/evil/soul_stealer.tres" id="5_p3odl"]
+[ext_resource type="Resource" uid="uid://dymwab8n3iekm" path="res://resources/upgrades/evil/summon_circle.tres" id="6_jgob5"]
+[ext_resource type="Resource" uid="uid://ff1a6iil2oxk" path="res://resources/upgrades/evil/viva_la_pizza_revolution.tres" id="7_1g4ym"]
+
+[resource]
+script = ExtResource("1_pdgcn")
+db = Array[Resource("res://scripts/upgrades/upgrade_resource.gd")]([ExtResource("1_bxbj6"), ExtResource("2_pyt4y"), ExtResource("3_s4m8m"), ExtResource("4_d12ds"), ExtResource("5_p3odl"), ExtResource("6_jgob5"), ExtResource("7_1g4ym")])

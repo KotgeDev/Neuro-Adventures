@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="UpgradeResource" load_steps=4 format=3 uid="uid://ccj5rucjiv0y7"]
+
+[ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="1_05a7d"]
+[ext_resource type="Texture2D" uid="uid://bygr0j16ckiwg" path="res://assets/upgrades/fireball_icon.png" id="1_8flnx"]
+[ext_resource type="PackedScene" uid="uid://cmhyquyxh1fgw" path="res://scenes/upgrades/fireball_scene.tscn" id="2_lc8ql"]
+
+[resource]
+script = ExtResource("1_05a7d")
+upgrade_name = "Fireball"
+icon = ExtResource("1_8flnx")
+descriptions = PackedStringArray("Evil fires a fireball in 4 directions every 2s that can pierce up to 2 enemies", "Fireball fire cooldown is reduced to 1.5s", "Evil fires a fireball in 6 directions that can pierce up to 3 enemies", "Fireball damage is increased by 100%", "Evil fires a fireball in 8 directions that can pierce up to 4 enemies", "Evil becomes a 2hu character. Warning, dangerous upgrade.")
+upgrade_type = 0
+max_lvl = 6
+scene_template = ExtResource("2_lc8ql")
+unlimited = false
+tag = 0

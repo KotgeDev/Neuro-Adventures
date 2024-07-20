@@ -12,4 +12,5 @@ descriptions = PackedStringArray("A gymbag drone that will strike enemies at ran
 upgrade_type = 0
 max_lvl = 1
 scene_template = ExtResource("2_ee032")
-tags = PackedStringArray("unlimited")
+unlimited = true
+tag = 0
