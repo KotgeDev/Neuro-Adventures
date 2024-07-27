@@ -21,7 +21,7 @@ func _ready() -> void:
 
 #region BUTTONS 
 func _on_play_button_pressed():
-	get_tree().change_scene_to_file("res://scenes/ui/character_choice_menu.tscn")
+	get_tree().change_scene_to_file("res://scenes/ui/map_menu.tscn")
 
 func _on_characters_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/ui/characters_menu.tscn")

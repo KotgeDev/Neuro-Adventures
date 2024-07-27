@@ -91,7 +91,7 @@ func _process(delta: float) -> void:
 	exp_bar.value = lerpf(exp_bar.value, exp_value, delta*7)
 	if Input.is_action_just_pressed("menu") and menu_allowed:
 		if options_menu.visible:
-			return
+			return  
 
 		if end_game.visible:
 			hide_endgame()
@@ -306,3 +306,6 @@ func close_options_menu():
 
 func set_fps_counter_state(toggled_on: bool) -> void:
 	fps_counter.visible = toggled_on
+
+func _on_options_menu_close_panel():
+	end_game.visible = true

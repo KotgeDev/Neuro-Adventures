@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://4sklglum0d7k"]
+[gd_scene load_steps=7 format=3 uid="uid://4sklglum0d7k"]
 
 [ext_resource type="Script" path="res://scripts/ui/team_menu.gd" id="1_plgsp"]
 [ext_resource type="Texture2D" uid="uid://cwiayaenixuu8" path="res://assets/ui/main_bg_no_title.png" id="1_wqvdl"]
 [ext_resource type="PackedScene" uid="uid://dfyl0awq8jom5" path="res://scenes/ui/character_card.tscn" id="2_xv8y2"]
+[ext_resource type="Script" path="res://scripts/ui/team_character_scroll.gd" id="3_i8ldd"]
 [ext_resource type="Script" path="res://scripts/ui/button_with_sfx.gd" id="4_x68nq"]
 [ext_resource type="PackedScene" uid="uid://bqppr7oknbtc6" path="res://scenes/ui/return_button.tscn" id="5_v1wuu"]
 
@@ -37,11 +38,13 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 30
 
-[node name="ScrollContainerAI" type="ScrollContainer" parent="HBoxContainer"]
+[node name="ScrollContainerAI" type="ScrollContainer" parent="HBoxContainer" node_paths=PackedStringArray("selected_card")]
 layout_mode = 2
 size_flags_horizontal = 3
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
+script = ExtResource("3_i8ldd")
+selected_card = NodePath("VBoxContainer/NeuroCard")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/ScrollContainerAI"]
 layout_mode = 2
@@ -52,20 +55,27 @@ size_flags_vertical = 6
 custom_minimum_size = Vector2(0, 34)
 layout_mode = 2
 
-[node name="CharacterCard" parent="HBoxContainer/ScrollContainerAI/VBoxContainer" instance=ExtResource("2_xv8y2")]
+[node name="NeuroCard" parent="HBoxContainer/ScrollContainerAI/VBoxContainer" instance=ExtResource("2_xv8y2")]
 layout_mode = 2
 
-[node name="CharacterCard2" parent="HBoxContainer/ScrollContainerAI/VBoxContainer" instance=ExtResource("2_xv8y2")]
+[node name="EvilCard" parent="HBoxContainer/ScrollContainerAI/VBoxContainer" instance=ExtResource("2_xv8y2")]
 layout_mode = 2
+character = 1
+id = 1
 
 [node name="Pad2" type="Control" parent="HBoxContainer/ScrollContainerAI/VBoxContainer"]
 custom_minimum_size = Vector2(0, 34)
 layout_mode = 2
 
-[node name="ScrollContainerCollab" type="ScrollContainer" parent="HBoxContainer"]
+[node name="Timer" type="Timer" parent="HBoxContainer/ScrollContainerAI"]
+
+[node name="ScrollContainerCollab" type="ScrollContainer" parent="HBoxContainer" node_paths=PackedStringArray("selected_card")]
 layout_mode = 2
 size_flags_horizontal = 3
 vertical_scroll_mode = 3
+script = ExtResource("3_i8ldd")
+selected_card = NodePath("VBoxContainer/VedalCard")
+ai_scroll = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/ScrollContainerCollab"]
 layout_mode = 2
@@ -76,15 +86,20 @@ size_flags_vertical = 6
 custom_minimum_size = Vector2(0, 34)
 layout_mode = 2
 
-[node name="CharacterCard" parent="HBoxContainer/ScrollContainerCollab/VBoxContainer" instance=ExtResource("2_xv8y2")]
+[node name="VedalCard" parent="HBoxContainer/ScrollContainerCollab/VBoxContainer" instance=ExtResource("2_xv8y2")]
 layout_mode = 2
+character = 2
 
-[node name="CharacterCard2" parent="HBoxContainer/ScrollContainerCollab/VBoxContainer" instance=ExtResource("2_xv8y2")]
+[node name="AnnyCard" parent="HBoxContainer/ScrollContainerCollab/VBoxContainer" instance=ExtResource("2_xv8y2")]
 layout_mode = 2
+character = 3
+id = 1
 
 [node name="Pad2" type="Control" parent="HBoxContainer/ScrollContainerCollab/VBoxContainer"]
 custom_minimum_size = Vector2(0, 34)
 layout_mode = 2
+
+[node name="Timer" type="Timer" parent="HBoxContainer/ScrollContainerCollab"]
 
 [node name="StartButton" type="Button" parent="."]
 custom_minimum_size = Vector2(100, 0)
@@ -98,3 +113,6 @@ script = ExtResource("4_x68nq")
 
 [node name="ReturnButton" parent="." instance=ExtResource("5_v1wuu")]
 layout_mode = 0
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]

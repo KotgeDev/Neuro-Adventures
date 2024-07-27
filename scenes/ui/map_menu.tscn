@@ -1,0 +1,110 @@
+[gd_scene load_steps=7 format=3 uid="uid://cyka31c6tse6d"]
+
+[ext_resource type="Script" path="res://scripts/ui/map_menu.gd" id="1_gsd8f"]
+[ext_resource type="Texture2D" uid="uid://cwiayaenixuu8" path="res://assets/ui/main_bg_no_title.png" id="2_mm16a"]
+[ext_resource type="Texture2D" uid="uid://ga46dvu7yy8j" path="res://assets/ui/the_farm_illustration.png" id="3_qqp0j"]
+[ext_resource type="Texture2D" uid="uid://cu3q3j6prph2l" path="res://assets/ui/map_frame.png" id="4_lm4v1"]
+[ext_resource type="PackedScene" uid="uid://bqppr7oknbtc6" path="res://scenes/ui/return_button.tscn" id="5_m5vgo"]
+[ext_resource type="Script" path="res://scripts/ui/button_with_sfx.gd" id="6_is5ss"]
+
+[node name="map_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gsd8f")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_mm16a")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -221.5
+offset_top = -67.0
+offset_right = 221.5
+offset_bottom = 67.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="MapTextures" type="CenterContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Illustration" type="TextureRect" parent="HBoxContainer/MapTextures"]
+layout_mode = 2
+texture = ExtResource("3_qqp0j")
+
+[node name="Frame" type="TextureRect" parent="HBoxContainer/MapTextures"]
+layout_mode = 2
+texture = ExtResource("4_lm4v1")
+
+[node name="Panel" type="Panel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NameLabel" type="Label" parent="HBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "The Farm"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 5
+
+[node name="Padding" type="Control" parent="HBoxContainer/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="DescriptionLabel" type="Label" parent="HBoxContainer/Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(205, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 14
+text = "Difficulty: Easy 
+Victory Requirement: Defeat the Elf Archer Boss that will spawn near end of the game. "
+autowrap_mode = 2
+
+[node name="CheckButton" type="CheckButton" parent="HBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Hard Mode"
+alignment = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Padding" type="Control" parent="HBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="ReturnButton" parent="." instance=ExtResource("5_m5vgo")]
+layout_mode = 0
+
+[node name="StartButton" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 0)
+offset_left = 522.0
+offset_top = 310.0
+offset_right = 622.0
+offset_bottom = 342.0
+text = "Start"
+script = ExtResource("6_is5ss")
+
+[connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

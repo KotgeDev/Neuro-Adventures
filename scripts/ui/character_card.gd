@@ -1,8 +1,11 @@
 extends Control
+class_name CharacterCard
 
 signal selected(char: Globals.CharacterChoice)
 
 @export var character: Globals.CharacterChoice
+## For Team Character Scrolling 
+@export var id: int  
 
 @onready var character_name = %CharacterName
 @onready var ai_texture = %AITexture
