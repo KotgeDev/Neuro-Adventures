@@ -46,8 +46,7 @@ _data = {
 }
 
 [node name="Knight" instance=ExtResource("1_j3dd8")]
-MAX_HEALTH = 12.0
-DAMAGE = 8.0
+BASE_MAX_HEALTH = 12.0
 BASE_MAX_SPEED = 30.0
 
 [node name="Sprite2D" parent="." index="0"]

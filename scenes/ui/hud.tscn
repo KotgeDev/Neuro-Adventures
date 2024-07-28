@@ -13,7 +13,7 @@
 [ext_resource type="StyleBox" uid="uid://bspcvalmxg40p" path="res://assets/themes/upgrade.tres" id="11_tdhkg"]
 [ext_resource type="StyleBox" uid="uid://dwibpkoqk5pkl" path="res://assets/themes/upgrade_hover.tres" id="12_4x88v"]
 [ext_resource type="Material" uid="uid://csxlxcwxw3h3v" path="res://assets/shaders/rainbow.tres" id="12_x3twt"]
-[ext_resource type="PackedScene" uid="uid://b6j6utnkndtjo" path="res://scenes/options/options_menu.tscn" id="13_dfp21"]
+[ext_resource type="PackedScene" uid="uid://dd3l4otjd8b3x" path="res://scenes/ui/pause_manager.tscn" id="14_sxq4j"]
 [ext_resource type="PackedScene" uid="uid://d2avq1nqugasc" path="res://scenes/achievements/victory_achievements_display.tscn" id="15_hw7wa"]
 
 [node name="HUD" type="CanvasLayer"]
@@ -172,87 +172,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 1
 
-[node name="EndGame" type="Control" parent="."]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ColorRect" type="ColorRect" parent="EndGame"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.490196)
-
-[node name="MenuContainer" type="VBoxContainer" parent="EndGame"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -82.0
-offset_top = -30.0
-offset_right = 82.0
-offset_bottom = 30.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="EndGameLabel" type="Label" parent="EndGame/MenuContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-text = "VICTORY"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-
-[node name="FlavorText" type="Label" parent="EndGame/MenuContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 16
-text = "Sometimes when I sit here and stream, I envision myself as a goddess, overlooking my followers. "
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-
-[node name="ContinueButton" type="Button" parent="EndGame/MenuContainer"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-text = "Continue"
-
-[node name="RetryButton" type="Button" parent="EndGame/MenuContainer"]
-visible = false
-layout_mode = 2
-text = "Retry"
-
-[node name="OptionsButton" type="Button" parent="EndGame/MenuContainer"]
-layout_mode = 2
-text = "Options"
-
-[node name="MenuButton" type="Button" parent="EndGame/MenuContainer"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-text = "Menu"
-
-[node name="TimeLabel" type="Label" parent="EndGame"]
-layout_mode = 0
-offset_left = 238.0
-offset_top = 16.0
-offset_right = 624.0
-offset_bottom = 42.0
-theme_override_font_sizes/font_size = 16
-text = "Elapsed Time: 10.54 minutes"
-horizontal_alignment = 2
-autowrap_mode = 3
-
 [node name="UpgradeChoicePanel" type="Control" parent="."]
 visible = false
 custom_minimum_size = Vector2(345, 72)
@@ -315,6 +234,10 @@ layout_mode = 2
 [node name="Padding" type="Control" parent="UpgradeChoicePanel/VBoxContainer"]
 layout_mode = 2
 
+[node name="PauseManager" parent="." node_paths=PackedStringArray("upgrades_menu") instance=ExtResource("14_sxq4j")]
+visible = false
+upgrades_menu = NodePath("../UpgradeMenu")
+
 [node name="FPSCounter" type="Label" parent="."]
 offset_left = 541.0
 offset_top = 331.0
@@ -324,16 +247,8 @@ theme_override_font_sizes/font_size = 16
 text = "fps: 24"
 horizontal_alignment = 2
 
-[node name="OptionsMenu" parent="." instance=ExtResource("13_dfp21")]
-visible = false
-
 [node name="VictoryAchievementsDisplay" parent="." instance=ExtResource("15_hw7wa")]
 visible = false
 
 [connection signal="timeout" from="FPSCounterUpdateTimer" to="." method="_on_fps_counter_update_timer_timeout"]
-[connection signal="pressed" from="EndGame/MenuContainer/ContinueButton" to="." method="hide_endgame"]
-[connection signal="pressed" from="EndGame/MenuContainer/RetryButton" to="." method="_on_retry_button_pressed"]
-[connection signal="pressed" from="EndGame/MenuContainer/OptionsButton" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="EndGame/MenuContainer/MenuButton" to="." method="_on_menu_button_pressed"]
-[connection signal="close_panel" from="OptionsMenu" to="." method="_on_options_menu_close_panel"]
 [connection signal="close_victory_achievement_screen" from="VictoryAchievementsDisplay" to="." method="display_game_won"]

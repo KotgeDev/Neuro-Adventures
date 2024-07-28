@@ -12,8 +12,9 @@ extends Enemy
 class_name SimpleEnemy 
 
 #region CONSTANTS
-@export var MAX_HEALTH := 1.0
-@export var DAMAGE := 1.0
+@export var BASE_MAX_HEALTH := 1.0
+@export var BASE_MAX_SPEED := 1.0
+@export var BASE_DAMAGE := 1.0
 @export var ATTACK_INTERVAL := 1.0
 #endregion 
 
@@ -33,10 +34,15 @@ var expp_template = preload("res://scenes/collectibles/exp.tscn")
 var ntx_template = preload("res://scenes/interactive_objects/ntx_4090.tscn")
 #endregion
 
-#region DETAILS
+#region STATS
+@onready var health := BASE_MAX_HEALTH 
+@onready var max_speed := BASE_MAX_SPEED 
+@onready var damage := BASE_DAMAGE
+#endregion 
+
+#region OTHER 
 var velocity: Vector2
 var next_pos: Vector2
-@onready var health: int = MAX_HEALTH  
 var dead := false 
 var last_enemy := false 
 var last_flip_time: float
@@ -49,10 +55,20 @@ var march_direction: Vector2
 var march_duration: float 
 #endregion 
 
+func set_stats() -> void:
+	match MapManager.map_mode:
+		MapManager.MapMode.NORMAL:
+			pass 
+		MapManager.MapMode.HARD:
+			health = BASE_MAX_HEALTH * 2  
+			damage = BASE_DAMAGE * 2
+		MapManager.MapMode.ENDLESS:
+			pass  
+
 func ready() -> void:
 	pathfind_timer.wait_time = 0.5
 	pathfind_timer.start()
-	$ContinuousHitbox.damage = DAMAGE 
+	$ContinuousHitbox.damage = damage 
 	$ContinuousHitbox/HitTimer.wait_time = ATTACK_INTERVAL
 	$AnimationPlayer.play("idle")
 	

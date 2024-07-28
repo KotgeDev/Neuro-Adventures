@@ -1,0 +1,85 @@
+[gd_scene load_steps=3 format=3 uid="uid://dd3l4otjd8b3x"]
+
+[ext_resource type="Script" path="res://scripts/ui/pause_manager.gd" id="1_oau80"]
+[ext_resource type="PackedScene" uid="uid://b6j6utnkndtjo" path="res://scenes/options/options_menu.tscn" id="2_vkadx"]
+
+[node name="PauseManager" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oau80")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.490196)
+
+[node name="PausedMenu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuContainer" type="VBoxContainer" parent="PausedMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.5
+offset_top = -75.5
+offset_right = 66.5
+offset_bottom = 75.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EndGameLabel" type="Label" parent="PausedMenu/MenuContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "PAUSED"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="FlavorText" type="Label" parent="PausedMenu/MenuContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="ContinueButton" type="Button" parent="PausedMenu/MenuContainer"]
+layout_mode = 2
+text = "Continue"
+
+[node name="OptionsButton" type="Button" parent="PausedMenu/MenuContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="PausedMenu/MenuContainer"]
+layout_mode = 2
+text = "Quit
+"
+
+[node name="OptionsMenu" parent="." instance=ExtResource("2_vkadx")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="PausedMenu/MenuContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="PausedMenu/MenuContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="PausedMenu/MenuContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="close_panel" from="OptionsMenu" to="." method="_on_options_menu_close_panel"]

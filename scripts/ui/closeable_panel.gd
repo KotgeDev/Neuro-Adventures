@@ -8,7 +8,7 @@ signal close_panel
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_just_pressed("menu"):
+	if Input.is_action_just_pressed("menu") and visible: 
 		close()  
 
 ## Call function whenever user wants to close this panel 

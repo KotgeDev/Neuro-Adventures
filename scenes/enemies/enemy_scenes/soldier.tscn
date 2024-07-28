@@ -43,10 +43,9 @@ _data = {
 }
 
 [node name="Soldier" instance=ExtResource("1_pihnb")]
-MAX_HEALTH = 8.0
-DAMAGE = 5.0
-ATTACK_INTERVAL = 0.8
+BASE_MAX_HEALTH = 8.0
 BASE_MAX_SPEED = 30.0
+ATTACK_INTERVAL = 0.8
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_c7i3u")

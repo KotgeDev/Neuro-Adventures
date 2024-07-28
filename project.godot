@@ -22,6 +22,7 @@ AudioSystem="*res://scripts/audio/audiosystem.gd"
 SavedOptions="*res://scripts/options/saved_options.gd"
 AchievementManager="*res://scripts/achievements/achievement_manager.gd"
 CharacterDataManager="*res://scripts/characters/character_data_manager.gd"
+MapManager="*res://scripts/maps/map_manager.gd"
 
 [display]
 

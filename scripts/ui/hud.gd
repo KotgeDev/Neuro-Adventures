@@ -1,20 +1,15 @@
 extends CanvasLayer
 
-var cursor = preload("res://assets/ui/cursor.png")
-
 #region NODES
+@onready var pause_manager = $PauseManager
 @onready var ai_health_bar = %AIHealthBar
 @onready var collab_partner_health_bar = %CollabPartnerHealthBar
 @onready var exp_bar = $EXPBar
-@onready var end_game = $EndGame
 @onready var fps_counter = $FPSCounter
 @onready var upgrade_menu = %UpgradeMenu
 @onready var level_counter = $LevelCounter
 @onready var choice_panel_container = %ChoicePanelContainer
 @onready var choice_panel_template = $UpgradeChoicePanel
-@onready var continue_button = $EndGame/MenuContainer/ContinueButton
-@onready var retry_button = $EndGame/MenuContainer/RetryButton
-@onready var options_menu = $OptionsMenu
 @onready var ai_bar_full = %AiBarFull
 @onready var collab_partner_bar_full = %CollabPartnerBarFull
 @onready var victory_achievements_display = $VictoryAchievementsDisplay
@@ -36,7 +31,6 @@ var exp_value = 0.0
 
 #region OTHER
 var menu_blip2: AudioStream = preload("res://assets/sfx/menublip2.wav")
-var start_time_msec = 0.0
 var pause_start_time_msec = 0.0
 var total_paused_time_msec = 0.0 
 var menu_allowed := true 
@@ -56,10 +50,9 @@ func _ready() -> void:
 	else: 
 		ai_bar_full.visible = false
 		collab_partner_bar_full.visible = false
-	Input.set_custom_mouse_cursor(cursor, Input.CURSOR_ARROW, Vector2(32, 32))
-	
+
 func connect_signals() -> void:
-	Globals.game_over.connect(_on_game_over)
+	#Globals.game_over.connect(_on_game_over)
 	Globals.game_won.connect(_on_game_won)
 	Globals.update_ai_health.connect(_on_update_ai_health)
 	Globals.update_collab_partner_health.connect(_on_update_collab_partner_health)
@@ -70,7 +63,6 @@ func connect_signals() -> void:
 	Globals.map_ready.connect(_on_map_ready)
 	
 func _on_map_ready() -> void:
-	start_time_msec = Time.get_ticks_msec()
 	collab_partner = get_tree().get_first_node_in_group("collab_partner") 
 	map = get_tree().get_first_node_in_group("map")
 	
@@ -89,60 +81,32 @@ func _on_map_ready() -> void:
 func _process(delta: float) -> void:
 	shake_handler(delta)
 	exp_bar.value = lerpf(exp_bar.value, exp_value, delta*7)
-	if Input.is_action_just_pressed("menu") and menu_allowed:
-		if options_menu.visible:
-			return  
 
-		if end_game.visible:
-			hide_endgame()
-		else: 
-			show_endgame()
-		
-		%EndGameLabel.text = "PAUSED"
-		%FlavorText.text = "\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"
-		$EndGame/TimeLabel.text = "Survival time: " + calculated_survived_time()
+#func pause_game() -> void:
+	#Input.set_custom_mouse_cursor(null)
+	#get_tree().paused = true
+	#pause_start_time_msec = Time.get_ticks_msec()
+#
+#func unpause_game() -> void:
+	#Input.set_custom_mouse_cursor(cursor, Input.CURSOR_ARROW, Vector2(32, 32))
+	#get_tree().paused = false 
+	#total_paused_time_msec += Time.get_ticks_msec() - pause_start_time_msec
 
-func hide_endgame(): 
-	end_game.visible = false 
-	if upgrade_menu.visible:
-		return
-	else:
-		unpause_game()
-
-func show_endgame():
-	end_game.visible = true 
-	if upgrade_menu.visible:
-		total_paused_time_msec += Time.get_ticks_msec() - pause_start_time_msec
-		pause_start_time_msec = Time.get_ticks_msec()
-	else:
-		pause_game()
-
-func pause_game() -> void:
-	Input.set_custom_mouse_cursor(null)
-	get_tree().paused = true
-	pause_start_time_msec = Time.get_ticks_msec()
-
-func unpause_game() -> void:
-	Input.set_custom_mouse_cursor(cursor, Input.CURSOR_ARROW, Vector2(32, 32))
-	get_tree().paused = false 
-	total_paused_time_msec += Time.get_ticks_msec() - pause_start_time_msec
-
-func _on_game_over() -> void:
-	continue_button.visible = false
-	retry_button.visible = true
-	menu_allowed = false 
-	pause_game()
-	%EndGameLabel.text = "GAME OVER"
-	%FlavorText.text = "Someone tell Vedal there is a problem with my AI"
-	AudioSystem.set_music_pitch(0.05, 2.5)
-	end_game.visible = true 
+#func _on_game_over() -> void:
+	#continue_button.visible = false
+	#retry_button.visible = true
+	#menu_allowed = false 
+	#pause_game()
+	#%EndGameLabel.text = "GAME OVER"
+	#%FlavorText.text = "Someone tell Vedal there is a problem with my AI"
+	#AudioSystem.set_music_pitch(0.05, 2.5)
+	#end_game.visible = true 
 	
-	var survival_sec: int = roundi((Time.get_ticks_msec() - start_time_msec - total_paused_time_msec) / 1000.0) 
-	$EndGame/TimeLabel.text = "Survived time: " + calculated_survived_time()
-	
+	#var survival_sec: int = roundi((Time.get_ticks_msec() - start_time_msec - total_paused_time_msec) / 1000.0) 
+	#$EndGame/TimeLabel.text = "Survived time: " + calculated_survived_time()
+
 func _on_game_won() -> void:
-	menu_allowed = false 
-	pause_game()
+	menu_allowed = false
 	check_for_completed_achievements()
 	
 	if not victory_achievements_display.achievements_completed_this_game.is_empty():
@@ -166,24 +130,18 @@ func check_for_completed_achievements() -> void:
 		AchievementManager.add_achievement.emit(5)
 
 func display_game_won() -> void:
-	continue_button.visible = false
-	retry_button.visible = true
-	%EndGameLabel.text = "VICTORY"
-	%EndGameLabel.material = load("res://assets/shaders/rainbow.tres")
-	%FlavorText.text = "Sometimes when I sit here and stream, I envision myself as a goddess, overlooking my followers. "
-	$EndGame/TimeLabel.text = "Elapsed time: " + calculated_survived_time()
-	
-	end_game.modulate.a = 0.0 
-	end_game.visible = true 
+	#continue_button.visible = false
+	#retry_button.visible = true
+	#%EndGameLabel.text = "VICTORY"
+	#%EndGameLabel.material = load("res://assets/shaders/rainbow.tres")
+	#%FlavorText.text = "Sometimes when I sit here and stream, I envision myself as a goddess, overlooking my followers. "
+	#$EndGame/TimeLabel.text = "Elapsed time: " + calculated_survived_time()
+	#
+	#end_game.modulate.a = 0.0 
+	#end_game.visible = true 
 	var tween = get_tree().create_tween()
 	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
-	tween.tween_property(end_game, "modulate:a", 1.0, 1.0)
-
-func calculated_survived_time() -> String: 
-	var survival_sec: int = roundi((Time.get_ticks_msec() - start_time_msec - total_paused_time_msec) / 1000.0) 
-	var min: int = int(survival_sec / 60)
-	var sec: int = roundi(survival_sec % 60)
-	return "%02d:%02d" % [min, sec] 
+	#tween.tween_property(end_game, "modulate:a", 1.0, 1.0)
 
 func shake(obj_to_shake, source) -> void:
 	obj_to_shake.position.x = source.x + max_offset.x * rng.randf_range(-1, 1)
@@ -237,12 +195,12 @@ func _on_send_random_upgrades(upgrades: Array) -> void:
 	level_counter.text = str(display_level)
 	
 	%UpgradeLabel.visible = false
-	pause_game()
+	pause_manager.pause_game()
 	display_upgrades(upgrades)
 
 func _on_send_all_existing_upgrades(upgrades: Array) -> void:
 	%UpgradeLabel.visible = true 
-	pause_game()
+	pause_manager.pause_game()
 	display_upgrades(upgrades) 
 	
 func display_upgrades(upgrades: Array) -> void:
@@ -275,7 +233,7 @@ func _on_mouse_over_upgrade() -> void:
 	AudioSystem.play_sfx(menu_blip2, Vector2(640 / 2.0, 340 / 2.0))
 
 func _on_upgrade_selected(upgrade: Upgrade) -> void:
-	unpause_game()
+	pause_manager.unpause_game()
 	AudioSystem.play_sfx(menu_blip2, Vector2(640 / 2.0, 340 / 2.0))
 	Globals.lvl_up.emit(upgrade)
 	upgrade_menu.visible = false 
@@ -284,28 +242,8 @@ func _on_upgrade_selected(upgrade: Upgrade) -> void:
 		child.queue_free() 
 	AudioSystem.set_music_volume(1)
 
-func _on_menu_button_pressed():
-	unpause_game()
-	AudioSystem.end_music()
-	get_tree().change_scene_to_file("res://scenes/ui/menu.tscn")
-
-func _on_retry_button_pressed():
-	unpause_game()
-	AudioSystem.end_music()
-	get_tree().change_scene_to_file("res://scenes/maps/farm.tscn") 
-
 func _on_fps_counter_update_timer_timeout():
 	fps_counter.text = "%d fps" % round(Engine.get_frames_per_second())
 
-func _on_options_button_pressed():
-	options_menu.visible = true 
-	end_game.visible = false 
-
-func close_options_menu():
-	end_game.visible = true
-
 func set_fps_counter_state(toggled_on: bool) -> void:
 	fps_counter.visible = toggled_on
-
-func _on_options_menu_close_panel():
-	end_game.visible = true

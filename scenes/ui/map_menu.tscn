@@ -17,6 +17,7 @@ grow_vertical = 2
 script = ExtResource("1_gsd8f")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("2_mm16a")
@@ -78,17 +79,39 @@ custom_minimum_size = Vector2(205, 0)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 14
-text = "Difficulty: Easy 
-Victory Requirement: Defeat the Elf Archer Boss that will spawn near end of the game. "
+text = "Difficulty: Normal
+A mystery arises from a whispering farm secluded in the mountains. Cows are going missing, and no one knows why! "
 autowrap_mode = 2
 
-[node name="CheckButton" type="CheckButton" parent="HBoxContainer/Panel/VBoxContainer"]
+[node name="ModeContainer" type="HBoxContainer" parent="HBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Pading" type="Control" parent="HBoxContainer/Panel/VBoxContainer/ModeContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/Panel/VBoxContainer/ModeContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "Game Mode"
+horizontal_alignment = 2
+
+[node name="MapModeButton" type="OptionButton" parent="HBoxContainer/Panel/VBoxContainer/ModeContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
-text = "Hard Mode"
-alignment = 2
+alignment = 1
+item_count = 3
+selected = 0
+popup/item_0/text = "Normal"
+popup/item_0/id = 0
+popup/item_1/text = "Hard"
+popup/item_1/id = 1
+popup/item_2/text = "Endless"
+popup/item_2/id = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/Panel/VBoxContainer"]
+[node name="Pading2" type="Control" parent="HBoxContainer/Panel/VBoxContainer/ModeContainer"]
 layout_mode = 2
 
 [node name="Padding" type="Control" parent="HBoxContainer/Panel/VBoxContainer"]
@@ -99,6 +122,7 @@ layout_mode = 0
 
 [node name="StartButton" type="Button" parent="."]
 custom_minimum_size = Vector2(100, 0)
+layout_mode = 0
 offset_left = 522.0
 offset_top = 310.0
 offset_right = 622.0

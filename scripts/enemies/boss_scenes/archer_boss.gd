@@ -2,13 +2,13 @@ extends Enemy
 class_name ArcherBoss
 
 #region CONSTANTS
+@export var BASE_MAX_HEALTH := 400.0
+@export var BASE_MAX_SPEED := 80.0
+@export var BASE_DAMAGE := 12.0
+@export var ATTACK_INTERVAL := 1.5
 @export var ACCELERATION := 500
 @export var FRICTION := 500 
-@export var MAX_HEALTH := 400.0
-@export var DAMAGE := 12.0
-@export var ATTACK_INTERVAL := 1.5
 @export var PATH_FIND_INTERVAL := 2.0
-
 @export var PHASE_1_ARROW_INTERVAL := 2.0
 @export var PHASE_2_ARROW_INTERVAL := 1.5
 @export var PHASE_2_PATTERN_INTERVAL := 4.0 
@@ -27,13 +27,18 @@ class_name ArcherBoss
 @onready var healthbar = $Healthbar
 #endregion 
 
+#region STATS 
+@onready var phase_thresholds := [BASE_MAX_HEALTH, BASE_MAX_HEALTH * 0.45]
+@onready var health := BASE_MAX_HEALTH  
+@onready var max_speed := BASE_MAX_SPEED
+@onready var damage := BASE_DAMAGE 
+#endregion 
+
 #region OTHER
 var velocity: Vector2
 var current_phase := 1 
 var just_started_running := false 
 var just_started_shooting := false 
-@onready var phase_thresholds := [MAX_HEALTH, MAX_HEALTH * 0.45]
-@onready var health: float = MAX_HEALTH  
 #endregion 
 
 var arrow_path_template = preload("res://scenes/projectiles/arrow_path.tscn")
@@ -42,7 +47,7 @@ func ready() -> void:
 	global_position = Vector2(randi_range(50, 2500), randi_range(50, 600))
 	$PathfindTimer.wait_time = PATH_FIND_INTERVAL
 	$PathfindTimer.start()
-	$ContinuousHitbox.damage = DAMAGE 
+	$ContinuousHitbox.damage = damage 
 	$ContinuousHitbox/HitTimer.wait_time = ATTACK_INTERVAL
 	fire_timer.wait_time = PHASE_1_ARROW_INTERVAL
 	fire_timer.start()
@@ -89,7 +94,7 @@ func update_animation() -> void:
 
 func _on_hurtbox_take_damage(damage):
 	health -= damage
-	healthbar.value = health / MAX_HEALTH * 100 
+	healthbar.value = health / BASE_MAX_HEALTH * 100 
 	
 	sprite_2d.modulate = Color("b4244a")
 	await get_tree().create_timer(0.05).timeout 
