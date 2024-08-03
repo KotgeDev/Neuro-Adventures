@@ -50,6 +50,7 @@ _data = {
 BASE_MAX_HEALTH = 2.0
 BASE_MAX_SPEED = 35.0
 ATTACK_INTERVAL = 0.7
+VALUE = 2.0
 
 [node name="Sprite2D" parent="." index="0"]
 position = Vector2(0, -26)
@@ -77,6 +78,12 @@ libraries = {
 position = Vector2(0, -24)
 texture = ExtResource("3_l8byq")
 offset = Vector2(0, -2)
+
+[node name="DmgLabel" parent="." index="10"]
+offset_left = -19.0
+offset_top = -50.0
+offset_right = 21.0
+offset_bottom = -24.0
 
 [editable path="Hurtbox"]
 [editable path="ContinuousHitbox"]

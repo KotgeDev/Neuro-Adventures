@@ -48,6 +48,7 @@ _data = {
 [node name="Knight" instance=ExtResource("1_j3dd8")]
 BASE_MAX_HEALTH = 12.0
 BASE_MAX_SPEED = 30.0
+VALUE = 6.0
 
 [node name="Sprite2D" parent="." index="0"]
 position = Vector2(0, -30)
@@ -76,6 +77,12 @@ libraries = {
 position = Vector2(-1, -20)
 texture = ExtResource("3_05qd1")
 offset = Vector2(0, -6)
+
+[node name="DmgLabel" parent="." index="10"]
+offset_left = -19.0
+offset_top = -57.0
+offset_right = 21.0
+offset_bottom = -31.0
 
 [editable path="Hurtbox"]
 [editable path="ContinuousHitbox"]

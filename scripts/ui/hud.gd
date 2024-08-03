@@ -12,7 +12,8 @@ extends CanvasLayer
 @onready var choice_panel_template = $UpgradeChoicePanel
 @onready var ai_bar_full = %AiBarFull
 @onready var collab_partner_bar_full = %CollabPartnerBarFull
-@onready var victory_achievements_display = $VictoryAchievementsDisplay
+@onready var achievement_display = $AchievementDisplay
+@onready var victory_display = $VictoryDisplay
 var collab_partner: CollabPartner 
 var map: MAP 
 #endregion
@@ -52,7 +53,7 @@ func _ready() -> void:
 		collab_partner_bar_full.visible = false
 
 func connect_signals() -> void:
-	#Globals.game_over.connect(_on_game_over)
+	Globals.game_over.connect(_on_game_over)
 	Globals.game_won.connect(_on_game_won)
 	Globals.update_ai_health.connect(_on_update_ai_health)
 	Globals.update_collab_partner_health.connect(_on_update_collab_partner_health)
@@ -82,37 +83,26 @@ func _process(delta: float) -> void:
 	shake_handler(delta)
 	exp_bar.value = lerpf(exp_bar.value, exp_value, delta*7)
 
-#func pause_game() -> void:
-	#Input.set_custom_mouse_cursor(null)
-	#get_tree().paused = true
-	#pause_start_time_msec = Time.get_ticks_msec()
-#
-#func unpause_game() -> void:
-	#Input.set_custom_mouse_cursor(cursor, Input.CURSOR_ARROW, Vector2(32, 32))
-	#get_tree().paused = false 
-	#total_paused_time_msec += Time.get_ticks_msec() - pause_start_time_msec
-
-#func _on_game_over() -> void:
-	#continue_button.visible = false
-	#retry_button.visible = true
-	#menu_allowed = false 
-	#pause_game()
-	#%EndGameLabel.text = "GAME OVER"
-	#%FlavorText.text = "Someone tell Vedal there is a problem with my AI"
-	#AudioSystem.set_music_pitch(0.05, 2.5)
-	#end_game.visible = true 
-	
-	#var survival_sec: int = roundi((Time.get_ticks_msec() - start_time_msec - total_paused_time_msec) / 1000.0) 
-	#$EndGame/TimeLabel.text = "Survived time: " + calculated_survived_time()
+func _on_game_over() -> void:
+	pause_manager.game_ended = true 
+	pause_manager.pause_game()
+	AudioSystem.set_music_pitch(0.05, 2.5)
+	victory_display.display_game_over()
 
 func _on_game_won() -> void:
-	menu_allowed = false
+	if MapManager.map_mode == MapManager.MapMode.ENDLESS:
+		return 
+	
+	pause_manager.game_ended = true 
+	pause_manager.pause_game()
 	check_for_completed_achievements()
 	
-	if not victory_achievements_display.achievements_completed_this_game.is_empty():
-		victory_achievements_display.show_achievements()
+	if not achievement_display.achievements_completed_this_game.is_empty():
+		achievement_display.show_achievements()
+		await achievement_display.close_display
+		victory_display.display_victory()
 	else:
-		display_game_won()
+		victory_display.display_victory() 
 
 func check_for_completed_achievements() -> void:
 	var status = AchievementManager.achievement_status
@@ -128,20 +118,6 @@ func check_for_completed_achievements() -> void:
 		AchievementManager.add_achievement.emit(4)
 	if map.say_it_back_max and map.dual_strike_max and not status[5]:
 		AchievementManager.add_achievement.emit(5)
-
-func display_game_won() -> void:
-	#continue_button.visible = false
-	#retry_button.visible = true
-	#%EndGameLabel.text = "VICTORY"
-	#%EndGameLabel.material = load("res://assets/shaders/rainbow.tres")
-	#%FlavorText.text = "Sometimes when I sit here and stream, I envision myself as a goddess, overlooking my followers. "
-	#$EndGame/TimeLabel.text = "Elapsed time: " + calculated_survived_time()
-	#
-	#end_game.modulate.a = 0.0 
-	#end_game.visible = true 
-	var tween = get_tree().create_tween()
-	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
-	#tween.tween_property(end_game, "modulate:a", 1.0, 1.0)
 
 func shake(obj_to_shake, source) -> void:
 	obj_to_shake.position.x = source.x + max_offset.x * rng.randf_range(-1, 1)
@@ -207,7 +183,6 @@ func display_upgrades(upgrades: Array) -> void:
 	upgrade_menu.visible = true 
 	upgrade_menu._set_scale_zero()
 	upgrade_menu.ui_Active = true 
-	AudioSystem.set_music_volume(0.5)
 	
 	for upgrade in upgrades:
 		var choice_panel = choice_panel_template.duplicate()
@@ -240,10 +215,11 @@ func _on_upgrade_selected(upgrade: Upgrade) -> void:
 	var container = choice_panel_container
 	for child in container.get_children():
 		child.queue_free() 
-	AudioSystem.set_music_volume(1)
 
 func _on_fps_counter_update_timer_timeout():
 	fps_counter.text = "%d fps" % round(Engine.get_frames_per_second())
 
 func set_fps_counter_state(toggled_on: bool) -> void:
 	fps_counter.visible = toggled_on
+
+

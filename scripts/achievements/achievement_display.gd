@@ -1,6 +1,6 @@
 extends Control
 
-signal close_victory_achievement_screen 
+signal close_display 
 
 var achievements_completed_this_game = []
 var active := false 
@@ -49,6 +49,6 @@ func _process(delta: float) -> void:
 		active = false 
 		var tween = get_tree().create_tween()
 		tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
-		close_victory_achievement_screen.emit()
+		close_display.emit()
 		await tween.tween_property(self, "modulate:a", 0.0, 1.0).finished
 		visible = false 

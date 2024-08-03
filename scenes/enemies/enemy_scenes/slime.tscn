@@ -74,5 +74,11 @@ libraries = {
 [node name="Shadow" parent="." index="8"]
 position = Vector2(1, -25)
 
+[node name="DmgLabel" parent="." index="10"]
+offset_left = -19.0
+offset_top = -30.0
+offset_right = 21.0
+offset_bottom = -4.0
+
 [editable path="Hurtbox"]
 [editable path="ContinuousHitbox"]

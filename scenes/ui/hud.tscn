@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dqy8eus7xktlq"]
+[gd_scene load_steps=17 format=3 uid="uid://dqy8eus7xktlq"]
 
 [ext_resource type="Script" path="res://scripts/ui/hud.gd" id="1_jg8iq"]
 [ext_resource type="Texture2D" uid="uid://dnl8tal30m0jt" path="res://assets/characters/ais/neuro_icon.png" id="2_3ldxe"]
@@ -14,7 +14,8 @@
 [ext_resource type="StyleBox" uid="uid://dwibpkoqk5pkl" path="res://assets/themes/upgrade_hover.tres" id="12_4x88v"]
 [ext_resource type="Material" uid="uid://csxlxcwxw3h3v" path="res://assets/shaders/rainbow.tres" id="12_x3twt"]
 [ext_resource type="PackedScene" uid="uid://dd3l4otjd8b3x" path="res://scenes/ui/pause_manager.tscn" id="14_sxq4j"]
-[ext_resource type="PackedScene" uid="uid://d2avq1nqugasc" path="res://scenes/achievements/victory_achievements_display.tscn" id="15_hw7wa"]
+[ext_resource type="PackedScene" uid="uid://d2avq1nqugasc" path="res://scenes/achievements/achievement_display.tscn" id="15_hw7wa"]
+[ext_resource type="PackedScene" uid="uid://duk3c2w31y5sg" path="res://scenes/ui/victory_display.tscn" id="16_br1yu"]
 
 [node name="HUD" type="CanvasLayer"]
 process_mode = 3
@@ -247,8 +248,11 @@ theme_override_font_sizes/font_size = 16
 text = "fps: 24"
 horizontal_alignment = 2
 
-[node name="VictoryAchievementsDisplay" parent="." instance=ExtResource("15_hw7wa")]
+[node name="AchievementDisplay" parent="." instance=ExtResource("15_hw7wa")]
 visible = false
 
+[node name="VictoryDisplay" parent="." node_paths=PackedStringArray("pause_manager") instance=ExtResource("16_br1yu")]
+pause_manager = NodePath("../PauseManager")
+
 [connection signal="timeout" from="FPSCounterUpdateTimer" to="." method="_on_fps_counter_update_timer_timeout"]
-[connection signal="close_victory_achievement_screen" from="VictoryAchievementsDisplay" to="." method="display_game_won"]
+[connection signal="close_display" from="AchievementDisplay" to="." method="_on_achievement_display_close"]

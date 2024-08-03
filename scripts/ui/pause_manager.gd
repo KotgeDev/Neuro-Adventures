@@ -10,7 +10,7 @@ var cursor = preload("res://assets/ui/cursor.png")
 var start_time_msec := 0.0
 var pause_start_time_msec := 0.0
 var total_paused_time_msec := 0.0 
-var game_over := false 
+var game_ended := false 
 
 func _ready() -> void:
 	start_time_msec = Time.get_ticks_msec()
@@ -18,7 +18,7 @@ func _ready() -> void:
 
 func _process(delta):
 	if Input.is_action_just_pressed("menu"):
-		if options_menu.visible or game_over:
+		if options_menu.visible or game_ended:
 			return 
 		
 		if upgrades_menu.visible: 
@@ -31,10 +31,11 @@ func _process(delta):
 		if visible: 
 			unpause_game(true) 
 		else:
-			pause_game(true)   
+			pause_game(true)
 
 ## Call to pause the game 
 func pause_game(show_menu := false):
+	AudioSystem.set_music_volume(0.5)
 	Input.set_custom_mouse_cursor(null)
 	get_tree().paused = true
 	pause_start_time_msec = Time.get_ticks_msec()
@@ -44,6 +45,7 @@ func pause_game(show_menu := false):
 
 ## Call to unpause the game 
 func unpause_game(hide_menu := false):
+	AudioSystem.set_music_volume(1)
 	Input.set_custom_mouse_cursor(cursor, Input.CURSOR_ARROW, Vector2(32, 32))
 	get_tree().paused = false
 	total_paused_time_msec += Time.get_ticks_msec() - pause_start_time_msec
@@ -59,6 +61,13 @@ func get_elapsed_time() -> String:
 	return "%02d:%02d" % [min, sec] 
 
 func _on_continue_button_pressed():
+	if upgrades_menu.visible: 
+		if visible:
+			visible = false 
+		else:
+			visible = true 
+		return  
+	
 	unpause_game(true)
 
 func _on_options_button_pressed():
@@ -71,4 +80,5 @@ func _on_options_menu_close_panel():
 
 func _on_quit_button_pressed():
 	AudioSystem.end_music()
+	get_tree().paused = false 
 	get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")

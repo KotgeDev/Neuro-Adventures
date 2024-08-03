@@ -12,10 +12,12 @@ extends Enemy
 class_name SimpleEnemy 
 
 #region CONSTANTS
+# These values should not be set outside of set_stats
 @export var BASE_MAX_HEALTH := 1.0
 @export var BASE_MAX_SPEED := 1.0
 @export var BASE_DAMAGE := 1.0
 @export var ATTACK_INTERVAL := 1.0
+@export var VALUE := 1.0
 #endregion 
 
 #region NODES
@@ -25,6 +27,7 @@ class_name SimpleEnemy
 @onready var navigation_agent = $NavigationAgent2D
 @onready var pathfind_timer = $PathfindTimer
 @onready var effect_player = $EffectPlayer
+@onready var dmg_label = $DmgLabel
 @onready var collab_partner: CollabPartner = get_tree().get_first_node_in_group("collab_partner")
 @onready var ai: AI = get_tree().get_first_node_in_group("ai")
 #endregion 
@@ -63,9 +66,11 @@ func set_stats() -> void:
 			health = BASE_MAX_HEALTH * 2  
 			damage = BASE_DAMAGE * 2
 		MapManager.MapMode.ENDLESS:
-			pass  
+			health = BASE_MAX_HEALTH * map.scaling_difficulty 
+			damage = BASE_DAMAGE * map.scaling_difficulty  
 
 func ready() -> void:
+	dmg_label.modulate.a = 0
 	pathfind_timer.wait_time = 0.5
 	pathfind_timer.start()
 	$ContinuousHitbox.damage = damage 
@@ -104,10 +109,28 @@ func _physics_process(delta):
 	
 	position += velocity * delta 
 
+func show_dmg_label(dmg) -> void:
+	if dmg == 1:
+		dmg_label.add_theme_font_size_override("font_size", 14)  
+	elif dmg <= 5:
+		dmg_label.add_theme_font_size_override("font_size", 16) 
+	elif dmg <= 10:
+		dmg_label.add_theme_font_size_override("font_size", 24)
+		modulate = Color("9affff")
+	else:
+		dmg_label.add_theme_font_size_override("font_size", 32)
+		modulate = Color("9affff")
+	
+	dmg_label.text = str(dmg)
+	await get_tree().create_tween().tween_property(dmg_label, "modulate:a", 1.0, 0.3).finished
+	get_tree().create_tween().tween_property(dmg_label, "modulate:a", 0, 1.0)
+	
+
 func _on_hurtbox_take_damage(damage):
+	show_dmg_label(damage)
 	health -= damage
-	sprite_2d.modulate = Color("b4244a")
-	await get_tree().create_timer(0.05).timeout 
+	sprite_2d.modulate = Globals.FLASH_COLOR
+	await get_tree().create_timer(Globals.FLASH_TIME).timeout 
 	sprite_2d.modulate = Color("ffffff") 
 	
 	if health <= 0 and not dead:
@@ -144,6 +167,7 @@ func _on_hurtbox_take_damage(damage):
 				map.ntx_chance += map.PITY_STEP 
 				map.enemies_killed_since_last_ntx += 1 
 		
+		Globals.enemy_killed.emit(VALUE)
 		queue_free() 
 
 func spawn_ntx_4090() -> void:

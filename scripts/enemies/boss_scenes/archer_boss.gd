@@ -12,6 +12,7 @@ class_name ArcherBoss
 @export var PHASE_1_ARROW_INTERVAL := 2.0
 @export var PHASE_2_ARROW_INTERVAL := 1.5
 @export var PHASE_2_PATTERN_INTERVAL := 4.0 
+@export var VALUE := 100
 #endregion 
 
 #region NODES
@@ -96,12 +97,13 @@ func _on_hurtbox_take_damage(damage):
 	health -= damage
 	healthbar.value = health / BASE_MAX_HEALTH * 100 
 	
-	sprite_2d.modulate = Color("b4244a")
-	await get_tree().create_timer(0.05).timeout 
+	sprite_2d.modulate = Globals.FLASH_COLOR
+	await get_tree().create_timer(Globals.FLASH_TIME).timeout 
 	sprite_2d.modulate = Color("ffffff") 
 	
 	if health <= 0:
 		Globals.game_won.emit() 
+		Globals.enemy_killed.emit(VALUE)
 		queue_free() 
 
 	elif health <= phase_thresholds[1]:

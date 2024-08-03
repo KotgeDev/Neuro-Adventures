@@ -32,11 +32,18 @@ var ai_scene
 var collab_scene 
 #endregion
 
+#region ENDLESS MODE 
+var scaling_difficulty = 1.0 
+var scale_factor = 1.0 
+var score = 0
+#endregion 
+
 const AI_POS = Vector2(1217, 322)
 const COLLAB_POS = Vector2(1276, 331)
 
 func _ready() -> void:
 	Globals.add_collectible_generator.connect(_on_add_collectible_generator)
+	Globals.enemy_killed.connect(_on_enemy_killed)
 	
 	match SavedOptions.settings.ai_selected:
 		Globals.CharacterChoice.NEURO:
@@ -60,13 +67,22 @@ func _ready() -> void:
 	
 	add_to_group("map")
 	Globals.map_ready.emit() 
-	spawn_enemies()
+	
+	if MapManager.map_mode == MapManager.MapMode.ENDLESS:
+		spawn_enemies_endless()
+	else:
+		spawn_enemies()
 
 func _on_add_collectible_generator(generator: CollectibleGenerator) -> void:
 	collectible_generators.append(generator) 
+
+func _on_enemy_killed(value: int) -> void:
+	score += value 
 
 ## Override function to use
 func spawn_enemies() -> void:
 	pass 
 
-
+## Override function to use
+func spawn_enemies_endless() -> void:
+	pass 

@@ -26,7 +26,33 @@ func spawn_enemies() -> void:
 	Globals.spawn.emit(slime_template, 50, 0.2)
 	await get_tree().create_timer(30, false).timeout
 	
-	# First Wave 
+	await first_wave()
+	await second_wave()
+	await third_wave()
+	await final_wave()
+
+func spawn_enemies_endless() -> void:	
+	await get_tree().process_frame
+
+	# 20 sec prep time 
+	Globals.spawn.emit(slime_template, 50, 0.2)
+	await get_tree().create_timer(20, false).timeout
+	
+	await first_wave()
+	await second_wave() 
+
+	scaling_difficulty += scale_factor
+	await third_wave() 
+
+	while true: 
+		scaling_difficulty += scale_factor 
+		await loop_wave()
+
+		scaling_difficulty += scale_factor
+		await loop_wave(true)  
+
+func first_wave() -> void: 
+	print_rich("[color=pink]First Wave Starting[/color]")
 	Globals.spawn.emit(goblin_template, 20, 0.2)
 	Globals.spawn.emit(slime_template, 100, 1.0)
 	Globals.spawn.emit(goblin_template, 100, 1.0)
@@ -35,9 +61,10 @@ func spawn_enemies() -> void:
 	await get_tree().create_timer(50, false).timeout
 	# All first wave enemise spawned at this point. 
 	await get_tree().create_timer(30, false).timeout
+	print_rich("[color=green]First Wave Complete[/color]")
 
-	# Second Wave 
-	print("SECOND WAVE STARTING")
+func second_wave() -> void: 
+	print_rich("[color=pink]Second Wave Starting[/color]")
 	Globals.spawn.emit(kobold_template, 20, 0.2)
 	Globals.spawn.emit(slime_template, 75, 0.5)
 	Globals.spawn.emit(goblin_template, 75, 0.7)
@@ -47,9 +74,10 @@ func spawn_enemies() -> void:
 	await get_tree().create_timer(50, false).timeout
 	# All first wave enemise spawned at this point.
 	await get_tree().create_timer(30, false).timeout 
+	print_rich("[color=green]Second Wave Complete[/color]")
 	
-	# Third Wave 
-	print("THIRD WAVE STARTING")
+func third_wave() -> void: 
+	print_rich("[color=pink]Third Wave Starting[/color]")
 	Globals.spawn.emit(soldier_template, 20, 0.2)
 	Globals.spawn.emit(goblin_template, 75, 1.0)
 	Globals.spawn.emit(kobold_template, 75, 1.0)
@@ -58,10 +86,11 @@ func spawn_enemies() -> void:
 	add_march(left_right_flank, knight_template, 42.0)
 	await get_tree().create_timer(50, false).timeout
 	# All first wave enemise spawned at this point.
-	await get_tree().create_timer(30, false).timeout 
+	await get_tree().create_timer(30, false).timeout
+	print_rich("[color=green]Third Wave Complete[/color]") 
 	
-	# Final Wave 
-	print("FINAL WAVE STARTING")
+func final_wave() -> void:  
+	print_rich("[color=pink]Final Wave Starting[/color]")
 	Globals.spawn.emit(knight_template, 20, 0.2)
 	Globals.spawn.emit(kobold_template, 75, 1.0)
 	Globals.spawn.emit(soldier_template, 75, 1.0)
@@ -70,6 +99,18 @@ func spawn_enemies() -> void:
 	Globals.spawn.emit(knight_template, 1000, 3.0)
 	add_child(archer_boss.instantiate())
 	await get_tree().create_timer(50, false).timeout
+	print_rich("[color=green]Final Wave Complete[/color]")
+
+func loop_wave(spawn_bos := false) -> void: 
+	print_rich("[color=pink]Loop Wave Starting[/color]")
+	Globals.spawn.emit(knight_template, 20, 0.2)
+	Globals.spawn.emit(kobold_template, 75, 1.0)
+	Globals.spawn.emit(soldier_template, 75, 1.0)
+	Globals.spawn.emit(knight_template, 100, 1.0)
+	await get_tree().create_timer(50, false).timeout
+	add_child(archer_boss.instantiate())
+	await get_tree().create_timer(50, false).timeout
+	print_rich("[color=green]Loop Wave Complete[/color]")
 
 func add_march(march_template: PackedScene, enemy_template: PackedScene, march_duration: float, interval := 1000.0, count := 1) -> void:
 	var march1 = march_template.instantiate() 

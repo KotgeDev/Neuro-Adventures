@@ -41,7 +41,7 @@ func setup(p_damage, p_charge_timer, p_angle) -> void:
 
 func _on_multi_hitbox_self_destruct():
 	if not hit_enemy:
-		AudioSystem.play_sfx(star_sfx, global_position, 0.5)
+		AudioSystem.play_sfx(star_sfx, global_position, 0.3)
 		hit_enemy = true 
 		animation_player.play("explosion")
 		await animation_player.animation_finished

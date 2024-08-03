@@ -1,5 +1,8 @@
 extends Node
 
+const FLASH_COLOR := Color(2, 2, 2, 1 )
+const FLASH_TIME := 0.05
+
 #region Enums 
 enum UpgradeType {
 	AI_UPGRADE,
@@ -34,6 +37,7 @@ signal spawn(scene_template, count: int, time_interval: float, last_batch: bool)
 
 #region TO MAP
 signal add_collectible_generator(gen: CollectibleGenerator)
+signal enemy_killed(value: int)
 #endregion
 
 #region TO HUD
