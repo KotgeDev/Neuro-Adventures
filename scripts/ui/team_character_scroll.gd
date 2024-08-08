@@ -63,11 +63,11 @@ func card_highlighted(card: CharacterCard) -> bool:
 
 func select_card() -> void: 
 	if ai_scroll:
-		SavedOptions.settings.ai_selected = selected_card.character
+		SettingsManager.settings.ai_selected = selected_card.character
 	else:
-		SavedOptions.settings.collab_partner_selected = selected_card.character
+		SettingsManager.settings.collab_partner_selected = selected_card.character
 	
-	SavedOptions.save_settings.emit()
+	SettingsManager.save_settings.emit()
 		
 	for card in v_container.get_children():
 		if card is CharacterCard and card.character != selected_card.character:
@@ -80,12 +80,12 @@ func select_card() -> void:
 func set_default() -> void: 
 	if ai_scroll:
 		for card in v_container.get_children():
-			if card is CharacterCard and card.character == SavedOptions.settings.ai_selected:
+			if card is CharacterCard and card.character == SettingsManager.settings.ai_selected:
 				selected_card = card 
 				break 
 	else:
 		for card in v_container.get_children():
-			if card is CharacterCard and card.character == SavedOptions.settings.collab_partner_selected:
+			if card is CharacterCard and card.character == SettingsManager.settings.collab_partner_selected:
 				selected_card = card 
 				break
 

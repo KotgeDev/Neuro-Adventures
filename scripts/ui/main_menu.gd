@@ -1,6 +1,6 @@
 extends Control
 
-@onready var options_menu = %OptionsMenu
+@onready var settings_menu = %SettingsMenu
 @onready var achievements_menu = %AchievementsMenu
 @onready var credits_menu = %CreditsMenu
 @onready var announcements = %Announcements
@@ -14,7 +14,7 @@ func _ready() -> void:
 	if AudioSystem.music_player.stream != menu_song:
 		AudioSystem.play_music(menu_song)
 		
-	options_menu.close_panel.connect(_on_close)
+	settings_menu.close_panel.connect(_on_close)
 	credits_menu.close_panel.connect(_on_close)
 	achievements_menu.close_panel.connect(_on_close)
 	announcements.close_panel.connect(_on_close)
@@ -36,7 +36,7 @@ func _on_quit_button_pressed():
 
 #region ICONS 
 func _on_settings_icon_pressed():
-	options_menu.visible = true 
+	settings_menu.visible = true 
 	v_box_container.visible = false 
 
 func _on_acheivements_icon_pressed():

@@ -45,7 +45,7 @@ func _ready():
 	else:
 		shared_upgrades_db = CharacterDataManager.all_collab_db
 	
-	saved_defaults = SavedOptions.default_upgrades[character]
+	saved_defaults = SettingsManager.default_upgrades[character]
 	
 	for upgrade in shared_upgrades_db:
 		add_upgrade_panel(upgrades_container, upgrade)
@@ -146,8 +146,8 @@ func _on_return_button_pressed():
 	for upgrade in default_upgrades: 
 		new_default_upgrades.append(upgrade.upgrade_name)
 	
-	SavedOptions.default_upgrades[character] = new_default_upgrades
-	SavedOptions.save_default_upgrades.emit()
+	SettingsManager.default_upgrades[character] = new_default_upgrades
+	SettingsManager.save_default_upgrades.emit()
 	
 	queue_free()
 

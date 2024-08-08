@@ -45,7 +45,7 @@ func _ready() -> void:
 	Globals.add_collectible_generator.connect(_on_add_collectible_generator)
 	Globals.enemy_killed.connect(_on_enemy_killed)
 	
-	match SavedOptions.settings.ai_selected:
+	match SettingsManager.settings.ai_selected:
 		Globals.CharacterChoice.NEURO:
 			ai_scene = neuro_template.instantiate()
 			add_child(ai_scene)
@@ -55,7 +55,7 @@ func _ready() -> void:
 			add_child(ai_scene)
 			ai_scene.global_position = AI_POS
 		
-	match SavedOptions.settings.collab_partner_selected:
+	match SettingsManager.settings.collab_partner_selected:
 		Globals.CharacterChoice.VEDAL:
 			collab_scene = vedal_template.instantiate()
 			add_child(collab_scene)

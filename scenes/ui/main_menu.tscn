@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://di08f38sbim1l" path="res://assets/ui/settings_icon.png" id="10_tuq7r"]
 [ext_resource type="Texture2D" uid="uid://yik43suynten" path="res://assets/ui/settings_pressed_icon.png" id="11_po4xl"]
 [ext_resource type="BitMap" uid="uid://b1jvhkx7k0dad" path="res://assets/ui/settings_icon_clip_mask.png" id="12_pda2o"]
-[ext_resource type="PackedScene" uid="uid://b6j6utnkndtjo" path="res://scenes/options/options_menu.tscn" id="13_tpbcu"]
+[ext_resource type="PackedScene" uid="uid://b6j6utnkndtjo" path="res://scenes/settings/settings_menu.tscn" id="13_tpbcu"]
 [ext_resource type="PackedScene" uid="uid://bnaykxnl0tv10" path="res://scenes/ui/credits.tscn" id="14_0sj3f"]
 [ext_resource type="PackedScene" uid="uid://dm3hkvfawh3kq" path="res://scenes/achievements/achievements_menu.tscn" id="15_24ye3"]
 [ext_resource type="PackedScene" uid="uid://drltyl0upuj5g" path="res://scenes/ui/announcements.tscn" id="16_ngfms"]
@@ -112,7 +112,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="OptionsMenu" parent="Menus" instance=ExtResource("13_tpbcu")]
+[node name="SettingsMenu" parent="Menus" instance=ExtResource("13_tpbcu")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1

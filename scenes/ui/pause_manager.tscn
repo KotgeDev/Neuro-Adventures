@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dd3l4otjd8b3x"]
 
 [ext_resource type="Script" path="res://scripts/ui/pause_manager.gd" id="1_oau80"]
-[ext_resource type="PackedScene" uid="uid://b6j6utnkndtjo" path="res://scenes/options/options_menu.tscn" id="2_vkadx"]
+[ext_resource type="PackedScene" uid="uid://b6j6utnkndtjo" path="res://scenes/settings/settings_menu.tscn" id="2_72dci"]
 
 [node name="PauseManager" type="Control"]
 layout_mode = 3
@@ -68,18 +68,18 @@ text = "Continue"
 
 [node name="OptionsButton" type="Button" parent="PausedMenu/MenuContainer"]
 layout_mode = 2
-text = "Options"
+text = "Settings"
 
 [node name="QuitButton" type="Button" parent="PausedMenu/MenuContainer"]
 layout_mode = 2
 text = "Quit
 "
 
-[node name="OptionsMenu" parent="." instance=ExtResource("2_vkadx")]
+[node name="SettingsMenu" parent="." instance=ExtResource("2_72dci")]
 visible = false
 layout_mode = 1
 
 [connection signal="pressed" from="PausedMenu/MenuContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="PausedMenu/MenuContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="PausedMenu/MenuContainer/QuitButton" to="." method="_on_quit_button_pressed"]
-[connection signal="close_panel" from="OptionsMenu" to="." method="_on_options_menu_close_panel"]
+[connection signal="close_panel" from="SettingsMenu" to="." method="_on_settings_menu_close_panel"]

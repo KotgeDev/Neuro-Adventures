@@ -81,16 +81,16 @@ func set_default_settings() -> void:
 
 func set_window_mode(index) -> void:
 	match index:
-		SavedOptions.WindowMode.FULL_SCREEN:
+		SettingsManager.WindowMode.FULL_SCREEN:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN) 
 			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
-		SavedOptions.WindowMode.WINDOWED:
+		SettingsManager.WindowMode.WINDOWED:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED) 
 			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
-		SavedOptions.WindowMode.BORDERLESS_WINDOW:
+		SettingsManager.WindowMode.BORDERLESS_WINDOW:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED) 
 			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true)
-		SavedOptions.WindowMode.BORDERLESS_FULL_SCREEN:
+		SettingsManager.WindowMode.BORDERLESS_FULL_SCREEN:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN) 
 			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true) 
 		

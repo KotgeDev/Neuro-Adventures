@@ -4,7 +4,7 @@ var cursor = preload("res://assets/ui/cursor.png")
 
 @export var upgrades_menu: Control
 
-@onready var options_menu = $OptionsMenu
+@onready var settings_menu = $SettingsMenu
 @onready var paused_menu = $PausedMenu
 
 var start_time_msec := 0.0
@@ -18,7 +18,7 @@ func _ready() -> void:
 
 func _process(delta):
 	if Input.is_action_just_pressed("menu"):
-		if options_menu.visible or game_ended:
+		if settings_menu.visible or game_ended:
 			return 
 		
 		if upgrades_menu.visible: 
@@ -71,11 +71,11 @@ func _on_continue_button_pressed():
 	unpause_game(true)
 
 func _on_options_button_pressed():
-	options_menu.visible = true 
+	settings_menu.visible = true 
 	paused_menu.visible = false 
 	
-func _on_options_menu_close_panel():
-	options_menu.visible = false
+func _on_settings_menu_close_panel():
+	settings_menu.visible = false
 	paused_menu.visible = true 
 
 func _on_quit_button_pressed():

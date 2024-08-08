@@ -17,16 +17,16 @@ func _on_map_ready() -> void:
 	add_upgrades_to_pool(CharacterDataManager.all_ai_db)
 	add_upgrades_to_pool(CharacterDataManager.all_collab_db)
 	
-	ai_selected = SavedOptions.settings.ai_selected
-	collab_selected = SavedOptions.settings.collab_partner_selected
+	ai_selected = SettingsManager.settings.ai_selected
+	collab_selected = SettingsManager.settings.collab_partner_selected
 	
 	add_upgrades_to_pool(CharacterDataManager.character_data[ai_selected].db)
-	lvl_up(find_upgrade(SavedOptions.default_upgrades[ai_selected][0]))
-	lvl_up(find_upgrade(SavedOptions.default_upgrades[ai_selected][1]))
+	lvl_up(find_upgrade(SettingsManager.default_upgrades[ai_selected][0]))
+	lvl_up(find_upgrade(SettingsManager.default_upgrades[ai_selected][1]))
 	
 	add_upgrades_to_pool(CharacterDataManager.character_data[collab_selected].db)
-	lvl_up(find_upgrade(SavedOptions.default_upgrades[collab_selected][0]))
-	lvl_up(find_upgrade(SavedOptions.default_upgrades[collab_selected][1]))	
+	lvl_up(find_upgrade(SettingsManager.default_upgrades[collab_selected][0]))
+	lvl_up(find_upgrade(SettingsManager.default_upgrades[collab_selected][1]))	
 			
 func find_upgrade(upgrade_name: String) -> Upgrade: 
 	for upgrade in upgrades_pool: 

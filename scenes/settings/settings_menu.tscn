@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://b6j6utnkndtjo"]
 
-[ext_resource type="Script" path="res://scripts/options/options_menu.gd" id="1_ap703"]
+[ext_resource type="Script" path="res://scripts/settings/settings_menu.gd" id="1_ap703"]
 [ext_resource type="Theme" uid="uid://cbqv70ya041cw" path="res://assets/themes/default_theme.tres" id="3_fx5r4"]
-[ext_resource type="Script" path="res://scripts/options/window_mode_options.gd" id="4_s65oh"]
-[ext_resource type="PackedScene" uid="uid://b3ylcqvevfyfh" path="res://scenes/options/volume_slider.tscn" id="5_05trf"]
-[ext_resource type="Script" path="res://scripts/options/full_health_toggle.gd" id="5_ogmc3"]
-[ext_resource type="Script" path="res://scripts/options/fps_counter_toggle.gd" id="6_s04cr"]
+[ext_resource type="Script" path="res://scripts/settings/window_mode_options.gd" id="4_s65oh"]
+[ext_resource type="PackedScene" uid="uid://b3ylcqvevfyfh" path="res://scenes/settings/volume_slider.tscn" id="5_05trf"]
+[ext_resource type="Script" path="res://scripts/settings/full_health_toggle.gd" id="5_ogmc3"]
+[ext_resource type="Script" path="res://scripts/settings/fps_counter_toggle.gd" id="6_s04cr"]
 [ext_resource type="PackedScene" uid="uid://e8y2spmxgfec" path="res://scenes/ui/close_button.tscn" id="7_tqgol"]
 
 [node name="OptionsMenu" type="Control"]

@@ -32,8 +32,8 @@ func _display() -> void:
 	animation_player.play("anim") 
 	mode_label.text = "Map: The Farm [%s]" %  MapManager.MapMode.keys()[MapManager.map_mode].to_lower().capitalize()
 	time_label.text = "Elapsed Time: %s" % pause_manager.get_elapsed_time() 
-	ai_label.text = "AI: %s" % CharacterDataManager.character_data[SavedOptions.settings.ai_selected].character_name
-	collab_label.text = "Collab Partner: %s" % CharacterDataManager.character_data[SavedOptions.settings.collab_partner_selected].character_name	
+	ai_label.text = "AI: %s" % CharacterDataManager.character_data[SettingsManager.settings.ai_selected].character_name
+	collab_label.text = "Collab Partner: %s" % CharacterDataManager.character_data[SettingsManager.settings.collab_partner_selected].character_name	
 
 func _on_menu_button_pressed():
 	AudioSystem.end_music()

@@ -6,4 +6,4 @@ func _on_close_button_pressed():
 func close():
 	visible = false 
 	close_panel.emit() 
-	SavedOptions.save_settings.emit() 
+	SettingsManager.save_settings.emit() 

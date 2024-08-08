@@ -44,8 +44,8 @@ func _ready() -> void:
 	
 	ashakepos = ai_health_bar.position
 	cshakepos = collab_partner_health_bar.position
-	set_fps_counter_state(SavedOptions.settings.fps_counter)
-	if SavedOptions.settings.full_health_effect:
+	set_fps_counter_state(SettingsManager.settings.fps_counter)
+	if SettingsManager.settings.full_health_effect:
 		ai_bar_full.visible = true
 		collab_partner_bar_full.visible = true
 	else: 
@@ -67,13 +67,13 @@ func _on_map_ready() -> void:
 	collab_partner = get_tree().get_first_node_in_group("collab_partner") 
 	map = get_tree().get_first_node_in_group("map")
 	
-	match SavedOptions.settings.ai_selected:
+	match SettingsManager.settings.ai_selected:
 		Globals.CharacterChoice.NEURO:
 			$HealthBars/AIIcon.texture = load("res://assets/characters/ais/neuro_icon.png")
 		Globals.CharacterChoice.EVIL:
 			$HealthBars/AIIcon.texture = load("res://assets/characters/ais/evil_icon.png")
 
-	match SavedOptions.settings.collab_partner_selected:
+	match SettingsManager.settings.collab_partner_selected:
 		Globals.CharacterChoice.VEDAL:
 			$HealthBars/CollabPartnerIcon.texture = load("res://assets/characters/collab_partners/vedal_icon.png")
 		Globals.CharacterChoice.ANNY:
@@ -138,7 +138,7 @@ func shake_handler(delta) -> void:
 			collab_partner_health_bar.position = cshakepos
 			
 func _on_update_ai_health(max: float, health: float, loss := true) -> void:
-	if SavedOptions.settings.full_health_effect:
+	if SettingsManager.settings.full_health_effect:
 		if health == max: 
 			ai_bar_full.visible = true 
 		else:
@@ -151,7 +151,7 @@ func _on_update_ai_health(max: float, health: float, loss := true) -> void:
 		ashaketime = 0.25
 		
 func _on_update_collab_partner_health(max: float, health: float, loss := true) -> void:
-	if SavedOptions.settings.full_health_effect:
+	if SettingsManager.settings.full_health_effect:
 		if health == max: 
 			collab_partner_bar_full.visible = true 
 		else:

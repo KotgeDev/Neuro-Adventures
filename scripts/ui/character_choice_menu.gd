@@ -38,8 +38,8 @@ Starting Ability: Portal -
 
 func _ready() -> void:
 	Input.set_custom_mouse_cursor(null)
-	ai_selection = SavedOptions.settings.ai_selected 
-	collab_selection = SavedOptions.settings.collab_partner_selected
+	ai_selection = SettingsManager.settings.ai_selected 
+	collab_selection = SettingsManager.settings.collab_partner_selected
 	set_selection()
 
 func _on_return_button_pressed():
@@ -83,21 +83,21 @@ func _on_collab_selection_button_back_pressed():
 func set_selection() -> void:
 	match ai_selection:
 		Globals.CharacterChoice.NEURO:
-			SavedOptions.settings.ai_selected = Globals.CharacterChoice.NEURO
+			SettingsManager.settings.ai_selected = Globals.CharacterChoice.NEURO
 			ai_sprite.texture = neuro_texture 
 			ai_description.text = neuro_description
 		Globals.CharacterChoice.EVIL:
-			SavedOptions.settings.ai_selected = Globals.CharacterChoice.EVIL
+			SettingsManager.settings.ai_selected = Globals.CharacterChoice.EVIL
 			ai_sprite.texture = evil_texture
 			ai_description.text = evil_description
 	match collab_selection:
 		Globals.CharacterChoice.VEDAL:
-			SavedOptions.settings.collab_partner_selected = Globals.CharacterChoice.VEDAL
+			SettingsManager.settings.collab_partner_selected = Globals.CharacterChoice.VEDAL
 			collab_sprite.texture = vedal_texture 
 			collab_description.text = vedal_description
 		Globals.CharacterChoice.ANNY:
-			SavedOptions.settings.collab_partner_selected = Globals.CharacterChoice.ANNY
+			SettingsManager.settings.collab_partner_selected = Globals.CharacterChoice.ANNY
 			collab_sprite.texture = anny_texture
 			collab_description.text = anny_description
 
-	SavedOptions.save_settings.emit() 
+	SettingsManager.save_settings.emit() 

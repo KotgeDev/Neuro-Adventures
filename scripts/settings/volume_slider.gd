@@ -8,9 +8,9 @@ func _ready() -> void:
 	value_changed.connect(_on_value_changed)
 	
 	if bus_name == "music":
-		value = SavedOptions.settings.music_volume 
+		value = SettingsManager.settings.music_volume 
 	elif bus_name == "soundfx":
-		value = SavedOptions.settings.sfx_volume 
+		value = SettingsManager.settings.sfx_volume 
 
 func _on_value_changed(value: float):
 	AudioServer.set_bus_volume_db(
@@ -19,7 +19,7 @@ func _on_value_changed(value: float):
 	)
 	
 	if bus_name == "music":
-		SavedOptions.settings.music_volume = value
+		SettingsManager.settings.music_volume = value
 	elif bus_name == "soundfx":
-		SavedOptions.settings.sfx_volume = value
+		SettingsManager.settings.sfx_volume = value
 
