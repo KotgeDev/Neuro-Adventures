@@ -70,7 +70,15 @@ disabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ContinuousHitbox"]
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+[node name="NavPosition" type="Node2D" parent="."]
+position = Vector2(0, -7)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="NavPosition"]
+avoidance_enabled = true
+radius = 6.0
+neighbor_distance = 100.0
+avoidance_layers = 2
+avoidance_mask = 2
 
 [node name="PathfindTimer" type="Timer" parent="."]
 wait_time = 0.5

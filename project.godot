@@ -23,6 +23,7 @@ SavedOptions="*res://scripts/options/saved_options.gd"
 AchievementManager="*res://scripts/achievements/achievement_manager.gd"
 CharacterDataManager="*res://scripts/characters/character_data_manager.gd"
 MapManager="*res://scripts/maps/map_manager.gd"
+AccountManager="*res://scripts/leaderboard/account_manager.gd"
 
 [display]
 
@@ -102,6 +103,7 @@ mouse_scroll={
 2d_physics/layer_6="Collectible"
 2d_physics/layer_7="Personal Zone"
 2d_physics/layer_8="Misc. "
+avoidance/layer_2="Enemy Avoidance "
 
 [rendering]
 

@@ -43,7 +43,7 @@ var hit_sfx: AudioStream = preload("res://assets/sfx/playerhurt.wav")
 
 func _ready() -> void:
 	connect_signals() 
-	add_to_group("collab_partner")
+	add_to_group(Globals.COLLAB_GROUP_NAME)
 	collectcircle.texture.gradient.set_color(1, Color(collectcircle.texture.gradient.get_color(1), 0))
 	collectcircle.texture.gradient.set_color(0, Color(collectcircle.texture.gradient.get_color(0), circle_occ))
 	_on_powerup_get()
@@ -107,7 +107,7 @@ func _on_collect_exp(value: int) -> void:
 func damage_received_modifiers_collab(BASE_DAMAGE: float) -> float:
 	var modified_damage := BASE_DAMAGE
 	
-	for upgrade in get_tree().get_nodes_in_group("damage_received_modifiers_collab"):
+	for upgrade in get_tree().get_nodes_in_group(Globals.DAMAGE_RECEIVED_MODIFIERS_COLLAB):
 		modified_damage = upgrade.damage_received_modifiers_collab(BASE_DAMAGE, modified_damage) 
 	
 	var dm_allegations = get_tree().get_first_node_in_group("dm_allegations")

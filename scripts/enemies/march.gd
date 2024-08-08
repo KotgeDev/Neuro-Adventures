@@ -28,7 +28,7 @@ func setup_markers() -> void:
 
 func add_wave() -> void:
 	for marker in markers.get_children():
-		var enemy = enemy_template.instantiate() 
+		var enemy = enemy_template.instantiate() as SimpleEnemy 
 		enemy.global_position = marker.global_position
 		
 		enemy.march = true  
@@ -36,6 +36,7 @@ func add_wave() -> void:
 		enemy.march_duration = march_duration 
 		
 		add_child(enemy)
+		enemy.navigation_agent.avoidance_enabled = false 
 
 func _on_march_duration_timeout():
 	queue_free()

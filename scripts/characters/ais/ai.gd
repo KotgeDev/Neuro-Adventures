@@ -29,7 +29,7 @@ var hit_sfx: AudioStream = preload("res://assets/sfx/playerhurt.wav")
 #endregion
 
 func _ready() -> void:
-	add_to_group("ai")
+	add_to_group(Globals.AI_GROUP_NAME)
 	connect_signals()
 	set_physics_process(false)
 
@@ -74,7 +74,7 @@ func _on_hurtbox_take_damage(damage: float, shake := true):
 func damage_received_modifiers_ai(BASE_DAMAGE: float) -> float:
 	var modified_damage := BASE_DAMAGE
 	
-	for upgrade in get_tree().get_nodes_in_group("damage_received_modifiers_ai"):
+	for upgrade in get_tree().get_nodes_in_group(Globals.DAMAGE_RECEIVED_MODIFIERS_AI):
 		modified_damage = upgrade.damage_received_modifiers_ai(BASE_DAMAGE, modified_damage) 
 	
 	var gaslight = get_tree().get_first_node_in_group("gaslight")

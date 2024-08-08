@@ -3,7 +3,7 @@ extends UpgradeScene
 var percentage = 1
 
 func _ready():
-	add_to_group("damage_given_modifiers_ai")
+	add_to_group(Globals.DAMAGE_GIVEN_MODIFIERS_AI)
 	sync_level()
 
 func damage_given_modifiers_ai(

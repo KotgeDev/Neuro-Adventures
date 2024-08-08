@@ -65,7 +65,7 @@ func _ready() -> void:
 			add_child(collab_scene)
 			collab_scene.global_position = COLLAB_POS  
 	
-	add_to_group("map")
+	add_to_group(Globals.MAP_GROUP_NAME)
 	Globals.map_ready.emit() 
 	
 	if MapManager.map_mode == MapManager.MapMode.ENDLESS:

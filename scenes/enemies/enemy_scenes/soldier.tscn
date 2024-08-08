@@ -49,6 +49,7 @@ ATTACK_INTERVAL = 0.8
 VALUE = 4.0
 
 [node name="Sprite2D" parent="." index="0"]
+position = Vector2(0, -30)
 texture = ExtResource("2_c7i3u")
 hframes = 4
 
@@ -57,6 +58,9 @@ position = Vector2(0, -32)
 
 [node name="CollisionPolygon2D" parent="Hurtbox" index="0"]
 polygon = PackedVector2Array(-5, -26, -5, -16, -6, -16, -7, -15, -7, -8, -5, -4, -4, -4, -4, 2, -5, 2, -5, 6, -1, 6, 0, 0, 2, 6, 5, 6, 5, -1, 5, -7, 7, -8, 7, 3, 8, 3, 8, -19, 9, -19, 9, -21, 8, -21, 8, -23, 7, -23, 7, -21, 6, -21, 6, -19, 3, -16, 3, -26, 1, -28, -3, -28)
+
+[node name="ContinuousHitbox" parent="." index="3"]
+position = Vector2(0, -6)
 
 [node name="CollisionPolygon2D" parent="ContinuousHitbox" index="0"]
 polygon = PackedVector2Array(-3, -27, -5, -25, -4, -18, -4, -17, -7, -13, -7, -9, -4, -6, -4, 6, 0, -2, 4, 6, 4, -11, 7, -8, 7, 3, 8, 3, 8, -19, 8, -23, 7, -23, 7, -12, 6, -12, 3, -16, 2, -26, 1, -27)
@@ -67,14 +71,14 @@ libraries = {
 }
 
 [node name="Shadow" parent="." index="8"]
-position = Vector2(-1, -20)
+position = Vector2(-1, -26)
 texture = ExtResource("3_xm2k1")
 
 [node name="DmgLabel" parent="." index="10"]
 offset_left = -20.0
-offset_top = -48.0
+offset_top = -54.0
 offset_right = 20.0
-offset_bottom = -22.0
+offset_bottom = -28.0
 
 [editable path="Hurtbox"]
 [editable path="ContinuousHitbox"]

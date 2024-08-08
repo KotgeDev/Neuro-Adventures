@@ -1,7 +1,33 @@
 extends Node
+class_name Global
 
 const FLASH_COLOR := Color(2, 2, 2, 1 )
 const FLASH_TIME := 0.05
+
+const MAP_GROUP_NAME := "map"
+const AI_GROUP_NAME := "ai"
+const COLLAB_GROUP_NAME := "collab_partner"
+
+#region DAMAGE MODIFIERS 
+# Any functions that modify damage received or given by the characters 
+# must be added to one of the following groups and have the required 
+# parameters and return values 
+## param: BASE_DAMAGE: float, modified_damage: float 
+## return: modified_damage  
+const DAMAGE_RECEIVED_MODIFIERS_AI := "damage_received_modifiers_ai"
+## param: BASE_DAMAGE: float, modified_damage: float 
+## return: modified_damage  
+const DAMAGE_RECEIVED_MODIFIERS_COLLAB := "damage_received_modifiers_collab"
+## param: BASE_DAMAGE: float, modified_damage: float, area: Area2D 
+## return: modified_damage
+const DAMAGE_GIVEN_MODIFIERS := "damage_given_modifiers_global"
+## param: BASE_DAMAGE: float, modified_damage: float, area: Area2D 
+## return: modified_damage
+const DAMAGE_GIVEN_MODIFIERS_AI := "damage_given_modifiers_ai"
+## param: BASE_DAMAGE: float, modified_damage: float, area: Area2D 
+## return: modified_damage
+const DAMAGE_GIVEN_MODIFIERS_COLLAB := "damage_given_modifiers_collab"
+#endregion 
 
 #region Enums 
 enum UpgradeType {

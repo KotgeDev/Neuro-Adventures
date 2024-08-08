@@ -31,13 +31,13 @@ func apply_damage_multipliers(BASE_DAMAGE: float, area: Area2D) -> float:
 	return modified_damage
 
 func damage_given_modifiers_global(BASE_DAMAGE: float, modified_damage: float, area: Area2D) -> float:	
-	for upgrade in get_tree().get_nodes_in_group("damage_given_modifiers_global"):
+	for upgrade in get_tree().get_nodes_in_group(Globals.DAMAGE_GIVEN_MODIFIERS):
 		modified_damage = upgrade.damage_given_modifiers_global(BASE_DAMAGE, modified_damage, area) 
 
 	return modified_damage
 
 func damage_given_modifiers_ai(BASE_DAMAGE: float, modified_damage: float, area: Area2D) -> float:
-	for upgrade in get_tree().get_nodes_in_group("damage_given_modifiers_ai"):
+	for upgrade in get_tree().get_nodes_in_group(Globals.DAMAGE_GIVEN_MODIFIERS_AI):
 		modified_damage = upgrade.damage_given_modifiers_ai(BASE_DAMAGE, modified_damage, area) 
 	
 	var filter = get_tree().get_first_node_in_group("filter")
@@ -47,7 +47,7 @@ func damage_given_modifiers_ai(BASE_DAMAGE: float, modified_damage: float, area:
 	return modified_damage
 
 func damage_given_modifiers_collab(BASE_DAMAGE: float, modified_damage: float, area: Area2D) -> float:
-	for upgrade in get_tree().get_nodes_in_group("damage_given_modifiers_collab"):
+	for upgrade in get_tree().get_nodes_in_group(Globals.DAMAGE_GIVEN_MODIFIERS_COLLAB):
 		modified_damage = upgrade.damage_given_modifiers_collab(BASE_DAMAGE, modified_damage, area) 
 
 	return modified_damage

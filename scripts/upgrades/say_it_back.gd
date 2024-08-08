@@ -6,7 +6,7 @@ extends UpgradeScene
 var damage_multiplier := 0.5  
 
 func _ready():
-	add_to_group("damage_given_modifiers_global")
+	add_to_group(Globals.DAMAGE_GIVEN_MODIFIERS)
 	sync_level()
 
 func damage_given_modifiers_global(

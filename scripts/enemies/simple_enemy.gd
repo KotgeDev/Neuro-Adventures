@@ -24,7 +24,7 @@ class_name SimpleEnemy
 @onready var sprite_2d = $Sprite2D
 @onready var stun_effect = $StunEffect
 @onready var map = get_tree().get_first_node_in_group("map") as MAP
-@onready var navigation_agent = $NavigationAgent2D
+@onready var navigation_agent = $NavPosition/NavigationAgent2D 
 @onready var pathfind_timer = $PathfindTimer
 @onready var effect_player = $EffectPlayer
 @onready var dmg_label = $DmgLabel
@@ -70,6 +70,10 @@ func set_stats() -> void:
 			damage = BASE_DAMAGE * map.scaling_difficulty  
 
 func ready() -> void:
+	if not march:
+		navigation_agent.velocity_computed.connect(_on_velocity_computed)
+	navigation_agent.max_speed = BASE_MAX_SPEED + 10
+	
 	dmg_label.modulate.a = 0
 	pathfind_timer.wait_time = 0.5
 	pathfind_timer.start()
@@ -107,7 +111,13 @@ func _physics_process(delta):
 		stun_effect.flip_h = velocity.x < 0
 		last_flip_time = 0.5
 	
-	position += velocity * delta 
+	if march: 
+		position += velocity * delta 
+	else:
+		navigation_agent.set_velocity(velocity)
+
+func _on_velocity_computed(velocity: Vector2) -> void:
+	position += velocity * get_physics_process_delta_time()  
 
 func show_dmg_label(dmg) -> void:
 	if dmg == 1:
@@ -127,6 +137,9 @@ func show_dmg_label(dmg) -> void:
 	
 
 func _on_hurtbox_take_damage(damage):
+	if damage == 0:
+		return 
+	
 	show_dmg_label(damage)
 	health -= damage
 	sprite_2d.modulate = Globals.FLASH_COLOR
