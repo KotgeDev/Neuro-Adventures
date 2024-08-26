@@ -10,29 +10,15 @@ enum WindowMode {
 	BORDERLESS_FULL_SCREEN
 }
 
-enum CollabPartnerSelection {
-	VEDAL,
-	ANNY
-}
-
-enum AISelection {
-	NEURO,
-	EVIL 
-}
-
-var save_path = "user://settings.save"
+var save_path = "user://settings.json"
 var default_upgrades_save_path = "user://default_upgrades.save"
 
 #region SETTINGS
-var settings := {
-	"window_mode": WindowMode.WINDOWED,
-	"sfx_volume": 1.0,
-	"music_volume": 1.0,
-	"fps_counter": false,
-	"full_health_effect": true,
-	"ai_selected": Globals.CharacterChoice.NEURO,
-	"collab_partner_selected": Globals.CharacterChoice.VEDAL,
-}
+# When loading data, consider that
+# JSON will convert all keys to strings 
+# and all integers to floats. 
+var settings := Settings.new() 
+
 var default_upgrades := {
 	Globals.CharacterChoice.NEURO: ["Dual Strike", "Cookies"],
 	Globals.CharacterChoice.VEDAL: ["Rum", "Creggs"],
@@ -42,34 +28,42 @@ var default_upgrades := {
 #endregion 
 
 func _ready() -> void:
-	save_settings.connect(_on_save_settings)
-	save_default_upgrades.connect(_on_save_default_upgrades)
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	save_settings.connect(save_data)
+	save_default_upgrades.connect(save_data)
 	load_data() 
-	set_default_settings()
+	set_settings()
 
 func load_data() -> void:	
 	if FileAccess.file_exists(save_path):
 		var file = FileAccess.open(save_path, FileAccess.READ)
-		settings = file.get_var()
+		var json_string := file.get_line() 
+		file.close() 
+		
+		var data = JSON.parse_string(json_string)
+		assert(data, "Failed to parse json_string")
+		
+		settings = Settings.from_dict(data["settings"])
+		default_upgrades = convert_keys_to_int(data["default_upgrades"])
 	else:
-		_on_save_settings()
+		save_data()
 	
-	if FileAccess.file_exists(default_upgrades_save_path):
-		var file = FileAccess.open(default_upgrades_save_path, FileAccess.READ)
-		default_upgrades = file.get_var() 
-	else: 
-		_on_save_default_upgrades() 
+func save_data() -> void:
+	var data = {
+		"settings": settings.to_dict(),
+		"default_upgrades": default_upgrades
+	}
 	
-func _on_save_settings() -> void:
+	var json_string := JSON.stringify(data)
+	
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
-	file.store_var(settings)
+	file.store_line(json_string)
+	
+	file.close() 
 
-func _on_save_default_upgrades() -> void: 
-	var file = FileAccess.open(default_upgrades_save_path, FileAccess.WRITE)
-	file.store_var(default_upgrades) 
-
-func set_default_settings() -> void:
+func set_settings() -> void:
 	set_window_mode(settings.window_mode)
+		
 	AudioServer.set_bus_volume_db(
 		AudioServer.get_bus_index("music"), 
 		linear_to_db(settings.music_volume)
@@ -93,4 +87,11 @@ func set_window_mode(index) -> void:
 		SettingsManager.WindowMode.BORDERLESS_FULL_SCREEN:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN) 
 			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true) 
-		
+
+func convert_keys_to_int(dict: Dictionary) -> Dictionary:
+	var new_dict = {} 
+	
+	for key in dict:
+		new_dict[int(key)] = dict[key]
+	
+	return new_dict 

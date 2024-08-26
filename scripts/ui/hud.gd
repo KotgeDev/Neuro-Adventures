@@ -106,9 +106,11 @@ func _on_game_won() -> void:
 
 func check_for_completed_achievements() -> void:
 	var status = AchievementManager.achievement_status
+	var settings = SettingsManager.settings as Settings
+	
 	if not status[0]:
 		AchievementManager.add_achievement.emit(0)
-	if map.current_map == Globals.MapChoice.THE_FARM and not status[1]:
+	if settings.map_selected == Globals.MapChoice.THE_FARM and not status[1]:
 		AchievementManager.add_achievement.emit(1)
 	if not collab_partner.damaged_atleast_once and not status[2]:
 		AchievementManager.add_achievement.emit(2)

@@ -72,6 +72,12 @@ theme_override_font_sizes/font_size = 20
 text = "CreepyCat"
 horizontal_alignment = 1
 
+[node name="Label4" type="Label" parent="CreditsPanel/CenterContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Superbox"
+horizontal_alignment = 1
+
 [node name="Title2" type="Label" parent="CreditsPanel/CenterContainer/ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2

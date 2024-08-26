@@ -58,6 +58,10 @@ func _ready():
 		remove_upgrade_panel(upgrade, upgrades_container)
 		update_buffers()
 	
+func _process(delta):
+	if Input.is_action_just_pressed("menu") and level_viewer.visible: 
+		_on_level_viewer_close()  
+
 func add_upgrade_panel(container: Control, upgrade: UpgradeResource, outline := false) -> void:
 	var new_panel = upgrade_panel.duplicate()
 	var v_container = new_panel.get_node("VBoxContainer")

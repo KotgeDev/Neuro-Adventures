@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqgusqhpigf0c"]
+
+[ext_resource type="Script" path="res://scripts/ui/notice.gd" id="1_nufba"]
+[ext_resource type="PackedScene" uid="uid://e8y2spmxgfec" path="res://scenes/ui/close_button.tscn" id="2_4joly"]
+
+[node name="Notice" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nufba")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(300, 150)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CloseButton" parent="Panel" instance=ExtResource("2_4joly")]
+layout_mode = 1
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(250, 120)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.0
+offset_top = -13.0
+offset_right = 54.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="pressed" from="Panel/CloseButton" to="." method="close"]

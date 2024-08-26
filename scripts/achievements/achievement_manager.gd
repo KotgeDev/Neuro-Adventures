@@ -47,6 +47,7 @@ var achievement_status = {
 }
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	add_achievement.connect(_on_add_achievement)
 	load_data() 
 

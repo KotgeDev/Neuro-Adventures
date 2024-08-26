@@ -14,6 +14,9 @@ extends Node
 	Globals.CharacterChoice.ANNY: CharacterData.new("Anny", anny_upgrades_db, 45, 60, false)
 }
 
+func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+
 func find_upgrade(upgrade_name: String, db: Array) -> Resource: 
 	for upgrade in all_ai_db: 
 		if upgrade.upgrade_name == upgrade_name:

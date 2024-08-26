@@ -1,0 +1,456 @@
+[gd_scene load_steps=12 format=3 uid="uid://bulbr4l6aubot"]
+
+[ext_resource type="Texture2D" uid="uid://cwiayaenixuu8" path="res://assets/ui/main_bg_no_title.png" id="1_5my4x"]
+[ext_resource type="PackedScene" uid="uid://bqppr7oknbtc6" path="res://scenes/ui/return_button.tscn" id="1_7efrv"]
+[ext_resource type="Script" path="res://scripts/ui/leaderboard_menu.gd" id="1_rpiao"]
+[ext_resource type="StyleBox" uid="uid://dyugx6j82l5lv" path="res://assets/themes/gray_button_texture.tres" id="3_5ch3v"]
+[ext_resource type="Script" path="res://scripts/ui/button_with_sfx.gd" id="4_2538o"]
+[ext_resource type="StyleBox" uid="uid://5da1tota8pd3" path="res://assets/themes/gray_button_pressed_texture.tres" id="4_s7bd6"]
+[ext_resource type="StyleBox" uid="uid://doal46f0dfi43" path="res://assets/themes/selection_button_texture.tres" id="6_6hl1k"]
+[ext_resource type="Texture2D" uid="uid://70qmlybj7f40" path="res://assets/ui/checkbox_checked.png" id="6_47pja"]
+[ext_resource type="Texture2D" uid="uid://b32vgpxbo8c00" path="res://assets/ui/checkbox_unchecked.png" id="7_jexf1"]
+[ext_resource type="StyleBox" uid="uid://b8wuehepgvw41" path="res://assets/themes/panel_transparent_with_outline.tres" id="10_4eyy7"]
+[ext_resource type="PackedScene" uid="uid://e8y2spmxgfec" path="res://scenes/ui/close_button.tscn" id="11_0cpny"]
+
+[node name="LeaderboardMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_rpiao")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+texture = ExtResource("1_5my4x")
+
+[node name="ReturnButton" parent="." instance=ExtResource("1_7efrv")]
+layout_mode = 0
+offset_right = 111.0
+offset_bottom = 48.0
+script = ExtResource("4_2538o")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 11.0
+offset_right = 624.0
+offset_bottom = 36.0
+
+[node name="UsernameLabel" type="Label" parent="HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Log in to save scores "
+horizontal_alignment = 2
+
+[node name="LoginButton" type="Button" parent="HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.666667, 0.607843, 0.564706, 1)
+theme_override_colors/font_pressed_color = Color(0.533333, 0.505882, 0.486275, 1)
+theme_override_colors/font_hover_color = Color(0.533333, 0.505882, 0.486275, 1)
+theme_override_colors/font_focus_color = Color(0.666667, 0.607843, 0.564706, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("3_5ch3v")
+theme_override_styles/hover = ExtResource("4_s7bd6")
+theme_override_styles/pressed = ExtResource("4_s7bd6")
+theme_override_styles/focus = ExtResource("3_5ch3v")
+text = "Log in"
+script = ExtResource("4_2538o")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 280)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.53
+anchor_right = 0.5
+anchor_bottom = 0.53
+offset_left = -297.5
+offset_top = -140.0
+offset_right = 297.5
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 20
+
+[node name="LeaderboardContainer" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Title" type="Label" parent="HBoxContainer/LeaderboardContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "- The Farm - "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Labels" type="Control" parent="HBoxContainer/LeaderboardContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="HBoxContainer/LeaderboardContainer/Labels"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/LeaderboardContainer/Labels"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Control" type="Control" parent="HBoxContainer/LeaderboardContainer/Labels/HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/LeaderboardContainer/Labels/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Name"
+
+[node name="Label2" type="Label" parent="HBoxContainer/LeaderboardContainer/Labels/HBoxContainer"]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "| Score"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/LeaderboardContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="ScorePanelContainer" type="VBoxContainer" parent="HBoxContainer/LeaderboardContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/separation = 2
+
+[node name="Control" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Pad" type="Control" parent="HBoxContainer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="HBoxContainer/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Control/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Pad" type="Control" parent="HBoxContainer/Control/VBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/Control/VBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "- Map -"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MapOptionsButton" type="OptionButton" parent="HBoxContainer/Control/VBoxContainer/Panel/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 20
+alignment = 1
+script = ExtResource("4_2538o")
+
+[node name="Pad2" type="Control" parent="HBoxContainer/Control/VBoxContainer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="HBoxContainer/Control/VBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "- Version -"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VersionOptionsButton" type="OptionButton" parent="HBoxContainer/Control/VBoxContainer/Panel/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 20
+alignment = 1
+script = ExtResource("4_2538o")
+
+[node name="Pad3" type="Control" parent="HBoxContainer/Control/VBoxContainer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="HBoxContainer/Control/VBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "- Options -"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CheckBoxContainer" type="VBoxContainer" parent="HBoxContainer/Control/VBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="YourScoreCheckbox" type="CheckBox" parent="HBoxContainer/Control/VBoxContainer/Panel/VBoxContainer/CheckBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_icons/checked = ExtResource("6_47pja")
+theme_override_icons/unchecked = ExtResource("7_jexf1")
+theme_override_styles/normal = ExtResource("6_6hl1k")
+theme_override_styles/pressed = ExtResource("6_6hl1k")
+theme_override_styles/hover = ExtResource("6_6hl1k")
+theme_override_styles/hover_pressed = ExtResource("6_6hl1k")
+theme_override_styles/focus = ExtResource("6_6hl1k")
+text = "Your scores only"
+alignment = 1
+
+[node name="MetadataLoading" type="Control" parent="HBoxContainer/Control/VBoxContainer/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="ColorRect" parent="HBoxContainer/Control/VBoxContainer/Panel/MetadataLoading"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.392157)
+
+[node name="ScorePanel" type="Control" parent="."]
+visible = false
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+anchors_preset = 0
+offset_left = 22.5
+offset_top = 109.8
+offset_right = 422.5
+offset_bottom = 133.8
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="ScorePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ScorePanelButton" type="Button" parent="ScorePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = ExtResource("6_6hl1k")
+theme_override_styles/hover = ExtResource("3_5ch3v")
+theme_override_styles/pressed = ExtResource("6_6hl1k")
+theme_override_styles/focus = ExtResource("6_6hl1k")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScorePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Control" type="Control" parent="ScorePanel/HBoxContainer"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="NameLabel" type="Label" parent="ScorePanel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "KotgeDev"
+
+[node name="ScoreLabel" type="Label" parent="ScorePanel/HBoxContainer"]
+custom_minimum_size = Vector2(121, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "| 72769420"
+
+[node name="Control2" type="Control" parent="ScorePanel/HBoxContainer"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="LoadingLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 112.0
+offset_right = 420.0
+offset_bottom = 330.0
+text = "Loading ..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreDescriptionPanel" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="ScoreDescriptionPanel"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_5my4x")
+
+[node name="ColorRect" type="ColorRect" parent="ScoreDescriptionPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.490196)
+
+[node name="Panel" type="Panel" parent="ScoreDescriptionPanel"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("10_4eyy7")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScoreDescriptionPanel/Panel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -35.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Pad" type="Control" parent="ScoreDescriptionPanel/Panel/HBoxContainer"]
+custom_minimum_size = Vector2(7, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScoreDescriptionPanel/Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TitleLabel" type="Label" parent="ScoreDescriptionPanel/Panel/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.964706, 0.847059, 0.854902, 1)
+theme_override_font_sizes/font_size = 24
+text = "Kotgedev"
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="ScoreDescriptionPanel/Panel/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.968627, 0.172549, 0.458824, 1)
+theme_override_font_sizes/font_size = 20
+text = "Score: 1000"
+vertical_alignment = 1
+
+[node name="LvlLabel" type="Label" parent="ScoreDescriptionPanel/Panel/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Lvl: 20"
+vertical_alignment = 1
+
+[node name="TimeLabel" type="Label" parent="ScoreDescriptionPanel/Panel/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Time: 10:00"
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="ScoreDescriptionPanel/Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control" type="Control" parent="ScoreDescriptionPanel/Panel/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="AILabel" type="Label" parent="ScoreDescriptionPanel/Panel/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "AI: Neuro"
+
+[node name="CollabLabel" type="Label" parent="ScoreDescriptionPanel/Panel/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Collab: Vedal"
+
+[node name="CloseButton" parent="ScoreDescriptionPanel/Panel" instance=ExtResource("11_0cpny")]
+layout_mode = 1
+
+[connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]
+[connection signal="pressed" from="HBoxContainer2/LoginButton" to="." method="_on_login_button_pressed"]
+[connection signal="item_selected" from="HBoxContainer/Control/VBoxContainer/Panel/VBoxContainer/MapOptionsButton" to="." method="_on_map_options_button_item_selected"]
+[connection signal="item_selected" from="HBoxContainer/Control/VBoxContainer/Panel/VBoxContainer/VersionOptionsButton" to="." method="_on_version_options_button_item_selected"]
+[connection signal="toggled" from="HBoxContainer/Control/VBoxContainer/Panel/VBoxContainer/CheckBoxContainer/YourScoreCheckbox" to="." method="_on_your_score_checkbox_toggled"]
+[connection signal="pressed" from="ScoreDescriptionPanel/Panel/CloseButton" to="." method="close_score_description"]

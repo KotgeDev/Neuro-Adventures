@@ -17,9 +17,23 @@ func display_victory() -> void:
 	
 func display_game_over() -> void:
 	if MapManager.map_mode == MapManager.MapMode.ENDLESS:
+		var map = get_tree().get_first_node_in_group(Globals.MAP_GROUP_NAME) as MAP
+		var collab_partner = get_tree().get_first_node_in_group(Globals.COLLAB_GROUP_NAME) as CollabPartner
+		
+		var score = map.score
+		var level = collab_partner.lv
+		var time = pause_manager.get_elapsed_time() 
+		var settings = SettingsManager.settings as Settings
+		var map_name = MapManager.map_data[settings.map_selected].map_name
+		var ai_name = CharacterDataManager.character_data[settings.ai_selected].character_name
+		var collab_name = CharacterDataManager.character_data[settings.collab_partner_selected].character_name
+		
 		victory_label.text = "Endless Mode"
-		score_label.text = "SCORE: %d" % get_tree().get_first_node_in_group("map").score 
+		score_label.text = "SCORE: %d" % score
 		score_label.visible = true 
+		
+		if AccountManager.logged_in:
+			AccountManager.send_score.emit(score, level, time, map_name, ai_name, collab_name)
 	else: 
 		victory_label.text = "Game Over ... "
 		sprite.visible = false 

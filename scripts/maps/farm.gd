@@ -17,8 +17,6 @@ var top_down_flank = preload("res://scenes/enemies/march_scenes/top_down_flank.t
 var archer_boss = preload("res://scenes/enemies/boss_scenes/archer_boss.tscn")
 #endregion 
 
-var current_map = Globals.MapChoice.THE_FARM
-
 func spawn_enemies() -> void:
 	await get_tree().process_frame
 	

@@ -3,6 +3,10 @@
 
 This repository contains all of the code and assets for the game. 
 
+## New Version Checklist 
+1. Update version name under prod.cfg 
+2. Update integer count of 
+
 ## License
 Code is licensed under a [MIT license](LICENSE.md) 
 

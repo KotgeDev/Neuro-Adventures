@@ -18,6 +18,10 @@ func _ready() -> void:
 	credits_menu.close_panel.connect(_on_close)
 	achievements_menu.close_panel.connect(_on_close)
 	announcements.close_panel.connect(_on_close)
+	
+	if AccountManager.queued_notice_text:
+		Notice.create_notice(self, AccountManager.queued_notice_text) 
+		AccountManager.queued_notice_text = ""
 
 #region BUTTONS 
 func _on_play_button_pressed():
@@ -25,6 +29,9 @@ func _on_play_button_pressed():
 
 func _on_characters_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/ui/characters_menu.tscn")
+
+func _on_leaderboard_button_pressed():
+	get_tree().change_scene_to_file("res://scenes/ui/leaderboard_menu.tscn")
 
 func _on_credits_button_pressed():
 	credits_menu.visible = true 
@@ -50,7 +57,5 @@ func _on_announcement_icon_pressed():
 
 func _on_close() -> void:
 	v_box_container.visible = true 
-
-
 
 
