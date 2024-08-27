@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cecx6af8fp1l8"
-path="res://.godot/imported/button_pressed_9slice.png-899d32aac683b0b6cb87e815d340de0c.ctex"
+uid="uid://hvsv4inp1ws4"
+path="res://.godot/imported/blurple.png-aef6ae2056ac6bea91dbc9410e55b458.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/themes/button_pressed_9slice.png"
-dest_files=["res://.godot/imported/button_pressed_9slice.png-899d32aac683b0b6cb87e815d340de0c.ctex"]
+source_file="res://assets/themes/other/blurple.png"
+dest_files=["res://.godot/imported/blurple.png-aef6ae2056ac6bea91dbc9410e55b458.ctex"]
 
 [params]
 

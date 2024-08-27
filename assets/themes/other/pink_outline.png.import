@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ys532owuv3q1"
-path="res://.godot/imported/button_disabled_9slice.png-4f28b9f94591349d94445e387e07c9e4.ctex"
+uid="uid://bvgqxxw711ehf"
+path="res://.godot/imported/pink_outline.png-603ee8d24eb2756879437a26264dd00d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/themes/button_disabled_9slice.png"
-dest_files=["res://.godot/imported/button_disabled_9slice.png-4f28b9f94591349d94445e387e07c9e4.ctex"]
+source_file="res://assets/themes/other/pink_outline.png"
+dest_files=["res://.godot/imported/pink_outline.png-603ee8d24eb2756879437a26264dd00d.ctex"]
 
 [params]
 

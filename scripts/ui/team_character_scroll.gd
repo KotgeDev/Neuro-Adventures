@@ -19,6 +19,10 @@ func _ready() -> void:
 	
 	await get_tree().process_frame
 	set_default()
+	
+	for card in v_container.get_children():
+		if card is CharacterCard:
+			card.selected_t.connect(_on_card_selected) 
 
 func _process(delta) -> void:
 	if ai_scroll and get_global_mouse_position().x >= SCREEN_HALF_X:
@@ -41,6 +45,10 @@ func _on_timer_timeout() -> void:
 	timer.stop() 
 	timer_on = false  
 	scrolling = false 
+
+func _on_card_selected(card: CharacterCard) -> void:
+	selected_card = card
+	select_card()
 
 func on_scroll_started() -> void:
 	for card in v_container.get_children():

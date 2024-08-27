@@ -97,9 +97,9 @@ func _on_hurtbox_take_damage(damage):
 	health -= damage
 	healthbar.value = health / BASE_MAX_HEALTH * 100 
 	
-	sprite_2d.modulate = Globals.FLASH_COLOR
-	await get_tree().create_timer(Globals.FLASH_TIME).timeout 
-	sprite_2d.modulate = Color("ffffff") 
+	sprite_2d.material.set_shader_parameter("white", true)
+	await get_tree().create_timer(Globals.FLASH_TIME, false).timeout 
+	sprite_2d.material.set_shader_parameter("white", false)
 	
 	if health <= 0:
 		Globals.game_won.emit() 

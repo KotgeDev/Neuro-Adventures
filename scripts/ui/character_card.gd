@@ -2,6 +2,8 @@ extends Control
 class_name CharacterCard
 
 signal selected(char: Globals.CharacterChoice)
+## For Team Character Scrolling 
+signal selected_t(card: CharacterCard)
 
 @export var character: Globals.CharacterChoice
 ## For Team Character Scrolling 
@@ -21,3 +23,4 @@ func _ready() -> void:
 	
 func _on_selection_button_pressed():
 	selected.emit(character) 
+	selected_t.emit(self)

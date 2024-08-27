@@ -3,6 +3,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/rainbow.gdshader" id="1_wtd6t"]
 
 [resource]
+resource_local_to_scene = true
 shader = ExtResource("1_wtd6t")
 shader_parameter/strength = 0.3
 shader_parameter/speed = 0.3

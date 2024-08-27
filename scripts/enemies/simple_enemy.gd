@@ -120,19 +120,19 @@ func _on_velocity_computed(velocity: Vector2) -> void:
 	position += velocity * get_physics_process_delta_time()  
 
 func show_dmg_label(dmg) -> void:
-	if dmg == 1:
+	if dmg <= 1:
 		dmg_label.add_theme_font_size_override("font_size", 14)  
 	elif dmg <= 5:
 		dmg_label.add_theme_font_size_override("font_size", 16) 
 	elif dmg <= 10:
 		dmg_label.add_theme_font_size_override("font_size", 24)
-		modulate = Color("9affff")
+		modulate = Color("f72c75")
 	else:
 		dmg_label.add_theme_font_size_override("font_size", 32)
-		modulate = Color("9affff")
+		modulate = Color("f72c75")
 	
 	dmg_label.text = str(dmg)
-	await get_tree().create_tween().tween_property(dmg_label, "modulate:a", 1.0, 0.3).finished
+	dmg_label.modulate.a = 1.0
 	get_tree().create_tween().tween_property(dmg_label, "modulate:a", 0, 1.0)
 	
 
@@ -142,9 +142,10 @@ func _on_hurtbox_take_damage(damage):
 	
 	show_dmg_label(damage)
 	health -= damage
-	sprite_2d.modulate = Globals.FLASH_COLOR
-	await get_tree().create_timer(Globals.FLASH_TIME).timeout 
-	sprite_2d.modulate = Color("ffffff") 
+	
+	sprite_2d.material.set_shader_parameter("white", true)
+	await get_tree().create_timer(Globals.FLASH_TIME, false).timeout 
+	sprite_2d.material.set_shader_parameter("white", false)
 	
 	if health <= 0 and not dead:
 		dead = true 

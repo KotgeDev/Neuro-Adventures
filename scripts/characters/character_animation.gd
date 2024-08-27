@@ -29,8 +29,8 @@ func update_animation(delta: float) -> void:
 		run_sprite.flip_h = false 
 
 func show_damage() -> void:
-	idle_sprite.modulate = Globals.FLASH_COLOR
-	run_sprite.modulate = Globals.FLASH_COLOR
+	idle_sprite.material.set_shader_parameter("white", true)
+	run_sprite.material.set_shader_parameter("white", true)
 	await get_tree().create_timer(Globals.FLASH_TIME).timeout 
-	idle_sprite.modulate = Color("ffffff") 
-	run_sprite.modulate = Color("ffffff") 
+	idle_sprite.material.set_shader_parameter("white", false)
+	run_sprite.material.set_shader_parameter("white", false)

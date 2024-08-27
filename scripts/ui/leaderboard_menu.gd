@@ -20,6 +20,9 @@ const FAILED_TEXT = "Failed to load.\nCheck internet connection"
 @onready var time_label = %TimeLabel
 @onready var ai_label = %AILabel
 @onready var collab_label = %CollabLabel
+@onready var login_panel = $LoginPanel
+
+
 
 var metadata: Array 
 var scores: Array 
@@ -39,8 +42,11 @@ func _ready() -> void:
 		remove_user_details()
 
 func _process(delta):
-	if Input.is_action_just_pressed("menu") and score_description_panel.visible: 
-		close_score_description()  
+	if Input.is_action_just_pressed("menu"):
+		if score_description_panel.visible: 
+			close_score_description() 
+		if login_panel.visible:
+			close_login_panel() 
 
 func _on_metadata_received(_metadata: Array) -> void:
 	metadata_loading.visible = false 
@@ -156,9 +162,10 @@ func _on_login_button_pressed():
 	if AccountManager.logged_in: 
 		AccountManager.request_log_out.emit() 
 	else: 
-		AccountManager.request_log_in.emit() 
+		login_panel.visible = true 
 
 func _on_log_in_successfull() -> void:
+	close_login_panel()
 	set_user_details() 
 
 func _on_log_out_successfull() -> void:
@@ -189,3 +196,9 @@ func _on_your_score_checkbox_toggled(toggled_on):
 
 func close_score_description():
 	score_description_panel.visible = false 
+
+func close_login_panel():
+	login_panel.visible = false 
+
+func _on_discord_login_button_pressed():
+	AccountManager.request_log_in.emit() 

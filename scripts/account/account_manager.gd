@@ -37,6 +37,9 @@ func _ready():
 	
 	# Set data 
 	config = _load_config_file("res://config/prod.cfg")
+	if not config:
+		return 
+	
 	set_data() 
 	var ver_as_num = int(VERSION.replace('.', ''))
 	if not (9 < ver_as_num and ver_as_num < 100):
@@ -203,12 +206,9 @@ func _load_config_file(filename: String) -> Variant:
 	var file: ConfigFile = ConfigFile.new()
 
 	var err: Error = file.load(filename)
-	assert(err != Error.ERR_FILE_NOT_FOUND, "Cannot find the config file %s" % filename)
-
-	if err != OK:
-		printerr("Failed to load config file %s, error %d" % [filename, err])
-		return null
-
+	if err == Error.ERR_FILE_NOT_FOUND:
+		return false 
+	
 	return file
 
 func save_user_data():

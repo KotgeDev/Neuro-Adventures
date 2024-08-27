@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://b200dkpejyj2q"]
+[gd_scene load_steps=8 format=3 uid="uid://b200dkpejyj2q"]
 
 [ext_resource type="PackedScene" uid="uid://cx1nd5x2s6vyt" path="res://scenes/enemies/simple_enemy.tscn" id="1_0t50s"]
+[ext_resource type="Material" uid="uid://c13ui871eji3r" path="res://assets/shaders/flash.tres" id="2_hms1h"]
 [ext_resource type="Texture2D" uid="uid://8vqq5lkr4kb0" path="res://assets/enemies/blue_slime_sheet.png" id="2_sgjgm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xlo8w"]
@@ -49,6 +50,7 @@ _data = {
 BASE_MAX_SPEED = 25.0
 
 [node name="Sprite2D" parent="." index="0"]
+material = ExtResource("2_hms1h")
 position = Vector2(0, -29)
 texture = ExtResource("2_sgjgm")
 

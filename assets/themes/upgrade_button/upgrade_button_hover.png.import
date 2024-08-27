@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccbqcc2ysi65q"
-path="res://.godot/imported/gray_button_9slice.png-b1e0f36be1c7ec5af8fd6ad54c634daf.ctex"
+uid="uid://gr7sgu38nolx"
+path="res://.godot/imported/upgrade_button_hover.png-b8bdb9f4248f08d833be8f54cc263996.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/themes/gray_button_9slice.png"
-dest_files=["res://.godot/imported/gray_button_9slice.png-b1e0f36be1c7ec5af8fd6ad54c634daf.ctex"]
+source_file="res://assets/themes/upgrade_button/upgrade_button_hover.png"
+dest_files=["res://.godot/imported/upgrade_button_hover.png-b8bdb9f4248f08d833be8f54cc263996.ctex"]
 
 [params]
 

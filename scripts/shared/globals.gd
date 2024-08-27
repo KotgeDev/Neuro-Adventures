@@ -1,7 +1,6 @@
 extends Node
 class_name Global
 
-const FLASH_COLOR := Color(2, 2, 2, 1 )
 const FLASH_TIME := 0.05
 
 const MAP_GROUP_NAME := "map"

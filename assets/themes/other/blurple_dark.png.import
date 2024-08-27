@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0onfliyfm7bs"
-path="res://.godot/imported/upgrade_9slice.png-a066dd8ae21050dc0cbdff23f7c8b7e4.ctex"
+uid="uid://cv34wr62mhpc6"
+path="res://.godot/imported/blurple_dark.png-80aeee5b2fba7ec2b78a8ecf5be619eb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/themes/upgrade_9slice.png"
-dest_files=["res://.godot/imported/upgrade_9slice.png-a066dd8ae21050dc0cbdff23f7c8b7e4.ctex"]
+source_file="res://assets/themes/other/blurple_dark.png"
+dest_files=["res://.godot/imported/blurple_dark.png-80aeee5b2fba7ec2b78a8ecf5be619eb.ctex"]
 
 [params]
 

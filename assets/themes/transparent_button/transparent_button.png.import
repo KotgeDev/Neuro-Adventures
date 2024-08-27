@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bclcnkx7l5h86"
-path="res://.godot/imported/selection_button_pressed_light.png-ead35f4c402c13b3a4ee96fd9ce7c747.ctex"
+uid="uid://cyssbin1ie77l"
+path="res://.godot/imported/transparent_button.png-f780fa93c06dac44e89fe83f798a24c5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/themes/selection_button_pressed_light.png"
-dest_files=["res://.godot/imported/selection_button_pressed_light.png-ead35f4c402c13b3a4ee96fd9ce7c747.ctex"]
+source_file="res://assets/themes/transparent_button/transparent_button.png"
+dest_files=["res://.godot/imported/transparent_button.png-f780fa93c06dac44e89fe83f798a24c5.ctex"]
 
 [params]
 

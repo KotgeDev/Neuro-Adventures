@@ -1,10 +1,10 @@
 [gd_resource type="Theme" load_steps=6 format=3 uid="uid://cbqv70ya041cw"]
 
-[ext_resource type="StyleBox" uid="uid://djknm8nqgvom3" path="res://assets/themes/button_pressed_texture.tres" id="1_euuse"]
-[ext_resource type="StyleBox" uid="uid://bmk3her3aa4kv" path="res://assets/themes/button_disabled_texture.tres" id="1_i573x"]
-[ext_resource type="StyleBox" uid="uid://bmpqcggye3u0q" path="res://assets/themes/button_texture.tres" id="2_hn68u"]
+[ext_resource type="StyleBox" uid="uid://djknm8nqgvom3" path="res://assets/themes/pink_button/pink_button_hover.tres" id="1_euuse"]
+[ext_resource type="StyleBox" uid="uid://bmk3her3aa4kv" path="res://assets/themes/pink_button/pink_button_disabled.tres" id="1_i573x"]
+[ext_resource type="StyleBox" uid="uid://bmpqcggye3u0q" path="res://assets/themes/pink_button/pink_button.tres" id="2_hn68u"]
 [ext_resource type="StyleBox" uid="uid://n6rf8l7a8mty" path="res://assets/themes/transparent_stylebox.tres" id="3_pxs36"]
-[ext_resource type="StyleBox" uid="uid://doal46f0dfi43" path="res://assets/themes/selection_button_texture.tres" id="5_45qxm"]
+[ext_resource type="StyleBox" uid="uid://doal46f0dfi43" path="res://assets/themes/transparent_button/transparent_button.tres" id="5_45qxm"]
 
 [resource]
 Button/colors/font_color = Color(0.937255, 0.545098, 0.627451, 1)

@@ -7,6 +7,7 @@ var count: int
 var interval: float 
 
 @onready var markers = $Markers
+@onready var enemies = $Enemies
 
 func setup(p_enemy_template: PackedScene, p_march_duration: float, p_interval: float, p_count: int) -> void:
 	enemy_template = p_enemy_template
@@ -35,8 +36,15 @@ func add_wave() -> void:
 		enemy.march_direction = marker.transform.x
 		enemy.march_duration = march_duration 
 		
-		add_child(enemy)
+		enemies.add_child(enemy)
 		enemy.navigation_agent.avoidance_enabled = false 
 
 func _on_march_duration_timeout():
+	for i in range(3):
+		for enemy in enemies:
+			enemy.sprite_2d.material.set_shader_parameter("white", true)
+			await get_tree().create_timer(Globals.FLASH_TIME, false).timeout 
+			enemy.sprite_2d.material.set_shader_parameter("white", false)
+			await get_tree().create_timer(1.0, false).timeout 
+			
 	queue_free()

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyssbin1ie77l"
-path="res://.godot/imported/selection_button_9slice.png-b40e761c17c0adc88e0867a738622958.ctex"
+uid="uid://ys532owuv3q1"
+path="res://.godot/imported/pink_button_disabled.png-75518a8192aacf3a78b30f55d8b58fe9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/themes/selection_button_9slice.png"
-dest_files=["res://.godot/imported/selection_button_9slice.png-b40e761c17c0adc88e0867a738622958.ctex"]
+source_file="res://assets/themes/pink_button/pink_button_disabled.png"
+dest_files=["res://.godot/imported/pink_button_disabled.png-75518a8192aacf3a78b30f55d8b58fe9.ctex"]
 
 [params]
 

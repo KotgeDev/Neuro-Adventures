@@ -22,6 +22,9 @@ func _ready() -> void:
 	if AccountManager.queued_notice_text:
 		Notice.create_notice(self, AccountManager.queued_notice_text) 
 		AccountManager.queued_notice_text = ""
+	
+	if not AccountManager.config: 
+		$VBoxContainer/LeaderboardButton.disabled = true 
 
 #region BUTTONS 
 func _on_play_button_pressed():

@@ -1,16 +1,19 @@
-[gd_scene load_steps=12 format=3 uid="uid://bulbr4l6aubot"]
+[gd_scene load_steps=15 format=3 uid="uid://bulbr4l6aubot"]
 
 [ext_resource type="Texture2D" uid="uid://cwiayaenixuu8" path="res://assets/ui/main_bg_no_title.png" id="1_5my4x"]
 [ext_resource type="PackedScene" uid="uid://bqppr7oknbtc6" path="res://scenes/ui/return_button.tscn" id="1_7efrv"]
 [ext_resource type="Script" path="res://scripts/ui/leaderboard_menu.gd" id="1_rpiao"]
-[ext_resource type="StyleBox" uid="uid://dyugx6j82l5lv" path="res://assets/themes/gray_button_texture.tres" id="3_5ch3v"]
+[ext_resource type="StyleBox" uid="uid://dyugx6j82l5lv" path="res://assets/themes/gray_button/gray_button.tres" id="3_5ch3v"]
 [ext_resource type="Script" path="res://scripts/ui/button_with_sfx.gd" id="4_2538o"]
-[ext_resource type="StyleBox" uid="uid://5da1tota8pd3" path="res://assets/themes/gray_button_pressed_texture.tres" id="4_s7bd6"]
-[ext_resource type="StyleBox" uid="uid://doal46f0dfi43" path="res://assets/themes/selection_button_texture.tres" id="6_6hl1k"]
+[ext_resource type="StyleBox" uid="uid://5da1tota8pd3" path="res://assets/themes/gray_button/gray_button_hover.tres" id="4_s7bd6"]
+[ext_resource type="StyleBox" uid="uid://doal46f0dfi43" path="res://assets/themes/transparent_button/transparent_button.tres" id="6_6hl1k"]
 [ext_resource type="Texture2D" uid="uid://70qmlybj7f40" path="res://assets/ui/checkbox_checked.png" id="6_47pja"]
 [ext_resource type="Texture2D" uid="uid://b32vgpxbo8c00" path="res://assets/ui/checkbox_unchecked.png" id="7_jexf1"]
-[ext_resource type="StyleBox" uid="uid://b8wuehepgvw41" path="res://assets/themes/panel_transparent_with_outline.tres" id="10_4eyy7"]
+[ext_resource type="StyleBox" uid="uid://b8wuehepgvw41" path="res://assets/themes/panel/transparent_w_outline_panel.tres" id="10_4eyy7"]
 [ext_resource type="PackedScene" uid="uid://e8y2spmxgfec" path="res://scenes/ui/close_button.tscn" id="11_0cpny"]
+[ext_resource type="StyleBox" uid="uid://bxylaqvfpteux" path="res://assets/themes/other/blurple.tres" id="12_p7vxx"]
+[ext_resource type="StyleBox" uid="uid://dwtm3s1xjblrm" path="res://assets/themes/other/blurple_dark.tres" id="13_8hvnj"]
+[ext_resource type="Texture2D" uid="uid://rs3pgmf6itop" path="res://assets/copyrighted/discord-mark-white.png" id="13_v8fci"]
 
 [node name="LeaderboardMenu" type="Control"]
 layout_mode = 3
@@ -344,13 +347,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="ScoreDescriptionPanel"]
-visible = false
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("1_5my4x")
-
 [node name="ColorRect" type="ColorRect" parent="ScoreDescriptionPanel"]
 layout_mode = 1
 anchors_preset = 15
@@ -448,9 +444,98 @@ text = "Collab: Vedal"
 [node name="CloseButton" parent="ScoreDescriptionPanel/Panel" instance=ExtResource("11_0cpny")]
 layout_mode = 1
 
+[node name="LoginPanel" type="Control" parent="."]
+visible = false
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="LoginPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.490196)
+
+[node name="Label" type="Label" parent="LoginPanel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -11.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 10
+text = " *Score data may also be displayed in the community chat elo leaderboards."
+
+[node name="Panel" type="Panel" parent="LoginPanel"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -50.0
+offset_right = 100.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("4_s7bd6")
+
+[node name="CloseLoginPanel" parent="LoginPanel/Panel" instance=ExtResource("11_0cpny")]
+layout_mode = 1
+
+[node name="DiscordLoginButton" type="Button" parent="LoginPanel/Panel"]
+custom_minimum_size = Vector2(170, 30)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.0
+offset_top = -15.0
+offset_right = 85.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.780392, 0.780392, 0.780392, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("12_p7vxx")
+theme_override_styles/hover = ExtResource("13_8hvnj")
+theme_override_styles/pressed = ExtResource("12_p7vxx")
+theme_override_styles/focus = ExtResource("12_p7vxx")
+text = "     Log in with Discord"
+
+[node name="TextureRect" type="TextureRect" parent="LoginPanel/Panel"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 41.0
+offset_right = 640.0
+offset_bottom = 510.0
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("13_v8fci")
+
 [connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]
 [connection signal="pressed" from="HBoxContainer2/LoginButton" to="." method="_on_login_button_pressed"]
 [connection signal="item_selected" from="HBoxContainer/Control/VBoxContainer/Panel/VBoxContainer/MapOptionsButton" to="." method="_on_map_options_button_item_selected"]
 [connection signal="item_selected" from="HBoxContainer/Control/VBoxContainer/Panel/VBoxContainer/VersionOptionsButton" to="." method="_on_version_options_button_item_selected"]
 [connection signal="toggled" from="HBoxContainer/Control/VBoxContainer/Panel/VBoxContainer/CheckBoxContainer/YourScoreCheckbox" to="." method="_on_your_score_checkbox_toggled"]
 [connection signal="pressed" from="ScoreDescriptionPanel/Panel/CloseButton" to="." method="close_score_description"]
+[connection signal="pressed" from="LoginPanel/Panel/CloseLoginPanel" to="." method="close_login_panel"]
+[connection signal="pressed" from="LoginPanel/Panel/DiscordLoginButton" to="." method="_on_discord_login_button_pressed"]

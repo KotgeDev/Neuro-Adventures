@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cgic4q8egbmxp"]
+[gd_scene load_steps=9 format=3 uid="uid://cgic4q8egbmxp"]
 
 [ext_resource type="Script" path="res://scripts/characters/character_animation.gd" id="1_de5x6"]
+[ext_resource type="Material" uid="uid://c13ui871eji3r" path="res://assets/shaders/flash.tres" id="2_le4fs"]
 [ext_resource type="Texture2D" uid="uid://bcl8r38dmiu4i" path="res://assets/characters/collab_partners/vedal_idle_sheet.png" id="3_y5qvk"]
 [ext_resource type="Texture2D" uid="uid://6almtbu37tf4" path="res://assets/characters/collab_partners/vedal_run_sheet.png" id="4_w5xph"]
 
@@ -148,11 +149,13 @@ _data = {
 script = ExtResource("1_de5x6")
 
 [node name="IdleSprite" type="Sprite2D" parent="."]
+material = ExtResource("2_le4fs")
 position = Vector2(1, -16)
 texture = ExtResource("3_y5qvk")
 hframes = 4
 
 [node name="RunSprite" type="Sprite2D" parent="."]
+material = ExtResource("2_le4fs")
 position = Vector2(1, -16)
 texture = ExtResource("4_w5xph")
 hframes = 6

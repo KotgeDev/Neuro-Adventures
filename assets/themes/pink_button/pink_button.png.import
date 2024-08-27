@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gr7sgu38nolx"
-path="res://.godot/imported/upgrade_hover_9slice.png-9ddfcc6ac788b66df570fca8fec991ae.ctex"
+uid="uid://jdjmm7cfu5gs"
+path="res://.godot/imported/pink_button.png-646599f98f955552a5c97a3400b9610c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/themes/upgrade_hover_9slice.png"
-dest_files=["res://.godot/imported/upgrade_hover_9slice.png-9ddfcc6ac788b66df570fca8fec991ae.ctex"]
+source_file="res://assets/themes/pink_button/pink_button.png"
+dest_files=["res://.godot/imported/pink_button.png-646599f98f955552a5c97a3400b9610c.ctex"]
 
 [params]
 

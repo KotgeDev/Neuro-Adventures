@@ -1,0 +1,6 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://doal46f0dfi43"]
+
+[ext_resource type="Texture2D" uid="uid://cyssbin1ie77l" path="res://assets/themes/transparent_button/transparent_button.png" id="1_cee4s"]
+
+[resource]
+texture = ExtResource("1_cee4s")
