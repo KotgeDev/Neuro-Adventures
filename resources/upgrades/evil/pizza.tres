@@ -10,6 +10,7 @@ upgrade_name = "Pizza"
 icon = ExtResource("1_7fab7")
 descriptions = PackedStringArray("A pineapple pizza will target enemies closest to Evil.")
 upgrade_type = 0
+character = 1
 max_lvl = 1
 scene_template = ExtResource("2_wtc6m")
 unlimited = true

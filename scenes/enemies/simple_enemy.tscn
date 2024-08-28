@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cx1nd5x2s6vyt"]
+[gd_scene load_steps=10 format=3 uid="uid://cx1nd5x2s6vyt"]
 
 [ext_resource type="Script" path="res://scripts/enemies/simple_enemy.gd" id="1_eq34g"]
+[ext_resource type="Material" uid="uid://c13ui871eji3r" path="res://assets/shaders/flash.tres" id="2_1p3gf"]
 [ext_resource type="Texture2D" uid="uid://yhqeksy2iitt" path="res://assets/shared/intoxicated.png" id="2_7ciy8"]
 [ext_resource type="PackedScene" uid="uid://cpp0tc7uqrv4" path="res://scenes/shared/hurtbox.tscn" id="3_s745q"]
 [ext_resource type="Script" path="res://scripts/shared/shadow.gd" id="4_c6u8k"]
@@ -45,9 +46,14 @@ _data = {
 }
 
 [node name="SimpleEnemy" type="Node2D"]
+z_as_relative = false
+y_sort_enabled = true
 script = ExtResource("1_eq34g")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_as_relative = false
+y_sort_enabled = true
+material = ExtResource("2_1p3gf")
 position = Vector2(0, -24)
 hframes = 3
 
@@ -83,8 +89,6 @@ avoidance_mask = 2
 [node name="PathfindTimer" type="Timer" parent="."]
 wait_time = 0.5
 
-[node name="MarchDuration" type="Timer" parent="."]
-
 [node name="Shadow" type="Sprite2D" parent="."]
 script = ExtResource("4_c6u8k")
 
@@ -104,7 +108,6 @@ horizontal_alignment = 1
 
 [connection signal="take_damage" from="Hurtbox" to="." method="_on_hurtbox_take_damage"]
 [connection signal="timeout" from="PathfindTimer" to="." method="_on_pathfind_timer_timeout"]
-[connection signal="timeout" from="MarchDuration" to="." method="_on_march_duration_timeout"]
 
 [editable path="Hurtbox"]
 [editable path="ContinuousHitbox"]

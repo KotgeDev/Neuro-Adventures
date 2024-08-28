@@ -14,17 +14,17 @@ var ai_selected
 var collab_selected 
 
 func _on_map_ready() -> void:
-	add_upgrades_to_pool(CharacterDataManager.all_ai_db)
-	add_upgrades_to_pool(CharacterDataManager.all_collab_db)
+	add_upgrades_to_pool(CharacterManager.all_ai_db)
+	add_upgrades_to_pool(CharacterManager.all_collab_db)
 	
 	ai_selected = SettingsManager.settings.ai_selected
 	collab_selected = SettingsManager.settings.collab_partner_selected
 	
-	add_upgrades_to_pool(CharacterDataManager.character_data[ai_selected].db)
+	add_upgrades_to_pool(CharacterManager.character_data[ai_selected].db)
 	lvl_up(find_upgrade(SettingsManager.default_upgrades[ai_selected][0]))
 	lvl_up(find_upgrade(SettingsManager.default_upgrades[ai_selected][1]))
 	
-	add_upgrades_to_pool(CharacterDataManager.character_data[collab_selected].db)
+	add_upgrades_to_pool(CharacterManager.character_data[collab_selected].db)
 	lvl_up(find_upgrade(SettingsManager.default_upgrades[collab_selected][0]))
 	lvl_up(find_upgrade(SettingsManager.default_upgrades[collab_selected][1]))	
 			
@@ -96,9 +96,9 @@ func lvl_up(upgrade: Upgrade) -> void:
 		upgrade.scene = scene 
 		scene.upgrade = upgrade
 		
-		if upgrade.upgrade_type == Globals.UpgradeType.AI_UPGRADE:
+		if upgrade.upgrade_type == UpgradeResource.UpgradeType.AI_UPGRADE:
 			Globals.add_upgrade_to_ai.emit(scene)
-		elif upgrade.upgrade_type == Globals.UpgradeType.COLLAB_PARTNER_UPGRADE:
+		elif upgrade.upgrade_type == UpgradeResource.UpgradeType.COLLAB_PARTNER_UPGRADE:
 			Globals.add_upgrade_to_collab_partner.emit(scene)	
 
 	else: 

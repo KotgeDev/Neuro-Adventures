@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dqy8eus7xktlq"]
+[gd_scene load_steps=18 format=3 uid="uid://dqy8eus7xktlq"]
 
 [ext_resource type="Script" path="res://scripts/ui/hud.gd" id="1_jg8iq"]
 [ext_resource type="Texture2D" uid="uid://dnl8tal30m0jt" path="res://assets/characters/ais/neuro_icon.png" id="2_3ldxe"]
@@ -13,6 +13,7 @@
 [ext_resource type="StyleBox" uid="uid://bspcvalmxg40p" path="res://assets/themes/upgrade_button/upgrade_button.tres" id="11_tdhkg"]
 [ext_resource type="StyleBox" uid="uid://dwibpkoqk5pkl" path="res://assets/themes/upgrade_button/upgrade_button_hover.tres" id="12_4x88v"]
 [ext_resource type="Material" uid="uid://csxlxcwxw3h3v" path="res://assets/shaders/rainbow.tres" id="12_x3twt"]
+[ext_resource type="Texture2D" uid="uid://nypwia7qdds7" path="res://assets/upgrades/vedal_outline.png" id="14_71yne"]
 [ext_resource type="PackedScene" uid="uid://dd3l4otjd8b3x" path="res://scenes/ui/pause_manager.tscn" id="14_sxq4j"]
 [ext_resource type="PackedScene" uid="uid://d2avq1nqugasc" path="res://scenes/achievements/achievement_display.tscn" id="15_hw7wa"]
 [ext_resource type="PackedScene" uid="uid://duk3c2w31y5sg" path="res://scenes/ui/victory_display.tscn" id="16_br1yu"]
@@ -215,11 +216,18 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 0
 
-[node name="Icon" type="TextureRect" parent="UpgradeChoicePanel/VBoxContainer/HBoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="UpgradeChoicePanel/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="UpgradeChoicePanel/VBoxContainer/HBoxContainer/CenterContainer"]
 layout_mode = 2
 texture = ExtResource("10_bqirj")
 stretch_mode = 3
+
+[node name="Outline" type="TextureRect" parent="UpgradeChoicePanel/VBoxContainer/HBoxContainer/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("14_71yne")
 
 [node name="Description" type="Label" parent="UpgradeChoicePanel/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(290, 0)

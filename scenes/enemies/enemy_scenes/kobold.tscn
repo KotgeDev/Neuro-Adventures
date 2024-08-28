@@ -1,8 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://3rhy5g2brkg6"]
+[gd_scene load_steps=10 format=3 uid="uid://3rhy5g2brkg6"]
 
 [ext_resource type="PackedScene" uid="uid://cx1nd5x2s6vyt" path="res://scenes/enemies/simple_enemy.tscn" id="1_frcrl"]
 [ext_resource type="Texture2D" uid="uid://cjcv4341fqwvo" path="res://assets/enemies/kobold_sheet.png" id="2_il7mv"]
+[ext_resource type="Shader" path="res://assets/shaders/flash.gdshader" id="2_ub6w6"]
 [ext_resource type="Texture2D" uid="uid://bpxvb4opdk1xy" path="res://assets/shared/shadow_m.png" id="3_pblf5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fxq8x"]
+resource_local_to_scene = true
+shader = ExtResource("2_ub6w6")
+shader_parameter/white = null
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5l71l"]
 radius = 4.0
@@ -53,6 +59,7 @@ ATTACK_INTERVAL = 0.5
 VALUE = 3.0
 
 [node name="Sprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_fxq8x")
 position = Vector2(0, -26)
 texture = ExtResource("2_il7mv")
 
@@ -74,11 +81,11 @@ libraries = {
 "": SubResource("AnimationLibrary_u2hhj")
 }
 
-[node name="Shadow" parent="." index="8"]
+[node name="Shadow" parent="." index="7"]
 position = Vector2(-1, -26)
 texture = ExtResource("3_pblf5")
 
-[node name="DmgLabel" parent="." index="10"]
+[node name="DmgLabel" parent="." index="9"]
 offset_left = -19.0
 offset_top = -55.0
 offset_right = 21.0

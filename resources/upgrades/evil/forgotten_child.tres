@@ -10,6 +10,7 @@ upgrade_name = "Forgotten Child "
 icon = ExtResource("1_mrut2")
 descriptions = PackedStringArray("Both characters have + 50% of base damage. Evil will stay further away from you", "Both characters have + 100% of base damage. Evil will stay even further away from you", "Both characters have + 200% of base damage. ReallyGunPull turtle ReallyGunPull turtle")
 upgrade_type = 0
+character = 1
 max_lvl = 3
 scene_template = ExtResource("2_h2ay1")
 unlimited = false

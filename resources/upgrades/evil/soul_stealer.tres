@@ -10,6 +10,7 @@ upgrade_name = "Soul Stealer"
 icon = ExtResource("1_bg5kw")
 descriptions = PackedStringArray("Everytime Evil deals damage, she will gain 1% of the damage dealt as HP", "Everytime Evil deals damage, she will gain 2% of the damage dealt as HP", "Everytime Evil deals damage, she will gain 3% of the damage dealt as HP", "Everytime Evil deals damage, she will gain 5% of the damage dealt as HP")
 upgrade_type = 0
+character = 1
 max_lvl = 4
 scene_template = ExtResource("2_m5ii2")
 unlimited = false

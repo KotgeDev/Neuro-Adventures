@@ -186,21 +186,31 @@ func display_upgrades(upgrades: Array) -> void:
 	upgrade_menu._set_scale_zero()
 	upgrade_menu.ui_Active = true 
 	
-	for upgrade in upgrades:
+	for u in upgrades:
+		var upgrade = u as Upgrade
+		
 		var choice_panel = choice_panel_template.duplicate()
 		var button = choice_panel.get_node("Button")
 		var v_container = choice_panel.get_node("VBoxContainer")
 		var upgrade_name = v_container.get_node("UpgradeName")
 		var h_container = v_container.get_node("HBoxContainer")
-		var icon = h_container.get_node("Icon")
+		var center_container = h_container.get_node("CenterContainer")
+		var icon = center_container.get_node("Icon")
+		var outline = center_container.get_node("Outline")
 		var description = h_container.get_node("Description")
 	
 		button.pressed.connect(_on_upgrade_selected.bind(upgrade))
 		button.mouse_entered.connect(_on_mouse_over_upgrade)
+		
 		if upgrade.unlimited:
 			upgrade_name.text = " %s [Unlimited]" % [upgrade.upgrade_name]
 		else:
 			upgrade_name.text = " %s [Lv%d]" % [upgrade.upgrade_name, upgrade.lvl + 1]
+		var settings = SettingsManager.settings as Settings
+		if upgrade.upgrade_type == UpgradeResource.UpgradeType.AI_UPGRADE:
+			outline.texture = CharacterManager.character_data[settings.ai_selected].icon_outline
+		else:
+			outline.texture = CharacterManager.character_data[settings.collab_partner_selected].icon_outline
 		icon.texture = upgrade.icon
 		description.text = upgrade.descriptions[upgrade.lvl]
 		choice_panel.visible = true

@@ -1,8 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://b200dkpejyj2q"]
+[gd_scene load_steps=9 format=3 uid="uid://b200dkpejyj2q"]
 
 [ext_resource type="PackedScene" uid="uid://cx1nd5x2s6vyt" path="res://scenes/enemies/simple_enemy.tscn" id="1_0t50s"]
-[ext_resource type="Material" uid="uid://c13ui871eji3r" path="res://assets/shaders/flash.tres" id="2_hms1h"]
+[ext_resource type="Shader" path="res://assets/shaders/flash.gdshader" id="2_nw00s"]
 [ext_resource type="Texture2D" uid="uid://8vqq5lkr4kb0" path="res://assets/enemies/blue_slime_sheet.png" id="2_sgjgm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_duryl"]
+resource_local_to_scene = true
+shader = ExtResource("2_nw00s")
+shader_parameter/white = null
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xlo8w"]
 radius = 4.0
@@ -50,7 +55,7 @@ _data = {
 BASE_MAX_SPEED = 25.0
 
 [node name="Sprite2D" parent="." index="0"]
-material = ExtResource("2_hms1h")
+material = SubResource("ShaderMaterial_duryl")
 position = Vector2(0, -29)
 texture = ExtResource("2_sgjgm")
 
@@ -73,10 +78,10 @@ libraries = {
 "": SubResource("AnimationLibrary_2f5do")
 }
 
-[node name="Shadow" parent="." index="8"]
+[node name="Shadow" parent="." index="7"]
 position = Vector2(1, -25)
 
-[node name="DmgLabel" parent="." index="10"]
+[node name="DmgLabel" parent="." index="9"]
 offset_left = -19.0
 offset_top = -30.0
 offset_right = 21.0

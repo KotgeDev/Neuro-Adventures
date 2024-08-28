@@ -10,6 +10,7 @@ upgrade_name = "Programming Socks"
 icon = ExtResource("1_2qp7l")
 descriptions = PackedStringArray("+ 5% faster speed (for both characters)", "+ 10% faster speed (for both characters)", "+ 15% faster speed (for both characters)", "+ 20% faster speed (for both characters)")
 upgrade_type = 1
+character = 4
 max_lvl = 4
 scene_template = ExtResource("2_gepv1")
 unlimited = false

@@ -8,10 +8,38 @@ extends Node
 @onready var anny_upgrades_db = preload("res://resources/upgrades/anny_upgrades_db.tres").db
 
 @onready var character_data = {
-	Globals.CharacterChoice.NEURO: CharacterData.new("Neuro", neuro_upgrades_db, 45, 75, true),
-	Globals.CharacterChoice.VEDAL: CharacterData.new("Vedal", vedal_upgrades_db, 40, 65, false),
-	Globals.CharacterChoice.EVIL: CharacterData.new("Evil", evil_upgrades_db, 60, 50, true),
-	Globals.CharacterChoice.ANNY: CharacterData.new("Anny", anny_upgrades_db, 45, 60, false)
+	Globals.CharacterChoice.NEURO: CharacterData.new(
+		"Neuro",  # Name 
+		neuro_upgrades_db,  # Db  
+		45,  # Hp
+		75,  # Speed 
+		true,  # is AI  
+		preload("res://assets/upgrades/neuro_outline.png")  # icon_outline 
+	),
+	Globals.CharacterChoice.VEDAL: CharacterData.new(
+		"Vedal", 
+		vedal_upgrades_db, 
+		40, 
+		65, 
+		false,
+		preload("res://assets/upgrades/vedal_outline.png")
+	),
+	Globals.CharacterChoice.EVIL: CharacterData.new(
+		"Evil", 
+		evil_upgrades_db, 
+		60, 
+		50, 
+		true,
+		preload("res://assets/upgrades/evil_outline.png")
+	),
+	Globals.CharacterChoice.ANNY: CharacterData.new(
+		"Anny", 
+		anny_upgrades_db, 
+		45, 
+		60, 
+		false,
+		preload("res://assets/upgrades/anny_outline.png")
+	)
 }
 
 func _ready() -> void:

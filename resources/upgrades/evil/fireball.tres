@@ -10,6 +10,7 @@ upgrade_name = "Fireball"
 icon = ExtResource("1_8flnx")
 descriptions = PackedStringArray("Evil fires a fireball in 4 directions every 2s that can pierce up to 2 enemies", "Fireball fire cooldown is reduced to 1.5s", "Evil fires a fireball in 6 directions that can pierce up to 3 enemies", "Fireball damage is increased by 100%", "Evil fires a fireball in 8 directions that can pierce up to 4 enemies", "Evil becomes a 2hu character. Warning, dangerous upgrade.")
 upgrade_type = 0
+character = 1
 max_lvl = 6
 scene_template = ExtResource("2_lc8ql")
 unlimited = false

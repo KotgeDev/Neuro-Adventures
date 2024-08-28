@@ -10,6 +10,7 @@ upgrade_name = "Shock Magnet"
 icon = ExtResource("1_8kwgs")
 descriptions = PackedStringArray("+30% larger item collection range", "+40% larger item collection range", "+50% larger item collection range")
 upgrade_type = 1
+character = 4
 max_lvl = 3
 scene_template = ExtResource("2_ricdq")
 unlimited = false

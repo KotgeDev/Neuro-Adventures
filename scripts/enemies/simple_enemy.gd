@@ -55,7 +55,6 @@ var stunned := false
 #region MARCH
 var march := false 
 var march_direction: Vector2
-var march_duration: float 
 #endregion 
 
 func set_stats() -> void:
@@ -82,8 +81,7 @@ func ready() -> void:
 	$AnimationPlayer.play("idle")
 	
 	if march: 
-		$MarchDuration.wait_time = march_duration 
-		$MarchDuration.start()
+		pass
 	else:
 		if(global_position.distance_to(collab_partner.global_position) < 350.0):
 			make_path()
@@ -132,8 +130,8 @@ func show_dmg_label(dmg) -> void:
 		modulate = Color("f72c75")
 	
 	dmg_label.text = str(dmg)
-	dmg_label.modulate.a = 1.0
-	get_tree().create_tween().tween_property(dmg_label, "modulate:a", 0, 1.0)
+	await get_tree().create_tween().tween_property(dmg_label, "modulate:a", 1.0, 0.3).finished
+	get_tree().create_tween().tween_property(dmg_label, "modulate:a", 0, 1.2)
 	
 
 func _on_hurtbox_take_damage(damage):
@@ -200,9 +198,6 @@ func _on_pathfind_timer_timeout():
 			make_path()
 		else:
 			next_pos = ai.global_position
-
-func _on_march_duration_timeout():
-	queue_free()
 
 func stun(stun_time: float) -> void:
 	stun_effect.visible = true

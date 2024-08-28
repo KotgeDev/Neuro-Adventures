@@ -4,7 +4,7 @@ class_name Upgrade
 var upgrade_name: String 
 var icon: Texture2D
 var descriptions: PackedStringArray 
-var upgrade_type: Globals.UpgradeType 
+var upgrade_type: UpgradeResource.UpgradeType 
 var max_lvl: int 
 var lvl: int 
 var scene_template: PackedScene
@@ -16,7 +16,7 @@ func _init(
 	_name: String,
 	_icon: Texture2D, 
 	_des: PackedStringArray, 
-	_type: Globals.UpgradeType, 
+	_type: UpgradeResource.UpgradeType, 
 	_max: int, 
 	_lvl: int, 
 	_scene_template: PackedScene,

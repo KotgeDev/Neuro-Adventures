@@ -25,8 +25,8 @@ func display_game_over() -> void:
 		var time = pause_manager.get_elapsed_time() 
 		var settings = SettingsManager.settings as Settings
 		var map_name = MapManager.map_data[settings.map_selected].map_name
-		var ai_name = CharacterDataManager.character_data[settings.ai_selected].character_name
-		var collab_name = CharacterDataManager.character_data[settings.collab_partner_selected].character_name
+		var ai_name = CharacterManager.character_data[settings.ai_selected].character_name
+		var collab_name = CharacterManager.character_data[settings.collab_partner_selected].character_name
 		
 		victory_label.text = "Endless Mode"
 		score_label.text = "SCORE: %d" % score
@@ -46,8 +46,8 @@ func _display() -> void:
 	animation_player.play("anim") 
 	mode_label.text = "Map: The Farm [%s]" %  MapManager.MapMode.keys()[MapManager.map_mode].to_lower().capitalize()
 	time_label.text = "Elapsed Time: %s" % pause_manager.get_elapsed_time() 
-	ai_label.text = "AI: %s" % CharacterDataManager.character_data[SettingsManager.settings.ai_selected].character_name
-	collab_label.text = "Collab Partner: %s" % CharacterDataManager.character_data[SettingsManager.settings.collab_partner_selected].character_name	
+	ai_label.text = "AI: %s" % CharacterManager.character_data[SettingsManager.settings.ai_selected].character_name
+	collab_label.text = "Collab Partner: %s" % CharacterManager.character_data[SettingsManager.settings.collab_partner_selected].character_name	
 
 func _on_menu_button_pressed():
 	AudioSystem.end_music()

@@ -10,6 +10,7 @@ upgrade_name = "Viva La Pizza Revolution"
 icon = ExtResource("1_6shm2")
 descriptions = PackedStringArray("Increase speed of all pizza by 30% of base", "Increase damage of all pizza by 50% of base", "Increase speed of all pizza by 50% of base", "Increase damage of all pizza by 150% of base")
 upgrade_type = 0
+character = 1
 max_lvl = 4
 scene_template = ExtResource("2_byctj")
 unlimited = false

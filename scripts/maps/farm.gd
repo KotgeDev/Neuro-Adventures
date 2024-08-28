@@ -19,7 +19,7 @@ var archer_boss = preload("res://scenes/enemies/boss_scenes/archer_boss.tscn")
 
 func spawn_enemies() -> void:
 	await get_tree().process_frame
-	
+
 	# 30 sec prep time 
 	Globals.spawn.emit(slime_template, 50, 0.2)
 	await get_tree().create_timer(30, false).timeout

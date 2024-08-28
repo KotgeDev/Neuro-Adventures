@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bmuxw03rnmk0i"]
+[gd_scene load_steps=20 format=3 uid="uid://bmuxw03rnmk0i"]
 
 [ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_kkv3g"]
 [ext_resource type="Texture2D" uid="uid://ck3vocomisktb" path="res://assets/ui/main_bg.png" id="2_bmufw"]
@@ -16,6 +16,9 @@
 [ext_resource type="PackedScene" uid="uid://bnaykxnl0tv10" path="res://scenes/ui/credits.tscn" id="14_0sj3f"]
 [ext_resource type="PackedScene" uid="uid://dm3hkvfawh3kq" path="res://scenes/achievements/achievements_menu.tscn" id="15_24ye3"]
 [ext_resource type="PackedScene" uid="uid://drltyl0upuj5g" path="res://scenes/ui/announcements.tscn" id="16_ngfms"]
+[ext_resource type="Material" uid="uid://c13ui871eji3r" path="res://assets/shaders/flash.tres" id="17_i8soq"]
+[ext_resource type="Material" uid="uid://csxlxcwxw3h3v" path="res://assets/shaders/rainbow.tres" id="18_i02kk"]
+[ext_resource type="Material" uid="uid://cimhmqlj16qqv" path="res://assets/shaders/smooth_pixel.tres" id="19_xxmfh"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -133,6 +136,30 @@ layout_mode = 1
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
+
+[node name="ShaderLoader" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="ShaderLoader"]
+material = ExtResource("17_i8soq")
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect2" type="TextureRect" parent="ShaderLoader"]
+material = ExtResource("18_i02kk")
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect3" type="TextureRect" parent="ShaderLoader"]
+material = ExtResource("19_xxmfh")
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/CharactersButton" to="." method="_on_characters_button_pressed"]

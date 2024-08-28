@@ -10,6 +10,7 @@ upgrade_name = "Summon Circle"
 icon = ExtResource("1_cbu34")
 descriptions = PackedStringArray("Summon circle. Will slow all enemies within range by 20%", "Will slow all enemies within range by 30% ", "Will slow all enemies within range by 40%", "Increase range of summon circle", "Will slow all enemies within range by 50%", "Will slow all enemies within range by 60%")
 upgrade_type = 0
+character = 1
 max_lvl = 6
 scene_template = ExtResource("2_yvmu0")
 unlimited = false

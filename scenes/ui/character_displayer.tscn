@@ -445,6 +445,9 @@ layout_mode = 2
 texture = ExtResource("1_lvrei")
 stretch_mode = 3
 
+[node name="Outline" type="TextureRect" parent="UpgradePanel/VBoxContainer/HBoxContainer/IconContainer"]
+layout_mode = 2
+
 [node name="Description" type="Label" parent="UpgradePanel/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
@@ -581,6 +584,9 @@ layout_mode = 2
 layout_mode = 2
 texture = ExtResource("1_lvrei")
 stretch_mode = 3
+
+[node name="Outline" type="TextureRect" parent="LvlPanel/VBoxContainer/HBoxContainer/IconContainer"]
+layout_mode = 2
 
 [node name="Description" type="Label" parent="LvlPanel/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(180, 0)

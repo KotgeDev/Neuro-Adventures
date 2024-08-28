@@ -10,6 +10,7 @@ upgrade_name = "Star"
 icon = ExtResource("1_lr8ux")
 descriptions = PackedStringArray("A spinning star spawns and orbits Anny every 2.5s that deals 2 damage. Stars do double damage after 10s", "Interval decreases to 2.0s", "Damage increases to 3", "Interval decreases to 1.5s", "Stars deal double damage after 5s", "Damage increases to 4")
 upgrade_type = 1
+character = 3
 max_lvl = 6
 scene_template = ExtResource("2_hxstn")
 unlimited = false

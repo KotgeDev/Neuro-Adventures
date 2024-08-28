@@ -21,7 +21,7 @@ Globals="*res://scripts/shared/globals.gd"
 AudioSystem="*res://scripts/audio/audiosystem.gd"
 SettingsManager="*res://scripts/settings/settings_manager.gd"
 AchievementManager="*res://scripts/achievements/achievement_manager.gd"
-CharacterDataManager="*res://scripts/characters/character_data_manager.gd"
+CharacterManager="*res://scripts/characters/character_manager.gd"
 MapManager="*res://scripts/maps/map_manager.gd"
 AccountManager="*res://scripts/account/account_manager.gd"
 

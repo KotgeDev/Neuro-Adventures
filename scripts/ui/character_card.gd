@@ -15,7 +15,7 @@ signal selected_t(card: CharacterCard)
 var data: CharacterData
 
 func _ready() -> void:
-	data = CharacterDataManager.character_data[character]
+	data = CharacterManager.character_data[character]
 	
 	character_name.text = data.character_name 
 	if not data.is_ai: 

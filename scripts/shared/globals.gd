@@ -1,18 +1,11 @@
 extends Node
-class_name Global
 
 const FLASH_TIME := 0.05
-
 const MAP_GROUP_NAME := "map"
 const AI_GROUP_NAME := "ai"
 const COLLAB_GROUP_NAME := "collab_partner"
 
 #region Enums 
-enum UpgradeType {
-	AI_UPGRADE,
-	COLLAB_PARTNER_UPGRADE,
-}
-
 enum Owners {
 	OWNED_BY_AI,
 	OWNED_BY_COLLAB_PARTNER,
@@ -27,7 +20,8 @@ enum CharacterChoice {
 	NEURO, 
 	EVIL,
 	VEDAL,
-	ANNY
+	ANNY,
+	NONE
 }
 #endregion 
 

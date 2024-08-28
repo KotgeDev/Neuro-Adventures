@@ -10,6 +10,7 @@ upgrade_name = "Orange"
 icon = ExtResource("1_3313t")
 descriptions = PackedStringArray("Anny has regen which is increased for 30s by collecting an orange with a 1% drop chance", "2% chance for enemies to drop an orange", "3% chance for enemies to drop an orange", "5% chance for enemies to drop an orange")
 upgrade_type = 1
+character = 3
 max_lvl = 4
 scene_template = ExtResource("2_fobeb")
 unlimited = false

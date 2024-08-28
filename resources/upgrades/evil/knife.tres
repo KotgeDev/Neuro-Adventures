@@ -10,6 +10,7 @@ upgrade_name = "Knife"
 icon = ExtResource("1_7f27y")
 descriptions = PackedStringArray("Knife", "Less interval between strikes", "More damage per strike", "Increased range", "Even less interval between strikes", "Increased range. Warning, this range equals Evil\'s default distance from the collab partner")
 upgrade_type = 0
+character = 1
 max_lvl = 6
 scene_template = ExtResource("2_iyaj4")
 unlimited = false

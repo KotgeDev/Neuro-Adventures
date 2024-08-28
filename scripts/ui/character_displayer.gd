@@ -29,7 +29,7 @@ static func create(node: Control, character: Globals.CharacterChoice) -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Render Description 
-	data = CharacterDataManager.character_data[character] 
+	data = CharacterManager.character_data[character] 
 	description_label.text = "HP: %d\nSpeed: %d" \
 		% [int(data.hp), int(data.speed)]
 	character_name.text = data.character_name 
@@ -41,9 +41,9 @@ func _ready():
 	# Render Upgrades 
 	upgrades_db = data.db 
 	if data.is_ai: 
-		shared_upgrades_db = CharacterDataManager.all_ai_db
+		shared_upgrades_db = CharacterManager.all_ai_db
 	else:
-		shared_upgrades_db = CharacterDataManager.all_collab_db
+		shared_upgrades_db = CharacterManager.all_collab_db
 	
 	saved_defaults = SettingsManager.default_upgrades[character]
 	
@@ -52,7 +52,7 @@ func _ready():
 	for upgrade in upgrades_db:
 		add_upgrade_panel(upgrades_container, upgrade)
 	for upgrade_name in saved_defaults:
-		var upgrade = CharacterDataManager.find_upgrade(upgrade_name, upgrades_db)
+		var upgrade = CharacterManager.find_upgrade(upgrade_name, upgrades_db)
 		default_upgrades.append(upgrade)
 		add_upgrade_panel(default_upgrades_container, upgrade, true)
 		remove_upgrade_panel(upgrade, upgrades_container)
@@ -70,11 +70,13 @@ func add_upgrade_panel(container: Control, upgrade: UpgradeResource, outline := 
 	var view_link = labels.get_node("ViewLink")
 	var h_container = v_container.get_node("HBoxContainer")
 	var icon = h_container.get_node("IconContainer").get_node("Icon")
+	var icon_outline = h_container.get_node("IconContainer").get_node("Outline")
 	var description = h_container.get_node("Description")
 	var button = new_panel.get_node("Button")
 	
 	button.pressed.connect(_on_upgrade_selected.bind(upgrade))
 	
+	icon_outline.texture = CharacterManager.character_data[character].icon_outline
 	title.text = upgrade.upgrade_name 
 	description.text = upgrade.descriptions[0]
 	icon.texture = upgrade.icon
@@ -101,12 +103,14 @@ func add_lvl_panel(upgrade: UpgradeResource, lvl: int) -> void:
 	var title = labels.get_node("Title")
 	var h_container = v_container.get_node("HBoxContainer")
 	var icon = h_container.get_node("IconContainer").get_node("Icon")
+	var outline = h_container.get_node("IconContainer").get_node("Outline")
 	var description = h_container.get_node("Description")
 	
 	if upgrade.unlimited:
 		title.text = " %s [Unlimited]" % [upgrade.upgrade_name]
 	else:
 		title.text = " %s [Lv%d]" % [upgrade.upgrade_name, lvl + 1] 
+	outline.texture = CharacterManager.character_data[character].icon_outline
 	description.text = upgrade.descriptions[lvl]
 	icon.texture = upgrade.icon
 	
