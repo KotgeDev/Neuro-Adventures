@@ -46,15 +46,10 @@ _data = {
 }
 
 [node name="SimpleEnemy" type="Node2D"]
-z_as_relative = false
-y_sort_enabled = true
 script = ExtResource("1_eq34g")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-z_as_relative = false
-y_sort_enabled = true
 material = ExtResource("2_1p3gf")
-position = Vector2(0, -24)
 hframes = 3
 
 [node name="StunEffect" type="Sprite2D" parent="."]
