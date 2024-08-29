@@ -115,6 +115,8 @@ func _physics_process(delta):
 		navigation_agent.set_velocity(velocity)
 
 func _on_velocity_computed(velocity: Vector2) -> void:
+	if stunned:
+		return 
 	position += velocity * get_physics_process_delta_time()  
 
 func show_dmg_label(dmg) -> void:

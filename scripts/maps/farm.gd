@@ -106,7 +106,8 @@ func loop_wave(spawn_bos := false) -> void:
 	Globals.spawn.emit(soldier_template, 75, 1.0)
 	Globals.spawn.emit(knight_template, 100, 1.0)
 	await get_tree().create_timer(50, false).timeout
-	add_child(archer_boss.instantiate())
+	if spawn_bos:
+		add_child(archer_boss.instantiate())
 	await get_tree().create_timer(50, false).timeout
 	print_rich("[color=green]Loop Wave Complete[/color]")
 

@@ -121,7 +121,7 @@ func sort_leaderboard(leaderboard: Array) -> void:
 	leaderboard.sort_custom(score_compare) 
 
 func score_compare(a, b) -> bool: 
-	return a.score > b.score
+	return int(a.score) > int(b.score)
 
 func _on_version_options_button_item_selected(index):
 	var version_name = version_options_button.get_item_text(index)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://q4do4wgq6uk8"]
+[gd_scene load_steps=15 format=3 uid="uid://q4do4wgq6uk8"]
 
 [ext_resource type="Script" path="res://scripts/enemies/boss_scenes/archer_boss.gd" id="1_ap1r1"]
+[ext_resource type="Material" uid="uid://c13ui871eji3r" path="res://assets/shaders/flash.tres" id="2_643ys"]
 [ext_resource type="Texture2D" uid="uid://bfvq0ycqm6028" path="res://assets/enemies/elf_archer_boss_sheet.png" id="2_hnqa3"]
 [ext_resource type="PackedScene" uid="uid://cpp0tc7uqrv4" path="res://scenes/shared/hurtbox.tscn" id="2_ty24d"]
 [ext_resource type="PackedScene" uid="uid://mjwkfxpnwct6" path="res://scenes/shared/continuous_hitbox.tscn" id="3_dthlq"]
@@ -72,6 +73,7 @@ _data = {
 script = ExtResource("1_ap1r1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("2_643ys")
 position = Vector2(0, -24)
 texture = ExtResource("2_hnqa3")
 hframes = 10
