@@ -10,7 +10,7 @@ func _ready() -> void:
 func sync_level() -> void:
 	if upgrade.lvl >= 1:
 		collab_partner.max_speed = collab_partner.BASE_MAX_SPEED + collab_partner.BASE_MAX_SPEED * 0.05
-		ai.max_speed =  ai.BASE_MAX_SPEED + ai.BASE_MAX_SPEED * 0.5
+		ai.max_speed =  ai.BASE_MAX_SPEED + ai.BASE_MAX_SPEED * 0.05
 	if upgrade.lvl >= 2: 
 		collab_partner.max_speed = collab_partner.BASE_MAX_SPEED + collab_partner.BASE_MAX_SPEED * 0.10
 		ai.max_speed = ai.BASE_MAX_SPEED + ai.BASE_MAX_SPEED * 0.10
