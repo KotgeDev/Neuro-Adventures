@@ -23,7 +23,7 @@ func _ready() -> void:
 		Notice.create_notice(self, AccountManager.queued_notice_text) 
 		AccountManager.queued_notice_text = ""
 	
-	if not AccountManager.config or OS.has_feature("web"): 
+	if not AccountManager.config: 
 		$VBoxContainer/LeaderboardButton.disabled = true 
 
 #region BUTTONS 
