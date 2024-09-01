@@ -6,9 +6,7 @@ class_name CollabPartner
 @export var BASE_MAX_SPEED := 65.0 
 @export var ACCELERATION := 500.0
 @export var FRICTION := 500.0 
-@export var MAX_HEALTH := 40.0 
-@export var EXP_REQ_INCREMENT := 4
-@export var EXP_REQ_INIT := 2
+@export var MAX_HEALTH := 40.0
 @export var BASE_PICKUP_RANGE := 50.0
 #endregion 
 
@@ -25,11 +23,17 @@ class_name CollabPartner
 var pick_range_lerp = 0.0
 var circle_occ = 0.7
 var circle_work = false
-var expp := 0
-var exp_requirement := EXP_REQ_INIT
-var lv := 1  
 var damaged_atleast_once := false 
 #endregion
+
+#region LEVEL 
+const EXP_REQ_INCREMENT := 4
+const EXP_REQ_INIT := 2
+
+var expp := 0
+var exp_requirement := EXP_REQ_INIT
+var lv := 1 
+#endregion 
 
 #region RAISE THE TIMER
 var raise_the_timer_active := false 
@@ -96,7 +100,7 @@ func _on_collect_exp(value: int) -> void:
 	AudioSystem.play_sfx(exp_sfx, global_position, 0.4)
 	if expp >= exp_requirement: 
 		expp = expp - exp_requirement
-		exp_requirement += EXP_REQ_INCREMENT
+		exp_requirement = EXP_REQ_INIT + lv * EXP_REQ_INCREMENT
 		lv += 1
 		Globals.get_random_upgrades.emit()
 	Globals.update_exp_bar.emit(exp_requirement, expp) 

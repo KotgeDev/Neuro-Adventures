@@ -14,6 +14,10 @@ extends CanvasLayer
 @onready var collab_partner_bar_full = %CollabPartnerBarFull
 @onready var achievement_display = $AchievementDisplay
 @onready var victory_display = $VictoryDisplay
+@onready var reroll_button = %RerollButton
+@onready var reroll_label = %RerollLabel
+@onready var ntx_label = %NtxLabel
+@onready var reroll_container = %RerollContainer
 var collab_partner: CollabPartner 
 var map: MAP 
 #endregion
@@ -38,6 +42,11 @@ var menu_allowed := true
 var upgrade_screen_on := false 
 var display_level = 0
 #endregion
+
+#region REROLL
+const REROLL_PENALTY_INCREMENT := 5
+var reroll_count := 0 
+#endregion 
 
 func _ready() -> void:
 	connect_signals()
@@ -84,6 +93,9 @@ func _process(delta: float) -> void:
 	exp_bar.value = lerpf(exp_bar.value, exp_value, delta*7)
 
 func _on_game_over() -> void:
+	if pause_manager.game_ended: 
+		return 
+	
 	pause_manager.game_ended = true 
 	pause_manager.pause_game()
 	AudioSystem.set_music_pitch(0.05, 2.5)
@@ -172,12 +184,16 @@ func _on_send_random_upgrades(upgrades: Array) -> void:
 	display_level += 1 
 	level_counter.text = str(display_level)
 	
-	%UpgradeLabel.visible = false
+	ntx_label.visible = false
+	reroll_container.visible = true 
+	
 	pause_manager.pause_game()
 	display_upgrades(upgrades)
 
 func _on_send_all_existing_upgrades(upgrades: Array) -> void:
-	%UpgradeLabel.visible = true 
+	ntx_label.visible = true 
+	reroll_container.visible = false 
+	
 	pause_manager.pause_game()
 	display_upgrades(upgrades) 
 	
@@ -220,12 +236,15 @@ func _on_mouse_over_upgrade() -> void:
 	AudioSystem.play_sfx(menu_blip2, Vector2(640 / 2.0, 340 / 2.0))
 
 func _on_upgrade_selected(upgrade: Upgrade) -> void:
+	collab_partner.exp_requirement += reroll_count * REROLL_PENALTY_INCREMENT
+	reroll_count = 0 
+	reroll_label.visible = false 
+	
 	pause_manager.unpause_game()
 	AudioSystem.play_sfx(menu_blip2, Vector2(640 / 2.0, 340 / 2.0))
 	Globals.lvl_up.emit(upgrade)
 	upgrade_menu.visible = false 
-	var container = choice_panel_container
-	for child in container.get_children():
+	for child in choice_panel_container.get_children():
 		child.queue_free() 
 
 func _on_fps_counter_update_timer_timeout():
@@ -234,4 +253,14 @@ func _on_fps_counter_update_timer_timeout():
 func set_fps_counter_state(toggled_on: bool) -> void:
 	fps_counter.visible = toggled_on
 
-
+func _on_reroll_button_pressed():
+	
+	reroll_label.visible = true 
+	
+	for child in choice_panel_container.get_children():
+		child.queue_free() 
+	
+	reroll_count += 1 
+	reroll_label.text = "Penalty: %d exp" % (reroll_count * REROLL_PENALTY_INCREMENT)
+	
+	Globals.get_random_upgrades.emit()

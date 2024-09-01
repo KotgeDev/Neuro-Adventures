@@ -83,10 +83,7 @@ func ready() -> void:
 	if march: 
 		pass
 	else:
-		if(global_position.distance_to(collab_partner.global_position) < 350.0):
-			make_path()
-		else:
-			next_pos = ai.global_position
+		make_path()
 
 func make_path() -> void:
 	navigation_agent.target_position = ai.global_position

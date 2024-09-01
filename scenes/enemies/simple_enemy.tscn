@@ -77,7 +77,8 @@ position = Vector2(0, -7)
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="NavPosition"]
 avoidance_enabled = true
 radius = 6.0
-neighbor_distance = 100.0
+neighbor_distance = 75.0
+max_neighbors = 5
 avoidance_layers = 2
 avoidance_mask = 2
 

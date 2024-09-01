@@ -155,8 +155,9 @@ offset_bottom = 109.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="UpgradeLabel" type="Label" parent="UpgradeMenu/VBoxContainer"]
+[node name="NtxLabel" type="Label" parent="UpgradeMenu/VBoxContainer"]
 unique_name_in_owner = true
+visible = false
 material = ExtResource("12_x3twt")
 layout_mode = 2
 text = "NTX 4090!!!"
@@ -173,6 +174,26 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 1
+
+[node name="RerollContainer" type="HBoxContainer" parent="UpgradeMenu/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="RerollButton" type="Button" parent="UpgradeMenu/VBoxContainer/RerollContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 20
+text = "Reroll"
+
+[node name="RerollLabel" type="Label" parent="UpgradeMenu/VBoxContainer/RerollContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Penalty: 0 exp"
 
 [node name="UpgradeChoicePanel" type="Control" parent="."]
 visible = false
@@ -263,4 +284,5 @@ visible = false
 pause_manager = NodePath("../PauseManager")
 
 [connection signal="timeout" from="FPSCounterUpdateTimer" to="." method="_on_fps_counter_update_timer_timeout"]
+[connection signal="pressed" from="UpgradeMenu/VBoxContainer/RerollContainer/RerollButton" to="." method="_on_reroll_button_pressed"]
 [connection signal="close_display" from="AchievementDisplay" to="." method="_on_achievement_display_close"]

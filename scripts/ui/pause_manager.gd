@@ -12,6 +12,8 @@ var pause_start_time_msec := 0.0
 var total_paused_time_msec := 0.0 
 var game_ended := false 
 
+var already_paused := false 
+
 func _ready() -> void:
 	start_time_msec = Time.get_ticks_msec()
 	Input.set_custom_mouse_cursor(cursor, Input.CURSOR_ARROW, Vector2(32, 32))
@@ -35,6 +37,11 @@ func _process(delta):
 
 ## Call to pause the game 
 func pause_game(show_menu := false):
+	if already_paused:
+		return 
+	
+	already_paused = true 
+	
 	AudioSystem.set_music_volume(0.5)
 	Input.set_custom_mouse_cursor(null)
 	get_tree().paused = true
@@ -45,6 +52,11 @@ func pause_game(show_menu := false):
 
 ## Call to unpause the game 
 func unpause_game(hide_menu := false):
+	if not already_paused: 
+		return 
+	
+	already_paused = false 
+	
 	AudioSystem.set_music_volume(1)
 	Input.set_custom_mouse_cursor(cursor, Input.CURSOR_ARROW, Vector2(32, 32))
 	get_tree().paused = false
