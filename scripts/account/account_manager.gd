@@ -170,6 +170,9 @@ func _on_send_score(score: int, level: int, time: String, map: String, ai: Strin
 	match response_code: 
 		200:
 			print("Score succesfully sent")
+			var response_body = JSON.parse_string(response[3].get_string_from_utf8())
+			if response_body["token_refreshed"]:
+				oauth.update_tokens(response_body["token"], response_body["refresh_token"])
 		401:
 			
 			queued_notice_text = "Score could not be sent! Authentication error! Try to log out and log in again."

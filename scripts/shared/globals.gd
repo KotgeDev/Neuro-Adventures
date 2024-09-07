@@ -26,9 +26,12 @@ enum CharacterChoice {
 #endregion 
 
 #region DAMAGE MODIFIERS 
-# Any functions that modify damage received or given by the characters 
-# must be added to one of the following groups and have the required 
-# parameters and return values 
+## Any functions that modify damage received or given by the characters 
+## must meet the following requirements: 
+## 1. Be added to one of the following groups
+## 2. Have the exact same name as the group name 
+## 3. Have the required parameters and return values listed 
+
 ## param: BASE_DAMAGE: float, modified_damage: float 
 ## return: modified_damage  
 const DAMAGE_RECEIVED_MODIFIERS_AI := "damage_received_modifiers_ai"

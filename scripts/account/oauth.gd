@@ -169,6 +169,11 @@ func revoke_tokens() -> void:
 	else:
 		printerr("Token revocation failed!")
 
+func update_tokens(_token, _refresh_token) -> void:
+	token = _token 
+	refresh_token = _refresh_token 
+	save_tokens()
+
 #region SAVE / LOAD
 const SAVE_DIR = "user://token.dat"
 
