@@ -10,6 +10,7 @@ upgrade_name = "Gymbag Drone"
 icon = ExtResource("1_24jr4")
 descriptions = PackedStringArray("A gymbag drone that will strike enemies at random. Will return to Neuro every 25 seconds.")
 upgrade_type = 0
+character = 0
 max_lvl = 1
 scene_template = ExtResource("2_ee032")
 unlimited = true

@@ -10,6 +10,7 @@ upgrade_name = "iNuke6000"
 icon = ExtResource("1_6tmaa")
 descriptions = PackedStringArray("iNuke6000s are dropped at a random enemy in range every 6 s dealing splash damage of 12. MAY TARGET COLLAB PARTNER", "Nuke launch time is reduced", "Two nukes are launched at a time", "Nuke launch time is further reduce", "Three nukes are launched at a time")
 upgrade_type = 0
+character = 0
 max_lvl = 5
 scene_template = ExtResource("2_jgmaf")
 unlimited = false

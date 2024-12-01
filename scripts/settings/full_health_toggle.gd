@@ -7,4 +7,3 @@ func _ready():
 
 func _on_toggled(toggled_on: bool) -> void:
 	SettingsManager.settings.full_health_effect = toggled_on 
-

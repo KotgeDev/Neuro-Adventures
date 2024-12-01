@@ -10,6 +10,7 @@ upgrade_name = "Creggs"
 icon = ExtResource("1_vreuu")
 descriptions = PackedStringArray("% chance for enemies to drop a chicken bake (Gives 7 HP to the Collab Partner)", "2% chance for enemies to drop chicken bake ", "3% chance for enemies to drop chicken bake ", "5% chance for enemies to drop chicken bake")
 upgrade_type = 1
+character = 0
 max_lvl = 4
 scene_template = ExtResource("2_6v71m")
 unlimited = false

@@ -10,6 +10,7 @@ upgrade_name = "Say it Back! "
 icon = ExtResource("1_io81y")
 descriptions = PackedStringArray("Both characters have + 50% of base damage. The AI will chase after you closer", "Both characters have + 100% of base damage. The AI will chase after you even closer", "Both characters have + 200% of base damage. The AI will chase after you like never before. ")
 upgrade_type = 0
+character = 0
 max_lvl = 3
 scene_template = ExtResource("2_fyeig")
 unlimited = false

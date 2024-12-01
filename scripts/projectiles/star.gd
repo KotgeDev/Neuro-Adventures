@@ -57,4 +57,3 @@ func _on_charged_damage_timer_timeout():
 	multi_hitbox.damage *= 2 
 	sprite_2d.material = load("res://assets/shaders/rainbow.tres")
 	sprite_2d.material.set_shader_parameter("strength", 0.5)
-

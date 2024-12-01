@@ -9,5 +9,3 @@ func _on_area_entered(area):
 	set_damage(damage, area)
 	if count == 0: 
 		self_destruct.emit()
-
-

@@ -60,5 +60,3 @@ func _on_announcement_icon_pressed():
 
 func _on_close() -> void:
 	v_box_container.visible = true 
-
-

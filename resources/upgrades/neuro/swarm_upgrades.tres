@@ -10,6 +10,7 @@ upgrade_name = "Swarm Upgrades"
 icon = ExtResource("1_l7hxc")
 descriptions = PackedStringArray("Increase damage of all gymbag drones by 100% of base", "Increase speed of all gymbag drones by 50% of base", "Increase damage of all gymbag drones by 200% of base", "Increase speed of all gymbag drones by 100% of base")
 upgrade_type = 0
+character = 0
 max_lvl = 4
 scene_template = ExtResource("2_1li3o")
 unlimited = false

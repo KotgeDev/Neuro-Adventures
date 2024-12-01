@@ -40,7 +40,6 @@ var pause_start_time_msec = 0.0
 var total_paused_time_msec = 0.0 
 var menu_allowed := true 
 var upgrade_screen_on := false 
-var display_level = 0
 #endregion
 
 #region REROLL
@@ -181,8 +180,7 @@ func _on_update_exp_bar(max, exp) -> void:
 	exp_value = float(exp) / float(max) * 100
 
 func _on_send_random_upgrades(upgrades: Array) -> void:
-	display_level += 1 
-	level_counter.text = str(display_level)
+	level_counter.text = str(collab_partner.lv)
 	
 	ntx_label.visible = false
 	reroll_container.visible = true 

@@ -53,4 +53,3 @@ func _damage_given_modifiers_collab(BASE_DAMAGE: float, modified_damage: float, 
 		modified_damage = upgrade.damage_given_modifiers_collab(BASE_DAMAGE, modified_damage, area) 
 
 	return modified_damage
-

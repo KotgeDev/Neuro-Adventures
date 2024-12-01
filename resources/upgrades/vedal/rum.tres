@@ -10,6 +10,7 @@ upgrade_name = "Rum"
 icon = ExtResource("1_i82jy")
 descriptions = PackedStringArray("Vedal will throw rum at enemies that stuns them ", "Stun duration increased to 1s", "Rum fire rate is increased", "Rum splash lasts longer and deals more frequent damage", "Rum splash will stun all enemies stepping in for 3s")
 upgrade_type = 1
+character = 0
 max_lvl = 5
 scene_template = ExtResource("2_wx76o")
 unlimited = false

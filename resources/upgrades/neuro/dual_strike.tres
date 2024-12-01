@@ -10,6 +10,7 @@ upgrade_name = "Dual Strike"
 icon = ExtResource("1_wet5n")
 descriptions = PackedStringArray("Dual Strike", "Less interval between strikes ", "Double damage per strike", "Greater strike range", "Even Less interval between strikes")
 upgrade_type = 0
+character = 0
 max_lvl = 5
 scene_template = ExtResource("2_bsg2v")
 unlimited = false

@@ -39,5 +39,3 @@ func _ready() -> void:
 
 func _on_close_button_pressed():
 	close()
-
-

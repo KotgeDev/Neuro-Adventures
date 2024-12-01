@@ -10,6 +10,7 @@ upgrade_name = "DM Allegations"
 icon = ExtResource("1_1rgvs")
 descriptions = PackedStringArray("Press [space] for Vedal to become immune for 0.4s. Pink notif means ability is ready", "Cooldown is reduced to 4s", "Immunity duration increased to 0.6s", "Cooldown is reduced to 3s", "Cooldown is reduced to 2s")
 upgrade_type = 1
+character = 0
 max_lvl = 5
 scene_template = ExtResource("2_nlbua")
 unlimited = false

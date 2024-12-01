@@ -8,4 +8,3 @@ func pickup_not_allowed() -> bool:
 
 func fire_signal() -> void:
 	Globals.collect_orange.emit() 
-

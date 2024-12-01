@@ -19,4 +19,3 @@ func _on_heal_timer_timeout():
 		health = MAX_HEALTH
 	
 	Globals.update_collab_partner_health.emit(MAX_HEALTH, health, false)
-

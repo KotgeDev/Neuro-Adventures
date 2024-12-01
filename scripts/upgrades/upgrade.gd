@@ -32,4 +32,3 @@ func _init(
 	scene_template = _scene_template
 	unlimited = _unlimited 
 	tag = _tag
-

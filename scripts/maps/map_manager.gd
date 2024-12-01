@@ -26,4 +26,3 @@ func get_names() -> Array:
 		names_array.append(map_data[data].map_name)
 
 	return names_array 
-

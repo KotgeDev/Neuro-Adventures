@@ -12,4 +12,3 @@ func _on_collect_creggs() -> void:
 		health = MAX_HEALTH
 	
 	Globals.update_collab_partner_health.emit(MAX_HEALTH, health, false)
-
