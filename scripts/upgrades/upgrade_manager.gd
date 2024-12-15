@@ -19,14 +19,22 @@ func _on_map_ready() -> void:
 	
 	ai_selected = SettingsManager.settings.ai_selected
 	collab_selected = SettingsManager.settings.collab_partner_selected
-	
 	add_upgrades_to_pool(CharacterManager.character_data[ai_selected].db)
-	lvl_up(find_upgrade(SettingsManager.default_upgrades[ai_selected][0]))
-	lvl_up(find_upgrade(SettingsManager.default_upgrades[ai_selected][1]))
-	
 	add_upgrades_to_pool(CharacterManager.character_data[collab_selected].db)
-	lvl_up(find_upgrade(SettingsManager.default_upgrades[collab_selected][0]))
-	lvl_up(find_upgrade(SettingsManager.default_upgrades[collab_selected][1]))	
+	
+	var ai_defaults = SettingsManager.default_upgrades[ai_selected]
+	var collab_defaults = SettingsManager.default_upgrades[collab_selected]
+	
+	if ai_defaults.size() == 2:
+		lvl_up(find_upgrade(ai_defaults[0]))
+		lvl_up(find_upgrade(ai_defaults[1]))
+	elif ai_defaults.size() == 1: 
+		lvl_up(find_upgrade(ai_defaults[0]))
+	if collab_defaults.size() == 2: 	
+		lvl_up(find_upgrade(collab_defaults[0]))
+		lvl_up(find_upgrade(collab_defaults[1]))	
+	elif collab_defaults.size() == 1: 
+		lvl_up(find_upgrade(collab_defaults[0]))
 			
 func find_upgrade(upgrade_name: String) -> Upgrade: 
 	for upgrade in upgrades_pool: 
