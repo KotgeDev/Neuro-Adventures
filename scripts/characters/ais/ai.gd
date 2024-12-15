@@ -59,10 +59,10 @@ func _physics_process(delta: float) -> void:
 	position += velocity * delta 
 
 func _on_hurtbox_take_damage(damage: float, shake := true):
-	damage = damage_received_modifiers_ai(damage)
+	damage = ai_damage_reduction_modifiers(damage)
 	if damage == 0.0:
 		return 
-	
+		
 	health -= damage 
 	character_animation.show_damage()
 	Globals.update_ai_health.emit(MAX_HEALTH, health, shake)
@@ -71,16 +71,14 @@ func _on_hurtbox_take_damage(damage: float, shake := true):
 		
 	AudioSystem.play_sfx(hit_sfx, global_position)
 
-func damage_received_modifiers_ai(BASE_DAMAGE: float) -> float:
+func ai_damage_reduction_modifiers(BASE_DAMAGE: float) -> float:
 	var modified_damage := BASE_DAMAGE
 	
-	for upgrade in get_tree().get_nodes_in_group(Globals.DAMAGE_RECEIVED_MODIFIERS_AI):
-		modified_damage = upgrade.damage_received_modifiers_ai(BASE_DAMAGE, modified_damage) 
-	
-	var gaslight = get_tree().get_first_node_in_group("gaslight")
-	if gaslight:
-		modified_damage = gaslight.damage_received_modifiers_ai(BASE_DAMAGE, modified_damage) 
-
+	for upgrade in get_tree().get_nodes_in_group(Globals.AI_DAMAGE_REDUCTION_MODIFIERS  ):
+		modified_damage = upgrade.ai_damage_reduction_modifiers(BASE_DAMAGE, modified_damage) 
+		if modified_damage == 0:
+			return 0 
+		
 	return modified_damage
 
 func _on_add_upgrade(upgrade: Node) -> void:

@@ -23,10 +23,6 @@ var hit_sfx: AudioStream = preload("res://assets/sfx/knifestab.wav")
 var damage 
 var tween 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	sync_level() 
-
 func sync_level() -> void:
 	match upgrade.lvl:
 		1:

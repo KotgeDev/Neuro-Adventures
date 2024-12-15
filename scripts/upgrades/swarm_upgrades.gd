@@ -8,7 +8,6 @@ extends UpgradeScene
 @onready var map = get_tree().get_first_node_in_group("map") as MAP
 
 func _ready() -> void:
-	sync_level()
 	Globals.update_drones.connect(sync_level)
 
 func sync_level() -> void:

@@ -15,9 +15,6 @@ var damage: float
 var grace_period: float
 var enemy_count: int 
 
-func _ready():
-	sync_level() 
-
 func sync_level() -> void:
 	match upgrade.lvl:
 		1:

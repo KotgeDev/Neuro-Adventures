@@ -82,7 +82,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _on_hurtbox_take_damage(damage: float):
-	damage = damage_received_modifiers_collab(damage)
+	damage = collab_damage_reduction_modifiers(damage)
 	if damage == 0.0:
 		return 
 	
@@ -108,15 +108,15 @@ func _on_collect_exp(value: int) -> void:
 	if raise_the_timer_active:
 		Globals.heal_ai.emit(per_exp_ai_hp_increase)
 
-func damage_received_modifiers_collab(BASE_DAMAGE: float) -> float:
+func collab_damage_reduction_modifiers(BASE_DAMAGE: float) -> float:
 	var modified_damage := BASE_DAMAGE
 	
-	for upgrade in get_tree().get_nodes_in_group(Globals.DAMAGE_RECEIVED_MODIFIERS_COLLAB):
-		modified_damage = upgrade.damage_received_modifiers_collab(BASE_DAMAGE, modified_damage) 
+	for upgrade in get_tree().get_nodes_in_group(Globals.COLLAB_DAMAGE_REDUCTION_MODIFIERS):
+		modified_damage = upgrade.collab_damage_reduction_modifiers(BASE_DAMAGE, modified_damage) 
 	
 	var dm_allegations = get_tree().get_first_node_in_group("dm_allegations")
 	if dm_allegations:
-		modified_damage = dm_allegations.damage_received_modifiers_collab(BASE_DAMAGE, modified_damage) 
+		modified_damage = dm_allegations.collab_damage_reduction_modifiers(BASE_DAMAGE, modified_damage) 
 
 	
 	return modified_damage

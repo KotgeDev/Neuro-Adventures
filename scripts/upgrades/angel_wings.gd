@@ -19,9 +19,6 @@ var damage: float
 var hit_count: int 
 var feather_count: int 
 
-func _ready() -> void:
-	sync_level() 
-
 func sync_level() -> void:
 	match upgrade.lvl: 
 		1:

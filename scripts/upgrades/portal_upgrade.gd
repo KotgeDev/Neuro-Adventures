@@ -21,14 +21,6 @@ var teleport_available := false
 
 var portal_sfx: AudioStream = preload("res://assets/sfx/annyteleport.wav")
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	sync_level()
-	loading_timer.wait_time = base_loading_time
-	loading_timer.start()
-	
-	#ai.add_child(ai_portal)
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_just_pressed("ability") and teleport_available:
@@ -36,22 +28,26 @@ func _process(delta):
 
 func teleport() -> void:
 	var mouse_pos: Vector2 = get_global_mouse_position()
-	var area_legal = mouse_pos == NavigationServer2D.map_get_closest_point(navi_agent.get_navigation_map(), mouse_pos) 
+	var nav_pos = NavigationServer2D.map_get_closest_point(navi_agent.get_navigation_map(), mouse_pos) 
 	
-	if area_legal: 
+	if mouse_in_valid_position(mouse_pos): 
 		var anny_pos: Vector2 = anny.global_position
 		sprite.visible = false 
 		teleport_available = false 
 		loading_timer.wait_time = base_loading_time + anny_pos.distance_squared_to(mouse_pos) * 0.0002
 		loading_timer.start()
-		anny.global_position = mouse_pos
+		anny.global_position = nav_pos
 		anny_portal.play_animation() 
 		AudioSystem.play_sfx(portal_sfx, global_position)
 	else:
 		warning_label.visible = true 
 		await get_tree().create_timer(3.0).timeout 
 		warning_label.visible = false 
-	
+
+func mouse_in_valid_position(mouse_pos: Vector2): 
+	var screen_size = get_viewport().size 
+	return mouse_pos.x >= 0 and mouse_pos.x <= screen_size.x and mouse_pos.y >= 0 and mouse_pos.y <= screen_size.y
+
 func _on_loading_timer_timeout():
 	loading_timer.stop()
 	sprite.visible = true
@@ -59,6 +55,9 @@ func _on_loading_timer_timeout():
 
 func sync_level() -> void:
 	match upgrade.lvl:
+		1: 
+			loading_timer.wait_time = base_loading_time
+			loading_timer.start()
 		2:
 			base_loading_time = LV2_BASE_COOLDOWN
 		3:

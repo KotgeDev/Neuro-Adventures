@@ -12,7 +12,6 @@ extends UpgradeScene
 var slow_multiplier: float 
 
 func _ready() -> void:
-	sync_level() 
 	$AnimationPlayer.play("spin")
 
 func sync_level() -> void:

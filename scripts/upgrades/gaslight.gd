@@ -1,9 +1,9 @@
 extends UpgradeScene
 
 func _ready() -> void: 
-	add_to_group("gaslight")
+	add_to_group(Globals.AI_DAMAGE_REDUCTION_MODIFIERS)
 
-func damage_received_modifiers_ai(BASE_DAMAGE: float, modified_damage: float) -> float:
+func ai_damage_reduction_modifiers(BASE_DAMAGE: float, modified_damage: float) -> float:
 	match upgrade.lvl: 
 		1:
 			modified_damage = get_gaslight_damage(modified_damage, 5, 10)

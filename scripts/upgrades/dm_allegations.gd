@@ -18,7 +18,6 @@ var duration := 0.0
 
 func _ready() -> void: 
 	add_to_group("dm_allegations")
-	sync_level()
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ability") and available:
@@ -34,7 +33,7 @@ func _process(_delta: float) -> void:
 		cooldown_timer.start() 
 		animation_player.play("loading")
 
-func damage_received_modifiers_collab(BASE_DAMAGE: float, modified_damage: float) -> float:
+func collab_damage_reduction_modifiers(BASE_DAMAGE: float, modified_damage: float) -> float:
 	if active: 
 		return 0 
 	else:

@@ -6,6 +6,6 @@ class_name MultiHitbox
 
 func _on_area_entered(area):
 	count -= 1
-	set_damage(damage, area)
+	give_damage(damage, area)
 	if count == 0: 
 		self_destruct.emit()

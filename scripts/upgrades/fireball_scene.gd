@@ -29,19 +29,15 @@ var damage = LV1_DAMAGE
 var pierce = LV1_PIERCE
 var projectile_count = LV1_PROJECTILE_COUNT
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	fire_timer.wait_time = LV1_WAIT_TIME
-	sync_level() 
-
 func sync_level() -> void:
 	match upgrade.lvl:
+		1: 
+			fire_timer.wait_time = LV1_WAIT_TIME
 		2:
 			fire_timer.wait_time = LV2_WAIT_TIME
 		3:
 			projectile_count = LV3_PROJECTILE_COUNT
 			pierce = LV3_PIERCE
-			
 		4:
 			damage = LV4_DAMAGE
 		5:

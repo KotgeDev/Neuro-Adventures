@@ -37,9 +37,6 @@ var stun: float
 var hit_sfx: AudioStream = preload("res://assets/sfx/vedal_throw.wav")
 #endregion 
 
-func _ready() -> void:
-	sync_level()
-
 func _on_fire_timer_timeout():		
 	if collab_partner.velocity > Vector2.ZERO: 
 		fire_location.position = Vector2(8, 5)

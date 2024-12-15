@@ -4,7 +4,6 @@ extends UpgradeScene
 
 func _ready() -> void:
 	map.raise_the_timer = true 
-	sync_level() 
 
 func sync_level() -> void:
 	match upgrade.lvl:

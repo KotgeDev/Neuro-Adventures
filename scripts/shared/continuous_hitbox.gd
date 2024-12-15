@@ -7,7 +7,7 @@ var areas_count := 0
 
 func _on_hit_timer_timeout():
 	for area in get_overlapping_areas():
-		set_damage(damage, area)
+		give_damage(damage, area)
 
 func _on_duration_timeout():
 	self_destruct.emit()

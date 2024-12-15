@@ -1,9 +1,9 @@
 extends UpgradeScene
 
 func _ready() -> void: 
-	add_to_group("filter")
+	add_to_group(Globals.AI_ATTACK_MODIFIERS)
 
-func damage_given_modifiers_ai(
+func ai_attack_modifiers(
 	BASE_DAMAGE: float, 
 	modified_damage: float, 
 	area: Area2D

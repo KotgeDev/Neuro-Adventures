@@ -7,9 +7,6 @@ extends UpgradeScene
 
 @onready var collab_partner: CollabPartner = get_parent() 
 
-func _ready() -> void:
-	sync_level()
-
 func sync_level() -> void:
 	match upgrade.lvl: 
 		1:

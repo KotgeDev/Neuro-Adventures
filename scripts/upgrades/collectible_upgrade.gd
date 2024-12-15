@@ -15,8 +15,6 @@ var collectible_generator: CollectibleGenerator
 func _ready() -> void:
 	collectible_generator = CollectibleGenerator.new(collectible_name, lv1_chance, collectible_scene)
 	Globals.add_collectible_generator.emit(collectible_generator)
-	
-	sync_level()
 
 func sync_level() -> void:
 	match upgrade.lvl: 

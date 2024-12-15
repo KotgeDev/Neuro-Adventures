@@ -7,9 +7,6 @@ extends UpgradeScene
 
 @onready var ai: AI = get_parent() 
 
-func _ready() -> void:
-	sync_level()
-
 func sync_level() -> void:
 	match upgrade.lvl: 
 		1:

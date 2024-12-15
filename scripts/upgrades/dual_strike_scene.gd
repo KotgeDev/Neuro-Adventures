@@ -28,10 +28,6 @@ var hit_sfx: AudioStream = preload("res://assets/sfx/sword_swish.wav")
 var large := false 
 @onready var damage = LV1_DAMAGE 
 
-func _ready() -> void:
-	sync_level() 
-	fire_timer.wait_time = LV1_WAIT_TIME 
-
 func _on_fire_timer_timeout():
 	strikes.look_at(get_global_mouse_position())
 	
@@ -49,17 +45,17 @@ func strike(pos: int, flip: bool) -> void:
 	AudioSystem.play_sfx(hit_sfx, ai.global_position, 0.4)
 
 func sync_level() -> void:
-	if upgrade.lvl >= 2: 
-		fire_timer.wait_time = LV2_WAIT_TIME
-	
-	if upgrade.lvl >= 3: 
-		damage = LV3_DAMAGE 
-	
-	if upgrade.lvl >= 4:
-		large = true 
-	
-	if upgrade.lvl >= 5:
-		strike_1.position += Vector2(5, -5)
-		strike_2.position += Vector2(5, 5)
-		fire_timer.wait_time = LV5_WAIT_TIME 
-		map.dual_strike_max = true 
+	match upgrade.lvl: 
+		1: 
+			fire_timer.wait_time = LV1_WAIT_TIME 
+		2: 
+			fire_timer.wait_time = LV2_WAIT_TIME
+		3:
+			damage = LV3_DAMAGE 
+		4:
+			large = true 
+		5:
+			strike_1.position += Vector2(5, -5)
+			strike_2.position += Vector2(5, 5)
+			fire_timer.wait_time = LV5_WAIT_TIME 
+			map.dual_strike_max = true 

@@ -100,7 +100,7 @@ func lvl_up(upgrade: Upgrade) -> void:
 			Globals.add_upgrade_to_ai.emit(scene)
 		elif upgrade.upgrade_type == UpgradeResource.UpgradeType.COLLAB_PARTNER_UPGRADE:
 			Globals.add_upgrade_to_collab_partner.emit(scene)	
-
 	else: 
 		upgrade.lvl += 1 
-		upgrade.scene.sync_level()  
+
+	upgrade.scene.sync_level()  

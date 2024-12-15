@@ -26,27 +26,29 @@ enum CharacterChoice {
 #endregion 
 
 #region DAMAGE MODIFIERS 
-## Any functions that modify damage received or given by the characters 
+## Any functions that are 
+## attack or damage reduction modifiers 
 ## must meet the following requirements: 
 ## 1. Be added to one of the following groups
-## 2. Have the exact same name as the group name 
+## 2. Have the exact same name as the group (string) name   
 ## 3. Have the required parameters and return values listed 
+## Global modifiers affect both the AI and collab partner. 
 
 ## param: BASE_DAMAGE: float, modified_damage: float 
 ## return: modified_damage  
-const DAMAGE_RECEIVED_MODIFIERS_AI := "damage_received_modifiers_ai"
+const AI_DAMAGE_REDUCTION_MODIFIERS := "ai_damage_reduction_modifiers"
 ## param: BASE_DAMAGE: float, modified_damage: float 
 ## return: modified_damage  
-const DAMAGE_RECEIVED_MODIFIERS_COLLAB := "damage_received_modifiers_collab"
+const COLLAB_DAMAGE_REDUCTION_MODIFIERS := "collab_damage_reduction_modifiers"
 ## param: BASE_DAMAGE: float, modified_damage: float, area: Area2D 
 ## return: modified_damage
-const DAMAGE_GIVEN_MODIFIERS := "damage_given_modifiers_global"
+const GLOBAL_ATTACK_MODIFIERS := "global_attack_modifiers"
 ## param: BASE_DAMAGE: float, modified_damage: float, area: Area2D 
 ## return: modified_damage
-const DAMAGE_GIVEN_MODIFIERS_AI := "damage_given_modifiers_ai"
+const AI_ATTACK_MODIFIERS := "ai_attack_modifiers"
 ## param: BASE_DAMAGE: float, modified_damage: float, area: Area2D 
 ## return: modified_damage
-const DAMAGE_GIVEN_MODIFIERS_COLLAB := "damage_given_modifiers_collab"
+const COLLAB_ATTACK_MODIFIERS := "collab_attack_modifiers"
 #endregion 
 
 ## connect function to this signal if an action 

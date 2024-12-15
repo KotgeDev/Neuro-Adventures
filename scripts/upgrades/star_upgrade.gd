@@ -19,9 +19,6 @@ var damage := LV1_DAMAGE
 var enemy_count := 0 
 var charge_timer := LV1_CHARGE_TIMER
 var angle := 0 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	sync_level() 
 
 func sync_level() -> void:
 	match upgrade.lvl:
