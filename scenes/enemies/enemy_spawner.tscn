@@ -4,9 +4,3 @@
 
 [node name="EnemySpawner" type="Node2D"]
 script = ExtResource("1_fmy0f")
-
-[node name="Path2D" type="Path2D" parent="."]
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(-1, 0)
-rotation = 1.569
