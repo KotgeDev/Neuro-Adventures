@@ -1,8 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://dm83qecyj7rl6"]
+[gd_scene load_steps=11 format=3 uid="uid://dm83qecyj7rl6"]
 
 [ext_resource type="PackedScene" uid="uid://cx1nd5x2s6vyt" path="res://scenes/enemies/simple_enemy.tscn" id="1_j3dd8"]
 [ext_resource type="Texture2D" uid="uid://dyjv33cs7year" path="res://assets/enemies/knight_sheet.png" id="2_gstcd"]
+[ext_resource type="Shader" path="res://assets/shaders/flash.gdshader" id="2_xevrd"]
 [ext_resource type="Texture2D" uid="uid://bpxvb4opdk1xy" path="res://assets/shared/shadow_m.png" id="3_05qd1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j81ub"]
+resource_local_to_scene = true
+shader = ExtResource("2_xevrd")
+shader_parameter/white = null
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kv74k"]
+radius = 7.0
+height = 32.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_83mc8"]
 size = Vector2(12, 29)
@@ -49,8 +59,10 @@ _data = {
 BASE_MAX_HEALTH = 12.0
 BASE_MAX_SPEED = 30.0
 VALUE = 6.0
+AVOIDANCE_RADIUS = 12
 
 [node name="Sprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_j81ub")
 position = Vector2(0, -30)
 texture = ExtResource("2_gstcd")
 hframes = 4
@@ -59,29 +71,28 @@ hframes = 4
 position = Vector2(0, -37)
 
 [node name="Hurtbox" parent="." index="2"]
+visible = true
 position = Vector2(0, -6)
 
-[node name="CollisionPolygon2D" parent="Hurtbox" index="0"]
-polygon = PackedVector2Array(-5, -23, -5, -16, -6, -16, -7, -15, -8, -8, -8, -5, -7, -3, -5, -3, -5, -1, -5, 2, -5, 6, -1, 6, 0, 0, 1, 4, 2, 6, 5, 6, 5, -1, 5, -7, 7, -8, 7, 4, 8, 4, 8, -15, 10, -15, 10, -17, 9, -21, 8, -24, 7, -24, 6, -21, 5, -17, 3, -16, 3, -24, 1, -26, -3, -26)
+[node name="CollisionShape2D" parent="Hurtbox" index="1"]
+position = Vector2(0, -11)
+shape = SubResource("CapsuleShape2D_kv74k")
 
 [node name="CollisionShape2D" parent="ContinuousHitbox" index="3"]
 position = Vector2(2, -14.5)
 shape = SubResource("RectangleShape2D_83mc8")
-
-[node name="NavPosition" parent="." index="4"]
-position = Vector2(0, -7)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
 libraries = {
 "": SubResource("AnimationLibrary_jm0gq")
 }
 
-[node name="Shadow" parent="." index="8"]
+[node name="Shadow" parent="." index="7"]
 position = Vector2(-1, -20)
 texture = ExtResource("3_05qd1")
 offset = Vector2(0, -6)
 
-[node name="DmgLabel" parent="." index="10"]
+[node name="DmgLabel" parent="." index="9"]
 offset_left = -19.0
 offset_top = -57.0
 offset_right = 21.0

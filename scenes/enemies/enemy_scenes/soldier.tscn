@@ -1,8 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://jt51ntggwgnw"]
+[gd_scene load_steps=10 format=3 uid="uid://jt51ntggwgnw"]
 
 [ext_resource type="PackedScene" uid="uid://cx1nd5x2s6vyt" path="res://scenes/enemies/simple_enemy.tscn" id="1_pihnb"]
+[ext_resource type="Shader" path="res://assets/shaders/flash.gdshader" id="2_8bnbr"]
 [ext_resource type="Texture2D" uid="uid://bytkmw7atwqj3" path="res://assets/enemies/soldier_sheet.png" id="2_c7i3u"]
 [ext_resource type="Texture2D" uid="uid://bpxvb4opdk1xy" path="res://assets/shared/shadow_m.png" id="3_xm2k1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ttc6h"]
+resource_local_to_scene = true
+shader = ExtResource("2_8bnbr")
+shader_parameter/white = null
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_twcid"]
+radius = 6.0
+height = 34.0
 
 [sub_resource type="Animation" id="Animation_dkgki"]
 length = 0.001
@@ -47,8 +57,10 @@ BASE_MAX_HEALTH = 8.0
 BASE_MAX_SPEED = 30.0
 ATTACK_INTERVAL = 0.8
 VALUE = 4.0
+AVOIDANCE_RADIUS = 11
 
 [node name="Sprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_ttc6h")
 position = Vector2(0, -30)
 texture = ExtResource("2_c7i3u")
 hframes = 4
@@ -56,8 +68,12 @@ hframes = 4
 [node name="StunEffect" parent="." index="1"]
 position = Vector2(0, -32)
 
-[node name="CollisionPolygon2D" parent="Hurtbox" index="0"]
-polygon = PackedVector2Array(-5, -26, -5, -16, -6, -16, -7, -15, -7, -8, -5, -4, -4, -4, -4, 2, -5, 2, -5, 6, -1, 6, 0, 0, 2, 6, 5, 6, 5, -1, 5, -7, 7, -8, 7, 3, 8, 3, 8, -19, 9, -19, 9, -21, 8, -21, 8, -23, 7, -23, 7, -21, 6, -21, 6, -19, 3, -16, 3, -26, 1, -28, -3, -28)
+[node name="Hurtbox" parent="." index="2"]
+visible = true
+
+[node name="CollisionShape2D" parent="Hurtbox" index="1"]
+position = Vector2(0, -17)
+shape = SubResource("CapsuleShape2D_twcid")
 
 [node name="ContinuousHitbox" parent="." index="3"]
 position = Vector2(0, -6)
@@ -70,11 +86,11 @@ libraries = {
 "": SubResource("AnimationLibrary_jm0gq")
 }
 
-[node name="Shadow" parent="." index="8"]
+[node name="Shadow" parent="." index="7"]
 position = Vector2(-1, -26)
 texture = ExtResource("3_xm2k1")
 
-[node name="DmgLabel" parent="." index="10"]
+[node name="DmgLabel" parent="." index="9"]
 offset_left = -20.0
 offset_top = -54.0
 offset_right = 20.0

@@ -60,10 +60,17 @@ hframes = 4
 [node name="Hurtbox" parent="." instance=ExtResource("3_s745q")]
 visible = false
 collision_layer = 4
+monitoring = false
 owned_by = 2
+
+[node name="CollisionPolygon2D" parent="Hurtbox" index="0"]
+disabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 
 [node name="ContinuousHitbox" parent="." instance=ExtResource("4_jxd8c")]
 collision_mask = 3
+monitorable = false
 owned_by = 2
 
 [node name="CollisionPolygon2D" parent="ContinuousHitbox" index="0"]

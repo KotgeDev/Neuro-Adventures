@@ -47,9 +47,9 @@ func strike(pos: int, flip: bool) -> void:
 func sync_level() -> void:
 	match upgrade.lvl: 
 		1: 
-			fire_timer.wait_time = LV1_WAIT_TIME 
+			fire_timer.base_cooldown = LV1_WAIT_TIME 
 		2: 
-			fire_timer.wait_time = LV2_WAIT_TIME
+			fire_timer.base_cooldown = LV2_WAIT_TIME
 		3:
 			damage = LV3_DAMAGE 
 		4:
@@ -57,5 +57,5 @@ func sync_level() -> void:
 		5:
 			strike_1.position += Vector2(5, -5)
 			strike_2.position += Vector2(5, 5)
-			fire_timer.wait_time = LV5_WAIT_TIME 
+			fire_timer.base_cooldown = LV5_WAIT_TIME 
 			map.dual_strike_max = true 

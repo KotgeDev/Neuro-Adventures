@@ -25,32 +25,6 @@ enum CharacterChoice {
 }
 #endregion 
 
-#region DAMAGE MODIFIERS 
-## Any functions that are 
-## attack or damage reduction modifiers 
-## must meet the following requirements: 
-## 1. Be added to one of the following groups
-## 2. Have the exact same name as the group (string) name   
-## 3. Have the required parameters and return values listed 
-## Global modifiers affect both the AI and collab partner. 
-
-## param: BASE_DAMAGE: float, modified_damage: float 
-## return: modified_damage  
-const AI_DAMAGE_REDUCTION_MODIFIERS := "ai_damage_reduction_modifiers"
-## param: BASE_DAMAGE: float, modified_damage: float 
-## return: modified_damage  
-const COLLAB_DAMAGE_REDUCTION_MODIFIERS := "collab_damage_reduction_modifiers"
-## param: BASE_DAMAGE: float, modified_damage: float, area: Area2D 
-## return: modified_damage
-const GLOBAL_ATTACK_MODIFIERS := "global_attack_modifiers"
-## param: BASE_DAMAGE: float, modified_damage: float, area: Area2D 
-## return: modified_damage
-const AI_ATTACK_MODIFIERS := "ai_attack_modifiers"
-## param: BASE_DAMAGE: float, modified_damage: float, area: Area2D 
-## return: modified_damage
-const COLLAB_ATTACK_MODIFIERS := "collab_attack_modifiers"
-#endregion 
-
 ## connect function to this signal if an action 
 ## needs to be done only after the map is ready 
 signal map_ready 
@@ -86,6 +60,7 @@ signal remove_maxed_upgrades
 signal update_drones
 signal update_pizza
 signal update_stars(enemy_in_range: bool)
+signal ai_attack(damage: float)
 #endregion 
 
 #region TO COLLAB PARTNER OR AI 

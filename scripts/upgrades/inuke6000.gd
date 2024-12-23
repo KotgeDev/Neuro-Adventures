@@ -20,15 +20,14 @@ func sync_level() -> void:
 		1:
 			damage = DAMAGE
 			grace_period = GRACE_PERIOD
-			launch_timer.wait_time = LV1_FREQUENCY
+			launch_timer.base_cooldown = LV1_FREQUENCY
 			enemy_count = 1
-			
 		2:
-			launch_timer.wait_time = LV2_FREQUENCY
+			launch_timer.base_cooldown = LV2_FREQUENCY
 		3:
 			enemy_count = 2
 		4:
-			launch_timer.wait_time = LV4_FREQUENCY
+			launch_timer.base_cooldown = LV4_FREQUENCY
 		5:
 			enemy_count = 3
 

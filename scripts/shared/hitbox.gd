@@ -15,43 +15,50 @@ signal self_destruct
 
 ## Use this function to give x damage to area  
 func give_damage(damage, area: Hurtbox) -> void:
-	var modified_damage = _apply_attack_modifiers(damage, area)
-	area.receive_damage(modified_damage)
+	var final_damage = _calculate_final_damage(damage, area)
+	area.receive_damage(final_damage)
 
-func _apply_attack_modifiers(BASE_DAMAGE: float, area: Area2D) -> float:	
-	var modified_damage := BASE_DAMAGE 
-	
-	if owned_by == Globals.Owners.OWNED_BY_AI or owned_by == Globals.Owners.OWNED_BY_COLLAB_PARTNER:
-		modified_damage = _global_attack_modifiers(BASE_DAMAGE, modified_damage, area)
+func _calculate_final_damage(BASE_DAMAGE: float, area: Hurtbox) -> float:	
+	var final_damage 
 	
 	if owned_by == Globals.Owners.OWNED_BY_AI:
-		modified_damage = _ai_attack_modifiers(BASE_DAMAGE, modified_damage, area)
+		var total_prc_inc = (
+			BASE_DAMAGE * StatsManager.atk_increase +  
+			BASE_DAMAGE * StatsManager.ai_atk_increase
+		)
+		var total_const_inc = (
+			StatsManager.atk_const_increase +
+			StatsManager.ai_atk_const_increase
+		)
+		var total_multiplier = (
+			StatsManager.atk_mult * 
+			StatsManager.ai_atk_mult
+		)
 		
-	if owned_by == Globals.Owners.OWNED_BY_COLLAB_PARTNER:
-		modified_damage = _collab_attack_modifiers(BASE_DAMAGE, modified_damage, area)
+		final_damage = (BASE_DAMAGE + total_prc_inc) * total_multiplier + total_const_inc
+		
+		if area.owned_by == Globals.Owners.OWNED_BY_COLLAB_PARTNER: 
+			final_damage -= final_damage * StatsManager.filter 
+		
+		# For Soul Stealer 
+		Globals.ai_attack.emit(final_damage)
 	
-	return modified_damage
-
-func _global_attack_modifiers(BASE_DAMAGE: float, modified_damage: float, area: Area2D) -> float:	
-	for upgrade in get_tree().get_nodes_in_group(Globals.GLOBAL_ATTACK_MODIFIERS):
-		modified_damage = upgrade.global_attack_modifiers(BASE_DAMAGE, modified_damage, area) 
-		if modified_damage == 0:
-			return 0 
+	elif owned_by == Globals.Owners.OWNED_BY_COLLAB_PARTNER:
+		var total_prc_inc = (
+			BASE_DAMAGE * StatsManager.atk_increase +  
+			BASE_DAMAGE * StatsManager.collab_atk_increase
+		)
+		var total_const_inc = (
+			StatsManager.atk_const_increase +
+			StatsManager.collab_atk_const_increase
+		)
+		var total_multiplier = (
+			StatsManager.atk_mult * 
+			StatsManager.collab_atk_mult
+		)
 		
-	return modified_damage
+		final_damage = (BASE_DAMAGE + total_prc_inc) * total_multiplier + total_const_inc
+	else: 
+		final_damage = BASE_DAMAGE
 
-func _ai_attack_modifiers(BASE_DAMAGE: float, modified_damage: float, area: Area2D) -> float:
-	for upgrade in get_tree().get_nodes_in_group(Globals.AI_ATTACK_MODIFIERS):
-		modified_damage = upgrade.ai_attack_modifiers(BASE_DAMAGE, modified_damage, area)
-		if modified_damage == 0: 
-			return 0  
-	
-	return modified_damage
-
-func _collab_attack_modifiers(BASE_DAMAGE: float, modified_damage: float, area: Area2D) -> float:
-	for upgrade in get_tree().get_nodes_in_group(Globals.COLLAB_ATTACK_MODIFIERS):
-		modified_damage = upgrade.collab_attack_modifiers(BASE_DAMAGE, modified_damage, area) 
-		if modified_damage == 0:
-			return 0
-		
-	return modified_damage
+	return final_damage

@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://cmhyquyxh1fgw"]
+[gd_scene load_steps=3 format=3 uid="uid://cmhyquyxh1fgw"]
 
 [ext_resource type="Script" path="res://scripts/upgrades/fireball_scene.gd" id="1_5imey"]
+[ext_resource type="Script" path="res://scripts/shared/cooldown_timer.gd" id="2_oyv1f"]
 
 [node name="FireballScene" type="Node2D"]
 script = ExtResource("1_5imey")
 
 [node name="FireTimer" type="Timer" parent="."]
 autostart = true
+script = ExtResource("2_oyv1f")
 
 [connection signal="timeout" from="FireTimer" to="." method="_on_fire_timer_timeout"]

@@ -28,6 +28,7 @@ AchievementManager="*res://scripts/achievements/achievement_manager.gd"
 CharacterManager="*res://scripts/characters/character_manager.gd"
 MapManager="*res://scripts/maps/map_manager.gd"
 AccountManager="*res://scripts/account/account_manager.gd"
+StatsManager="*res://scripts/shared/stats_manager.gd"
 
 [display]
 

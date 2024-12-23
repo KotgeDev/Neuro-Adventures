@@ -21,10 +21,9 @@ func spawn_enemies() -> void:
 	await get_tree().process_frame
 
 	# 30 sec prep time 
-	Globals.spawn.emit(goblin_template, 500, 0.05)
-	await get_tree().create_timer(30, false).timeout
+	Globals.spawn.emit(slime_template, 40, 0.1)
+	await get_tree().create_timer(10, false).timeout
 	
-	return
 	await first_wave()
 	await second_wave()
 	await third_wave()

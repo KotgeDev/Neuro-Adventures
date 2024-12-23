@@ -15,7 +15,7 @@ func _on_collect_orange() -> void:
 func _on_heal_timer_timeout():
 	health += healing_factor
 	
-	if health >= MAX_HEALTH:
-		health = MAX_HEALTH
+	if health >= max_health:
+		health = max_health
 	
-	Globals.update_collab_partner_health.emit(MAX_HEALTH, health, false)
+	Globals.update_collab_partner_health.emit(max_health, health, false)

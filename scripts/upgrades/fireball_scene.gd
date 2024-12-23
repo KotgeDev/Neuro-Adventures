@@ -32,9 +32,9 @@ var projectile_count = LV1_PROJECTILE_COUNT
 func sync_level() -> void:
 	match upgrade.lvl:
 		1: 
-			fire_timer.wait_time = LV1_WAIT_TIME
+			fire_timer.base_cooldown = LV1_WAIT_TIME
 		2:
-			fire_timer.wait_time = LV2_WAIT_TIME
+			fire_timer.base_cooldown = LV2_WAIT_TIME
 		3:
 			projectile_count = LV3_PROJECTILE_COUNT
 			pierce = LV3_PIERCE

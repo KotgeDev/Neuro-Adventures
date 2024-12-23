@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://8k6ldupam638"]
+[gd_scene load_steps=3 format=3 uid="uid://8k6ldupam638"]
 
 [ext_resource type="Script" path="res://scripts/upgrades/dual_strike_scene.gd" id="1_2wljc"]
+[ext_resource type="Script" path="res://scripts/shared/cooldown_timer.gd" id="2_35bdc"]
 
 [node name="DualStrikeScene" type="Node2D"]
 y_sort_enabled = true
@@ -22,5 +23,6 @@ rotation = 0.872665
 
 [node name="FireTimer" type="Timer" parent="."]
 autostart = true
+script = ExtResource("2_35bdc")
 
 [connection signal="timeout" from="FireTimer" to="." method="_on_fire_timer_timeout"]

@@ -23,13 +23,13 @@ var angle := 0
 func sync_level() -> void:
 	match upgrade.lvl:
 		1:
-			spawn_timer.wait_time = LV1_INTERVAL
+			spawn_timer.base_cooldown = LV1_INTERVAL
 		2:
-			spawn_timer.wait_time = LV2_INTERVAL
+			spawn_timer.base_cooldown = LV2_INTERVAL
 		3:
 			damage = LV3_DAMAGE
 		4:
-			spawn_timer.wait_time = LV4_INTERVAL
+			spawn_timer.base_cooldown = LV4_INTERVAL
 		5:
 			charge_timer = LV5_CHARGE_TIMER
 		6: 

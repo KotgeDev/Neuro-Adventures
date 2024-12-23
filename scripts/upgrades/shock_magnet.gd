@@ -4,12 +4,10 @@ extends UpgradeScene
 
 ## Override to use. 
 func sync_level() -> void:
-	collab_partner._on_powerup_get()
-	
 	match upgrade.lvl:
 		1:
-			collab_partner.pickup_range = collab_partner.BASE_PICKUP_RANGE * 1.30
+			StatsManager.cr_increase = 0.30
 		2: 
-			collab_partner.pickup_range = collab_partner.BASE_PICKUP_RANGE * 1.40
+			StatsManager.cr_increase = 0.40
 		3: 
-			collab_partner.pickup_range = collab_partner.BASE_PICKUP_RANGE * 1.50
+			StatsManager.cr_increase = 0.50

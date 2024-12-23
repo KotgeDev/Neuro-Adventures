@@ -27,15 +27,15 @@ func sync_level() -> void:
 	match upgrade.lvl:
 		1:
 			damage = LV1_DAMAGE
-			fire_timer.wait_time = LV1_FIRE_INTERVAL
+			fire_timer.base_cooldown = LV1_FIRE_INTERVAL
 		2:
-			fire_timer.wait_time = LV2_FIRE_INTERVAL
+			fire_timer.base_cooldown = LV2_FIRE_INTERVAL
 		3:
 			damage = LV3_DAMAGE
 		4:
 			damage_zone.scale *= LV4_RANGE_MULTIPLIER 
 		5:
-			fire_timer.wait_time = LV5_FIRE_INTERVAL
+			fire_timer.base_cooldown = LV5_FIRE_INTERVAL
 		6:
 			damage_zone.scale *= LV6_RANGE_MULTIPLIER
 

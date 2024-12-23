@@ -3,16 +3,10 @@ extends UpgradeScene
 var percentage = 1
 
 func _ready():
-	add_to_group(Globals.AI_ATTACK_MODIFIERS)
-
-func ai_attack_modifiers(
-	BASE_DAMAGE: float, 
-	modified_damage: float,
-	area: Area2D
-) -> float:
-	Globals.heal_ai.emit(modified_damage * percentage)
+	Globals.ai_attack.connect(_on_attack) 
 	
-	return modified_damage  
+func _on_attack(final_damage: float) -> void:
+	Globals.heal_ai.emit(final_damage * percentage)
 
 func sync_level() -> void:
 	match upgrade.lvl:

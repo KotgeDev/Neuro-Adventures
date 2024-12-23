@@ -2,13 +2,14 @@
 extends Node2D
 class_name AI 
 
-#region CONSTANTS
+#region BASE VALUES 
 @export var BASE_MAX_SPEED := 60 
 @export var ACCELERATION := 500
 @export var FRICTION := 500 
-@export var MAX_HEALTH := 45.0
+@export var BASE_MAX_HEALTH := 45.0
 @export var COOKIE_HEALTH := 5.0 
 @export var BASE_AI_DISTANCE := 65.0 
+@export var BASE_EVASION := 0.0 
 #endregion 
 
 #region NODES
@@ -17,10 +18,15 @@ var collab_partner: CollabPartner
 @onready var navigation_agent = $NavigationAgent2D
 #endregion
 
-#region OTHER 
-@onready var health: float = MAX_HEALTH 
+#region STATS  
+@onready var max_health: float = BASE_MAX_HEALTH
+@onready var health: float = BASE_MAX_HEALTH 
 @onready var max_speed: float = BASE_MAX_SPEED
 @onready var ai_distance: float = BASE_AI_DISTANCE
+@onready var evasion: float = BASE_EVASION 
+#endregion 
+
+#region OTHER 
 var velocity: Vector2 
 #endregion 
 
@@ -39,7 +45,16 @@ func connect_signals() -> void:
 	Globals.heal_ai.connect(_on_increase_hp)
 	Globals.add_upgrade_to_ai.connect(_on_add_upgrade)
 	Globals.collect_cookie.connect(_on_collect_cookie)
-	
+	StatsManager.increase_max_hp.connect(_on_increase_max_hp)
+	StatsManager.increase_speed.connect(_on_increase_speed)
+
+func _on_increase_max_hp(inc_perc) -> void:
+	max_health = BASE_MAX_HEALTH + BASE_MAX_HEALTH * inc_perc 
+
+func _on_increase_speed(inc_perc) -> void:
+	max_speed += BASE_MAX_SPEED + BASE_MAX_SPEED * inc_perc 
+
+
 func _on_map_ready() -> void:
 	collab_partner = get_tree().get_first_node_in_group("collab_partner")
 	set_physics_process(true)
@@ -59,27 +74,22 @@ func _physics_process(delta: float) -> void:
 	position += velocity * delta 
 
 func _on_hurtbox_take_damage(damage: float, shake := true):
-	damage = ai_damage_reduction_modifiers(damage)
+	if StatsManager.ai_invincible: 
+		return 
+		
+	if randf() < (StatsManager.evasion + StatsManager.ai_evasion): 
+		return 
+	
 	if damage == 0.0:
 		return 
 		
 	health -= damage 
 	character_animation.show_damage()
-	Globals.update_ai_health.emit(MAX_HEALTH, health, shake)
+	Globals.update_ai_health.emit(max_health, health, shake)
 	if health <= 0: 
 		Globals.game_over.emit() 
 		
 	AudioSystem.play_sfx(hit_sfx, global_position)
-
-func ai_damage_reduction_modifiers(BASE_DAMAGE: float) -> float:
-	var modified_damage := BASE_DAMAGE
-	
-	for upgrade in get_tree().get_nodes_in_group(Globals.AI_DAMAGE_REDUCTION_MODIFIERS  ):
-		modified_damage = upgrade.ai_damage_reduction_modifiers(BASE_DAMAGE, modified_damage) 
-		if modified_damage == 0:
-			return 0 
-		
-	return modified_damage
 
 func _on_add_upgrade(upgrade: Node) -> void:
 	add_child(upgrade)
@@ -87,18 +97,18 @@ func _on_add_upgrade(upgrade: Node) -> void:
 func _on_collect_cookie() -> void:
 	health += COOKIE_HEALTH
 	
-	if health >= MAX_HEALTH:
-		health = MAX_HEALTH
+	if health >= max_health:
+		health = max_health
 	
-	Globals.update_ai_health.emit(MAX_HEALTH, health, false)
+	Globals.update_ai_health.emit(max_health, health, false)
 
 func _on_increase_hp(increase_amount: float) -> void:
 	health += increase_amount
 	
-	if health >= MAX_HEALTH:
-		health = MAX_HEALTH
+	if health >= max_health:
+		health = max_health
 
-	Globals.update_ai_health.emit(MAX_HEALTH, health, false)
+	Globals.update_ai_health.emit(max_health, health, false)
 
 func _on_path_find_timer_timeout():
 	make_path()

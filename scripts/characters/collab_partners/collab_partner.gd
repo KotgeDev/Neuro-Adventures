@@ -6,8 +6,9 @@ class_name CollabPartner
 @export var BASE_MAX_SPEED := 65.0 
 @export var ACCELERATION := 500.0
 @export var FRICTION := 500.0 
-@export var MAX_HEALTH := 40.0
+@export var BASE_MAX_HEALTH := 40.0
 @export var BASE_PICKUP_RANGE := 50.0
+@export var BASE_EVASION := 0.0 
 #endregion 
 
 #region NODES 
@@ -16,10 +17,15 @@ class_name CollabPartner
 @onready var aihp_loss_timer = $AIHPLossTimer
 #endregion 
 
-#region OTHER 
+#region BASE_VALUES  
 @onready var max_speed: float = BASE_MAX_SPEED
-@onready var health: float = MAX_HEALTH
+@onready var max_health: float = BASE_MAX_HEALTH
+@onready var health: float = max_health
 @onready var pickup_range: float = BASE_PICKUP_RANGE
+@onready var evasion: float = BASE_EVASION 
+#endregion 
+
+#region OTHER
 var pick_range_lerp = 0.0
 var circle_occ = 0.7
 var circle_work = false
@@ -57,7 +63,20 @@ func connect_signals() -> void:
 	Globals.add_upgrade_to_collab_partner.connect(_on_add_upgrade)
 	Globals.collect_exp.connect(_on_collect_exp)
 	Globals.raise_the_timer.connect(_on_raise_the_timer)
+	StatsManager.increase_max_hp.connect(_on_increase_max_hp)
+	StatsManager.increase_speed.connect(_on_increase_speed)
+	StatsManager.increase_collection_range.connect(_on_increase_cr)
 	extended_signals() 
+
+func _on_increase_max_hp(inc_perc) -> void:
+	max_health = BASE_MAX_HEALTH + BASE_MAX_HEALTH * inc_perc 
+
+func _on_increase_speed(inc_perc) -> void:
+	max_speed = BASE_MAX_SPEED + BASE_MAX_SPEED * inc_perc 
+
+func _on_increase_cr(inc_perc) -> void:
+	pickup_range = BASE_PICKUP_RANGE + BASE_PICKUP_RANGE * inc_perc
+	_on_powerup_get()
 
 ## Override function for use in specific collab partners 
 func extended_signals() -> void:
@@ -82,14 +101,19 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _on_hurtbox_take_damage(damage: float):
-	damage = collab_damage_reduction_modifiers(damage)
+	if StatsManager.collab_invincible: 
+		return 
+		
+	if randf() < (StatsManager.evasion + StatsManager.collab_evasion): 
+		return 
+	
 	if damage == 0.0:
 		return 
 	
 	health -= damage 
 	damaged_atleast_once = true 
 	character_animation.show_damage()
-	Globals.update_collab_partner_health.emit(MAX_HEALTH, health)
+	Globals.update_collab_partner_health.emit(max_health, health)
 	if health <= 0: 
 		Globals.game_over.emit() 
 	
@@ -107,19 +131,6 @@ func _on_collect_exp(value: int) -> void:
 	
 	if raise_the_timer_active:
 		Globals.heal_ai.emit(per_exp_ai_hp_increase)
-
-func collab_damage_reduction_modifiers(BASE_DAMAGE: float) -> float:
-	var modified_damage := BASE_DAMAGE
-	
-	for upgrade in get_tree().get_nodes_in_group(Globals.COLLAB_DAMAGE_REDUCTION_MODIFIERS):
-		modified_damage = upgrade.collab_damage_reduction_modifiers(BASE_DAMAGE, modified_damage) 
-	
-	var dm_allegations = get_tree().get_first_node_in_group("dm_allegations")
-	if dm_allegations:
-		modified_damage = dm_allegations.collab_damage_reduction_modifiers(BASE_DAMAGE, modified_damage) 
-
-	
-	return modified_damage
 
 func _on_add_upgrade(upgrade: Node) -> void:
 	add_child(upgrade)

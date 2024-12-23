@@ -7,14 +7,10 @@ extends UpgradeScene
 func sync_level() -> void:
 	match upgrade.lvl: 
 		1:
-			collab_partner.max_speed = collab_partner.BASE_MAX_SPEED + collab_partner.BASE_MAX_SPEED * 0.05
-			ai.max_speed =  ai.BASE_MAX_SPEED + ai.BASE_MAX_SPEED * 0.05
+			StatsManager.speed_increase = 0.05
 		2: 
-			collab_partner.max_speed = collab_partner.BASE_MAX_SPEED + collab_partner.BASE_MAX_SPEED * 0.10
-			ai.max_speed = ai.BASE_MAX_SPEED + ai.BASE_MAX_SPEED * 0.10
+			StatsManager.speed_increase = 0.10 
 		3:
-			collab_partner.max_speed = collab_partner.BASE_MAX_SPEED + collab_partner.BASE_MAX_SPEED * 0.15
-			ai.max_speed =  ai.BASE_MAX_SPEED + ai.BASE_MAX_SPEED * 0.15
+			StatsManager.speed_increase = 0.15
 		4: 
-			collab_partner.max_speed = collab_partner.BASE_MAX_SPEED + collab_partner.BASE_MAX_SPEED * 0.20
-			ai.max_speed = ai.BASE_MAX_SPEED + ai.BASE_MAX_SPEED * 0.20
+			StatsManager.speed_increase = 0.20

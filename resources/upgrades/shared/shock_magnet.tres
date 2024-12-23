@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="UpgradeResource" load_steps=4 format=3 uid="uid://djhuihyp53xqk"]
 
 [ext_resource type="Texture2D" uid="uid://2ayoaiakip8l" path="res://assets/upgrades/shock_magnet_icon.png" id="1_8kwgs"]
-[ext_resource type="PackedScene" uid="uid://bmnjvqtgcqgtx" path="res://scenes/upgrades/programming_socks.tscn" id="2_ricdq"]
+[ext_resource type="PackedScene" uid="uid://c0k8ycmsxpar7" path="res://scenes/upgrades/shock_magnet.tscn" id="2_amawi"]
 [ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="3_b5pek"]
 
 [resource]
@@ -12,6 +12,6 @@ descriptions = PackedStringArray("+30% larger item collection range", "+40% larg
 upgrade_type = 1
 character = 4
 max_lvl = 3
-scene_template = ExtResource("2_ricdq")
+scene_template = ExtResource("2_amawi")
 unlimited = false
 tag = 1

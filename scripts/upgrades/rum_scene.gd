@@ -62,7 +62,7 @@ func sync_level() -> void:
 	match upgrade.lvl: 
 		1:
 			speed = BASE_SPEED
-			fire_timer.wait_time = LV1_FIRE_INTERVAL
+			fire_timer.base_cooldown = LV1_FIRE_INTERVAL
 			splash_damage = BASE_SPLASH_DAMAGE
 			rum_damage = BASE_RUM_DAMAGE
 			stun = LV1_STUN
@@ -71,7 +71,7 @@ func sync_level() -> void:
 		2:
 			stun = LV2_STUN 
 		3:
-			fire_timer.wait_time = LV3_FIRE_INTERVAL
+			fire_timer.base_cooldown = LV3_FIRE_INTERVAL
 		4:
 			splash_damage_duration = LV4_SPLASH_DAMAGE_DURATION
 			splash_damage_interval = LV4_SPLASH_DAMAGE_INTERVAL

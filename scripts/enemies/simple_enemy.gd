@@ -18,6 +18,8 @@ class_name SimpleEnemy
 @export var BASE_DAMAGE := 1.0
 @export var ATTACK_INTERVAL := 1.0
 @export var VALUE := 1.0
+# Small: 6, Medium: 9, Large: 12
+@export var AVOIDANCE_RADIUS := 9
 #endregion 
 
 #region NODES
@@ -72,6 +74,7 @@ func ready() -> void:
 	if not march:
 		navigation_agent.velocity_computed.connect(_on_velocity_computed)
 	navigation_agent.max_speed = BASE_MAX_SPEED + 10
+	navigation_agent.radius = AVOIDANCE_RADIUS
 	
 	dmg_label.modulate.a = 0
 	pathfind_timer.wait_time = 0.5

@@ -22,14 +22,14 @@ var feather_count: int
 func sync_level() -> void:
 	match upgrade.lvl: 
 		1:
-			fire_timer.wait_time = LV1_FIRE_RATE
+			fire_timer.base_cooldown = LV1_FIRE_RATE
 			damage = LV1_DAMAGE
 			hit_count = LV1_HIT_COUNT 
 			feather_count = 1
 		2:
 			hit_count = LV2_HIT_COUNT
 		3:
-			fire_timer.wait_time = LV3_FIRE_RATE
+			fire_timer.base_cooldown = LV3_FIRE_RATE
 		4:
 			damage = LV4_DAMAGE    
 		5:
