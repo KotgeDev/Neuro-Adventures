@@ -38,7 +38,6 @@ var hit_sfx: AudioStream = preload("res://assets/sfx/vedal_throw.wav")
 #endregion 
 
 func _on_fire_timer_timeout():		
-	#i fixed the rum throwing location. it now throws from vedal's hand, and in the correct direction. -that one guy
 	if not collab_partner.character_animation.run_sprite.flip_h: 
 		fire_location.position = Vector2(10, -7)
 	else:
