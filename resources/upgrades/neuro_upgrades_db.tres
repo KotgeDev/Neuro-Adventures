@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UpgradeDB" load_steps=12 format=3 uid="uid://cy6gbxu45mj"]
+[gd_resource type="Resource" script_class="UpgradeDB" load_steps=13 format=3 uid="uid://cy6gbxu45mj"]
 
 [ext_resource type="Script" path="res://scripts/upgrades/upgrade_db.gd" id="1_ab4vt"]
 [ext_resource type="Resource" uid="uid://bxdtnqbo7qetm" path="res://resources/upgrades/neuro/angel_wings.tres" id="1_g4spg"]
@@ -11,7 +11,8 @@
 [ext_resource type="Resource" uid="uid://dtr3cqndmotfv" path="res://resources/upgrades/neuro/raise_the_timer.tres" id="7_x3nqm"]
 [ext_resource type="Resource" uid="uid://uq5dp2gxpgie" path="res://resources/upgrades/neuro/say_it_back.tres" id="8_01463"]
 [ext_resource type="Resource" uid="uid://cv3ro7sl3ygdj" path="res://resources/upgrades/neuro/swarm_upgrades.tres" id="9_aj7rb"]
+[ext_resource type="Resource" uid="uid://chn1yrevu65dl" path="res://resources/upgrades/neuro/lava_lamp.tres" id="11_5hxcb"]
 
 [resource]
 script = ExtResource("1_ab4vt")
-db = Array[ExtResource("1_lohup")]([ExtResource("1_g4spg"), ExtResource("2_1j1se"), ExtResource("3_ncsj4"), ExtResource("4_2qg2h"), ExtResource("5_564uc"), ExtResource("6_ai6hr"), ExtResource("7_x3nqm"), ExtResource("9_aj7rb"), ExtResource("8_01463")])
+db = Array[ExtResource("1_lohup")]([ExtResource("1_g4spg"), ExtResource("2_1j1se"), ExtResource("3_ncsj4"), ExtResource("4_2qg2h"), ExtResource("5_564uc"), ExtResource("6_ai6hr"), ExtResource("7_x3nqm"), ExtResource("9_aj7rb"), ExtResource("8_01463"), ExtResource("11_5hxcb")])

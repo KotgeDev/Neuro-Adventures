@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://c0vv6qljmk4cc"]
+
+[ext_resource type="Texture2D" uid="uid://5p1neu5bmyyh" path="res://assets/projectiles/lava_damage_base.png" id="1_awsn1"]
+[ext_resource type="Script" path="res://scripts/projectiles/lava_lamp_lava.gd" id="1_sxxlk"]
+[ext_resource type="Texture2D" uid="uid://dfkw2wjpd0yak" path="res://assets/projectiles/lava_damage_warning.png" id="2_piuvk"]
+[ext_resource type="PackedScene" uid="uid://mjwkfxpnwct6" path="res://scenes/shared/continuous_hitbox.tscn" id="4_1i13j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qcrbf"]
+radius = 50.3587
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oxbyu"]
+radius = 51.0882
+
+[node name="LavaLampLava" type="Node2D"]
+script = ExtResource("1_sxxlk")
+
+[node name="AIHealbox" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AIHealbox"]
+shape = SubResource("CircleShape2D_qcrbf")
+disabled = true
+
+[node name="Timer" type="Timer" parent="AIHealbox"]
+
+[node name="GracePeriodTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="DamageSprite" type="Sprite2D" parent="."]
+visible = false
+z_index = -1
+texture = ExtResource("1_awsn1")
+
+[node name="WarningSprite" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("2_piuvk")
+
+[node name="ContinuousHitbox" parent="." instance=ExtResource("4_1i13j")]
+visible = false
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ContinuousHitbox"]
+shape = SubResource("CircleShape2D_oxbyu")
+disabled = true
+
+[connection signal="timeout" from="AIHealbox/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="GracePeriodTimer" to="." method="_on_grace_period_timer_timeout"]
+[connection signal="self_destruct" from="ContinuousHitbox" to="." method="_on_continuous_hitbox_self_destruct"]

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="UpgradeResource" load_steps=4 format=3 uid="uid://chn1yrevu65dl"]
+
+[ext_resource type="Texture2D" uid="uid://d2g70s3s7rt7t" path="res://assets/upgrades/upgrade_icon_placeholder.png" id="1_shujd"]
+[ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="2_jgs04"]
+[ext_resource type="PackedScene" uid="uid://db0oirvh2jt4m" path="res://scenes/upgrades/lava_lamp.tscn" id="2_jpi1u"]
+
+[resource]
+script = ExtResource("2_jgs04")
+upgrade_name = "Lava Lamp"
+icon = ExtResource("1_shujd")
+descriptions = PackedStringArray("Spawn a zone of lava that heals Neuro and hurts enemies", "Increase damage dealt to enemies", "Increase amount healed to Neuro", "Increase the size of the lava")
+upgrade_type = 0
+character = 0
+max_lvl = 4
+scene_template = ExtResource("2_jpi1u")
+unlimited = false
+tag = 0
