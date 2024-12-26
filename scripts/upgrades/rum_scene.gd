@@ -38,10 +38,10 @@ var hit_sfx: AudioStream = preload("res://assets/sfx/vedal_throw.wav")
 #endregion 
 
 func _on_fire_timer_timeout():		
-	if collab_partner.velocity > Vector2.ZERO: 
-		fire_location.position = Vector2(8, 5)
-	elif collab_partner.velocity < Vector2.ZERO:
-		fire_location.position = Vector2(-8, 5)
+	if not collab_partner.character_animation.run_sprite.flip_h: 
+		fire_location.position = Vector2(10, -7)
+	else:
+		fire_location.position = Vector2(-10, -7)
 	
 	var rum = rum_template.instantiate()
 	rum.global_position = fire_location.global_position
