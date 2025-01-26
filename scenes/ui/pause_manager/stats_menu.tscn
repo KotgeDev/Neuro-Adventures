@@ -1,0 +1,188 @@
+[gd_scene load_steps=10 format=3 uid="uid://djb6su61nnipl"]
+
+[ext_resource type="Script" path="res://scripts/ui/pause_manager/stats_menu.gd" id="1_d2mo2"]
+[ext_resource type="PackedScene" uid="uid://dej58m34yl70t" path="res://scenes/ui/directive_card.tscn" id="2_vql0i"]
+[ext_resource type="Script" path="res://scripts/ui/pause_manager/stats_menu_scroll.gd" id="3_2uj04"]
+[ext_resource type="Script" path="res://scripts/ui/pause_manager/directive_panel.gd" id="4_lqx54"]
+[ext_resource type="StyleBox" uid="uid://boj3r6ewrthnd" path="res://assets/themes/transparent_button/transparent_button_pressed.tres" id="6_sfj75"]
+[ext_resource type="StyleBox" uid="uid://doal46f0dfi43" path="res://assets/themes/transparent_button/transparent_button.tres" id="7_6vhjv"]
+[ext_resource type="PackedScene" uid="uid://c7t3d8nn0j6uw" path="res://scenes/ui/pause_manager/character_stats_panel.tscn" id="7_8bek6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_w7hmf"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_ndfd2"]
+font_size = 24
+
+[node name="StatsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_d2mo2")
+
+[node name="DirectiveCard" parent="." instance=ExtResource("2_vql0i")]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 62.0
+offset_top = 116.5
+offset_right = 162.0
+offset_bottom = 256.5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." node_paths=PackedStringArray("selected_panel")]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+script = ExtResource("3_2uj04")
+selected_panel = NodePath("VBoxContainer/DirectivePanel")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Buffer" type="Control" parent="ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(540, 80)
+layout_mode = 2
+
+[node name="DirectivePanel" type="Control" parent="ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(540, 200)
+layout_mode = 2
+script = ExtResource("4_lqx54")
+
+[node name="Panel" type="Panel" parent="ScrollContainer/VBoxContainer/DirectivePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/DirectivePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -258.0
+offset_top = -86.5
+offset_right = 258.0
+offset_bottom = 86.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/DirectivePanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Owned Directives"
+label_settings = SubResource("LabelSettings_w7hmf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ScrollContainer/VBoxContainer/DirectivePanel/VBoxContainer"]
+custom_minimum_size = Vector2(516, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+follow_focus = true
+
+[node name="DirectiveHBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/DirectivePanel/VBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Control" type="Control" parent="ScrollContainer/VBoxContainer/DirectivePanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer/DirectivePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/hover = ExtResource("7_6vhjv")
+theme_override_styles/pressed = ExtResource("6_sfj75")
+theme_override_styles/normal = ExtResource("7_6vhjv")
+
+[node name="CollabPanel" parent="ScrollContainer/VBoxContainer" instance=ExtResource("7_8bek6")]
+visible = true
+layout_mode = 2
+id = 1
+
+[node name="AIPanel" parent="ScrollContainer/VBoxContainer" instance=ExtResource("7_8bek6")]
+visible = true
+layout_mode = 2
+is_collab = false
+id = 2
+
+[node name="Buffer2" type="Control" parent="ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(540, 80)
+layout_mode = 2
+
+[node name="Timer" type="Timer" parent="ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+
+[node name="DiscardPanel" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.490196)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DiscardPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -93.0
+offset_top = -24.0
+offset_right = 93.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="DiscardPanel/VBoxContainer"]
+layout_mode = 2
+text = "Discard This Directive?"
+label_settings = SubResource("LabelSettings_ndfd2")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DiscardPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+
+[node name="YesButton" type="Button" parent="DiscardPanel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Yes"
+
+[node name="NoButton" type="Button" parent="DiscardPanel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "No
+"
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="DiscardPanel/VBoxContainer/HBoxContainer/YesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="DiscardPanel/VBoxContainer/HBoxContainer/NoButton" to="." method="_on_no_button_pressed"]

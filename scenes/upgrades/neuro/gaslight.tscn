@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://byebkvw5ksjrv"]
+
+[ext_resource type="Script" path="res://scripts/upgrades/neuro/gaslight.gd" id="1_bx76q"]
+
+[node name="Gaslight" type="Node2D"]
+script = ExtResource("1_bx76q")

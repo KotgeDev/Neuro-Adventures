@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="UpgradeResource" load_steps=4 format=3 uid="uid://buvwlyhvs33qo"]
 
-[ext_resource type="Texture2D" uid="uid://cm06q8xh3p3yj" path="res://assets/upgrades/gaslight_icon.png" id="1_6emxm"]
+[ext_resource type="Texture2D" uid="uid://cm06q8xh3p3yj" path="res://assets/upgrades/icons/gaslight_icon.png" id="1_6emxm"]
 [ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="1_uv3vl"]
-[ext_resource type="PackedScene" uid="uid://byebkvw5ksjrv" path="res://scenes/upgrades/gaslight.tscn" id="2_hompn"]
+[ext_resource type="PackedScene" uid="uid://byebkvw5ksjrv" path="res://scenes/upgrades/neuro/gaslight.tscn" id="2_hompn"]
 
 [resource]
 script = ExtResource("1_uv3vl")

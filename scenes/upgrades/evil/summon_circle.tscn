@@ -1,0 +1,100 @@
+[gd_scene load_steps=8 format=3 uid="uid://db0lwk1g3cgm2"]
+
+[ext_resource type="Script" path="res://scripts/upgrades/evil/summon_circle.gd" id="1_44vtr"]
+[ext_resource type="Texture2D" uid="uid://cca1pmjpiceo7" path="res://assets/upgrades/inner_summon_circle.png" id="2_ri6vy"]
+[ext_resource type="Texture2D" uid="uid://cyt1owmuqqyhn" path="res://assets/upgrades/outer_summon_circle.png" id="3_vxcgt"]
+
+[sub_resource type="Animation" id="Animation_50qyy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InnerCircle:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OuterCircle:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_0wcrf"]
+resource_name = "spin"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InnerCircle:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 3.14159, 6.28319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OuterCircle:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -3.14159, -6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8321m"]
+_data = {
+"RESET": SubResource("Animation_50qyy"),
+"spin": SubResource("Animation_0wcrf")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ctwx7"]
+radius = 40.0
+
+[node name="SummonCircle" type="Node2D"]
+position = Vector2(0, -13)
+script = ExtResource("1_44vtr")
+
+[node name="InnerCircle" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.784314)
+z_index = -3
+texture = ExtResource("2_ri6vy")
+
+[node name="OuterCircle" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.784314)
+z_index = -3
+texture = ExtResource("3_vxcgt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8321m")
+}
+
+[node name="AOE" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AOE"]
+shape = SubResource("CircleShape2D_ctwx7")
+
+[connection signal="area_entered" from="AOE" to="." method="_on_aoe_area_entered"]
+[connection signal="area_exited" from="AOE" to="." method="_on_aoe_area_exited"]

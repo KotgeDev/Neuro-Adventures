@@ -13,20 +13,20 @@ func _ready() -> void:
 	Input.set_custom_mouse_cursor(null)
 	if AudioSystem.music_player.stream != menu_song:
 		AudioSystem.play_music(menu_song)
-		
+
 	settings_menu.close_panel.connect(_on_close)
 	credits_menu.close_panel.connect(_on_close)
 	achievements_menu.close_panel.connect(_on_close)
 	announcements.close_panel.connect(_on_close)
-	
-	if AccountManager.queued_notice_text:
-		Notice.create_notice(self, AccountManager.queued_notice_text) 
-		AccountManager.queued_notice_text = ""
-	
-	if not AccountManager.config: 
-		$VBoxContainer/LeaderboardButton.disabled = true 
 
-#region BUTTONS 
+	if AccountManager.queued_notice_text:
+		Notice.create_notice(self, AccountManager.queued_notice_text)
+		AccountManager.queued_notice_text = ""
+
+	if not AccountManager.config:
+		$VBoxContainer/LeaderboardButton.disabled = true
+
+#region BUTTONS
 func _on_play_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/ui/map_menu.tscn")
 
@@ -37,26 +37,26 @@ func _on_leaderboard_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/ui/leaderboard_menu.tscn")
 
 func _on_credits_button_pressed():
-	credits_menu.visible = true 
-	v_box_container.visible = false 
+	credits_menu.visible = true
+	v_box_container.visible = false
 
-func _on_quit_button_pressed(): 
+func _on_quit_button_pressed():
 	get_tree().quit()
-#endregion 
+#endregion
 
-#region ICONS 
+#region ICONS
 func _on_settings_icon_pressed():
-	settings_menu.visible = true 
-	v_box_container.visible = false 
+	settings_menu.visible = true
+	v_box_container.visible = false
 
 func _on_acheivements_icon_pressed():
-	achievements_menu.visible = true 
-	v_box_container.visible = false 
-	
+	achievements_menu.visible = true
+	v_box_container.visible = false
+
 func _on_announcement_icon_pressed():
-	announcements.visible = true 
-	v_box_container.visible = false 
-#endregion 
+	announcements.visible = true
+	v_box_container.visible = false
+#endregion
 
 func _on_close() -> void:
-	v_box_container.visible = true 
+	v_box_container.visible = true

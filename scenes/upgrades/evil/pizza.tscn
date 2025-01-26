@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://6pfaforic4qw"]
+
+[ext_resource type="Script" path="res://scripts/upgrades/evil/pizza.gd" id="1_1kghm"]
+[ext_resource type="Material" uid="uid://cimhmqlj16qqv" path="res://assets/shaders/smooth_pixel.tres" id="2_bu17w"]
+[ext_resource type="Texture2D" uid="uid://dl61njjb3lv61" path="res://assets/upgrades/pizza.png" id="2_udqyf"]
+[ext_resource type="PackedScene" uid="uid://3miicp8y7p5b" path="res://scenes/shared/multi_hitbox.tscn" id="3_pyt3j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_22sv2"]
+radius = 59.0085
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_63wrh"]
+radius = 90.0056
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mglr8"]
+radius = 16.0312
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1tmp0"]
+radius = 13.0
+
+[node name="Pizza" type="Node2D" groups=["pizza"]]
+z_index = 1
+script = ExtResource("1_1kghm")
+
+[node name="Compass" type="Marker2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+texture_filter = 2
+material = ExtResource("2_bu17w")
+texture = ExtResource("2_udqyf")
+
+[node name="AISearchField" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AISearchField"]
+shape = SubResource("CircleShape2D_22sv2")
+
+[node name="EnemySearchField" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemySearchField"]
+shape = SubResource("CircleShape2D_63wrh")
+
+[node name="PizzaPersonalZone" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PizzaPersonalZone"]
+shape = SubResource("CircleShape2D_mglr8")
+
+[node name="MultiHitbox" parent="." instance=ExtResource("3_pyt3j")]
+collision_mask = 6
+damage = 1.0
+
+[node name="CollisionPolygon2D" parent="MultiHitbox" index="0"]
+disabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MultiHitbox"]
+shape = SubResource("CircleShape2D_1tmp0")
+
+[editable path="MultiHitbox"]

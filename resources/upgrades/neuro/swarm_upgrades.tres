@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="UpgradeResource" load_steps=4 format=3 uid="uid://cv3ro7sl3ygdj"]
 
-[ext_resource type="Texture2D" uid="uid://cw0376vjwhg6t" path="res://assets/upgrades/swarm_upgrades_icon.png" id="1_l7hxc"]
-[ext_resource type="PackedScene" uid="uid://f5kx04gw7ejg" path="res://scenes/upgrades/swarm_upgrades.tscn" id="2_1li3o"]
+[ext_resource type="Texture2D" uid="uid://cw0376vjwhg6t" path="res://assets/upgrades/icons/swarm_upgrades_icon.png" id="1_l7hxc"]
+[ext_resource type="PackedScene" uid="uid://f5kx04gw7ejg" path="res://scenes/upgrades/neuro/swarm_upgrades.tscn" id="2_1li3o"]
 [ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="3_epli6"]
 
 [resource]

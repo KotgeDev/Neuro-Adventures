@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DirectiveResource" load_steps=3 format=3 uid="uid://ty1y77gatlb2"]
+
+[ext_resource type="Script" path="res://scripts/directives/chance_map.gd" id="1_b5qsd"]
+[ext_resource type="Script" path="res://scripts/directives/directive_resource.gd" id="2_rxepw"]
+
+[resource]
+script = ExtResource("2_rxepw")
+directive_name = ""
+id = 0
+tier = 0
+description = ""
+multiplier = 0
+quote = ""
+increase_chances_of = Array[ExtResource("1_b5qsd")]([])

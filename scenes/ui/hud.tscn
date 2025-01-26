@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dqy8eus7xktlq"]
+[gd_scene load_steps=24 format=3 uid="uid://dqy8eus7xktlq"]
 
 [ext_resource type="Script" path="res://scripts/ui/hud.gd" id="1_jg8iq"]
 [ext_resource type="Texture2D" uid="uid://dnl8tal30m0jt" path="res://assets/characters/ais/neuro_icon.png" id="2_3ldxe"]
@@ -8,15 +8,211 @@
 [ext_resource type="Texture2D" uid="uid://cjb1btwxi635u" path="res://assets/ui/collab_partner_bar.png" id="6_uyxdy"]
 [ext_resource type="Texture2D" uid="uid://chm3hdjvrvpig" path="res://assets/ui/exp_bar_under.png" id="6_v5tns"]
 [ext_resource type="Texture2D" uid="uid://bbm64wjax8o6h" path="res://assets/ui/exp_bar.png" id="7_0d2lw"]
-[ext_resource type="Texture2D" uid="uid://d2g70s3s7rt7t" path="res://assets/upgrades/upgrade_icon_placeholder.png" id="10_bqirj"]
-[ext_resource type="Script" path="res://scripts/ui/choice_ui_animation.gd" id="10_ki084"]
-[ext_resource type="StyleBox" uid="uid://bspcvalmxg40p" path="res://assets/themes/upgrade_button/upgrade_button.tres" id="11_tdhkg"]
-[ext_resource type="StyleBox" uid="uid://dwibpkoqk5pkl" path="res://assets/themes/upgrade_button/upgrade_button_hover.tres" id="12_4x88v"]
+[ext_resource type="Script" path="res://scripts/ui/switch_sign.gd" id="8_uoevg"]
+[ext_resource type="Texture2D" uid="uid://cyoxbibstvfo0" path="res://assets/characters/switch_follow.png" id="9_3uhpn"]
+[ext_resource type="Texture2D" uid="uid://bddi1an6eb8jt" path="res://assets/characters/switch_loading_sheet.png" id="9_rqnyn"]
+[ext_resource type="Texture2D" uid="uid://dpp2axtcrxlj4" path="res://assets/characters/switch_stop.png" id="10_mrocx"]
+[ext_resource type="PackedScene" uid="uid://dmjrphqhgreq5" path="res://scenes/ui/directive_menu.tscn" id="10_x64bl"]
+[ext_resource type="PackedScene" uid="uid://dotgxtot02sw5" path="res://scenes/ui/upgrade_menu.tscn" id="11_52que"]
 [ext_resource type="Material" uid="uid://csxlxcwxw3h3v" path="res://assets/shaders/rainbow.tres" id="12_x3twt"]
-[ext_resource type="Texture2D" uid="uid://nypwia7qdds7" path="res://assets/upgrades/vedal_outline.png" id="14_71yne"]
-[ext_resource type="PackedScene" uid="uid://dd3l4otjd8b3x" path="res://scenes/ui/pause_manager.tscn" id="14_sxq4j"]
+[ext_resource type="PackedScene" uid="uid://dd3l4otjd8b3x" path="res://scenes/ui/pause_manager/pause_manager.tscn" id="14_sxq4j"]
 [ext_resource type="PackedScene" uid="uid://d2avq1nqugasc" path="res://scenes/achievements/achievement_display.tscn" id="15_hw7wa"]
 [ext_resource type="PackedScene" uid="uid://duk3c2w31y5sg" path="res://scenes/ui/victory_display.tscn" id="16_br1yu"]
+
+[sub_resource type="Animation" id="Animation_gmo1s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Loading:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Follow:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Stop:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Loading:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_j8n00"]
+resource_name = "follow"
+length = 0.3
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Loading:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Stop:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Follow:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_o12nq"]
+resource_name = "loading"
+length = 0.3
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Loading:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [1, 2, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Follow:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.00354957),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Stop:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Loading:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_mc1q5"]
+resource_name = "new_animation"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Stop:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Loading:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Follow:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1ceh2"]
+_data = {
+"RESET": SubResource("Animation_gmo1s"),
+"follow": SubResource("Animation_j8n00"),
+"loading": SubResource("Animation_o12nq"),
+"stop": SubResource("Animation_mc1q5")
+}
 
 [node name="HUD" type="CanvasLayer"]
 process_mode = 3
@@ -98,6 +294,33 @@ material = ExtResource("12_x3twt")
 position = Vector2(61, 113)
 texture = ExtResource("6_uyxdy")
 
+[node name="SwitchSign" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 28.0
+offset_top = 132.0
+offset_right = 68.0
+offset_bottom = 172.0
+script = ExtResource("8_uoevg")
+
+[node name="Follow" type="Sprite2D" parent="SwitchSign"]
+visible = false
+texture = ExtResource("9_3uhpn")
+
+[node name="Loading" type="Sprite2D" parent="SwitchSign"]
+visible = false
+texture = ExtResource("9_rqnyn")
+hframes = 3
+
+[node name="Stop" type="Sprite2D" parent="SwitchSign"]
+visible = false
+texture = ExtResource("10_mrocx")
+
+[node name="SwitchPlayer" type="AnimationPlayer" parent="SwitchSign"]
+libraries = {
+"": SubResource("AnimationLibrary_1ceh2")
+}
+
 [node name="EXPBar" type="TextureProgressBar" parent="."]
 offset_top = 3.0
 offset_right = 640.0
@@ -115,158 +338,24 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="UpgradeMenu" type="Control" parent="."]
-unique_name_in_owner = true
+[node name="DirectiveMenu" parent="." node_paths=PackedStringArray("pause_manager") instance=ExtResource("10_x64bl")]
 visible = false
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("10_ki084")
+pause_manager = NodePath("../PauseManager")
 
-[node name="ColorRect" type="ColorRect" parent="UpgradeMenu"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -320.0
-offset_top = -180.0
-offset_right = 320.0
-offset_bottom = 180.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.490196)
+[node name="UpgradeMenu" parent="." node_paths=PackedStringArray("pause_manager", "level_counter") instance=ExtResource("11_52que")]
+pause_manager = NodePath("../PauseManager")
+level_counter = NodePath("../LevelCounter")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UpgradeMenu"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -172.5
-offset_top = -109.5
-offset_right = 172.5
-offset_bottom = 109.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="NtxLabel" type="Label" parent="UpgradeMenu/VBoxContainer"]
-unique_name_in_owner = true
-visible = false
-material = ExtResource("12_x3twt")
-layout_mode = 2
-text = "NTX 4090!!!"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ScrollContainer" type="ScrollContainer" parent="UpgradeMenu/VBoxContainer"]
-custom_minimum_size = Vector2(345, 219)
-layout_mode = 2
-
-[node name="ChoicePanelContainer" type="VBoxContainer" parent="UpgradeMenu/VBoxContainer/ScrollContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/separation = 1
-
-[node name="RerollContainer" type="HBoxContainer" parent="UpgradeMenu/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="RerollButton" type="Button" parent="UpgradeMenu/VBoxContainer/RerollContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(75, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 20
-text = "Reroll"
-
-[node name="RerollLabel" type="Label" parent="UpgradeMenu/VBoxContainer/RerollContainer"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Penalty: 0 exp"
-
-[node name="UpgradeChoicePanel" type="Control" parent="."]
-visible = false
-custom_minimum_size = Vector2(345, 72)
-layout_mode = 3
-anchors_preset = 0
-offset_left = 147.0
-offset_top = 68.0
-offset_right = 492.0
-offset_bottom = 140.0
-
-[node name="Button" type="Button" parent="UpgradeChoicePanel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/hover = ExtResource("12_4x88v")
-theme_override_styles/pressed = ExtResource("12_4x88v")
-theme_override_styles/normal = ExtResource("11_tdhkg")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UpgradeChoicePanel"]
-custom_minimum_size = Vector2(0, 65)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-alignment = 1
-
-[node name="UpgradeName" type="Label" parent="UpgradeChoicePanel/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = " Gaslight Lv 1"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UpgradeChoicePanel/VBoxContainer"]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/separation = 0
-
-[node name="CenterContainer" type="CenterContainer" parent="UpgradeChoicePanel/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(50, 0)
-layout_mode = 2
-
-[node name="Icon" type="TextureRect" parent="UpgradeChoicePanel/VBoxContainer/HBoxContainer/CenterContainer"]
-layout_mode = 2
-texture = ExtResource("10_bqirj")
-stretch_mode = 3
-
-[node name="Outline" type="TextureRect" parent="UpgradeChoicePanel/VBoxContainer/HBoxContainer/CenterContainer"]
-layout_mode = 2
-texture = ExtResource("14_71yne")
-
-[node name="Description" type="Label" parent="UpgradeChoicePanel/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(290, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 16
-text = "Vedal ignores all damage. However, every time he gets damaged, there is a 0.1% chance that all of the damage he ignored will be inflicted at once."
-autowrap_mode = 2
-
-[node name="Padding" type="Control" parent="UpgradeChoicePanel/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(5, 0)
-layout_mode = 2
-
-[node name="Padding" type="Control" parent="UpgradeChoicePanel/VBoxContainer"]
-layout_mode = 2
-
-[node name="PauseManager" parent="." node_paths=PackedStringArray("upgrades_menu") instance=ExtResource("14_sxq4j")]
+[node name="PauseManager" parent="." node_paths=PackedStringArray("upgrades_menu", "directive_menu") instance=ExtResource("14_sxq4j")]
 visible = false
 upgrades_menu = NodePath("../UpgradeMenu")
+directive_menu = NodePath("../DirectiveMenu")
+
+[node name="AchievementDisplay" parent="." instance=ExtResource("15_hw7wa")]
+visible = false
+
+[node name="VictoryDisplay" parent="." node_paths=PackedStringArray("pause_manager") instance=ExtResource("16_br1yu")]
+pause_manager = NodePath("../PauseManager")
 
 [node name="FPSCounter" type="Label" parent="."]
 offset_left = 541.0
@@ -277,12 +366,4 @@ theme_override_font_sizes/font_size = 16
 text = "fps: 24"
 horizontal_alignment = 2
 
-[node name="AchievementDisplay" parent="." instance=ExtResource("15_hw7wa")]
-visible = false
-
-[node name="VictoryDisplay" parent="." node_paths=PackedStringArray("pause_manager") instance=ExtResource("16_br1yu")]
-pause_manager = NodePath("../PauseManager")
-
 [connection signal="timeout" from="FPSCounterUpdateTimer" to="." method="_on_fps_counter_update_timer_timeout"]
-[connection signal="pressed" from="UpgradeMenu/VBoxContainer/RerollContainer/RerollButton" to="." method="_on_reroll_button_pressed"]
-[connection signal="close_display" from="AchievementDisplay" to="." method="_on_achievement_display_close"]

@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scripts/enemies/march.gd" id="1_wlfyf"]
 
 [node name="March" type="Node2D"]
+z_as_relative = false
 y_sort_enabled = true
 script = ExtResource("1_wlfyf")
 
@@ -14,5 +15,6 @@ one_shot = true
 [node name="Marker2D" type="Marker2D" parent="Markers"]
 
 [node name="Enemies" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [connection signal="timeout" from="MarchDuration" to="." method="_on_march_duration_timeout"]

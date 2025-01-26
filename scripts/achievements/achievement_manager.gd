@@ -1,6 +1,6 @@
 extends Node
 
-signal add_achievement(index: int) 
+signal add_achievement(index: int)
 
 var achievement_path = "user://achievements.save"
 
@@ -39,21 +39,21 @@ var achievement_objects = {
 
 var achievement_status = {
 	0: false,
-	1: false, 
+	1: false,
 	2: false,
 	3: false,
 	4: false,
-	5: false 
+	5: false
 }
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	add_achievement.connect(_on_add_achievement)
-	load_data() 
+	load_data()
 
 func _on_add_achievement(index: int) -> void:
 	achievement_status[index] = true
-	save_data()  
+	save_data()
 
 func load_data() -> void:
 	if FileAccess.file_exists(achievement_path):
@@ -62,7 +62,7 @@ func load_data() -> void:
 		# Check and fill in any missing achievement indexes
 		for index in achievement_objects.keys():
 			if not achievement_status.has(index):
-				achievement_status[index] = false 
+				achievement_status[index] = false
 	else:
 		save_data()
 

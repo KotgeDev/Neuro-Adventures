@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://cqgusqhpigf0c"]
+[gd_scene load_steps=5 format=3 uid="uid://cqgusqhpigf0c"]
 
 [ext_resource type="Script" path="res://scripts/ui/notice.gd" id="1_nufba"]
 [ext_resource type="PackedScene" uid="uid://e8y2spmxgfec" path="res://scenes/ui/close_button.tscn" id="2_4joly"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u2wlw"]
+bg_color = Color(0.937255, 0.545098, 0.627451, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_cf0gk"]
+line_spacing = 0.0
+font_color = Color(0.968627, 0.172549, 0.458824, 1)
 
 [node name="Notice" type="Control"]
 process_mode = 3
@@ -27,6 +34,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_u2wlw")
 
 [node name="CloseButton" parent="Panel" instance=ExtResource("2_4joly")]
 layout_mode = 1
@@ -45,7 +53,8 @@ offset_right = 54.0
 offset_bottom = 13.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 20
+text = "Sample Text"
+label_settings = SubResource("LabelSettings_cf0gk")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3

@@ -1,4 +1,4 @@
 extends Resource
-class_name UpgradeDB  
+class_name UpgradeDB
 
 @export var db: Array[UpgradeResource]

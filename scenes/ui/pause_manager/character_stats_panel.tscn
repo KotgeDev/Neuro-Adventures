@@ -1,0 +1,128 @@
+[gd_scene load_steps=8 format=3 uid="uid://c7t3d8nn0j6uw"]
+
+[ext_resource type="Script" path="res://scripts/ui/pause_manager/character_stats_panel.gd" id="1_abvtv"]
+[ext_resource type="StyleBox" uid="uid://d111g6y2kcd6h" path="res://assets/themes/transparent_button/transparent_button_hover.tres" id="2_bnx05"]
+[ext_resource type="StyleBox" uid="uid://boj3r6ewrthnd" path="res://assets/themes/transparent_button/transparent_button_pressed.tres" id="3_55drp"]
+[ext_resource type="StyleBox" uid="uid://doal46f0dfi43" path="res://assets/themes/transparent_button/transparent_button.tres" id="4_fhi70"]
+[ext_resource type="Texture2D" uid="uid://dyy7n80vrfgrx" path="res://assets/upgrades/icons/gymbag_drone_icon.png" id="5_bmgas"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_w7hmf"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_hp1g1"]
+font_size = 20
+
+[node name="CharacterStatsPanel" type="Control"]
+visible = false
+custom_minimum_size = Vector2(540, 200)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_abvtv")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/hover = ExtResource("4_fhi70")
+theme_override_styles/pressed = ExtResource("3_55drp")
+theme_override_styles/normal = ExtResource("4_fhi70")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -86.5
+offset_bottom = 86.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Collab Partner"
+label_settings = SubResource("LabelSettings_w7hmf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Padding" type="Control" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="StatsLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(290, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 20
+text = "HP: 40 / 60
+Evasion: 10%   Speed: 65 
+Filter: 20% 
+Cooldown Reduction: 10%
+Pickup Range: 10 
+Perc. ATK Increase: 10%
+ATK Multipliers: x1.4 
+Constant: 2.0 
+(Final Dmg = Base Dmg * 1.2 * 1.4 + 2.0)
+"
+fit_content = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Owned Upgrades"
+label_settings = SubResource("LabelSettings_hp1g1")
+horizontal_alignment = 1
+
+[node name="UpgradeGridContainer" type="GridContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+columns = 6
+
+[node name="Padding2" type="Control" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="UpgradeGridSquare" type="CenterContainer" parent="."]
+visible = false
+layout_mode = 2
+offset_left = 308.0
+offset_top = 59.5
+offset_right = 340.0
+offset_bottom = 91.5
+
+[node name="TextureRect" type="TextureRect" parent="UpgradeGridSquare"]
+layout_mode = 2
+texture = ExtResource("5_bmgas")
+
+[node name="Button" type="Button" parent="UpgradeGridSquare"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/hover = ExtResource("2_bnx05")
+theme_override_styles/pressed = ExtResource("3_55drp")
+theme_override_styles/normal = ExtResource("4_fhi70")

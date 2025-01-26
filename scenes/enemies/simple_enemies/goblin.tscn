@@ -1,0 +1,105 @@
+[gd_scene load_steps=11 format=3 uid="uid://bkt5lb2mqdpas"]
+
+[ext_resource type="PackedScene" uid="uid://cx1nd5x2s6vyt" path="res://scenes/enemies/simple_enemy.tscn" id="1_ugo6b"]
+[ext_resource type="Texture2D" uid="uid://dj4uhpf43bgln" path="res://assets/enemies/goblin_sheet.png" id="2_6slxd"]
+[ext_resource type="Shader" path="res://assets/shaders/flash.gdshader" id="2_wd6u7"]
+[ext_resource type="Texture2D" uid="uid://bpxvb4opdk1xy" path="res://assets/shared/shadow_m.png" id="3_l8byq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2j5su"]
+resource_local_to_scene = true
+shader = ExtResource("2_wd6u7")
+shader_parameter/white = null
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m0owx"]
+radius = 7.0
+height = 32.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hg6fs"]
+radius = 4.0
+height = 28.0
+
+[sub_resource type="Animation" id="Animation_pgyfm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_jqqp3"]
+resource_name = "idle"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u2hhj"]
+_data = {
+"RESET": SubResource("Animation_pgyfm"),
+"idle": SubResource("Animation_jqqp3")
+}
+
+[node name="Goblin" instance=ExtResource("1_ugo6b")]
+AVOIDANCE_RADIUS = 9
+BASE_MAX_HEALTH = 2.0
+BASE_MAX_SPEED = 40.0
+BASE_DAMAGE = 8.0
+ATTACK_INTERVAL = 1.0
+EXP = 4.0
+
+[node name="Sprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_2j5su")
+position = Vector2(0, -26)
+texture = ExtResource("2_6slxd")
+
+[node name="StunEffect" parent="." index="1"]
+visible = true
+position = Vector2(0, -34)
+
+[node name="Hurtbox" parent="." index="2"]
+visible = true
+position = Vector2(0, -2)
+
+[node name="CollisionShape2D" parent="Hurtbox" index="1"]
+position = Vector2(0, -13)
+shape = SubResource("CapsuleShape2D_m0owx")
+
+[node name="CollisionShape2D" parent="ContinuousHitbox" index="3"]
+position = Vector2(0, -14)
+shape = SubResource("CapsuleShape2D_hg6fs")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
+libraries = {
+"": SubResource("AnimationLibrary_u2hhj")
+}
+
+[node name="Shadow" parent="." index="7"]
+position = Vector2(0, -24)
+texture = ExtResource("3_l8byq")
+offset = Vector2(0, -2)
+
+[node name="DmgLabel" parent="." index="9"]
+offset_left = -19.0
+offset_top = -50.0
+offset_right = 21.0
+offset_bottom = -24.0
+
+[editable path="Hurtbox"]
+[editable path="ContinuousHitbox"]

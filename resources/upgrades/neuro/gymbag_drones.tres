@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="UpgradeResource" load_steps=4 format=3 uid="uid://uo3a5tqn134v"]
 
-[ext_resource type="Texture2D" uid="uid://dyy7n80vrfgrx" path="res://assets/upgrades/gymbag_drone_icon.png" id="1_24jr4"]
-[ext_resource type="PackedScene" uid="uid://b00yq764vy1k1" path="res://scenes/upgrades/gymbag_drone.tscn" id="2_ee032"]
+[ext_resource type="Texture2D" uid="uid://dyy7n80vrfgrx" path="res://assets/upgrades/icons/gymbag_drone_icon.png" id="1_24jr4"]
+[ext_resource type="PackedScene" uid="uid://b00yq764vy1k1" path="res://scenes/upgrades/neuro/gymbag_drone.tscn" id="2_ee032"]
 [ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="3_obcq0"]
 
 [resource]

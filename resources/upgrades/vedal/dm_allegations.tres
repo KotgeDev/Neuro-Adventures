@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="UpgradeResource" load_steps=4 format=3 uid="uid://bu3gd2arr56bj"]
 
-[ext_resource type="Texture2D" uid="uid://x5oyrgvqvosy" path="res://assets/upgrades/dm_allegations_icon.png" id="1_1rgvs"]
+[ext_resource type="Texture2D" uid="uid://x5oyrgvqvosy" path="res://assets/upgrades/icons/dm_allegations_icon.png" id="1_1rgvs"]
 [ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="1_om05u"]
-[ext_resource type="PackedScene" uid="uid://b7jfbfixl6usd" path="res://scenes/upgrades/dm_allegations.tscn" id="2_nlbua"]
+[ext_resource type="PackedScene" uid="uid://b7jfbfixl6usd" path="res://scenes/upgrades/vedal/dm_allegations.tscn" id="2_nlbua"]
 
 [resource]
 script = ExtResource("1_om05u")

@@ -1,0 +1,126 @@
+[gd_scene load_steps=9 format=3 uid="uid://dej58m34yl70t"]
+
+[ext_resource type="StyleBox" uid="uid://ch1b8ed6ws7oy" path="res://assets/themes/directive_card/directive_hover_texture.tres" id="1_hx4x8"]
+[ext_resource type="StyleBox" uid="uid://gfuo3kusuny0" path="res://assets/themes/directive_card/directive_texture.tres" id="2_dq4hj"]
+[ext_resource type="Script" path="res://scripts/ui/button_with_sfx.gd" id="3_4wpx7"]
+[ext_resource type="LabelSettings" uid="uid://11wqihbaoojx" path="res://assets/themes/directive_card/directive_label.tres" id="4_uhaio"]
+[ext_resource type="Texture2D" uid="uid://dfh4v6l3w4fcn" path="res://assets/themes/directive_card/example_icon.png" id="5_b7wde"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lvpse"]
+line_spacing = 0.0
+font_size = 8
+
+[sub_resource type="FontVariation" id="FontVariation_scwn4"]
+variation_transform = Transform2D(1, 0.25, 0, 1, 0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_x3ykh"]
+line_spacing = 0.0
+font_size = 8
+
+[node name="DirectiveCard" type="VBoxContainer"]
+visible = false
+offset_left = 270.0
+offset_top = 99.0
+offset_right = 370.0
+offset_bottom = 262.0
+
+[node name="Card" type="Control" parent="."]
+custom_minimum_size = Vector2(100, 140)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Button" type="Button" parent="Card"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/hover = ExtResource("1_hx4x8")
+theme_override_styles/pressed = ExtResource("1_hx4x8")
+theme_override_styles/normal = ExtResource("2_dq4hj")
+script = ExtResource("3_4wpx7")
+
+[node name="Contents" type="VBoxContainer" parent="Card"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 2
+
+[node name="Padding2" type="Control" parent="Card/Contents"]
+visible = false
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Card/Contents"]
+custom_minimum_size = Vector2(95, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Latency 
+Focus"
+label_settings = ExtResource("4_uhaio")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Card/Contents"]
+visible = false
+custom_minimum_size = Vector2(80, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("5_b7wde")
+stretch_mode = 3
+
+[node name="Rarity" type="RichTextLabel" parent="Card/Contents"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "[center][color=9cdb43]- Tier I -"
+fit_content = true
+
+[node name="Description" type="Label" parent="Card/Contents"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "Effect: 
+Evasion of a character is increased by 50% of their speed. (i.e. if Vedal has a spd of 65, he will get + 32.5% evasion)"
+label_settings = SubResource("LabelSettings_lvpse")
+autowrap_mode = 2
+
+[node name="Chances" type="RichTextLabel" parent="Card/Contents"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "Increases Chances Of: 
+[color=9cdb43]Ultimate Sub Evasion 
+[color=20d6c7]Seasoned Babysitter
+[color=e86a73]Virtual Latency 
+"
+fit_content = true
+autowrap_mode = 2
+
+[node name="Quote" type="Label" parent="Card/Contents"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = SubResource("FontVariation_scwn4")
+text = "The most virtual of all vtubers"
+label_settings = SubResource("LabelSettings_x3ykh")
+autowrap_mode = 2
+
+[node name="Padding" type="Control" parent="Card/Contents"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2

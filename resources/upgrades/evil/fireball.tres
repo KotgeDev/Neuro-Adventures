@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="UpgradeResource" load_steps=4 format=3 uid="uid://ccj5rucjiv0y7"]
 
 [ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="1_05a7d"]
-[ext_resource type="Texture2D" uid="uid://bygr0j16ckiwg" path="res://assets/upgrades/fireball_icon.png" id="1_8flnx"]
-[ext_resource type="PackedScene" uid="uid://cmhyquyxh1fgw" path="res://scenes/upgrades/fireball_scene.tscn" id="2_lc8ql"]
+[ext_resource type="Texture2D" uid="uid://bygr0j16ckiwg" path="res://assets/upgrades/icons/fireball_icon.png" id="1_8flnx"]
+[ext_resource type="PackedScene" uid="uid://cmhyquyxh1fgw" path="res://scenes/upgrades/evil/fireball_scene.tscn" id="2_lc8ql"]
 
 [resource]
 script = ExtResource("1_05a7d")

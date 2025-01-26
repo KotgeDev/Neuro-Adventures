@@ -15,7 +15,7 @@ var state = null
 var token: String
 var refresh_token: String
 
-# Server 
+# Server
 var SERVER_ADDRESS: String
 var SERVER_PASSWORD: String
 
@@ -29,7 +29,7 @@ func setup(config: ConfigFile) -> void:
 
 	SERVER_ADDRESS = config.get_value("server", "address")
 	SERVER_PASSWORD = config.get_value("server", "password")
-	
+
 	load_tokens()
 
 #func validate_tokens() -> void:
@@ -52,9 +52,9 @@ func get_auth_code() -> void:
 		"state=%s" % state
 	]
 	var body = "&".join(data)
-	
+
 	var url = AUTH_SERVER + "?" + body
-	
+
 	OS.shell_open(url)
 	_get_token_from_auth()
 
@@ -64,16 +64,16 @@ func _token_get_failed() -> void:
 
 func _get_token_from_auth():
 	var headers = ["Content-Type: application/json"]
-	
+
 	var http_request = HTTPRequest.new()
 	add_child(http_request)
-	
+
 	var data = {
 		"state": state
 	}
-	
+
 	var body = RequestBody.serialize("get_access_token_from_state", data)
-	
+
 	get_tree().create_timer(3 * 60).timeout.connect(_token_get_failed)
 
 	var response = [0, 0]
@@ -84,38 +84,38 @@ func _get_token_from_auth():
 		response = await http_request.request_completed
 
 	var response_body = JSON.parse_string(response[3].get_string_from_utf8())
-		
+
 	token = response_body["access_token"]
 	refresh_token = response_body["refresh_token"]
-		
+
 	save_tokens()
 	token_recieved.emit()
-		
+
 	http_request.queue_free()
 	print("Tokens received!")
 
-## Only call after token_ready has been emited 
+## Only call after token_ready has been emited
 func get_user_data() -> Dictionary:
 	var headers = [
 		"Authorization: Bearer %s" % token
 	]
-	
+
 	var http_request = HTTPRequest.new()
 	add_child(http_request)
-	
+
 	http_request.request("%s/users/@me" % API_ENDPOINT, headers, HTTPClient.METHOD_GET)
 
 	var response = await http_request.request_completed
-	
+
 	var response_body = JSON.parse_string(response[3].get_string_from_utf8())
-	
+
 	return response_body
 
 #func is_token_valid() -> bool:
 	#print("Checking token validity ...")
 	#
 	#if !token:
-		#await get_tree().create_timer(0.001).timeout 
+		#await get_tree().create_timer(0.001).timeout
 		#return false
 	#
 	#var headers = [
@@ -126,8 +126,8 @@ func get_user_data() -> Dictionary:
 	#add_child(http_request)
 	#
 	#var error = http_request.request(
-		#"%s/users/@me" % API_ENDPOINT, 
-		#headers, 
+		#"%s/users/@me" % API_ENDPOINT,
+		#headers,
 		#HTTPClient.METHOD_GET
 	#)
 	#
@@ -136,42 +136,42 @@ func get_user_data() -> Dictionary:
 	#
 	#var response = await http_request.request_completed
 	#
-	#var response_body = JSON.parse_string(response[3].get_string_from_utf8()) 
+	#var response_body = JSON.parse_string(response[3].get_string_from_utf8())
 	#
 	#if response_body.has("id"):
 		#print("Token is valid!")
 		#return true
 	#else:
 		#print("Token is not valid. Reason: %s" % response_body)
-		#return false 
+		#return false
 
 func revoke_tokens() -> void:
 	print("Revoking tokens ...")
-	
+
 	var headers = ["Content-Type: application/json"]
-	
+
 	var http_request = HTTPRequest.new()
 	add_child(http_request)
-	
+
 	var data = {
 		"token": token
 	}
-	
+
 	var body = RequestBody.serialize("revoke_tokens", data)
-	
+
 	http_request.request(SERVER_ADDRESS, headers, HTTPClient.METHOD_POST, body)
-	
+
 	var response = await http_request.request_completed
 	var response_body = JSON.parse_string(response[3].get_string_from_utf8())
-	
+
 	if response[1] == 200:
 		print("Tokens revoked!")
 	else:
 		printerr("Token revocation failed!")
 
 func update_tokens(_token, _refresh_token) -> void:
-	token = _token 
-	refresh_token = _refresh_token 
+	token = _token
+	refresh_token = _refresh_token
 	save_tokens()
 
 #region SAVE / LOAD
@@ -202,6 +202,6 @@ func load_HTML(path):
 	var file = FileAccess.open(path, FileAccess.READ)
 	var HTML = file.get_as_text().replace("    ", "\t").insert(0, "\n")
 	file.close()
-	
+
 	return HTML
-#endregion 
+#endregion

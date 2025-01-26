@@ -4,8 +4,9 @@ const FLASH_TIME := 0.05
 const MAP_GROUP_NAME := "map"
 const AI_GROUP_NAME := "ai"
 const COLLAB_GROUP_NAME := "collab_partner"
+const DIR_MANAGER_GROUP_NAME := "dir_manager"
 
-#region Enums 
+#region Enums
 enum Owners {
 	OWNED_BY_AI,
 	OWNED_BY_COLLAB_PARTNER,
@@ -17,21 +18,22 @@ enum MapChoice {
 }
 
 enum CharacterChoice {
-	NEURO, 
+	NEURO,
 	EVIL,
 	VEDAL,
 	ANNY,
 	NONE
 }
-#endregion 
+#endregion
 
-## connect function to this signal if an action 
-## needs to be done only after the map is ready 
-signal map_ready 
+## connect function to this signal if the function
+## needs to be run only after the map is ready
+## and you are not sure if the map will be ready at that point
+signal map_ready
 
-#region TO ENEMY SPAWNER 
+#region TO ENEMY SPAWNER
 signal spawn(scene_template, count: int, time_interval: float, last_batch: bool)
-#endregion 
+#endregion
 
 #region TO MAP
 signal add_collectible_generator(gen: CollectibleGenerator)
@@ -40,30 +42,40 @@ signal enemy_killed(value: int)
 
 #region TO HUD
 signal game_over
-signal game_won 
+signal game_won
 signal update_ai_health(max_health: int, health: int)
 signal update_collab_partner_health(max_health: int, health: int)
 signal update_exp_bar(max_exp: int, exp: int)
-signal send_random_upgrades(upgrades: Array) 
+signal show_three_random_upgrades(upgrades: Array)
+signal send_random_directives(directives: Array)
 signal send_all_existing_upgrades(upgrades: Array)
 signal change_fps_counter_state(toggled_on: bool)
-#endregion 
+signal switch_follow
+signal switch_loading
+signal switch_stop
+#endregion
 
 #region TO UPGRADE MANAGER
-signal get_random_upgrades
-signal get_all_existing_upgrades 
+signal request_random_upgrades
+signal request_all_existing_upgrades
 signal lvl_up(upgrade: Upgrade)
-signal remove_maxed_upgrades 
-#endregion 
+signal remove_maxed_upgrades
+#endregion
+
+#region TO DIRECTIVE MANAGER
+signal request_random_directives
+signal add_directive(directive: Directive)
+signal remove_directive(directive: Directive)
+#endregion
 
 #region TO SPECIFIC UPGRADES
 signal update_drones
 signal update_pizza
 signal update_stars(enemy_in_range: bool)
 signal ai_attack(damage: float)
-#endregion 
+#endregion
 
-#region TO COLLAB PARTNER OR AI 
+#region TO COLLAB PARTNER OR AI
 signal collect_exp(value: int)
 signal collect_cookie
 signal collect_creggs
@@ -74,4 +86,4 @@ signal heal_ai(hp: float)
 signal add_upgrade_to_collab_partner(upgrade: Node)
 signal add_upgrade_to_ai(upgrade: Node)
 signal raise_the_timer(frequency: float, increase: float)
-#endregion 
+#endregion

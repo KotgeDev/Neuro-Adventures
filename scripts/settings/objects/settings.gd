@@ -1,22 +1,22 @@
 extends Node
 class_name Settings
 
-var window_mode: SettingsManager.WindowMode 
-var sfx_volume: float 
+var window_mode: SettingsManager.WindowMode
+var sfx_volume: float
 var music_volume: float
-var fps_counter: bool 
-var full_health_effect: bool 
-var ai_selected: Globals.CharacterChoice 
-var collab_partner_selected: Globals.CharacterChoice 
+var fps_counter: bool
+var full_health_effect: bool
+var ai_selected: Globals.CharacterChoice
+var collab_partner_selected: Globals.CharacterChoice
 var map_selected: Globals.MapChoice
 
 func _init(
 	_window_mode := SettingsManager.WindowMode.WINDOWED,
-	_sfx_volume := 1.0, 
+	_sfx_volume := 1.0,
 	_music_volume := 1.0,
- 	_fps_counter := false, 
- 	_full_health_effect := true, 
- 	_ai_selected := Globals.CharacterChoice.NEURO, 
+ 	_fps_counter := false,
+ 	_full_health_effect := true,
+ 	_ai_selected := Globals.CharacterChoice.NEURO,
  	_collab_partner_selected := Globals.CharacterChoice.VEDAL,
 	_map_selected := Globals.MapChoice.THE_FARM
 ) -> void:
@@ -31,22 +31,22 @@ func _init(
 
 func to_dict() -> Dictionary:
 	var dict = {
-		"window_mode": window_mode, 
+		"window_mode": window_mode,
 		"sfx_volume": sfx_volume,
-		"music_volume": music_volume, 
+		"music_volume": music_volume,
 		"fps_counter": fps_counter,
 		"full_health_effect": full_health_effect,
 		"ai_selected": ai_selected,
 		"collab_partner_selected": collab_partner_selected,
 		"map_selected": map_selected
 	}
-	return dict 
+	return dict
 
 static func from_dict(dict) -> Settings:
-	if not dict.has("map_selected"): 
+	if not dict.has("map_selected"):
 		dict["map_selected"] = Globals.MapChoice.THE_FARM
-	
-	return Settings.new( 
+
+	return Settings.new(
 		dict["window_mode"],
 		dict["sfx_volume"],
 		dict["music_volume"],

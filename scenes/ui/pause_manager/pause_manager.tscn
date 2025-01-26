@@ -1,0 +1,105 @@
+[gd_scene load_steps=5 format=3 uid="uid://dd3l4otjd8b3x"]
+
+[ext_resource type="Script" path="res://scripts/ui/pause_manager/pause_manager.gd" id="1_oau80"]
+[ext_resource type="PackedScene" uid="uid://b6j6utnkndtjo" path="res://scenes/settings/settings_menu.tscn" id="2_72dci"]
+[ext_resource type="Script" path="res://scripts/ui/button_with_sfx.gd" id="2_di652"]
+[ext_resource type="PackedScene" uid="uid://djb6su61nnipl" path="res://scenes/ui/pause_manager/stats_menu.tscn" id="4_dhg8p"]
+
+[node name="PauseManager" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oau80")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.490196)
+
+[node name="PausedMenu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuContainer" type="VBoxContainer" parent="PausedMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.5
+offset_top = -75.5
+offset_right = 66.5
+offset_bottom = 75.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EndGameLabel" type="Label" parent="PausedMenu/MenuContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "PAUSED"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="FlavorText" type="Label" parent="PausedMenu/MenuContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="ContinueButton" type="Button" parent="PausedMenu/MenuContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Continue"
+script = ExtResource("2_di652")
+
+[node name="StatsButton" type="Button" parent="PausedMenu/MenuContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Stats"
+script = ExtResource("2_di652")
+
+[node name="SettingsButton" type="Button" parent="PausedMenu/MenuContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Settings"
+script = ExtResource("2_di652")
+
+[node name="QuitButton" type="Button" parent="PausedMenu/MenuContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Quit
+"
+script = ExtResource("2_di652")
+
+[node name="SettingsMenu" parent="." instance=ExtResource("2_72dci")]
+visible = false
+layout_mode = 1
+
+[node name="StatsMenu" parent="." instance=ExtResource("4_dhg8p")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="PausedMenu/MenuContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="PausedMenu/MenuContainer/StatsButton" to="." method="_on_stats_button_pressed"]
+[connection signal="pressed" from="PausedMenu/MenuContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="PausedMenu/MenuContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="close_panel" from="SettingsMenu" to="." method="_on_settings_menu_close_panel"]
+[connection signal="close_panel" from="StatsMenu" to="." method="_on_stats_menu_close_panel"]

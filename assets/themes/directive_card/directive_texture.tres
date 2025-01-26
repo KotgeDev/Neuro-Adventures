@@ -1,0 +1,10 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://gfuo3kusuny0"]
+
+[ext_resource type="Texture2D" uid="uid://1iin555rthtt" path="res://assets/themes/directive_card/directive_normal.png" id="1_1bet7"]
+
+[resource]
+texture = ExtResource("1_1bet7")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0

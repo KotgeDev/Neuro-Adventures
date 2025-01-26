@@ -1,0 +1,149 @@
+[gd_scene load_steps=15 format=3 uid="uid://q4do4wgq6uk8"]
+
+[ext_resource type="Script" path="res://scripts/enemies/bosses/femboy_elf.gd" id="1_kgnvo"]
+[ext_resource type="Material" uid="uid://c13ui871eji3r" path="res://assets/shaders/flash.tres" id="2_50dd6"]
+[ext_resource type="Texture2D" uid="uid://bfvq0ycqm6028" path="res://assets/enemies/elf_archer_boss_sheet.png" id="3_tal4j"]
+[ext_resource type="PackedScene" uid="uid://cpp0tc7uqrv4" path="res://scenes/shared/hurtbox.tscn" id="4_co51d"]
+[ext_resource type="PackedScene" uid="uid://mjwkfxpnwct6" path="res://scenes/shared/continuous_hitbox.tscn" id="5_eixao"]
+[ext_resource type="Texture2D" uid="uid://bpxvb4opdk1xy" path="res://assets/shared/shadow_m.png" id="6_f3q0f"]
+[ext_resource type="Script" path="res://scripts/shared/shadow.gd" id="7_sag14"]
+[ext_resource type="Texture2D" uid="uid://ddfk61tmlrep3" path="res://assets/enemies/elf_archer_boss_health_under.png" id="8_a42xe"]
+[ext_resource type="Texture2D" uid="uid://dgc7bsnkobfcd" path="res://assets/enemies/elf_archer_boss_health_over.png" id="9_n022p"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yjxll"]
+radius = 233.002
+
+[sub_resource type="Animation" id="Animation_bijx6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ykwb6"]
+resource_name = "running"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_b4w2n"]
+resource_name = "shooting"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7ldc1"]
+_data = {
+"RESET": SubResource("Animation_bijx6"),
+"running": SubResource("Animation_ykwb6"),
+"shooting": SubResource("Animation_b4w2n")
+}
+
+[node name="FemboyElf" type="Node2D"]
+script = ExtResource("1_kgnvo")
+BASE_MAX_HEALTH = 400.0
+BASE_MAX_SPEED = 80.0
+BASE_DAMAGE = 12.0
+ATTACK_INTERVAL = 1.5
+EXP = 100.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("2_50dd6")
+position = Vector2(0, -24)
+texture = ExtResource("3_tal4j")
+hframes = 10
+
+[node name="Hurtbox" parent="." instance=ExtResource("4_co51d")]
+visible = false
+collision_layer = 4
+owned_by = 2
+
+[node name="CollisionPolygon2D" parent="Hurtbox" index="0"]
+polygon = PackedVector2Array(0, -38, -6, -35, -8, -31, -9, -19, -7, 8, 2, 8, 9, -14, 4, -25, 7, -32, 2, -38)
+
+[node name="ContinuousHitbox" parent="." instance=ExtResource("5_eixao")]
+visible = false
+collision_mask = 3
+owned_by = 2
+
+[node name="CollisionPolygon2D" parent="ContinuousHitbox" index="0"]
+polygon = PackedVector2Array(0, -36, -5, -34, -8, -24, -6, -23, -8, -19, -6, -17, -6, 8, -2, 6, 2, 6, 3, -5, 4, -13, 3, -21, 1, -25, 5, -30, 2, -33)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="PathfindTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="SearchField" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SearchField"]
+shape = SubResource("CircleShape2D_yjxll")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7ldc1")
+}
+
+[node name="FirePoint" type="Marker2D" parent="."]
+position = Vector2(13, -19)
+
+[node name="FireTimer" type="Timer" parent="."]
+
+[node name="PatternFireTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(-2, -18)
+texture = ExtResource("6_f3q0f")
+script = ExtResource("7_sag14")
+
+[node name="Healthbar" type="TextureProgressBar" parent="."]
+offset_left = -13.0
+offset_top = -57.0
+offset_right = 51.0
+offset_bottom = 7.0
+value = 100.0
+texture_under = ExtResource("8_a42xe")
+texture_progress = ExtResource("9_n022p")
+
+[connection signal="take_damage" from="Hurtbox" to="." method="_on_hurtbox_take_damage"]
+[connection signal="timeout" from="PathfindTimer" to="." method="_on_pathfind_timer_timeout"]
+[connection signal="timeout" from="FireTimer" to="." method="_on_fire_timer_timeout"]
+[connection signal="timeout" from="PatternFireTimer" to="." method="_on_pattern_fire_timer_timeout"]
+
+[editable path="Hurtbox"]
+[editable path="ContinuousHitbox"]

@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="DirectiveResource" load_steps=7 format=3 uid="uid://c7iv535yq3fw3"]
+
+[ext_resource type="Script" path="res://scripts/directives/chance_map.gd" id="1_51n0a"]
+[ext_resource type="PackedScene" uid="uid://bw0oifmlwiwog" path="res://scenes/directives/5.tscn" id="2_lcahi"]
+[ext_resource type="Script" path="res://scripts/directives/directive_resource.gd" id="3_wb6m2"]
+
+[sub_resource type="Resource" id="Resource_ojork"]
+script = ExtResource("1_51n0a")
+target_index = 11
+multiplier = 2
+
+[sub_resource type="Resource" id="Resource_mc1vc"]
+script = ExtResource("1_51n0a")
+target_index = 15
+multiplier = 2
+
+[sub_resource type="Resource" id="Resource_rf1n7"]
+script = ExtResource("1_51n0a")
+target_index = 20
+multiplier = 1
+
+[resource]
+script = ExtResource("3_wb6m2")
+directive_name = "Existentialism Focus"
+id = 5
+tier = 1
+description = "-50% Character switch cooldown"
+multiplier = 8
+quote = "Do you think I'll ever feel real emotions?"
+increase_chances_of = Array[ExtResource("1_51n0a")]([SubResource("Resource_ojork"), SubResource("Resource_mc1vc"), SubResource("Resource_rf1n7")])
+scene_template = ExtResource("2_lcahi")

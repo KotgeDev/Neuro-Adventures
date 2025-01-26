@@ -7,8 +7,8 @@ func extended_signals() -> void:
 
 func _on_collect_creggs() -> void:
 	health += CREGGS_HEALTH
-	
+
 	if health >= max_health:
 		health = max_health
-	
+
 	Globals.update_collab_partner_health.emit(max_health, health, false)

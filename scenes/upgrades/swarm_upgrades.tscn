@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://f5kx04gw7ejg"]
-
-[ext_resource type="Script" path="res://scripts/upgrades/swarm_upgrades.gd" id="1_tdy1v"]
-
-[node name="SwarmUpgrades" type="Node2D"]
-script = ExtResource("1_tdy1v")

@@ -47,6 +47,11 @@ _data = {
 
 [node name="SimpleEnemy" type="Node2D"]
 script = ExtResource("1_eq34g")
+AVOIDANCE_RADIUS = null
+BASE_MAX_HEALTH = null
+BASE_MAX_SPEED = null
+BASE_DAMAGE = null
+ATTACK_INTERVAL = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = ExtResource("2_1p3gf")

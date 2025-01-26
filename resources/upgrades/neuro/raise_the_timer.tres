@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="UpgradeResource" load_steps=4 format=3 uid="uid://dtr3cqndmotfv"]
 
 [ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="1_b4atu"]
-[ext_resource type="Texture2D" uid="uid://cpuuxj60tf8kf" path="res://assets/upgrades/raise_the_timer_icon.png" id="1_ylsif"]
-[ext_resource type="PackedScene" uid="uid://d37kwggd7swy2" path="res://scenes/upgrades/raise_the_timer.tscn" id="2_i3lwb"]
+[ext_resource type="Texture2D" uid="uid://cpuuxj60tf8kf" path="res://assets/upgrades/icons/raise_the_timer_icon.png" id="1_ylsif"]
+[ext_resource type="PackedScene" uid="uid://d37kwggd7swy2" path="res://scenes/upgrades/neuro/raise_the_timer.tscn" id="2_i3lwb"]
 
 [resource]
 script = ExtResource("1_b4atu")

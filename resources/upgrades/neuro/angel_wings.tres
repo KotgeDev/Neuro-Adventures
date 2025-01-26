@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="UpgradeResource" load_steps=4 format=3 uid="uid://bxdtnqbo7qetm"]
 
-[ext_resource type="Texture2D" uid="uid://devpp1ou6mkkr" path="res://assets/upgrades/angel_wings_icon.png" id="1_orfrr"]
-[ext_resource type="PackedScene" uid="uid://d3cpr42ek57qj" path="res://scenes/upgrades/angel_wings.tscn" id="2_7lrr0"]
+[ext_resource type="Texture2D" uid="uid://devpp1ou6mkkr" path="res://assets/upgrades/icons/angel_wings_icon.png" id="1_orfrr"]
+[ext_resource type="PackedScene" uid="uid://d3cpr42ek57qj" path="res://scenes/upgrades/neuro/angel_wings.tscn" id="2_7lrr0"]
 [ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="3_a5c4k"]
 
 [resource]

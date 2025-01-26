@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="UpgradeResource" load_steps=4 format=3 uid="uid://cpvjph3wej08q"]
 
-[ext_resource type="Texture2D" uid="uid://cp61hrpe4smej" path="res://assets/upgrades/programming_socks_icon.png" id="1_2qp7l"]
-[ext_resource type="PackedScene" uid="uid://bmnjvqtgcqgtx" path="res://scenes/upgrades/programming_socks.tscn" id="2_gepv1"]
+[ext_resource type="Texture2D" uid="uid://cp61hrpe4smej" path="res://assets/upgrades/icons/programming_socks_icon.png" id="1_2qp7l"]
+[ext_resource type="PackedScene" uid="uid://bmnjvqtgcqgtx" path="res://scenes/upgrades/shared/programming_socks.tscn" id="2_gepv1"]
 [ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="3_ap3lm"]
 
 [resource]

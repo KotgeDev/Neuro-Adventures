@@ -1,0 +1,81 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmjrphqhgreq5"]
+
+[ext_resource type="Script" path="res://scripts/ui/directive_menu.gd" id="1_ic042"]
+[ext_resource type="PackedScene" uid="uid://dej58m34yl70t" path="res://scenes/ui/directive_card.tscn" id="4_8rrai"]
+[ext_resource type="StyleBox" uid="uid://5da1tota8pd3" path="res://assets/themes/gray_button/gray_button_hover.tres" id="7_hojk4"]
+[ext_resource type="StyleBox" uid="uid://dyugx6j82l5lv" path="res://assets/themes/gray_button/gray_button.tres" id="8_mtmfo"]
+
+[node name="DirectiveMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_ic042")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.490196)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = -25.5
+offset_right = 73.0
+offset_bottom = 25.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 22)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Choose a Directive"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+
+[node name="CancelButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_hover_color = Color(0.862745, 0.0784314, 0.0392157, 1)
+theme_override_colors/font_pressed_color = Color(0.862745, 0.0784314, 0.0392157, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/hover = ExtResource("7_hojk4")
+theme_override_styles/pressed = ExtResource("7_hojk4")
+theme_override_styles/normal = ExtResource("8_mtmfo")
+text = "Cancel"
+
+[node name="DirectiveCard" parent="." instance=ExtResource("4_8rrai")]
+layout_mode = 2
+offset_left = 320.0
+offset_top = 180.5
+offset_right = 420.0
+offset_bottom = 343.5
+
+[node name="RerollButton" type="Button" parent="DirectiveCard"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Reroll"
+
+[connection signal="pressed" from="VBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
+
+[editable path="DirectiveCard"]
