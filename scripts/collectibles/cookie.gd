@@ -6,7 +6,7 @@ func pickup_not_allowed() -> bool:
 	if ai.health == ai.max_health:
 		return true
 	else:
-		return false 
+		return false
 
 func fire_signal() -> void:
-	Globals.collect_cookie.emit() 
+	Globals.collect_cookie.emit()

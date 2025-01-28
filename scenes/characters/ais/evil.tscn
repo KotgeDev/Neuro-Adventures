@@ -14,7 +14,6 @@ shader_parameter/white = null
 
 [node name="Evil" instance=ExtResource("1_25axx")]
 BASE_MAX_SPEED = 50
-MAX_HEALTH = 60.0
 BASE_AI_DISTANCE = 70.0
 
 [node name="IdleSprite" parent="CharacterAnimation" index="0"]

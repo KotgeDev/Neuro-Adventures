@@ -1,14 +1,15 @@
-[gd_resource type="Resource" script_class="DirectiveResource" load_steps=3 format=3 uid="uid://bleinux7ywgwt"]
+[gd_resource type="Resource" script_class="DirectiveResource" load_steps=4 format=3 uid="uid://bleinux7ywgwt"]
 
 [ext_resource type="Script" path="res://scripts/directives/chance_map.gd" id="1_tubql"]
+[ext_resource type="PackedScene" uid="uid://cynu1kw6hnnws" path="res://scenes/directives/11.tscn" id="2_f152p"]
 [ext_resource type="Script" path="res://scripts/directives/directive_resource.gd" id="2_k7fod"]
 
 [resource]
 script = ExtResource("2_k7fod")
-directive_name = ""
-id = 0
-tier = 0
-description = ""
-multiplier = 0
-quote = ""
+directive_name = "Top Performance AI"
+id = 11
+tier = 2
+description = "AI ATK will be multiplied by AI current HP / 20 (40 HP would mean x2 ATK, 10 HP would mean x0.5 ATK)"
+quote = "MAXIMUM NEURO EFFECT!"
 increase_chances_of = Array[ExtResource("1_tubql")]([])
+scene_template = ExtResource("2_f152p")

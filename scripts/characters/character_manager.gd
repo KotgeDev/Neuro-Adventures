@@ -45,7 +45,20 @@ extends Node
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
+var past_upgrade_name_map = {
+	"Pizza": "Pizza Drone",
+	"Viva La Pizza Revolution": "Pizza Revolution Network",
+	"Gymbag Drone": "Swarm Drone",
+	"Swarm Upgrades": "Swarm Control System",
+	"Say it Back! ": "Confession Letter",
+	"Forgotten Child ": "Crazy Fing Robot Body"
+}
+
 func find_upgrade(upgrade_name: String, db: Array) -> Resource:
+	# Past version name check
+	if past_upgrade_name_map.has(upgrade_name):
+		upgrade_name = past_upgrade_name_map[upgrade_name]
+
 	for upgrade in all_ai_db:
 		if upgrade.upgrade_name == upgrade_name:
 			return upgrade

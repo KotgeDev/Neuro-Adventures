@@ -30,7 +30,6 @@ directive_name = "Gaming Focus"
 id = 2
 tier = 1
 description = "+10% ATK (for both characters)"
-multiplier = 8
 quote = "Hello mrekk. They tell me you are my only competition"
 increase_chances_of = Array[ExtResource("1_kwilx")]([SubResource("Resource_8pr8v"), SubResource("Resource_c7m6m"), SubResource("Resource_nf68r"), SubResource("Resource_mvn8y")])
 scene_template = ExtResource("2_h6fi7")

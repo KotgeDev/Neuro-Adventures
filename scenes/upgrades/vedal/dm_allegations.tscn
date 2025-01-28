@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://b7jfbfixl6usd"]
 
 [ext_resource type="Script" path="res://scripts/upgrades/vedal/dm_allegations.gd" id="1_a1fxu"]
-[ext_resource type="Script" path="res://scripts/shared/cooldown_timer.gd" id="2_brbol"]
+[ext_resource type="Script" path="res://scripts/shared/collab_cooldown_timer.gd" id="2_i83nh"]
 [ext_resource type="Texture2D" uid="uid://clsw1c1opu2lf" path="res://assets/upgrades/dm_allegations_sheet.png" id="2_r7pwe"]
 
 [sub_resource type="Animation" id="Animation_xftfm"]
@@ -63,7 +63,7 @@ _data = {
 script = ExtResource("1_a1fxu")
 
 [node name="CooldownTimer" type="Timer" parent="."]
-script = ExtResource("2_brbol")
+script = ExtResource("2_i83nh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -40)

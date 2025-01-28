@@ -1,5 +1,7 @@
 extends Node2D
 
+@onready var sfx: AudioStream = preload("res://assets/sfx/mayberumsplash.wav")
+
 var stun_time
 
 func setup(duration, hit_wait_time, damage, p_stun) -> void:
@@ -11,6 +13,8 @@ func setup(duration, hit_wait_time, damage, p_stun) -> void:
 func _ready() -> void:
 	$AnimationPlayer.play("intro")
 	$AnimationPlayer.queue("sizzle")
+
+	AudioSystem.play_sfx(sfx, global_position, 0.3)
 
 func _on_continuous_hitbox_self_destruct():
 	queue_free()

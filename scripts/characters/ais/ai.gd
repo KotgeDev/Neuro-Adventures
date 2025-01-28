@@ -21,7 +21,10 @@ var collab_partner: CollabPartner
 
 #region STATS
 @onready var max_health: float = BASE_MAX_HEALTH
-@onready var health: float = BASE_MAX_HEALTH
+@onready var health: float = BASE_MAX_HEALTH :
+	set(value):
+		health = value
+		StatsManager.ai_hp_changed.emit()
 @onready var max_speed: float = BASE_MAX_SPEED :
 	set(value):
 		max_speed = value
@@ -106,6 +109,7 @@ func make_path() -> void:
 
 func _on_increase_max_hp(inc_perc) -> void:
 	max_health = BASE_MAX_HEALTH + BASE_MAX_HEALTH * inc_perc
+	Globals.update_ai_health.emit(max_health, health, false)
 
 func _on_increase_speed(inc_perc) -> void:
 	max_speed = BASE_MAX_SPEED + BASE_MAX_SPEED * inc_perc
@@ -125,7 +129,11 @@ func _on_hurtbox_take_damage(damage: float, shake := true):
 	character_animation.show_damage()
 	Globals.update_ai_health.emit(max_health, health, shake)
 	if health <= 0:
-		Globals.game_over.emit()
+		StatsManager.ai_life -= 1
+		if StatsManager.ai_life == 0:
+			Globals.game_over.emit()
+		else:
+			Globals.heal_ai.emit(max_health)
 
 	AudioSystem.play_sfx(hit_sfx, global_position)
 

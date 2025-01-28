@@ -40,12 +40,15 @@ var dual_strike_max := false
 var collectible_generators = []
 var ai_scene
 var collab_scene
+var enemy_stat_mult = 1.0
 #endregion
 
 #region ENDLESS MODE
-var scaling_difficulty = 1.0
-var scale_factor = 1.0
 var score = 0
+func endless_stat_scale(i: int) -> float:
+	if i == 0:
+		return 1.0
+	return i * 2.0
 #endregion
 
 #region MONITOR
@@ -88,7 +91,11 @@ func _ready() -> void:
 
 	if MapManager.map_mode == MapManager.MapMode.ENDLESS:
 		spawn_enemies_endless()
-	else:
+	elif MapManager.map_mode == MapManager.MapMode.HARD:
+		enemy_stat_mult = 2.0
+		spawn_enemies()
+	elif MapManager.map_mode == MapManager.MapMode.NORMAL:
+		enemy_stat_mult = 1.0
 		spawn_enemies()
 
 func spawn_monitor() -> void:

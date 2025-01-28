@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxfsjwfmjkmj"]
+
+[ext_resource type="Script" path="res://scripts/upgrades/neuro/ten_tin_cans.gd" id="1_nej1i"]
+[ext_resource type="Script" path="res://scripts/shared/ai_cooldown_timer.gd" id="2_glui1"]
+
+[node name="TenTinCans" type="Node2D"]
+script = ExtResource("1_nej1i")
+
+[node name="AICooldownTimer" type="Timer" parent="."]
+autostart = true
+script = ExtResource("2_glui1")
+
+[node name="FirePosition" type="Marker2D" parent="."]
+position = Vector2(10, -7)
+
+[connection signal="timeout" from="AICooldownTimer" to="." method="_on_ai_cooldown_timer_timeout"]

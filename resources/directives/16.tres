@@ -1,14 +1,15 @@
-[gd_resource type="Resource" script_class="DirectiveResource" load_steps=3 format=3 uid="uid://dfediwrgx4wkw"]
+[gd_resource type="Resource" script_class="DirectiveResource" load_steps=4 format=3 uid="uid://dfediwrgx4wkw"]
 
 [ext_resource type="Script" path="res://scripts/directives/chance_map.gd" id="1_h3qsv"]
+[ext_resource type="PackedScene" uid="uid://cw6ejkoj5hd43" path="res://scenes/directives/16.tscn" id="2_rhfdt"]
 [ext_resource type="Script" path="res://scripts/directives/directive_resource.gd" id="2_sayrv"]
 
 [resource]
 script = ExtResource("2_sayrv")
-directive_name = ""
-id = 0
-tier = 0
-description = ""
-multiplier = 0
-quote = ""
+directive_name = "Pro Gamer Partner"
+id = 16
+tier = 2
+description = "+1.0 collab constant (A constant is an ATK value added at the end of every ATK) "
+quote = "I will give you a cookie if you help me defuse this bomb"
 increase_chances_of = Array[ExtResource("1_h3qsv")]([])
+scene_template = ExtResource("2_rhfdt")

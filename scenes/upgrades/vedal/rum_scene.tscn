@@ -1,14 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://b3m4h0xb4h80u"]
 
 [ext_resource type="Script" path="res://scripts/upgrades/vedal/rum_scene.gd" id="1_2vgel"]
-[ext_resource type="Script" path="res://scripts/shared/cooldown_timer.gd" id="2_gp3w0"]
+[ext_resource type="Script" path="res://scripts/shared/collab_cooldown_timer.gd" id="2_c2vxs"]
 
 [node name="RumScene" type="Node2D"]
 script = ExtResource("1_2vgel")
 
 [node name="FireTimer" type="Timer" parent="."]
 autostart = true
-script = ExtResource("2_gp3w0")
+script = ExtResource("2_c2vxs")
 
 [node name="FireLocation" type="Marker2D" parent="."]
 position = Vector2(10, -7)

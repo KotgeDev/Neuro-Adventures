@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://btyt1fojhdxtt"]
+
+[ext_resource type="Script" path="res://scripts/upgrades/evil/harpoon.gd" id="1_mh0pl"]
+[ext_resource type="Script" path="res://scripts/shared/ai_cooldown_timer.gd" id="2_7xckj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xi541"]
+radius = 402.02
+
+[node name="Harpoon" type="Node2D"]
+script = ExtResource("1_mh0pl")
+
+[node name="AICooldownTimer" type="Timer" parent="."]
+autostart = true
+script = ExtResource("2_7xckj")
+
+[node name="EnemySearchArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemySearchArea"]
+shape = SubResource("CircleShape2D_xi541")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(0, -16)
+
+[connection signal="timeout" from="AICooldownTimer" to="." method="_on_ai_cooldown_timer_timeout"]

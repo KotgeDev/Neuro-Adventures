@@ -6,24 +6,24 @@ extends Node2D
 #endregion
 
 #region PROPERTIES
-var speed: int 
-var damage: float 
+var speed: int
+var damage: float
 var direction: Vector2
-#endregion 
+#endregion
 
 func setup(
 	p_speed: int,
-	p_damage: float, 
+	p_damage: float,
 	p_direction: Vector2,
 	p_pierce: int
-) -> void: 
+) -> void:
 	speed = p_speed
 	$MultiHitbox.damage = p_damage
 	direction = p_direction
 	$MultiHitbox.count = p_pierce
 
 func _physics_process(delta: float) -> void:
-	position += direction * speed * delta    
+	position += direction * speed * delta
 
 func _on_self_destruct_timer_timeout():
 	queue_free()

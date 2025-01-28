@@ -8,7 +8,7 @@
 script = ExtResource("1_wnd2b")
 upgrade_name = "Cookies"
 icon = ExtResource("1_urvct")
-descriptions = PackedStringArray("1% chance for enemies to drop cookies (Gives 5 HP to the AI)", "2% chance for enemies to drop cookies", "3% chance for enemies to drop cookies", "5% chance for enemies to drop cookies")
+descriptions = PackedStringArray("+1% cookie drop chance", "+1% cookie drop chance", "+1% cookie drop chance", "+2% cookie drop chance")
 upgrade_type = 0
 character = 0
 max_lvl = 4

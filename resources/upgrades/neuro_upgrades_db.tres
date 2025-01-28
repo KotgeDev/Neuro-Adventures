@@ -6,13 +6,13 @@
 [ext_resource type="Resource" uid="uid://bp0ia8q1xifig" path="res://resources/upgrades/neuro/cookies.tres" id="2_1j1se"]
 [ext_resource type="Resource" uid="uid://pbkhk4vad4vv" path="res://resources/upgrades/neuro/dual_strike.tres" id="3_ncsj4"]
 [ext_resource type="Resource" uid="uid://buvwlyhvs33qo" path="res://resources/upgrades/neuro/gaslight.tres" id="4_2qg2h"]
-[ext_resource type="Resource" uid="uid://uo3a5tqn134v" path="res://resources/upgrades/neuro/gymbag_drones.tres" id="5_564uc"]
+[ext_resource type="Resource" uid="uid://uo3a5tqn134v" path="res://resources/upgrades/neuro/swarm_drone.tres" id="5_564uc"]
 [ext_resource type="Resource" uid="uid://4m5usheld4ap" path="res://resources/upgrades/neuro/inuke6000.tres" id="6_ai6hr"]
-[ext_resource type="Resource" uid="uid://dtr3cqndmotfv" path="res://resources/upgrades/neuro/raise_the_timer.tres" id="7_x3nqm"]
-[ext_resource type="Resource" uid="uid://uq5dp2gxpgie" path="res://resources/upgrades/neuro/say_it_back.tres" id="8_01463"]
-[ext_resource type="Resource" uid="uid://cv3ro7sl3ygdj" path="res://resources/upgrades/neuro/swarm_upgrades.tres" id="9_aj7rb"]
+[ext_resource type="Resource" uid="uid://uq5dp2gxpgie" path="res://resources/upgrades/neuro/confession_letter.tres" id="8_01463"]
+[ext_resource type="Resource" uid="uid://cv3ro7sl3ygdj" path="res://resources/upgrades/neuro/swarm_control_system.tres" id="9_aj7rb"]
 [ext_resource type="Resource" uid="uid://chn1yrevu65dl" path="res://resources/upgrades/neuro/lava_lamp.tres" id="11_5hxcb"]
+[ext_resource type="Resource" uid="uid://xa4ua5cwwqdm" path="res://resources/upgrades/neuro/ten_tin_cans.tres" id="12_l2r3d"]
 
 [resource]
 script = ExtResource("1_ab4vt")
-db = Array[ExtResource("1_lohup")]([ExtResource("1_g4spg"), ExtResource("2_1j1se"), ExtResource("3_ncsj4"), ExtResource("4_2qg2h"), ExtResource("5_564uc"), ExtResource("6_ai6hr"), ExtResource("7_x3nqm"), ExtResource("9_aj7rb"), ExtResource("8_01463"), ExtResource("11_5hxcb")])
+db = Array[ExtResource("1_lohup")]([ExtResource("1_g4spg"), ExtResource("2_1j1se"), ExtResource("3_ncsj4"), ExtResource("4_2qg2h"), ExtResource("5_564uc"), ExtResource("6_ai6hr"), ExtResource("9_aj7rb"), ExtResource("8_01463"), ExtResource("11_5hxcb"), ExtResource("12_l2r3d")])

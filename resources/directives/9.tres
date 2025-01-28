@@ -1,14 +1,15 @@
-[gd_resource type="Resource" script_class="DirectiveResource" load_steps=3 format=3 uid="uid://cjqpth18gnodb"]
+[gd_resource type="Resource" script_class="DirectiveResource" load_steps=4 format=3 uid="uid://cjqpth18gnodb"]
 
 [ext_resource type="Script" path="res://scripts/directives/chance_map.gd" id="1_egxh0"]
 [ext_resource type="Script" path="res://scripts/directives/directive_resource.gd" id="2_od8sm"]
+[ext_resource type="PackedScene" uid="uid://d3suwuxredfjj" path="res://scenes/directives/9.tscn" id="2_ukxar"]
 
 [resource]
 script = ExtResource("2_od8sm")
-directive_name = ""
-id = 0
-tier = 0
-description = ""
-multiplier = 0
-quote = ""
+directive_name = "Ultimate Sub Evasion"
+id = 9
+tier = 2
+description = "Evasion of a character is increased by 20% of their speed. (If Vedal has a spd of 100, he will get + 20% evasion)"
+quote = "It's almost like Twitch hates you"
 increase_chances_of = Array[ExtResource("1_egxh0")]([])
+scene_template = ExtResource("2_ukxar")

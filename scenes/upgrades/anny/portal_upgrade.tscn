@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://fx0bbowurtxq" path="res://assets/upgrades/portal_loading.png" id="2_n04sn"]
 [ext_resource type="PackedScene" uid="uid://mxus6ne1gf0c" path="res://scenes/projectiles/portal.tscn" id="2_nrmmc"]
 [ext_resource type="Texture2D" uid="uid://cpxhqxyk5fv1f" path="res://assets/upgrades/portal_loading_progress.png" id="3_54xuy"]
-[ext_resource type="Script" path="res://scripts/shared/cooldown_timer.gd" id="3_343v8"]
+[ext_resource type="Script" path="res://scripts/shared/collab_cooldown_timer.gd" id="3_jkfee"]
 [ext_resource type="Material" uid="uid://csxlxcwxw3h3v" path="res://assets/shaders/rainbow.tres" id="5_fp5x2"]
 
 [node name="PortalUpgrade" type="Node2D"]
@@ -14,7 +14,7 @@ script = ExtResource("1_qun84")
 position = Vector2(-1, 0)
 
 [node name="LoadingTimer" type="Timer" parent="."]
-script = ExtResource("3_343v8")
+script = ExtResource("3_jkfee")
 
 [node name="PortalGun" type="Sprite2D" parent="."]
 visible = false

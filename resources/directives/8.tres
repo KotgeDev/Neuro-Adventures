@@ -20,7 +20,6 @@ directive_name = "Networking Focus"
 id = 8
 tier = 1
 description = "+20% Collection Range"
-multiplier = 8
 quote = "Brought to you by Vedal AI"
 increase_chances_of = Array[ExtResource("1_6xhwj")]([SubResource("Resource_rkveo"), SubResource("Resource_1swdy")])
 scene_template = ExtResource("2_wvhau")

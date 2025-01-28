@@ -1,12 +1,12 @@
 extends UpgradeScene
 
 func sync_level() -> void:
-	match upgrade.lvl: 
-		1: 
-			StatsManager.filter = 0.3 
-		2: 
-			StatsManager.filter = 0.4 
+	match upgrade.lvl:
+		1:
+			StatsManager.filter += 0.25
+		2:
+			StatsManager.filter += 0.25
 		3:
-			StatsManager.filter = 0.5 
+			StatsManager.filter += 0.2
 		4:
-			StatsManager.filter = 0.7
+			StatsManager.filter += 0.1

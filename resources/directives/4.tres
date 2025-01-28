@@ -20,7 +20,6 @@ directive_name = "Hype Train Focus"
 id = 4
 tier = 1
 description = "+10% Speed (for both characters)"
-multiplier = 8
 quote = "Believe in the Time God."
 increase_chances_of = Array[ExtResource("1_f852v")]([SubResource("Resource_vn0jq"), SubResource("Resource_voftk")])
 scene_template = ExtResource("2_ie3sf")

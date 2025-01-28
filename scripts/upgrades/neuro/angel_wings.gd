@@ -1,54 +1,82 @@
 extends UpgradeScene
 
-@export var LV1_FIRE_RATE := 3.0
-@export var LV3_FIRE_RATE := 1.5 
-@export var LV1_DAMAGE := 3.0 
-@export var LV4_DAMAGE := 6.0 
-@export var LV1_HIT_COUNT := 1
-@export var LV2_HIT_COUNT := 3 
+const GRACE_PERIOD := 1.5
 
 @onready var fire_timer = $FireTimer
 @onready var enemy_search_area = $EnemySearchArea
 @onready var ai = get_parent()
 @onready var map = get_tree().get_first_node_in_group("map")
-@onready var right_marker = $RightMarker
-@onready var left_marker = $LeftMarker
+@onready var fire_pos: Marker2D = $Marker2D
 
-var feather_path_template = preload("res://scenes/projectiles/feather_path.tscn")
-var damage: float 
-var hit_count: int 
-var feather_count: int 
+var feather = preload("res://scenes/projectiles/feather.tscn")
+var path_temp = preload("res://scenes/projectiles/ai_projectile_path.tscn")
+var sfx: AudioStream = preload("res://assets/sfx/arrowswish.wav")
+
+var damage: float
+var speed: float
+var pierce: int
+var count: int
+var sets: int
+
+func set_data(
+	_damage: float,
+	_speed: float,
+	_count: int,
+	_pierce: int,
+	wait_time: float,
+	_sets: int
+) -> void:
+	if _damage: damage = _damage
+	if _speed: speed = _speed
+	if _count: count = _count
+	if _pierce: pierce = _pierce
+	if wait_time: fire_timer.base_cooldown = wait_time
+	if _sets: sets = _sets
 
 func sync_level() -> void:
-	match upgrade.lvl: 
+	match upgrade.lvl:
 		1:
-			fire_timer.base_cooldown = LV1_FIRE_RATE
-			damage = LV1_DAMAGE
-			hit_count = LV1_HIT_COUNT 
-			feather_count = 1
+			set_data(3.0, 300.0, 3, 1, 3.0, 1)
 		2:
-			hit_count = LV2_HIT_COUNT
+			set_data(0, 0, 5, 0, 0, 0)
 		3:
-			fire_timer.base_cooldown = LV3_FIRE_RATE
+			set_data(0, 0, 0, 0, 2.5, 0)
 		4:
-			damage = LV4_DAMAGE    
+			set_data(4.0, 0, 7, 0, 0, 0)
 		5:
-			feather_count = 2 
+			set_data(0, 0, 0, 0, 0, 2)
+
+
+const DEG = 10.0
 
 func _on_fire_timer_timeout():
-	var enemies := []
+	var areas = enemy_search_area.get_overlapping_areas()
+	if areas.size() == 0:
+		return
 
-	for enemy in enemy_search_area.get_overlapping_areas():
-		enemies.append(enemy)
-	enemies.shuffle()
-	
-	for i in range(feather_count):
-		if enemies.size() >= i + 1: 
-			var feather_path = feather_path_template.instantiate() 
-			if ai.global_position.x > enemies[i].global_position.x:	
-				feather_path.global_position = left_marker.global_position
-			else:
-				feather_path.global_position = right_marker.global_position
-			feather_path.look_at(enemies[i].global_position)
-			feather_path.setup(damage, hit_count)
-			map.call_deferred("add_child", feather_path) 
+	areas.shuffle()
+
+	for i in range(sets):
+		if areas.size() > i:
+			var current_count = count
+			var pos = areas[i].global_position
+			for j in range((current_count-1)/2):
+				set_feather_path(pos, deg_to_rad(-DEG*(j+1)))
+			set_feather_path(pos)
+			for j in range((current_count-1)/2):
+				set_feather_path(pos, deg_to_rad(DEG*(j+1)))
+
+	await get_tree().create_timer(GRACE_PERIOD, false).timeout
+	AudioSystem.play_sfx(sfx, global_position)
+
+func set_feather_path(target_pos: Vector2, angle := 0.0) -> void:
+	var feather_path = path_temp.instantiate()
+	feather_path.setup(damage, pierce, speed, GRACE_PERIOD, feather, sfx)
+	add_child(feather_path)
+
+	feather_path.look_at(target_pos)
+	feather_path.rotation += angle
+
+	fire_pos.position = Vector2(24*cos(feather_path.global_rotation), 24*sin(feather_path.global_rotation))
+	fire_pos.position.y += -16
+	feather_path.global_position = fire_pos.global_position

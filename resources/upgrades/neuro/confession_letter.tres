@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="UpgradeResource" load_steps=4 format=3 uid="uid://uq5dp2gxpgie"]
+
+[ext_resource type="Texture2D" uid="uid://c3hnbvhwab0g6" path="res://assets/upgrades/icons/confession_letter_icon.png" id="1_2iw3q"]
+[ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="1_fqkpa"]
+[ext_resource type="PackedScene" uid="uid://bd1nmiu3hk45s" path="res://scenes/upgrades/neuro/confession_letter.tscn" id="2_fyeig"]
+
+[resource]
+script = ExtResource("1_fqkpa")
+upgrade_name = "Confession Letter"
+icon = ExtResource("1_2iw3q")
+descriptions = PackedStringArray("+50% AI ATK, reduce AI chase radius", "+50% AI ATK, reduce AI chase radius ", "+100% AI ATK, reduce AI chase radius ")
+upgrade_type = 0
+character = 0
+max_lvl = 3
+scene_template = ExtResource("2_fyeig")
+unlimited = false
+tag = 0

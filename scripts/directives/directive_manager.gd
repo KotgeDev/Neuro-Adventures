@@ -1,8 +1,6 @@
 extends Node2D
 class_name DirectiveManager
 
-const DIR_PATH = "res://resources/directives"
-
 var directives_db := []
 var owned_directives := []
 var tier_colors = ["9cdb43", "20d6c7", "e86a73"]
@@ -10,13 +8,13 @@ var tier_colors = ["9cdb43", "20d6c7", "e86a73"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	load_directives()
+	generate_directive_objects()
 	Globals.request_random_directives.connect(_on_request_random_directives)
 	Globals.add_directive.connect(_on_add_directive)
 	Globals.remove_directive.connect(_on_remove_directive)
 
 func _on_request_random_directives() -> void:
-	Globals.send_random_directives.emit(select_random(4))
+	Globals.show_directive_choices.emit(select_random(4))
 
 func _on_add_directive(directive: Directive) -> void:
 	if !directive.resource.scene_template:
@@ -48,24 +46,22 @@ func select_random(count: int) -> Array:
 
 	return results
 
-func load_directives() -> void:
-	var filenames = DirAccess.get_files_at(DIR_PATH)
-
-	for filename in filenames:
-		var full_path = DIR_PATH + "/" + filename
-		var resource = load(full_path)
-		directives_db.append(Directive.new(resource))
+func generate_directive_objects() -> void:
+	for dir_resource in DirectiveLoader.directive_resources:
+		directives_db.append(Directive.new(dir_resource))
 
 func generate_pool() -> Array:
 	var pool = []
 
 	for d in directives_db:
 		var directive = d as Directive
-		if directive.scene:
+		if directive.scene:  # If this directive is owned
 			for map in directive.resource.increase_chances_of:
-				for i in range(map.multiplier):
-					pool.append(map.target_index)
-		else:
+				# If a directive in the map is not owned
+				if !find_directive(map.target_index).scene:
+					for i in range(map.multiplier):
+						pool.append(map.target_index)
+		else:  # If this directive is not owned
 			for i in range(directive.resource.multiplier):
 				pool.append(directive.resource.id)
 

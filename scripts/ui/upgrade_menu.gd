@@ -20,7 +20,7 @@ var menu_blip2: AudioStream = preload("res://assets/sfx/menublip2.wav")
 func _ready():
 	scale = Vector2.ZERO
 	Globals.show_three_random_upgrades.connect(_on_show_three_random_upgrades)
-	Globals.send_all_existing_upgrades.connect(_on_send_all_existing_upgrades)
+	Globals.show_all_existing_upgrades.connect(_on_show_all_existing_upgrades)
 	Globals.map_ready.connect(_on_map_ready)
 
 func _on_map_ready() -> void:
@@ -35,7 +35,7 @@ func _on_show_three_random_upgrades(upgrades: Array) -> void:
 	pause_manager.pause_game()
 	display_upgrades(upgrades)
 
-func _on_send_all_existing_upgrades(upgrades: Array) -> void:
+func _on_show_all_existing_upgrades(upgrades: Array) -> void:
 	ntx_label.visible = true
 	reroll_container.visible = false
 

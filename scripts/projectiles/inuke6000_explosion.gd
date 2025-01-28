@@ -13,10 +13,10 @@ func setup(
 
 func _on_grace_period_timer_timeout():
 	AudioSystem.play_sfx(nuke_sfx, global_position)
-	$NukeExplosion.visible = true 
+	$NukeExplosion.visible = true
 	animation_player.play("nuke_falling")
 	await animation_player.animation_finished
-	
+
 	$WarningSprite.visible = false
 	$MultiHitbox/CollisionPolygon2D.set_deferred("disabled", false)
 	animation_player.play("nuke_exploding")

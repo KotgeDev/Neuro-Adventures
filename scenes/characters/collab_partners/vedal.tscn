@@ -8,8 +8,8 @@
 [node name="Vedal" instance=ExtResource("1_isy60")]
 script = ExtResource("2_joknq")
 
-[node name="CollisionPolygon2D" parent="Hurtbox" index="0"]
-polygon = PackedVector2Array(-5, -11, -5, -6, -3, -2, -6, 5, -4, 10, -4, 13, -2, 13, -2, 10, 0, 5, 2, 10, 2, 13, 4, 13, 4, 10, 6, 5, 2, -2, 5, -5, 5, -11, 2, -12, -3, -12)
+[node name="InteractiveObjectZone" parent="." index="4"]
+visible = false
 
 [node name="Shadow" type="Sprite2D" parent="." index="6"]
 position = Vector2(1, -28)

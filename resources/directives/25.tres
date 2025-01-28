@@ -1,14 +1,15 @@
-[gd_resource type="Resource" script_class="DirectiveResource" load_steps=3 format=3 uid="uid://c0elxpgf7jyoe"]
+[gd_resource type="Resource" script_class="DirectiveResource" load_steps=4 format=3 uid="uid://c0elxpgf7jyoe"]
 
 [ext_resource type="Script" path="res://scripts/directives/chance_map.gd" id="1_siks5"]
 [ext_resource type="Script" path="res://scripts/directives/directive_resource.gd" id="2_4hiln"]
+[ext_resource type="PackedScene" uid="uid://4qy2n1f6xwes" path="res://scenes/directives/25.tscn" id="2_a6a1e"]
 
 [resource]
 script = ExtResource("2_4hiln")
-directive_name = ""
-id = 0
-tier = 0
-description = ""
-multiplier = 0
-quote = ""
+directive_name = "Networking Obsession"
+id = 25
+tier = 3
+description = "Each cogwheel will now give double EXP value"
+quote = "The voices guide me"
 increase_chances_of = Array[ExtResource("1_siks5")]([])
+scene_template = ExtResource("2_a6a1e")

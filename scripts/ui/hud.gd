@@ -111,7 +111,7 @@ func shake_handler(delta) -> void:
 			cshake = false
 			collab_partner_health_bar.position = cshakepos
 
-func _on_update_ai_health(max: float, health: float, loss := true) -> void:
+func _on_update_ai_health(max: float, health: float, shake := true) -> void:
 	if SettingsManager.settings.full_health_effect:
 		if health == max:
 			ai_bar_full.visible = true
@@ -120,11 +120,11 @@ func _on_update_ai_health(max: float, health: float, loss := true) -> void:
 
 	if health >= 0.0:
 		ai_health_bar.value = health / max * 100
-	if loss:
+	if shake:
 		ashake = true
 		ashaketime = 0.25
 
-func _on_update_collab_partner_health(max: float, health: float, loss := true) -> void:
+func _on_update_collab_partner_health(max: float, health: float, shake := true) -> void:
 	if SettingsManager.settings.full_health_effect:
 		if health == max:
 			collab_partner_bar_full.visible = true
@@ -133,7 +133,7 @@ func _on_update_collab_partner_health(max: float, health: float, loss := true) -
 
 	if health >= 0.0:
 		collab_partner_health_bar.value = health / max * 100
-	if loss:
+	if shake:
 		cshake = true
 		cshaketime = 0.25
 

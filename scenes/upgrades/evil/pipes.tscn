@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://c008whohnmnb8"]
+
+[ext_resource type="Script" path="res://scripts/upgrades/evil/pipes.gd" id="1_uihkn"]
+[ext_resource type="Script" path="res://scripts/shared/ai_cooldown_timer.gd" id="2_c0eyf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gk7r2"]
+radius = 334.096
+
+[node name="Pipes" type="Node2D"]
+script = ExtResource("1_uihkn")
+
+[node name="AICooldownTimer" type="Timer" parent="."]
+autostart = true
+script = ExtResource("2_c0eyf")
+
+[node name="EnemySearchArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemySearchArea"]
+shape = SubResource("CircleShape2D_gk7r2")
+
+[connection signal="timeout" from="AICooldownTimer" to="." method="_on_ai_cooldown_timer_timeout"]

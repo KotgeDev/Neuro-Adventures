@@ -25,7 +25,6 @@ directive_name = "Culinary Focus"
 id = 3
 tier = 1
 description = "+20% Max HP (for both characters)"
-multiplier = 8
 quote = "Dirt cookies and hallucination soup. Yum. "
 increase_chances_of = Array[ExtResource("1_8n8vm")]([SubResource("Resource_0jnal"), SubResource("Resource_ljl08"), SubResource("Resource_t1lfr")])
 scene_template = ExtResource("2_5q7yo")

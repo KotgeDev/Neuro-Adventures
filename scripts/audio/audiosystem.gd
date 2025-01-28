@@ -1,6 +1,6 @@
 extends Node
 
-signal music_ended 
+signal music_ended
 
 var num_of_sound_effects = 8
 var music_bus = "music"
@@ -19,7 +19,7 @@ func _ready():
 	AudioServer.add_bus()
 	AudioServer.set_bus_name(1,music_bus)
 	AudioServer.set_bus_name(2,sound_bus)
-	
+
 	#create a pool
 	self.process_mode = Node.PROCESS_MODE_ALWAYS
 	for i in num_of_sound_effects:
@@ -42,12 +42,12 @@ func play_sfx(sound, position, vol = 1.0):
 
 func play_music(sound):
 	_remove_tween(music_player)
-	
+
 	music_player.stream = sound
 	music_player.play()
 	music_player.volume_db = linear_to_db(1)
 	music_player.pitch_scale = 1
-	
+
 func end_music():
 	music_player.stop()
 
@@ -62,7 +62,7 @@ func fade_volume(player: AudioStreamPlayer, from: float, to: float, duration: fl
 
 	# Start a new tween
 	var tween: Tween = get_tree().create_tween().bind_node(self)
-	
+
 	match property:
 		"volume_db":
 			player.volume_db = from
@@ -110,4 +110,3 @@ func _process(delta):
 func _on_stream_finished(stream):
 	# When finished playing a stream, make the player available again.
 	available_sounds.append(stream)
-

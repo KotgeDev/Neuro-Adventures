@@ -16,7 +16,6 @@ shader_parameter/white = null
 [node name="Anny" instance=ExtResource("1_l0b7b")]
 script = ExtResource("2_so6vv")
 BASE_MAX_SPEED = 60.0
-MAX_HEALTH = 45.0
 
 [node name="IdleSprite" parent="CharacterAnimation" index="0"]
 material = SubResource("ShaderMaterial_0tsbo")
@@ -28,18 +27,15 @@ material = SubResource("ShaderMaterial_0tsbo")
 position = Vector2(-1, -16)
 texture = ExtResource("3_m5bgb")
 
-[node name="CollisionPolygon2D" parent="Hurtbox" index="0"]
-polygon = PackedVector2Array(-4, -11, -4, -6, -1, -4, -5, -1, -4, 4, -3, 8, -3, 13, -2, 13, -1, 9, 0, 7, 1, 9, 1, 13, 3, 13, 3, 8, 4, 4, 5, -1, 1, -4, 4, -6, 4, -11, 4, -13, -3, -13)
-
 [node name="CollisionShape2D" parent="InteractiveObjectZone" index="0"]
 position = Vector2(0, -13)
 
-[node name="Shadow" type="Sprite2D" parent="." index="7"]
+[node name="Shadow" type="Sprite2D" parent="." index="6"]
 position = Vector2(-1, -28)
 texture = ExtResource("4_nrs87")
 script = ExtResource("5_7rsd2")
 
-[node name="HealTimer" type="Timer" parent="." index="8"]
+[node name="HealTimer" type="Timer" parent="." index="7"]
 autostart = true
 
 [connection signal="timeout" from="HealTimer" to="." method="_on_heal_timer_timeout"]

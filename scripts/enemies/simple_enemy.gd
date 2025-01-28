@@ -13,7 +13,6 @@ class_name SimpleEnemy
 #region NODES
 @onready var sprite_2d = $Sprite2D
 @onready var stun_effect = $StunEffect
-@onready var map = get_tree().get_first_node_in_group("map") as MAP
 @onready var navigation_agent = $NavPosition/NavigationAgent2D
 @onready var pathfind_timer = $PathfindTimer
 @onready var effect_player = $EffectPlayer
@@ -25,12 +24,6 @@ class_name SimpleEnemy
 #region TEMPLATES
 var expp_template = preload("res://scenes/collectibles/exp.tscn")
 var ntx_template = preload("res://scenes/interactive_objects/ntx_4090.tscn")
-#endregion
-
-#region STATS
-@onready var health := BASE_MAX_HEALTH
-@onready var max_speed := BASE_MAX_SPEED
-@onready var damage := BASE_DAMAGE
 #endregion
 
 #region OTHER
@@ -46,17 +39,6 @@ var stunned := false
 var march := false
 var march_direction: Vector2
 #endregion
-
-func set_mode() -> void:
-	match MapManager.map_mode:
-		MapManager.MapMode.NORMAL:
-			pass
-		MapManager.MapMode.HARD:
-			health = BASE_MAX_HEALTH * 2
-			damage = BASE_DAMAGE * 2
-		MapManager.MapMode.ENDLESS:
-			health = BASE_MAX_HEALTH * map.scaling_difficulty
-			damage = BASE_DAMAGE * map.scaling_difficulty
 
 func ready() -> void:
 	if not march:
@@ -109,18 +91,18 @@ func _on_velocity_computed(velocity: Vector2) -> void:
 	position += velocity * get_physics_process_delta_time()
 
 func show_dmg_label(dmg) -> void:
-	if dmg <= 1:
-		dmg_label.add_theme_font_size_override("font_size", 14)
+	if dmg < 1:
+		return
 	elif dmg <= 5:
-		dmg_label.add_theme_font_size_override("font_size", 16)
+		dmg_label.add_theme_font_size_override("font_size", 10)
 	elif dmg <= 10:
-		dmg_label.add_theme_font_size_override("font_size", 24)
+		dmg_label.add_theme_font_size_override("font_size", 12)
 		modulate = Color("f72c75")
 	else:
-		dmg_label.add_theme_font_size_override("font_size", 32)
+		dmg_label.add_theme_font_size_override("font_size", 16)
 		modulate = Color("f72c75")
 
-	dmg_label.text = str(dmg)
+	dmg_label.text = "%.0f" % dmg
 	await get_tree().create_tween().tween_property(dmg_label, "modulate:a", 1.0, 0.3).finished
 	get_tree().create_tween().tween_property(dmg_label, "modulate:a", 0, 1.2)
 

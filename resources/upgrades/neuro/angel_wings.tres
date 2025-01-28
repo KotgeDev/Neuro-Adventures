@@ -8,7 +8,7 @@
 script = ExtResource("3_a5c4k")
 upgrade_name = "Angel Wings"
 icon = ExtResource("1_orfrr")
-descriptions = PackedStringArray("Feathers shoot out from Neuro that target enemies. MAY TARGET COLLAB PARTNER", "Feathers can pierce through up to three enemies", "Increased fire rate of feathers", "Increased damage of feathers", "Two feathers are shot at once")
+descriptions = PackedStringArray("3 feathers are fired within a range at an interval ", "+2 Feathers", "-0.5s cooldown", "+2 Feathers, +1 base ATK", "Two sets of feathers are fired at once")
 upgrade_type = 0
 character = 0
 max_lvl = 5

@@ -47,8 +47,8 @@ signal update_ai_health(max_health: int, health: int)
 signal update_collab_partner_health(max_health: int, health: int)
 signal update_exp_bar(max_exp: int, exp: int)
 signal show_three_random_upgrades(upgrades: Array)
-signal send_random_directives(directives: Array)
-signal send_all_existing_upgrades(upgrades: Array)
+signal show_directive_choices(directives: Array)
+signal show_all_existing_upgrades(upgrades: Array)
 signal change_fps_counter_state(toggled_on: bool)
 signal switch_follow
 signal switch_loading
@@ -57,15 +57,21 @@ signal switch_stop
 
 #region TO UPGRADE MANAGER
 signal request_random_upgrades
-signal request_all_existing_upgrades
+signal request_all_existing_non_max_upgrades
+signal request_collab_upgrades
+signal request_ai_upgrades
 signal lvl_up(upgrade: Upgrade)
-signal remove_maxed_upgrades
 #endregion
 
 #region TO DIRECTIVE MANAGER
 signal request_random_directives
 signal add_directive(directive: Directive)
 signal remove_directive(directive: Directive)
+#endregion
+
+#region TO STATS MENU
+signal send_collab_upgrades(upgrades: Array)
+signal send_ai_upgrades(upgrades: Array)
 #endregion
 
 #region TO SPECIFIC UPGRADES

@@ -32,7 +32,7 @@ func display_game_over() -> void:
 		score_label.text = "SCORE: %d" % score
 		score_label.visible = true
 
-		if AccountManager.logged_in:
+		if AccountManager.logged_in and !AccountManager.TEST_VERSION:
 			AccountManager.send_score.emit(score, level, time, map_name, ai_name, collab_name)
 	else:
 		victory_label.text = "Game Over ... "

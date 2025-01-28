@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/upgrades/neuro/angel_wings.gd" id="1_3u84a"]
 [ext_resource type="PackedScene" uid="uid://b5326ppiejrxm" path="res://scenes/shared/enemy_search_area.tscn" id="2_1fdgp"]
-[ext_resource type="Script" path="res://scripts/shared/cooldown_timer.gd" id="3_iaj1s"]
+[ext_resource type="Script" path="res://scripts/shared/ai_cooldown_timer.gd" id="3_iaj1s"]
 
 [node name="AngelWings" type="Node2D"]
 script = ExtResource("1_3u84a")
@@ -14,10 +14,6 @@ collision_mask = 6
 autostart = true
 script = ExtResource("3_iaj1s")
 
-[node name="RightMarker" type="Marker2D" parent="."]
-position = Vector2(9, -17)
-
-[node name="LeftMarker" type="Marker2D" parent="."]
-position = Vector2(-9, -17)
+[node name="Marker2D" type="Marker2D" parent="."]
 
 [connection signal="timeout" from="FireTimer" to="." method="_on_fire_timer_timeout"]

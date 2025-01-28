@@ -8,7 +8,7 @@
 script = ExtResource("1_bsmct")
 upgrade_name = "Dual Strike"
 icon = ExtResource("1_wet5n")
-descriptions = PackedStringArray("Dual Strike", "Less interval between strikes ", "Double damage per strike", "Greater strike range", "Even Less interval between strikes")
+descriptions = PackedStringArray("Dual swords will strike at a close interval", "-0.5s cooldown", "+2 base ATK", "Increase strike range", "-0.3s cooldown")
 upgrade_type = 0
 character = 0
 max_lvl = 5

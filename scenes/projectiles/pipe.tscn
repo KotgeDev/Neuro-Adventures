@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://bi7wvnvru3lfi"]
+
+[ext_resource type="Script" path="res://scripts/projectiles/pipe.gd" id="1_8qalf"]
+[ext_resource type="Texture2D" uid="uid://c6ubbf5ydvy6m" path="res://assets/projectiles/pipe_sheet.png" id="2_n5c2v"]
+[ext_resource type="PackedScene" uid="uid://3miicp8y7p5b" path="res://scenes/shared/multi_hitbox.tscn" id="3_ed3qi"]
+
+[sub_resource type="Animation" id="Animation_m6pgt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_bixuu"]
+resource_name = "pipe"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ndcqf"]
+_data = {
+"RESET": SubResource("Animation_m6pgt"),
+"pipe": SubResource("Animation_bixuu")
+}
+
+[node name="Pipe" type="Node2D"]
+script = ExtResource("1_8qalf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -32)
+texture = ExtResource("2_n5c2v")
+hframes = 2
+
+[node name="PipePlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ndcqf")
+}
+
+[node name="MultiHitbox" parent="." instance=ExtResource("3_ed3qi")]
+collision_mask = 6
+count = 100
+
+[node name="CollisionPolygon2D" parent="MultiHitbox" index="0"]
+polygon = PackedVector2Array(-4, -32, -10, 0, 12, 0, 5, -32)
+
+[connection signal="animation_finished" from="PipePlayer" to="." method="_on_pipe_player_animation_finished"]
+
+[editable path="MultiHitbox"]

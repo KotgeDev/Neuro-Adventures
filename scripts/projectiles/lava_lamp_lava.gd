@@ -1,6 +1,9 @@
 extends Node2D
 class_name LampLava
 
+var lava_break_sfx: AudioStream = preload("res://assets/sfx/lavalamp.wav")
+
+
 #the amount that the lava will heal to neuro
 var heal
 
@@ -43,6 +46,8 @@ func _on_timer_timeout() -> void:
 
 #end the warning and attack
 func _on_grace_period_timer_timeout() -> void:
+	AudioSystem.play_sfx(lava_break_sfx, global_position, 0.5)
+
 	#activate the hitboxes and healboxes
 	$ContinuousHitbox/CollisionShape2D.set_deferred("disabled", false)
 	$AIHealbox/CollisionShape2D.set_deferred("disabled", false)
@@ -54,3 +59,4 @@ func _on_grace_period_timer_timeout() -> void:
 	#remove the warning sprite and make the damage sprite visible
 	$DamageSprite.visible = true
 	$WarningSprite.visible = false
+	$LavaLampGlass.visible = false

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="UpgradeResource" load_steps=4 format=3 uid="uid://cv3ro7sl3ygdj"]
+
+[ext_resource type="Texture2D" uid="uid://cw0376vjwhg6t" path="res://assets/upgrades/icons/swarm_upgrades_icon.png" id="1_t8r63"]
+[ext_resource type="PackedScene" uid="uid://f5kx04gw7ejg" path="res://scenes/upgrades/neuro/swarm_control_system.tscn" id="2_g4l13"]
+[ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="3_6l4r4"]
+
+[resource]
+script = ExtResource("3_6l4r4")
+upgrade_name = "Swarm Control System"
+icon = ExtResource("1_t8r63")
+descriptions = PackedStringArray("+1 swarm base ATK", "+10 swarm speed ", "+1 swarm base ATK", "+20 swarm speed ")
+upgrade_type = 0
+character = 0
+max_lvl = 4
+scene_template = ExtResource("2_g4l13")
+unlimited = false
+tag = 1

@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://blrchtkictlh1"]
+
+[ext_resource type="Shader" path="res://assets/shaders/rainbow.gdshader" id="1_vqsrt"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_vqsrt")
+shader_parameter/strength = 0.5
+shader_parameter/speed = 0.1
+shader_parameter/angle = 270.0

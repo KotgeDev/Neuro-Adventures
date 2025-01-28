@@ -32,7 +32,7 @@ position = Vector2(0, -13)
 collision_layer = 1
 
 [node name="CollisionPolygon2D" parent="Hurtbox" index="0"]
-polygon = PackedVector2Array(-1, -18, -5, -16, -7, -11, -5, -8, -2, -5, -5, 1, -4, 10, -4, 12, -4, 13, -2, 13, -2, 10, 0, 5, 2, 10, 2, 13, 4, 13, 4, 10, 3, 2, 5, 4, 4, -1, 1, -4, 5, -10, 5, -13, 4, -16)
+polygon = PackedVector2Array(-6, -2, -4, 13, 1, 13, 4, 9.05946, 4, -2)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 

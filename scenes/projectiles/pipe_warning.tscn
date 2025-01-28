@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://yai041jp0tpv"]
+
+[ext_resource type="Texture2D" uid="uid://dscn0ot11cdmp" path="res://assets/projectiles/pipe_warning.png" id="1_hwhi3"]
+
+[node name="PipeWarning" type="Node2D"]
+
+[node name="TextureRect" type="Sprite2D" parent="."]
+position = Vector2(0, -23)
+texture = ExtResource("1_hwhi3")

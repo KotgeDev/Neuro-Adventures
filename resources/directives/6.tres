@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DirectiveResource" load_steps=7 format=3 uid="uid://bkqdgt8ch5bj1"]
+[gd_resource type="Resource" script_class="DirectiveResource" load_steps=8 format=3 uid="uid://bkqdgt8ch5bj1"]
 
 [ext_resource type="Script" path="res://scripts/directives/chance_map.gd" id="1_8jknr"]
 [ext_resource type="Script" path="res://scripts/directives/directive_resource.gd" id="1_yudms"]
@@ -19,13 +19,17 @@ script = ExtResource("1_8jknr")
 target_index = 16
 multiplier = 2
 
+[sub_resource type="Resource" id="Resource_ru7wo"]
+script = ExtResource("1_8jknr")
+target_index = 26
+multiplier = 3
+
 [resource]
 script = ExtResource("1_yudms")
 directive_name = "Parenting Focus"
 id = 6
 tier = 1
 description = "+10% Filter"
-multiplier = 8
 quote = "Filtered"
-increase_chances_of = Array[ExtResource("1_8jknr")]([SubResource("Resource_qu8ye"), SubResource("Resource_jbk5w"), SubResource("Resource_mglf3")])
+increase_chances_of = Array[ExtResource("1_8jknr")]([SubResource("Resource_qu8ye"), SubResource("Resource_jbk5w"), SubResource("Resource_mglf3"), SubResource("Resource_ru7wo")])
 scene_template = ExtResource("2_qeuxa")

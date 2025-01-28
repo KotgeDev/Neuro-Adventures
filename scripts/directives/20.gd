@@ -1,11 +1,9 @@
 extends Node
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	StatsManager.ai_life +=1
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _exit_tree() -> void:
+	StatsManager.ai_life -=1
+	if StatsManager.ai_life <= 0:
+		Globals.game_over.emit()

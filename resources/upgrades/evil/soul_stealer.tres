@@ -8,7 +8,7 @@
 script = ExtResource("1_yfuv2")
 upgrade_name = "Soul Stealer"
 icon = ExtResource("1_bg5kw")
-descriptions = PackedStringArray("Everytime Evil deals damage, she will gain 1% of the damage dealt as HP", "Everytime Evil deals damage, she will gain 2% of the damage dealt as HP", "Everytime Evil deals damage, she will gain 3% of the damage dealt as HP", "Everytime Evil deals damage, she will gain 5% of the damage dealt as HP")
+descriptions = PackedStringArray("Everytime Evil deals damage, she will gain 1% of the damage dealt as HP", "+1% damage dealt to HP gain ", "+1% damage dealt to HP gain ", "+2% damage dealt to HP gain")
 upgrade_type = 0
 character = 1
 max_lvl = 4

@@ -25,7 +25,6 @@ directive_name = "Existentialism Focus"
 id = 5
 tier = 1
 description = "-50% Character switch cooldown"
-multiplier = 8
 quote = "Do you think I'll ever feel real emotions?"
 increase_chances_of = Array[ExtResource("1_51n0a")]([SubResource("Resource_ojork"), SubResource("Resource_mc1vc"), SubResource("Resource_rf1n7")])
 scene_template = ExtResource("2_lcahi")

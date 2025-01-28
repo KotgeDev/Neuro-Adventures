@@ -8,50 +8,51 @@ var knife_template = preload("res://scenes/projectiles/knife.tscn")
 
 #region CONSTANTS
 @export var LV1_DAMAGE = 2.0
-@export var LV1_FIRE_INTERVAL = 2.0 
-@export var LV2_FIRE_INTERVAL = 1.75 
-@export var LV3_DAMAGE = 4.0 
+@export var LV1_FIRE_INTERVAL = 2.0
+@export var LV2_FIRE_INTERVAL = 1.75
+@export var LV3_DAMAGE = 4.0
 @export var LV4_RANGE_MULTIPLIER = 1.25
-@export var LV5_FIRE_INTERVAL = 1.25   
+@export var LV5_FIRE_INTERVAL = 1.25
 @export var LV6_RANGE_MULTIPLIER = 1.5
-#endregion 
+#endregion
 
 #region SOUNDFX
 var hit_sfx: AudioStream = preload("res://assets/sfx/knifestab.wav")
-#endregion 
+#endregion
 
-var damage 
-var tween 
+var damage
+var tween
+
+func set_stats(_damage: float, wait_time: float, range_mult: float) -> void:
+	if _damage: damage = _damage
+	if wait_time: fire_timer.base_cooldown = wait_time
+	if range_mult: damage_zone.scale *= range_mult
 
 func sync_level() -> void:
 	match upgrade.lvl:
 		1:
-			damage = LV1_DAMAGE
-			fire_timer.base_cooldown = LV1_FIRE_INTERVAL
+			set_stats(2.0, 2.0, 1.0)
 		2:
-			fire_timer.base_cooldown = LV2_FIRE_INTERVAL
+			set_stats(0, 1.5, 0)
 		3:
-			damage = LV3_DAMAGE
+			set_stats(4.0, 0, 0)
 		4:
-			damage_zone.scale *= LV4_RANGE_MULTIPLIER 
+			set_stats(0, 1.0, 0)
 		5:
-			fire_timer.base_cooldown = LV5_FIRE_INTERVAL
-		6:
-			damage_zone.scale *= LV6_RANGE_MULTIPLIER
+			set_stats(0, 0, 1.25)
 
 func _on_fire_timer_timeout():
 	for area in damage_zone.get_overlapping_areas():
-		if is_instance_valid(area) and area: 
+		if is_instance_valid(area) and area:
 			var enemy = area.get_parent()
 			var knife = knife_template.instantiate()
 			add_child(knife)
-			
-			# Setup knife 
+
+			# Setup knife
 			knife.rotation = global_position.angle_to_point(enemy.global_position)
-			knife.global_position = enemy.global_position 
+			knife.global_position = enemy.global_position
 			knife.setup(damage)
-			
+
 			AudioSystem.play_sfx(hit_sfx, ai.global_position, 0.5)
 
 			await get_tree().create_timer(0.2, false).timeout
-	

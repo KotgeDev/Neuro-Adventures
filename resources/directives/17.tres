@@ -5,10 +5,10 @@
 
 [resource]
 script = ExtResource("2_a8n1b")
-directive_name = ""
-id = 0
-tier = 0
-description = ""
-multiplier = 0
+directive_name = "Drone Overdrive"
+id = 17
+tier = 2
+description = "+50% Drone Speed"
+multiplier = 4
 quote = ""
 increase_chances_of = Array[ExtResource("1_bfvlp")]([])

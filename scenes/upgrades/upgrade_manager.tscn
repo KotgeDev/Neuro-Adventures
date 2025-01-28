@@ -4,3 +4,8 @@
 
 [node name="UpgradeManager" type="Node2D"]
 script = ExtResource("1_gjxle")
+
+[node name="DroneAutoTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="DroneAutoTimer" to="." method="_on_drone_auto_timer_timeout"]

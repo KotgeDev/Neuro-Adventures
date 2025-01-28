@@ -13,7 +13,6 @@ const FRICTION := 500.0
 
 #region NODES
 @onready var character_animation = $CharacterAnimation
-@onready var collectcircle = $CollectCircle
 @onready var aihp_loss_timer = $AIHPLossTimer
 #endregion
 
@@ -25,7 +24,6 @@ const FRICTION := 500.0
 @onready var max_health: float = BASE_MAX_HEALTH
 @onready var health: float = max_health
 @onready var pickup_range: float = BASE_PICKUP_RANGE
-@onready var evasion: float = BASE_EVASION
 #endregion
 
 #region OTHER
@@ -57,8 +55,6 @@ var hit_sfx: AudioStream = preload("res://assets/sfx/playerhurt.wav")
 func _ready() -> void:
 	connect_signals()
 	add_to_group(Globals.COLLAB_GROUP_NAME)
-	collectcircle.texture.gradient.set_color(1, Color(collectcircle.texture.gradient.get_color(1), 0))
-	collectcircle.texture.gradient.set_color(0, Color(collectcircle.texture.gradient.get_color(0), circle_occ))
 	_on_powerup_get()
 
 func connect_signals() -> void:
@@ -73,6 +69,7 @@ func connect_signals() -> void:
 
 func _on_increase_max_hp(inc_perc) -> void:
 	max_health = BASE_MAX_HEALTH + BASE_MAX_HEALTH * inc_perc
+	Globals.update_collab_partner_health.emit(max_health, health, false)
 
 func _on_increase_speed(inc_perc) -> void:
 	max_speed = BASE_MAX_SPEED + BASE_MAX_SPEED * inc_perc
@@ -85,17 +82,8 @@ func _on_increase_cr(inc_perc) -> void:
 func extended_signals() -> void:
 	pass
 
-func circle_handle(delta):
-	pick_range_lerp = lerp(pick_range_lerp, pickup_range*2.0, delta*5)
-	collectcircle.texture.width = pick_range_lerp
-	collectcircle.texture.height = pick_range_lerp
-	if circle_work:
-		circle_occ = lerp(circle_occ, 0.0, delta*3)
-	collectcircle.texture.gradient.set_color(0, Color(collectcircle.texture.gradient.get_color(0), circle_occ))
-
 func _physics_process(delta: float) -> void:
 	var input_vector: Vector2 = Input.get_vector("left", "right", "up", "down").normalized()
-	circle_handle(delta)
 	if input_vector != Vector2.ZERO:
 		velocity = velocity.move_toward(input_vector * max_speed, ACCELERATION * delta)
 	else:
@@ -129,7 +117,7 @@ func _on_collect_exp(value: int) -> void:
 	if expp >= exp_requirement:
 		expp = expp - exp_requirement
 		exp_requirement = EXP_REQ_INIT + lv * EXP_REQ_INCREMENT
-		lv += 1
+		lv += 1 * StatsManager.exp_mult
 		Globals.request_random_upgrades.emit()
 	Globals.update_exp_bar.emit(exp_requirement, expp)
 
@@ -140,18 +128,7 @@ func _on_add_upgrade(upgrade: Node) -> void:
 	add_child(upgrade)
 
 func _on_powerup_get():
-	circle_work = false
-	circle_occ = 0.7
-	var timer := Timer.new()
-	timer.wait_time = 1.0
-	timer.one_shot = true
-	add_child(timer)
-	timer.start()
-	timer.connect("timeout", _on_timer_timeout.bind(timer))
-
-func _on_timer_timeout(timer) -> void:
-	circle_work = true
-	timer.queue_free()
+	pass
 
 func _on_raise_the_timer(frequency: float, increase: float) -> void:
 	aihp_loss_timer.wait_time = frequency

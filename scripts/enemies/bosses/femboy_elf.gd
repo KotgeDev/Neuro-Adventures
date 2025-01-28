@@ -24,9 +24,6 @@ extends Enemy
 
 #region STATS
 @onready var phase_thresholds := [BASE_MAX_HEALTH, BASE_MAX_HEALTH * 0.45]
-@onready var health := BASE_MAX_HEALTH
-@onready var max_speed := BASE_MAX_SPEED
-@onready var damage := BASE_DAMAGE
 #endregion
 
 #region OTHER

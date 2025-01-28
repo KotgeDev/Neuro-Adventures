@@ -24,6 +24,7 @@ var fire_wait_time: float
 # The actual current color is a lerped or tweened value between them
 var current_color: Color
 var next_color: Color
+var count: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -40,35 +41,42 @@ func get_color() -> Color:
 	var b = randf()
 	return Color(r, g, b)
 
-func set_stats(_damage: float, _heal: float, _duration: float, _fire_wait_time: float) -> void:
+func set_stats(
+	_damage: float,
+	_heal: float,
+	_duration: float,
+	_fire_wait_time: float,
+	_count: int
+) -> void:
 	damage = _damage
 	heal = _heal
 	duration = _duration
 	fire_timer.base_cooldown = _fire_wait_time + GRACE_PERIOD + duration
+	count = _count
 
 func sync_level() -> void:
 	match upgrade.lvl:
 		1:
-			set_stats(4, 7, 4, 4)
+			set_stats(4, 7, 4, 4, 1)
 		2:
-			set_stats(6, 10, 4, 4)
+			set_stats(6, 10, 4, 4, 1)
 		3:
-			set_stats(6, 10, 4, 2)
+			set_stats(6, 10, 4, 2, 2)
 		4:
-			set_stats(10, 15, 4, 2)
+			set_stats(10, 15, 4, 2, 2)
 		5:
-			set_stats(10, 15, 5, 2)
+			set_stats(10, 15, 5, 2, 3)
 
 #places down the lava
 func _on_fire_timer_timeout() -> void:
+	for i in range(count):
+		spawn_lava_lamp()
+
+func spawn_lava_lamp() -> void:
 	#instantiate the lava
 	var lava = lava_template.instantiate()
 
-	#get a random distance away from neuro within max_range that the lava will spawn, then rotate it a random amount around her
-	#could change the min on rand_range from 0 to something greater if you want to guarantee it doesn't spawn near her
-	var radians = randf_range(0, TAU)
-	var length = randi_range(0, MAX_RANGE)
-	lava.global_position = Vector2(ai.global_position.x + length * cos(radians), ai.global_position.y + length * sin(radians))
+	lava.global_position = get_random_pos()
 
 	#get the color the lava lamp will spawn as
 	#since the color will be between current_color and next_color, use lerp to get a value between them
@@ -83,6 +91,28 @@ func _on_fire_timer_timeout() -> void:
 
 	#add the lava to the array of all current lava objects
 	all_lava.append(lava)
+
+func get_random_pos() -> Vector2:
+	var angle
+	var pos
+	var navi_agent: NavigationAgent2D = ai.navigation_agent
+	var ai_pos = ai.global_position
+
+	#TODO: Find a more effeceint way to do this that is not just
+	# randomly generating coordinates until its something valid.
+	while true:
+		# Find a random position
+		angle = randf() * PI * 2
+		var offset = Vector2(cos(angle), sin(angle)) * MAX_RANGE
+		pos = offset + ai_pos
+
+		# Check if position is valid
+		var nav_pos = NavigationServer2D.map_get_closest_point(navi_agent.get_navigation_map(), pos)
+		if pos.distance_to(nav_pos) < 0.01:
+			break
+		else:
+			pass
+	return pos
 
 #updates all lava to start tweening to a new color
 func _on_color_timer_timeout() -> void:

@@ -35,7 +35,7 @@ func update_animation(delta: float) -> void:
 func show_damage() -> void:
 	idle_sprite.material.set_shader_parameter("white", true)
 	run_sprite.material.set_shader_parameter("white", true)
-	await get_tree().create_timer(Globals.FLASH_TIME).timeout
+	await get_tree().create_timer(Globals.FLASH_TIME, false).timeout
 	idle_sprite.material.set_shader_parameter("white", false)
 	run_sprite.material.set_shader_parameter("white", false)
 

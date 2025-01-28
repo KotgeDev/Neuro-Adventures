@@ -1,21 +1,23 @@
 extends Control
 
+const MAX_DIRECTIVES = 5
+
 @export var pause_manager: PauseManager
 
-@onready var h_container: HBoxContainer = $VBoxContainer/HBoxContainer
+@onready var h_container: HBoxContainer = %HBoxContainer
 @onready var directive_card: VBoxContainer = $DirectiveCard
 var directive_manager: DirectiveManager
 
 var spare_directive: Directive
 
 func _ready() -> void:
-	Globals.send_random_directives.connect(_on_send_random_directives)
+	Globals.show_directive_choices.connect(_on_show_directive_choices)
 	Globals.map_ready.connect(_on_map_ready)
 
 func _on_map_ready() -> void:
 	directive_manager = get_tree().get_first_node_in_group(Globals.DIR_MANAGER_GROUP_NAME)
 
-func _on_send_random_directives(directives: Array) -> void:
+func _on_show_directive_choices(directives: Array) -> void:
 	visible = true
 	pause_manager.pause_game()
 
@@ -64,9 +66,9 @@ func generate_card(directive: Directive, no_reroll := false) -> void:
 	h_container.add_child(dir_card_duplicate)
 
 func _on_directive_selected(directive: Directive) -> void:
-	if directive_manager.owned_directives.size() > 7:
-		Notice.create_notice(self, "You cannot have more then 7 directives! \n" +
-			"You can discard existing directives from Pause Menu -> Stats")
+	if directive_manager.owned_directives.size() > MAX_DIRECTIVES:
+		Notice.create_notice(self, "You cannot have more then %d directives! \n" % MAX_DIRECTIVES +
+			"You can discard existing directives from Pause -> Stats")
 		return
 
 	visible = false

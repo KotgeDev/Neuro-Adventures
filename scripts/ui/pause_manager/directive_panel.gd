@@ -1,5 +1,7 @@
 extends StatsPanel
 
+signal reset
+
 @onready var directive_card: VBoxContainer = %DirectiveCard
 @onready var h_container: HBoxContainer = %DirectiveHBoxContainer
 @onready var discard_panel: ColorRect = %DiscardPanel
@@ -17,8 +19,6 @@ func setup() -> void:
 func generate_card(directive: Directive) -> void:
 	var dir_card_duplicate = directive_card.duplicate()
 	var card = dir_card_duplicate.get_node("Card")
-	var reroll_button = dir_card_duplicate.get_node("RerollButton")
-
 	var button = card.get_node("Button")
 	var contents = card.get_node("Contents")
 
@@ -56,6 +56,8 @@ func _on_directive_selected(directive: Directive) -> void:
 func _on_yes_button_pressed() -> void:
 	discard_directive(selected_directive)
 	discard_panel.visible = false
+
+	reset.emit()
 
 func _on_no_button_pressed() -> void:
 	discard_panel.visible = false

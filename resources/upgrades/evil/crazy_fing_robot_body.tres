@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="UpgradeResource" load_steps=4 format=3 uid="uid://by3suejqrj1uo"]
+
+[ext_resource type="Texture2D" uid="uid://dolhtiscyapu4" path="res://assets/upgrades/icons/crazy_fing_body_icon.png" id="1_wtrqd"]
+[ext_resource type="PackedScene" uid="uid://3s3w2uwispaq" path="res://scenes/upgrades/evil/crazy_fing_robot_body.tscn" id="2_5sjem"]
+[ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="3_4tg8s"]
+
+[resource]
+script = ExtResource("3_4tg8s")
+upgrade_name = "Crazy Fing Robot Body"
+icon = ExtResource("1_wtrqd")
+descriptions = PackedStringArray("+50% AI ATK, decrease AI chase radius", "+50% AI ATK, decrease AI chase radius ", "+100% AI ATK, decrease AI chase radius ")
+upgrade_type = 0
+character = 1
+max_lvl = 3
+scene_template = ExtResource("2_5sjem")
+unlimited = false
+tag = 1

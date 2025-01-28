@@ -1,12 +1,17 @@
 extends Node2D
 class_name UpgradeManager
 
+@onready var drone_auto_timer: Timer = $DroneAutoTimer
+
 func _ready() -> void:
 	Globals.request_random_upgrades.connect(request_random_upgrades)
-	Globals.request_all_existing_upgrades.connect(request_all_existing_upgrades)
+	Globals.request_all_existing_non_max_upgrades.connect(request_all_existing_non_max_upgrades)
 	Globals.lvl_up.connect(lvl_up)
 	Globals.map_ready.connect(_on_map_ready)
-	Globals.remove_maxed_upgrades.connect(remove_maxed_upgrades)
+	Globals.request_ai_upgrades.connect(_on_request_ai_upgrades)
+	Globals.request_collab_upgrades.connect(_on_request_collab_upgrades)
+	StatsManager.drone_auto_changed.connect(_on_drone_auto_changed)
+
 
 var upgrades_pool = []
 var existing_upgrades = []
@@ -37,6 +42,10 @@ func _on_map_ready() -> void:
 		lvl_up(find_upgrade(collab_defaults[0]))
 
 func find_upgrade(upgrade_name: String) -> Upgrade:
+	# Past version name check
+	if CharacterManager.past_upgrade_name_map.has(upgrade_name):
+		upgrade_name = CharacterManager.past_upgrade_name_map[upgrade_name]
+
 	for upgrade in upgrades_pool:
 		if upgrade.upgrade_name == upgrade_name:
 			return upgrade
@@ -76,10 +85,14 @@ func request_random_upgrades() -> void:
 
 	Globals.show_three_random_upgrades.emit(random_upgrades)
 
-## Ensure to emit remove maxed upgrades
-## before using this function
-func request_all_existing_upgrades() -> void:
-	Globals.send_all_existing_upgrades.emit(existing_upgrades)
+func request_all_existing_non_max_upgrades() -> void:
+	var result := []
+
+	for upgrade in existing_upgrades:
+		if upgrade.max_lvl != upgrade.lvl:
+			result.append(upgrade)
+
+	Globals.show_all_existing_upgrades.emit(result)
 
 func remove_maxed_upgrades() -> void:
 	var to_remove = []
@@ -89,7 +102,6 @@ func remove_maxed_upgrades() -> void:
 			to_remove.append(upgrade)
 
 	for upgrade in to_remove:
-		existing_upgrades.erase(upgrade)
 		upgrades_pool.erase(upgrade)
 
 func lvl_up(upgrade: Upgrade) -> void:
@@ -112,3 +124,38 @@ func lvl_up(upgrade: Upgrade) -> void:
 		upgrade.lvl += 1
 
 	upgrade.scene.sync_level()
+
+func _on_request_collab_upgrades() -> void:
+	var result := []
+
+	for scene in existing_upgrades:
+		var upgrade = scene as Upgrade
+		if upgrade.upgrade_type == UpgradeResource.UpgradeType.COLLAB_PARTNER_UPGRADE:
+			result.append(upgrade)
+
+	Globals.send_collab_upgrades.emit(result)
+
+func _on_request_ai_upgrades() -> void:
+	var result := []
+
+	for scene in existing_upgrades:
+		var upgrade = scene as Upgrade
+		if upgrade.upgrade_type == UpgradeResource.UpgradeType.AI_UPGRADE:
+			result.append(upgrade)
+
+	Globals.send_ai_upgrades.emit(result)
+
+func _on_drone_auto_changed(status: bool) -> void:
+	if status:
+		drone_auto_timer.start(2.0 * 60.0)
+	else:
+		drone_auto_timer.stop()
+
+func _on_drone_auto_timer_timeout() -> void:
+	print("Spawning Drone")
+	# TODO: Store each drone name in character instead of having to type it here
+
+	if ai_selected == Globals.CharacterChoice.NEURO:
+		lvl_up(find_upgrade("Swarm Drone"))
+	elif ai_selected == Globals.CharacterChoice.EVIL:
+		lvl_up(find_upgrade("Pizza Drone"))

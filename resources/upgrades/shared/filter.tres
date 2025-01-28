@@ -8,7 +8,7 @@
 script = ExtResource("3_sdhmr")
 upgrade_name = "Filter"
 icon = ExtResource("1_v6b4j")
-descriptions = PackedStringArray("AIs now do 30% less damage to collab partners", "AIs now do 50% less damage to collab partners", "AIs now do 75% less damage to collab partners", "AIs now do 90% less damage to collab partners")
+descriptions = PackedStringArray("+25% Filter (AI will do 30% less damage to collab partner)", "+25% Filter ", "+20% Filter ", "+10% Filter")
 upgrade_type = 0
 character = 4
 max_lvl = 4
