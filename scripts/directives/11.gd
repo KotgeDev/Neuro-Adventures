@@ -22,4 +22,4 @@ func _exit_tree() -> void:
 	StatsManager.ai_atk_mult /= current_mult
 
 func hp_to_mult(hp: float) -> float:
-	return hp / 20
+	return hp / 25.0

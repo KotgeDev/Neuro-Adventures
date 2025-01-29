@@ -1,6 +1,9 @@
 extends Node2D
 class_name UpgradeManager
 
+const MAX_DRONE_COUNT := 40
+const SOFT_LVL_CAP := 35
+
 @onready var drone_auto_timer: Timer = $DroneAutoTimer
 
 func _ready() -> void:
@@ -12,11 +15,11 @@ func _ready() -> void:
 	Globals.request_collab_upgrades.connect(_on_request_collab_upgrades)
 	StatsManager.drone_auto_changed.connect(_on_drone_auto_changed)
 
-
 var upgrades_pool = []
 var existing_upgrades = []
 var ai_selected
 var collab_selected
+var endless_upgrades_added := false
 
 func _on_map_ready() -> void:
 	add_upgrades_to_pool(CharacterManager.all_ai_db)
@@ -40,6 +43,8 @@ func _on_map_ready() -> void:
 		lvl_up(find_upgrade(collab_defaults[1]))
 	elif collab_defaults.size() == 1:
 		lvl_up(find_upgrade(collab_defaults[0]))
+
+	print("???")
 
 func find_upgrade(upgrade_name: String) -> Upgrade:
 	# Past version name check
@@ -98,11 +103,19 @@ func remove_maxed_upgrades() -> void:
 	var to_remove = []
 
 	for upgrade in upgrades_pool:
-		if upgrade.max_lvl == upgrade.lvl:
+		if !upgrade.unlimited and upgrade.max_lvl == upgrade.lvl:
 			to_remove.append(upgrade)
 
 	for upgrade in to_remove:
 		upgrades_pool.erase(upgrade)
+
+	if StatsManager.drone_count == MAX_DRONE_COUNT:
+		var drone = find_upgrade(CharacterManager.character_data[ai_selected].drone_name)
+		upgrades_pool.erase(find_upgrade(drone))
+
+	if !endless_upgrades_added and StatsManager.lvl >= SOFT_LVL_CAP:
+		add_upgrades_to_pool(CharacterManager.endless_upgrades_db)
+		endless_upgrades_added = true
 
 func lvl_up(upgrade: Upgrade) -> void:
 	if upgrade.lvl == 0:
@@ -152,10 +165,7 @@ func _on_drone_auto_changed(status: bool) -> void:
 		drone_auto_timer.stop()
 
 func _on_drone_auto_timer_timeout() -> void:
-	print("Spawning Drone")
-	# TODO: Store each drone name in character instead of having to type it here
+	if StatsManager.drone_count > MAX_DRONE_COUNT:
+		return
 
-	if ai_selected == Globals.CharacterChoice.NEURO:
-		lvl_up(find_upgrade("Swarm Drone"))
-	elif ai_selected == Globals.CharacterChoice.EVIL:
-		lvl_up(find_upgrade("Pizza Drone"))
+	lvl_up(find_upgrade(CharacterManager.character_data[ai_selected].drone_name))

@@ -342,9 +342,8 @@ vertical_alignment = 1
 visible = false
 pause_manager = NodePath("../PauseManager")
 
-[node name="UpgradeMenu" parent="." node_paths=PackedStringArray("pause_manager", "level_counter") instance=ExtResource("11_52que")]
+[node name="UpgradeMenu" parent="." node_paths=PackedStringArray("pause_manager") instance=ExtResource("11_52que")]
 pause_manager = NodePath("../PauseManager")
-level_counter = NodePath("../LevelCounter")
 
 [node name="PauseManager" parent="." node_paths=PackedStringArray("upgrades_menu", "directive_menu") instance=ExtResource("14_sxq4j")]
 visible = false

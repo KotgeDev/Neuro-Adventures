@@ -30,7 +30,6 @@ func ready():
 	reparent(map)
 
 	id = randi() % (1 << 31)
-	upgrade.lvl -= 1
 	animation_player.play("idle")
 
 	Globals.update_drones.emit()

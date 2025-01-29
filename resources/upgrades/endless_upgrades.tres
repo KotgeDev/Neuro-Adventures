@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="UpgradeDB" load_steps=10 format=3 uid="uid://cnipydf7xai4c"]
+
+[ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="1_6uoer"]
+[ext_resource type="Script" path="res://scripts/upgrades/upgrade_db.gd" id="2_0nye3"]
+[ext_resource type="Resource" uid="uid://co0cby8pxc72b" path="res://resources/upgrades/endless/ai_atk.tres" id="2_n8sdp"]
+[ext_resource type="Resource" uid="uid://c0wg0lc7rph1q" path="res://resources/upgrades/endless/ai_const.tres" id="3_vifpg"]
+[ext_resource type="Resource" uid="uid://c7r5yjdtmyome" path="res://resources/upgrades/endless/a_cd.tres" id="4_73ank"]
+[ext_resource type="Resource" uid="uid://dsqq6wvt523w4" path="res://resources/upgrades/endless/c_atk.tres" id="5_nvhgy"]
+[ext_resource type="Resource" uid="uid://6hxdlw2dqek4" path="res://resources/upgrades/endless/c_cd.tres" id="6_f8mjg"]
+[ext_resource type="Resource" uid="uid://dn6vvycoe8480" path="res://resources/upgrades/endless/c_const.tres" id="7_4kwwf"]
+[ext_resource type="Resource" uid="uid://bxj2bmfu1yvmn" path="res://resources/upgrades/endless/hp.tres" id="8_5fm2j"]
+
+[resource]
+script = ExtResource("2_0nye3")
+db = Array[ExtResource("1_6uoer")]([ExtResource("2_n8sdp"), ExtResource("3_vifpg"), ExtResource("4_73ank"), ExtResource("5_nvhgy"), ExtResource("6_f8mjg"), ExtResource("7_4kwwf"), ExtResource("8_5fm2j")])

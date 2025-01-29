@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="UpgradeResource" load_steps=4 format=3 uid="uid://dsqq6wvt523w4"]
+
+[ext_resource type="Texture2D" uid="uid://3h02tlsfedek" path="res://assets/upgrades/icons/C_atk.png" id="1_vt5yt"]
+[ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="2_70ob6"]
+[ext_resource type="PackedScene" uid="uid://bivp8npr6g4ho" path="res://scenes/upgrades/endless/c_atk.tscn" id="2_tjcpq"]
+
+[resource]
+script = ExtResource("2_70ob6")
+upgrade_name = "Collab ATK + "
+icon = ExtResource("1_vt5yt")
+descriptions = PackedStringArray("+5% Collab ATK ")
+upgrade_type = 2
+character = 4
+max_lvl = 1
+scene_template = ExtResource("2_tjcpq")
+unlimited = true
+tag = 1

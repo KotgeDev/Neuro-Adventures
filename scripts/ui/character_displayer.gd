@@ -1,6 +1,8 @@
 extends Control
 class_name CharacterDisplayer
 
+signal close
+
 @onready var upgrade_panel = $UpgradePanel
 @onready var upgrades_container = %UpgradesContainer
 @onready var default_upgrades_container = %DefaultUpgradesContainer
@@ -21,10 +23,12 @@ var saved_defaults
 
 var default_upgrades = []
 
+## Requires node to have a _on_close function
 static func create(node: Control, character: Globals.CharacterChoice) -> void:
 	var scene = load("res://scenes/ui/character_displayer.tscn").instantiate()
 	scene.character = character
 	node.add_child(scene)
+	scene.close.connect(node._on_close)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -59,8 +63,11 @@ func _ready():
 		update_buffers()
 
 func _process(delta):
-	if Input.is_action_just_pressed("menu") and level_viewer.visible:
-		_on_level_viewer_close()
+	if Input.is_action_just_pressed("menu"):
+		if level_viewer.visible:
+			_on_level_viewer_close()
+		else:
+			_on_return_button_pressed()
 
 func add_upgrade_panel(container: Control, upgrade: UpgradeResource, outline := false) -> void:
 	var new_panel = upgrade_panel.duplicate()
@@ -157,6 +164,7 @@ func _on_return_button_pressed():
 	SettingsManager.default_upgrades[character] = new_default_upgrades
 	SettingsManager.save_default_upgrades.emit()
 
+	close.emit()
 	queue_free()
 
 func _on_level_viewer_close():

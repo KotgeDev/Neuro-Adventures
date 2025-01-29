@@ -13,7 +13,7 @@ func _ready() -> void:
 	StatsManager.increase_collection_range.connect(_on_cr_changed)
 	current_cd_dec = cr_to_cd(StatsManager.cr_increase)
 
-func _on_cr_changed(value) -> void:
+func _on_cr_changed(_value) -> void:
 	current_cd_dec = cr_to_cd(StatsManager.cr_increase)
 
 func _exit_tree() -> void:

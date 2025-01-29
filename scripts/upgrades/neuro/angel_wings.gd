@@ -36,7 +36,7 @@ func set_data(
 func sync_level() -> void:
 	match upgrade.lvl:
 		1:
-			set_data(3.0, 300.0, 3, 1, 3.0, 1)
+			set_data(3.0, 300.0, 3, 2, 3.0, 1)
 		2:
 			set_data(0, 0, 5, 0, 0, 0)
 		3:

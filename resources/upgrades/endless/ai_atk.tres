@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="UpgradeResource" load_steps=4 format=3 uid="uid://co0cby8pxc72b"]
+
+[ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="1_0xll2"]
+[ext_resource type="Texture2D" uid="uid://snbl8ql0uoas" path="res://assets/upgrades/icons/A_atk.png" id="1_88td0"]
+[ext_resource type="PackedScene" uid="uid://c1rq0gelqtxjw" path="res://scenes/upgrades/endless/ai_atk.tscn" id="2_o2350"]
+
+[resource]
+script = ExtResource("1_0xll2")
+upgrade_name = "AI ATK + "
+icon = ExtResource("1_88td0")
+descriptions = PackedStringArray("+2% AI ATK")
+upgrade_type = 2
+character = 4
+max_lvl = 1
+scene_template = ExtResource("2_o2350")
+unlimited = true
+tag = 1

@@ -27,7 +27,6 @@ func ready():
 	reparent(map)
 
 	id = randi() % (1 << 31)
-	upgrade.lvl -= 1
 
 	Globals.update_pizza.emit()
 

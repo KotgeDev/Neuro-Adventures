@@ -21,7 +21,7 @@ func display_game_over() -> void:
 		var collab_partner = get_tree().get_first_node_in_group(Globals.COLLAB_GROUP_NAME) as CollabPartner
 
 		var score = map.score
-		var level = collab_partner.lv
+		var level = StatsManager.lvl
 		var time = pause_manager.get_elapsed_time()
 		var settings = SettingsManager.settings as Settings
 		var map_name = MapManager.map_data[settings.map_selected].map_name

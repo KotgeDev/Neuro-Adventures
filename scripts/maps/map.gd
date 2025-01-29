@@ -45,10 +45,10 @@ var enemy_stat_mult = 1.0
 
 #region ENDLESS MODE
 var score = 0
-func endless_stat_scale(i: int) -> float:
+func endless_stat_scale(i: int) -> void:
 	if i == 0:
-		return 1.0
-	return i * 2.0
+		enemy_stat_mult = 1.0
+	enemy_stat_mult = i * 2.0
 #endregion
 
 #region MONITOR

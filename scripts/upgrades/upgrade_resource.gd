@@ -9,6 +9,7 @@ enum Tag {
 enum UpgradeType {
 	AI_UPGRADE,
 	COLLAB_PARTNER_UPGRADE,
+	ENDLESS_UPGRADE
 }
 
 @export var upgrade_name: String

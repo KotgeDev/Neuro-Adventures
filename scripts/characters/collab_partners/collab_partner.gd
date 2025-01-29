@@ -37,9 +37,10 @@ var damaged_atleast_once := false
 const EXP_REQ_INCREMENT := 4
 const EXP_REQ_INIT := 2
 
+signal lvl_updated
+
 var expp := 0
 var exp_requirement := EXP_REQ_INIT
-var lv := 1
 #endregion
 
 #region RAISE THE TIMER
@@ -112,12 +113,12 @@ func _on_hurtbox_take_damage(damage: float):
 	AudioSystem.play_sfx(hit_sfx, global_position, 0.8)
 
 func _on_collect_exp(value: int) -> void:
-	expp += value
+	expp += (value * StatsManager.exp_mult)
 	AudioSystem.play_sfx(exp_sfx, global_position, 0.4)
 	if expp >= exp_requirement:
 		expp = expp - exp_requirement
-		exp_requirement = EXP_REQ_INIT + lv * EXP_REQ_INCREMENT
-		lv += 1 * StatsManager.exp_mult
+		exp_requirement = EXP_REQ_INIT + StatsManager.lvl * EXP_REQ_INCREMENT
+		StatsManager.lvl += 1
 		Globals.request_random_upgrades.emit()
 	Globals.update_exp_bar.emit(exp_requirement, expp)
 

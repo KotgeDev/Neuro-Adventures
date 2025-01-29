@@ -11,6 +11,7 @@ class_name HUD
 @onready var collab_partner_bar_full = %CollabPartnerBarFull
 @onready var achievement_display = $AchievementDisplay
 @onready var victory_display = $VictoryDisplay
+@onready var level_counter: Label = $LevelCounter
 #endregion
 
 #region UI Shake Handler (Scuffed Code Ahead)
@@ -52,6 +53,7 @@ func connect_signals() -> void:
 	Globals.update_collab_partner_health.connect(_on_update_collab_partner_health)
 	Globals.update_exp_bar.connect(_on_update_exp_bar)
 	Globals.change_fps_counter_state.connect(set_fps_counter_state)
+	StatsManager.level_changed.connect(_on_level_changed)
 
 	match SettingsManager.settings.ai_selected:
 		Globals.CharacterChoice.NEURO:
@@ -68,6 +70,9 @@ func connect_signals() -> void:
 func _process(delta: float) -> void:
 	shake_handler(delta)
 	exp_bar.value = lerpf(exp_bar.value, exp_value, delta*7)
+
+func _on_level_changed() -> void:
+	level_counter.text = "%d" % StatsManager.lvl
 
 func _on_game_over() -> void:
 	if pause_manager.game_ended:

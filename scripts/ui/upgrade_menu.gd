@@ -1,7 +1,6 @@
 extends Control
 
 @export var pause_manager: PauseManager
-@export var level_counter: Label
 @onready var ntx_label: Label = %NtxLabel
 @onready var reroll_container: HBoxContainer = %RerollContainer
 @onready var choice_panel_template: Control = $UpgradeChoicePanel
@@ -16,6 +15,7 @@ var reroll_count := 0
 
 var ui_Active = false
 var menu_blip2: AudioStream = preload("res://assets/sfx/menublip2.wav")
+var endless_outline = preload("res://assets/upgrades/icons/endless_outline.png")
 
 func _ready():
 	scale = Vector2.ZERO
@@ -27,8 +27,6 @@ func _on_map_ready() -> void:
 	collab_partner = get_tree().get_first_node_in_group(Globals.COLLAB_GROUP_NAME)
 
 func _on_show_three_random_upgrades(upgrades: Array) -> void:
-	level_counter.text = str(collab_partner.lv)
-
 	ntx_label.visible = false
 	reroll_container.visible = true
 
@@ -70,8 +68,10 @@ func display_upgrades(upgrades: Array) -> void:
 		var settings = SettingsManager.settings as Settings
 		if upgrade.upgrade_type == UpgradeResource.UpgradeType.AI_UPGRADE:
 			outline.texture = CharacterManager.character_data[settings.ai_selected].icon_outline
-		else:
+		elif upgrade.upgrade_type == UpgradeResource.UpgradeType.COLLAB_PARTNER_UPGRADE:
 			outline.texture = CharacterManager.character_data[settings.collab_partner_selected].icon_outline
+		else:
+			outline.texture = endless_outline
 		icon.texture = upgrade.icon
 		description.text = upgrade.descriptions[upgrade.lvl]
 		choice_panel.visible = true

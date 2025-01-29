@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dybnin548dv60"]
+[gd_scene load_steps=2 format=3 uid="uid://c822n6p3jcyum"]
 
-[ext_resource type="Script" path="res://scripts/directives/directive_loader.gd" id="1_jjywf"]
+[sub_resource type="GDScript" id="GDScript_acb2x"]
+script/source = "extends Node2D
+"
 
 [node name="DirectiveLoader" type="Node2D"]
-script = ExtResource("1_jjywf")
+script = SubResource("GDScript_acb2x")

@@ -12,6 +12,7 @@ signal evasion_changed
 signal ai_evasion_changed
 signal collab_evasion_changed
 signal drone_auto_changed
+signal level_changed
 
 # Emited from CollabPartner when speed is altered
 signal collab_max_speed_changed
@@ -24,11 +25,17 @@ signal ai_hp_changed
 # false if bool, 1 if int, and 0.0 if float
 # unless specified otherwise
 
+# Level
+var lvl: int :
+	set(value):
+		lvl = value
+		level_changed.emit()
 # Lives
 var ai_life: int
 # EXP multiplier
-var exp_mult :int
+var exp_mult: int
 # Drone
+var drone_count: int
 var drone_atk_inc: float
 var drone_spd_inc: float
 var drone_automation: bool :
@@ -85,6 +92,8 @@ var collab_cd_reduction: float :
 var filter: float :
 	set(value):
 		filter = value
+		if filter > 100:
+			filter = 100.0
 		filter_changed.emit()
 # Attack Increase
 ## ATK Increase should be additive.

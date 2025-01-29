@@ -16,6 +16,7 @@ shader_parameter/white = null
 [node name="Anny" instance=ExtResource("1_l0b7b")]
 script = ExtResource("2_so6vv")
 BASE_MAX_SPEED = 60.0
+BASE_MAX_HEALTH = 45.0
 
 [node name="IdleSprite" parent="CharacterAnimation" index="0"]
 material = SubResource("ShaderMaterial_0tsbo")

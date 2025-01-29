@@ -6,6 +6,7 @@ extends Node
 @onready var vedal_upgrades_db = preload("res://resources/upgrades/vedal_upgrades_db.tres").db
 @onready var evil_upgrades_db = preload("res://resources/upgrades/evil_upgrades_db.tres").db
 @onready var anny_upgrades_db = preload("res://resources/upgrades/anny_upgrades_db.tres").db
+@onready var endless_upgrades_db = preload("res://resources/upgrades/endless_upgrades.tres").db
 
 @onready var character_data = {
 	Globals.CharacterChoice.NEURO: CharacterData.new(
@@ -14,7 +15,8 @@ extends Node
 		45,  # Hp
 		75,  # Speed
 		true,  # is AI
-		preload("res://assets/upgrades/icons/neuro_outline.png")  # icon_outline
+		preload("res://assets/upgrades/icons/neuro_outline.png"),  # icon_outline
+		"Swarm Drone",  # Drone name
 	),
 	Globals.CharacterChoice.VEDAL: CharacterData.new(
 		"Vedal",
@@ -22,7 +24,7 @@ extends Node
 		40,
 		65,
 		false,
-		preload("res://assets/upgrades/icons/vedal_outline.png")
+		preload("res://assets/upgrades/icons/vedal_outline.png"),
 	),
 	Globals.CharacterChoice.EVIL: CharacterData.new(
 		"Evil",
@@ -30,7 +32,8 @@ extends Node
 		60,
 		50,
 		true,
-		preload("res://assets/upgrades/icons/evil_outline.png")
+		preload("res://assets/upgrades/icons/evil_outline.png"),
+		"Pizza Drone",
 	),
 	Globals.CharacterChoice.ANNY: CharacterData.new(
 		"Anny",

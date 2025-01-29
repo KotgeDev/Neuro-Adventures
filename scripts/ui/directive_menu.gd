@@ -66,7 +66,7 @@ func generate_card(directive: Directive, no_reroll := false) -> void:
 	h_container.add_child(dir_card_duplicate)
 
 func _on_directive_selected(directive: Directive) -> void:
-	if directive_manager.owned_directives.size() > MAX_DIRECTIVES:
+	if directive_manager.owned_directives.size() == MAX_DIRECTIVES:
 		Notice.create_notice(self, "You cannot have more then %d directives! \n" % MAX_DIRECTIVES +
 			"You can discard existing directives from Pause -> Stats")
 		return

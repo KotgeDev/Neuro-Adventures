@@ -1,10 +1,11 @@
 extends Node2D
 class_name DirectiveManager
 
+@onready var directive_resources = preload("res://resources/directives/directive_db.tres").db
+
 var directives_db := []
 var owned_directives := []
 var tier_colors = ["9cdb43", "20d6c7", "e86a73"]
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -47,7 +48,7 @@ func select_random(count: int) -> Array:
 	return results
 
 func generate_directive_objects() -> void:
-	for dir_resource in DirectiveLoader.directive_resources:
+	for dir_resource in directive_resources:
 		directives_db.append(Directive.new(dir_resource))
 
 func generate_pool() -> Array:

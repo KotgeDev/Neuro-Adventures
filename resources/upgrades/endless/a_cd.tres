@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="UpgradeResource" load_steps=4 format=3 uid="uid://c7r5yjdtmyome"]
+
+[ext_resource type="Texture2D" uid="uid://ciyifqupjquw5" path="res://assets/upgrades/icons/A_CD_icon.png" id="1_n5l15"]
+[ext_resource type="PackedScene" uid="uid://doillb3pqbk8e" path="res://scenes/upgrades/endless/ai_cd.tscn" id="2_fhlxr"]
+[ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="3_16r4o"]
+
+[resource]
+script = ExtResource("3_16r4o")
+upgrade_name = "AI Cooldown -"
+icon = ExtResource("1_n5l15")
+descriptions = PackedStringArray("-0.05% AI cooldown")
+upgrade_type = 2
+character = 4
+max_lvl = 1
+scene_template = ExtResource("2_fhlxr")
+unlimited = true
+tag = 1

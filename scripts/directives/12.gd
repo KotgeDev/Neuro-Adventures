@@ -13,7 +13,7 @@ func _ready() -> void:
 	StatsManager.increase_collection_range.connect(_on_cr_changed)
 	current_mult = cr_to_mult(StatsManager.cr_increase)
 
-func _on_cr_changed() -> void:
+func _on_cr_changed(_value) -> void:
 	current_mult = cr_to_mult(StatsManager.cr_increase)
 
 func _exit_tree() -> void:

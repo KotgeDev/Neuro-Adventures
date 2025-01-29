@@ -12,7 +12,7 @@ var max_speed: float
 func _ready() -> void:
 	set_stats(BASE_MAX_SPEED, BASE_DAMAGE)
 	add_to_group("drone")
-
+	StatsManager.drone_count += 1
 	ready()
 
 ## Override to use
