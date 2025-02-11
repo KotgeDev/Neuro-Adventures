@@ -8,6 +8,7 @@ class_name Enemy
 @export var EXP := 1.0
 
 @onready var map = get_tree().get_first_node_in_group(Globals.MAP_GROUP_NAME) as MAP
+@onready var max_health := BASE_MAX_HEALTH
 @onready var health := BASE_MAX_HEALTH
 @onready var max_speed := BASE_MAX_SPEED
 @onready var damage := BASE_DAMAGE
@@ -18,7 +19,8 @@ func _ready() -> void:
 	ready()
 
 func set_enemy_stat_multiplier() -> void:
-	health = BASE_MAX_HEALTH * map.enemy_stat_mult
+	max_health = BASE_MAX_HEALTH * map.enemy_stat_mult
+	health = max_health
 	damage = BASE_DAMAGE * map.enemy_stat_mult
 
 ## Override to use

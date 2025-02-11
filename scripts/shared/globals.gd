@@ -6,6 +6,11 @@ const AI_GROUP_NAME := "ai"
 const COLLAB_GROUP_NAME := "collab_partner"
 const DIR_MANAGER_GROUP_NAME := "dir_manager"
 
+var exp_tier_to_value = {
+	1: 1,
+	2: 5
+}
+
 #region Enums
 enum Owners {
 	OWNED_BY_AI,

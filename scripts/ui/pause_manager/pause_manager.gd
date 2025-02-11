@@ -77,7 +77,7 @@ func get_elapsed_time() -> String:
 	return "%02d:%02d" % [min, sec]
 
 func _on_continue_button_pressed():
-	if upgrades_menu.visible:
+	if upgrades_menu.visible or directive_menu.visible:
 		if visible:
 			visible = false
 		else:

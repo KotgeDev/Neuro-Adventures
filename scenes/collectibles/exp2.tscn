@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://o8mn2f7p8r1a"]
+
+[ext_resource type="Script" path="res://scripts/collectibles/exp.gd" id="1_5b0gh"]
+[ext_resource type="Texture2D" uid="uid://o3o67n8bench" path="res://assets/collectibles/exp_lv2.png" id="2_0xmkn"]
+
+[node name="Exp2" type="Node2D"]
+z_index = -1
+script = ExtResource("1_5b0gh")
+tier = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_0xmkn")

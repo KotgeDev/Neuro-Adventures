@@ -48,8 +48,11 @@ var score = 0
 func endless_stat_scale(i: int) -> void:
 	if i == 0:
 		enemy_stat_mult = 1.0
-	enemy_stat_mult = i * 2.0
+	else:
+		enemy_stat_mult = i * 1.5
 #endregion
+
+# 1, 1.5,
 
 #region MONITOR
 var monitor_template = preload("res://scenes/interactive_objects/monitor.tscn")

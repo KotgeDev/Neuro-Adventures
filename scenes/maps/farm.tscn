@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=4 uid="uid://drg7spn8yqktv"]
+[gd_scene load_steps=53 format=4 uid="uid://drg7spn8yqktv"]
 
 [ext_resource type="Script" path="res://scripts/maps/farm.gd" id="1_wx0jl"]
 [ext_resource type="Texture2D" uid="uid://b4b121yddfloj" path="res://assets/maps/map_size_scale.png" id="2_vxep5"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://3ojvl7d7u1pe" path="res://scenes/enemies/enemy_spawner.tscn" id="5_ep230"]
 [ext_resource type="PackedScene" uid="uid://ch17x5fa2wcd" path="res://scenes/directives/directive_manager.tscn" id="7_kpvji"]
 [ext_resource type="PackedScene" uid="uid://8uhv6g1gj5yk" path="res://scenes/upgrades/upgrade_manager.tscn" id="7_wfvop"]
+[ext_resource type="PackedScene" uid="uid://cwwirqifv11si" path="res://scenes/collectibles/exp_manager.tscn" id="8_di17o"]
 [ext_resource type="PackedScene" uid="uid://dh53uv4y0tqn3" path="res://scenes/shared/music_player.tscn" id="9_wwhy6"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_122t5"]
@@ -511,6 +512,8 @@ y_sort_enabled = true
 [node name="UpgradeManager" parent="." instance=ExtResource("7_wfvop")]
 
 [node name="DirectiveManager" parent="." instance=ExtResource("7_kpvji")]
+
+[node name="ExpManager" parent="." instance=ExtResource("8_di17o")]
 
 [node name="MusicPlayer" parent="." instance=ExtResource("9_wwhy6")]
 

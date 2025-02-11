@@ -35,8 +35,8 @@ position = Vector2(0, -13)
 collision_layer = 2
 owned_by = 1
 
-[node name="CollisionPolygon2D" parent="Hurtbox" index="0"]
-polygon = PackedVector2Array(-5, -1, -5, 14, 5, 14, 5, -1)
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Hurtbox"]
+polygon = PackedVector2Array(-5, 0, -5, 14, 5, 14, 5, 0)
 
 [node name="InteractiveObjectZone" type="Area2D" parent="."]
 position = Vector2(0, -2)

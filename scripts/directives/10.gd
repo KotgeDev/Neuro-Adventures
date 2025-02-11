@@ -10,10 +10,10 @@ var current_evasion_inc := 0.0 :
 
 func _ready() -> void:
 	StatsManager.filter_changed.connect(_on_filter_changed)
-	current_evasion_inc = filter_to_evasion(StatsManager.collab_evasion)
+	current_evasion_inc = filter_to_evasion(StatsManager.filter)
 
 func _on_filter_changed() -> void:
-	current_evasion_inc = filter_to_evasion(StatsManager.collab_evasion)
+	current_evasion_inc = filter_to_evasion(StatsManager.filter)
 
 func _exit_tree() -> void:
 	StatsManager.collab_evasion -= current_evasion_inc

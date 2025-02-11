@@ -2,7 +2,7 @@ extends Node2D
 class_name UpgradeManager
 
 const MAX_DRONE_COUNT := 40
-const SOFT_LVL_CAP := 35
+const SOFT_LVL_CAP := 5  # 35
 
 @onready var drone_auto_timer: Timer = $DroneAutoTimer
 
@@ -103,7 +103,7 @@ func remove_maxed_upgrades() -> void:
 	var to_remove = []
 
 	for upgrade in upgrades_pool:
-		if !upgrade.unlimited and upgrade.max_lvl == upgrade.lvl:
+		if upgrade.max_lvl == upgrade.lvl:
 			to_remove.append(upgrade)
 
 	for upgrade in to_remove:
@@ -122,7 +122,10 @@ func lvl_up(upgrade: Upgrade) -> void:
 		if not existing_upgrades.has(upgrade):
 			existing_upgrades.append(upgrade)
 
-		upgrade.lvl = 1
+		if upgrade.unlimited:
+			upgrade.lvl = 0
+		else:
+			upgrade.lvl = 1
 		var scene = upgrade.scene_template.instantiate()
 		#WARNING: Cyclic reference. Should be allowed in godot 4.2 though
 		# adding a warning just in case

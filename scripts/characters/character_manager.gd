@@ -13,10 +13,10 @@ extends Node
 		"Neuro",  # Name
 		neuro_upgrades_db,  # Db
 		45,  # Hp
-		75,  # Speed
+		60,  # Speed
 		true,  # is AI
 		preload("res://assets/upgrades/icons/neuro_outline.png"),  # icon_outline
-		"Swarm Drone",  # Drone name
+		"Swarm Drone",  # Drone name (only for AI)
 	),
 	Globals.CharacterChoice.VEDAL: CharacterData.new(
 		"Vedal",
@@ -29,7 +29,7 @@ extends Node
 	Globals.CharacterChoice.EVIL: CharacterData.new(
 		"Evil",
 		evil_upgrades_db,
-		60,
+		50,
 		50,
 		true,
 		preload("res://assets/upgrades/icons/evil_outline.png"),

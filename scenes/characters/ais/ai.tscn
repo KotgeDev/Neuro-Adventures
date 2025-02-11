@@ -31,8 +31,8 @@ texture = ExtResource("4_1chnv")
 position = Vector2(0, -13)
 collision_layer = 1
 
-[node name="CollisionPolygon2D" parent="Hurtbox" index="0"]
-polygon = PackedVector2Array(-6, -2, -4, 13, 1, 13, 4, 9.05946, 4, -2)
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Hurtbox"]
+polygon = PackedVector2Array(-6, -1, -4, 13, 1, 13, 4, 9.05946, 4, -1)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 

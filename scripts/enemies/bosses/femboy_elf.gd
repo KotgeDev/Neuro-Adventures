@@ -23,7 +23,7 @@ extends Enemy
 #endregion
 
 #region STATS
-@onready var phase_thresholds := [BASE_MAX_HEALTH, BASE_MAX_HEALTH * 0.45]
+@onready var phase_thresholds := [max_health, max_health * 0.3]
 #endregion
 
 #region OTHER
@@ -84,9 +84,9 @@ func update_animation() -> void:
 			fire_point.position.x = 13.0
 			sprite_2d.flip_h = false
 
-func _on_hurtbox_take_damage(damage):
-	health -= damage
-	healthbar.value = health / BASE_MAX_HEALTH * 100
+func _on_hurtbox_take_damage(dmg):
+	health -= dmg
+	healthbar.value = health / max_health * 100
 
 	sprite_2d.material.set_shader_parameter("white", true)
 	await get_tree().create_timer(Globals.FLASH_TIME, false).timeout

@@ -101,7 +101,7 @@ func wave6() -> void:
 	Globals.spawn.emit(goblin_template, 75, 0.9)
 	Globals.spawn.emit(knight_template, 50, 1.0)
 	await get_tree().create_timer(35, false).timeout
-	add_march(vertical_march, soldier_template)
+	add_march(vertical_march, knight_template)
 	await get_tree().create_timer(35, false).timeout
 	print_rich("[color=green]Wave 6 End[/color]")
 
@@ -114,7 +114,6 @@ func boss_wave() -> void:
 	await get_tree().create_timer(35, false).timeout
 	add_child(femboy_elf.instantiate())
 	await get_tree().create_timer(35, false).timeout
-	Globals.spawn.emit(knight_template, 1000, 5.0)
 
 func final_loop_wave(spawn_boss := false) -> void:
 	print_rich("[color=crimson]Boss Wave Start[/color]")

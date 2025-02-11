@@ -46,7 +46,7 @@ func shoot() -> void:
 	new_bullet.rotation = fire_position.rotation
 	new_bullet.global_position = fire_position.global_position
 
-	AudioSystem.play_sfx(sfx, fire_position.position)
+	AudioSystem.play_sfx(sfx, fire_position.global_position, 0.3)
 
 func _on_ai_cooldown_timer_timeout() -> void:
 	for i in range(projectile_count):

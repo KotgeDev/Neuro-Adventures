@@ -84,11 +84,13 @@ texture = ExtResource("3_tal4j")
 hframes = 10
 
 [node name="Hurtbox" parent="." instance=ExtResource("4_co51d")]
-visible = false
 collision_layer = 4
 owned_by = 2
 
 [node name="CollisionPolygon2D" parent="Hurtbox" index="0"]
+polygon = PackedVector2Array(0, -38, -6, -35, -8, -31, -9, -19, -7, 8, 2, 8, 9, -14, 4, -25, 7, -32, 2, -38)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Hurtbox"]
 polygon = PackedVector2Array(0, -38, -6, -35, -8, -31, -9, -19, -7, 8, 2, 8, 9, -14, 4, -25, 7, -32, 2, -38)
 
 [node name="ContinuousHitbox" parent="." instance=ExtResource("5_eixao")]
