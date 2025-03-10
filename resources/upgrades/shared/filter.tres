@@ -8,9 +8,15 @@
 script = ExtResource("3_sdhmr")
 upgrade_name = "Filter"
 icon = ExtResource("1_v6b4j")
-descriptions = PackedStringArray("25% filter ( AI will do 25% less damage to collab partners)", "50% filter ( AI will do 50% less damage to collab partners ) ", "70% filter ( AI will do 70% less damage to collab partners ) ", "80% filter ( AI will do 80% less damage to collab partners ) ")
+unformated_stats = "Filter: 15% > 90%"
+unformated_descriptions = "15% Filter (AI will do 15% less damage to collab partners)
+30% Filter (AI will do 30% less damage to collab partners ) 
+45% Filter (AI will do 45% less damage to collab partners ) 
+60% Filter (AI will do 60% less damage to collab partners ) 
+75% Filter (AI will do 75% less damage to collab partners ) 
+90% Filter (AI will do 90% less damage to collab partners
+"
 upgrade_type = 0
 character = 4
-max_lvl = 4
+max_lvl = 6
 scene_template = ExtResource("2_12hqt")
-tag = 1

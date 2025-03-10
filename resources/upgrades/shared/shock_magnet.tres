@@ -8,10 +8,9 @@
 script = ExtResource("3_b5pek")
 upgrade_name = "Shock Magnet"
 icon = ExtResource("1_8kwgs")
-descriptions = PackedStringArray("+30% larger item collection range", "+40% larger item collection range", "+50% larger item collection range")
+unformated_stats = ""
+unformated_descriptions = ""
 upgrade_type = 1
 character = 4
 max_lvl = 3
 scene_template = ExtResource("2_amawi")
-unlimited = false
-tag = 1

@@ -8,10 +8,9 @@
 script = ExtResource("1_6a6rh")
 upgrade_name = "Harpoon"
 icon = ExtResource("1_7i674")
-descriptions = PackedStringArray("A harpoon is fired at an interval", "-1s cooldown", "+1 Harpoon", "+4.0 base ATK", "+2 Harpoons, Harpoons now have infinite pierce ")
+unformated_stats = ""
+unformated_descriptions = ""
 upgrade_type = 0
 character = 1
 max_lvl = 5
 scene_template = ExtResource("2_cpfr5")
-unlimited = false
-tag = 0

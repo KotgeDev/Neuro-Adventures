@@ -1,6 +1,5 @@
-[gd_resource type="Resource" script_class="DirectiveResource" load_steps=4 format=3 uid="uid://dj0w6170a4bih"]
+[gd_resource type="Resource" script_class="DirectiveResource" load_steps=3 format=3 uid="uid://dj0w6170a4bih"]
 
-[ext_resource type="Script" path="res://scripts/directives/chance_map.gd" id="1_drfqx"]
 [ext_resource type="PackedScene" uid="uid://ca6i8vg2f0xg5" path="res://scenes/directives/13.tscn" id="2_cxf30"]
 [ext_resource type="Script" path="res://scripts/directives/directive_resource.gd" id="2_ri7te"]
 
@@ -11,5 +10,4 @@ id = 13
 tier = 2
 description = "Each character's cooldown is reduced by 50% of the corresponding character's evasion"
 quote = "Latency so fast that some question if they're even real"
-increase_chances_of = Array[ExtResource("1_drfqx")]([])
 scene_template = ExtResource("2_cxf30")

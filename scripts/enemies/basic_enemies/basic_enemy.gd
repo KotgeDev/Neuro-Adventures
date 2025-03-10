@@ -6,7 +6,7 @@ extends Enemy
 class_name BasicEnemy
 
 #region CONSTANTS
-@onready var AVOIDANCE_RADIUS := stats.av_radius[lvl-1]
+@onready var AVOIDANCE_RADIUS := stats.av_radius
 #endregion
 
 #region NODES

@@ -49,12 +49,6 @@ func _on_map_ready() -> void:
 		if upgrade.res.upgrade_type == UpgradeResource.UpgradeType.DRONE_UPGRADE:
 			drone_upgrade = upgrade
 
-	lvl_up(find_upgrade("Pipes"))
-	lvl_up(find_upgrade("Pipes"))
-	lvl_up(find_upgrade("Pipes"))
-	lvl_up(find_upgrade("Pipes"))
-	lvl_up(find_upgrade("Pipes"))
-
 func find_upgrade(upgrade_name: String) -> Upgrade:
 	# Past version name check
 	if CharacterManager.past_upgrade_name_map.has(upgrade_name):

@@ -5,5 +5,5 @@ class_name EnemyStats
 @export var speed: Array[float]
 @export var damage: Array[float]
 @export var exp: Array[float]
-@export var av_radius: Array[float]
+@export var av_radius: int
 @export var max_lv: int

@@ -7,10 +7,10 @@ extends UpgradeScene
 func sync_level() -> void:
 	match upgrade.lvl:
 		1:
-			StatsManager.speed_increase += 0.05
+			StatsManager.speed_increase += 0.1
 		2:
-			StatsManager.speed_increase += 0.05
+			StatsManager.speed_increase += 0.1
 		3:
-			StatsManager.speed_increase += 0.05
+			StatsManager.speed_increase += 0.1
 		4:
-			StatsManager.speed_increase += 0.05
+			StatsManager.speed_increase += 0.1
