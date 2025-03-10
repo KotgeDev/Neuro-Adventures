@@ -10,27 +10,40 @@ var speed := 0.0
 var damage := 0.0
 var projectile_count := 0
 var timeout := 0.0
+var pierce := 0
 
-func setup(count: int, wait_time: float, _damage: float, _speed: float) -> void:
+func get_data() -> String:
+	var data = (
+		get_atk_str(damage) + "\n" +
+		get_cd_str(timer.base_cooldown) + "\n" +
+		get_general_str("Bullets", projectile_count) + "\n" +
+		get_pierce_str(pierce)
+	)
+	return data
+
+func setup(count: int, wait_time: float, _damage: float, _speed: float, _pierce: int) -> void:
 	if count: projectile_count = count
 	if wait_time: timer.base_cooldown = wait_time
 	if _damage: damage = _damage
 	if _speed: speed = _speed
+	if _pierce: pierce = _pierce
 
 	timeout = 2500.0 / speed
 
 func sync_level() -> void:
 	match upgrade.lvl:
 		1:
-			setup(4, 3.0, 1.0, 250.0)
+			setup(6, 3.0, 1.0, 250.0, 2)
 		2:
-			setup(6, 0, 0, 0)
+			setup(8, 0, 0, 0, 3)
 		3:
-			setup(0, 2.0, 0, 0)
+			setup(0, 0, 3, 0, 0)
 		4:
-			setup(0, 0, 2.0, 0)
+			setup(10, 0, 0, 0, 4)
 		5:
-			setup(0, 1.5, 0, 300.0)
+			setup(0, 2.5, 0, 0, 0)
+		6:
+			setup(18, 0, 0, 0, 0)
 
 func shoot() -> void:
 	var mouse_pos = get_global_mouse_position()
@@ -40,7 +53,7 @@ func shoot() -> void:
 
 	var new_bullet = bullet_temp.instantiate()
 	# Speed, Damage, Timeout
-	new_bullet.set_up(speed, damage, timeout)
+	new_bullet.set_up(speed, damage, timeout, pierce)
 	map.add_child(new_bullet)
 	fire_position.look_at(mouse_pos)
 	new_bullet.rotation = fire_position.rotation

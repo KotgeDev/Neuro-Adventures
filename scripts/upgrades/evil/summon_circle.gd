@@ -8,7 +8,14 @@ extends UpgradeScene
 @export var LV4_RANGE_MULTIPLIER := 1.25
 @export var LV5_SLOW := 0.40
 
-var slow_multiplier: float
+var slow: float
+
+func get_data() -> String:
+	var data = (
+		get_perc_str("Slow", slow)
+	)
+	return data
+
 
 func _ready() -> void:
 	$AnimationPlayer.play("spin")
@@ -16,29 +23,24 @@ func _ready() -> void:
 func sync_level() -> void:
 	match upgrade.lvl:
 		1:
-			slow_multiplier = LV1_SLOW
+			slow = 0.3
 		2:
-			slow_multiplier = LV2_SLOW
+			slow = 0.35
 		3:
-			slow_multiplier = LV3_SLOW
+			slow = 0.4
 		4:
-			aoe.scale *= LV4_RANGE_MULTIPLIER
-			$OuterCircle.visible = true
+			slow = 0.5
 		5:
-			slow_multiplier = LV5_SLOW
+			aoe.scale *= 1.25
 			$OuterCircle.visible = true
 
 func _on_aoe_area_entered(area):
-	var target = area.get_parent()
-	if target is CollabPartner:
-		target.max_speed *= slow_multiplier
-	elif target is Enemy:
-		target.max_speed *= slow_multiplier
+	var ememy = area.get_parent()
+	if ememy is BasicEnemy:
+		ememy.slow = slow
 
 func _on_aoe_area_exited(area):
 	if is_instance_valid(area) and area:
-		var target = area.get_parent()
-		if target is CollabPartner:
-			target.max_speed = target.BASE_MAX_SPEED
-		if target is Enemy:
-			target.max_speed = target.BASE_MAX_SPEED
+		var ememy = area.get_parent()
+		if ememy is BasicEnemy:
+			ememy.slow = 0

@@ -8,10 +8,17 @@
 script = ExtResource("1_dhp0g")
 upgrade_name = "Pipes"
 icon = ExtResource("1_b5x2h")
-descriptions = PackedStringArray("8 metal pipes drop down on a region ", "-1s cooldown", "Two sets of pipes are fired at once ", "+4 pipes per set", "+5 base ATK ", "Four sets of pipes are fired at once")
+unformated_stats = "ATK: 5 > 10
+Cooldown: 5s > 4s
+Metal Pipes: 8 > 12(x4)
+"
+unformated_descriptions = "8 metal pipes will fall near an enemy
++4 pipes
+Two sets of pipes are fired at once 
++5 base ATK 
+-1s cooldown
+Four sets of pipes are fired at once"
 upgrade_type = 0
 character = 1
 max_lvl = 6
 scene_template = ExtResource("2_5bdiv")
-unlimited = false
-tag = 0

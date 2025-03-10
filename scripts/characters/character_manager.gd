@@ -16,7 +16,6 @@ extends Node
 		60,  # Speed
 		true,  # is AI
 		preload("res://assets/upgrades/icons/neuro_outline.png"),  # icon_outline
-		"Swarm Drone",  # Drone name (only for AI)
 	),
 	Globals.CharacterChoice.VEDAL: CharacterData.new(
 		"Vedal",
@@ -33,7 +32,6 @@ extends Node
 		50,
 		true,
 		preload("res://assets/upgrades/icons/evil_outline.png"),
-		"Pizza Drone",
 	),
 	Globals.CharacterChoice.ANNY: CharacterData.new(
 		"Anny",
@@ -54,7 +52,8 @@ var past_upgrade_name_map = {
 	"Gymbag Drone": "Swarm Drone",
 	"Swarm Upgrades": "Swarm Control System",
 	"Say it Back! ": "Confession Letter",
-	"Forgotten Child ": "Crazy Fing Robot Body"
+	"Forgotten Child ": "Crazy Fing Robot Body",
+	"Dual Strike": "Dual Swords"
 }
 
 func find_upgrade(upgrade_name: String, db: Array) -> Resource:

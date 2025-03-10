@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dotgxtot02sw5"]
+[gd_scene load_steps=8 format=3 uid="uid://dotgxtot02sw5"]
 
 [ext_resource type="Script" path="res://scripts/ui/upgrade_menu.gd" id="1_ytgv6"]
-[ext_resource type="Material" uid="uid://csxlxcwxw3h3v" path="res://assets/shaders/rainbow.tres" id="2_xatk1"]
+[ext_resource type="StyleBox" uid="uid://h4s4mveq2e7l" path="res://assets/themes/bright_pink_button/pink_button_hover.tres" id="2_j703b"]
+[ext_resource type="StyleBox" uid="uid://bpkvukmwtp8hj" path="res://assets/themes/bright_pink_button/pink_button.tres" id="3_dk8c8"]
 [ext_resource type="StyleBox" uid="uid://dwibpkoqk5pkl" path="res://assets/themes/upgrade_button/upgrade_button_hover.tres" id="3_hc2cn"]
 [ext_resource type="StyleBox" uid="uid://bspcvalmxg40p" path="res://assets/themes/upgrade_button/upgrade_button.tres" id="4_gf355"]
 [ext_resource type="Texture2D" uid="uid://d2g70s3s7rt7t" path="res://assets/upgrades/upgrade_icon_placeholder.png" id="5_3bohp"]
@@ -49,9 +50,8 @@ grow_vertical = 2
 [node name="NtxLabel" type="Label" parent="VBoxContainer"]
 unique_name_in_owner = true
 visible = false
-material = ExtResource("2_xatk1")
 layout_mode = 2
-text = "NTX 4090!!!"
+text = "Choose Any Existing Upgrade"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -76,7 +76,15 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 20
+theme_override_styles/hover_pressed = ExtResource("2_j703b")
+theme_override_styles/hover = ExtResource("2_j703b")
+theme_override_styles/normal = ExtResource("3_dk8c8")
 text = "Reroll"
 
 [node name="RerollLabel" type="Label" parent="VBoxContainer/RerollContainer"]

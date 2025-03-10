@@ -5,8 +5,6 @@
 
 [node name="FireballScene" type="Node2D"]
 script = ExtResource("1_5imey")
-LV1_DAMAGE = 1.0
-LV4_DAMAGE = 3.0
 
 [node name="FireTimer" type="Timer" parent="."]
 autostart = true

@@ -14,6 +14,15 @@ var speed
 var count
 var pierce
 
+func get_data() -> String:
+	var data = (
+		get_atk_str(damage) + "\n" +
+		get_cd_str(timer.base_cooldown) + "\n" +
+		get_general_str("Harpoons", count) + "\n" +
+		get_pierce_str(pierce)
+	)
+	return data
+
 func set_data(_damage: float, _speed: float, _count: int, _pierce: int, wait_time: float) -> void:
 	if _damage: damage = _damage
 	if _speed: speed = _speed
@@ -26,13 +35,13 @@ func sync_level() -> void:
 		1:
 			set_data(6.0, 700.0, 1, 6, 3.0)
 		2:
-			set_data(0, 0, 0, 0, 2.0)
-		3:
 			set_data(0, 0, 2, 0, 0)
-		4:
+		3:
 			set_data(10.0, 0, 0, 0, 0)
+		4:
+			set_data(0, 0, 0, 0, 2.5)
 		5:
-			set_data(0, 0, 4, 1000, 0)
+			set_data(0, 0, 4, 100, 0)
 
 func _on_ai_cooldown_timer_timeout() -> void:
 	var areas = enemy_search_area.get_overlapping_areas()

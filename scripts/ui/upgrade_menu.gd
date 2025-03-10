@@ -48,6 +48,10 @@ func display_upgrades(upgrades: Array) -> void:
 	for u in upgrades:
 		var upgrade = u as Upgrade
 
+		var settings = SettingsManager.settings as Settings
+		var ai_selected = CharacterManager.character_data[settings.ai_selected] as CharacterData
+		var collab_selected = CharacterManager.character_data[settings.collab_partner_selected] as CharacterData
+
 		var choice_panel = choice_panel_template.duplicate()
 		var button = choice_panel.get_node("Button")
 		var v_container = choice_panel.get_node("VBoxContainer")
@@ -61,19 +65,23 @@ func display_upgrades(upgrades: Array) -> void:
 		button.pressed.connect(_on_upgrade_selected.bind(upgrade))
 		button.mouse_entered.connect(_on_mouse_over_upgrade)
 
-		if upgrade.unlimited:
-			upgrade_name.text = " %s [Unlimited]" % [upgrade.upgrade_name]
-		else:
-			upgrade_name.text = " %s [Lv%d]" % [upgrade.upgrade_name, upgrade.lvl + 1]
-		var settings = SettingsManager.settings as Settings
-		if upgrade.upgrade_type == UpgradeResource.UpgradeType.AI_UPGRADE:
-			outline.texture = CharacterManager.character_data[settings.ai_selected].icon_outline
-		elif upgrade.upgrade_type == UpgradeResource.UpgradeType.COLLAB_PARTNER_UPGRADE:
-			outline.texture = CharacterManager.character_data[settings.collab_partner_selected].icon_outline
-		else:
+		if upgrade.res.upgrade_type == UpgradeResource.UpgradeType.DRONE_UPGRADE:
+			upgrade_name.text = " %s [Owned %d/%d]" % [upgrade.res.upgrade_name, upgrade.lvl, upgrade.res.max_lvl]
+			outline.texture = ai_selected.icon_outline
+			description.text = upgrade.res.descriptions[0]
+		elif upgrade.res.upgrade_type == UpgradeResource.UpgradeType.ENDLESS_UPGRADE:
+			upgrade_name.text = " %s [Endless]" % [upgrade.res.upgrade_name]
 			outline.texture = endless_outline
-		icon.texture = upgrade.icon
-		description.text = upgrade.descriptions[upgrade.lvl]
+			description.text = upgrade.res.descriptions[0]
+		else:
+			upgrade_name.text = " %s [Lvl %d/%d]" % [upgrade.res.upgrade_name, upgrade.lvl + 1, upgrade.res.max_lvl]
+			description.text = upgrade.res.descriptions[upgrade.lvl]
+			if upgrade.res.upgrade_type == UpgradeResource.UpgradeType.AI_UPGRADE:
+				outline.texture = ai_selected.icon_outline
+			elif upgrade.res.upgrade_type == UpgradeResource.UpgradeType.COLLAB_PARTNER_UPGRADE:
+				outline.texture = collab_selected.icon_outline
+
+		icon.texture = upgrade.res.icon
 		choice_panel.visible = true
 		choice_panel_container.add_child(choice_panel)
 

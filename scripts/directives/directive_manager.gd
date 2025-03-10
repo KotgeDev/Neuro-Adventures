@@ -5,7 +5,32 @@ class_name DirectiveManager
 
 var directives_db := []
 var owned_directives := []
-var tier_colors = ["9cdb43", "20d6c7", "e86a73"]
+
+static func generate_card (
+	directive: Directive,
+	template: Control,
+	h_container: Control,
+) -> Control:
+	var card_duplicate = template.duplicate()
+	var card_node = card_duplicate.get_node("Card")
+
+	var button = card_node.get_node("Button")
+	var contents = card_node.get_node("Contents")
+	var texture = card_node.get_node("Texture") as TextureRect
+
+	var title = contents.get_node("Title") as Label
+	var desc = contents.get_node("Description") as RichTextLabel
+	var quote = contents.get_node("Quote") as Label
+
+	texture.texture = Globals.tier_to_texture[directive.resource.tier]
+	title.text = directive.resource.directive_name
+	desc.text = "Effect:\n%s" % directive.resource.description
+	quote.text = directive.resource.quote
+
+	card_duplicate.visible = true
+	h_container.add_child(card_duplicate)
+
+	return card_duplicate
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,9 +38,13 @@ func _ready() -> void:
 	Globals.request_random_directives.connect(_on_request_random_directives)
 	Globals.add_directive.connect(_on_add_directive)
 	Globals.remove_directive.connect(_on_remove_directive)
+	Globals.request_special_directives.connect(_on_request_special_directives)
 
 func _on_request_random_directives() -> void:
 	Globals.show_directive_choices.emit(select_random(4))
+
+func _on_request_special_directives() -> void:
+	Globals.show_directive_choices.emit(select_random(4, true))
 
 func _on_add_directive(directive: Directive) -> void:
 	if !directive.resource.scene_template:
@@ -35,9 +64,9 @@ func _on_remove_directive(directive: Directive) -> void:
 
 	owned_directives.erase(directive)
 
-func select_random(count: int) -> Array:
+func select_random(count: int, special_only := false) -> Array:
 	var results = []
-	var pool = generate_pool()
+	var pool = generate_pool(special_only)
 
 	pool.shuffle()
 
@@ -51,20 +80,15 @@ func generate_directive_objects() -> void:
 	for dir_resource in directive_resources:
 		directives_db.append(Directive.new(dir_resource))
 
-func generate_pool() -> Array:
+func generate_pool(special_only := false) -> Array:
 	var pool = []
 
 	for d in directives_db:
 		var directive = d as Directive
-		if directive.scene:  # If this directive is owned
-			for map in directive.resource.increase_chances_of:
-				# If a directive in the map is not owned
-				if !find_directive(map.target_index).scene:
-					for i in range(map.multiplier):
-						pool.append(map.target_index)
-		else:  # If this directive is not owned
-			for i in range(directive.resource.multiplier):
-				pool.append(directive.resource.id)
+		if !directive.scene:  # If this directive is not owned
+			if !special_only or directive.resource.tier == 4:
+				for i in range(directive.resource.weight):
+					pool.append(directive.resource.id)
 
 	return pool
 

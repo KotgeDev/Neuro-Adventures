@@ -43,17 +43,17 @@ _data = {
 z_index = 1
 script = ExtResource("1_lrbdk")
 SPEED = 700.0
-WARNING_TIME = 0.5
 
 [node name="SelfDestructTimer" type="Timer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -3
 z_as_relative = false
+offset_left = 30.0
 offset_top = -4.0
-offset_right = 3000.0
+offset_right = 3030.0
 offset_bottom = 4.0
-color = Color(1, 0.12549, 0.0862745, 0.47451)
+color = Color(1, 0, 0, 0.392157)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -8,10 +8,14 @@
 script = ExtResource("1_a4f63")
 upgrade_name = "Knife"
 icon = ExtResource("1_7f27y")
-descriptions = PackedStringArray("All enemies in range will be attacked at an interval", "-0.5s cooldown", "+2 base ATK", "-0.5 cooldown", "x1.25 range")
+unformated_stats = "ATK: 2 > 4
+Cooldown: 2s > 1s"
+unformated_descriptions = "Evil will strike all enemies within a range at an interval
+-0.5s cooldown 
++2 base ATK
+-0.5s cooldown
+Increase range"
 upgrade_type = 0
 character = 1
 max_lvl = 5
 scene_template = ExtResource("2_iyaj4")
-unlimited = false
-tag = 0

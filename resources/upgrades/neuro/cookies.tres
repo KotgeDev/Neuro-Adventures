@@ -8,10 +8,14 @@
 script = ExtResource("1_wnd2b")
 upgrade_name = "Cookies"
 icon = ExtResource("1_urvct")
-descriptions = PackedStringArray("+1% cookie drop chance", "+1% cookie drop chance", "+1% cookie drop chance", "+2% cookie drop chance")
+unformated_stats = "Drop chance: 1% > 5%
+HP gain: 20"
+unformated_descriptions = "+1% Cookie drop chance 
++1% Cookie drop chance 
++1% Cookie drop chance 
++2% Cookie drop chance 
+"
 upgrade_type = 0
 character = 0
 max_lvl = 4
 scene_template = ExtResource("2_o4if1")
-unlimited = false
-tag = 1

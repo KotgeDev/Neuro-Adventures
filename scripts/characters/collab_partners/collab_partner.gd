@@ -13,7 +13,6 @@ const FRICTION := 500.0
 
 #region NODES
 @onready var character_animation = $CharacterAnimation
-@onready var aihp_loss_timer = $AIHPLossTimer
 #endregion
 
 #region BASE_VALUES
@@ -34,10 +33,10 @@ var damaged_atleast_once := false
 #endregion
 
 #region LEVEL
+signal lvl_updated
+
 const EXP_REQ_INCREMENT := 4
 const EXP_REQ_INIT := 2
-
-signal lvl_updated
 
 var expp := 0
 var exp_requirement := EXP_REQ_INIT
@@ -62,10 +61,10 @@ func connect_signals() -> void:
 	Globals.damage_collab_partner.connect(_on_hurtbox_take_damage)
 	Globals.add_upgrade_to_collab_partner.connect(_on_add_upgrade)
 	Globals.collect_exp.connect(_on_collect_exp)
-	Globals.raise_the_timer.connect(_on_raise_the_timer)
 	StatsManager.increase_max_hp.connect(_on_increase_max_hp)
 	StatsManager.increase_speed.connect(_on_increase_speed)
 	StatsManager.increase_collection_range.connect(_on_increase_cr)
+	StatsManager.exp_passive_changed.connect(_on_exp_passive_changed)
 	extended_signals()
 
 func _on_increase_max_hp(inc_perc) -> void:
@@ -113,7 +112,7 @@ func _on_hurtbox_take_damage(damage: float):
 	AudioSystem.play_sfx(hit_sfx, global_position, 0.8)
 
 func _on_collect_exp(value: int) -> void:
-	expp += (value * StatsManager.exp_mult)
+	expp += value
 	AudioSystem.play_sfx(exp_sfx, global_position, 0.4)
 	if expp >= exp_requirement:
 		expp = expp - exp_requirement
@@ -131,13 +130,11 @@ func _on_add_upgrade(upgrade: Node) -> void:
 func _on_powerup_get():
 	pass
 
-func _on_raise_the_timer(frequency: float, increase: float) -> void:
-	aihp_loss_timer.wait_time = frequency
-	per_exp_ai_hp_increase = increase
+func _on_exp_passive_changed(status: bool) -> void:
+	if status:
+		$ExpPassiveTimer.start(2.0)
+	else:
+		$ExpPassiveTimer.stop()
 
-	if not raise_the_timer_active:
-		raise_the_timer_active = true
-		aihp_loss_timer.start()
-
-func _on_aihp_loss_timer_timeout():
-	Globals.damage_ai.emit(1.0, false)
+func _on_exp_passive_timer_timeout() -> void:
+	Globals.collect_exp.emit(1)

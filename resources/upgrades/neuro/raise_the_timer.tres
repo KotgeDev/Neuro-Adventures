@@ -8,10 +8,9 @@
 script = ExtResource("1_b4atu")
 upgrade_name = "Raise the Timer!"
 icon = ExtResource("1_ylsif")
-descriptions = PackedStringArray("The AI will start loosing HP every 1s, but exps will now give 0.6 HP to the AI", "The AI will start loosing HP every 1s, but exps will now give 0.7 HP to the AI", "The AI will start loosing HP every 1s, but exps will now give 0.8 HP to the AI")
+unformated_stats = ""
+unformated_descriptions = ""
 upgrade_type = 0
 character = 0
 max_lvl = 3
 scene_template = ExtResource("2_i3lwb")
-unlimited = false
-tag = 1

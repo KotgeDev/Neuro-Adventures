@@ -43,9 +43,9 @@ func _process(delta: float) -> void:
 		var parent = area.get_parent()
 		if parent is Pizza:
 			if id > parent.id:
-				velocity = velocity.move_toward(compass.transform.y * (max_speed + max_speed * StatsManager.drone_spd_inc), ACCELERATION * delta)
+				velocity = velocity.move_toward(compass.transform.y * max_speed, ACCELERATION * delta)
 			else:
-				velocity = velocity.move_toward( -1 * compass.transform.y * (max_speed + max_speed * StatsManager.drone_spd_inc), ACCELERATION * delta)
+				velocity = velocity.move_toward( -1 * compass.transform.y * max_speed, ACCELERATION * delta)
 
 	# Rotate pizza according to set max rotate speed
 	if abs(rotate_speed - max_rotate_speed) < 1:
@@ -61,8 +61,7 @@ func _process(delta: float) -> void:
 func goto_ai(delta: float) -> void:
 	var target_pos = ai.global_position
 	compass.look_at(target_pos)
-	velocity = velocity.move_toward(compass.transform.x * (max_speed + max_speed * StatsManager.drone_spd_inc), ACCELERATION * delta)
-
+	velocity = velocity.move_toward(compass.transform.x * max_speed, ACCELERATION * delta)
 
 ## Searches and targets an enemy.
 ## Returns false if no enemies are targeted and there are no
@@ -70,13 +69,13 @@ func goto_ai(delta: float) -> void:
 func search_and_target_enemy(delta: float) -> bool:
 	if target and is_instance_valid(target):
 		if target in multi_hitbox.get_overlapping_areas():
-			velocity = velocity.move_toward(compass.transform.x * (max_speed + max_speed * StatsManager.drone_spd_inc), ACCELERATION * delta)
+			velocity = velocity.move_toward(compass.transform.x * max_speed, ACCELERATION * delta)
 			max_rotate_speed = BASE_ROTATION_SPEED * 3.0
 		else:
 			max_rotate_speed = BASE_ROTATION_SPEED * 2.5
 			var target_pos = target.global_position
 			compass.look_at(target_pos)
-			velocity = velocity.move_toward(compass.transform.x * (max_speed + max_speed * StatsManager.drone_spd_inc), ACCELERATION * delta)
+			velocity = velocity.move_toward(compass.transform.x * max_speed, ACCELERATION * delta)
 		return true
 
 	max_rotate_speed = BASE_ROTATION_SPEED
@@ -98,7 +97,7 @@ func search_and_target_enemy(delta: float) -> bool:
 		target = closest_enemy
 		var target_pos = closest_enemy.global_position
 		compass.look_at(target_pos)
-		velocity = velocity.move_toward(compass.transform.x * (max_speed + max_speed * StatsManager.drone_spd_inc), ACCELERATION * delta)
+		velocity = velocity.move_toward(compass.transform.x * max_speed, ACCELERATION * delta)
 
 	return false
 

@@ -1,12 +1,18 @@
 extends UpgradeScene
 
-var percentage = 1
+var percentage: float
 
 func _ready():
 	Globals.ai_attack.connect(_on_attack)
 
 func _on_attack(final_damage: float) -> void:
 	Globals.heal_ai.emit(final_damage * percentage)
+
+func get_data() -> String:
+	var data = (
+		get_perc_str("Damage to HP", percentage)
+	)
+	return data
 
 func sync_level() -> void:
 	match upgrade.lvl:

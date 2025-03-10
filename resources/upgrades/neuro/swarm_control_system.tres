@@ -8,10 +8,13 @@
 script = ExtResource("3_6l4r4")
 upgrade_name = "Swarm Control System"
 icon = ExtResource("1_t8r63")
-descriptions = PackedStringArray("+1 swarm base ATK", "+10 swarm speed ", "+1 swarm base ATK", "+20 swarm speed ")
+unformated_stats = "Swarm ATK: +1 > +2
+Swarm Speed: +20 > +40"
+unformated_descriptions = "+1 swarm base ATK
++20 swarm speed 
++1 swarm base ATK
++20 swarm speed"
 upgrade_type = 0
 character = 0
 max_lvl = 4
 scene_template = ExtResource("2_g4l13")
-unlimited = false
-tag = 1

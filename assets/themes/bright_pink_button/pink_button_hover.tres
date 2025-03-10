@@ -1,0 +1,10 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://h4s4mveq2e7l"]
+
+[ext_resource type="Texture2D" uid="uid://d3furjrrqc2do" path="res://assets/themes/bright_pink_button/pink_button_hover.png" id="1_iv18w"]
+
+[resource]
+texture = ExtResource("1_iv18w")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0

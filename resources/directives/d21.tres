@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="DirectiveResource" load_steps=4 format=3 uid="uid://d30kdetrh5pxx"]
+
+[ext_resource type="Script" path="res://scripts/directives/chance_map.gd" id="1_twt27"]
+[ext_resource type="PackedScene" uid="uid://da7monn8xkr5c" path="res://scenes/directives/d21.tscn" id="2_6dim0"]
+[ext_resource type="Script" path="res://scripts/directives/directive_resource.gd" id="3_g7pqp"]
+
+[resource]
+script = ExtResource("3_g7pqp")
+directive_name = "Automation"
+id = 21
+tier = 3
+description = "A drone is spawned every two minutes"
+quote = ""
+increase_chances_of = Array[ExtResource("1_twt27")]([])
+scene_template = ExtResource("2_6dim0")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxevuc501fcng"]
+
+[ext_resource type="Script" path="res://scripts/directives/d20.gd" id="1_rn34c"]
+
+[node name="15" type="Node"]
+script = ExtResource("1_rn34c")

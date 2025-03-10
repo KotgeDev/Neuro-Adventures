@@ -8,10 +8,12 @@
 script = ExtResource("1_fqkpa")
 upgrade_name = "Confession Letter"
 icon = ExtResource("1_2iw3q")
-descriptions = PackedStringArray("+50% AI ATK, reduce AI chase radius", "+50% AI ATK, reduce AI chase radius ", "+100% AI ATK, reduce AI chase radius ")
+unformated_stats = "AI ATK: +10% > +30%
+AI chase radius: -5 > -15"
+unformated_descriptions = "+10% AI ATK, -5 AI chase radius 
++10% AI ATK, -5 AI chase radius 
++10% AI ATK, -5 AI chase radius "
 upgrade_type = 0
 character = 0
 max_lvl = 3
 scene_template = ExtResource("2_fyeig")
-unlimited = false
-tag = 0

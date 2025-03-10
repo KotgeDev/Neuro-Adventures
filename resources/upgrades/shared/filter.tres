@@ -13,5 +13,4 @@ upgrade_type = 0
 character = 4
 max_lvl = 4
 scene_template = ExtResource("2_12hqt")
-unlimited = false
 tag = 1

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="UpgradeResource" load_steps=4 format=3 uid="uid://pbkhk4vad4vv"]
+
+[ext_resource type="Texture2D" uid="uid://oh85qiia2hn7" path="res://assets/upgrades/icons/swords_icon.png" id="1_7fx7s"]
+[ext_resource type="PackedScene" uid="uid://8k6ldupam638" path="res://scenes/upgrades/neuro/dual_sword.tscn" id="2_vqiow"]
+[ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="3_kp5wt"]
+
+[resource]
+script = ExtResource("3_kp5wt")
+upgrade_name = "Dual Swords"
+icon = ExtResource("1_7fx7s")
+unformated_stats = "ATK: 1 > 3 
+Cooldown: 1.5s > 0.7s"
+unformated_descriptions = "Neuro will strike twice towards the mouse direction
+-0.5s cooldown 
++2 base ATK 
+-0.3s cooldown 
+Increase range"
+upgrade_type = 0
+character = 0
+max_lvl = 5
+scene_template = ExtResource("2_vqiow")

@@ -14,7 +14,4 @@ func _ready() -> void:
 	StatsManager.reduce_collab_cooldown.connect(cd_reduction_changed)
 
 func cd_reduction_changed() -> void:
-	var t_cd_reduction = StatsManager.cd_reduction + StatsManager.collab_cd_reduction
-	if t_cd_reduction >= 0.90:
-		t_cd_reduction = 0.90
-	wait_time = base_cooldown - base_cooldown * t_cd_reduction
+	wait_time = StatsManager.get_final_collab_cd(base_cooldown)

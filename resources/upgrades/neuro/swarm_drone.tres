@@ -8,10 +8,10 @@
 script = ExtResource("3_s3pwe")
 upgrade_name = "Swarm Drone"
 icon = ExtResource("1_bmtkd")
-descriptions = PackedStringArray("A swarm drone will spawn. ")
-upgrade_type = 0
+unformated_stats = "ATK: 1 
+Speed: 50 "
+unformated_descriptions = "A swarm drone will spawn."
+upgrade_type = 3
 character = 0
-max_lvl = 1
+max_lvl = 35
 scene_template = ExtResource("2_qcb3l")
-unlimited = true
-tag = 0

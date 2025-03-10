@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://ccjbm4ipfvjfr"]
+[gd_scene load_steps=8 format=3 uid="uid://ccjbm4ipfvjfr"]
 
 [ext_resource type="Script" path="res://scripts/projectiles/star.gd" id="1_qcge2"]
 [ext_resource type="PackedScene" uid="uid://3miicp8y7p5b" path="res://scenes/shared/multi_hitbox.tscn" id="2_htd0n"]
 [ext_resource type="Texture2D" uid="uid://brrstl2swlmeo" path="res://assets/projectiles/anny_star_sheet.png" id="3_vvps6"]
+[ext_resource type="Script" path="res://scripts/shared/collab_cooldown_timer.gd" id="4_ut6m7"]
 
 [sub_resource type="Animation" id="Animation_cikmo"]
 length = 0.001
@@ -62,6 +63,7 @@ libraries = {
 
 [node name="ChargedDamageTimer" type="Timer" parent="."]
 one_shot = true
+script = ExtResource("4_ut6m7")
 
 [connection signal="self_destruct" from="MultiHitbox" to="." method="_on_multi_hitbox_self_destruct"]
 [connection signal="timeout" from="ChargedDamageTimer" to="." method="_on_charged_damage_timer_timeout"]

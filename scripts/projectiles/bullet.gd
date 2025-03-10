@@ -4,9 +4,10 @@ signal destroyed
 
 var speed: float
 
-func set_up(p_speed: float, p_damage: float, timeout: float) -> void:
+func set_up(p_speed: float, p_damage: float, timeout: float, pierce: int) -> void:
 	speed = p_speed
 	$MultiHitbox.damage = p_damage
+	$MultiHitbox.count = pierce
 	$SelfDestructTimer.wait_time = timeout
 
 func _physics_process(delta: float) -> void:

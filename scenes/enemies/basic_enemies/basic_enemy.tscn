@@ -1,0 +1,114 @@
+[gd_scene load_steps=10 format=3 uid="uid://cx1nd5x2s6vyt"]
+
+[ext_resource type="Script" path="res://scripts/enemies/basic_enemies/basic_enemy.gd" id="1_eq34g"]
+[ext_resource type="Material" uid="uid://c13ui871eji3r" path="res://assets/shaders/flash.tres" id="2_1p3gf"]
+[ext_resource type="Texture2D" uid="uid://yhqeksy2iitt" path="res://assets/shared/intoxicated.png" id="2_7ciy8"]
+[ext_resource type="PackedScene" uid="uid://cpp0tc7uqrv4" path="res://scenes/shared/hurtbox.tscn" id="3_s745q"]
+[ext_resource type="Script" path="res://scripts/shared/shadow.gd" id="4_c6u8k"]
+[ext_resource type="PackedScene" uid="uid://mjwkfxpnwct6" path="res://scenes/shared/continuous_hitbox.tscn" id="4_jxd8c"]
+
+[sub_resource type="Animation" id="Animation_6cr28"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StunEffect:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_nkuug"]
+resource_name = "stunned"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StunEffect:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pvp54"]
+_data = {
+"RESET": SubResource("Animation_6cr28"),
+"stunned": SubResource("Animation_nkuug")
+}
+
+[node name="BasicEnemy" type="Node2D"]
+script = ExtResource("1_eq34g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("2_1p3gf")
+hframes = 3
+
+[node name="StunEffect" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_7ciy8")
+hframes = 4
+
+[node name="Hurtbox" parent="." instance=ExtResource("3_s745q")]
+visible = false
+collision_layer = 4
+monitoring = false
+owned_by = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+
+[node name="ContinuousHitbox" parent="." instance=ExtResource("4_jxd8c")]
+collision_mask = 3
+monitorable = false
+owned_by = 2
+
+[node name="CollisionPolygon2D" parent="ContinuousHitbox" index="0"]
+disabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ContinuousHitbox"]
+
+[node name="NavPosition" type="Node2D" parent="."]
+position = Vector2(0, -7)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="NavPosition"]
+avoidance_enabled = true
+radius = 6.0
+neighbor_distance = 75.0
+max_neighbors = 5
+avoidance_layers = 2
+avoidance_mask = 2
+
+[node name="PathfindTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="Shadow" type="Sprite2D" parent="."]
+script = ExtResource("4_c6u8k")
+
+[node name="EffectPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pvp54")
+}
+
+[node name="DmgLabel" type="Label" parent="."]
+offset_left = -16.0
+offset_top = -81.0
+offset_right = 24.0
+offset_bottom = -55.0
+theme_override_font_sizes/font_size = 24
+text = "10"
+horizontal_alignment = 1
+
+[connection signal="take_damage" from="Hurtbox" to="." method="_on_hurtbox_take_damage"]
+[connection signal="timeout" from="PathfindTimer" to="." method="_on_pathfind_timer_timeout"]
+[connection signal="timeout" from="PathfindTimer" to="." method="make_path"]
+
+[editable path="Hurtbox"]
+[editable path="ContinuousHitbox"]

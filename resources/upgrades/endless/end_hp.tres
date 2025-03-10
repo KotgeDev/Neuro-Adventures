@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="UpgradeResource" load_steps=4 format=3 uid="uid://bxj2bmfu1yvmn"]
+
+[ext_resource type="Texture2D" uid="uid://il4fd0s0u6e4" path="res://assets/upgrades/icons/end_hp.png" id="1_03i8b"]
+[ext_resource type="PackedScene" uid="uid://b5skcqbxoblhj" path="res://scenes/upgrades/endless/end_hp.tscn" id="2_gucxq"]
+[ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="3_5go2k"]
+
+[resource]
+script = ExtResource("3_5go2k")
+upgrade_name = "HP+"
+icon = ExtResource("1_03i8b")
+unformated_stats = ""
+unformated_descriptions = "+2% Max HP"
+upgrade_type = 2
+character = 4
+max_lvl = 1
+scene_template = ExtResource("2_gucxq")

@@ -8,10 +8,13 @@
 script = ExtResource("3_omxry")
 upgrade_name = "Pizza Revolution Network"
 icon = ExtResource("1_02k3w")
-descriptions = PackedStringArray("+1 swarm base ATK", "+10 swarm speed ", "+2 swarm base ATK", "+10 swarm speed ")
+unformated_stats = "Pizza base ATK: +1 > +2
+Pizza speed: +10 > +20 "
+unformated_descriptions = "+1 pizza base ATK
++10 pizza speed 
++1 pizza base ATK
++10 pizza speed "
 upgrade_type = 0
 character = 1
 max_lvl = 4
 scene_template = ExtResource("2_mgxii")
-unlimited = false
-tag = 1

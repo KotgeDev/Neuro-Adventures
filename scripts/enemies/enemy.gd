@@ -1,21 +1,34 @@
 extends Node2D
 class_name Enemy
 
-@export var BASE_MAX_HEALTH := 1.0
-@export var BASE_MAX_SPEED := 1.0
-@export var BASE_DAMAGE := 1.0
-@export var ATTACK_INTERVAL := 1.0
-@export var EXP := 1.0
+@export var stats: EnemyStats
 
+@onready var BASE_MAX_HEALTH: float = stats.health[lvl-1]
+@onready var BASE_MAX_SPEED: float = stats.speed[lvl-1]
+@onready var BASE_DAMAGE: float = stats.damage[lvl-1]
+@onready var ATTACK_INTERVAL := 1.0
+@onready var EXP: float = stats.exp[lvl-1]
 @onready var map = get_tree().get_first_node_in_group(Globals.MAP_GROUP_NAME) as MAP
-@onready var max_health := BASE_MAX_HEALTH
-@onready var health := BASE_MAX_HEALTH
+@onready var collab: CollabPartner = get_tree().get_first_node_in_group(Globals.COLLAB_GROUP_NAME)
+@onready var ai: AI = get_tree().get_first_node_in_group(Globals.AI_GROUP_NAME)
+@onready var max_health: float
+@onready var health: float
 @onready var max_speed := BASE_MAX_SPEED
-@onready var damage := BASE_DAMAGE
+@onready var damage: float
+
+var target
+var lvl := 1
 
 func _ready() -> void:
 	add_to_group("enemy")
 	set_enemy_stat_multiplier()
+
+	StatsManager.insurgency_changed.connect(_on_insurgency_changed)
+	if StatsManager.insurgency:
+		target = collab
+	else:
+		target = ai
+
 	ready()
 
 func set_enemy_stat_multiplier() -> void:
@@ -23,7 +36,12 @@ func set_enemy_stat_multiplier() -> void:
 	health = max_health
 	damage = BASE_DAMAGE * map.enemy_stat_mult
 
+func _on_insurgency_changed(value) -> void:
+	if value:
+		target = collab
+	else:
+		target = ai
+
 ## Override to use
-## _ready alternative
 func ready() -> void:
 	pass

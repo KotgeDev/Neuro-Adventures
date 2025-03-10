@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="UpgradeResource" load_steps=4 format=3 uid="uid://c0wg0lc7rph1q"]
+
+[ext_resource type="Texture2D" uid="uid://cg3bb8tqgxkm3" path="res://assets/upgrades/icons/end_const.png" id="1_i51rr"]
+[ext_resource type="PackedScene" uid="uid://c00xmewfbwot6" path="res://scenes/upgrades/endless/end_ai_const.tscn" id="2_ki0qn"]
+[ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="3_d0yoc"]
+
+[resource]
+script = ExtResource("3_d0yoc")
+upgrade_name = "CONST+ "
+icon = ExtResource("1_i51rr")
+unformated_stats = ""
+unformated_descriptions = "+0.1 ATK constant"
+upgrade_type = 2
+character = 4
+max_lvl = 1
+scene_template = ExtResource("2_ki0qn")

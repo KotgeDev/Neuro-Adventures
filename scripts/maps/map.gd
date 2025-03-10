@@ -43,7 +43,7 @@ var collab_scene
 var enemy_stat_mult = 1.0
 #endregion
 
-#region ENDLESS MODE
+#region ENEMY SCALING
 var score = 0
 func endless_stat_scale(i: int) -> void:
 	if i == 0:
@@ -101,8 +101,9 @@ func _ready() -> void:
 		enemy_stat_mult = 1.0
 		spawn_enemies()
 
-func spawn_monitor() -> void:
+func spawn_monitor(special := false) -> void:
 	var monitor = monitor_template.instantiate()
+	monitor.special = special
 	monitor.global_position = get_random_pos()
 	add_child(monitor)
 
@@ -141,7 +142,7 @@ func add_march(march_template: PackedScene, enemy_template: PackedScene, interva
 		length = WIDTH
 	else:
 		length = HEIGHT
-	var sample_enemy = enemy_template.instantiate() as SimpleEnemy
+	var sample_enemy = enemy_template.instantiate() as BasicEnemy
 	var march_duration = (length / 2.0) / sample_enemy.BASE_MAX_SPEED
 	var march = march_template.instantiate()
 	march.setup(enemy_template, march_duration, interval, count)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bbo7raatkxl0p"]
 
-[ext_resource type="PackedScene" uid="uid://dkijgt4pjfcen" path="res://scenes/enemies/march.tscn" id="1_c1pfl"]
+[ext_resource type="PackedScene" uid="uid://dkijgt4pjfcen" path="res://scenes/enemies/marches/march.tscn" id="1_c1pfl"]
 [ext_resource type="Script" path="res://scripts/enemies/marches/vertical_march.gd" id="2_lswin"]
 
 [node name="VerticalMarch" instance=ExtResource("1_c1pfl")]

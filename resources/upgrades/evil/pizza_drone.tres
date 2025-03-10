@@ -8,10 +8,10 @@
 script = ExtResource("3_jysow")
 upgrade_name = "Pizza Drone"
 icon = ExtResource("1_s0blw")
-descriptions = PackedStringArray("A pizza drone will spawn")
-upgrade_type = 0
+unformated_stats = "ATK: 2
+Speed: 30"
+unformated_descriptions = "A pizza drone will spawn"
+upgrade_type = 3
 character = 1
-max_lvl = 1
+max_lvl = 30
 scene_template = ExtResource("2_p4lvp")
-unlimited = true
-tag = 0

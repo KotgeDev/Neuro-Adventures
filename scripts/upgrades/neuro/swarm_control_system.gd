@@ -12,11 +12,11 @@ func sync_level() -> void:
 				drone.set_stats(50, 2)
 		2:
 			for drone in get_tree().get_nodes_in_group("drone"):
-				drone.set_stats(60, 2)
+				drone.set_stats(70, 2)
 		3:
 			for drone in get_tree().get_nodes_in_group("drone"):
-				drone.set_stats(60, 3)
+				drone.set_stats(70, 3)
 		4:
 			for drone in get_tree().get_nodes_in_group("drone"):
-				drone.set_stats(80, 3)
+				drone.set_stats(90, 3)
 			map.swarm_max = true

@@ -12,6 +12,11 @@ extends UpgradeScene
 
 var collectible_generator: CollectibleGenerator
 
+func get_data() -> String:
+	return (
+		get_perc_str("Drop chance", collectible_generator.drop_chance)
+	)
+
 func _ready() -> void:
 	collectible_generator = CollectibleGenerator.new(collectible_name, lv1_chance, collectible_scene)
 	Globals.add_collectible_generator.emit(collectible_generator)

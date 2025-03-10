@@ -20,6 +20,6 @@ func _on_continuous_hitbox_self_destruct():
 	queue_free()
 
 func _on_stun_zone_area_entered(area):
-	if stun_time > 0 and area.get_parent() is SimpleEnemy:
-		var enemy = area.get_parent() as SimpleEnemy
+	if stun_time > 0 and area.get_parent() is BasicEnemy:
+		var enemy = area.get_parent() as BasicEnemy
 		enemy.stun(stun_time)

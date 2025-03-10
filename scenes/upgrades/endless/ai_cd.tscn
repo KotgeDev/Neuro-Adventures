@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://doillb3pqbk8e"]
-
-[ext_resource type="Script" path="res://scripts/upgrades/endless/ai_cd.gd" id="1_7dxyq"]
-
-[node name="AiCd" type="Node2D"]
-script = ExtResource("1_7dxyq")

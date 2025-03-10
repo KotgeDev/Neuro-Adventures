@@ -13,6 +13,8 @@ signal ai_evasion_changed
 signal collab_evasion_changed
 signal drone_auto_changed
 signal level_changed
+signal exp_passive_changed
+signal insurgency_changed
 
 # Emited from CollabPartner when speed is altered
 signal collab_max_speed_changed
@@ -32,8 +34,11 @@ var lvl: int :
 		level_changed.emit()
 # Lives
 var ai_life: int
-# EXP multiplier
-var exp_mult: int
+# EXP
+var exp_passive: bool :
+	set(value):
+		exp_passive = value
+		exp_passive_changed.emit(value)
 # Drone
 var drone_count: int
 var drone_atk_inc: float
@@ -42,8 +47,6 @@ var drone_automation: bool :
 	set(value):
 		drone_automation = value
 		drone_auto_changed.emit(value)
-# Switch time
-var switch_time_dec_pct: float
 # Max Hp Increase Percentage
 var max_hp_inc_pct: float :
 	set(new_increase):
@@ -55,7 +58,6 @@ var speed_increase: float :
 		speed_increase = new_increase
 		increase_speed.emit(new_increase)
 # Invincibility
-var ai_invincible: bool
 var collab_invincible: bool
 # Collection Range Increase
 var cr_increase: float :
@@ -92,8 +94,6 @@ var collab_cd_reduction: float :
 var filter: float :
 	set(value):
 		filter = value
-		if filter > 100:
-			filter = 100.0
 		filter_changed.emit()
 # Attack Increase
 ## ATK Increase should be additive.
@@ -114,6 +114,16 @@ var collab_atk_const: float
 var atk_mult: float
 var ai_atk_mult: float
 var collab_atk_mult: float
+# Damage Reduction
+var ai_dmg_red: float
+# Insurgency
+var insurgency : bool :
+	set(value):
+		insurgency = value
+		insurgency_changed.emit(value)
+# Harmony
+var harmony : bool
+var chase_radius_dec : float
 
 func reset() -> void:
 	var flags = PROPERTY_USAGE_SCRIPT_VARIABLE
@@ -126,7 +136,44 @@ func reset() -> void:
 			elif stat.type == 3:
 				self[stat.name] = 0.0
 
-
 	atk_mult = 1.0
 	ai_atk_mult = 1.0
 	collab_atk_mult = 1.0
+
+func get_final_ai_atk(damage: float) -> float:
+	return (
+		damage
+		* (1.0 + StatsManager.atk_inc + StatsManager.ai_atk_inc)
+		* (StatsManager.atk_mult * StatsManager.ai_atk_mult)
+		+ (StatsManager.atk_const + StatsManager.ai_atk_const)
+	)
+
+func get_final_drone_atk(damage: float) -> float:
+	return (
+		damage
+		* (1.0 + StatsManager.atk_inc + StatsManager.ai_atk_inc + StatsManager.drone_atk_inc)
+		* (StatsManager.atk_mult * StatsManager.ai_atk_mult)
+		+ (StatsManager.atk_const + StatsManager.ai_atk_const)
+	)
+
+func get_final_collab_atk(damage: float) -> float:
+	return (
+		damage
+		* (1.0 + StatsManager.atk_inc + StatsManager.collab_atk_inc)
+		* (StatsManager.atk_mult * StatsManager.collab_atk_mult)
+		+ (StatsManager.atk_const + StatsManager.collab_atk_const)
+	)
+
+func get_final_ai_cd(cooldown: float) -> float:
+	var t_cd_red = min(
+		StatsManager.cd_reduction + StatsManager.ai_cd_reduction,
+		Globals.MAX_CD_RED
+	)
+	return cooldown * (1-t_cd_red)
+
+func get_final_collab_cd(cooldown: float) -> float:
+	var t_cd_red = min(
+		StatsManager.cd_reduction + StatsManager.collab_cd_reduction,
+		Globals.MAX_CD_RED
+	)
+	return cooldown * (1-t_cd_red)

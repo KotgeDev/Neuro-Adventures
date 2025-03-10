@@ -8,10 +8,16 @@
 script = ExtResource("1_0j3wi")
 upgrade_name = "iNuke6000"
 icon = ExtResource("1_6tmaa")
-descriptions = PackedStringArray("A nuke will be dropped at a random enemy", "-1.5s cooldown", "+1 Nuke ", "-2s cooldown", "+1 Nukes ", "x2 Nukes ")
+unformated_stats = "ATK: 20
+Cooldown: 7s > 5s
+Nukes: 1 > 6"
+unformated_descriptions = "A nuke will be dropped at a random enemy
+-1s cooldown 
++1 Nuke 
+-1s cooldown
++1 Nukes 
+x2 Nukes "
 upgrade_type = 0
 character = 0
 max_lvl = 6
 scene_template = ExtResource("2_jgmaf")
-unlimited = false
-tag = 0

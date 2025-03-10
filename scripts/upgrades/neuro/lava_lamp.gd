@@ -41,31 +41,40 @@ func get_color() -> Color:
 	var b = randf()
 	return Color(r, g, b)
 
+func get_data() -> String:
+	var data = (
+		get_atk_str(damage, "ATK/s") + "\n" +
+		get_cd_str(fire_timer.base_cooldown) + "\n" +
+		get_general_str("HP/s", heal) + "\n" +
+		get_time_str("Zone Duration", duration)
+	)
+	return data
+
 func set_stats(
 	_damage: float,
 	_heal: float,
 	_duration: float,
-	_fire_wait_time: float,
+	_cooldown: float,
 	_count: int
 ) -> void:
-	damage = _damage
-	heal = _heal
-	duration = _duration
-	fire_timer.base_cooldown = _fire_wait_time + GRACE_PERIOD + duration
-	count = _count
+	if _damage: damage = _damage
+	if _heal: heal = _heal
+	if _duration: duration = _duration
+	if _cooldown: fire_timer.base_cooldown = _cooldown
+	if _count: count = _count
 
 func sync_level() -> void:
 	match upgrade.lvl:
 		1:
-			set_stats(4, 7, 4, 4, 1)
+			set_stats(6, 10, 4, 12, 1)
 		2:
-			set_stats(6, 10, 4, 4, 1)
+			set_stats(8, 12, 0, 0, 0)
 		3:
-			set_stats(6, 10, 4, 2, 2)
+			set_stats(0, 0, 0, 10, 2)
 		4:
-			set_stats(10, 15, 4, 2, 2)
+			set_stats(12, 16, 0, 0, 0)
 		5:
-			set_stats(10, 15, 5, 2, 3)
+			set_stats(0, 0, 6, 0, 3)
 
 #places down the lava
 func _on_fire_timer_timeout() -> void:

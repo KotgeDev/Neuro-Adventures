@@ -6,22 +6,19 @@ var knife_template = preload("res://scenes/projectiles/knife.tscn")
 @onready var ai = get_tree().get_first_node_in_group("ai")
 @onready var damage_zone = $DamageZone
 
-#region CONSTANTS
-@export var LV1_DAMAGE = 2.0
-@export var LV1_FIRE_INTERVAL = 2.0
-@export var LV2_FIRE_INTERVAL = 1.75
-@export var LV3_DAMAGE = 4.0
-@export var LV4_RANGE_MULTIPLIER = 1.25
-@export var LV5_FIRE_INTERVAL = 1.25
-@export var LV6_RANGE_MULTIPLIER = 1.5
-#endregion
-
 #region SOUNDFX
 var hit_sfx: AudioStream = preload("res://assets/sfx/knifestab.wav")
 #endregion
 
 var damage
 var tween
+
+func get_data() -> String:
+	var data = (
+		get_atk_str(damage) + "\n" +
+		get_cd_str(fire_timer.base_cooldown)
+	)
+	return data
 
 func set_stats(_damage: float, wait_time: float, range_mult: float) -> void:
 	if _damage: damage = _damage

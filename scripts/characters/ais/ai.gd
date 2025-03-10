@@ -5,7 +5,7 @@ class_name AI
 #region BASE VALUES
 @export var BASE_MAX_SPEED := 60
 @export var BASE_MAX_HEALTH := 45.0
-@export var COOKIE_HEALTH := 5.0
+@export var COOKIE_HEALTH := 20.0
 @export var BASE_AI_DISTANCE := 65.0
 @export var BASE_EVASION := 0.0
 const ACCELERATION := 400
@@ -67,7 +67,7 @@ func _physics_process(delta: float) -> void:
 	var distance = abs((collab_partner.global_position - self.global_position).length())
 
 	if follow:
-		if distance > ai_distance:
+		if distance > ai_distance * (1-StatsManager.chase_radius_dec):
 			stop_lag_timer = 0.2
 			follow_collab(delta)
 		else:
@@ -89,8 +89,11 @@ func follow_collab(delta: float) -> void:
 	velocity = velocity.move_toward(dir * max_speed, ACCELERATION * delta)
 
 func _process(delta: float) -> void:
-	if not switch_loading and Input.is_action_just_pressed("switch"):
-		switch_timer.wait_time = switch_time * (1.0 - StatsManager.switch_time_dec_pct)
+	if Input.is_action_just_pressed("switch"):
+		if switch_loading and not StatsManager.harmony:
+			return
+
+		switch_timer.wait_time = switch_time
 		switch_timer.start()
 		switch_loading = true
 		Globals.switch_loading.emit()
@@ -115,17 +118,16 @@ func _on_increase_speed(inc_perc) -> void:
 	max_speed = BASE_MAX_SPEED + BASE_MAX_SPEED * inc_perc
 
 func _on_hurtbox_take_damage(damage: float, shake := true):
-	if StatsManager.ai_invincible:
-		return
-
 	if randf() < (StatsManager.evasion + StatsManager.ai_evasion):
 		character_animation.show_evasion()
 		return
 
-	if damage == 0.0:
+	var final_damage = damage * (1.0 - StatsManager.ai_dmg_red)
+
+	if final_damage <= 0.0:
 		return
 
-	health -= damage
+	health -= final_damage
 	character_animation.show_damage()
 	Globals.update_ai_health.emit(max_health, health, shake)
 	if health <= 0:

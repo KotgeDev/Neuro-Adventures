@@ -1,41 +1,53 @@
 extends UpgradeScene
 
-var rum_template = preload("res://scenes/projectiles/rum.tscn")
+const SPEED := 100
+const RUM_DAMAGE := 0.0
+const DAMGE_INTERVAl := 1.0
 
-#region CONSTANTS
-@export_category("Rum Scene")
-@export var BASE_SPEED := 100
-@export var BASE_RUM_DAMAGE := 1.0
-@export var BASE_SPLASH_DAMAGE := 1.0
-@export var LV1_FIRE_INTERVAL := 1.5
-@export var LV1_SPLASH_DAMAGE_DURATION := 2.2
-@export var LV1_SPLASH_DAMAGE_INTERVAL := 1.0
-@export var LV1_STUN := 0.4
-@export var LV2_STUN := 1.0
-@export var LV3_FIRE_INTERVAL := 1.0
-@export var LV4_SPLASH_DAMAGE_DURATION := 3.2
-@export var LV4_SPLASH_DAMAGE_INTERVAL := 0.5
-@export var LV5_STUN := 3.0
-#endregion
-
-#region NODES
 @onready var fire_location = $FireLocation
 @onready var collab_partner = get_parent()
 @onready var map = get_parent().get_parent()
 @onready var fire_timer = $FireTimer
-#endregion
 
-var speed: float
-var rum_damage: float
-var splash_damage: float
-var fire_interval: float
-var splash_damage_duration: float
-var splash_damage_interval: float
-var stun: float
-
-#region SOUNDFX
+var rum_template = preload("res://scenes/projectiles/rum.tscn")
 var hit_sfx: AudioStream = preload("res://assets/sfx/vedal_throw.wav")
-#endregion
+
+var splash_damage: float
+var splash_duration: float
+var stun_duration: float
+
+func get_data() -> String:
+	var data = (
+		get_atk_str(splash_damage, "ATK/s") + "\n" +
+		get_cd_str(fire_timer.base_cooldown) + "\n" +
+		get_time_str("Splash Duration", splash_duration) + "\n" +
+		get_time_str("Stun Duration", stun_duration)
+	)
+	return data
+
+func set_data(
+	_splash_damage: float,
+	_cooldown: float,
+	_splash_duration: float,
+	_stun_duration: float
+) -> void:
+	if _splash_damage: splash_damage = _splash_damage
+	if _cooldown: fire_timer.base_cooldown = _cooldown
+	if _splash_duration: splash_duration = _splash_damage
+	if _stun_duration: stun_duration = _stun_duration
+
+func sync_level() -> void:
+	match upgrade.lvl:
+		1:
+			set_data(1.0, 1.5, 0.7, 1.0)
+		2:
+			set_data(0.0, 0.0, 1.2, 1.5)
+		3:
+			set_data(0.0, 1.0, 0.0, 0.0)
+		4:
+			set_data(0.0, 0.0, 2.2, 2.5)
+		5:
+			set_data(3.0, 0.0, 0.0, 0.0)
 
 func _on_fire_timer_timeout():
 	if not collab_partner.character_animation.run_sprite.flip_h:
@@ -47,31 +59,12 @@ func _on_fire_timer_timeout():
 	rum.global_position = fire_location.global_position
 
 	rum.setup(
-		speed,
-		rum_damage,
-		splash_damage_duration,
-		splash_damage_interval,
+		SPEED,
+		RUM_DAMAGE,
+		splash_duration,
+		DAMGE_INTERVAl,
 		splash_damage,
-		stun)
+		stun_duration
+	)
 
 	map.add_child(rum)
-
-func sync_level() -> void:
-	match upgrade.lvl:
-		1:
-			speed = BASE_SPEED
-			fire_timer.base_cooldown = LV1_FIRE_INTERVAL
-			splash_damage = BASE_SPLASH_DAMAGE
-			rum_damage = BASE_RUM_DAMAGE
-			stun = LV1_STUN
-			splash_damage_duration = LV1_SPLASH_DAMAGE_DURATION
-			splash_damage_interval = LV1_SPLASH_DAMAGE_INTERVAL
-		2:
-			stun = LV2_STUN
-		3:
-			fire_timer.base_cooldown = LV3_FIRE_INTERVAL
-		4:
-			splash_damage_duration = LV4_SPLASH_DAMAGE_DURATION
-			splash_damage_interval = LV4_SPLASH_DAMAGE_INTERVAL
-		5:
-			stun = LV5_STUN

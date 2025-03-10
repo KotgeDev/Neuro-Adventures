@@ -8,10 +8,13 @@
 script = ExtResource("1_n2qrf")
 upgrade_name = "Summon Circle"
 icon = ExtResource("1_cbu34")
-descriptions = PackedStringArray("Summon circle. Will slow all enemies within range by 40%", "+5% slow effectiveness ", "+5% slow effectiveness ", "x1.25 range", "+10% slow effectiveness ")
+unformated_stats = "Slow: 30% > 50%"
+unformated_descriptions = "A summon circle will appear around Evil. Enemies within range will be slowed by 30%
+Enemies within range will be slowed by 35% 
+Enemies within range will be slowed by 40%
+Enemies within range will be slowed by 50% 
+Increase range"
 upgrade_type = 0
 character = 1
 max_lvl = 5
 scene_template = ExtResource("2_yvmu0")
-unlimited = false
-tag = 1

@@ -8,10 +8,16 @@
 script = ExtResource("2_jgs04")
 upgrade_name = "Lava Lamp"
 icon = ExtResource("1_1twfg")
-descriptions = PackedStringArray("A lava lamp spawns which breaks in 6s, spawning a zone that deals damage and heals Neuro", "+2 base damage/s and +3 hp/s", "-2s spawn cooldown, +1 lava lamp", "+4 base damage/s and +5 hp/s", "+1s duration, +1 lava lamp")
+unformated_stats = "ATK/s: 6 > 12
+Cooldown: 12s > 10s 
+HP/s: 10 > 16
+Zone duration: 4s > 6s"
+unformated_descriptions = "A lava lamp spawns which breaks in 5s, spawning a zone that deals damage and heals Neuro
++2 base ATK and hp/s 
+-2s cooldown, +1 lava lamp
++4 base ATK and hp/s
++2s zone duration, +1 lava lamp"
 upgrade_type = 0
 character = 0
 max_lvl = 5
 scene_template = ExtResource("2_jpi1u")
-unlimited = false
-tag = 1

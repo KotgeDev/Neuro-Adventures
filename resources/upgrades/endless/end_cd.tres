@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="UpgradeResource" load_steps=4 format=3 uid="uid://c7r5yjdtmyome"]
+
+[ext_resource type="Texture2D" uid="uid://ciyifqupjquw5" path="res://assets/upgrades/icons/end_cd.png" id="1_i786a"]
+[ext_resource type="PackedScene" uid="uid://doillb3pqbk8e" path="res://scenes/upgrades/endless/end_cd.tscn" id="2_8jibr"]
+[ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="3_1x4bm"]
+
+[resource]
+script = ExtResource("3_1x4bm")
+upgrade_name = "CD-"
+icon = ExtResource("1_i786a")
+unformated_stats = ""
+unformated_descriptions = "-0.5% Cooldown"
+upgrade_type = 2
+character = 4
+max_lvl = 1
+scene_template = ExtResource("2_8jibr")

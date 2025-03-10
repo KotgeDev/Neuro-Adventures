@@ -8,7 +8,6 @@ bg_color = Color(0.937255, 0.545098, 0.627451, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_cf0gk"]
 line_spacing = 0.0
-font_color = Color(0.968627, 0.172549, 0.458824, 1)
 
 [node name="Notice" type="Control"]
 process_mode = 3
@@ -53,7 +52,7 @@ offset_right = 54.0
 offset_bottom = 13.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Sample Text"
+text = "Sample Notice Text"
 label_settings = SubResource("LabelSettings_cf0gk")
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -8,10 +8,16 @@
 script = ExtResource("1_pm7yx")
 upgrade_name = "Star"
 icon = ExtResource("1_lr8ux")
-descriptions = PackedStringArray("A spinning star spawns and orbits Anny every 2.5s that deals 2 damage. Stars do double damage after 10s", "Interval decreases to 2.0s", "Damage increases to 3", "Interval decreases to 1.5s", "Stars deal double damage after 5s", "Damage increases to 4")
+unformated_stats = "ATK: 4 > 8
+Cooldown: 2s > 1.5s 
+Charged ATK: 8 > 16
+Charge time: 8s > 4s"
+unformated_descriptions = "A star spawns and orbits Anny every 2s. Stars become \"charged\" after 8s and do x2 damage 
+-0.5s cooldown
++2 base ATK 
+-4s charge time 
++2 base ATK"
 upgrade_type = 1
 character = 3
-max_lvl = 6
+max_lvl = 5
 scene_template = ExtResource("2_hxstn")
-unlimited = false
-tag = 0

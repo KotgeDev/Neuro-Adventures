@@ -2,12 +2,6 @@ extends UpgradeScene
 
 var portal_template = preload("res://scenes/projectiles/portal.tscn")
 
-@export var LV1_BASE_COOLDOWN := 12.0
-@export var LV2_BASE_COOLDOWN := 10.0
-@export var LV3_BASE_COOLDOWN := 8.0
-@export var LV4_BASE_COOLDOWN := 6.0
-@export var LV5_BASE_COOLDOWN := 5.0
-
 @onready var map = get_tree().get_first_node_in_group(Globals.MAP_GROUP_NAME)
 @onready var anny = get_parent()
 @onready var navi_agent: NavigationAgent2D = get_tree().get_first_node_in_group(Globals.AI_GROUP_NAME).navigation_agent
@@ -16,13 +10,34 @@ var portal_template = preload("res://scenes/projectiles/portal.tscn")
 @onready var anny_portal = $Portal
 @onready var warning_label = $WarningLabel
 
-var base_loading_time := LV1_BASE_COOLDOWN
+var base_loading_time: float
 var teleport_available := false
 
 var portal_sfx: AudioStream = preload("res://assets/sfx/annyteleport.wav")
 
+func get_data() -> String:
+	return (
+		get_cd_str(base_loading_time)
+	)
+
+func sync_level() -> void:
+	match upgrade.lvl:
+		1:
+			base_loading_time = 12.0
+
+			loading_timer.base_cooldown = base_loading_time
+			loading_timer.start()
+		2:
+			base_loading_time = 10.0
+		3:
+			base_loading_time = 8.0
+		4:
+			base_loading_time = 6.0
+		5:
+			base_loading_time = 5.0
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("ability") and teleport_available:
 		teleport()
 
@@ -46,17 +61,3 @@ func _on_loading_timer_timeout():
 	loading_timer.stop()
 	sprite.visible = true
 	teleport_available = true
-
-func sync_level() -> void:
-	match upgrade.lvl:
-		1:
-			loading_timer.base_cooldown = base_loading_time
-			loading_timer.start()
-		2:
-			base_loading_time = LV2_BASE_COOLDOWN
-		3:
-			base_loading_time = LV3_BASE_COOLDOWN
-		4:
-			base_loading_time = LV4_BASE_COOLDOWN
-		5:
-			base_loading_time = LV5_BASE_COOLDOWN

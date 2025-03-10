@@ -22,45 +22,17 @@ func _calculate_final_damage(BASE_DAMAGE: float, area: Hurtbox) -> float:
 	var final_damage
 
 	if owned_by == Globals.Owners.OWNED_BY_AI:
-		var total_atk_inc = (
-			StatsManager.atk_inc +
-			StatsManager.ai_atk_inc
-		)
 		if get_parent() is Drone:
-			total_atk_inc += StatsManager.drone_atk_inc
+			final_damage = StatsManager.get_final_drone_atk(BASE_DAMAGE)
+		else:
+			final_damage = StatsManager.get_final_ai_atk(BASE_DAMAGE)
 
-		var total_const = (
-			StatsManager.atk_const +
-			StatsManager.ai_atk_const
-		)
-		var total_multiplier = (
-			StatsManager.atk_mult *
-			StatsManager.ai_atk_mult
-		)
+		if area.owned_by == Globals.Owners.OWNED_BY_COLLAB_PARTNER and not StatsManager.insurgency:
+			final_damage -= final_damage * min(1, StatsManager.filter)
 
-		final_damage = BASE_DAMAGE * (1.0 + total_atk_inc) * total_multiplier + total_const
-
-		if area.owned_by == Globals.Owners.OWNED_BY_COLLAB_PARTNER:
-			final_damage -= final_damage * StatsManager.filter
-
-		# For Soul Stealer
-		Globals.ai_attack.emit(final_damage)
-
+		Globals.ai_attack.emit(final_damage)  # Used by Soul Stealer
 	elif owned_by == Globals.Owners.OWNED_BY_COLLAB_PARTNER:
-		var total_atk_inc = (
-			StatsManager.atk_inc +
-			StatsManager.collab_atk_inc
-		)
-		var total_const = (
-			StatsManager.atk_const +
-			StatsManager.collab_atk_const
-		)
-		var total_multiplier = (
-			StatsManager.atk_mult *
-			StatsManager.collab_atk_mult
-		)
-
-		final_damage = BASE_DAMAGE * (1.0 + total_atk_inc) * total_multiplier + total_const
+		final_damage = StatsManager.get_final_collab_atk(BASE_DAMAGE)
 	else:
 		final_damage = BASE_DAMAGE
 

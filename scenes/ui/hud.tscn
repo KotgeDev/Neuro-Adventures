@@ -218,15 +218,6 @@ _data = {
 process_mode = 3
 script = ExtResource("1_jg8iq")
 
-[node name="Filter" type="ColorRect" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0.419608, 0.203922, 0.0313726, 0.0392157)
-
 [node name="FPSCounterUpdateTimer" type="Timer" parent="."]
 autostart = true
 

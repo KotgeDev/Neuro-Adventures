@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="DirectiveResource" load_steps=4 format=3 uid="uid://b4rm4hjtypj7"]
+
+[ext_resource type="Script" path="res://scripts/directives/chance_map.gd" id="1_c1xx7"]
+[ext_resource type="PackedScene" uid="uid://5g6aelwpviux" path="res://scenes/directives/d8.tscn" id="2_bxnrp"]
+[ext_resource type="Script" path="res://scripts/directives/directive_resource.gd" id="3_0woh8"]
+
+[resource]
+script = ExtResource("3_0woh8")
+directive_name = "Dominion"
+id = 8
+tier = 1
+description = "+50% Drone ATK"
+quote = "Kneel before your Queen"
+increase_chances_of = Array[ExtResource("1_c1xx7")]([])
+scene_template = ExtResource("2_bxnrp")

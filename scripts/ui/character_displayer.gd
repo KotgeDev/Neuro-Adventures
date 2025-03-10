@@ -100,7 +100,14 @@ func add_upgrade_panel(container: Control, upgrade: UpgradeResource, outline := 
 func _on_view_lvls_clicked(meta: String, upgrade: UpgradeResource) -> void:
 	level_viewer.visible = true
 
-	for lvl in range(upgrade.max_lvl):
+	var loop_count
+
+	if upgrade.upgrade_type == UpgradeResource.UpgradeType.DRONE_UPGRADE:
+		loop_count = 1
+	else:
+		loop_count = upgrade.max_lvl
+
+	for lvl in range(loop_count):
 		add_lvl_panel(upgrade, lvl)
 
 func add_lvl_panel(upgrade: UpgradeResource, lvl: int) -> void:
@@ -113,12 +120,13 @@ func add_lvl_panel(upgrade: UpgradeResource, lvl: int) -> void:
 	var outline = h_container.get_node("IconContainer").get_node("Outline")
 	var description = h_container.get_node("Description")
 
-	if upgrade.unlimited:
-		title.text = " %s [Unlimited]" % [upgrade.upgrade_name]
+	if upgrade.upgrade_type == UpgradeResource.UpgradeType.DRONE_UPGRADE:
+		title.text = " %s" % [upgrade.upgrade_name]
+		description.text = upgrade.descriptions[0]
 	else:
 		title.text = " %s [Lv%d]" % [upgrade.upgrade_name, lvl + 1]
+		description.text = upgrade.descriptions[lvl]
 	outline.texture = CharacterManager.character_data[character].icon_outline
-	description.text = upgrade.descriptions[lvl]
 	icon.texture = upgrade.icon
 
 	new_panel.visible = true

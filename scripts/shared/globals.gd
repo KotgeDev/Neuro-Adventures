@@ -1,14 +1,22 @@
 extends Node
 
-const FLASH_TIME := 0.05
 const MAP_GROUP_NAME := "map"
 const AI_GROUP_NAME := "ai"
 const COLLAB_GROUP_NAME := "collab_partner"
 const DIR_MANAGER_GROUP_NAME := "dir_manager"
+const FLASH_TIME := 0.05
+const MAX_CD_RED := 0.6
 
 var exp_tier_to_value = {
 	1: 1,
 	2: 5
+}
+
+var tier_to_texture = {
+	1: preload("res://assets/directives/tier1.png"),
+	2: preload("res://assets/directives/tier2.png"),
+	3: preload("res://assets/directives/tier3.png"),
+	4: preload("res://assets/directives/special.png")  # 4 == special
 }
 
 #region Enums
@@ -51,13 +59,19 @@ signal game_won
 signal update_ai_health(max_health: int, health: int)
 signal update_collab_partner_health(max_health: int, health: int)
 signal update_exp_bar(max_exp: int, exp: int)
-signal show_three_random_upgrades(upgrades: Array)
-signal show_directive_choices(directives: Array)
-signal show_all_existing_upgrades(upgrades: Array)
 signal change_fps_counter_state(toggled_on: bool)
 signal switch_follow
 signal switch_loading
 signal switch_stop
+#endregion
+
+#region TO UPGRADE MENU
+signal show_three_random_upgrades(upgrades: Array)
+signal show_all_existing_upgrades(upgrades: Array)
+#endregion
+
+#region TO DIRECTIVE MENU
+signal show_directive_choices(directives: Array)
 #endregion
 
 #region TO UPGRADE MANAGER
@@ -70,6 +84,7 @@ signal lvl_up(upgrade: Upgrade)
 
 #region TO DIRECTIVE MANAGER
 signal request_random_directives
+signal request_special_directives
 signal add_directive(directive: Directive)
 signal remove_directive(directive: Directive)
 #endregion

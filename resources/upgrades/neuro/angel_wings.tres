@@ -8,10 +8,16 @@
 script = ExtResource("3_a5c4k")
 upgrade_name = "Angel Wings"
 icon = ExtResource("1_orfrr")
-descriptions = PackedStringArray("3 feathers are fired within a range at an interval ", "+2 Feathers", "-0.5s cooldown", "+2 Feathers, +1 base ATK", "Two sets of feathers are fired at once")
+unformated_stats = "ATK: 5 > 10
+Cooldown: 3.0s > 2.5s 
+Feathers: 3 > 10
+Pierce: 2"
+unformated_descriptions = "3 feathers are fired within a range at an interval 
++2 Feathers
+-0.5s cooldown
++5 base ATK
+Two sets of feathers are fired at once"
 upgrade_type = 0
 character = 0
 max_lvl = 5
 scene_template = ExtResource("2_7lrr0")
-unlimited = false
-tag = 0

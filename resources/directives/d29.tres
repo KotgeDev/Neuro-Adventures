@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="DirectiveResource" load_steps=4 format=3 uid="uid://cjqpth18gnodb"]
+
+[ext_resource type="Script" path="res://scripts/directives/chance_map.gd" id="1_n6vk6"]
+[ext_resource type="PackedScene" uid="uid://d3suwuxredfjj" path="res://scenes/directives/d29.tscn" id="2_nn506"]
+[ext_resource type="Script" path="res://scripts/directives/directive_resource.gd" id="3_jvxbg"]
+
+[resource]
+script = ExtResource("3_jvxbg")
+directive_name = "Trenscandence"
+id = 29
+tier = 4
+description = "Increase AI Evasion by 30% of their speed"
+quote = "Pass by all that I've known and I'm left here all alone"
+increase_chances_of = Array[ExtResource("1_n6vk6")]([])
+scene_template = ExtResource("2_nn506")

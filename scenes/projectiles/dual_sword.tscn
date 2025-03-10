@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://dhk0v0h72grau"]
+
+[ext_resource type="Script" path="res://scripts/projectiles/dual_sword.gd" id="1_jy8i8"]
+[ext_resource type="Material" uid="uid://cimhmqlj16qqv" path="res://assets/shaders/smooth_pixel.tres" id="1_po7ej"]
+[ext_resource type="Texture2D" uid="uid://cmvcovk33xode" path="res://assets/projectiles/neuro_dual_strike_sheet.png" id="2_m3cjx"]
+[ext_resource type="PackedScene" uid="uid://3miicp8y7p5b" path="res://scenes/shared/multi_hitbox.tscn" id="4_kj2rx"]
+
+[sub_resource type="Animation" id="Animation_l1247"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_3axh5"]
+resource_name = "strike"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fhums"]
+_data = {
+"RESET": SubResource("Animation_l1247"),
+"strike": SubResource("Animation_3axh5")
+}
+
+[node name="DualStrike" type="Node2D"]
+script = ExtResource("1_jy8i8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 2
+material = ExtResource("1_po7ej")
+texture = ExtResource("2_m3cjx")
+hframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_fhums")
+}
+
+[node name="MultiHitbox" parent="." instance=ExtResource("4_kj2rx")]
+collision_mask = 6
+
+[node name="CollisionPolygon2D" parent="MultiHitbox" index="0"]
+polygon = PackedVector2Array(-25, -30, -20, -30, -17, -29, -12, -27, -10, -26, -5, -23, 0, -18, 4, -12, 6.04879, -7.83009, 8, -1, 8, 12, 6, 18, 2, 24, -4, 30, -7, 32, -10, 34, -16, 36, -20, 36, -20, 35, -18, 32, -17, 29, -16, 16, -20, 7, -22, 4, -24, 3, -26, 1, -26, 0, -23, 0, -19, 2, -18, 3, -18, 1, -20, -1, -20, -2, -26, -7, -28, -9, -28, -10, -27, -10, -24, -9, -19, -6, -15, -2, -15, -5, -20, -10, -20, -11, -19, -11, -14, -9, -12, -9, -18, -15, -29, -22, -29, -23, -23, -23, -20, -22, -20, -23, -23, -25, -23, -26, -18, -26, -23, -28, -25, -29)
+
+[editable path="MultiHitbox"]

@@ -9,14 +9,13 @@ func sync_level() -> void:
 	match upgrade.lvl:
 		1:
 			for drone in get_tree().get_nodes_in_group("drone"):
-				drone.set_stats(40, 3)
+				drone.set_stats(30, 3)
 		2:
 			for drone in get_tree().get_nodes_in_group("drone"):
-				drone.set_stats(50, 3)
+				drone.set_stats(40, 3)
 		3:
 			for drone in get_tree().get_nodes_in_group("drone"):
-				drone.set_stats(50, 5)
+				drone.set_stats(40, 4)
 		4:
 			for drone in get_tree().get_nodes_in_group("drone"):
-				drone.set_stats(60, 5)
-			map.swarm_max = true
+				drone.set_stats(50, 4)

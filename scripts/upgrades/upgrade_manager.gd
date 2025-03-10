@@ -1,8 +1,8 @@
 extends Node2D
 class_name UpgradeManager
 
-const MAX_DRONE_COUNT := 40
-const SOFT_LVL_CAP := 5  # 35
+## Endless upgrades will appear starting this level
+const SOFT_LVL_CAP := 24
 
 @onready var drone_auto_timer: Timer = $DroneAutoTimer
 
@@ -20,6 +20,7 @@ var existing_upgrades = []
 var ai_selected
 var collab_selected
 var endless_upgrades_added := false
+var drone_upgrade: Upgrade
 
 func _on_map_ready() -> void:
 	add_upgrades_to_pool(CharacterManager.all_ai_db)
@@ -44,7 +45,15 @@ func _on_map_ready() -> void:
 	elif collab_defaults.size() == 1:
 		lvl_up(find_upgrade(collab_defaults[0]))
 
-	print("???")
+	for upgrade in upgrades_pool:
+		if upgrade.res.upgrade_type == UpgradeResource.UpgradeType.DRONE_UPGRADE:
+			drone_upgrade = upgrade
+
+	lvl_up(find_upgrade("Pipes"))
+	lvl_up(find_upgrade("Pipes"))
+	lvl_up(find_upgrade("Pipes"))
+	lvl_up(find_upgrade("Pipes"))
+	lvl_up(find_upgrade("Pipes"))
 
 func find_upgrade(upgrade_name: String) -> Upgrade:
 	# Past version name check
@@ -52,90 +61,85 @@ func find_upgrade(upgrade_name: String) -> Upgrade:
 		upgrade_name = CharacterManager.past_upgrade_name_map[upgrade_name]
 
 	for upgrade in upgrades_pool:
-		if upgrade.upgrade_name == upgrade_name:
+		if upgrade.res.upgrade_name == upgrade_name:
 			return upgrade
 	push_error("No upgrade node named ", upgrade_name)
 	return null
 
 func add_upgrades_to_pool(upgrades: Array) -> void:
-	for data in upgrades:
-		var upgrade_res: UpgradeResource = data
+	for resource in upgrades:
 		var upgrade_obj = Upgrade.new(
-			upgrade_res.upgrade_name,
-			upgrade_res.icon,
-			upgrade_res.descriptions,
-			upgrade_res.upgrade_type,
-			upgrade_res.max_lvl,
-			0,
-			upgrade_res.scene_template,
-			upgrade_res.unlimited,
-			upgrade_res.tag
+			resource
 		)
 		upgrades_pool.append(upgrade_obj)
 
 func request_random_upgrades() -> void:
-	remove_maxed_upgrades()
+	var pool = return_upgrades_pool()
+	var results = []
 
-	var temp_upgrades_db = upgrades_pool.duplicate()
-	var random_upgrades = []
-
-	if temp_upgrades_db.size() < 3:
-		Globals.show_three_random_upgrades.emit(temp_upgrades_db)
-		return
+	pool.shuffle()
 
 	for i in range(3):
-		var random_index = randi() % temp_upgrades_db.size()
-		random_upgrades.append(temp_upgrades_db[random_index])
-		temp_upgrades_db.remove_at(random_index)
+		results.append(find_upgrade(pool[i]))
+		pool = pool.filter(func (x): return x != pool[i])
 
-	Globals.show_three_random_upgrades.emit(random_upgrades)
+	Globals.show_three_random_upgrades.emit(results)
+
+func return_upgrades_pool() -> Array:
+	# Remove maxed upgrades
+	for upgrade in upgrades_pool:
+		if upgrade.res.upgrade_type == UpgradeResource.UpgradeType.ENDLESS_UPGRADE:
+			pass
+		elif upgrade.res.max_lvl == upgrade.lvl:
+			upgrade.res.weight = 0
+
+	# Add endless upgrades if requirement met
+	if !endless_upgrades_added and StatsManager.lvl >= SOFT_LVL_CAP:
+		add_upgrades_to_pool(CharacterManager.endless_upgrades_db)
+		endless_upgrades_added = true
+
+	# Generate pool
+	var pool = []
+	for upgrade in upgrades_pool:
+		for i in range(upgrade.res.weight):
+			pool.append(upgrade.res.upgrade_name)
+
+	return pool
 
 func request_all_existing_non_max_upgrades() -> void:
 	var result := []
 
 	for upgrade in existing_upgrades:
-		if upgrade.max_lvl != upgrade.lvl:
+		if upgrade.res.upgrade_type == UpgradeResource.UpgradeType.ENDLESS_UPGRADE \
+				or upgrade.res.max_lvl != upgrade.lvl:
 			result.append(upgrade)
 
 	Globals.show_all_existing_upgrades.emit(result)
 
-func remove_maxed_upgrades() -> void:
-	var to_remove = []
-
-	for upgrade in upgrades_pool:
-		if upgrade.max_lvl == upgrade.lvl:
-			to_remove.append(upgrade)
-
-	for upgrade in to_remove:
-		upgrades_pool.erase(upgrade)
-
-	if StatsManager.drone_count == MAX_DRONE_COUNT:
-		var drone = find_upgrade(CharacterManager.character_data[ai_selected].drone_name)
-		upgrades_pool.erase(find_upgrade(drone))
-
-	if !endless_upgrades_added and StatsManager.lvl >= SOFT_LVL_CAP:
-		add_upgrades_to_pool(CharacterManager.endless_upgrades_db)
-		endless_upgrades_added = true
-
 func lvl_up(upgrade: Upgrade) -> void:
-	if upgrade.lvl == 0:
+	var is_endless = upgrade.res.upgrade_type == UpgradeResource.UpgradeType.ENDLESS_UPGRADE
+	var is_drone = upgrade.res.upgrade_type == UpgradeResource.UpgradeType.DRONE_UPGRADE
+
+	if upgrade.lvl == 0 or is_endless or is_drone:
 		if not existing_upgrades.has(upgrade):
 			existing_upgrades.append(upgrade)
 
-		if upgrade.unlimited:
-			upgrade.lvl = 0
+		if is_endless or is_drone:
+			upgrade.lvl += 1
 		else:
 			upgrade.lvl = 1
-		var scene = upgrade.scene_template.instantiate()
+		var scene = upgrade.res.scene_template.instantiate()
 		#WARNING: Cyclic reference. Should be allowed in godot 4.2 though
 		# adding a warning just in case
 		upgrade.scene = scene
 		scene.upgrade = upgrade
 
-		if upgrade.upgrade_type == UpgradeResource.UpgradeType.AI_UPGRADE:
+		if upgrade.res.upgrade_type == UpgradeResource.UpgradeType.AI_UPGRADE or is_drone:
 			Globals.add_upgrade_to_ai.emit(scene)
-		elif upgrade.upgrade_type == UpgradeResource.UpgradeType.COLLAB_PARTNER_UPGRADE:
+		elif upgrade.res.upgrade_type == UpgradeResource.UpgradeType.COLLAB_PARTNER_UPGRADE:
 			Globals.add_upgrade_to_collab_partner.emit(scene)
+		elif is_endless:
+			add_child(scene)
 	else:
 		upgrade.lvl += 1
 
@@ -146,7 +150,7 @@ func _on_request_collab_upgrades() -> void:
 
 	for scene in existing_upgrades:
 		var upgrade = scene as Upgrade
-		if upgrade.upgrade_type == UpgradeResource.UpgradeType.COLLAB_PARTNER_UPGRADE:
+		if upgrade.res.upgrade_type == UpgradeResource.UpgradeType.COLLAB_PARTNER_UPGRADE:
 			result.append(upgrade)
 
 	Globals.send_collab_upgrades.emit(result)
@@ -156,7 +160,8 @@ func _on_request_ai_upgrades() -> void:
 
 	for scene in existing_upgrades:
 		var upgrade = scene as Upgrade
-		if upgrade.upgrade_type == UpgradeResource.UpgradeType.AI_UPGRADE:
+		if upgrade.res.upgrade_type == UpgradeResource.UpgradeType.AI_UPGRADE or \
+				upgrade.res.upgrade_type == UpgradeResource.UpgradeType.DRONE_UPGRADE:
 			result.append(upgrade)
 
 	Globals.send_ai_upgrades.emit(result)
@@ -168,7 +173,7 @@ func _on_drone_auto_changed(status: bool) -> void:
 		drone_auto_timer.stop()
 
 func _on_drone_auto_timer_timeout() -> void:
-	if StatsManager.drone_count > MAX_DRONE_COUNT:
+	if drone_upgrade.lvl == drone_upgrade.res.max_lvl:
+		drone_auto_timer.stop()
 		return
-
-	lvl_up(find_upgrade(CharacterManager.character_data[ai_selected].drone_name))
+	lvl_up(drone_upgrade)

@@ -18,6 +18,15 @@ var pierce: int
 var count: int
 var sets: int
 
+func get_data() -> String:
+	var data = (
+		get_atk_str(damage) + "\n" +
+		get_cd_str(fire_timer.base_cooldown) + "\n" +
+		get_general_str("Feathers", count * sets) + "\n" +
+		get_pierce_str(pierce)
+	)
+	return data
+
 func set_data(
 	_damage: float,
 	_speed: float,
@@ -36,13 +45,13 @@ func set_data(
 func sync_level() -> void:
 	match upgrade.lvl:
 		1:
-			set_data(3.0, 300.0, 3, 2, 3.0, 1)
+			set_data(5.0, 300.0, 3, 2, 3.0, 1)
 		2:
 			set_data(0, 0, 5, 0, 0, 0)
 		3:
 			set_data(0, 0, 0, 0, 2.5, 0)
 		4:
-			set_data(4.0, 0, 7, 0, 0, 0)
+			set_data(10.0, 0, 0, 0, 0, 0)
 		5:
 			set_data(0, 0, 0, 0, 0, 2)
 
@@ -56,15 +65,22 @@ func _on_fire_timer_timeout():
 
 	areas.shuffle()
 
-	for i in range(sets):
-		if areas.size() > i:
-			var current_count = count
-			var pos = areas[i].global_position
-			for j in range((current_count-1)/2):
-				set_feather_path(pos, deg_to_rad(-DEG*(j+1)))
-			set_feather_path(pos)
-			for j in range((current_count-1)/2):
-				set_feather_path(pos, deg_to_rad(DEG*(j+1)))
+	if areas.size() > 0:
+		var current_count = count
+		var pos = areas[0].global_position
+		for j in range((current_count-1)/2):
+			set_feather_path(pos, deg_to_rad(-DEG*(j+1)))
+		set_feather_path(pos)
+		for j in range((current_count-1)/2):
+			set_feather_path(pos, deg_to_rad(DEG*(j+1)))
+	if sets == 2:
+		var current_count = count
+		var pos = areas[0].global_position
+		for j in range((current_count-1)/2):
+			set_feather_path(pos, deg_to_rad(-DEG*(j+1)) + PI/2)
+		set_feather_path(pos, PI/2)
+		for j in range((current_count-1)/2):
+			set_feather_path(pos, deg_to_rad(DEG*(j+1)) + PI/2)
 
 	await get_tree().create_timer(GRACE_PERIOD, false).timeout
 	AudioSystem.play_sfx(sfx, global_position)

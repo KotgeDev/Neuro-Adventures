@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="DirectiveResource" load_steps=4 format=3 uid="uid://bleinux7ywgwt"]
+
+[ext_resource type="Script" path="res://scripts/directives/chance_map.gd" id="1_4h4bp"]
+[ext_resource type="PackedScene" uid="uid://cynu1kw6hnnws" path="res://scenes/directives/d26.tscn" id="2_b6f87"]
+[ext_resource type="Script" path="res://scripts/directives/directive_resource.gd" id="3_2ysd4"]
+
+[resource]
+script = ExtResource("3_2ysd4")
+directive_name = "Performance"
+id = 26
+tier = 4
+description = "Multiply AI ATK by (current AI HP) / (90% of base AI max HP)  "
+quote = "MAXIMUM NEURO EFFECT!"
+increase_chances_of = Array[ExtResource("1_4h4bp")]([])
+scene_template = ExtResource("2_b6f87")

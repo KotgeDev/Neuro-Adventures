@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="DirectiveResource" load_steps=4 format=3 uid="uid://c0elxpgf7jyoe"]
+
+[ext_resource type="Script" path="res://scripts/directives/chance_map.gd" id="1_0isgx"]
+[ext_resource type="PackedScene" uid="uid://4qy2n1f6xwes" path="res://scenes/directives/d23.tscn" id="2_fyi53"]
+[ext_resource type="Script" path="res://scripts/directives/directive_resource.gd" id="3_p70pa"]
+
+[resource]
+script = ExtResource("3_p70pa")
+directive_name = "Networking III"
+id = 23
+tier = 3
+description = "Gain 1 EXP every 2s"
+quote = ""
+increase_chances_of = Array[ExtResource("1_0isgx")]([])
+scene_template = ExtResource("2_fyi53")

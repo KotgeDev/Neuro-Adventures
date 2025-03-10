@@ -8,10 +8,16 @@
 script = ExtResource("1_05a7d")
 upgrade_name = "Fireball"
 icon = ExtResource("1_8flnx")
-descriptions = PackedStringArray("A fireball will fire in 4 directions at an interval ", "-0.5s cooldown", "+2s fireballs, +1 Pierce", "+2 base ATK", "+2 fireballs, +1 Pierce", "Evil becomes a 2hu character")
+unformated_stats = "ATK: 2 > 4 
+Cooldown: 3s > 2s 
+Fireballs: 4 > 16"
+unformated_descriptions = "A fireball will fire in 4 directions at an interval 
++2 fireballs, +1 Pierce 
++2 base ATK
++2 fireballs, +1 Pierce
+-1s cooldown, firing angle is randomized 
+x2 fireballs"
 upgrade_type = 0
 character = 1
 max_lvl = 6
 scene_template = ExtResource("2_lc8ql")
-unlimited = false
-tag = 0

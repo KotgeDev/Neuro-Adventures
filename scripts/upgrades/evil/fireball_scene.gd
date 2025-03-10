@@ -6,52 +6,57 @@ var fireball_template = preload("res://scenes/projectiles/fireball.tscn")
 @onready var map: MAP = get_tree().get_first_node_in_group("map")
 @onready var fire_timer = $FireTimer
 
-@export_category("Fireball")
-@export var BASE_SPEED := 100
-@export var LV1_DAMAGE := 2.0
-@export var LV1_WAIT_TIME := 2.0
-@export var LV1_PIERCE := 2
-@export var LV1_PROJECTILE_COUNT := 4
-@export var LV2_WAIT_TIME := 1.5
-@export var LV3_PROJECTILE_COUNT := 6
-@export var LV3_PIERCE := 3
-@export var LV4_DAMAGE := 4.0
-@export var LV5_PROJECTILE_COUNT := 8
-@export var LV5_PIERCE := 4
-@export var LV6_PROJECTILE_COUNT := 20
-
 #region SOUNDFX
 var hit_sfx: AudioStream = preload("res://assets/sfx/laser_fire.wav")
 #endregion
 
-var speed = BASE_SPEED
-var damage = LV1_DAMAGE
-var pierce = LV1_PIERCE
-var projectile_count = LV1_PROJECTILE_COUNT
+var speed = 100
+var damage: float
+var pierce: int
+var projectile_count: int
+var randomized_angle := false
+
+func get_data() -> String:
+	var data = (
+		get_atk_str(damage) + "\n" +
+		get_cd_str(fire_timer.base_cooldown) + "\n" +
+		get_general_str("Bullets", projectile_count) + "\n" +
+		get_pierce_str(pierce)
+	)
+	return data
+
+func set_data(_damage: float, _cooldown: float, _count: int, _pierce: int) -> void:
+	if _damage: damage = _damage
+	if _cooldown: fire_timer.base_cooldown = _cooldown
+	if _count: projectile_count = _count
+	if _pierce: pierce = _pierce
 
 func sync_level() -> void:
 	match upgrade.lvl:
 		1:
-			fire_timer.base_cooldown = LV1_WAIT_TIME
+			set_data(2, 3, 4, 1)
 		2:
-			fire_timer.base_cooldown = LV2_WAIT_TIME
+			set_data(0, 0, 6, 2)
 		3:
-			projectile_count = LV3_PROJECTILE_COUNT
-			pierce = LV3_PIERCE
+			set_data(4, 0, 0, 0)
 		4:
-			damage = LV4_DAMAGE
+			set_data(0, 0, 8, 3)
 		5:
-			projectile_count = LV5_PROJECTILE_COUNT
-			pierce = LV5_PIERCE
+			set_data(0, 2, 0, 0)
+			randomized_angle = true
 		6:
-			projectile_count = LV6_PROJECTILE_COUNT
+			set_data(0, 0, 16, 0)
 
 func _on_fire_timer_timeout():
 	AudioSystem.play_sfx(hit_sfx, ai.global_position)
 
+	var angle_delta := 0.0
+	if randomized_angle:
+		angle_delta = randf() * TAU
+
 	for i in range(projectile_count):
 		var fireball = fireball_template.instantiate()
-		var angle = 2 * PI / projectile_count * i
+		var angle = 2 * PI / projectile_count * i + angle_delta
 		fireball.setup(speed, damage, Vector2.RIGHT.rotated(angle), pierce)
 		fireball.global_position = ai.global_position
 		map.add_child(fireball)

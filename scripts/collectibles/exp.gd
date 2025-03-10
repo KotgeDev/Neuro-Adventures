@@ -11,5 +11,4 @@ func ready() -> void:
 	add_to_group("exp%d" % tier)
 
 func fire_signal() -> void:
-	print("Collecting: %d" % Globals.exp_tier_to_value[tier])
 	Globals.collect_exp.emit(Globals.exp_tier_to_value[tier])

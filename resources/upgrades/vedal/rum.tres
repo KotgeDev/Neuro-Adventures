@@ -8,10 +8,16 @@
 script = ExtResource("1_hhn4f")
 upgrade_name = "Rum"
 icon = ExtResource("1_i82jy")
-descriptions = PackedStringArray("Vedal will throw rum at enemies that stuns them ", "Stun duration increased to 1s", "Rum fire rate is increased", "Rum splash lasts longer and deals more frequent damage", "Rum splash will stun all enemies stepping in for 3s")
+unformated_stats = "ATK/s: 1 > 3
+Cooldown: 1.5s > 1s 
+Splash duration: 0.7s > 2.2s 
+Stun duration: 1s > 2.5s "
+unformated_descriptions = "A bottle of rum will be fired towards the mouse, which will create a splash that stuns and deals damage to enemies
++0.5s stun and splash duration 
+-0.5s cooldown 
++1s stun and splash duration
++2 base ATK "
 upgrade_type = 1
 character = 0
 max_lvl = 5
 scene_template = ExtResource("2_wx76o")
-unlimited = false
-tag = 0

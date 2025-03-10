@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bulbr4l6aubot"]
+[gd_scene load_steps=14 format=3 uid="uid://bulbr4l6aubot"]
 
 [ext_resource type="Texture2D" uid="uid://cwiayaenixuu8" path="res://assets/ui/main_bg_no_title.png" id="1_5my4x"]
 [ext_resource type="PackedScene" uid="uid://bqppr7oknbtc6" path="res://scenes/ui/return_button.tscn" id="1_7efrv"]
@@ -9,7 +9,6 @@
 [ext_resource type="StyleBox" uid="uid://doal46f0dfi43" path="res://assets/themes/transparent_button/transparent_button.tres" id="6_6hl1k"]
 [ext_resource type="Texture2D" uid="uid://70qmlybj7f40" path="res://assets/ui/checkbox_checked.png" id="6_47pja"]
 [ext_resource type="Texture2D" uid="uid://b32vgpxbo8c00" path="res://assets/ui/checkbox_unchecked.png" id="7_jexf1"]
-[ext_resource type="StyleBox" uid="uid://b8wuehepgvw41" path="res://assets/themes/panel/transparent_w_outline_panel.tres" id="10_4eyy7"]
 [ext_resource type="PackedScene" uid="uid://e8y2spmxgfec" path="res://scenes/ui/close_button.tscn" id="11_0cpny"]
 [ext_resource type="StyleBox" uid="uid://bxylaqvfpteux" path="res://assets/themes/other/blurple.tres" id="12_p7vxx"]
 [ext_resource type="StyleBox" uid="uid://dwtm3s1xjblrm" path="res://assets/themes/other/blurple_dark.tres" id="13_8hvnj"]
@@ -56,15 +55,15 @@ horizontal_alignment = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.666667, 0.607843, 0.564706, 1)
-theme_override_colors/font_pressed_color = Color(0.533333, 0.505882, 0.486275, 1)
-theme_override_colors/font_hover_color = Color(0.533333, 0.505882, 0.486275, 1)
-theme_override_colors/font_focus_color = Color(0.666667, 0.607843, 0.564706, 1)
+theme_override_colors/font_hover_color = Color(0.603922, 0.635294, 0.733333, 1)
+theme_override_colors/font_pressed_color = Color(0.603922, 0.635294, 0.733333, 1)
+theme_override_colors/font_focus_color = Color(0.603922, 0.635294, 0.733333, 1)
+theme_override_colors/font_color = Color(0.603922, 0.635294, 0.733333, 1)
 theme_override_font_sizes/font_size = 20
-theme_override_styles/normal = ExtResource("3_5ch3v")
+theme_override_styles/focus = ExtResource("3_5ch3v")
 theme_override_styles/hover = ExtResource("4_s7bd6")
 theme_override_styles/pressed = ExtResource("4_s7bd6")
-theme_override_styles/focus = ExtResource("3_5ch3v")
+theme_override_styles/normal = ExtResource("3_5ch3v")
 text = "Log in"
 script = ExtResource("4_2538o")
 
@@ -231,19 +230,19 @@ layout_mode = 2
 [node name="YourScoreCheckbox" type="CheckBox" parent="HBoxContainer/Control/VBoxContainer/Panel/VBoxContainer/CheckBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = ExtResource("6_6hl1k")
+theme_override_styles/hover_pressed = ExtResource("6_6hl1k")
+theme_override_styles/hover = ExtResource("6_6hl1k")
+theme_override_styles/pressed = ExtResource("6_6hl1k")
+theme_override_styles/normal = ExtResource("6_6hl1k")
 theme_override_icons/checked = ExtResource("6_47pja")
 theme_override_icons/unchecked = ExtResource("7_jexf1")
-theme_override_styles/normal = ExtResource("6_6hl1k")
-theme_override_styles/pressed = ExtResource("6_6hl1k")
-theme_override_styles/hover = ExtResource("6_6hl1k")
-theme_override_styles/hover_pressed = ExtResource("6_6hl1k")
-theme_override_styles/focus = ExtResource("6_6hl1k")
 text = "Your scores only"
 alignment = 1
 
@@ -292,10 +291,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/normal = ExtResource("6_6hl1k")
+theme_override_styles/focus = ExtResource("6_6hl1k")
 theme_override_styles/hover = ExtResource("3_5ch3v")
 theme_override_styles/pressed = ExtResource("6_6hl1k")
-theme_override_styles/focus = ExtResource("6_6hl1k")
+theme_override_styles/normal = ExtResource("6_6hl1k")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ScorePanel"]
 layout_mode = 1
@@ -356,7 +355,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.490196)
 
-[node name="Panel" type="Panel" parent="ScoreDescriptionPanel"]
+[node name="Panel" type="ColorRect" parent="ScoreDescriptionPanel"]
 custom_minimum_size = Vector2(250, 100)
 layout_mode = 1
 anchors_preset = 8
@@ -364,13 +363,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -125.0
+offset_top = -50.0
+offset_right = 125.0
+offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = ExtResource("10_4eyy7")
+color = Color(0.141176, 0.129412, 0.141176, 1)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ScoreDescriptionPanel/Panel"]
 layout_mode = 1
@@ -394,7 +393,7 @@ size_flags_horizontal = 3
 [node name="TitleLabel" type="Label" parent="ScoreDescriptionPanel/Panel/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0.964706, 0.847059, 0.854902, 1)
+theme_override_colors/font_color = Color(0.909804, 0.74902, 0.901961, 1)
 theme_override_font_sizes/font_size = 24
 text = "Kotgedev"
 vertical_alignment = 1
@@ -402,7 +401,6 @@ vertical_alignment = 1
 [node name="ScoreLabel" type="Label" parent="ScoreDescriptionPanel/Panel/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0.968627, 0.172549, 0.458824, 1)
 theme_override_font_sizes/font_size = 20
 text = "Score: 1000"
 vertical_alignment = 1
@@ -410,6 +408,7 @@ vertical_alignment = 1
 [node name="LvlLabel" type="Label" parent="ScoreDescriptionPanel/Panel/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/font_color = Color(0.909804, 0.74902, 0.901961, 1)
 theme_override_font_sizes/font_size = 16
 text = "Lvl: 20"
 vertical_alignment = 1
@@ -417,6 +416,7 @@ vertical_alignment = 1
 [node name="TimeLabel" type="Label" parent="ScoreDescriptionPanel/Panel/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/font_color = Color(0.909804, 0.74902, 0.901961, 1)
 theme_override_font_sizes/font_size = 16
 text = "Time: 10:00"
 vertical_alignment = 1
@@ -432,12 +432,14 @@ layout_mode = 2
 [node name="AILabel" type="Label" parent="ScoreDescriptionPanel/Panel/HBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/font_color = Color(0.909804, 0.74902, 0.901961, 1)
 theme_override_font_sizes/font_size = 16
 text = "AI: Neuro"
 
 [node name="CollabLabel" type="Label" parent="ScoreDescriptionPanel/Panel/HBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/font_color = Color(0.909804, 0.74902, 0.901961, 1)
 theme_override_font_sizes/font_size = 16
 text = "Collab: Vedal"
 
@@ -510,16 +512,16 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(0.780392, 0.780392, 0.780392, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.780392, 0.780392, 0.780392, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 20
-theme_override_styles/normal = ExtResource("12_p7vxx")
+theme_override_styles/focus = ExtResource("12_p7vxx")
 theme_override_styles/hover = ExtResource("13_8hvnj")
 theme_override_styles/pressed = ExtResource("12_p7vxx")
-theme_override_styles/focus = ExtResource("12_p7vxx")
+theme_override_styles/normal = ExtResource("12_p7vxx")
 text = "     Log in with Discord"
 
 [node name="TextureRect" type="TextureRect" parent="LoginPanel/Panel"]

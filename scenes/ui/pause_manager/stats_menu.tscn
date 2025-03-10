@@ -27,6 +27,7 @@ script = ExtResource("1_d2mo2")
 
 [node name="DirectiveCard" parent="." instance=ExtResource("2_vql0i")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 offset_left = 62.0
 offset_top = 116.5
@@ -194,5 +195,3 @@ layout_mode = 0
 [connection signal="pressed" from="DiscardPanel/VBoxContainer/HBoxContainer/YesButton" to="ScrollContainer/VBoxContainer/DirectivePanel" method="_on_yes_button_pressed"]
 [connection signal="pressed" from="DiscardPanel/VBoxContainer/HBoxContainer/NoButton" to="ScrollContainer/VBoxContainer/DirectivePanel" method="_on_no_button_pressed"]
 [connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]
-
-[editable path="ScrollContainer/VBoxContainer/CollabPanel"]

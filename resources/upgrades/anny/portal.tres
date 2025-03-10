@@ -8,10 +8,13 @@
 script = ExtResource("1_kaxir")
 upgrade_name = "Portal"
 icon = ExtResource("1_87hmy")
-descriptions = PackedStringArray("Press [space] for Anny to teleport to the location of the mouse cursor. Cooldown proportional to distance teleported", "Reduce base cooldown to 10s", "Reduce base cooldown to 8s", "Reduce base cooldown to 6s", "Reduce base cooldown to 5s")
+unformated_stats = "Cooldown: 12s > 5s"
+unformated_descriptions = "Press [space] for Anny to teleport to the location of the mouse. Cooldown is proportional to distance. 
+-2s cooldown 
+-2s cooldown 
+-2s cooldown 
+-1s cooldown"
 upgrade_type = 1
 character = 3
 max_lvl = 5
 scene_template = ExtResource("2_cyqbr")
-unlimited = false
-tag = 1

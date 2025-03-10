@@ -1,17 +1,16 @@
 extends MAP
 
 #region ENEMIES
-var slime_template = preload("res://scenes/enemies/simple_enemies/slime.tscn")
-var goblin_template = preload("res://scenes/enemies/simple_enemies/goblin.tscn")
-var kobold_template = preload("res://scenes/enemies/simple_enemies/kobold.tscn")
-var soldier_template = preload("res://scenes/enemies/simple_enemies/soldier.tscn")
-var knight_template = preload("res://scenes/enemies/simple_enemies/knight.tscn")
-var femboy_elf = preload("res://scenes/enemies/bosses/femboy_elf.tscn")
+var slime_template = preload("res://scenes/enemies/basic_enemies/slime.tscn")
+var goblin_template = preload("res://scenes/enemies/basic_enemies/goblin.tscn")
+var kobold_template = preload("res://scenes/enemies/basic_enemies/kobold.tscn")
+var soldier_template = preload("res://scenes/enemies/basic_enemies/soldier.tscn")
+var knight_template = preload("res://scenes/enemies/basic_enemies/knight.tscn")
+var femboy_elf = preload("res://scenes/enemies/elite_enemies/femboy_elf.tscn")
 #endregion
 
 func spawn_enemies() -> void:
 	await get_tree().process_frame
-
 	spawn_monitor()
 	await wave1() #10
 	spawn_monitor()
