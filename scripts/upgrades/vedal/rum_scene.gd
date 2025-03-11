@@ -33,7 +33,7 @@ func set_data(
 ) -> void:
 	if _splash_damage: splash_damage = _splash_damage
 	if _cooldown: fire_timer.base_cooldown = _cooldown
-	if _splash_duration: splash_duration = _splash_damage
+	if _splash_duration: splash_duration = _splash_duration
 	if _stun_duration: stun_duration = _stun_duration
 
 func sync_level() -> void:

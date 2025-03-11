@@ -9,7 +9,10 @@ script = ExtResource("3_b5pek")
 upgrade_name = "Shock Magnet"
 icon = ExtResource("1_8kwgs")
 unformated_stats = ""
-unformated_descriptions = ""
+unformated_descriptions = "+20% collection range 
++20% collection range 
++20% collection range 
+"
 upgrade_type = 1
 character = 4
 max_lvl = 3

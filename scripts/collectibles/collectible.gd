@@ -5,13 +5,15 @@ const TIMEOUT := 30.0
 
 var is_collection = false
 var floating = 1.55334
+var remove_at_timeout = true
 @onready var collab_partner = get_tree().get_first_node_in_group("collab_partner") as CollabPartner
 @onready var current_y_pos = global_position.y
 
 func _ready() -> void:
 	ready()
 	await get_tree().create_timer(TIMEOUT, false).timeout
-	queue_free()
+	if remove_at_timeout:
+		queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta) -> void:

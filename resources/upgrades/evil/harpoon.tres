@@ -8,8 +8,15 @@
 script = ExtResource("1_6a6rh")
 upgrade_name = "Harpoon"
 icon = ExtResource("1_7i674")
-unformated_stats = ""
-unformated_descriptions = ""
+unformated_stats = "ATK: 6 > 10
+Cooldown: 3s > 2.5s  
+Harpoons: 1 > 4
+Pierce: 6 > 100 "
+unformated_descriptions = "A harpoon is fired at an interval
++1 Harpoon
++4 base ATK
+-0.5s cooldown
++2 Harpoons, +94 pierce"
 upgrade_type = 0
 character = 1
 max_lvl = 5

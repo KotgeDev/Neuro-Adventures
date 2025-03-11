@@ -26,7 +26,6 @@ func _on_timer_timeout() -> void:
 
 	var exp1s_to_delete = []
 	# Delete teir1s except those that have not been converted.
-	var remainder = size % Globals.exp_tier_to_value[1]
 	for i in range(size):
 		if i <= last_i:
 			exp1s_to_delete.append(exp1s[i])

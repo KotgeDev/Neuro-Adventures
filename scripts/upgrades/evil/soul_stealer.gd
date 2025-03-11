@@ -17,10 +17,10 @@ func get_data() -> String:
 func sync_level() -> void:
 	match upgrade.lvl:
 		1:
-			percentage = 0.01
+			percentage = 0.005
 		2:
-			percentage = 0.02
+			percentage = 0.01
 		3:
-			percentage = 0.03
+			percentage = 0.015
 		4:
-			percentage = 0.05
+			percentage = 0.02

@@ -32,9 +32,10 @@ func _ready() -> void:
 	ready()
 
 func set_enemy_stat_multiplier() -> void:
-	max_health = BASE_MAX_HEALTH * map.enemy_stat_mult
+	max_health = BASE_MAX_HEALTH * map.enemy_stat_inc
 	health = max_health
-	damage = BASE_DAMAGE * map.enemy_stat_mult
+	damage = BASE_DAMAGE * map.enemy_stat_inc
+	max_speed = BASE_MAX_SPEED * map.enemy_stat_inc * 0.25
 
 func _on_insurgency_changed(value) -> void:
 	if value:

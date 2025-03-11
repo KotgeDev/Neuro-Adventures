@@ -19,7 +19,7 @@ func _on_ai_speed_changed() -> void:
 	current_ai_inc = speed_to_evasion(ai.max_speed)
 
 func speed_to_evasion(max_speed: float) -> float:
-	return (max_speed * 0.3) / 100.0
+	return (max_speed * 0.4) / 100.0
 
 func _exit_tree() -> void:
 	StatsManager.ai_evasion -= current_ai_inc

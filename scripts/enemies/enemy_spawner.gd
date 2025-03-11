@@ -8,15 +8,15 @@ const SAFE_DISTANCE = 25.0
 func _ready() -> void:
 	Globals.spawn.connect(_on_spawn)
 
-func _on_spawn(scene_template, count: int, time_interval: float, last_batch := false) -> void:
+func _on_spawn(scene_template, count: int, time_interval: float, lvl := 1) -> void:
 	for i in range(count):
 		await get_tree().create_timer(time_interval, false).timeout
 		var enemy = scene_template.instantiate()
+		enemy.lvl = lvl
 		enemy.global_position = get_random_pos()
 		add_child(enemy)
 
-		if last_batch and i == count - 1:
-			enemy.last_enemy = true
+
 
 func get_random_pos() -> Vector2:
 	var angle
