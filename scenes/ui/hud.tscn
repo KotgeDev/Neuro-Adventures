@@ -1,9 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://dqy8eus7xktlq"]
+[gd_scene load_steps=26 format=3 uid="uid://dqy8eus7xktlq"]
 
 [ext_resource type="Script" path="res://scripts/ui/hud.gd" id="1_jg8iq"]
 [ext_resource type="Texture2D" uid="uid://dnl8tal30m0jt" path="res://assets/characters/ais/neuro_icon.png" id="2_3ldxe"]
 [ext_resource type="Texture2D" uid="uid://cdfsvbsr2p0cs" path="res://assets/ui/ai_health_bar.png" id="3_h2em7"]
 [ext_resource type="Texture2D" uid="uid://crvnx5i06xcb6" path="res://assets/characters/collab_partners/vedal_icon.png" id="3_s2mue"]
+[ext_resource type="Texture2D" uid="uid://oeaqv4apnwu" path="res://assets/ui/health_bar_over.png" id="5_o2woi"]
 [ext_resource type="Texture2D" uid="uid://tnubhijqfq02" path="res://assets/ui/health_bar_under.png" id="6_jflyq"]
 [ext_resource type="Texture2D" uid="uid://cjb1btwxi635u" path="res://assets/ui/collab_partner_bar.png" id="6_uyxdy"]
 [ext_resource type="Texture2D" uid="uid://chm3hdjvrvpig" path="res://assets/ui/exp_bar_under.png" id="6_v5tns"]
@@ -15,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dmjrphqhgreq5" path="res://scenes/ui/directive_menu.tscn" id="10_x64bl"]
 [ext_resource type="PackedScene" uid="uid://dotgxtot02sw5" path="res://scenes/ui/upgrade_menu.tscn" id="11_52que"]
 [ext_resource type="Material" uid="uid://csxlxcwxw3h3v" path="res://assets/shaders/rainbow.tres" id="12_x3twt"]
+[ext_resource type="Texture2D" uid="uid://dst82e5edv1pj" path="res://assets/ui/exp_bar_over.png" id="14_7prpg"]
 [ext_resource type="PackedScene" uid="uid://dd3l4otjd8b3x" path="res://scenes/ui/pause_manager/pause_manager.tscn" id="14_sxq4j"]
 [ext_resource type="PackedScene" uid="uid://d2avq1nqugasc" path="res://scenes/achievements/achievement_display.tscn" id="15_hw7wa"]
 [ext_resource type="PackedScene" uid="uid://duk3c2w31y5sg" path="res://scenes/ui/victory_display.tscn" id="16_br1yu"]
@@ -266,6 +268,14 @@ material = ExtResource("12_x3twt")
 position = Vector2(46, 113)
 texture = ExtResource("3_h2em7")
 
+[node name="AiOver" type="TextureRect" parent="HealthBars"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 81.0
+offset_right = 78.0
+offset_bottom = 145.0
+texture = ExtResource("5_o2woi")
+
 [node name="CollabPartnerHealthBar" type="TextureProgressBar" parent="HealthBars"]
 unique_name_in_owner = true
 layout_mode = 0
@@ -284,6 +294,14 @@ visible = false
 material = ExtResource("12_x3twt")
 position = Vector2(61, 113)
 texture = ExtResource("6_uyxdy")
+
+[node name="CollabOver" type="TextureRect" parent="HealthBars"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 81.0
+offset_right = 93.0
+offset_bottom = 145.0
+texture = ExtResource("5_o2woi")
 
 [node name="SwitchSign" type="Control" parent="."]
 layout_mode = 3
@@ -317,6 +335,7 @@ offset_top = 3.0
 offset_right = 640.0
 offset_bottom = 119.0
 texture_under = ExtResource("6_v5tns")
+texture_over = ExtResource("14_7prpg")
 texture_progress = ExtResource("7_0d2lw")
 metadata/_edit_lock_ = true
 
@@ -325,6 +344,7 @@ offset_left = 10.0
 offset_top = 16.0
 offset_right = 50.0
 offset_bottom = 42.0
+theme_override_font_sizes/font_size = 24
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1

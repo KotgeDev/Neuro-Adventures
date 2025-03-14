@@ -59,15 +59,13 @@ func spawn_enemies_endless() -> void:
 
 func wave0() -> void:
 	print_rich("[color=pink]Wave 0 Start[/color]")
-	Globals.spawn.emit(slime_template, 25, 0.3)
-	await get_tree().create_timer(10, false).timeout
-	Globals.spawn.emit(slime_template, 25, 0.9)
-	await get_tree().create_timer(20, false).timeout
+	Globals.spawn.emit(slime_template, 100, 0.4)
+	await get_tree().create_timer(30, false).timeout
 	print_rich("[color=green]Wave 0 End[/color]")
 
 func wave1() -> void:
 	print_rich("[color=pink]Wave 1 Start[/color]")
-	Globals.spawn.emit(goblin_template, 175, 0.8)
+	Globals.spawn.emit(goblin_template, 175, 0.53)
 	await get_tree().create_timer(35, false).timeout
 	add_march(horizontal_march, kobold_template)
 	await get_tree().create_timer(35, false).timeout
@@ -75,7 +73,7 @@ func wave1() -> void:
 
 func wave2() -> void:
 	print_rich("[color=pink]Wave 2 Start[/color]")
-	Globals.spawn.emit(kobold_template, 225, 0.8)
+	Globals.spawn.emit(kobold_template, 225, 0.53)
 	await get_tree().create_timer(50, false).timeout
 	add_march(horizontal_march, soldier_template)
 	await get_tree().create_timer(50, false).timeout
@@ -83,7 +81,7 @@ func wave2() -> void:
 
 func wave3() -> void:
 	print_rich("[color=pink]Wave 2 Start[/color]")
-	Globals.spawn.emit(soldier_template, 225, 0.8)
+	Globals.spawn.emit(soldier_template, 225, 0.53)
 	await get_tree().create_timer(50, false).timeout
 	add_march(vertical_march, knight_template)
 	await get_tree().create_timer(50, false).timeout
@@ -91,7 +89,7 @@ func wave3() -> void:
 
 func wave4() -> void:
 	print_rich("[color=pink]Wave 2 Start[/color]")
-	Globals.spawn.emit(knight_template, 225, 0.6)
+	Globals.spawn.emit(knight_template, 225, 0.53)
 	await get_tree().create_timer(50, false).timeout
 	add_march(horizontal_march, knight_template)
 	await get_tree().create_timer(50, false).timeout
@@ -99,28 +97,29 @@ func wave4() -> void:
 
 func wave5() -> void:
 	print_rich("[color=pink]Wave 5 Start[/color]")
-	Globals.spawn.emit(goblin_template, 125, 0.5, 2)
-	await get_tree().create_timer(40, false).timeout
-	Globals.spawn.emit(kobold_template, 125, 0.5, 2)
-	await get_tree().create_timer(40, false).timeout
-	Globals.spawn.emit(soldier_template, 125, 0.5)
-	await get_tree().create_timer(40, false).timeout
+	Globals.spawn.emit(goblin_template, 125, 0.37, 2)
+	await get_tree().create_timer(35, false).timeout
+	Globals.spawn.emit(kobold_template, 125, 0.37, 2)
+	await get_tree().create_timer(35, false).timeout
+	Globals.spawn.emit(soldier_template, 125, 0.37)
+	await get_tree().create_timer(35, false).timeout
 	Globals.spawn.emit(knight_template, 250, 0.5)
-	await get_tree().create_timer(50, false).timeout
+	await get_tree().create_timer(40, false).timeout
 	add_march(horizontal_march, soldier_template)
-	await get_tree().create_timer(50, false).timeout
+	await get_tree().create_timer(40, false).timeout
 	print_rich("[color=green]Wave 5 End[/color]")
 
 func wave6() -> void:
 	print_rich("[color=pink]Wave 6 Start[/color]")
-	Globals.spawn.emit(goblin_template, 125, 0.5, 2)
-	await get_tree().create_timer(40, false).timeout
-	Globals.spawn.emit(kobold_template, 125, 0.5, 2)
-	await get_tree().create_timer(40, false).timeout
-	Globals.spawn.emit(soldier_template, 125, 0.5)
-	await get_tree().create_timer(40, false).timeout
+	Globals.spawn.emit(goblin_template, 125, 0.37, 2)
+	await get_tree().create_timer(35, false).timeout
+	Globals.spawn.emit(kobold_template, 125, 0.37, 2)
+	await get_tree().create_timer(35, false).timeout
+	Globals.spawn.emit(soldier_template, 125, 0.37)
+	await get_tree().create_timer(35, false).timeout
 	Globals.spawn.emit(knight_template, 250, 0.5)
-	await get_tree().create_timer(50, false).timeout
+	await get_tree().create_timer(40, false).timeout
+	print_rich("[color=crimson]Boss Spawned![/color]")
 	add_child(femboy_elf.instantiate())
-	await get_tree().create_timer(50, false).timeout
+	await get_tree().create_timer(40, false).timeout
 	print_rich("[color=green]Wave 6 End[/color]")

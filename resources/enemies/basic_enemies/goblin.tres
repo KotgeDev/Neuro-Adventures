@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_n4vyv")
-health = Array[float]([3.0, 5.0])
+health = Array[float]([3.0, 6.0])
 speed = Array[float]([40.0, 45.0])
 damage = Array[float]([4.0, 8.0])
 exp = Array[float]([2.0, 5.0])
