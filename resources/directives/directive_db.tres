@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DirectiveDB" load_steps=30 format=3 uid="uid://d2id6cg6j7o7v"]
+[gd_resource type="Resource" script_class="DirectiveDB" load_steps=31 format=3 uid="uid://d2id6cg6j7o7v"]
 
 [ext_resource type="Script" path="res://scripts/directives/directive_resource.gd" id="1_qxcw5"]
 [ext_resource type="Resource" uid="uid://cy35lxwlpgq1u" path="res://resources/directives/d2.tres" id="2_5ved2"]
@@ -10,14 +10,15 @@
 [ext_resource type="Resource" uid="uid://c7iv535yq3fw3" path="res://resources/directives/d25.tres" id="7_6lbdg"]
 [ext_resource type="Resource" uid="uid://bkqdgt8ch5bj1" path="res://resources/directives/d7.tres" id="8_vwvgw"]
 [ext_resource type="Resource" uid="uid://b4rm4hjtypj7" path="res://resources/directives/d8.tres" id="9_0ff2f"]
+[ext_resource type="Resource" uid="uid://b5skwu8ii5vnf" path="res://resources/directives/d10.tres" id="10_2wwl1"]
 [ext_resource type="Resource" uid="uid://dr0v6xmxtlslk" path="res://resources/directives/d9.tres" id="10_olbt2"]
 [ext_resource type="Resource" uid="uid://cjqpth18gnodb" path="res://resources/directives/d29.tres" id="11_g1bmp"]
 [ext_resource type="Resource" uid="uid://c10qarukpl274" path="res://resources/directives/d24.tres" id="12_ufh0l"]
 [ext_resource type="Resource" uid="uid://bleinux7ywgwt" path="res://resources/directives/d26.tres" id="13_vj2sn"]
 [ext_resource type="Resource" uid="uid://cd7k3ht2nulc3" path="res://resources/directives/d28.tres" id="14_0p5q0"]
-[ext_resource type="Resource" uid="uid://dj0w6170a4bih" path="res://resources/directives/13.tres" id="15_8h1hb"]
 [ext_resource type="Resource" uid="uid://oe3kbcyxod3p" path="res://resources/directives/d27.tres" id="16_panki"]
 [ext_resource type="Resource" uid="uid://bg3cfca16nhjg" path="res://resources/directives/d20.tres" id="17_ht572"]
+[ext_resource type="Resource" uid="uid://dp1y28y8nce1v" path="res://resources/directives/d18.tres" id="18_me07a"]
 [ext_resource type="Resource" uid="uid://dfediwrgx4wkw" path="res://resources/directives/d14.tres" id="18_rhet4"]
 [ext_resource type="Resource" uid="uid://bja2ai2yk8pq1" path="res://resources/directives/d17.tres" id="19_0x75l"]
 [ext_resource type="Resource" uid="uid://17p50tofrx3n" path="res://resources/directives/d16.tres" id="20_x2hdx"]
@@ -32,4 +33,4 @@
 
 [resource]
 script = ExtResource("2_drxfq")
-db = Array[ExtResource("1_qxcw5")]([ExtResource("2_5ved2"), ExtResource("3_wtsgh"), ExtResource("4_7xdis"), ExtResource("5_ne4bd"), ExtResource("6_lvtqt"), ExtResource("7_6lbdg"), ExtResource("8_vwvgw"), ExtResource("9_0ff2f"), ExtResource("10_olbt2"), ExtResource("11_g1bmp"), ExtResource("12_ufh0l"), ExtResource("13_vj2sn"), ExtResource("14_0p5q0"), ExtResource("15_8h1hb"), ExtResource("16_panki"), ExtResource("17_ht572"), ExtResource("18_rhet4"), ExtResource("19_0x75l"), ExtResource("20_x2hdx"), ExtResource("21_byprm"), ExtResource("22_lue8q"), ExtResource("23_7shoy"), ExtResource("24_i2lv7"), ExtResource("25_nj4wu"), ExtResource("26_mlx2u"), ExtResource("27_tquio"), ExtResource("28_h6klj")])
+db = Array[ExtResource("1_qxcw5")]([ExtResource("2_5ved2"), ExtResource("3_wtsgh"), ExtResource("4_7xdis"), ExtResource("5_ne4bd"), ExtResource("6_lvtqt"), ExtResource("8_vwvgw"), ExtResource("9_0ff2f"), ExtResource("10_olbt2"), ExtResource("10_2wwl1"), ExtResource("23_7shoy"), ExtResource("24_i2lv7"), ExtResource("25_nj4wu"), ExtResource("18_rhet4"), ExtResource("26_mlx2u"), ExtResource("20_x2hdx"), ExtResource("19_0x75l"), ExtResource("18_me07a"), ExtResource("28_h6klj"), ExtResource("17_ht572"), ExtResource("21_byprm"), ExtResource("22_lue8q"), ExtResource("27_tquio"), ExtResource("12_ufh0l"), ExtResource("7_6lbdg"), ExtResource("13_vj2sn"), ExtResource("16_panki"), ExtResource("14_0p5q0"), ExtResource("11_g1bmp")])

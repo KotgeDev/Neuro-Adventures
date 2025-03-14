@@ -1,6 +1,4 @@
 extends VBoxContainer
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	$Card/Tier1Graphics
+func play_anim() -> void:
+	$AnimationPlayer.play("anim")

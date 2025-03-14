@@ -71,7 +71,7 @@ signal show_all_existing_upgrades(upgrades: Array)
 #endregion
 
 #region TO DIRECTIVE MENU
-signal show_directive_choices(directives: Array)
+signal show_directive_choices(directives: Array, special: bool, reroll: bool)
 #endregion
 
 #region TO UPGRADE MANAGER
@@ -83,7 +83,7 @@ signal lvl_up(upgrade: Upgrade)
 #endregion
 
 #region TO DIRECTIVE MANAGER
-signal request_random_directives
+signal request_random_directives(special: bool, reroll: bool)
 signal request_special_directives
 signal add_directive(directive: Directive)
 signal remove_directive(directive: Directive)

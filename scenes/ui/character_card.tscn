@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfyl0awq8jom5"]
+[gd_scene load_steps=7 format=3 uid="uid://dfyl0awq8jom5"]
 
 [ext_resource type="Script" path="res://scripts/ui/character_card.gd" id="1_1oefj"]
 [ext_resource type="Texture2D" uid="uid://l2u4b012a4k0" path="res://assets/ui/collab_displayer.png" id="1_n1f4d"]
 [ext_resource type="Texture2D" uid="uid://cme6j4u8jg0av" path="res://assets/ui/ai_displayer.png" id="2_cy1bj"]
-[ext_resource type="StyleBox" uid="uid://d111g6y2kcd6h" path="res://assets/themes/transparent_button/transparent_button_hover.tres" id="3_u0wgj"]
+[ext_resource type="StyleBox" uid="uid://d111g6y2kcd6h" path="res://assets/themes/transparent_button/light_pink_outline.tres" id="4_fsov0"]
 [ext_resource type="StyleBox" uid="uid://doal46f0dfi43" path="res://assets/themes/transparent_button/transparent_button.tres" id="4_wesv8"]
+[ext_resource type="StyleBox" uid="uid://boj3r6ewrthnd" path="res://assets/themes/transparent_button/light_pink_outline_pressed.tres" id="5_p18jq"]
 
 [node name="CharacterCard" type="Control"]
 custom_minimum_size = Vector2(91, 128)
@@ -85,9 +86,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/hover = ExtResource("4_fsov0")
+theme_override_styles/pressed = ExtResource("5_p18jq")
 theme_override_styles/normal = ExtResource("4_wesv8")
-theme_override_styles/hover = ExtResource("3_u0wgj")
-theme_override_styles/pressed = ExtResource("3_u0wgj")
-theme_override_styles/focus = ExtResource("4_wesv8")
 
 [connection signal="pressed" from="SelectionButton" to="." method="_on_selection_button_pressed"]

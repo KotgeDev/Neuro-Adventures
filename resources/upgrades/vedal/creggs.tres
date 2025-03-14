@@ -8,7 +8,8 @@
 script = ExtResource("1_j2wgi")
 upgrade_name = "Creggs"
 icon = ExtResource("1_vreuu")
-unformated_stats = ""
+unformated_stats = "Drop chance: 1% > 5%
+HP gain: 7"
 unformated_descriptions = "+1% Creggs drop chance 
 +1% Creggs drop chance 
 +1% Creggs drop chance 

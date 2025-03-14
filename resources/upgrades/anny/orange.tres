@@ -8,7 +8,8 @@
 script = ExtResource("1_liqx0")
 upgrade_name = "Orange"
 icon = ExtResource("1_3313t")
-unformated_stats = ""
+unformated_stats = "Drop chance: 1% > 5%
+HP/s: 0.4 "
 unformated_descriptions = "+1% orange drop chance 
 +1% orange drop chance 
 +1% orange drop chance 

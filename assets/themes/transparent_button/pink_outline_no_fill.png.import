@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cecx6af8fp1l8"
-path="res://.godot/imported/pink_button_hover.png-227acae4c801115d28b5dd9f63855d02.ctex"
+uid="uid://cw13eb7gy4dbe"
+path="res://.godot/imported/pink_outline_no_fill.png-2f35049bf3249c253e24e19690e5b9b0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/themes/pink_button/pink_button_hover.png"
-dest_files=["res://.godot/imported/pink_button_hover.png-227acae4c801115d28b5dd9f63855d02.ctex"]
+source_file="res://assets/themes/transparent_button/pink_outline_no_fill.png"
+dest_files=["res://.godot/imported/pink_outline_no_fill.png-2f35049bf3249c253e24e19690e5b9b0.ctex"]
 
 [params]
 

@@ -139,16 +139,13 @@ func _on_add_collectible_generator(generator: CollectibleGenerator) -> void:
 func _on_enemy_killed(value: int) -> void:
 	score += value
 
-func add_march(march_template: PackedScene, enemy_template: PackedScene, interval := 1000.0, count := 1) -> void:
-	var length
-	if march_template == horizontal_march:
-		length = WIDTH
-	else:
-		length = HEIGHT
+func add_march(march_template: PackedScene, enemy_template: PackedScene, lvl := 1) -> void:
+	var length = WIDTH if march_template == horizontal_march else HEIGHT
+
 	var sample_enemy = enemy_template.instantiate() as BasicEnemy
-	var march_duration = (length / 2.0) / sample_enemy.BASE_MAX_SPEED
+	var march_duration = (length / 2.0) / sample_enemy.stats.speed[lvl-1]
 	var march = march_template.instantiate()
-	march.setup(enemy_template, march_duration, interval, count)
+	march.setup(enemy_template, march_duration, 1000.0, 1)
 	add_child(march)
 
 ## Override function to use

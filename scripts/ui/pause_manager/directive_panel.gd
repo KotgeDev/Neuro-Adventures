@@ -18,6 +18,10 @@ func setup() -> void:
 			var button = card_duplicate.get_node("Card").get_node("Button")
 			button.pressed.connect(_on_directive_selected.bind(directive))
 
+			card_duplicate.play_anim()
+			await get_tree().create_timer(0.25).timeout
+
+
 #func generate_card(directive: Directive) -> void:
 	#var dir_card_duplicate = directive_card.duplicate()
 	#var card = dir_card_duplicate.get_node("Card")

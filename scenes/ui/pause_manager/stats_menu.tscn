@@ -1,13 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://djb6su61nnipl"]
+[gd_scene load_steps=12 format=3 uid="uid://djb6su61nnipl"]
 
 [ext_resource type="Script" path="res://scripts/ui/pause_manager/stats_menu.gd" id="1_d2mo2"]
 [ext_resource type="PackedScene" uid="uid://dej58m34yl70t" path="res://scenes/ui/directive_card.tscn" id="2_vql0i"]
 [ext_resource type="Script" path="res://scripts/ui/pause_manager/stats_menu_scroll.gd" id="3_2uj04"]
 [ext_resource type="Script" path="res://scripts/ui/pause_manager/directive_panel.gd" id="4_lqx54"]
-[ext_resource type="StyleBox" uid="uid://boj3r6ewrthnd" path="res://assets/themes/transparent_button/transparent_button_pressed.tres" id="6_sfj75"]
+[ext_resource type="StyleBox" uid="uid://boj3r6ewrthnd" path="res://assets/themes/transparent_button/light_pink_outline_pressed.tres" id="6_sfj75"]
 [ext_resource type="StyleBox" uid="uid://doal46f0dfi43" path="res://assets/themes/transparent_button/transparent_button.tres" id="7_6vhjv"]
 [ext_resource type="PackedScene" uid="uid://c7t3d8nn0j6uw" path="res://scenes/ui/pause_manager/character_stats_panel.tscn" id="7_8bek6"]
 [ext_resource type="PackedScene" uid="uid://bqppr7oknbtc6" path="res://scenes/ui/return_button.tscn" id="8_e8jrs"]
+[ext_resource type="Theme" uid="uid://bndhe68y23nf2" path="res://assets/themes/bright_pink_button.tres" id="9_ui312"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_w7hmf"]
 font_size = 24
@@ -177,12 +178,14 @@ theme_override_constants/separation = 10
 [node name="YesButton" type="Button" parent="DiscardPanel/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
+theme = ExtResource("9_ui312")
 theme_override_font_sizes/font_size = 24
 text = "Yes"
 
 [node name="NoButton" type="Button" parent="DiscardPanel/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
+theme = ExtResource("9_ui312")
 theme_override_font_sizes/font_size = 24
 text = "No
 "

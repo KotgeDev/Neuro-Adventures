@@ -5,6 +5,7 @@ extends Control
 @onready var credits_menu = %CreditsMenu
 @onready var announcements = %Announcements
 
+@onready var logo: TextureRect = $Logo
 @onready var v_box_container = $VBoxContainer
 
 var menu_song = preload("res://assets/songs/themeadow.wav")
@@ -39,6 +40,8 @@ func _on_leaderboard_button_pressed():
 func _on_credits_button_pressed():
 	credits_menu.visible = true
 	v_box_container.visible = false
+	logo.visible = false
+
 
 func _on_quit_button_pressed():
 	get_tree().quit()
@@ -48,15 +51,19 @@ func _on_quit_button_pressed():
 func _on_settings_icon_pressed():
 	settings_menu.visible = true
 	v_box_container.visible = false
+	logo.visible = false
 
 func _on_acheivements_icon_pressed():
 	achievements_menu.visible = true
 	v_box_container.visible = false
+	logo.visible = false
 
 func _on_announcement_icon_pressed():
 	announcements.visible = true
 	v_box_container.visible = false
+	logo.visible = false
 #endregion
 
 func _on_close() -> void:
 	v_box_container.visible = true
+	logo.visible = true

@@ -1,33 +1,57 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://cbqv70ya041cw"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://cbqv70ya041cw"]
 
-[ext_resource type="StyleBox" uid="uid://djknm8nqgvom3" path="res://assets/themes/pink_button/pink_button_hover.tres" id="1_euuse"]
-[ext_resource type="StyleBox" uid="uid://bmk3her3aa4kv" path="res://assets/themes/pink_button/pink_button_disabled.tres" id="1_i573x"]
-[ext_resource type="StyleBox" uid="uid://bmpqcggye3u0q" path="res://assets/themes/pink_button/pink_button.tres" id="2_hn68u"]
+[ext_resource type="StyleBox" uid="uid://bmk3her3aa4kv" path="res://assets/themes/light_pink_button/pink_button_disabled.tres" id="1_ava30"]
 [ext_resource type="StyleBox" uid="uid://n6rf8l7a8mty" path="res://assets/themes/transparent_stylebox.tres" id="3_pxs36"]
-[ext_resource type="StyleBox" uid="uid://doal46f0dfi43" path="res://assets/themes/transparent_button/transparent_button.tres" id="5_45qxm"]
+[ext_resource type="StyleBox" uid="uid://djknm8nqgvom3" path="res://assets/themes/light_pink_button/pink_button_hover.tres" id="3_vpci0"]
+[ext_resource type="StyleBox" uid="uid://bmpqcggye3u0q" path="res://assets/themes/light_pink_button/pink_button.tres" id="4_vgpi8"]
+[ext_resource type="Texture2D" uid="uid://c4t78jympeic6" path="res://assets/ui/radio_checked.png" id="5_fvl8l"]
+[ext_resource type="Texture2D" uid="uid://d1pm7rsshdc4k" path="res://assets/ui/checked.png" id="5_tl5b8"]
+[ext_resource type="Texture2D" uid="uid://ccvvsj0heacmc" path="res://assets/ui/radio_unchecked.png" id="6_4wh04"]
+[ext_resource type="Texture2D" uid="uid://5dvxhjci7ud6" path="res://assets/ui/unchecked.png" id="6_473kl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b78nm"]
+bg_color = Color(0.894118, 0.784314, 0.792157, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k34dq"]
+bg_color = Color(0.964706, 0.847059, 0.854902, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
 [resource]
 Button/colors/font_color = Color(0.937255, 0.545098, 0.627451, 1)
+Button/colors/font_disabled_color = Color(0.937255, 0.545098, 0.627451, 1)
 Button/colors/font_focus_color = Color(0.937255, 0.545098, 0.627451, 1)
 Button/colors/font_hover_color = Color(0.937255, 0.545098, 0.627451, 1)
 Button/colors/font_hover_pressed_color = Color(0.937255, 0.545098, 0.627451, 1)
 Button/colors/font_pressed_color = Color(0.937255, 0.545098, 0.627451, 1)
 Button/font_sizes/font_size = 32
-Button/styles/disabled = ExtResource("1_i573x")
+Button/styles/disabled = ExtResource("1_ava30")
 Button/styles/focus = ExtResource("3_pxs36")
-Button/styles/hover = ExtResource("1_euuse")
-Button/styles/normal = ExtResource("2_hn68u")
-Button/styles/pressed = ExtResource("1_euuse")
+Button/styles/hover = ExtResource("3_vpci0")
+Button/styles/normal = ExtResource("4_vgpi8")
+Button/styles/pressed = ExtResource("3_vpci0")
+CheckButton/icons/checked = ExtResource("5_tl5b8")
+CheckButton/icons/unchecked = ExtResource("6_473kl")
 CheckButton/styles/focus = ExtResource("3_pxs36")
 CheckButton/styles/hover = ExtResource("3_pxs36")
 CheckButton/styles/hover_pressed = ExtResource("3_pxs36")
 CheckButton/styles/normal = ExtResource("3_pxs36")
 CheckButton/styles/pressed = ExtResource("3_pxs36")
 Label/font_sizes/font_size = 32
-OptionButton/styles/focus = ExtResource("5_45qxm")
-OptionButton/styles/hover = ExtResource("1_euuse")
-OptionButton/styles/normal = ExtResource("2_hn68u")
-OptionButton/styles/pressed = ExtResource("2_hn68u")
+PopupMenu/colors/font_color = Color(0.937255, 0.545098, 0.627451, 1)
+PopupMenu/colors/font_hover_color = Color(0.937255, 0.545098, 0.627451, 1)
+PopupMenu/colors/font_separator_color = Color(0.937255, 0.545098, 0.627451, 1)
+PopupMenu/colors/font_separator_outline_color = Color(0.937255, 0.545098, 0.627451, 1)
+PopupMenu/icons/radio_checked = ExtResource("5_fvl8l")
+PopupMenu/icons/radio_unchecked = ExtResource("6_4wh04")
+PopupMenu/styles/hover = SubResource("StyleBoxFlat_b78nm")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_k34dq")
 RichTextLabel/font_sizes/bold_font_size = 14
 RichTextLabel/font_sizes/bold_italics_font_size = 14
 RichTextLabel/font_sizes/italics_font_size = 14

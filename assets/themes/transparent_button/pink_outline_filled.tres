@@ -1,0 +1,10 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://q2kysso56aoy"]
+
+[ext_resource type="Texture2D" uid="uid://bvgqxxw711ehf" path="res://assets/themes/transparent_button/pink_outline_filled.png" id="1_mmnex"]
+
+[resource]
+texture = ExtResource("1_mmnex")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0

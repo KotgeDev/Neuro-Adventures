@@ -4,18 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://cwiayaenixuu8" path="res://assets/ui/main_bg_no_title.png" id="1_nobid"]
 [ext_resource type="Script" path="res://scripts/ui/character_displayer.gd" id="1_soie0"]
 [ext_resource type="StyleBox" uid="uid://doal46f0dfi43" path="res://assets/themes/transparent_button/transparent_button.tres" id="3_n2xjk"]
-[ext_resource type="StyleBox" uid="uid://d111g6y2kcd6h" path="res://assets/themes/transparent_button/transparent_button_hover.tres" id="4_64i8h"]
-[ext_resource type="Texture2D" uid="uid://bvgqxxw711ehf" path="res://assets/themes/other/pink_outline.png" id="4_gcinn"]
+[ext_resource type="StyleBox" uid="uid://q2kysso56aoy" path="res://assets/themes/transparent_button/pink_outline_filled.tres" id="3_u2gd7"]
+[ext_resource type="StyleBox" uid="uid://d111g6y2kcd6h" path="res://assets/themes/transparent_button/light_pink_outline.tres" id="4_64i8h"]
 [ext_resource type="PackedScene" uid="uid://bqppr7oknbtc6" path="res://scenes/ui/return_button.tscn" id="6_l7mo0"]
-[ext_resource type="StyleBox" uid="uid://boj3r6ewrthnd" path="res://assets/themes/transparent_button/transparent_button_pressed.tres" id="7_qp6tm"]
+[ext_resource type="StyleBox" uid="uid://boj3r6ewrthnd" path="res://assets/themes/transparent_button/light_pink_outline_pressed.tres" id="7_qp6tm"]
 [ext_resource type="PackedScene" uid="uid://e8y2spmxgfec" path="res://scenes/ui/close_button.tscn" id="8_8341x"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oba71"]
-texture = ExtResource("4_gcinn")
-texture_margin_left = 4.0
-texture_margin_top = 4.0
-texture_margin_right = 4.0
-texture_margin_bottom = 4.0
+[ext_resource type="Script" path="res://scripts/ui/level_viewer.gd" id="9_w7b3w"]
 
 [node name="Displayer" type="Control"]
 layout_mode = 3
@@ -162,7 +156,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_styles/normal = SubResource("StyleBoxTexture_oba71")
+theme_override_styles/normal = ExtResource("3_u2gd7")
 
 [node name="Button" type="Button" parent="Upgrades/Control/ScrollContainer/UpgradesContainer/Buffer1"]
 layout_mode = 1
@@ -263,7 +257,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_styles/normal = SubResource("StyleBoxTexture_oba71")
+theme_override_styles/normal = ExtResource("3_u2gd7")
 
 [node name="Button" type="Button" parent="Upgrades/Control/ScrollContainer/UpgradesContainer/Buffer2"]
 layout_mode = 1
@@ -379,7 +373,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_styles/normal = SubResource("StyleBoxTexture_oba71")
+theme_override_styles/normal = ExtResource("3_u2gd7")
 
 [node name="Button" type="Button" parent="UpgradePanel"]
 layout_mode = 1
@@ -439,14 +433,17 @@ theme_override_constants/separation = 0
 [node name="IconContainer" type="CenterContainer" parent="UpgradePanel/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(45, 0)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Icon" type="TextureRect" parent="UpgradePanel/VBoxContainer/HBoxContainer/IconContainer"]
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("1_lvrei")
 stretch_mode = 3
 
 [node name="Outline" type="TextureRect" parent="UpgradePanel/VBoxContainer/HBoxContainer/IconContainer"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Description" type="Label" parent="UpgradePanel/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(180, 0)
@@ -464,6 +461,41 @@ layout_mode = 0
 offset_right = 111.0
 offset_bottom = 48.0
 
+[node name="LvlPanel" type="ColorRect" parent="."]
+visible = false
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+offset_left = 181.0
+offset_top = 152.0
+offset_right = 459.0
+offset_bottom = 197.0
+size_flags_vertical = 4
+color = Color(0, 0, 0, 0.392157)
+
+[node name="VBoxContainer" type="HBoxContainer" parent="LvlPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="LvlPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Level" type="Label" parent="LvlPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = " 1 "
+
+[node name="Description" type="Label" parent="LvlPanel/VBoxContainer"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+text = "A bottle of rum will be fired towards the mouse, which will create a splash that stuns and deals damage to enemies"
+autowrap_mode = 2
+
 [node name="LevelViewer" type="ColorRect" parent="."]
 visible = false
 layout_mode = 1
@@ -473,6 +505,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.490196)
+script = ExtResource("9_w7b3w")
 
 [node name="TextureRect" type="TextureRect" parent="LevelViewer"]
 layout_mode = 0
@@ -494,110 +527,129 @@ offset_right = 150.0
 offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="LevelViewer/Panel"]
-custom_minimum_size = Vector2(237, 280)
+[node name="CloseButton" parent="LevelViewer/Panel" instance=ExtResource("8_8341x")]
+layout_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelViewer/Panel"]
+custom_minimum_size = Vector2(275, 290)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -118.5
-offset_top = -140.0
-offset_right = 118.5
-offset_bottom = 140.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="LvlsContainer" type="VBoxContainer" parent="LevelViewer/Panel/ScrollContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/separation = 0
-
-[node name="CloseButton" parent="LevelViewer/Panel" instance=ExtResource("8_8341x")]
-layout_mode = 1
-
-[node name="LvlPanel" type="Control" parent="."]
-visible = false
-custom_minimum_size = Vector2(0, 70)
-layout_mode = 2
-anchors_preset = 0
-offset_left = 195.0
-offset_top = 55.0
-offset_right = 445.0
-offset_bottom = 125.0
-mouse_filter = 2
-
-[node name="Panel" type="Panel" parent="LvlPanel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme_override_constants/separation = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="LvlPanel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-alignment = 1
-
-[node name="Padding2" type="Control" parent="LvlPanel/VBoxContainer"]
+[node name="Title" type="HBoxContainer" parent="LevelViewer/Panel/VBoxContainer"]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Labels" type="HBoxContainer" parent="LvlPanel/VBoxContainer"]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="Padding" type="Label" parent="LvlPanel/VBoxContainer/Labels"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 16
-text = " "
-
-[node name="Title" type="Label" parent="LvlPanel/VBoxContainer/Labels"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 16
-text = "Dual Strike
-"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="LvlPanel/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-mouse_filter = 2
-theme_override_constants/separation = 0
-
-[node name="IconContainer" type="CenterContainer" parent="LvlPanel/VBoxContainer/HBoxContainer"]
+[node name="IconContainer" type="CenterContainer" parent="LevelViewer/Panel/VBoxContainer/Title"]
 custom_minimum_size = Vector2(45, 0)
 layout_mode = 2
 
-[node name="Icon" type="TextureRect" parent="LvlPanel/VBoxContainer/HBoxContainer/IconContainer"]
+[node name="Icon" type="TextureRect" parent="LevelViewer/Panel/VBoxContainer/Title/IconContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("1_lvrei")
 stretch_mode = 3
 
-[node name="Outline" type="TextureRect" parent="LvlPanel/VBoxContainer/HBoxContainer/IconContainer"]
+[node name="Outline" type="TextureRect" parent="LevelViewer/Panel/VBoxContainer/Title/IconContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Description" type="Label" parent="LvlPanel/VBoxContainer/HBoxContainer"]
+[node name="UpgradeName" type="Label" parent="LevelViewer/Panel/VBoxContainer/Title"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 12
-text = "Some description I guess. Dual Swords that deal damage.  "
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Pizza Revolution Network
+"
+horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Padding" type="Control" parent="LvlPanel/VBoxContainer"]
+[node name="Control" type="Control" parent="LevelViewer/Panel/VBoxContainer/Title"]
+custom_minimum_size = Vector2(45, 0)
 layout_mode = 2
 mouse_filter = 2
 
+[node name="Stats" type="HBoxContainer" parent="LevelViewer/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Container1" type="VBoxContainer" parent="LevelViewer/Panel/VBoxContainer/Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="LevelViewer/Panel/VBoxContainer/Stats/Container1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Inital Stats"
+horizontal_alignment = 1
+
+[node name="InitialStats" type="RichTextLabel" parent="LevelViewer/Panel/VBoxContainer/Stats/Container1"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(-1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 16
+text = " Pizza base ATK: +1
+ Pizza speed: +10
+"
+fit_content = true
+
+[node name="Container2" type="VBoxContainer" parent="LevelViewer/Panel/VBoxContainer/Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="LevelViewer/Panel/VBoxContainer/Stats/Container2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Final Stats"
+horizontal_alignment = 1
+
+[node name="FinalStats" type="RichTextLabel" parent="LevelViewer/Panel/VBoxContainer/Stats/Container2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(-1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 16
+text = " Pizza base ATK: +2 
+ Pizza speed: +20 "
+fit_content = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelViewer/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="LevelViewer/Panel/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Levels"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="LevelViewer/Panel/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Lvls" type="VBoxContainer" parent="LevelViewer/Panel/VBoxContainer/VBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 2
+
 [connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]
-[connection signal="pressed" from="LevelViewer/Panel/CloseButton" to="." method="_on_level_viewer_close"]
+[connection signal="pressed" from="LevelViewer/Panel/CloseButton" to="LevelViewer" method="_on_close_button_pressed"]

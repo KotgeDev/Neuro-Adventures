@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvgqxxw711ehf"
-path="res://.godot/imported/pink_outline.png-603ee8d24eb2756879437a26264dd00d.ctex"
+uid="uid://bmbu6141f6sea"
+path="res://.godot/imported/logo_blue.png-643409b028d9cecc20fa73b414f8c9e8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/themes/other/pink_outline.png"
-dest_files=["res://.godot/imported/pink_outline.png-603ee8d24eb2756879437a26264dd00d.ctex"]
+source_file="res://assets/ui/logo_blue.png"
+dest_files=["res://.godot/imported/logo_blue.png-643409b028d9cecc20fa73b414f8c9e8.ctex"]
 
 [params]
 

@@ -8,7 +8,7 @@
 script = ExtResource("3_ap3lm")
 upgrade_name = "Programming Socks"
 icon = ExtResource("1_2qp7l")
-unformated_stats = ""
+unformated_stats = "Speed increase: +5% > +20%"
 unformated_descriptions = "+5% speed (Both characters) 
 +5% speed (Both characters) 
 +5% speed (Both characters) 

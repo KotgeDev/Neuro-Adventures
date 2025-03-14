@@ -1,0 +1,17 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://bndhe68y23nf2"]
+
+[ext_resource type="StyleBox" uid="uid://h4s4mveq2e7l" path="res://assets/themes/bright_pink_button/pink_button_hover.tres" id="2_btouw"]
+[ext_resource type="StyleBox" uid="uid://n6rf8l7a8mty" path="res://assets/themes/transparent_stylebox.tres" id="2_rdy3x"]
+[ext_resource type="StyleBox" uid="uid://bpkvukmwtp8hj" path="res://assets/themes/bright_pink_button/pink_button.tres" id="3_mtkdk"]
+
+[resource]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/font_sizes/font_size = 32
+Button/styles/focus = ExtResource("2_rdy3x")
+Button/styles/hover = ExtResource("2_btouw")
+Button/styles/normal = ExtResource("3_mtkdk")
+Button/styles/pressed = ExtResource("2_btouw")

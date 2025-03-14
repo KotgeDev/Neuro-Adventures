@@ -17,10 +17,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if in_range and Input.is_action_just_pressed("use"):
-		if special:
-			Globals.request_special_directives.emit()
-		else:
-			Globals.request_random_directives.emit()
+		Globals.request_random_directives.emit(special, true)
 		queue_free()
 
 	floating += delta*5

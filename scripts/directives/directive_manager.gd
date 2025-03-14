@@ -38,13 +38,9 @@ func _ready() -> void:
 	Globals.request_random_directives.connect(_on_request_random_directives)
 	Globals.add_directive.connect(_on_add_directive)
 	Globals.remove_directive.connect(_on_remove_directive)
-	Globals.request_special_directives.connect(_on_request_special_directives)
 
-func _on_request_random_directives() -> void:
-	Globals.show_directive_choices.emit(select_random(4))
-
-func _on_request_special_directives() -> void:
-	Globals.show_directive_choices.emit(select_random(4, true))
+func _on_request_random_directives(special: bool, reroll: bool) -> void:
+	Globals.show_directive_choices.emit(select_random(3, special), special, reroll)
 
 func _on_add_directive(directive: Directive) -> void:
 	if !directive.resource.scene_template:
@@ -64,7 +60,7 @@ func _on_remove_directive(directive: Directive) -> void:
 
 	owned_directives.erase(directive)
 
-func select_random(count: int, special_only := false) -> Array:
+func select_random(count: int, special_only: bool) -> Array:
 	var results = []
 	var pool = generate_pool(special_only)
 

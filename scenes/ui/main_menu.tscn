@@ -1,9 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://bmuxw03rnmk0i"]
+[gd_scene load_steps=22 format=3 uid="uid://bmuxw03rnmk0i"]
 
 [ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_kkv3g"]
-[ext_resource type="Texture2D" uid="uid://ck3vocomisktb" path="res://assets/ui/main_bg.png" id="2_bmufw"]
+[ext_resource type="Texture2D" uid="uid://dfwr727u1d5xi" path="res://assets/ui/the_farm_illustration_full.png" id="2_6jicd"]
 [ext_resource type="Script" path="res://scripts/ui/button_with_sfx.gd" id="3_6k7f3"]
+[ext_resource type="Texture2D" uid="uid://bmbu6141f6sea" path="res://assets/ui/logo_blue.png" id="3_yqplu"]
 [ext_resource type="Texture2D" uid="uid://diqa2jtswmdat" path="res://assets/ui/announcements_icon.png" id="4_8gpqi"]
+[ext_resource type="Theme" uid="uid://bndhe68y23nf2" path="res://assets/themes/bright_pink_button.tres" id="4_khcwm"]
 [ext_resource type="Texture2D" uid="uid://dr2xibikjxlog" path="res://assets/ui/announcements_icon_pressed.png" id="5_8rpbn"]
 [ext_resource type="BitMap" uid="uid://71hwevmo4mks" path="res://assets/ui/announcements_icon_mask.png" id="6_a5jhn"]
 [ext_resource type="Texture2D" uid="uid://7t3yuevacn1l" path="res://assets/ui/achievements_icon.png" id="7_15c88"]
@@ -36,7 +38,19 @@ anchor_right = 0.604
 anchor_bottom = 0.21
 offset_right = -346.56
 offset_bottom = -35.6
-texture = ExtResource("2_bmufw")
+texture = ExtResource("2_6jicd")
+metadata/_edit_lock_ = true
+
+[node name="Logo" type="TextureRect" parent="."]
+texture_filter = 2
+layout_mode = 0
+offset_left = 33.0
+offset_top = 16.0
+offset_right = 432.0
+offset_bottom = 161.0
+scale = Vector2(0.737288, 0.737288)
+texture = ExtResource("3_yqplu")
+expand_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
@@ -49,6 +63,7 @@ theme_override_constants/separation = 14
 [node name="PlayButton" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(183, 39)
 layout_mode = 2
+theme = ExtResource("4_khcwm")
 text = "Play"
 script = ExtResource("3_6k7f3")
 
@@ -116,6 +131,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+metadata/_edit_lock_ = true
 
 [node name="SettingsMenu" parent="Menus" instance=ExtResource("13_tpbcu")]
 unique_name_in_owner = true

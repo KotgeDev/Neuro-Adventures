@@ -20,6 +20,7 @@ func setup(p_enemy_template: PackedScene, p_march_duration: float, p_interval: f
 
 func _ready() -> void:
 	$MarchDuration.wait_time = march_duration
+	print("MARCH DURATION: ", march_duration)
 	$MarchDuration.start()
 
 	setup_markers()

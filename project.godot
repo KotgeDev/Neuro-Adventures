@@ -14,8 +14,7 @@ config/name="Neuro Adventures!"
 run/main_scene="res://scenes/ui/main_menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 boot_splash/bg_color=Color(0.937255, 0.545098, 0.627451, 1)
-boot_splash/image="res://assets/achievements/neverending_subathon.png"
-boot_splash/fullsize=false
+boot_splash/image="res://assets/ui/main_bg_no_title.png"
 boot_splash/use_filter=false
 config/icon="res://windows_icon.png"
 

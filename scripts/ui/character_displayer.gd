@@ -11,8 +11,6 @@ signal close
 @onready var description_label = %DescriptionLabel
 @onready var character_name = %CharacterName
 @onready var type_label = %TypeLabel
-@onready var lvls_container = %LvlsContainer
-@onready var lvl_panel = $LvlPanel
 @onready var level_viewer = $LevelViewer
 
 var character: Globals.CharacterChoice
@@ -22,6 +20,8 @@ var data: CharacterData
 var saved_defaults
 
 var default_upgrades = []
+
+var outline_texture: Texture2D
 
 ## Requires node to have a _on_close function
 static func create(node: Control, character: Globals.CharacterChoice) -> void:
@@ -62,12 +62,14 @@ func _ready():
 		remove_upgrade_panel(upgrade, upgrades_container)
 		update_buffers()
 
+	outline_texture = CharacterManager.character_data[character].icon_outline
+
 func _process(delta):
 	if Input.is_action_just_pressed("menu"):
 		if level_viewer.visible:
-			_on_level_viewer_close()
-		else:
-			_on_return_button_pressed()
+			return
+
+		_on_return_button_pressed()
 
 func add_upgrade_panel(container: Control, upgrade: UpgradeResource, outline := false) -> void:
 	var new_panel = upgrade_panel.duplicate()
@@ -83,7 +85,7 @@ func add_upgrade_panel(container: Control, upgrade: UpgradeResource, outline := 
 
 	button.pressed.connect(_on_upgrade_selected.bind(upgrade))
 
-	icon_outline.texture = CharacterManager.character_data[character].icon_outline
+	icon_outline.texture = outline_texture
 	title.text = upgrade.upgrade_name
 	description.text = upgrade.descriptions[0]
 	icon.texture = upgrade.icon
@@ -98,39 +100,7 @@ func add_upgrade_panel(container: Control, upgrade: UpgradeResource, outline := 
 	container.add_child(new_panel)
 
 func _on_view_lvls_clicked(meta: String, upgrade: UpgradeResource) -> void:
-	level_viewer.visible = true
-
-	var loop_count
-
-	if upgrade.upgrade_type == UpgradeResource.UpgradeType.DRONE_UPGRADE:
-		loop_count = 1
-	else:
-		loop_count = upgrade.max_lvl
-
-	for lvl in range(loop_count):
-		add_lvl_panel(upgrade, lvl)
-
-func add_lvl_panel(upgrade: UpgradeResource, lvl: int) -> void:
-	var new_panel = lvl_panel.duplicate()
-	var v_container = new_panel.get_node("VBoxContainer")
-	var labels = v_container.get_node("Labels")
-	var title = labels.get_node("Title")
-	var h_container = v_container.get_node("HBoxContainer")
-	var icon = h_container.get_node("IconContainer").get_node("Icon")
-	var outline = h_container.get_node("IconContainer").get_node("Outline")
-	var description = h_container.get_node("Description")
-
-	if upgrade.upgrade_type == UpgradeResource.UpgradeType.DRONE_UPGRADE:
-		title.text = " %s" % [upgrade.upgrade_name]
-		description.text = upgrade.descriptions[0]
-	else:
-		title.text = " %s [Lv%d]" % [upgrade.upgrade_name, lvl + 1]
-		description.text = upgrade.descriptions[lvl]
-	outline.texture = CharacterManager.character_data[character].icon_outline
-	icon.texture = upgrade.icon
-
-	new_panel.visible = true
-	lvls_container.add_child(new_panel)
+	level_viewer.view(upgrade, outline_texture)
 
 func _on_upgrade_selected(upgrade: UpgradeResource) -> void:
 	if not upgrade in default_upgrades:
@@ -174,8 +144,3 @@ func _on_return_button_pressed():
 
 	close.emit()
 	queue_free()
-
-func _on_level_viewer_close():
-	level_viewer.visible = false
-	for child in lvls_container.get_children():
-		child.queue_free()

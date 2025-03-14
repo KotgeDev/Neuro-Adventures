@@ -43,7 +43,7 @@ func setup() -> void:
 			"Perc. ATK Increase: [color=violet]+%.0f%%[/color]\n" % (t_atk_inc*100) +
 			"Multipliers: [color=violet]x%.1f[/color]\n" % t_atk_mult +
 			"Constant: [color=violet]%.1f[/color]\n" % t_atk_const +
-			"(Final ATK = Base ATK * [color=violet]%.1f[/color] * [color=violet]%.1f[/color] + [color=violet]%.1f[/color])" % [t_atk_inc + 1.0, t_atk_mult, t_atk_const]
+			"(Final ATK = Base ATK * [color=violet]%.2f[/color] * [color=violet]%.1f[/color] + [color=violet]%.1f[/color])" % [t_atk_inc + 1.0, t_atk_mult, t_atk_const]
 		)
 	else:
 		title.text = "AI"
@@ -58,11 +58,11 @@ func setup() -> void:
 			"Evasion: [color=aqua]%.0f%%[/color]   " % ((StatsManager.evasion + StatsManager.ai_evasion) * 100) +
 			"Speed: [color=aqua]%.1f[/color]\n" % ai.max_speed +
 			"Cooldown Reduction: [color=lime]%.0f%%[/color] (max: %d%%)\n" % [(t_cd_red * 100), Globals.MAX_CD_RED]+
-			"Damage Reduction: " +
+			"Damage Reduction: [color=crimson]%.0f%%[/color]\n" % [StatsManager.ai_dmg_red]+
 			"Perc. ATK Increase: [color=violet]+%.0f%%[/color]\n" % (t_atk_inc * 100) +
 			"Multipliers: [color=violet]x%.1f[/color]\n" % t_atk_mult +
 			"Constant: [color=violet]%.1f[/color]\n" % t_atk_const +
-			"(Final ATK = Base ATK * [color=violet]%.1f[/color] * [color=violet]%.1f[/color] + [color=violet]%.1f[/color])" % [t_atk_inc + 1.0, t_atk_mult, t_atk_const]
+			"(Final ATK = Base ATK * [color=violet]%.2f[/color] * [color=violet]%.1f[/color] + [color=violet]%.1f[/color])" % [t_atk_inc + 1.0, t_atk_mult, t_atk_const]
 		)
 
 	if is_collab:
