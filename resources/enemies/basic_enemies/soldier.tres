@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource("1_yh7ve")
-health = Array[float]([15.0])
-speed = Array[float]([30.0])
+health = Array[float]([12.0])
+speed = Array[float]([32.0])
 damage = Array[float]([9.0])
 exp = Array[float]([5.0])
 av_radius = 11

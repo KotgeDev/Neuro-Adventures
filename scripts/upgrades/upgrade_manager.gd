@@ -1,7 +1,7 @@
 extends Node2D
 class_name UpgradeManager
 
-## Endless upgrades will appear starting this level
+## Endless upgrades will appear starting this level 24
 const SOFT_LVL_CAP := 24
 
 @onready var drone_auto_timer: Timer = $DroneAutoTimer
@@ -62,29 +62,28 @@ func find_upgrade(upgrade_name: String) -> Upgrade:
 
 func add_upgrades_to_pool(upgrades: Array) -> void:
 	for resource in upgrades:
-		var upgrade_obj = Upgrade.new(
-			resource
-		)
+		var upgrade_obj = Upgrade.new(resource)
 		upgrades_pool.append(upgrade_obj)
 
 func request_random_upgrades() -> void:
-	var pool = return_upgrades_pool()
+	var pool = generate_pool()
 	var results = []
 
 	pool.shuffle()
 
 	for i in range(3):
-		results.append(find_upgrade(pool[i]))
-		pool = pool.filter(func (x): return x != pool[i])
+		var chosen = pool[i]
+		results.append(find_upgrade(chosen))
+		pool = pool.filter(func (x): return x != chosen)
 
 	Globals.show_three_random_upgrades.emit(results)
 
-func return_upgrades_pool() -> Array:
+func generate_pool() -> Array:
 	# Remove maxed upgrades
 	for upgrade in upgrades_pool:
 		if upgrade.res.upgrade_type == UpgradeResource.UpgradeType.ENDLESS_UPGRADE:
 			pass
-		elif upgrade.res.max_lvl == upgrade.lvl:
+		elif upgrade.res.max_lvl <= upgrade.lvl:
 			upgrade.res.weight = 0
 
 	# Add endless upgrades if requirement met

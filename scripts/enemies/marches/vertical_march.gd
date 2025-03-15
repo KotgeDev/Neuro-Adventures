@@ -3,8 +3,8 @@ extends March
 @onready var marker2d = $Markers/Marker2D
 
 const INIT_X = 50.0
-const TOP_Y = 50.0
-const BOTTOM_Y = 600.0
+const TOP_Y = 30.0
+const BOTTOM_Y = 625.0
 
 func setup_markers() -> void:
 	marker2d.global_position = Vector2(INIT_X, TOP_Y)

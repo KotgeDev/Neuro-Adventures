@@ -60,7 +60,7 @@ collision_mask = 6
 count = 100
 
 [node name="CollisionPolygon2D" parent="MultiHitbox" index="0"]
-polygon = PackedVector2Array(-4, -32, -10, 0, 12, 0, 5, -32)
+polygon = PackedVector2Array(-2, -23, -9, 0, 10, 0, 3, -23)
 
 [connection signal="animation_finished" from="PipePlayer" to="." method="_on_pipe_player_animation_finished"]
 

@@ -8,7 +8,6 @@ extends Enemy
 #region NODES
 @onready var sprite_2d = $Sprite2D
 @onready var navigation_agent = $NavigationAgent2D
-@onready var search_field = $SearchField
 @onready var animation_player = $AnimationPlayer
 @onready var fire_point = $FirePoint
 @onready var pattern1_timer = $Pattern1Timer
@@ -49,11 +48,14 @@ func update_phase(phase: int) -> void:
 func make_path() -> void:
 	navigation_agent.target_position = target.global_position
 
+var walking_phase := true
 func _physics_process(delta):
-	if target not in search_field.get_overlapping_bodies():
+	if walking_phase and target.global_position.distance_to(global_position) > 230.0:
 		var dir = to_local(navigation_agent.get_next_path_position()).normalized()
 		velocity = velocity.move_toward(dir * max_speed, ACCELERATION * delta)
 	else:
+		if walking_phase:
+			walking_phase = false
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 
 	update_animation()
@@ -125,3 +127,6 @@ func _on_pattern2_timer_timeout():
 
 			arrow_path.global_position = Vector2(arrow_x, 0.0)
 			arrow_path.look_at(target.global_position)
+
+func _on_walking_phase_timer_timeout() -> void:
+	walking_phase = true

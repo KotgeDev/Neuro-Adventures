@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://q4do4wgq6uk8"]
+[gd_scene load_steps=16 format=3 uid="uid://q4do4wgq6uk8"]
 
 [ext_resource type="Script" path="res://scripts/enemies/elite_enemies/femboy_elf.gd" id="1_kgnvo"]
 [ext_resource type="Material" uid="uid://c13ui871eji3r" path="res://assets/shaders/flash.tres" id="2_50dd6"]
@@ -14,9 +14,6 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mt275"]
 radius = 5.0
 height = 38.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_yjxll"]
-radius = 233.002
 
 [sub_resource type="Animation" id="Animation_bijx6"]
 length = 0.001
@@ -76,6 +73,8 @@ _data = {
 
 [node name="FemboyElf" type="Node2D"]
 script = ExtResource("1_kgnvo")
+ACCELERATION = 200
+FRICTION = 200
 stats = ExtResource("2_62rmv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -109,15 +108,7 @@ shape = SubResource("CapsuleShape2D_mt275")
 
 [node name="PathfindTimer" type="Timer" parent="."]
 wait_time = 0.5
-
-[node name="SearchField" type="Area2D" parent="."]
-visible = false
-position = Vector2(0, -21)
-collision_layer = 0
-collision_mask = 16
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SearchField"]
-shape = SubResource("CircleShape2D_yjxll")
+autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -146,10 +137,15 @@ value = 100.0
 texture_under = ExtResource("8_a42xe")
 texture_progress = ExtResource("9_n022p")
 
+[node name="WalkingPhaseTimer" type="Timer" parent="."]
+wait_time = 7.0
+autostart = true
+
 [connection signal="take_damage" from="Hurtbox" to="." method="_on_hurtbox_take_damage"]
 [connection signal="timeout" from="PathfindTimer" to="." method="_on_pathfind_timer_timeout"]
 [connection signal="timeout" from="Pattern1Timer" to="." method="_on_pattern1_timer_timeout"]
 [connection signal="timeout" from="Pattern2Timer" to="." method="_on_pattern2_timer_timeout"]
+[connection signal="timeout" from="WalkingPhaseTimer" to="." method="_on_walking_phase_timer_timeout"]
 
 [editable path="Hurtbox"]
 [editable path="ContinuousHitbox"]

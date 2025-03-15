@@ -10,10 +10,12 @@ upgrade_name = "Confession Letter"
 icon = ExtResource("1_2iw3q")
 unformated_stats = "AI ATK: +10% > +30%
 AI chase radius: -5 > -15"
-unformated_descriptions = "+10% AI ATK, -5 AI chase radius 
-+10% AI ATK, -5 AI chase radius 
+unformated_descriptions = "+5% AI ATK, -2.5 AI chase radius 
++5% AI ATK, -2.5 AI chase radius 
++5% AI ATK, -2.5 AI chase radius 
++5% AI ATK, -2.5 AI chase radius 
 +10% AI ATK, -5 AI chase radius "
 upgrade_type = 0
 character = 0
-max_lvl = 3
+max_lvl = 5
 scene_template = ExtResource("2_fyeig")

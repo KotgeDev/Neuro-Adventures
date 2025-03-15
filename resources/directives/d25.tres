@@ -1,6 +1,5 @@
-[gd_resource type="Resource" script_class="DirectiveResource" load_steps=4 format=3 uid="uid://c7iv535yq3fw3"]
+[gd_resource type="Resource" script_class="DirectiveResource" load_steps=3 format=3 uid="uid://c7iv535yq3fw3"]
 
-[ext_resource type="Script" path="res://scripts/directives/chance_map.gd" id="1_tiyxt"]
 [ext_resource type="PackedScene" uid="uid://bw0oifmlwiwog" path="res://scenes/directives/d25.tscn" id="2_lwqsg"]
 [ext_resource type="Script" path="res://scripts/directives/directive_resource.gd" id="3_u7fdl"]
 
@@ -9,7 +8,6 @@ script = ExtResource("3_u7fdl")
 directive_name = "Harmony"
 id = 25
 tier = 4
-description = "/+20% Speed (Both characters), Remove cooldown on switching AI modes, reduce AI chase radius by 50%, "
+description = "+10% Speed (Both characters), Remove cooldown on switching AI modes, reduce AI chase radius by 50%, "
 quote = ""
-increase_chances_of = Array[ExtResource("1_tiyxt")]([])
 scene_template = ExtResource("2_lwqsg")

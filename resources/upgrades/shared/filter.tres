@@ -14,8 +14,7 @@ unformated_descriptions = "15% Filter (AI will do 15% less damage to collab part
 45% Filter (AI will do 45% less damage to collab partners ) 
 60% Filter (AI will do 60% less damage to collab partners ) 
 75% Filter (AI will do 75% less damage to collab partners ) 
-90% Filter (AI will do 90% less damage to collab partners
-"
+90% Filter (AI will do 90% less damage to collab partners"
 upgrade_type = 0
 character = 4
 max_lvl = 6

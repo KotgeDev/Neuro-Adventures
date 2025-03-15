@@ -37,7 +37,7 @@ func setup() -> void:
 			"Health: [color=crimson]%.0f[/color] / %.0f\n" % [collab_partner.health, collab_partner.max_health] +
 			"Evasion: [color=aqua]%.0f%%[/color]  " % ((StatsManager.evasion + StatsManager.collab_evasion)*100) +
 			"Speed: [color=aqua]%.1f[/color]\n" % collab_partner.max_speed +
-			"Cooldown Reduction: [color=lime]%.0f%%[/color] (Max: %d%%)\n" % [(t_cd_red * 100), Globals.MAX_CD_RED]+
+			"Cooldown Reduction: [color=lime]%.0f%%[/color] (Max: %d%%)\n" % [(t_cd_red * 100), Globals.MAX_CD_RED*100]+
 			"Filter: [color=deepskyblue]%.0f%%[/color] (Max: 100%%)\n" % (StatsManager.filter * 100) +
 			"Collection Range Increase: [color=lime]+%.0f%%[/color]\n" % (StatsManager.cr_increase * 100) +
 			"Perc. ATK Increase: [color=violet]+%.0f%%[/color]\n" % (t_atk_inc*100) +
