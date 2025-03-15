@@ -17,6 +17,7 @@ collision_layer = 8
 collision_mask = 8
 motion_mode = 1
 script = ExtResource("1_e3rtq")
+BASE_PICKUP_RANGE = 34.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -13)

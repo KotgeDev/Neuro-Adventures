@@ -67,6 +67,7 @@ func add_upgrades_to_pool(upgrades: Array) -> void:
 
 func request_random_upgrades() -> void:
 	var pool = generate_pool()
+	print(pool.size())
 	var results = []
 
 	pool.shuffle()
@@ -84,7 +85,7 @@ func generate_pool() -> Array:
 		if upgrade.res.upgrade_type == UpgradeResource.UpgradeType.ENDLESS_UPGRADE:
 			pass
 		elif upgrade.res.max_lvl <= upgrade.lvl:
-			upgrade.res.weight = 0
+			upgrade.weight = 0
 
 	# Add endless upgrades if requirement met
 	if !endless_upgrades_added and StatsManager.lvl >= SOFT_LVL_CAP:
@@ -94,7 +95,7 @@ func generate_pool() -> Array:
 	# Generate pool
 	var pool = []
 	for upgrade in upgrades_pool:
-		for i in range(upgrade.res.weight):
+		for i in range(upgrade.weight):
 			pool.append(upgrade.res.upgrade_name)
 
 	return pool

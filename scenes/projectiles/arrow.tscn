@@ -20,7 +20,7 @@ collision_mask = 3
 owned_by = 2
 
 [node name="CollisionPolygon2D" parent="MultiHitbox" index="0"]
-polygon = PackedVector2Array(-11.5718, 23.2764, 10.4282, 23.2764, 10.4282, 22.2764, -11.5718, 22.2764)
+polygon = PackedVector2Array(-13.5718, 24.2764, 10.4282, 23.2764, 10.4282, 22.2764, -13.5718, 21.2764)
 
 [node name="SelfDestructTimer" type="Timer" parent="."]
 autostart = true

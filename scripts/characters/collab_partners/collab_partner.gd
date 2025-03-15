@@ -5,7 +5,7 @@ class_name CollabPartner
 #region CONSTANTS
 @export var BASE_MAX_SPEED := 65.0
 @export var BASE_MAX_HEALTH := 40.0
-@export var BASE_PICKUP_RANGE := 30.0
+@export var BASE_PICKUP_RANGE := 35.0
 @export var BASE_EVASION := 0.0
 const ACCELERATION := 500.0
 const FRICTION := 500.0
@@ -55,7 +55,6 @@ var hit_sfx: AudioStream = preload("res://assets/sfx/playerhurt.wav")
 func _ready() -> void:
 	connect_signals()
 	add_to_group(Globals.COLLAB_GROUP_NAME)
-	_on_powerup_get()
 
 func connect_signals() -> void:
 	Globals.damage_collab_partner.connect(_on_hurtbox_take_damage)
@@ -75,8 +74,7 @@ func _on_increase_speed(inc_perc) -> void:
 	max_speed = BASE_MAX_SPEED + BASE_MAX_SPEED * inc_perc
 
 func _on_increase_cr(inc_perc) -> void:
-	pickup_range = BASE_PICKUP_RANGE + BASE_PICKUP_RANGE * inc_perc
-	_on_powerup_get()
+	pickup_range = BASE_PICKUP_RANGE * (1 + inc_perc)
 
 ## Override function for use in specific collab partners
 func extended_signals() -> void:
@@ -126,9 +124,6 @@ func _on_collect_exp(value: int) -> void:
 
 func _on_add_upgrade(upgrade: Node) -> void:
 	add_child(upgrade)
-
-func _on_powerup_get():
-	pass
 
 func _on_exp_passive_changed(status: bool) -> void:
 	if status:

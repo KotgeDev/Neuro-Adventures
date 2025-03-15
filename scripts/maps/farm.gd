@@ -26,6 +26,9 @@ func spawn_enemies() -> void:
 	spawn_monitor(true)
 	await wave6()
 
+	# In case the player takes too long to defeat the boss
+	await wave5()
+
 func spawn_enemies_endless() -> void:
 	await get_tree().process_frame
 
@@ -43,12 +46,14 @@ func spawn_enemies_endless() -> void:
 	spawn_monitor(true)
 	await wave6()
 
-	var i = 1
+	var i = 0
 	while true:
+		i += 1
 		endless_stat_scale(i)
 		await wave5()
 		spawn_monitor()
 
+		i += 1
 		endless_stat_scale(i)
 		if i % 2 == 0:
 			await wave6()
@@ -105,19 +110,19 @@ func wave5() -> void:
 	await get_tree().create_timer(35, false).timeout
 	Globals.spawn.emit(knight_template, 250, 0.5)
 	await get_tree().create_timer(40, false).timeout
-	add_march(horizontal_march, soldier_template)
+	add_march(horizontal_march, knight_template)
 	await get_tree().create_timer(40, false).timeout
 	print_rich("[color=green]Wave 5 End[/color]")
 
 func wave6() -> void:
 	print_rich("[color=pink]Wave 6 Start[/color]")
-	Globals.spawn.emit(goblin_template, 125, 0.37, 2)
+	Globals.spawn.emit(goblin_template, 150, 0.31, 2)
 	await get_tree().create_timer(35, false).timeout
-	Globals.spawn.emit(kobold_template, 125, 0.37, 2)
+	Globals.spawn.emit(kobold_template, 150, 0.31, 2)
 	await get_tree().create_timer(35, false).timeout
-	Globals.spawn.emit(soldier_template, 125, 0.37)
+	Globals.spawn.emit(soldier_template, 150, 0.31)
 	await get_tree().create_timer(35, false).timeout
-	Globals.spawn.emit(knight_template, 250, 0.5)
+	Globals.spawn.emit(knight_template, 300, 0.36)
 	await get_tree().create_timer(40, false).timeout
 	print_rich("[color=crimson]Boss Spawned![/color]")
 	add_child(femboy_elf.instantiate())

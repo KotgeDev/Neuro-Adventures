@@ -16,7 +16,7 @@ extends Enemy
 #endregion
 
 #region STATS
-@onready var phase_thresholds := [max_health, max_health * 0.35]
+var phase_thresholds: Array
 var warning_time: float
 #endregion
 
@@ -28,13 +28,21 @@ var just_started_shooting := false
 
 var arrow_path_template = preload("res://scenes/projectiles/arrow_path.tscn")
 
+var phase: int :
+	set(value):
+		if phase != value:
+			phase = value
+			update_phase()
+
 func ready() -> void:
 	global_position = Vector2(randi_range(50, 2500), randi_range(50, 600))
 	$ContinuousHitbox.damage = damage
 	$ContinuousHitbox/HitTimer.wait_time = ATTACK_INTERVAL
-	update_phase(1)
 
-func update_phase(phase: int) -> void:
+	phase_thresholds = [max_health, max_health * 0.35]
+	phase = 1
+
+func update_phase() -> void:
 	match phase:
 		1:
 			pattern1_timer.start(2.0)
@@ -98,7 +106,7 @@ func _on_hurtbox_take_damage(dmg):
 		queue_free()
 
 	elif health <= phase_thresholds[1]:
-		update_phase(2)
+		phase = 2
 
 func _on_pathfind_timer_timeout():
 	make_path()

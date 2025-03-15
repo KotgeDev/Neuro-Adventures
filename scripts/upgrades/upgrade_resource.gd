@@ -8,7 +8,7 @@ enum UpgradeType {
 	DRONE_UPGRADE
 }
 
-var weight := 1
+var base_weight := 1
 var descriptions: PackedStringArray
 var stats := {}
 @export var upgrade_name: String
@@ -34,9 +34,9 @@ var stats := {}
 		upgrade_type = value
 		match upgrade_type:
 			UpgradeType.ENDLESS_UPGRADE:
-				weight = 2
+				base_weight = 2
 			_:
-				weight = 1
+				base_weight = 1
 
 @export var character: Globals.CharacterChoice
 @export var max_lvl: int

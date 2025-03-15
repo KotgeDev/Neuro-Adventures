@@ -121,8 +121,6 @@ position = Vector2(0, -21)
 [node name="Pattern1Timer" type="Timer" parent="."]
 
 [node name="Pattern2Timer" type="Timer" parent="."]
-wait_time = 2.0
-autostart = true
 
 [node name="Shadow" type="Sprite2D" parent="."]
 position = Vector2(-2, -25)

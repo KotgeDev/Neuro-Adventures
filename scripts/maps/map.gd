@@ -51,7 +51,7 @@ var b := -0.4
 var k := 46
 const EULER := 2.71828182845
 func endless_stat_scale(x: int) -> void:
-	enemy_stat_inc = 1 + k / (1 + pow(EULER, a + b * x))
+	enemy_stat_inc = k / (1 + pow(EULER, a + b * x))
 
 #endregion
 
@@ -98,10 +98,10 @@ func _ready() -> void:
 	if MapManager.map_mode == MapManager.MapMode.ENDLESS:
 		spawn_enemies_endless()
 	elif MapManager.map_mode == MapManager.MapMode.HARD:
-		enemy_stat_inc = 2.0
+		enemy_stat_inc = 1.0
 		spawn_enemies()
 	elif MapManager.map_mode == MapManager.MapMode.NORMAL:
-		enemy_stat_inc = 1.0
+		enemy_stat_inc = 0.0
 		spawn_enemies()
 
 func spawn_monitor(special := false) -> void:
