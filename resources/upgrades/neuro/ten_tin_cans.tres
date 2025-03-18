@@ -9,14 +9,15 @@ script = ExtResource("2_xpujw")
 upgrade_name = "Ten Tin Cans"
 icon = ExtResource("1_2u0ny")
 unformated_stats = "ATK: 1 > 3 
-Cooldown: 3s > 2.5s
+Cooldown: 1.7s > 0.7s
+Fire interval: 0.1s
 Bullets: 6 > 18 
 Pierce: 2 > 4"
 unformated_descriptions = "6 bullets are fired towards the cursor at an interval
--0.5s cooldown
 +2 bullets, +1 Pierce
 +2 base ATK
 +2 bullets, +1 Pierce
+-0.5s cooldown
 +8 bullets"
 upgrade_type = 0
 character = 0

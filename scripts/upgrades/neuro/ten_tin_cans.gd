@@ -6,6 +6,7 @@ var bullet_temp = preload("res://scenes/projectiles/bullet.tscn")
 @onready var fire_position: Marker2D = $FirePosition
 @onready var sfx: AudioStream = preload("res://assets/sfx/reallygunpull.wav")
 
+const FIRE_INTERVAL := 0.1
 var speed := 0.0
 var damage := 0.0
 var projectile_count := 0
@@ -15,8 +16,11 @@ var pierce := 0
 func get_data() -> String:
 	var data = (
 		get_atk_str(damage) + "\n" +
-		get_cd_str(timer.base_cooldown) + "\n" +
+		get_cd_str(timer.base_cooldown) +
+		" (for this upgrade, fire time is exluded in cooldown)" + "\n" +
+		get_f_general_str("Fire interval ", FIRE_INTERVAL) + "\n" +
 		get_general_str("Bullets", projectile_count) + "\n" +
+		get_f_general_str("Fire time ", FIRE_INTERVAL * projectile_count) + "\n" +
 		get_pierce_str(pierce)
 	)
 	return data
@@ -33,7 +37,7 @@ func setup(count: int, wait_time: float, _damage: float, _speed: float, _pierce:
 func sync_level() -> void:
 	match upgrade.lvl:
 		1:
-			setup(6, 3.0, 1.0, 250.0, 2)
+			setup(6, 1.7, 1.0, 250.0, 2)
 		2:
 			setup(8, 0, 0, 0, 3)
 		3:
@@ -41,7 +45,7 @@ func sync_level() -> void:
 		4:
 			setup(10, 0, 0, 0, 4)
 		5:
-			setup(0, 2.5, 0, 0, 0)
+			setup(0, 0.7, 0, 0, 0)
 		6:
 			setup(18, 0, 0, 0, 0)
 
@@ -62,6 +66,10 @@ func shoot() -> void:
 	AudioSystem.play_sfx(sfx, fire_position.global_position, 0.3)
 
 func _on_ai_cooldown_timer_timeout() -> void:
+	timer.stop()
+
 	for i in range(projectile_count):
 		shoot()
-		await get_tree().create_timer(0.1, false).timeout
+		await get_tree().create_timer(FIRE_INTERVAL, false).timeout
+
+	timer.start()

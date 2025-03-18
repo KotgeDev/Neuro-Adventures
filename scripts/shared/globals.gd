@@ -5,7 +5,7 @@ const AI_GROUP_NAME := "ai"
 const COLLAB_GROUP_NAME := "collab_partner"
 const DIR_MANAGER_GROUP_NAME := "dir_manager"
 const FLASH_TIME := 0.05
-const MAX_CD_RED := 0.6
+const MAX_CD_RED := 0.4
 
 var exp_tier_to_value = {
 	1: 1,

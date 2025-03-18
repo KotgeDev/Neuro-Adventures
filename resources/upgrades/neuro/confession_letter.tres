@@ -8,8 +8,8 @@
 script = ExtResource("1_fqkpa")
 upgrade_name = "Confession Letter"
 icon = ExtResource("1_2iw3q")
-unformated_stats = "AI ATK: +10% > +30%
-AI chase radius: -5 > -15"
+unformated_stats = "AI ATK: +5% > +30%
+AI chase radius: -2.5 > -15"
 unformated_descriptions = "+5% AI ATK, -2.5 AI chase radius 
 +5% AI ATK, -2.5 AI chase radius 
 +5% AI ATK, -2.5 AI chase radius 

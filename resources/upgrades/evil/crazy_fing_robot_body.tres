@@ -8,8 +8,8 @@
 script = ExtResource("3_4tg8s")
 upgrade_name = "Crazy Fing Robot Body"
 icon = ExtResource("1_wtrqd")
-unformated_stats = "AI ATK: +10% > +30%
-AI chase radius: -5 > -15"
+unformated_stats = "AI ATK: +5% > +30%
+AI chase radius: +2.5 > +15"
 unformated_descriptions = "+5% AI ATK, +2.5 AI chase radius 
 +5% AI ATK, +2.5 AI chase radius 
 +5% AI ATK, +2.5 AI chase radius 

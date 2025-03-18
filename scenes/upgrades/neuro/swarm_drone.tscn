@@ -55,7 +55,7 @@ radius = 7.0
 z_index = 1
 script = ExtResource("1_rgnl0")
 BASE_MAX_SPEED = 50.0
-ACCELERATION = 120.0
+ACCEL_RATIO = 4.0
 hitbox = NodePath("MultiHitbox")
 
 [node name="Compass" type="Marker2D" parent="."]

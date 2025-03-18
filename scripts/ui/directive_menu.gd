@@ -32,7 +32,7 @@ func _on_show_directive_choices(directives: Array, _special: bool, _reroll: bool
 
 	var cards = []
 
-	for i in range(3):
+	for i in range(directives.size()):
 		var card_duplicate = DirectiveManager.generate_card(directives[i], directive_card, h_container)
 		var button = card_duplicate.get_node("Card").get_node("Button")
 		button.pressed.connect(_on_directive_selected.bind(directives[i]))

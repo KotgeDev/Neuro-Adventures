@@ -2,13 +2,17 @@ extends UpgradeScene
 class_name Drone
 
 @export var BASE_MAX_SPEED := 40.0
-@export var ACCELERATION := 100.0
+@export var ACCEL_RATIO := 2.5
 @export var BASE_DAMAGE := 1.0
 
 @export var hitbox: MultiHitbox
 
+var acceleration: float
 var max_speed: float :
-	get() :
+	set(value):
+		max_speed = value
+		acceleration = max_speed * ACCEL_RATIO
+	get():
 		return max_speed * (1.0 + StatsManager.drone_spd_inc)
 
 func get_data() -> String:

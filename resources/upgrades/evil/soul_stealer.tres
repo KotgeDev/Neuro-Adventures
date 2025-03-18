@@ -8,7 +8,7 @@
 script = ExtResource("1_yfuv2")
 upgrade_name = "Soul Stealer"
 icon = ExtResource("1_bg5kw")
-unformated_stats = "Damage to HP: 1% > 5%"
+unformated_stats = "Damage to HP: 0.5% > 2%"
 unformated_descriptions = "Everytime Evil deals damage, she will gain 0.5% of the damage dealt as HP
 +0.5% damage dealt as HP
 +0.5% damage dealt as HP

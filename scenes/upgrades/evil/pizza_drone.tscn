@@ -21,7 +21,6 @@ radius = 13.0
 z_index = 1
 script = ExtResource("1_kdyqq")
 BASE_MAX_SPEED = 30.0
-ACCELERATION = 75.0
 BASE_DAMAGE = 2.0
 hitbox = NodePath("MultiHitbox")
 

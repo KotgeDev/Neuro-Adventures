@@ -1,6 +1,5 @@
-[gd_resource type="Resource" script_class="DirectiveResource" load_steps=4 format=3 uid="uid://c10qarukpl274"]
+[gd_resource type="Resource" script_class="DirectiveResource" load_steps=3 format=3 uid="uid://c10qarukpl274"]
 
-[ext_resource type="Script" path="res://scripts/directives/chance_map.gd" id="1_s35b4"]
 [ext_resource type="PackedScene" uid="uid://rfisdwv1npll" path="res://scenes/directives/d24.tscn" id="2_q40dv"]
 [ext_resource type="Script" path="res://scripts/directives/directive_resource.gd" id="3_x3thh"]
 
@@ -9,7 +8,6 @@ script = ExtResource("3_x3thh")
 directive_name = "Insurgency"
 id = 24
 tier = 4
-description = "Increase AI Damage Reduction by 70% of the Filter. The Filter will no longer work and enemies will now target the collab partner. "
+description = "Increase AI Damage Reduction by 100% of the Filter. The Filter will no longer work and enemies will now target the collab partner. "
 quote = ""
-increase_chances_of = Array[ExtResource("1_s35b4")]([])
 scene_template = ExtResource("2_q40dv")

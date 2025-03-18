@@ -74,16 +74,20 @@ offset_bottom = 200.0
 
 [node name="LogName" type="Label" parent="DevLog"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "v1.0 DevLog
+theme_override_font_sizes/font_size = 24
+text = "v1.5 Directives Update
 "
 
 [node name="Text" type="RichTextLabel" parent="DevLog"]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 2
-theme = ExtResource("4_burmi")
-text = "Neuro Adventures! v1.0 has finally been released! All of the major features that I wish to add to the game have been added at this point, however, this is not the end! I plan on continuing the development of this game, and possibly adding more characters. The two characters I have planned for now are Evil-Neuro (New AI) and Annytf (New Collab Partner). I also plan on making some alternative outfits for the characters! So stay tuned!"
+theme_override_font_sizes/normal_font_size = 18
+text = "Neuro Adventures 1.5 has been released! Thank you for your continued support.
+Featured in this update: 
+* Directives: These are cards that can provide various buffs for your characters. 
+* New upgrades: Pipes, Harpoons, Lava Lamp, and Ten Tin Cans have been added. 
+* Stats Menu: You now have a detailed view of all of your important stats. Available in the pause menu."
 fit_content = true
 selection_enabled = true
 

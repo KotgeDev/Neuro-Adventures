@@ -5,10 +5,12 @@ var current_dmg_red_inc := 0.0 :
 		# Reset
 		StatsManager.ai_dmg_red -= current_dmg_red_inc
 		# Update
+		print("Setting DMG RED to: ", value)
 		current_dmg_red_inc = value
 		StatsManager.ai_dmg_red += value
 
 func _ready() -> void:
+	print("RUNNING INSURGENCY")
 	StatsManager.insurgency = true
 	StatsManager.filter_changed.connect(_on_filter_changed)
 	current_dmg_red_inc = filter_to_dmg_red(StatsManager.filter)
@@ -21,4 +23,4 @@ func _exit_tree() -> void:
 	StatsManager.ai_dmg_red -= current_dmg_red_inc
 
 func filter_to_dmg_red(filter: float) -> float:
-	return filter * 0.7
+	return filter

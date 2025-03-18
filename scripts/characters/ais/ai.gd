@@ -122,7 +122,7 @@ func _on_hurtbox_take_damage(damage: float, shake := true):
 		character_animation.show_evasion()
 		return
 
-	var final_damage = damage * (1.0 - StatsManager.ai_dmg_red)
+	var final_damage = damage * (1.0 - min(1.0, StatsManager.ai_dmg_red))
 
 	if final_damage <= 0.0:
 		return

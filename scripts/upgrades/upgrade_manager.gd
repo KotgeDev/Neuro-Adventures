@@ -67,7 +67,6 @@ func add_upgrades_to_pool(upgrades: Array) -> void:
 
 func request_random_upgrades() -> void:
 	var pool = generate_pool()
-	print(pool.size())
 	var results = []
 
 	pool.shuffle()

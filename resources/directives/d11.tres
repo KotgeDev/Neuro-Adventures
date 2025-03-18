@@ -8,6 +8,6 @@ script = ExtResource("3_ebrhw")
 directive_name = "Latency II"
 id = 11
 tier = 2
-description = "-10% Cooldown (for both characters)"
+description = "-7% Cooldown (for both characters)"
 quote = "Latency :Schizo:"
 scene_template = ExtResource("2_qciwa")

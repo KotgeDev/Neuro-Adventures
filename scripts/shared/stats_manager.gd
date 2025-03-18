@@ -115,7 +115,10 @@ var atk_mult: float
 var ai_atk_mult: float
 var collab_atk_mult: float
 # Damage Reduction
-var ai_dmg_red: float
+var ai_dmg_red: float :
+	set(value):
+		ai_dmg_red = value
+		print(value)
 # Insurgency
 var insurgency : bool :
 	set(value):

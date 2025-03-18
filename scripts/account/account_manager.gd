@@ -2,7 +2,7 @@ extends Node
 
 const TIMEOUT := 10.0
 ## Blocks scores from being sent
-var TEST_VERSION := true
+var TEST_VERSION := false
 
 # Signals to connect
 signal request_log_in

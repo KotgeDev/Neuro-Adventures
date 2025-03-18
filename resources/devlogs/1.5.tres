@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DevLogEntry" load_steps=2 format=3 uid="uid://d15isps3c3du4"]
+
+[ext_resource type="Script" path="res://scripts/devlogs/dev_log_entry.gd" id="1_prj44"]
+
+[resource]
+script = ExtResource("1_prj44")
+version = "1.5"
+title = "Directives"
+devlog = "Neuro Adventures 1.5 has been released! Thank you for your continued support.
+Featured in this update: 
+* Directives:  These are cards that can provide various buffs for your characters. 
+* New upgrades: Pipes, Harpoons, Lava Lamp, and Ten Tin Cans have been added. 
+* Stats Menu: You now have a detailed view of all of your important stats. Available in the pause menu. "

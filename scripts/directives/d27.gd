@@ -20,4 +20,4 @@ func _exit_tree() -> void:
 	StatsManager.cd_reduction -= current_cd_dec
 
 func cr_to_cd(cr_inc: float) -> float:
-	return cr_inc * 0.44
+	return cr_inc * 0.25

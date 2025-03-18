@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="DirectiveResource" load_steps=3 format=3 uid="uid://dp1y28y8nce1v"]
 
-[ext_resource type="PackedScene" uid="uid://rnmlor8oaxev" path="res://scenes/directives/d10.tscn" id="2_lhwsf"]
+[ext_resource type="PackedScene" uid="uid://cx07s1vmxpf2t" path="res://scenes/directives/d18.tscn" id="1_gc8js"]
 [ext_resource type="Script" path="res://scripts/directives/directive_resource.gd" id="3_uh81u"]
 
 [resource]
 script = ExtResource("3_uh81u")
 directive_name = "Defense"
-id = 10
+id = 18
 tier = 2
-description = "+10% AI Damage Reduction"
+description = "+20% AI Damage Reduction"
 quote = ""
-scene_template = ExtResource("2_lhwsf")
+scene_template = ExtResource("1_gc8js")

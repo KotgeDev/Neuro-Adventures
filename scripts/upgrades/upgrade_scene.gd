@@ -56,6 +56,11 @@ func get_general_str(_name: String, value: int) -> String:
 		"%s: %d" % [_name, value]
 	)
 
+func get_f_general_str(_name: String, value: float) -> String:
+	return (
+		"%s: %.2fs" % [_name, value]
+	)
+
 func get_time_str(_name: String, value: int) -> String:
 	return (
 		"%s: %ds" % [_name, value]

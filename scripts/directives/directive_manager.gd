@@ -67,8 +67,11 @@ func select_random(count: int, special_only: bool) -> Array:
 	pool.shuffle()
 
 	for i in range(count):
-		results.append(find_directive(pool[i]))
-		pool = pool.filter(func (x): return x != pool[i])
+		results.append(find_directive(pool[0]))
+		pool = pool.filter(func (x): return x != pool[0])
+
+		if pool.size() < 1:
+			return results
 
 	return results
 

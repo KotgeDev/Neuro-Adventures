@@ -1,7 +1,10 @@
 extends Resource
 class_name DirectiveResource
 
-var weight: int
+var weight: int :
+	set(value):
+		assert(!weight, "Weight can only be set once")
+		weight = value
 @export var directive_name: String
 @export var id: int
 @export var tier: int :

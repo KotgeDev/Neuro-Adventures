@@ -15,7 +15,7 @@ const FRICTION := 500.0
 @onready var character_animation = $CharacterAnimation
 #endregion
 
-#region BASE_VALUES
+#region VALUES
 @onready var max_speed: float = BASE_MAX_SPEED :
 	set(value):
 		max_speed = value
@@ -23,14 +23,7 @@ const FRICTION := 500.0
 @onready var max_health: float = BASE_MAX_HEALTH
 @onready var health: float = max_health
 @onready var pickup_range: float = BASE_PICKUP_RANGE
-#endregion
-
-#region OTHER
-var pick_range_lerp = 0.0
-var circle_occ = 0.7
-var circle_work = false
 var damaged_atleast_once := false
-#endregion
 
 #region LEVEL
 signal lvl_updated
