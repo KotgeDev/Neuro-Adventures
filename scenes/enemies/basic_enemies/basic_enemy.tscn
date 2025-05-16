@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://cx1nd5x2s6vyt"]
 
-[ext_resource type="Script" path="res://scripts/enemies/basic_enemies/basic_enemy.gd" id="1_eq34g"]
+[ext_resource type="Script" uid="uid://x4y7j2s80k8" path="res://scripts/enemies/basic_enemies/basic_enemy.gd" id="1_eq34g"]
 [ext_resource type="Material" uid="uid://c13ui871eji3r" path="res://assets/shaders/flash.tres" id="2_1p3gf"]
 [ext_resource type="Texture2D" uid="uid://yhqeksy2iitt" path="res://assets/shared/intoxicated.png" id="2_7ciy8"]
 [ext_resource type="PackedScene" uid="uid://cpp0tc7uqrv4" path="res://scenes/shared/hurtbox.tscn" id="3_s745q"]
-[ext_resource type="Script" path="res://scripts/shared/shadow.gd" id="4_c6u8k"]
+[ext_resource type="Script" uid="uid://c3jrgledbij0h" path="res://scripts/shared/shadow.gd" id="4_c6u8k"]
 [ext_resource type="PackedScene" uid="uid://mjwkfxpnwct6" path="res://scenes/shared/continuous_hitbox.tscn" id="4_jxd8c"]
 
 [sub_resource type="Animation" id="Animation_6cr28"]
@@ -41,8 +41,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pvp54"]
 _data = {
-"RESET": SubResource("Animation_6cr28"),
-"stunned": SubResource("Animation_nkuug")
+&"RESET": SubResource("Animation_6cr28"),
+&"stunned": SubResource("Animation_nkuug")
 }
 
 [node name="BasicEnemy" type="Node2D"]

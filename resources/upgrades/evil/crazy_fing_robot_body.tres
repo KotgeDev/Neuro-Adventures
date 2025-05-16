@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dolhtiscyapu4" path="res://assets/upgrades/icons/crazy_fing_body_icon.png" id="1_wtrqd"]
 [ext_resource type="PackedScene" uid="uid://3s3w2uwispaq" path="res://scenes/upgrades/evil/crazy_fing_robot_body.tscn" id="2_5sjem"]
-[ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="3_4tg8s"]
+[ext_resource type="Script" uid="uid://c5fmfwspjm7kj" path="res://scripts/upgrades/upgrade_resource.gd" id="3_4tg8s"]
 
 [resource]
 script = ExtResource("3_4tg8s")

@@ -1,8 +1,7 @@
-[gd_resource type="Resource" script_class="DirectiveResource" load_steps=4 format=3 uid="uid://cu50dgm5408fi"]
+[gd_resource type="Resource" script_class="DirectiveResource" load_steps=3 format=3 uid="uid://cu50dgm5408fi"]
 
-[ext_resource type="Script" path="res://scripts/directives/chance_map.gd" id="1_ovnir"]
 [ext_resource type="PackedScene" uid="uid://rhm8sn07vmxp" path="res://scenes/directives/d15.tscn" id="2_fsskv"]
-[ext_resource type="Script" path="res://scripts/directives/directive_resource.gd" id="3_eaxic"]
+[ext_resource type="Script" uid="uid://bfr5ow08aoa80" path="res://scripts/directives/directive_resource.gd" id="3_eaxic"]
 
 [resource]
 script = ExtResource("3_eaxic")
@@ -11,5 +10,4 @@ id = 15
 tier = 2
 description = "+16% Max HP (for both characters) "
 quote = ""
-increase_chances_of = Array[ExtResource("1_ovnir")]([])
 scene_template = ExtResource("2_fsskv")

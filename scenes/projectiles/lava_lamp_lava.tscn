@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://c0vv6qljmk4cc"]
 
 [ext_resource type="Texture2D" uid="uid://5p1neu5bmyyh" path="res://assets/projectiles/lava_damage_base.png" id="1_awsn1"]
-[ext_resource type="Script" path="res://scripts/projectiles/lava_lamp_lava.gd" id="1_sxxlk"]
+[ext_resource type="Script" uid="uid://dxged0s3o44yn" path="res://scripts/projectiles/lava_lamp_lava.gd" id="1_sxxlk"]
 [ext_resource type="Texture2D" uid="uid://gtloo180vr6e" path="res://assets/projectiles/lava_lamp_warning.png" id="3_g4dpx"]
 [ext_resource type="PackedScene" uid="uid://mjwkfxpnwct6" path="res://scenes/shared/continuous_hitbox.tscn" id="4_1i13j"]
 [ext_resource type="Material" uid="uid://blrchtkictlh1" path="res://assets/shaders/lava_lamp.tres" id="5_xguyh"]
@@ -48,8 +48,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2isqs"]
 _data = {
-"RESET": SubResource("Animation_wx3qy"),
-"warning": SubResource("Animation_m4ull")
+&"RESET": SubResource("Animation_wx3qy"),
+&"warning": SubResource("Animation_m4ull")
 }
 
 [node name="LavaLampLava" type="Node2D"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://dt5l84t36skke"]
 
 [ext_resource type="Texture2D" uid="uid://dvrqjmmrk8fin" path="res://assets/interactive_objects/4090_sheet.png" id="1_g4bkg"]
-[ext_resource type="Script" path="res://scripts/interactive_objects/ntx_4090.gd" id="1_sp7f2"]
+[ext_resource type="Script" uid="uid://i6rs1p2sjimj" path="res://scripts/interactive_objects/ntx_4090.gd" id="1_sp7f2"]
 [ext_resource type="Material" uid="uid://csxlxcwxw3h3v" path="res://assets/shaders/rainbow.tres" id="3_8h8fn"]
 [ext_resource type="Texture2D" uid="uid://c2cg4c2ybyfqm" path="res://assets/interactive_objects/4090_highlight_sheet.png" id="3_lna8a"]
 
@@ -42,8 +42,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qpsi1"]
 _data = {
-"RESET": SubResource("Animation_dg2bc"),
-"fan_spin": SubResource("Animation_loqgx")
+&"RESET": SubResource("Animation_dg2bc"),
+&"fan_spin": SubResource("Animation_loqgx")
 }
 
 [sub_resource type="Animation" id="Animation_7fn3p"]
@@ -80,8 +80,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uwjmf"]
 _data = {
-"RESET": SubResource("Animation_7fn3p"),
-"effect": SubResource("Animation_tsuxx")
+&"RESET": SubResource("Animation_7fn3p"),
+&"effect": SubResource("Animation_tsuxx")
 }
 
 [node name="NTX4090" type="Node2D"]

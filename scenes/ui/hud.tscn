@@ -1,6 +1,6 @@
 [gd_scene load_steps=26 format=3 uid="uid://dqy8eus7xktlq"]
 
-[ext_resource type="Script" path="res://scripts/ui/hud.gd" id="1_jg8iq"]
+[ext_resource type="Script" uid="uid://82btr0eg8b3q" path="res://scripts/ui/hud.gd" id="1_jg8iq"]
 [ext_resource type="Texture2D" uid="uid://dnl8tal30m0jt" path="res://assets/characters/ais/neuro_icon.png" id="2_3ldxe"]
 [ext_resource type="Texture2D" uid="uid://cdfsvbsr2p0cs" path="res://assets/ui/ai_health_bar.png" id="3_h2em7"]
 [ext_resource type="Texture2D" uid="uid://crvnx5i06xcb6" path="res://assets/characters/collab_partners/vedal_icon.png" id="3_s2mue"]
@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cjb1btwxi635u" path="res://assets/ui/collab_partner_bar.png" id="6_uyxdy"]
 [ext_resource type="Texture2D" uid="uid://chm3hdjvrvpig" path="res://assets/ui/exp_bar_under.png" id="6_v5tns"]
 [ext_resource type="Texture2D" uid="uid://bbm64wjax8o6h" path="res://assets/ui/exp_bar.png" id="7_0d2lw"]
-[ext_resource type="Script" path="res://scripts/ui/switch_sign.gd" id="8_uoevg"]
+[ext_resource type="Script" uid="uid://1fkevjgqoi0u" path="res://scripts/ui/switch_sign.gd" id="8_uoevg"]
 [ext_resource type="Texture2D" uid="uid://cyoxbibstvfo0" path="res://assets/characters/switch_follow.png" id="9_3uhpn"]
 [ext_resource type="Texture2D" uid="uid://bddi1an6eb8jt" path="res://assets/characters/switch_loading_sheet.png" id="9_rqnyn"]
 [ext_resource type="Texture2D" uid="uid://dpp2axtcrxlj4" path="res://assets/characters/switch_stop.png" id="10_mrocx"]
@@ -210,10 +210,10 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1ceh2"]
 _data = {
-"RESET": SubResource("Animation_gmo1s"),
-"follow": SubResource("Animation_j8n00"),
-"loading": SubResource("Animation_o12nq"),
-"stop": SubResource("Animation_mc1q5")
+&"RESET": SubResource("Animation_gmo1s"),
+&"follow": SubResource("Animation_j8n00"),
+&"loading": SubResource("Animation_o12nq"),
+&"stop": SubResource("Animation_mc1q5")
 }
 
 [node name="HUD" type="CanvasLayer"]

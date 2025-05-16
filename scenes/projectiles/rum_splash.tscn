@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://cnulrfw158ihj"]
 
-[ext_resource type="Script" path="res://scripts/projectiles/rum_splash.gd" id="1_v12p4"]
+[ext_resource type="Script" uid="uid://dkjjctxs51nib" path="res://scripts/projectiles/rum_splash.gd" id="1_v12p4"]
 [ext_resource type="PackedScene" uid="uid://mjwkfxpnwct6" path="res://scenes/shared/continuous_hitbox.tscn" id="2_m0nw2"]
 [ext_resource type="Texture2D" uid="uid://bosclt0ixb4eg" path="res://assets/projectiles/rum_splash_sheet.png" id="3_g20vf"]
 
@@ -57,9 +57,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bnu6f"]
 _data = {
-"RESET": SubResource("Animation_qomwi"),
-"intro": SubResource("Animation_gq5ef"),
-"sizzle": SubResource("Animation_nr47y")
+&"RESET": SubResource("Animation_qomwi"),
+&"intro": SubResource("Animation_gq5ef"),
+&"sizzle": SubResource("Animation_nr47y")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pcwqn"]

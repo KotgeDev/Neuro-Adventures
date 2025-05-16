@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="DirectiveDB" load_steps=31 format=3 uid="uid://d2id6cg6j7o7v"]
 
-[ext_resource type="Script" path="res://scripts/directives/directive_resource.gd" id="1_qxcw5"]
+[ext_resource type="Script" uid="uid://bfr5ow08aoa80" path="res://scripts/directives/directive_resource.gd" id="1_qxcw5"]
 [ext_resource type="Resource" uid="uid://cy35lxwlpgq1u" path="res://resources/directives/d2.tres" id="2_5ved2"]
-[ext_resource type="Script" path="res://scripts/directives/directives_db.gd" id="2_drxfq"]
+[ext_resource type="Script" uid="uid://clo6wojb0tfmq" path="res://scripts/directives/directives_db.gd" id="2_drxfq"]
 [ext_resource type="Resource" uid="uid://q1h6an6gbmb4" path="res://resources/directives/d3.tres" id="3_wtsgh"]
 [ext_resource type="Resource" uid="uid://3aj6i5itx5q1" path="res://resources/directives/d4.tres" id="4_7xdis"]
 [ext_resource type="Resource" uid="uid://w0hkjavtu32u" path="res://resources/directives/d5.tres" id="5_ne4bd"]

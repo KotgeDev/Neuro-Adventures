@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bsgm33d2786qp"]
 
-[ext_resource type="Script" path="res://scripts/projectiles/arrow_path.gd" id="1_lrbdk"]
+[ext_resource type="Script" uid="uid://4pnauiiswnhx" path="res://scripts/projectiles/arrow_path.gd" id="1_lrbdk"]
 
 [sub_resource type="Animation" id="Animation_6wcj8"]
 length = 0.001
@@ -35,8 +35,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ilrvl"]
 _data = {
-"RESET": SubResource("Animation_6wcj8"),
-"pulse": SubResource("Animation_k57ji")
+&"RESET": SubResource("Animation_6wcj8"),
+&"pulse": SubResource("Animation_k57ji")
 }
 
 [node name="ArrowPath" type="Node2D"]

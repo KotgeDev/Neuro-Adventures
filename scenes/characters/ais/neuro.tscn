@@ -2,13 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://y36yytk34v0i" path="res://scenes/characters/ais/ai.tscn" id="1_jb3ag"]
 [ext_resource type="Texture2D" uid="uid://bt7f65bo75tpd" path="res://assets/shared/shadow_s.png" id="2_7mhap"]
-[ext_resource type="Shader" path="res://assets/shaders/flash.gdshader" id="2_h6upj"]
-[ext_resource type="Script" path="res://scripts/shared/shadow.gd" id="3_cimke"]
+[ext_resource type="Shader" uid="uid://cvbxmhb4epspt" path="res://assets/shaders/flash.gdshader" id="2_h6upj"]
+[ext_resource type="Script" uid="uid://c3jrgledbij0h" path="res://scripts/shared/shadow.gd" id="3_cimke"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b2ge8"]
 resource_local_to_scene = true
 shader = ExtResource("2_h6upj")
-shader_parameter/white = null
+shader_parameter/white = false
 
 [node name="Neuro" instance=ExtResource("1_jb3ag")]
 

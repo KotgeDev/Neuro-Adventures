@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b4o81ly574ieu" path="res://assets/upgrades/icons/ten_tin_cans_icon.png" id="1_2u0ny"]
 [ext_resource type="PackedScene" uid="uid://cxfsjwfmjkmj" path="res://scenes/upgrades/neuro/ten_tin_cans.tscn" id="2_6u6cm"]
-[ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="2_xpujw"]
+[ext_resource type="Script" uid="uid://c5fmfwspjm7kj" path="res://scripts/upgrades/upgrade_resource.gd" id="2_xpujw"]
 
 [resource]
 script = ExtResource("2_xpujw")

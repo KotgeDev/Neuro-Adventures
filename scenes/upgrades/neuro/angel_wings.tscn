@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://d3cpr42ek57qj"]
 
-[ext_resource type="Script" path="res://scripts/upgrades/neuro/angel_wings.gd" id="1_3u84a"]
+[ext_resource type="Script" uid="uid://cx0wvux1ekx2p" path="res://scripts/upgrades/neuro/angel_wings.gd" id="1_3u84a"]
 [ext_resource type="PackedScene" uid="uid://b5326ppiejrxm" path="res://scenes/shared/enemy_search_area.tscn" id="2_1fdgp"]
-[ext_resource type="Script" path="res://scripts/shared/ai_cooldown_timer.gd" id="3_iaj1s"]
+[ext_resource type="Script" uid="uid://bxw2fv1p15ncf" path="res://scripts/shared/ai_cooldown_timer.gd" id="3_iaj1s"]
 
 [node name="AngelWings" type="Node2D"]
 script = ExtResource("1_3u84a")

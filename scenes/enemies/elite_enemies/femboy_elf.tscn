@@ -1,13 +1,13 @@
 [gd_scene load_steps=16 format=3 uid="uid://q4do4wgq6uk8"]
 
-[ext_resource type="Script" path="res://scripts/enemies/elite_enemies/femboy_elf.gd" id="1_kgnvo"]
+[ext_resource type="Script" uid="uid://c6jif77arvdun" path="res://scripts/enemies/elite_enemies/femboy_elf.gd" id="1_kgnvo"]
 [ext_resource type="Material" uid="uid://c13ui871eji3r" path="res://assets/shaders/flash.tres" id="2_50dd6"]
 [ext_resource type="Resource" uid="uid://bae5b2w8gb0ek" path="res://resources/enemies/elite_enemies/femboy_elf.tres" id="2_62rmv"]
 [ext_resource type="Texture2D" uid="uid://bfvq0ycqm6028" path="res://assets/enemies/elf_archer_boss_sheet.png" id="3_tal4j"]
 [ext_resource type="PackedScene" uid="uid://cpp0tc7uqrv4" path="res://scenes/shared/hurtbox.tscn" id="4_co51d"]
 [ext_resource type="PackedScene" uid="uid://mjwkfxpnwct6" path="res://scenes/shared/continuous_hitbox.tscn" id="5_eixao"]
 [ext_resource type="Texture2D" uid="uid://bpxvb4opdk1xy" path="res://assets/shared/shadow_m.png" id="6_f3q0f"]
-[ext_resource type="Script" path="res://scripts/shared/shadow.gd" id="7_sag14"]
+[ext_resource type="Script" uid="uid://c3jrgledbij0h" path="res://scripts/shared/shadow.gd" id="7_sag14"]
 [ext_resource type="Texture2D" uid="uid://ddfk61tmlrep3" path="res://assets/enemies/elf_archer_boss_health_under.png" id="8_a42xe"]
 [ext_resource type="Texture2D" uid="uid://dgc7bsnkobfcd" path="res://assets/enemies/elf_archer_boss_health_over.png" id="9_n022p"]
 
@@ -66,9 +66,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7ldc1"]
 _data = {
-"RESET": SubResource("Animation_bijx6"),
-"running": SubResource("Animation_ykwb6"),
-"shooting": SubResource("Animation_b4w2n")
+&"RESET": SubResource("Animation_bijx6"),
+&"running": SubResource("Animation_ykwb6"),
+&"shooting": SubResource("Animation_b4w2n")
 }
 
 [node name="FemboyElf" type="Node2D"]

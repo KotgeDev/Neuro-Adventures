@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="UpgradeResource" load_steps=4 format=3 uid="uid://4m5usheld4ap"]
 
-[ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="1_0j3wi"]
+[ext_resource type="Script" uid="uid://c5fmfwspjm7kj" path="res://scripts/upgrades/upgrade_resource.gd" id="1_0j3wi"]
 [ext_resource type="Texture2D" uid="uid://5puukpokmdpd" path="res://assets/upgrades/icons/inuke6000_icon.png" id="1_6tmaa"]
 [ext_resource type="PackedScene" uid="uid://jcx54cxn86yc" path="res://scenes/upgrades/neuro/inuke6000.tscn" id="2_jgmaf"]
 

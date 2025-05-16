@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dd3l4otjd8b3x"]
 
-[ext_resource type="Script" path="res://scripts/ui/pause_manager/pause_manager.gd" id="1_oau80"]
+[ext_resource type="Script" uid="uid://3u178cnfj7qq" path="res://scripts/ui/pause_manager/pause_manager.gd" id="1_oau80"]
 [ext_resource type="PackedScene" uid="uid://b6j6utnkndtjo" path="res://scenes/settings/settings_menu.tscn" id="2_72dci"]
-[ext_resource type="Script" path="res://scripts/ui/button_with_sfx.gd" id="2_di652"]
+[ext_resource type="Script" uid="uid://drgfsfpbsr0r5" path="res://scripts/ui/button_with_sfx.gd" id="2_di652"]
 [ext_resource type="PackedScene" uid="uid://djb6su61nnipl" path="res://scenes/ui/pause_manager/stats_menu.tscn" id="4_dhg8p"]
 
 [node name="PauseManager" type="Control"]

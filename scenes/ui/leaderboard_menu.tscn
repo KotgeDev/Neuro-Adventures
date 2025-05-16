@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://cwiayaenixuu8" path="res://assets/ui/main_bg_no_title.png" id="1_5my4x"]
 [ext_resource type="PackedScene" uid="uid://bqppr7oknbtc6" path="res://scenes/ui/return_button.tscn" id="1_7efrv"]
-[ext_resource type="Script" path="res://scripts/ui/leaderboard_menu.gd" id="1_rpiao"]
+[ext_resource type="Script" uid="uid://bxc7qe6hxldr3" path="res://scripts/ui/leaderboard_menu.gd" id="1_rpiao"]
 [ext_resource type="StyleBox" uid="uid://dyugx6j82l5lv" path="res://assets/themes/gray_button/gray_button.tres" id="3_5ch3v"]
-[ext_resource type="Script" path="res://scripts/ui/button_with_sfx.gd" id="4_2538o"]
+[ext_resource type="Script" uid="uid://drgfsfpbsr0r5" path="res://scripts/ui/button_with_sfx.gd" id="4_2538o"]
 [ext_resource type="StyleBox" uid="uid://5da1tota8pd3" path="res://assets/themes/gray_button/gray_button_hover.tres" id="4_s7bd6"]
 [ext_resource type="StyleBox" uid="uid://doal46f0dfi43" path="res://assets/themes/transparent_button/transparent_button.tres" id="6_6hl1k"]
 [ext_resource type="Texture2D" uid="uid://70qmlybj7f40" path="res://assets/ui/checkbox_checked.png" id="6_47pja"]

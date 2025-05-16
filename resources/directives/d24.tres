@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="DirectiveResource" load_steps=3 format=3 uid="uid://c10qarukpl274"]
 
 [ext_resource type="PackedScene" uid="uid://rfisdwv1npll" path="res://scenes/directives/d24.tscn" id="2_q40dv"]
-[ext_resource type="Script" path="res://scripts/directives/directive_resource.gd" id="3_x3thh"]
+[ext_resource type="Script" uid="uid://bfr5ow08aoa80" path="res://scripts/directives/directive_resource.gd" id="3_x3thh"]
 
 [resource]
 script = ExtResource("3_x3thh")

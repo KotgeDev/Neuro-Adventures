@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://duk3c2w31y5sg"]
 
-[ext_resource type="Script" path="res://scripts/ui/victory_display.gd" id="1_xsmf0"]
+[ext_resource type="Script" uid="uid://bp06gnnrxnaey" path="res://scripts/ui/victory_display.gd" id="1_xsmf0"]
 [ext_resource type="Texture2D" uid="uid://cmy5gqft564fw" path="res://assets/ui/placeholder_neuro.png" id="2_1qlfj"]
 [ext_resource type="Material" uid="uid://csxlxcwxw3h3v" path="res://assets/shaders/rainbow.tres" id="2_lhphv"]
 
@@ -180,8 +180,8 @@ tracks/6/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3xdai"]
 _data = {
-"RESET": SubResource("Animation_3isr0"),
-"anim": SubResource("Animation_dflhe")
+&"RESET": SubResource("Animation_3isr0"),
+&"anim": SubResource("Animation_dflhe")
 }
 
 [node name="VictoryDisplay" type="Control"]

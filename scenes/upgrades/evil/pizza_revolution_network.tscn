@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bflpavn8txplw"]
 
-[ext_resource type="Script" path="res://scripts/upgrades/evil/pizza_revolution_network.gd" id="1_usenc"]
+[ext_resource type="Script" uid="uid://divbbgu31s5cb" path="res://scripts/upgrades/evil/pizza_revolution_network.gd" id="1_usenc"]
 
 [node name="PizzaControlSystem" type="Node2D"]
 script = ExtResource("1_usenc")

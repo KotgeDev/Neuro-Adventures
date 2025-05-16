@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://btv6nlskxksif"]
 
-[ext_resource type="Script" path="res://scripts/collectibles/exp.gd" id="1_4tqwo"]
+[ext_resource type="Script" uid="uid://f65hlt3w1grb" path="res://scripts/collectibles/exp.gd" id="1_4tqwo"]
 [ext_resource type="Texture2D" uid="uid://l4lmw0wc3b0g" path="res://assets/collectibles/exp.png" id="2_h1jig"]
 
 [node name="Exp" type="Node2D"]

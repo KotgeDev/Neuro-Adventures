@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="UpgradeDB" load_steps=6 format=3 uid="uid://crf0ll0iyi4jb"]
 
-[ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="1_88vas"]
-[ext_resource type="Script" path="res://scripts/upgrades/upgrade_db.gd" id="1_a6w0p"]
+[ext_resource type="Script" uid="uid://c5fmfwspjm7kj" path="res://scripts/upgrades/upgrade_resource.gd" id="1_88vas"]
+[ext_resource type="Script" uid="uid://dv4weuehus3fb" path="res://scripts/upgrades/upgrade_db.gd" id="1_a6w0p"]
 [ext_resource type="Resource" uid="uid://pw8raqq4dj8m" path="res://resources/upgrades/anny/orange.tres" id="1_mxq0s"]
 [ext_resource type="Resource" uid="uid://b44uhxjbskyxb" path="res://resources/upgrades/anny/portal.tres" id="2_1yp1v"]
 [ext_resource type="Resource" uid="uid://dhy31s7cgir43" path="res://resources/upgrades/anny/star.tres" id="3_d481y"]

@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://csxlxcwxw3h3v"]
 
-[ext_resource type="Shader" path="res://assets/shaders/rainbow.gdshader" id="1_wtd6t"]
+[ext_resource type="Shader" uid="uid://ctdq3p85ff7ec" path="res://assets/shaders/rainbow.gdshader" id="1_wtd6t"]
 
 [resource]
 resource_local_to_scene = true

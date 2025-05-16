@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://jt51ntggwgnw"]
 
 [ext_resource type="PackedScene" uid="uid://cx1nd5x2s6vyt" path="res://scenes/enemies/basic_enemies/basic_enemy.tscn" id="1_pihnb"]
-[ext_resource type="Shader" path="res://assets/shaders/flash.gdshader" id="2_8bnbr"]
+[ext_resource type="Shader" uid="uid://cvbxmhb4epspt" path="res://assets/shaders/flash.gdshader" id="2_8bnbr"]
 [ext_resource type="Texture2D" uid="uid://bytkmw7atwqj3" path="res://assets/enemies/soldier_sheet.png" id="2_c7i3u"]
 [ext_resource type="Resource" uid="uid://0rmwlqygnn8s" path="res://resources/enemies/basic_enemies/soldier.tres" id="2_ldhwp"]
 [ext_resource type="Texture2D" uid="uid://bpxvb4opdk1xy" path="res://assets/shared/shadow_m.png" id="3_xm2k1"]
@@ -9,7 +9,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ttc6h"]
 resource_local_to_scene = true
 shader = ExtResource("2_8bnbr")
-shader_parameter/white = null
+shader_parameter/white = false
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_twcid"]
 radius = 6.0
@@ -52,8 +52,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jm0gq"]
 _data = {
-"RESET": SubResource("Animation_dkgki"),
-"idle": SubResource("Animation_hbndf")
+&"RESET": SubResource("Animation_dkgki"),
+&"idle": SubResource("Animation_hbndf")
 }
 
 [node name="Soldier" instance=ExtResource("1_pihnb")]

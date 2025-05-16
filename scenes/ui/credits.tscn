@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bnaykxnl0tv10"]
 
-[ext_resource type="Script" path="res://scripts/ui/credits.gd" id="1_epnf3"]
+[ext_resource type="Script" uid="uid://dxuhg46dr17yq" path="res://scripts/ui/credits.gd" id="1_epnf3"]
 [ext_resource type="PackedScene" uid="uid://e8y2spmxgfec" path="res://scenes/ui/close_button.tscn" id="2_1tti6"]
 
 [node name="Credits" type="Control"]

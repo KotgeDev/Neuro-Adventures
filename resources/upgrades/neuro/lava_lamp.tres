@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="UpgradeResource" load_steps=4 format=3 uid="uid://chn1yrevu65dl"]
 
 [ext_resource type="Texture2D" uid="uid://lh5y3s446fse" path="res://assets/upgrades/icons/lava_lamp_icon.png" id="1_1twfg"]
-[ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="2_jgs04"]
+[ext_resource type="Script" uid="uid://c5fmfwspjm7kj" path="res://scripts/upgrades/upgrade_resource.gd" id="2_jgs04"]
 [ext_resource type="PackedScene" uid="uid://db0oirvh2jt4m" path="res://scenes/upgrades/neuro/lava_lamp.tscn" id="2_jpi1u"]
 
 [resource]

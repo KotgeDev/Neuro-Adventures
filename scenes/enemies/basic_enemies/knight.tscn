@@ -3,13 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://cx1nd5x2s6vyt" path="res://scenes/enemies/basic_enemies/basic_enemy.tscn" id="1_j3dd8"]
 [ext_resource type="Resource" uid="uid://d07ggiigr8u4i" path="res://resources/enemies/basic_enemies/knight.tres" id="2_bsltb"]
 [ext_resource type="Texture2D" uid="uid://dyjv33cs7year" path="res://assets/enemies/knight_sheet.png" id="2_gstcd"]
-[ext_resource type="Shader" path="res://assets/shaders/flash.gdshader" id="2_xevrd"]
+[ext_resource type="Shader" uid="uid://cvbxmhb4epspt" path="res://assets/shaders/flash.gdshader" id="2_xevrd"]
 [ext_resource type="Texture2D" uid="uid://bpxvb4opdk1xy" path="res://assets/shared/shadow_m.png" id="3_05qd1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j81ub"]
 resource_local_to_scene = true
 shader = ExtResource("2_xevrd")
-shader_parameter/white = null
+shader_parameter/white = false
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kv74k"]
 radius = 7.0
@@ -52,8 +52,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jm0gq"]
 _data = {
-"RESET": SubResource("Animation_dkgki"),
-"idle": SubResource("Animation_hbndf")
+&"RESET": SubResource("Animation_dkgki"),
+&"idle": SubResource("Animation_hbndf")
 }
 
 [node name="Knight" instance=ExtResource("1_j3dd8")]

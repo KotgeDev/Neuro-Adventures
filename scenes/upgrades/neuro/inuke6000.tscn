@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://jcx54cxn86yc"]
 
-[ext_resource type="Script" path="res://scripts/upgrades/neuro/inuke6000.gd" id="1_bwwdp"]
+[ext_resource type="Script" uid="uid://dxy2vvc0yk2dj" path="res://scripts/upgrades/neuro/inuke6000.gd" id="1_bwwdp"]
 [ext_resource type="PackedScene" uid="uid://b5326ppiejrxm" path="res://scenes/shared/enemy_search_area.tscn" id="2_jh5rr"]
-[ext_resource type="Script" path="res://scripts/shared/ai_cooldown_timer.gd" id="3_vmg4d"]
+[ext_resource type="Script" uid="uid://bxw2fv1p15ncf" path="res://scripts/shared/ai_cooldown_timer.gd" id="3_vmg4d"]
 
 [node name="iNuke6000" type="Node2D"]
 script = ExtResource("1_bwwdp")

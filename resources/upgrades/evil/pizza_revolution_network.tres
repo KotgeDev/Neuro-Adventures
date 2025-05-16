@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://csqae0y1j122m" path="res://assets/upgrades/icons/viva_la_pizza_revolution_icon.png" id="1_02k3w"]
 [ext_resource type="PackedScene" uid="uid://bflpavn8txplw" path="res://scenes/upgrades/evil/pizza_revolution_network.tscn" id="2_mgxii"]
-[ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="3_omxry"]
+[ext_resource type="Script" uid="uid://c5fmfwspjm7kj" path="res://scripts/upgrades/upgrade_resource.gd" id="3_omxry"]
 
 [resource]
 script = ExtResource("3_omxry")

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="UpgradeResource" load_steps=4 format=3 uid="uid://dku1vsypn4ls0"]
 
-[ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="1_6a6rh"]
+[ext_resource type="Script" uid="uid://c5fmfwspjm7kj" path="res://scripts/upgrades/upgrade_resource.gd" id="1_6a6rh"]
 [ext_resource type="Texture2D" uid="uid://cek0t32qkq58j" path="res://assets/upgrades/icons/harpoon_icon.png" id="1_7i674"]
 [ext_resource type="PackedScene" uid="uid://btyt1fojhdxtt" path="res://scenes/upgrades/evil/harpoon.tscn" id="2_cpfr5"]
 

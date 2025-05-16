@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="UpgradeResource" load_steps=4 format=3 uid="uid://5vhd5fn535sm"]
 
 [ext_resource type="Texture2D" uid="uid://c7vem0d4tc0qk" path="res://assets/upgrades/icons/soul_stealer_circle_icon.png" id="1_bg5kw"]
-[ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="1_yfuv2"]
+[ext_resource type="Script" uid="uid://c5fmfwspjm7kj" path="res://scripts/upgrades/upgrade_resource.gd" id="1_yfuv2"]
 [ext_resource type="PackedScene" uid="uid://cqpino5r3q6am" path="res://scenes/upgrades/evil/soul_stealer.tscn" id="2_m5ii2"]
 
 [resource]

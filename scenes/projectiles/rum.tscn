@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://5w4qnfy0sm6d"]
 
-[ext_resource type="Script" path="res://scripts/projectiles/rum.gd" id="1_jloxn"]
+[ext_resource type="Script" uid="uid://bkbshst1sew77" path="res://scripts/projectiles/rum.gd" id="1_jloxn"]
 [ext_resource type="Texture2D" uid="uid://b8rcwvt3b6q07" path="res://assets/projectiles/vedal_rum_sheet.png" id="2_h1dyh"]
 [ext_resource type="PackedScene" uid="uid://3miicp8y7p5b" path="res://scenes/shared/multi_hitbox.tscn" id="2_p7ayn"]
 
@@ -102,9 +102,9 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gwiue"]
 _data = {
-"RESET": SubResource("Animation_yjo2d"),
-"hit": SubResource("Animation_frlp1"),
-"spin": SubResource("Animation_eqtqf")
+&"RESET": SubResource("Animation_yjo2d"),
+&"hit": SubResource("Animation_frlp1"),
+&"spin": SubResource("Animation_eqtqf")
 }
 
 [node name="Rum" type="Node2D"]

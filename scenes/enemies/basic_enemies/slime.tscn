@@ -1,14 +1,14 @@
 [gd_scene load_steps=11 format=3 uid="uid://b200dkpejyj2q"]
 
 [ext_resource type="PackedScene" uid="uid://cx1nd5x2s6vyt" path="res://scenes/enemies/basic_enemies/basic_enemy.tscn" id="1_0t50s"]
-[ext_resource type="Shader" path="res://assets/shaders/flash.gdshader" id="2_nw00s"]
+[ext_resource type="Shader" uid="uid://cvbxmhb4epspt" path="res://assets/shaders/flash.gdshader" id="2_nw00s"]
 [ext_resource type="Texture2D" uid="uid://8vqq5lkr4kb0" path="res://assets/enemies/blue_slime_sheet.png" id="2_sgjgm"]
 [ext_resource type="Resource" uid="uid://uyr2cblc3djv" path="res://resources/enemies/basic_enemies/slime.tres" id="2_sia87"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_duryl"]
 resource_local_to_scene = true
 shader = ExtResource("2_nw00s")
-shader_parameter/white = null
+shader_parameter/white = false
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ivh8v"]
 radius = 5.0
@@ -52,8 +52,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2f5do"]
 _data = {
-"RESET": SubResource("Animation_xlqaf"),
-"idle": SubResource("Animation_gsdop")
+&"RESET": SubResource("Animation_xlqaf"),
+&"idle": SubResource("Animation_gsdop")
 }
 
 [node name="Slime" instance=ExtResource("1_0t50s")]

@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="UpgradeDB" load_steps=12 format=3 uid="uid://cy6gbxu45mj"]
 
-[ext_resource type="Script" path="res://scripts/upgrades/upgrade_db.gd" id="1_ab4vt"]
+[ext_resource type="Script" uid="uid://dv4weuehus3fb" path="res://scripts/upgrades/upgrade_db.gd" id="1_ab4vt"]
 [ext_resource type="Resource" uid="uid://bxdtnqbo7qetm" path="res://resources/upgrades/neuro/angel_wings.tres" id="1_g4spg"]
-[ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="1_lohup"]
+[ext_resource type="Script" uid="uid://c5fmfwspjm7kj" path="res://scripts/upgrades/upgrade_resource.gd" id="1_lohup"]
 [ext_resource type="Resource" uid="uid://bp0ia8q1xifig" path="res://resources/upgrades/neuro/cookies.tres" id="2_1j1se"]
 [ext_resource type="Resource" uid="uid://pbkhk4vad4vv" path="res://resources/upgrades/neuro/dual_swords.tres" id="3_ncsj4"]
 [ext_resource type="Resource" uid="uid://uo3a5tqn134v" path="res://resources/upgrades/neuro/swarm_drone.tres" id="5_564uc"]

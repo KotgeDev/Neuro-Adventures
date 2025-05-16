@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://ba3lxduf1jjx7"]
 
-[ext_resource type="Script" path="res://scripts/projectiles/inuke6000_explosion.gd" id="1_t3kpk"]
+[ext_resource type="Script" uid="uid://cxjc2b3v13htr" path="res://scripts/projectiles/inuke6000_explosion.gd" id="1_t3kpk"]
 [ext_resource type="PackedScene" uid="uid://3miicp8y7p5b" path="res://scenes/shared/multi_hitbox.tscn" id="2_1drgx"]
 [ext_resource type="Texture2D" uid="uid://cdwo2xuhjritb" path="res://assets/projectiles/nuke_area.png" id="3_7ygn3"]
 [ext_resource type="Texture2D" uid="uid://bvgsp00tjh1me" path="res://assets/projectiles/nuke_sheet.png" id="4_vavns"]
@@ -53,9 +53,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nuh8f"]
 _data = {
-"RESET": SubResource("Animation_d1shh"),
-"nuke_exploding": SubResource("Animation_slwy2"),
-"nuke_falling": SubResource("Animation_seb46")
+&"RESET": SubResource("Animation_d1shh"),
+&"nuke_exploding": SubResource("Animation_slwy2"),
+&"nuke_falling": SubResource("Animation_seb46")
 }
 
 [node name="iNuke6000Explosion" type="Node2D"]

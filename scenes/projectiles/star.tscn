@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://ccjbm4ipfvjfr"]
 
-[ext_resource type="Script" path="res://scripts/projectiles/star.gd" id="1_qcge2"]
+[ext_resource type="Script" uid="uid://dtku28vqyy8ju" path="res://scripts/projectiles/star.gd" id="1_qcge2"]
 [ext_resource type="PackedScene" uid="uid://3miicp8y7p5b" path="res://scenes/shared/multi_hitbox.tscn" id="2_htd0n"]
 [ext_resource type="Texture2D" uid="uid://brrstl2swlmeo" path="res://assets/projectiles/anny_star_sheet.png" id="3_vvps6"]
-[ext_resource type="Script" path="res://scripts/shared/collab_cooldown_timer.gd" id="4_ut6m7"]
+[ext_resource type="Script" uid="uid://bgl8xtpgpbqdi" path="res://scripts/shared/collab_cooldown_timer.gd" id="4_ut6m7"]
 
 [sub_resource type="Animation" id="Animation_cikmo"]
 length = 0.001
@@ -38,8 +38,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vyifi"]
 _data = {
-"RESET": SubResource("Animation_cikmo"),
-"explosion": SubResource("Animation_ighqt")
+&"RESET": SubResource("Animation_cikmo"),
+&"explosion": SubResource("Animation_ighqt")
 }
 
 [node name="Star" type="Node2D"]

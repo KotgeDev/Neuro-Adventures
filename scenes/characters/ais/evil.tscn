@@ -2,15 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://y36yytk34v0i" path="res://scenes/characters/ais/ai.tscn" id="1_25axx"]
 [ext_resource type="Texture2D" uid="uid://c5d0obvai8g6t" path="res://assets/characters/ais/evil_idle_sheet.png" id="2_nj6tg"]
-[ext_resource type="Shader" path="res://assets/shaders/flash.gdshader" id="2_qkqo0"]
+[ext_resource type="Shader" uid="uid://cvbxmhb4epspt" path="res://assets/shaders/flash.gdshader" id="2_qkqo0"]
 [ext_resource type="Texture2D" uid="uid://b3mya51qow2hp" path="res://assets/characters/ais/evil_run_sheet.png" id="3_gsbgp"]
 [ext_resource type="Texture2D" uid="uid://bt7f65bo75tpd" path="res://assets/shared/shadow_s.png" id="4_ppei1"]
-[ext_resource type="Script" path="res://scripts/shared/shadow.gd" id="5_sq7i4"]
+[ext_resource type="Script" uid="uid://c3jrgledbij0h" path="res://scripts/shared/shadow.gd" id="5_sq7i4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_urpau"]
 resource_local_to_scene = true
 shader = ExtResource("2_qkqo0")
-shader_parameter/white = null
+shader_parameter/white = false
 
 [node name="Evil" instance=ExtResource("1_25axx")]
 BASE_MAX_SPEED = 50

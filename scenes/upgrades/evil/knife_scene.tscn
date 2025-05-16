@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://crplra5uasdjy"]
 
-[ext_resource type="Script" path="res://scripts/upgrades/evil/knife_scene.gd" id="1_k38ow"]
-[ext_resource type="Script" path="res://scripts/shared/ai_cooldown_timer.gd" id="2_wqiyq"]
+[ext_resource type="Script" uid="uid://v1a5o514ed5k" path="res://scripts/upgrades/evil/knife_scene.gd" id="1_k38ow"]
+[ext_resource type="Script" uid="uid://bxw2fv1p15ncf" path="res://scripts/shared/ai_cooldown_timer.gd" id="2_wqiyq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jgn3q"]
 radius = 40.0

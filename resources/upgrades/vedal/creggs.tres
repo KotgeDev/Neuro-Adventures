@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="UpgradeResource" load_steps=4 format=3 uid="uid://ct8qtbivewx2o"]
 
-[ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="1_j2wgi"]
+[ext_resource type="Script" uid="uid://c5fmfwspjm7kj" path="res://scripts/upgrades/upgrade_resource.gd" id="1_j2wgi"]
 [ext_resource type="Texture2D" uid="uid://c2cb0820ccio" path="res://assets/upgrades/icons/creggs_icon.png" id="1_vreuu"]
 [ext_resource type="PackedScene" uid="uid://cbxo3vnlxwd86" path="res://scenes/upgrades/vedal/creggs_upgrade.tscn" id="2_6v71m"]
 

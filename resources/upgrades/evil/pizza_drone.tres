@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bwp43xof65onr" path="res://assets/upgrades/icons/pizza_icon.png" id="1_s0blw"]
 [ext_resource type="PackedScene" uid="uid://6pfaforic4qw" path="res://scenes/upgrades/evil/pizza_drone.tscn" id="2_p4lvp"]
-[ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="3_jysow"]
+[ext_resource type="Script" uid="uid://c5fmfwspjm7kj" path="res://scripts/upgrades/upgrade_resource.gd" id="3_jysow"]
 
 [resource]
 script = ExtResource("3_jysow")

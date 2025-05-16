@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="UpgradeResource" load_steps=4 format=3 uid="uid://pw8raqq4dj8m"]
 
 [ext_resource type="Texture2D" uid="uid://bbbv8fhmowfyc" path="res://assets/upgrades/icons/orange_icon.png" id="1_3313t"]
-[ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="1_liqx0"]
+[ext_resource type="Script" uid="uid://c5fmfwspjm7kj" path="res://scripts/upgrades/upgrade_resource.gd" id="1_liqx0"]
 [ext_resource type="PackedScene" uid="uid://dhyw01f7kcw7c" path="res://scenes/upgrades/anny/orange_upgrade.tscn" id="2_fobeb"]
 
 [resource]

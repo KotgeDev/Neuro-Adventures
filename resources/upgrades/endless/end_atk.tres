@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://snbl8ql0uoas" path="res://assets/upgrades/icons/end_ai_atk.png" id="1_8l38s"]
 [ext_resource type="PackedScene" uid="uid://c1rq0gelqtxjw" path="res://scenes/upgrades/endless/end_atk.tscn" id="2_rsecf"]
-[ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="3_pmj1i"]
+[ext_resource type="Script" uid="uid://c5fmfwspjm7kj" path="res://scripts/upgrades/upgrade_resource.gd" id="3_pmj1i"]
 
 [resource]
 script = ExtResource("3_pmj1i")

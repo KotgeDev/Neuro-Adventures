@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://8k6ldupam638"]
 
-[ext_resource type="Script" path="res://scripts/upgrades/neuro/dual_sword.gd" id="1_2wljc"]
-[ext_resource type="Script" path="res://scripts/shared/ai_cooldown_timer.gd" id="2_35bdc"]
+[ext_resource type="Script" uid="uid://bkwul5uqgj5tn" path="res://scripts/upgrades/neuro/dual_sword.gd" id="1_2wljc"]
+[ext_resource type="Script" uid="uid://bxw2fv1p15ncf" path="res://scripts/shared/ai_cooldown_timer.gd" id="2_35bdc"]
 
 [node name="DualSword" type="Node2D"]
 y_sort_enabled = true

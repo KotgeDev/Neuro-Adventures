@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bbhxgyhh0vde5"]
 
-[ext_resource type="Script" path="res://scripts/projectiles/ai_projectile_path.gd" id="1_d1bc7"]
+[ext_resource type="Script" uid="uid://c0751beb36ojp" path="res://scripts/projectiles/ai_projectile_path.gd" id="1_d1bc7"]
 
 [sub_resource type="Animation" id="Animation_tc22q"]
 length = 0.001
@@ -35,8 +35,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_22wat"]
 _data = {
-"RESET": SubResource("Animation_tc22q"),
-"pulse": SubResource("Animation_vkbkn")
+&"RESET": SubResource("Animation_tc22q"),
+&"pulse": SubResource("Animation_vkbkn")
 }
 
 [node name="AIProjectilePath" type="Node2D"]

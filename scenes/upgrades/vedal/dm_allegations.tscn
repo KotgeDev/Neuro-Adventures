@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://b7jfbfixl6usd"]
 
-[ext_resource type="Script" path="res://scripts/upgrades/vedal/dm_allegations.gd" id="1_a1fxu"]
-[ext_resource type="Script" path="res://scripts/shared/collab_cooldown_timer.gd" id="2_i83nh"]
+[ext_resource type="Script" uid="uid://ck6tthl5w85dy" path="res://scripts/upgrades/vedal/dm_allegations.gd" id="1_a1fxu"]
+[ext_resource type="Script" uid="uid://bgl8xtpgpbqdi" path="res://scripts/shared/collab_cooldown_timer.gd" id="2_i83nh"]
 [ext_resource type="Texture2D" uid="uid://clsw1c1opu2lf" path="res://assets/upgrades/dm_allegations_sheet.png" id="2_r7pwe"]
 
 [sub_resource type="Animation" id="Animation_xftfm"]
@@ -54,9 +54,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_licn1"]
 _data = {
-"RESET": SubResource("Animation_xftfm"),
-"loading": SubResource("Animation_8b3eg"),
-"ready": SubResource("Animation_r8436")
+&"RESET": SubResource("Animation_xftfm"),
+&"loading": SubResource("Animation_8b3eg"),
+&"ready": SubResource("Animation_r8436")
 }
 
 [node name="DMAllegations" type="Node2D"]

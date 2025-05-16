@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://f5kx04gw7ejg"]
 
-[ext_resource type="Script" path="res://scripts/upgrades/neuro/swarm_control_system.gd" id="1_5xfo5"]
+[ext_resource type="Script" uid="uid://c53uo5de34uwm" path="res://scripts/upgrades/neuro/swarm_control_system.gd" id="1_5xfo5"]
 
 [node name="SwarmControlSystem" type="Node2D"]
 script = ExtResource("1_5xfo5")

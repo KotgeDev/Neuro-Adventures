@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="UpgradeResource" load_steps=4 format=3 uid="uid://ddo4uemfu6djq"]
 
 [ext_resource type="Texture2D" uid="uid://d01mp83mkrg6m" path="res://assets/upgrades/icons/pipes_icon.png" id="1_b5x2h"]
-[ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="1_dhp0g"]
+[ext_resource type="Script" uid="uid://c5fmfwspjm7kj" path="res://scripts/upgrades/upgrade_resource.gd" id="1_dhp0g"]
 [ext_resource type="PackedScene" uid="uid://c008whohnmnb8" path="res://scenes/upgrades/evil/pipes.tscn" id="2_5bdiv"]
 
 [resource]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cqgusqhpigf0c"]
 
-[ext_resource type="Script" path="res://scripts/ui/notice.gd" id="1_nufba"]
+[ext_resource type="Script" uid="uid://b8g3hqpbgxpvu" path="res://scripts/ui/notice.gd" id="1_nufba"]
 [ext_resource type="PackedScene" uid="uid://e8y2spmxgfec" path="res://scenes/ui/close_button.tscn" id="2_4joly"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u2wlw"]

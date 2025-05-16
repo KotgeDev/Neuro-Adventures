@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="DevLogEntry" load_steps=2 format=3 uid="uid://d15isps3c3du4"]
 
-[ext_resource type="Script" path="res://scripts/devlogs/dev_log_entry.gd" id="1_prj44"]
+[ext_resource type="Script" uid="uid://codbkbqqikekf" path="res://scripts/devlogs/dev_log_entry.gd" id="1_prj44"]
 
 [resource]
 script = ExtResource("1_prj44")

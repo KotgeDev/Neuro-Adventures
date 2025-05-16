@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bi7wvnvru3lfi"]
 
-[ext_resource type="Script" path="res://scripts/projectiles/pipe.gd" id="1_8qalf"]
+[ext_resource type="Script" uid="uid://bxyomy4ysgwb0" path="res://scripts/projectiles/pipe.gd" id="1_8qalf"]
 [ext_resource type="Texture2D" uid="uid://c6ubbf5ydvy6m" path="res://assets/projectiles/pipe_sheet.png" id="2_n5c2v"]
 [ext_resource type="PackedScene" uid="uid://3miicp8y7p5b" path="res://scenes/shared/multi_hitbox.tscn" id="3_ed3qi"]
 
@@ -38,8 +38,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ndcqf"]
 _data = {
-"RESET": SubResource("Animation_m6pgt"),
-"pipe": SubResource("Animation_bixuu")
+&"RESET": SubResource("Animation_m6pgt"),
+&"pipe": SubResource("Animation_bixuu")
 }
 
 [node name="Pipe" type="Node2D"]

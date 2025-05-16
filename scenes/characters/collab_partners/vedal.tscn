@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://du60tw8uyoqwb" path="res://scenes/characters/collab_partners/collab_partner.tscn" id="1_isy60"]
 [ext_resource type="Texture2D" uid="uid://bt7f65bo75tpd" path="res://assets/shared/shadow_s.png" id="2_a2hfa"]
-[ext_resource type="Script" path="res://scripts/characters/collab_partners/vedal.gd" id="2_joknq"]
-[ext_resource type="Script" path="res://scripts/shared/shadow.gd" id="3_2qssh"]
+[ext_resource type="Script" uid="uid://cq30f18xxfxbf" path="res://scripts/characters/collab_partners/vedal.gd" id="2_joknq"]
+[ext_resource type="Script" uid="uid://c3jrgledbij0h" path="res://scripts/shared/shadow.gd" id="3_2qssh"]
 
 [node name="Vedal" instance=ExtResource("1_isy60")]
 script = ExtResource("2_joknq")

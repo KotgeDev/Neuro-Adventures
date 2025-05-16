@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dm3hkvfawh3kq"]
 
-[ext_resource type="Script" path="res://scripts/achievements/achievements_menu.gd" id="1_0iyta"]
+[ext_resource type="Script" uid="uid://bosrk0n764ukp" path="res://scripts/achievements/achievements_menu.gd" id="1_0iyta"]
 [ext_resource type="PackedScene" uid="uid://e8y2spmxgfec" path="res://scenes/ui/close_button.tscn" id="2_4n8i0"]
 [ext_resource type="Texture2D" uid="uid://bxy2weuuiacwj" path="res://assets/achievements/base_mono.png" id="4_cbhgm"]
 [ext_resource type="Texture2D" uid="uid://thre1e3yyysq" path="res://assets/achievements/unknown.png" id="5_8nfpg"]

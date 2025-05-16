@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bd1nmiu3hk45s"]
 
-[ext_resource type="Script" path="res://scripts/upgrades/neuro/confession_letter.gd" id="1_hflmh"]
+[ext_resource type="Script" uid="uid://dn1g3p2for5pp" path="res://scripts/upgrades/neuro/confession_letter.gd" id="1_hflmh"]
 
 [node name="SayItBack" type="Node2D"]
 script = ExtResource("1_hflmh")

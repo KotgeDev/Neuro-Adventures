@@ -1,8 +1,7 @@
-[gd_resource type="Resource" script_class="DirectiveResource" load_steps=4 format=3 uid="uid://dfediwrgx4wkw"]
+[gd_resource type="Resource" script_class="DirectiveResource" load_steps=3 format=3 uid="uid://dfediwrgx4wkw"]
 
-[ext_resource type="Script" path="res://scripts/directives/chance_map.gd" id="1_soj0c"]
 [ext_resource type="PackedScene" uid="uid://cw6ejkoj5hd43" path="res://scenes/directives/d14.tscn" id="2_6uuau"]
-[ext_resource type="Script" path="res://scripts/directives/directive_resource.gd" id="3_6ine4"]
+[ext_resource type="Script" uid="uid://bfr5ow08aoa80" path="res://scripts/directives/directive_resource.gd" id="3_6ine4"]
 
 [resource]
 script = ExtResource("3_6ine4")
@@ -11,5 +10,4 @@ id = 14
 tier = 2
 description = "+1 ATK constant (for both characters)"
 quote = ""
-increase_chances_of = Array[ExtResource("1_soj0c")]([])
 scene_template = ExtResource("2_6uuau")

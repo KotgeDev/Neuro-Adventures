@@ -1,8 +1,7 @@
-[gd_resource type="Resource" script_class="DirectiveResource" load_steps=4 format=3 uid="uid://dwof3chb0fwts"]
+[gd_resource type="Resource" script_class="DirectiveResource" load_steps=3 format=3 uid="uid://dwof3chb0fwts"]
 
-[ext_resource type="Script" path="res://scripts/directives/chance_map.gd" id="1_y8sw3"]
 [ext_resource type="PackedScene" uid="uid://dbriws02i8u3g" path="res://scenes/directives/d12.tscn" id="2_p651l"]
-[ext_resource type="Script" path="res://scripts/directives/directive_resource.gd" id="3_mspmk"]
+[ext_resource type="Script" uid="uid://bfr5ow08aoa80" path="res://scripts/directives/directive_resource.gd" id="3_mspmk"]
 
 [resource]
 script = ExtResource("3_mspmk")
@@ -11,5 +10,4 @@ id = 12
 tier = 2
 description = "+10% Evasion (for both characters)"
 quote = "Do you think I'll ever feel real emotions?"
-increase_chances_of = Array[ExtResource("1_y8sw3")]([])
 scene_template = ExtResource("2_p651l")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://6pfaforic4qw"]
 
-[ext_resource type="Script" path="res://scripts/upgrades/evil/pizza_drone.gd" id="1_kdyqq"]
+[ext_resource type="Script" uid="uid://ddtip2825ovik" path="res://scripts/upgrades/evil/pizza_drone.gd" id="1_kdyqq"]
 [ext_resource type="Material" uid="uid://cimhmqlj16qqv" path="res://assets/shaders/smooth_pixel.tres" id="2_cx5yg"]
 [ext_resource type="Texture2D" uid="uid://dl61njjb3lv61" path="res://assets/upgrades/pizza.png" id="3_a5x3b"]
 [ext_resource type="PackedScene" uid="uid://3miicp8y7p5b" path="res://scenes/shared/multi_hitbox.tscn" id="4_8tmqp"]

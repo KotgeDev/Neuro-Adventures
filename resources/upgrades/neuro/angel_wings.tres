@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://devpp1ou6mkkr" path="res://assets/upgrades/icons/angel_wings_icon.png" id="1_orfrr"]
 [ext_resource type="PackedScene" uid="uid://d3cpr42ek57qj" path="res://scenes/upgrades/neuro/angel_wings.tscn" id="2_7lrr0"]
-[ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="3_a5c4k"]
+[ext_resource type="Script" uid="uid://c5fmfwspjm7kj" path="res://scripts/upgrades/upgrade_resource.gd" id="3_a5c4k"]
 
 [resource]
 script = ExtResource("3_a5c4k")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bnwigue2et3im"]
 
-[ext_resource type="Script" path="res://scripts/collectibles/cookie.gd" id="1_sbaic"]
+[ext_resource type="Script" uid="uid://bgyn72w7ptwwn" path="res://scripts/collectibles/cookie.gd" id="1_sbaic"]
 [ext_resource type="Texture2D" uid="uid://bjrvgc6uxq8xv" path="res://assets/collectibles/cookies.png" id="2_esnuc"]
 
 [node name="Cookie" type="Node2D"]

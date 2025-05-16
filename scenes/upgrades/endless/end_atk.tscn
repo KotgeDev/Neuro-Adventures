@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c1rq0gelqtxjw"]
 
-[ext_resource type="Script" path="res://scripts/upgrades/endless/end_atk.gd" id="1_7kask"]
+[ext_resource type="Script" uid="uid://bid0r0k1riw3a" path="res://scripts/upgrades/endless/end_atk.gd" id="1_7kask"]
 
 [node name="AiAtk" type="Node2D"]
 script = ExtResource("1_7kask")

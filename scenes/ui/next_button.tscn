@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cn3jw7mtepsf1" path="res://assets/ui/next_button_disabled.png" id="3_8o3oc"]
 [ext_resource type="Texture2D" uid="uid://c7whaik0m1ffb" path="res://assets/ui/next_button_hover.png" id="3_d04jq"]
 [ext_resource type="BitMap" uid="uid://buf70d01tyetn" path="res://assets/ui/next_button_clip_mask.png" id="4_nutmc"]
-[ext_resource type="Script" path="res://scripts/ui/next_button.gd" id="5_jcynb"]
+[ext_resource type="Script" uid="uid://dm40qxt5odw6" path="res://scripts/ui/next_button.gd" id="5_jcynb"]
 
 [node name="TextureButton" type="TextureButton"]
 offset_left = 142.0

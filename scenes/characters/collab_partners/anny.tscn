@@ -1,17 +1,17 @@
 [gd_scene load_steps=9 format=3 uid="uid://bq3i4vtxr2c7a"]
 
 [ext_resource type="PackedScene" uid="uid://du60tw8uyoqwb" path="res://scenes/characters/collab_partners/collab_partner.tscn" id="1_l0b7b"]
-[ext_resource type="Script" path="res://scripts/characters/collab_partners/anny.gd" id="2_so6vv"]
+[ext_resource type="Script" uid="uid://m0kny1im3t17" path="res://scripts/characters/collab_partners/anny.gd" id="2_so6vv"]
 [ext_resource type="Texture2D" uid="uid://ca8wtwycg8wp6" path="res://assets/characters/collab_partners/anny_idle_sheet.png" id="2_y3xsd"]
-[ext_resource type="Shader" path="res://assets/shaders/flash.gdshader" id="3_eikcf"]
+[ext_resource type="Shader" uid="uid://cvbxmhb4epspt" path="res://assets/shaders/flash.gdshader" id="3_eikcf"]
 [ext_resource type="Texture2D" uid="uid://c06u0ih6q7w27" path="res://assets/characters/collab_partners/anny_run_sheet.png" id="3_m5bgb"]
 [ext_resource type="Texture2D" uid="uid://bt7f65bo75tpd" path="res://assets/shared/shadow_s.png" id="4_nrs87"]
-[ext_resource type="Script" path="res://scripts/shared/shadow.gd" id="5_7rsd2"]
+[ext_resource type="Script" uid="uid://c3jrgledbij0h" path="res://scripts/shared/shadow.gd" id="5_7rsd2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0tsbo"]
 resource_local_to_scene = true
 shader = ExtResource("3_eikcf")
-shader_parameter/white = null
+shader_parameter/white = false
 
 [node name="Anny" instance=ExtResource("1_l0b7b")]
 script = ExtResource("2_so6vv")

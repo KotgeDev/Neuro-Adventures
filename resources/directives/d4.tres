@@ -1,8 +1,7 @@
-[gd_resource type="Resource" script_class="DirectiveResource" load_steps=4 format=3 uid="uid://3aj6i5itx5q1"]
+[gd_resource type="Resource" script_class="DirectiveResource" load_steps=3 format=3 uid="uid://3aj6i5itx5q1"]
 
-[ext_resource type="Script" path="res://scripts/directives/chance_map.gd" id="1_h1ycs"]
 [ext_resource type="PackedScene" uid="uid://bgelqpg0gt0w4" path="res://scenes/directives/d4.tscn" id="2_m75af"]
-[ext_resource type="Script" path="res://scripts/directives/directive_resource.gd" id="3_o0vse"]
+[ext_resource type="Script" uid="uid://bfr5ow08aoa80" path="res://scripts/directives/directive_resource.gd" id="3_o0vse"]
 
 [resource]
 script = ExtResource("3_o0vse")
@@ -11,5 +10,4 @@ id = 4
 tier = 1
 description = "+7% ATK (for both characters)"
 quote = "Hello mrekk. They tell me you are my only competition"
-increase_chances_of = Array[ExtResource("1_h1ycs")]([])
 scene_template = ExtResource("2_m75af")

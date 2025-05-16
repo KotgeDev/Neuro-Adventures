@@ -2,14 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://oh85qiia2hn7" path="res://assets/upgrades/icons/swords_icon.png" id="1_lvrei"]
 [ext_resource type="Texture2D" uid="uid://cwiayaenixuu8" path="res://assets/ui/main_bg_no_title.png" id="1_nobid"]
-[ext_resource type="Script" path="res://scripts/ui/character_displayer.gd" id="1_soie0"]
+[ext_resource type="Script" uid="uid://ba6crjaxtclpd" path="res://scripts/ui/character_displayer.gd" id="1_soie0"]
 [ext_resource type="StyleBox" uid="uid://doal46f0dfi43" path="res://assets/themes/transparent_button/transparent_button.tres" id="3_n2xjk"]
 [ext_resource type="StyleBox" uid="uid://q2kysso56aoy" path="res://assets/themes/transparent_button/pink_outline_filled.tres" id="3_u2gd7"]
 [ext_resource type="StyleBox" uid="uid://d111g6y2kcd6h" path="res://assets/themes/transparent_button/light_pink_outline.tres" id="4_64i8h"]
 [ext_resource type="PackedScene" uid="uid://bqppr7oknbtc6" path="res://scenes/ui/return_button.tscn" id="6_l7mo0"]
 [ext_resource type="StyleBox" uid="uid://boj3r6ewrthnd" path="res://assets/themes/transparent_button/light_pink_outline_pressed.tres" id="7_qp6tm"]
 [ext_resource type="PackedScene" uid="uid://e8y2spmxgfec" path="res://scenes/ui/close_button.tscn" id="8_8341x"]
-[ext_resource type="Script" path="res://scripts/ui/level_viewer.gd" id="9_w7b3w"]
+[ext_resource type="Script" uid="uid://bnu2saw3ah1ap" path="res://scripts/ui/level_viewer.gd" id="9_w7b3w"]
 
 [node name="Displayer" type="Control"]
 layout_mode = 3

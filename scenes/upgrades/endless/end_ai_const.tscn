@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c00xmewfbwot6"]
 
-[ext_resource type="Script" path="res://scripts/upgrades/endless/end_const.gd" id="1_sjo12"]
+[ext_resource type="Script" uid="uid://048cl7vluc8a" path="res://scripts/upgrades/endless/end_const.gd" id="1_sjo12"]
 
 [node name="AiConst" type="Node2D"]
 script = ExtResource("1_sjo12")

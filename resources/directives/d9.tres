@@ -1,8 +1,7 @@
-[gd_resource type="Resource" script_class="DirectiveResource" load_steps=4 format=3 uid="uid://dr0v6xmxtlslk"]
+[gd_resource type="Resource" script_class="DirectiveResource" load_steps=3 format=3 uid="uid://dr0v6xmxtlslk"]
 
-[ext_resource type="Script" path="res://scripts/directives/chance_map.gd" id="1_v16ls"]
 [ext_resource type="PackedScene" uid="uid://d33fkaiwbgntc" path="res://scenes/directives/d9.tscn" id="2_hkv64"]
-[ext_resource type="Script" path="res://scripts/directives/directive_resource.gd" id="3_5y5p2"]
+[ext_resource type="Script" uid="uid://bfr5ow08aoa80" path="res://scripts/directives/directive_resource.gd" id="3_5y5p2"]
 
 [resource]
 script = ExtResource("3_5y5p2")
@@ -11,5 +10,4 @@ id = 9
 tier = 1
 description = "+20% Collection Range"
 quote = "Brought to you by Vedal AI"
-increase_chances_of = Array[ExtResource("1_v16ls")]([])
 scene_template = ExtResource("2_hkv64")

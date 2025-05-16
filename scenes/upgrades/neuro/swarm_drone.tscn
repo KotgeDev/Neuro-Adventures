@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://b00yq764vy1k1"]
 
-[ext_resource type="Script" path="res://scripts/upgrades/neuro/swarm_drone.gd" id="1_rgnl0"]
+[ext_resource type="Script" uid="uid://csokdsc7v4pwb" path="res://scripts/upgrades/neuro/swarm_drone.gd" id="1_rgnl0"]
 [ext_resource type="Texture2D" uid="uid://hbyscyq4eerk" path="res://assets/upgrades/icons/gymbag_sheet.png" id="2_stdcx"]
 [ext_resource type="PackedScene" uid="uid://3miicp8y7p5b" path="res://scenes/shared/multi_hitbox.tscn" id="3_g4d71"]
 
@@ -38,8 +38,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6jac1"]
 _data = {
-"RESET": SubResource("Animation_bbvi5"),
-"idle": SubResource("Animation_0prcg")
+&"RESET": SubResource("Animation_bbvi5"),
+&"idle": SubResource("Animation_0prcg")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_22sv2"]

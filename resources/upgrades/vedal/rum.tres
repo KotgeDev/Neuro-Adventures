@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="UpgradeResource" load_steps=4 format=3 uid="uid://44elod0lqq2m"]
 
-[ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="1_hhn4f"]
+[ext_resource type="Script" uid="uid://c5fmfwspjm7kj" path="res://scripts/upgrades/upgrade_resource.gd" id="1_hhn4f"]
 [ext_resource type="Texture2D" uid="uid://bu2xhg45gbt8s" path="res://assets/upgrades/icons/rum_icon.png" id="1_i82jy"]
 [ext_resource type="PackedScene" uid="uid://b3m4h0xb4h80u" path="res://scenes/upgrades/vedal/rum_scene.tscn" id="2_wx76o"]
 

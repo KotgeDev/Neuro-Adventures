@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dfxgj7cm78rlj"]
 
-[ext_resource type="Script" path="res://scripts/collectibles/creggs.gd" id="1_uibuh"]
+[ext_resource type="Script" uid="uid://b2w11y7gevv4n" path="res://scripts/collectibles/creggs.gd" id="1_uibuh"]
 [ext_resource type="Texture2D" uid="uid://b6b6dfprgmnph" path="res://assets/collectibles/creggs.png" id="2_3hjyx"]
 
 [node name="Creggs" type="Node2D"]

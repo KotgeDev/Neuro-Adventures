@@ -3,13 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://cx1nd5x2s6vyt" path="res://scenes/enemies/basic_enemies/basic_enemy.tscn" id="1_ugo6b"]
 [ext_resource type="Texture2D" uid="uid://dj4uhpf43bgln" path="res://assets/enemies/goblin_sheet.png" id="2_6slxd"]
 [ext_resource type="Resource" uid="uid://c7fwrgq2060rb" path="res://resources/enemies/basic_enemies/goblin.tres" id="2_b41wg"]
-[ext_resource type="Shader" path="res://assets/shaders/flash.gdshader" id="2_wd6u7"]
+[ext_resource type="Shader" uid="uid://cvbxmhb4epspt" path="res://assets/shaders/flash.gdshader" id="2_wd6u7"]
 [ext_resource type="Texture2D" uid="uid://bpxvb4opdk1xy" path="res://assets/shared/shadow_m.png" id="3_l8byq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2j5su"]
 resource_local_to_scene = true
 shader = ExtResource("2_wd6u7")
-shader_parameter/white = null
+shader_parameter/white = false
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m0owx"]
 radius = 7.0
@@ -53,8 +53,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u2hhj"]
 _data = {
-"RESET": SubResource("Animation_pgyfm"),
-"idle": SubResource("Animation_jqqp3")
+&"RESET": SubResource("Animation_pgyfm"),
+&"idle": SubResource("Animation_jqqp3")
 }
 
 [node name="Goblin" instance=ExtResource("1_ugo6b")]

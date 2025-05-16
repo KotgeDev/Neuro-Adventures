@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://ctglrxknis3ar"]
 
-[ext_resource type="Script" path="res://scripts/projectiles/arrow.gd" id="1_7m11e"]
+[ext_resource type="Script" uid="uid://bn81iupicxyop" path="res://scripts/projectiles/arrow.gd" id="1_7m11e"]
 [ext_resource type="PackedScene" uid="uid://3miicp8y7p5b" path="res://scenes/shared/multi_hitbox.tscn" id="2_a182l"]
 [ext_resource type="Material" uid="uid://cimhmqlj16qqv" path="res://assets/shaders/smooth_pixel.tres" id="2_qdv44"]
 [ext_resource type="Texture2D" uid="uid://bo1nmp3hahu3s" path="res://assets/projectiles/arrow.png" id="2_sdax5"]

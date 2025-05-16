@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://dej58m34yl70t"]
 
 [ext_resource type="Texture2D" uid="uid://ew1a8qhbpvlk" path="res://assets/directives/tier1.png" id="1_6eri8"]
-[ext_resource type="Script" path="res://scripts/ui/directive_card.gd" id="1_fb4ly"]
+[ext_resource type="Script" uid="uid://b1lxho3787qud" path="res://scripts/ui/directive_card.gd" id="1_fb4ly"]
 [ext_resource type="StyleBox" uid="uid://ch1b8ed6ws7oy" path="res://assets/themes/directive_card/directive_hover_texture.tres" id="1_hx4x8"]
 [ext_resource type="StyleBox" uid="uid://gfuo3kusuny0" path="res://assets/themes/directive_card/directive_texture.tres" id="2_dq4hj"]
-[ext_resource type="Script" path="res://scripts/ui/button_with_sfx.gd" id="3_4wpx7"]
+[ext_resource type="Script" uid="uid://drgfsfpbsr0r5" path="res://scripts/ui/button_with_sfx.gd" id="3_4wpx7"]
 [ext_resource type="LabelSettings" uid="uid://11wqihbaoojx" path="res://assets/themes/directive_card/directive_label.tres" id="4_uhaio"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_x3ykh"]
@@ -69,8 +69,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rag7o"]
 _data = {
-"RESET": SubResource("Animation_tomin"),
-"anim": SubResource("Animation_cbmnu")
+&"RESET": SubResource("Animation_tomin"),
+&"anim": SubResource("Animation_cbmnu")
 }
 
 [node name="DirectiveCard" type="VBoxContainer"]

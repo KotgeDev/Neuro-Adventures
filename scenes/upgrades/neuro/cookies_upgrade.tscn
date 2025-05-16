@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://btr8wrt5kkk56"]
 
-[ext_resource type="Script" path="res://scripts/upgrades/collectible_upgrade.gd" id="1_xcryy"]
+[ext_resource type="Script" uid="uid://cjgtj586cfuh7" path="res://scripts/upgrades/collectible_upgrade.gd" id="1_xcryy"]
 [ext_resource type="PackedScene" uid="uid://bnwigue2et3im" path="res://scenes/collectibles/cookie.tscn" id="2_lct3r"]
 
 [node name="CookiesUpgrade" type="Node2D"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ch17x5fa2wcd"]
 
-[ext_resource type="Script" path="res://scripts/directives/directive_manager.gd" id="1_53i75"]
+[ext_resource type="Script" uid="uid://cnqd1g1k0udjr" path="res://scripts/directives/directive_manager.gd" id="1_53i75"]
 
 [node name="DirectiveManager" type="Node2D" groups=["dir_manager"]]
 script = ExtResource("1_53i75")

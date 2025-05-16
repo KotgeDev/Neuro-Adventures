@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://db0oirvh2jt4m"]
 
-[ext_resource type="Script" path="res://scripts/upgrades/neuro/lava_lamp.gd" id="1_6i45p"]
-[ext_resource type="Script" path="res://scripts/shared/ai_cooldown_timer.gd" id="2_wkrqr"]
+[ext_resource type="Script" uid="uid://b05m434vn8jxc" path="res://scripts/upgrades/neuro/lava_lamp.gd" id="1_6i45p"]
+[ext_resource type="Script" uid="uid://bxw2fv1p15ncf" path="res://scripts/shared/ai_cooldown_timer.gd" id="2_wkrqr"]
 
 [node name="LavaLamp" type="Node2D"]
 script = ExtResource("1_6i45p")

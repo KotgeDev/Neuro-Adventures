@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="UpgradeResource" load_steps=4 format=3 uid="uid://b44uhxjbskyxb"]
 
 [ext_resource type="Texture2D" uid="uid://dv6qf2uvk53v2" path="res://assets/upgrades/icons/portal_icon.png" id="1_87hmy"]
-[ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="1_kaxir"]
+[ext_resource type="Script" uid="uid://c5fmfwspjm7kj" path="res://scripts/upgrades/upgrade_resource.gd" id="1_kaxir"]
 [ext_resource type="PackedScene" uid="uid://c6if8vo6bhmd" path="res://scenes/upgrades/anny/portal_upgrade.tscn" id="2_cyqbr"]
 
 [resource]

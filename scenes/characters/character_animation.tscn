@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cgic4q8egbmxp"]
 
-[ext_resource type="Script" path="res://scripts/characters/character_animation.gd" id="1_de5x6"]
+[ext_resource type="Script" uid="uid://s2ca5m8astns" path="res://scripts/characters/character_animation.gd" id="1_de5x6"]
 [ext_resource type="Material" uid="uid://c13ui871eji3r" path="res://assets/shaders/flash.tres" id="2_le4fs"]
 [ext_resource type="Texture2D" uid="uid://bcl8r38dmiu4i" path="res://assets/characters/collab_partners/vedal_idle_sheet.png" id="3_y5qvk"]
 [ext_resource type="Texture2D" uid="uid://6almtbu37tf4" path="res://assets/characters/collab_partners/vedal_run_sheet.png" id="4_w5xph"]
@@ -140,9 +140,9 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4vs80"]
 _data = {
-"RESET": SubResource("Animation_1tmv4"),
-"idle": SubResource("Animation_d80lm"),
-"run": SubResource("Animation_fh8qw")
+&"RESET": SubResource("Animation_1tmv4"),
+&"idle": SubResource("Animation_d80lm"),
+&"run": SubResource("Animation_fh8qw")
 }
 
 [node name="CharacterAnimation" type="Node2D"]

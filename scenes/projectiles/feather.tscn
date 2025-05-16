@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://du1dnr2yk2uf8"]
 
-[ext_resource type="Script" path="res://scripts/projectiles/basic_projectile.gd" id="1_vmk87"]
+[ext_resource type="Script" uid="uid://csnvwr2whnqni" path="res://scripts/projectiles/basic_projectile.gd" id="1_vmk87"]
 [ext_resource type="Material" uid="uid://cimhmqlj16qqv" path="res://assets/shaders/smooth_pixel.tres" id="2_dr5x1"]
 [ext_resource type="Texture2D" uid="uid://cg0e4ind13evw" path="res://assets/projectiles/feather.png" id="3_23hki"]
 [ext_resource type="PackedScene" uid="uid://3miicp8y7p5b" path="res://scenes/shared/multi_hitbox.tscn" id="4_kveah"]

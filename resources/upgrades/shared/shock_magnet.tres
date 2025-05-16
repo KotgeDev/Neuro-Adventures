@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://2ayoaiakip8l" path="res://assets/upgrades/icons/shock_magnet_icon.png" id="1_8kwgs"]
 [ext_resource type="PackedScene" uid="uid://c0k8ycmsxpar7" path="res://scenes/upgrades/shared/shock_magnet.tscn" id="2_amawi"]
-[ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="3_b5pek"]
+[ext_resource type="Script" uid="uid://c5fmfwspjm7kj" path="res://scripts/upgrades/upgrade_resource.gd" id="3_b5pek"]
 
 [resource]
 script = ExtResource("3_b5pek")

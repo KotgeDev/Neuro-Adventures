@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dhyw01f7kcw7c"]
 
-[ext_resource type="Script" path="res://scripts/upgrades/collectible_upgrade.gd" id="1_oj71c"]
+[ext_resource type="Script" uid="uid://cjgtj586cfuh7" path="res://scripts/upgrades/collectible_upgrade.gd" id="1_oj71c"]
 [ext_resource type="PackedScene" uid="uid://xab0iu8bn1ps" path="res://scenes/collectibles/orange.tscn" id="2_ykkra"]
 
 [node name="OrangeUpgrade" type="Node2D"]

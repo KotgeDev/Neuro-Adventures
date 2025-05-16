@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://4sklglum0d7k"]
 
-[ext_resource type="Script" path="res://scripts/ui/team_menu.gd" id="1_plgsp"]
+[ext_resource type="Script" uid="uid://dfwuhbffc0hqh" path="res://scripts/ui/team_menu.gd" id="1_plgsp"]
 [ext_resource type="Texture2D" uid="uid://cwiayaenixuu8" path="res://assets/ui/main_bg_no_title.png" id="1_wqvdl"]
 [ext_resource type="PackedScene" uid="uid://dfyl0awq8jom5" path="res://scenes/ui/character_card.tscn" id="2_xv8y2"]
-[ext_resource type="Script" path="res://scripts/ui/team_character_scroll.gd" id="3_i8ldd"]
-[ext_resource type="Script" path="res://scripts/ui/button_with_sfx.gd" id="4_x68nq"]
+[ext_resource type="Script" uid="uid://mh463yfjjll5" path="res://scripts/ui/team_character_scroll.gd" id="3_i8ldd"]
+[ext_resource type="Script" uid="uid://drgfsfpbsr0r5" path="res://scripts/ui/button_with_sfx.gd" id="4_x68nq"]
 [ext_resource type="Theme" uid="uid://bndhe68y23nf2" path="res://assets/themes/bright_pink_button.tres" id="5_7awa4"]
 [ext_resource type="PackedScene" uid="uid://bqppr7oknbtc6" path="res://scenes/ui/return_button.tscn" id="5_v1wuu"]
 

@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://djb6su61nnipl"]
 
-[ext_resource type="Script" path="res://scripts/ui/pause_manager/stats_menu.gd" id="1_d2mo2"]
+[ext_resource type="Script" uid="uid://c4qur4bqt5af7" path="res://scripts/ui/pause_manager/stats_menu.gd" id="1_d2mo2"]
 [ext_resource type="PackedScene" uid="uid://dej58m34yl70t" path="res://scenes/ui/directive_card.tscn" id="2_vql0i"]
-[ext_resource type="Script" path="res://scripts/ui/pause_manager/stats_menu_scroll.gd" id="3_2uj04"]
-[ext_resource type="Script" path="res://scripts/ui/pause_manager/directive_panel.gd" id="4_lqx54"]
+[ext_resource type="Script" uid="uid://cv1gmxjugu34h" path="res://scripts/ui/pause_manager/stats_menu_scroll.gd" id="3_2uj04"]
+[ext_resource type="Script" uid="uid://bl8hownpg1mrb" path="res://scripts/ui/pause_manager/directive_panel.gd" id="4_lqx54"]
 [ext_resource type="StyleBox" uid="uid://boj3r6ewrthnd" path="res://assets/themes/transparent_button/light_pink_outline_pressed.tres" id="6_sfj75"]
 [ext_resource type="StyleBox" uid="uid://doal46f0dfi43" path="res://assets/themes/transparent_button/transparent_button.tres" id="7_6vhjv"]
 [ext_resource type="PackedScene" uid="uid://c7t3d8nn0j6uw" path="res://scenes/ui/pause_manager/character_stats_panel.tscn" id="7_8bek6"]

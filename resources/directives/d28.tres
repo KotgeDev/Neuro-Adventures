@@ -1,8 +1,7 @@
-[gd_resource type="Resource" script_class="DirectiveResource" load_steps=4 format=3 uid="uid://cd7k3ht2nulc3"]
+[gd_resource type="Resource" script_class="DirectiveResource" load_steps=3 format=3 uid="uid://cd7k3ht2nulc3"]
 
-[ext_resource type="Script" path="res://scripts/directives/chance_map.gd" id="1_p6rt7"]
 [ext_resource type="PackedScene" uid="uid://cqkhmifpt72d4" path="res://scenes/directives/d28.tscn" id="2_b1rl5"]
-[ext_resource type="Script" path="res://scripts/directives/directive_resource.gd" id="3_85r4l"]
+[ext_resource type="Script" uid="uid://bfr5ow08aoa80" path="res://scripts/directives/directive_resource.gd" id="3_85r4l"]
 
 [resource]
 script = ExtResource("3_85r4l")
@@ -11,5 +10,4 @@ id = 28
 tier = 4
 description = "Multiply collab ATK by collection range increase % + 1 (+80% -> x1.8 ATK)"
 quote = "Synergized power of the Neuroverse"
-increase_chances_of = Array[ExtResource("1_p6rt7")]([])
 scene_template = ExtResource("2_b1rl5")

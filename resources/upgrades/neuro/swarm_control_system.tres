@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cw0376vjwhg6t" path="res://assets/upgrades/icons/swarm_upgrades_icon.png" id="1_t8r63"]
 [ext_resource type="PackedScene" uid="uid://f5kx04gw7ejg" path="res://scenes/upgrades/neuro/swarm_control_system.tscn" id="2_g4l13"]
-[ext_resource type="Script" path="res://scripts/upgrades/upgrade_resource.gd" id="3_6l4r4"]
+[ext_resource type="Script" uid="uid://c5fmfwspjm7kj" path="res://scripts/upgrades/upgrade_resource.gd" id="3_6l4r4"]
 
 [resource]
 script = ExtResource("3_6l4r4")
